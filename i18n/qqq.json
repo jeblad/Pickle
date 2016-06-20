@@ -4,6 +4,5 @@
 			"jeblad"
 		]
 	},
-	"spec-i18n-welcome": "Used to greet the user when reading the i18n/??.json file.",
 	"spec-desc": "{{desc|name=Spec|url=https://github.com/jeblad/Spec }}"
 }
