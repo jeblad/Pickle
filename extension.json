@@ -1,0 +1,48 @@
+{
+	"name": "Spec",
+	"version": "0.1.0",
+	"author": [
+		"John Erling Blad"
+	],
+	"url": "https://github.com/jeblad/Spec",
+	"descriptionmsg": "spec-desc",
+	"license-name": "GPL v2",
+	"type": "other",
+	"AutoloadClasses": {
+		"SpecHooks": "Spec.hooks.php"
+	},
+	"config": {
+		"SpecEnableFoo": true
+	},
+	"ExtensionMessagesFiles": {
+		"SpecAlias": "Spec.i18n.alias.php"
+	},
+	"Hooks": {
+		
+	},
+	"MessagesDirs": {
+		"Spec": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"ext.spec.foo": {
+			"scripts": [
+				"modules/ext.spec.js",
+				"modules/ext.spec.foo.js"
+			],
+			"styles": [
+				"modules/ext.spec.foo.css"
+			],
+			"messages": [],
+			"dependencies": []
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "Spec"
+	},
+	"SpecialPages": {
+	},
+	"manifest_version": 1
+}

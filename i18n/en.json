@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"jeblad"
+		]
+	},
+	"spec-desc": "This extension adds basic Spec-style testing to Lua modules."
+}

@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"jeblad"
+		]
+	},
+	"spec-desc": "Denne utvidelsen legger til grunnleggende Spec-type testing for Lua moduler."
+}
