@@ -2,22 +2,14 @@
 
 This extension adds basic spec-style testing to Lua modules.
 
-## Features
+## Feature
+
+To make it possible to do efficient testing it will detect some pages as holding a Spec, and the Lua code on
+those pages can be run both automatic and manual.
+
+## State
+
+This is an on-going project at [Mediawiki](https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Spec),
+and as such will be extremly unstable &ndash; it might even trigger a meltdown of your computer. :)
 
 
-
- * [Gerrit integration](https://www.mediawiki.org/wiki/Gerrit) (.gitreview)
-
-## Development on Linux (OS X anyone?)
-To take advantage of this automation, use the Makefile: `make help`. To start,
-run `make install` and follow the instructions.
-
-## Development on Windows
-Since you cannot use the `Makefile` on Windows, do the following:
-
-  # Install nodejs, npm, and PHP composer
-  # Change to the extension's directory
-  # npm install
-  # composer install
-
-Once set up, running `npm test` and `composer test` will run automated code checks.
