@@ -1,5 +1,6 @@
 .*.swp
 *~
+.vscode
 /.project
 /composer.lock
 /vendor

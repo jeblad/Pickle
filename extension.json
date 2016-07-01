@@ -9,13 +9,12 @@
 	"license-name": "GPL v2",
 	"type": "other",
 	"AutoloadClasses": {
-		"SpecHooks": "Spec.hooks.php"
+		"SpecHooks": "Spec/Hooks.php"
 	},
 	"config": {
 		"SpecEnableFoo": true
 	},
 	"ExtensionMessagesFiles": {
-		"SpecAlias": "Spec.i18n.alias.php"
 	},
 	"Hooks": {
 		
