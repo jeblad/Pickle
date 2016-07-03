@@ -9,15 +9,21 @@
 	"license-name": "GPL v2",
 	"type": "other",
 	"AutoloadClasses": {
-		"SpecHooks": "Spec/Hooks.php"
+		"Spec\\Hooks": "includes/Hooks.php",
+		"Spec\\Common": "includes/Common.php"
 	},
 	"config": {
-		"SpecEnableFoo": true
+		"SpecFinalStates": "(good|pending|failed)"
 	},
 	"ExtensionMessagesFiles": {
 	},
 	"Hooks": {
-		
+		"ArticleViewHeader": [
+			"Spec\\Hooks::onArticleViewHeader"
+		],
+		"BeforePageDisplay": [
+			"Spec\\Hooks::onBeforePageDisplay"
+		]
 	},
 	"MessagesDirs": {
 		"Spec": [
@@ -25,21 +31,15 @@
 		]
 	},
 	"ResourceModules": {
-		"ext.spec.foo": {
-			"scripts": [
-				"modules/ext.spec.js",
-				"modules/ext.spec.foo.js"
-			],
-			"styles": [
-				"modules/ext.spec.foo.css"
-			],
-			"messages": [],
-			"dependencies": []
+		"ext.spec.defaultDisplay": {
+			"styles": {
+				"0": "ext.spec.defaultDisplay.css"
+			}
 		}
 	},
 	"ResourceFileModulePaths": {
-		"localBasePath": "",
-		"remoteExtPath": "Spec"
+		"localBasePath": "modules",
+		"remoteExtPath": "Spec/modules"
 	},
 	"SpecialPages": {
 	},

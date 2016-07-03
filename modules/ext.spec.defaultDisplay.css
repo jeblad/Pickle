@@ -1,0 +1,39 @@
+#mw-indicator-mw-speclink a {
+	background-image: url(images/info-other.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 28px;
+	/*padding-right: 8px;*/
+	display: inline-block;
+	height: 24px;
+	line-height: 24px;
+}
+#mw-indicator-mw-speclink a.mw-speclink-missing,
+#mw-indicator-mw-speclink a.mw-speclink-unknown,
+#mw-indicator-mw-speclink a.mw-speclink-pending {
+	background-image: url(images/info-yellow-inner.png);
+}
+#mw-indicator-mw-speclink a.mw-speclink-good {
+	background-image: url(images/info-green-inner.png);
+}
+#mw-indicator-mw-speclink a.mw-speclink-failed {
+	background-image: url(images/info-red-inner.png);
+}
+/*
+.mw-speclink {
+	background-color: #f9f9f9;
+	border-radius: 12px;
+	border-width:2px;
+	border-style: solid;
+}
+.mw-speclink-unknown,
+.mw-speclink-pending {
+	border-color: #ff0;
+}
+.mw-speclink-good {
+	border-color: #0f0;
+}
+.mw-speclink-failed {
+	border-color: #f00;
+}
+*/
