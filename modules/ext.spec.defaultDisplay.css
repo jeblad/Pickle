@@ -3,7 +3,6 @@
 	background-repeat: no-repeat;
 	background-position: left center;
 	padding-left: 28px;
-	/*padding-right: 8px;*/
 	display: inline-block;
 	height: 24px;
 	line-height: 24px;
@@ -19,21 +18,3 @@
 #mw-indicator-mw-speclink a.mw-speclink-failed {
 	background-image: url(images/info-red-inner.png);
 }
-/*
-.mw-speclink {
-	background-color: #f9f9f9;
-	border-radius: 12px;
-	border-width:2px;
-	border-style: solid;
-}
-.mw-speclink-unknown,
-.mw-speclink-pending {
-	border-color: #ff0;
-}
-.mw-speclink-good {
-	border-color: #0f0;
-}
-.mw-speclink-failed {
-	border-color: #f00;
-}
-*/
