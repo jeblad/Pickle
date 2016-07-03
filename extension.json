@@ -13,16 +13,17 @@
 		"Spec\\Common": "includes/Common.php"
 	},
 	"config": {
-		"SpecFinalStates": "(good|pending|failed)"
+		"SpecFinalStates": {
+			"good": "/\\bgood\\b/",
+			"pending": "/\\bpending\\b/",
+			"failed": "/\\bfailed\\b/"
+		}
 	},
 	"ExtensionMessagesFiles": {
 	},
 	"Hooks": {
 		"ArticleViewHeader": [
 			"Spec\\Hooks::onArticleViewHeader"
-		],
-		"BeforePageDisplay": [
-			"Spec\\Hooks::onBeforePageDisplay"
 		]
 	},
 	"MessagesDirs": {

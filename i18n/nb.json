@@ -6,12 +6,13 @@
 	},
 	"spec-desc": "Denne utvidelsen legger til grunnleggende Spec-type testing for Lua moduler.",
 	"spec-test-page-name": "Module:$1/spec",
-	"spec-test-page-text": "Spec",
-	"spec-test-page-good": "Spec god",
-	"spec-test-page-pending": "Spec utsatt",
-	"spec-test-page-failed": "Spec feilet",
-	"spec-test-page-unknown": "Spec ukjent",
+	"spec-test-text-good": "Spec god",
+	"spec-test-text-pending": "Spec utsatt",
+	"spec-test-text-failed": "Spec feilet",
+	"spec-test-text-missing": "Spec mangler",
+	"spec-test-text-unknown": "Spec ukjent",
 	"spec-test-page-exist": "{{#invoke:$1/spec|indicator}}",
 	"spec-test-page-not-exist": "-",
-	"spec-test-page-other": "-"
+	"spec-other-page-exist": "-",
+	"spec-other-page-not-exist": "missing"
 }

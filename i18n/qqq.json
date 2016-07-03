@@ -6,13 +6,14 @@
 	},
 	"spec-desc": "{{desc|name=Spec|url=https://github.com/jeblad/Spec }}",
 	"spec-test-page-name": "Subspace name used for the test page. Takes one argument that is the parent module page.",
-	"spec-test-page-text": "The text for the link to the spec page. Should be a minimal text that can be used link in the page indicators.",
-	"spec-test-page-good": "The text for the link to the spec page, given that the test result is \"good\". A good result is one where all reported tests were ok. Should be a minimal text that can be used link in the page indicators.",
-	"spec-test-page-pending": "The text for the link to the spec page, given that the test result is \"pending\". A pending result is one where one or more reported tests were pending. Should be a minimal text that can be used link in the page indicators.",
-	"spec-test-page-failed": "The text for the link to the spec page, given that the test result is \"failed\". A failed result is one where one or more reported tests were not ok. Should be a minimal text that can be used link in the page indicators.",
-	"spec-test-page-unknown": "The text for the link to the spec page, given that the test result is \"unknown\". An unknown result is one where the reported tests could not be parsed. Should be a minimal text that can be used link in the page indicators.",
+	"spec-test-text-good": "The text for the link to the spec page, given that the test result is \"good\". A good result is one where all reported tests were ok. Should be a minimal text that can be used as link in the page indicators.",
+	"spec-test-text-pending": "The text for the link to the spec page, given that the test result is \"pending\". A pending result is one where one or more reported tests were pending. Should be a minimal text that can be used as link in the page indicators.",
+	"spec-test-text-failed": "The text for the link to the spec page, given that the test result is \"failed\". A failed result is one where one or more reported tests were not ok. Should be a minimal text that can be used as link in the page indicators.",
+	"spec-test-text-missing": "The text for the link to the spec page, given that the test result is \"missing\". A missing result is one where the tests could not be found. Should be a minimal text that can be used as link in the page indicators.",
+	"spec-test-text-unknown": "The text for the link to the spec page, given that the test result is \"unknown\". An unknown result is one where the reported tests could not be parsed. Should be a minimal text that can be used as link in the page indicators.",
 	"spec-test-page-exist": "The spec page exist, and is of proper type. Should return a minimal self-contained text that can be used in the page indicators. Invoke and run a specific exported method from the page, assuming the page contains a valid spec.",
-	"spec-test-page-not-exist": "The spec page does not exist. Should return a minimal self-contained text that can be used in the page indicators. There are no known module to invoke, other than based upon assumptions.",
-	"spec-test-page-other": "There is a page there, but it is not of proper type. Should return a minimal self-contained text that can be used in the page indicators. There are no known module to invoke, other than based upon assumptions."
+	"spec-test-page-not-exist": "The spec page does not exist. Use of this message is most likely due to an undefined spec page. Should return a minimal self-contained text that can be used in the page indicators. There are no known module to invoke, other than based upon assumptions.",
+	"spec-other-page-exist": "There is a page there, but it is not of proper type. Use of this message is most likely due to a page being moved into the Module namespace. Should return a minimal self-contained text that can be used in the page indicators. There are no known module to invoke, other than based upon assumptions.",
+	"spec-other-page-not-exist": "The other page does not exist. Use of this message is most likely due to an error, as a missing should be of Scribunto-type. Should return a minimal self-contained text that can be used in the page indicators. There are no known module to invoke, other than based upon assumptions."
 
 }

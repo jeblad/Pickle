@@ -2,8 +2,6 @@
 
 namespace Spec;
 
-use Html;
-
 /**
  * Hook handlers for the Spec extension
  *
@@ -14,81 +12,86 @@ use Html;
  * @author John Erling Blad
  */
 
-
 class Hooks {
+	/**
+	 * Helper to handle case when the page under test is processed
+	 *
+	 * @param Title $spec
+	 */
+	private static function whenTesterModule( &$spec ) {
+		global $wgOut;
+		$wgOut->addHelpLink( '//mediawiki.org/wiki/Special:MyLanguage/Help:Spec', true );
+		return;
+
+	}
+
+	/**
+	 * Helper to handle case when the page under test is processed
+	 *
+	 * @param Title $spec
+	 */
+	private static function whenTesteeModule( &$spec ) {
+		global $wgOut;
+
+		// Get the message containing the wiki code
+		$key = null;
+		if ( $spec->getContentModel() === CONTENT_MODEL_SCRIBUNTO ) {
+			$key = $spec->exists() ? 'spec-test-page-exist' : 'spec-test-page-not-exist';
+		} else {
+			$key = $spec->exists() ? 'spec-other-page-exist' : 'spec-other-page-not-exist';
+		}
+		$code = wfMessage( $key, $spec->getBaseText() )->inContentLanguage();
+		if ( $code->isDisabled() ) {
+			return;
+		}
+
+		// Parse wiki code to get result
+		$result = $code ? $code->parse() : '';
+
+		// Extract state information from result
+		$state = Common::findState( $result )
+			or $state = 'unknown';
+
+		// Create the indicator
+		$link = Common::makeIndicatorLink( $state, $spec->getLocalURL() );
+		if ( $link ) {
+			$wgOut->addModuleStyles( 'ext.spec.defaultDisplay' );
+			$wgOut->setIndicators( [ 'mw-speclink' => $link ] );
+
+		}
+
+		return;
+	}
+
 	/**
 	 * Page indicator for module with spec tests
 	 *
-	 * @param string $engine
-	 * @param array[] &$extraLibraries
+	 * @param Article &$article
+	 * @param Boolean &$outputDone
+	 * @param ParserCache &$pcache
 	 */
 	public static function onArticleViewHeader( &$article, &$outputDone, &$pcache ) {
-		global $wgOut, $wgSpecFinalStates, $wgParser;
 
+		// If there is no title, then bail out
 		if ( $article->getTitle() === null ) {
-			// No title, exit
 			return true;
 		}
 
+		// If the content model is wrong, then bail out
 		if ( $article->getTitle()->getContentModel() !== CONTENT_MODEL_SCRIBUNTO ) {
-			// Wrong content model, exit
 			return true;
 		}
 
-		$wgOut->addModuleStyles( 'ext.spec.defaultDisplay' );
-
-		// Get spec, if any
-		$spec = Common::getSpecPage( $article->getTitle() );
-
-		if ( $spec->getContentModel() === CONTENT_MODEL_SCRIBUNTO ) {
-			$code = wfMessage(
-				$spec->exists() ? 'spec-test-page-exist' : 'spec-test-page-not-exist',
-				$spec->getBaseText()
-			)->inContentLanguage();
-			if ( $code->isDisabled() ) {
-				return true;
-			}
-
-			$text = $code->parse();
-			$state = 'unknown';
-			if ( preg_match( $wgSpecFinalStates, $text, $matches ) ) {
-				if ( $matches !== null && count( $matches ) !== 0 ) {
-					$class = $matches[0];
-				}
-			}
-
-			$msg = wfMessage( 'spec-test-page-' . $class )->inContentLanguage();
-			if ( $msg->isDisabled() ) {
-				return true;
-			}
-
-			$link = Html::rawElement(
-				'a',
-				[
-					'href' => $spec->getLocalURL(),
-					'target' => '_blank',
-					'class' => [ 'mw-speclink', 'mw-speclink-' . $class ]
-				],
-				$msg->parse()
-			);
-			$wgOut->setIndicators( [ 'mw-speclink' => $link ] );
+		// Is this on the tester or testee?
+		if ( Common::isSpecPage( $article->getTitle() ) ) {
+			// @todo an additional check to see if the module contains method calls
+			$spec = Common::getSpecPage( $article->getTitle() );
+			self::whenTesterModule( $spec );
 		} else {
-			$msg = wfMessage( 'spec-test-page-other' )->inContentLanguage();
-			if ( $msg->isDisabled() ) {
-				return true;
-			}
-			$wgOut->setIndicators( [ 'mw-speclink' => $text->msg() ] );
+			self::whenTesteeModule( $article->getTitle() );
 		}
 
 		return true;
 	}
-
-	/**
-	 * Styling of page indicators
-	 *
-	 * @param string $engine
-	 * @param array[] &$extraLibraries
-	 */
-	public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {}
 
 }

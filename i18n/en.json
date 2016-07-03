@@ -6,12 +6,13 @@
 	},
 	"spec-desc": "This extension adds basic Spec-style testing to Lua modules.",
 	"spec-test-page-name": "Module:$1/spec",
-	"spec-test-page-text": "Spec",
-	"spec-test-page-good": "Spec good",
-	"spec-test-page-pending": "Spec pending",
-	"spec-test-page-failed": "Spec failed",
-	"spec-test-page-unknown": "Spec unknown",
+	"spec-test-text-good": "Spec good",
+	"spec-test-text-pending": "Spec pending",
+	"spec-test-text-failed": "Spec failed",
+	"spec-test-text-missing": "Spec missing",
+	"spec-test-text-unknown": "Spec unknown",
 	"spec-test-page-exist": "{{#invoke:$1/spec|indicator}}",
-	"spec-test-page-not-exist": "-",
-	"spec-test-page-other": "-"
+	"spec-test-page-not-exist": "missing",
+	"spec-other-page-exist": "other",
+	"spec-other-page-not-exist": "missing"
 }
