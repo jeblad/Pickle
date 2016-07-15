@@ -102,12 +102,12 @@ class Hooks {
 	 */
 	public static function onExtensionLoad() {
 		global $wgSpecFinalResults;
-		// global $wgSpecFinalResults, $wgSpecContentTypes;
 
 		$results = FinalResultSingleton::init();
 		foreach ( $wgSpecFinalResults as $struct ) {
 			$results->registerStrategy( $struct );
 		}
+		$results->registerStrategy( [ 'class' => "Spec\\FinalResultDefaultStrategy" ] );
 	}
 
 	/**

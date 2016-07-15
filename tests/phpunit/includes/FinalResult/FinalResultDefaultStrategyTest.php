@@ -3,21 +3,21 @@
 namespace Spec\Tests;
 
 use MediaWikiTestCase;
-use \Spec\FinalResultByPatternStrategy;
+use \Spec\FinalResultDefaultStrategy;
 
 /**
  * @group Spec
  *
- * @covers \Spec\FinalResultByPatternStrategy
+ * @covers \Spec\FinalResultDefaultStrategy
  */
-class FinalResultByPatternStrategyTest extends MediaWikiTestCase {
+class FinalResultDefaultStrategyTest extends MediaWikiTestCase {
 
 	public function provideOnGetName() {
 		// Note that cases are limited to whats interesting
 		return [
 			[ '', [ 'name' => '' ] ],
 			[ 'foo', [ 'name' => 'foo' ] ],
-			[ '', [] ]
+			[ 'default', [] ]
 		];
 	}
 
@@ -25,20 +25,15 @@ class FinalResultByPatternStrategyTest extends MediaWikiTestCase {
 	 * @dataProvider provideOnGetName
 	 */
 	public function testOnGetName( $expect, $actual ) {
-		$test = new FinalResultByPatternStrategy( $actual );
+		$test = new FinalResultDefaultStrategy( $actual );
 		$this->assertTrue( $expect === $test->getName() );
 	}
 
 	public function provideCheckState() {
 		// Note that cases are limited to whats interesting
 		return [
-			[ 1, [ 'pattern' => '/\bbar\b/' ], 'foo bar baz' ],
-			[ 0, [ 'pattern' => '/\bbar\b/' ], '' ],
-			[ 0, [ 'pattern' => '/\btest\b/' ], 'foo bar baz' ],
-			[ 0, [ 'pattern' => '/^$/' ], 'foo bar baz' ],
-			[ 1, [ 'pattern' => '/^$/' ], '' ],
-			[ 0, [], 'foo bar baz' ],
-			[ 1, [], '' ]
+			[ 1, [], 'foo bar baz' ],
+			[ 1, [], '' ],
 		];
 	}
 
@@ -46,7 +41,7 @@ class FinalResultByPatternStrategyTest extends MediaWikiTestCase {
 	 * @dataProvider provideCheckState
 	 */
 	public function testCheckState( $expect, $actual, $str ) {
-		$test = new FinalResultByPatternStrategy( $actual );
+		$test = new FinalResultDefaultStrategy( $actual );
 		$this->assertTrue( $expect === $test->checkState( $str ) );
 	}
 }

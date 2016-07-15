@@ -5,22 +5,22 @@ namespace Spec;
 use \Spec\IFinalResultStrategy;
 
 /**
- * Identify final test state from a set of specs as seen from a message
+ * Default final result from a set of specs as seen from a message
  */
-class FinalResultByPatternStrategy implements IFinalResultStrategy {
+class FinalResultDefaultStrategy implements IFinalResultStrategy {
 
 	/**
 	 * @param array structure from extension setup
 	 */
 	public function __construct( array $struct ) {
-		$this->struct = array_merge( [ 'name' => '', 'pattern' => '/^$/' ], $struct );
+		$this->struct = array_merge( [ 'name' => 'default', 'pattern' => '/^$' ], $struct );
 	}
 
 	/**
 	 * @see \Spec\IFinalResultStrategy::checkState()
 	 */
 	public function checkState( $str ) {
-		return preg_match( $this->struct['pattern'], $str );
+		return 1;
 	}
 
 	 /**

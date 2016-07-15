@@ -13,7 +13,7 @@ interface IFinalResultStrategy {
 	 * @param string $str
 	 * @return boolean
 	 */
-	public function findState( $str );
+	public function checkState( $str );
 
 	/**
 	 * Get member name

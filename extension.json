@@ -13,6 +13,8 @@
 		"Spec\\Common": "includes/Common.php",
 		"Spec\\IFinalResultStrategy":
 			"includes/FinalResult/IFinalResultStrategy.php",
+		"Spec\\FinalResultDefaultStrategy":
+			"includes/FinalResult/FinalResultDefaultStrategy.php",
 		"Spec\\FinalResultByPatternStrategy":
 			"includes/FinalResult/FinalResultByPatternStrategy.php",
 		"Spec\\FinalResultSingleton":
@@ -36,7 +38,7 @@
 				"pattern": "/\\bgood\\b/"
 			}
 		],
-		"SpecContentTypes": [
+		"SpecSubpages": [
 			{
 				"class": "Spec\\IndicatorLinkByContentTypeStrategy",
 				"type": "Scribunto",

@@ -69,7 +69,7 @@ class FinalResultSingleton {
 	 */
 	public function findState( $str ) {
 		foreach ( $this->strategies as $strategy ) {
-			if ( $strategy->findState( $str ) ) {
+			if ( $strategy->checkState( $str ) ) {
 				return $strategy->getName();
 			}
 		}
