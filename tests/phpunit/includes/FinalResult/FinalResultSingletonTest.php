@@ -17,13 +17,13 @@ class FinalResultSingletonTest extends MediaWikiTestCase {
 	public function setUp() {
 		parent::setUp();
 		$thingy = FinalResultSingleton::init();
-		$this->stuff = $thingy->strategies();
+		$this->stuff = $thingy->export();
 		$thingy->reset();
 	}
 
 	public function tearDown() {
 		$thingy = FinalResultSingleton::init();
-		$thingy->strategies( $this->stuff );
+		$thingy->import( $this->stuff );
 		parent::tearDown();
 	}
 

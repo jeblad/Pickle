@@ -5,7 +5,7 @@ namespace Spec;
 use \Spec\FinalResultByPatternStrategy;
 
 /**
- * Singleton for access to identification of final test states from specs
+ * Identification of final result from specs
  */
 class FinalResultSingleton {
 
@@ -26,15 +26,25 @@ class FinalResultSingleton {
 	}
 
 	/**
-	 * Access the strategies of the singleton
+	 * Export the strategies of the singleton
+	 * The exported structure should be treated as oblique.
 	 * Should only be used during test!
 	 *
 	 * @param array holding the new strategies
 	 */
-	public function strategies( array $arr = null ) {
-		if ( $arr !== null ) {
-			$this->strategies = $arr;
-		}
+	public function export( array $arr = null ) {
+		return $this->strategies;
+	}
+
+	/**
+	 * Import the strategies of the singleton
+	 * The imported structure should be treated as oblique.
+	 * Should only be used during test!
+	 *
+	 * @param array holding the new strategies
+	 */
+	public function import( array $arr = null ) {
+		$this->strategies = $arr;
 		return $this->strategies;
 	}
 
@@ -61,7 +71,7 @@ class FinalResultSingleton {
 	/**
 	 * Checks if the string has any of the strategies stored patterns
 	 *
-	 * @see \Spec\IFinalResultStrategy::findState()
+	 * @see \Spec\IFinalResultStrategy::checkState()
 	 *
 	 * @param string $str
 	 *
