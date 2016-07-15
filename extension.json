@@ -11,29 +11,36 @@
 	"AutoloadClasses": {
 		"Spec\\Hooks": "includes/Hooks.php",
 		"Spec\\Common": "includes/Common.php",
-		"Spec\\IIdentifyResultStrategy":
-			"includes/IdentifyResult/IIdentifyResultStrategy.php",
-		"Spec\\IdentifyResultByPatternStrategy":
-			"includes/IdentifyResult/IdentifyResultByPatternStrategy.php",
-		"Spec\\IdentifyResultSingleton":
-			"includes/IdentifyResult/IdentifyResultSingleton.php"
+		"Spec\\IFinalResultStrategy":
+			"includes/FinalResult/IFinalResultStrategy.php",
+		"Spec\\FinalResultByPatternStrategy":
+			"includes/FinalResult/FinalResultByPatternStrategy.php",
+		"Spec\\FinalResultSingleton":
+			"includes/FinalResult/FinalResultSingleton.php"
 	},
 	"config": {
-		"SpecFinalStates": [
+		"SpecFinalResults": [
 			{
-				"class": "Spec\\IdentifyResultByPatternStrategy",
+				"class": "Spec\\FinalResultByPatternStrategy",
 				"name": "failed",
 				"pattern": "/\\bfailed\\b/"
 			},
 			{
-				"class": "Spec\\IdentifyResultByPatternStrategy",
+				"class": "Spec\\FinalResultByPatternStrategy",
 				"name": "pending",
 				"pattern": "/\\bpending\\b/"
 			},
 			{
-				"class": "Spec\\IdentifyResultByPatternStrategy",
+				"class": "Spec\\FinalResultByPatternStrategy",
 				"name": "good",
 				"pattern": "/\\bgood\\b/"
+			}
+		],
+		"SpecContentTypes": [
+			{
+				"class": "Spec\\IndicatorLinkByContentTypeStrategy",
+				"type": "Scribunto",
+				"name": "lua"
 			}
 		]
 	},

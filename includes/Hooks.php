@@ -31,7 +31,7 @@ class Hooks {
 	 * @param Title $spec
 	 */
 	private static function whenTesteeModule( &$spec ) {
-		global $wgOut, $wgSpecIdentifyResults;
+		global $wgOut, $wgSpecFinalResults;
 
 		// Get the message containing the wiki code
 		$key = null;
@@ -49,7 +49,7 @@ class Hooks {
 		$result = $code ? $code->parse() : '';
 
 		// Extract state information from result
-		$state = $wgSpecIdentifyResults->findState( $result )
+		$state = $wgSpecFinalResults->findState( $result )
 			or $state = 'unknown';
 
 		// Create and add the indicator
@@ -101,11 +101,12 @@ class Hooks {
 	 * Setup for the extension
 	 */
 	public static function onExtensionLoad() {
-		global $wgSpecIdentifyResults, $wgSpecFinalStates;
+		global $wgSpecFinalResults;
+		// global $wgSpecFinalResults, $wgSpecContentTypes;
 
-		$wgSpecIdentifyResults = IdentifyResultSingleton::init();
-		foreach ( $wgSpecFinalStates as $struct ) {
-			$wgSpecIdentifyResults->registerStrategy( $struct );
+		$results = FinalResultSingleton::init();
+		foreach ( $wgSpecFinalResults as $struct ) {
+			$results->registerStrategy( $struct );
 		}
 	}
 

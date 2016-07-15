@@ -3,14 +3,14 @@
 namespace Spec\Tests;
 
 use MediaWikiTestCase;
-use \Spec\IdentifyResultByPatternStrategy;
+use \Spec\FinalResultByPatternStrategy;
 
 /**
  * @group Spec
  *
- * @covers \Spec\IdentifyResultByPatternStrategy
+ * @covers \Spec\FinalResultByPatternStrategy
  */
-class IdentifyResultByPatternStrategyTest extends MediaWikiTestCase {
+class FinalResultByPatternStrategyTest extends MediaWikiTestCase {
 
 	public function provideOnGetName() {
 		// Note that cases are limited to whats interesting
@@ -25,7 +25,7 @@ class IdentifyResultByPatternStrategyTest extends MediaWikiTestCase {
 	 * @dataProvider provideOnGetName
 	 */
 	public function testOnGetName( $expect, $actual ) {
-		$test = new IdentifyResultByPatternStrategy( $actual );
+		$test = new FinalResultByPatternStrategy( $actual );
 		$this->assertTrue( $expect === $test->getName() );
 	}
 
@@ -46,7 +46,7 @@ class IdentifyResultByPatternStrategyTest extends MediaWikiTestCase {
 	 * @dataProvider provideFindState
 	 */
 	public function testFindState( $expect, $actual, $str ) {
-		$test = new IdentifyResultByPatternStrategy( $actual );
+		$test = new FinalResultByPatternStrategy( $actual );
 		$this->assertTrue( $expect === $test->findState( $str ) );
 	}
 }

@@ -2,12 +2,12 @@
 
 namespace Spec;
 
-use \Spec\IdentifyResultByPatternStrategy;
+use \Spec\FinalResultByPatternStrategy;
 
 /**
  * Singleton for access to identification of final test states from specs
  */
-class IdentifyResultSingleton {
+class FinalResultSingleton {
 
 	private static $instance;
 
@@ -50,7 +50,7 @@ class IdentifyResultSingleton {
 	 * Register a strategy
 	 *
 	 * @param array describing the result
-	 * @return IIdentifyResultStrategy
+	 * @return IFinalResultStrategy
 	 */
 	public function registerStrategy( array $struct ) {
 		$strategy = new $struct['class']( $struct );
@@ -58,18 +58,10 @@ class IdentifyResultSingleton {
 		return $strategy;
 	}
 
-	public function peek() {
-		$t = [];
-		foreach ( $this->strategies as $strategy ) {
-			$t[] = $strategy->getName();
-		}
-		return $t;
-	}
-
 	/**
 	 * Checks if the string has any of the strategies stored patterns
 	 *
-	 * @see \Spec\IIdentifyStateStrategy::findState()
+	 * @see \Spec\IFinalResultStrategy::findState()
 	 *
 	 * @param string $str
 	 *

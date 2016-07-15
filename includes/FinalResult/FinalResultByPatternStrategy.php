@@ -2,12 +2,12 @@
 
 namespace Spec;
 
-use \Spec\IIdentifyResultStrategy;
+use \Spec\IFinalResultStrategy;
 
 /**
  * Identify final test state from a set of specs as seen from a message
  */
-class IdentifyResultByPatternStrategy implements IIdentifyResultStrategy {
+class FinalResultByPatternStrategy implements IFinalResultStrategy {
 
 	/**
 	 * @param array structure from extension setup
