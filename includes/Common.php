@@ -61,28 +61,6 @@ class Common {
 	}
 
 	/**
-	 * Find some kind of representation of the string
-	 *
-	 * @todo state is not a good name for this…
-	 *
-	 * @param string $str representing the heystack
-	 * @return string for the recognized state
-	 */
-	public static function findState( $str ) {
-		global $wgSpecFinalStates;
-
-		// Extract state information from result
-		$state = null;
-		foreach ( $wgSpecFinalStates as $name => $pattern ) {
-			if ( preg_match( $pattern, $str ) ) {
-				$state = $name;
-				break;
-			}
-		}
-		return $state;
-	}
-
-	/**
 	 * Make a page indicator given a state and url
 	 *
 	 * @param string $state representing the state

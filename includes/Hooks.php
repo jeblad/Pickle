@@ -31,7 +31,7 @@ class Hooks {
 	 * @param Title $spec
 	 */
 	private static function whenTesteeModule( &$spec ) {
-		global $wgOut;
+		global $wgOut, $wgSpecIdentifyResults;
 
 		// Get the message containing the wiki code
 		$key = null;
@@ -49,16 +49,19 @@ class Hooks {
 		$result = $code ? $code->parse() : '';
 
 		// Extract state information from result
-		$state = Common::findState( $result )
+		$state = $wgSpecIdentifyResults->findState( $result )
 			or $state = 'unknown';
 
-		// Create the indicator
+		// Create and add the indicator
 		$link = Common::makeIndicatorLink( $state, $spec->getLocalURL() );
 		if ( $link ) {
 			$wgOut->addModuleStyles( 'ext.spec.defaultDisplay' );
 			$wgOut->setIndicators( [ 'mw-speclink' => $link ] );
 
 		}
+
+		// Add the tracking category
+		// $wgParser->addTrackingCategory( 'spec-test-category-'.$state );
 
 		return;
 	}
@@ -92,6 +95,25 @@ class Hooks {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Setup for the extension
+	 */
+	public static function onExtensionLoad() {
+		global $wgSpecIdentifyResults, $wgSpecFinalStates;
+
+		$wgSpecIdentifyResults = IdentifyResultSingleton::init();
+		foreach ( $wgSpecFinalStates as $struct ) {
+			$wgSpecIdentifyResults->registerStrategy( $struct );
+		}
+	}
+
+	/**
+	 * @param string[] $files
+	 */
+	public static function onUnitTestsList( array &$files ) {
+		$files[] = __DIR__ . '/../tests/phpunit/';
 	}
 
 }

@@ -10,20 +10,42 @@
 	"type": "other",
 	"AutoloadClasses": {
 		"Spec\\Hooks": "includes/Hooks.php",
-		"Spec\\Common": "includes/Common.php"
+		"Spec\\Common": "includes/Common.php",
+		"Spec\\IIdentifyResultStrategy":
+			"includes/IdentifyResult/IIdentifyResultStrategy.php",
+		"Spec\\IdentifyResultByPatternStrategy":
+			"includes/IdentifyResult/IdentifyResultByPatternStrategy.php",
+		"Spec\\IdentifyResultSingleton":
+			"includes/IdentifyResult/IdentifyResultSingleton.php"
 	},
 	"config": {
-		"SpecFinalStates": {
-			"good": "/\\bgood\\b/",
-			"pending": "/\\bpending\\b/",
-			"failed": "/\\bfailed\\b/"
-		}
+		"SpecFinalStates": [
+			{
+				"class": "Spec\\IdentifyResultByPatternStrategy",
+				"name": "failed",
+				"pattern": "/\\bfailed\\b/"
+			},
+			{
+				"class": "Spec\\IdentifyResultByPatternStrategy",
+				"name": "pending",
+				"pattern": "/\\bpending\\b/"
+			},
+			{
+				"class": "Spec\\IdentifyResultByPatternStrategy",
+				"name": "good",
+				"pattern": "/\\bgood\\b/"
+			}
+		]
 	},
+	"callback": "Spec\\Hooks::onExtensionLoad",
 	"ExtensionMessagesFiles": {
 	},
 	"Hooks": {
 		"ArticleViewHeader": [
 			"Spec\\Hooks::onArticleViewHeader"
+		],
+		"UnitTestsList": [
+			"Spec\\Hooks::onUnitTestsList"
 		]
 	},
 	"MessagesDirs": {
@@ -42,6 +64,12 @@
 		"localBasePath": "modules",
 		"remoteExtPath": "Spec/modules"
 	},
+	"TrackingCategories": [
+		"spec-test-category-good",
+		"spec-test-category-pending",
+		"spec-test-category-missing",
+		"spec-test-category-unknown"
+	],
 	"SpecialPages": {
 	},
 	"manifest_version": 1
