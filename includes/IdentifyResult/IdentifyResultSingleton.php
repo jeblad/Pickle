@@ -26,6 +26,19 @@ class IdentifyResultSingleton {
 	}
 
 	/**
+	 * Access the strategies of the singleton
+	 * Should only be used during test!
+	 *
+	 * @param array holding the new strategies
+	 */
+	public function strategies( array $arr = null ) {
+		if ( $arr !== null ) {
+			$this->strategies = $arr;
+		}
+		return $this->strategies;
+	}
+
+	/**
 	 * Reset the singleton
 	 * Should only be used during test!
 	 */

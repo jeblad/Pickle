@@ -12,32 +12,30 @@ use \Spec\IdentifyResultSingleton;
  */
 class IdentifyResultSingletonTest extends MediaWikiTestCase {
 
-	protected $stuff = [];
+	protected $stuff = null;
 
-	public function tearDown() {
-		parent::tearDown();
-		foreach ( $this->stuff as $thing ) {
-			$thing->reset();
-		}
-		$this->stuff = [];
+	public function setUp() {
+		parent::setUp();
+		$thingy = IdentifyResultSingleton::init();
+		$this->stuff = $thingy->strategies();
+		$thingy->reset();
 	}
 
-	public function keepForTearDown( $thing ) {
-		$this->stuff[] = $thing;
+	public function tearDown() {
+		$thingy = IdentifyResultSingleton::init();
+		$thingy->strategies( $this->stuff );
+		parent::tearDown();
 	}
 
 	public function testInit() {
 		$testA = IdentifyResultSingleton::init();
-		$this->keepForTearDown( $testA );
 		$testB = IdentifyResultSingleton::init();
-		$this->keepForTearDown( $testB );
 		$this->assertTrue( $testA === $testB );
 	}
 
 	public function testRegisterStrategy() {
 		$struct = [ 'class' => 'Spec\\IdentifyResultByPatternStrategy' ];
 		$test = IdentifyResultSingleton::init();
-		$this->keepForTearDown( $test );
 		$instance = $test->registerStrategy( $struct );
 		$this->assertTrue( get_class( $instance ) === $struct['class'] );
 	}
@@ -59,7 +57,6 @@ class IdentifyResultSingletonTest extends MediaWikiTestCase {
 	 */
 	public function testFindState( $expect, $str ) {
 		$test = IdentifyResultSingleton::init();
-		$this->keepForTearDown( $test );
 		$test->registerStrategy(
 			[
 				'class' => 'Spec\\IdentifyResultByPatternStrategy',
