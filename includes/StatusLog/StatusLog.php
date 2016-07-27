@@ -21,28 +21,17 @@ class StatusLog {
 	 * Add change log for tested module
 	 * This is a callback for a hook registered in extensions.json
 	 */
-	public static function onContentAlterParserOutput(
-		\Content $content,
-		\Title $title,
-		\ParserOutput $parserOutput
-	) {
-		global $wgUser, $wgRequest;
-
-		// if ($wgRequest->getAction !== 'view') {
-		//	return true;
-		// }
+	public static function onOutputPageParserOutput( \OutputPage &$out, \ParserOutput $parserOutput ) {
+		global $wgTrackObserverUser;
 
 		$currentLogKey = $parserOutput->getExtensionData( 'spec-status-current' );
 		$previousLogKey = $parserOutput->getExtensionData( 'spec-status-previous' );
-		$first = $parserOutput->getExtensionData( 'spec-status-first' );
 
 		if ( $currentLogKey !== $previousLogKey ) {
 			$logEntry = new \ManualLogEntry( 'track', $currentLogKey );
 
-			// if ( $wgRequest->getText( 'action' ) === 'edit' ) {
-				$logEntry->setPerformer( $wgUser );
-			// }
-			$logEntry->setTarget( $title );
+			$logEntry->setPerformer( $wgTrackObserverUser );
+			$logEntry->setTarget( $out->getTitle() );
 			$logid = $logEntry->insert();
 			$logEntry->publish( $logid );
 		}

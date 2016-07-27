@@ -71,8 +71,6 @@ class Hooks {
 		}
 
 		// keep the current state and forward data
-		$parserOutput->setExtensionData( 'spec-status-first',
-			$parserOutput->getProperty( 'spec-status' ) === null );
 		$pageProps = \PageProps::getInstance()->getProperties( $title, 'spec-status' );
 		$previousStatus = unserialize( $pageProps[$title->getArticleId()] );
 		$parserOutput->setExtensionData( 'spec-status-previous',
@@ -94,8 +92,14 @@ class Hooks {
 	 */
 	public static function onExtensionSetup() {
 		global $wgSpecExtractStatus, $wgSpecInvokeSubpages;
+		global $wgTrackObserverID, $wgTrackObserverUser;
 		global $wgDebugComments;
+
+		// turn on comments while in development
 		$wgDebugComments = true;
+
+		// the user we use as an alias for "anyone" during automatic inferred status changes
+		$wgTrackObserverUser = \User::newFromID( $wgTrackObserverID );
 
 		// @todo generalize
 		$results = ExtractStatusStrategies::init();

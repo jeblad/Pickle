@@ -45,7 +45,7 @@
 			"tests/phpunit/includes/InvokeSubpage/InvokeSubpageStrategyTestCase.php"
 	},
 	"config": {
-		"ChangeObserver": "",
+		"TrackObserverID": 3,
 		"SpecExtractStatus": [
 			{
 				"class": "Spec\\ExtractStatusByPatternStrategy",
@@ -77,11 +77,11 @@
 	"Hooks": {
 		"ContentAlterParserOutput": [
 			"Spec\\Hooks::onContentAlterParserOutput",
-			"Spec\\StatusCategory::onContentAlterParserOutput",
-			"Spec\\StatusLog::onContentAlterParserOutput"
+			"Spec\\StatusCategory::onContentAlterParserOutput"
 		],
 		"OutputPageParserOutput": [
-			"Spec\\StatusIndicator::onOutputPageParserOutput"
+			"Spec\\StatusIndicator::onOutputPageParserOutput",
+			"Spec\\StatusLog::onOutputPageParserOutput"
 		],
 		"UnitTestsList": [
 			"Spec\\Hooks::onUnitTestsList"
@@ -116,17 +116,17 @@
 		"track"
 	],
 	"LogNames": {
-		"track": "spec-log-name"
+		"track": "spec-track-log-name"
 	},
 	"LogHeaders": {
-		"track": "spec-log-header"
+		"track": "spec-track-log-header"
 	},
 	"LogActions": {
-		"track/good": "spec-log-entry-good",
-		"track/pending": "spec-log-entry-pending",
-		"track/failing": "spec-log-entry-failing",
-		"track/missing": "spec-log-entry-missing",
-		"track/unknown": "spec-log-entry-unknown"
+		"track/good": "spec-track-log-entry-good",
+		"track/pending": "spec-track-log-entry-pending",
+		"track/failing": "spec-track-log-entry-failing",
+		"track/missing": "spec-track-log-entry-missing",
+		"track/unknown": "spec-track-log-entry-unknown"
 	},
 	"manifest_version": 1
 }
