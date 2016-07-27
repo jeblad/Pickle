@@ -59,33 +59,4 @@ class Common {
 
 		return Title::newFromText( $specPage->plain() );
 	}
-
-	/**
-	 * Make a page indicator given a state and url
-	 *
-	 * @param string $state representing the state
-	 * @param string $url to the internal or external page
-	 * @return Html|null
-	 */
-	public static function makeIndicatorLink( $state, $url ) {
-
-		// Get the message containing the text to use for the link
-		$msg = wfMessage( 'spec-test-text-' . $state )->inContentLanguage();
-		if ( $msg->isDisabled() ) {
-			return null;
-		}
-
-		// Build a link for the page indicator
-		$link = Html::rawElement(
-			'a',
-			[
-				'href' => $url,
-				'target' => '_blank',
-				'class' => [ 'mw-speclink', 'mw-speclink-' . $state ]
-			],
-			$msg->parse()
-		);
-
-		return $link;
-	}
 }

@@ -1,4 +1,5 @@
-#mw-indicator-mw-speclink a {
+#mw-indicator-mw-speclink a,
+#mw-indicator-mw-speclink span {
 	background-image: url(images/info-other.png);
 	background-repeat: no-repeat;
 	background-position: left center;
@@ -8,13 +9,18 @@
 	line-height: 24px;
 }
 #mw-indicator-mw-speclink a.mw-speclink-missing,
+#mw-indicator-mw-speclink span.mw-speclink-missing,
 #mw-indicator-mw-speclink a.mw-speclink-unknown,
-#mw-indicator-mw-speclink a.mw-speclink-pending {
+#mw-indicator-mw-speclink span.mw-speclink-unknown,
+#mw-indicator-mw-speclink a.mw-speclink-pending,
+#mw-indicator-mw-speclink span.mw-speclink-pending {
 	background-image: url(images/info-yellow-inner.png);
 }
-#mw-indicator-mw-speclink a.mw-speclink-good {
+#mw-indicator-mw-speclink a.mw-speclink-good,
+#mw-indicator-mw-speclink span.mw-speclink-good {
 	background-image: url(images/info-green-inner.png);
 }
-#mw-indicator-mw-speclink a.mw-speclink-failed {
+#mw-indicator-mw-speclink a.mw-speclink-failed,
+#mw-indicator-mw-speclink span.mw-speclink-failed {
 	background-image: url(images/info-red-inner.png);
 }

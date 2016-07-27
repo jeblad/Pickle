@@ -9,49 +9,79 @@
 	"license-name": "GPL v2",
 	"type": "other",
 	"AutoloadClasses": {
-		"Spec\\Hooks": "includes/Hooks.php",
-		"Spec\\Common": "includes/Common.php",
-		"Spec\\IFinalResultStrategy":
-			"includes/FinalResult/IFinalResultStrategy.php",
-		"Spec\\FinalResultDefaultStrategy":
-			"includes/FinalResult/FinalResultDefaultStrategy.php",
-		"Spec\\FinalResultByPatternStrategy":
-			"includes/FinalResult/FinalResultByPatternStrategy.php",
-		"Spec\\FinalResultSingleton":
-			"includes/FinalResult/FinalResultSingleton.php"
+		"Spec\\Hooks":
+			"includes/Hooks.php",
+		"Spec\\Common":
+			"includes/Common.php",
+		"Spec\\StatusCategory":
+			"includes/StatusCategory/StatusCategory.php",
+		"Spec\\StatusLog":
+			"includes/StatusLog/StatusLog.php",
+		"Spec\\StatusIndicator":
+			"includes/StatusIndicator/StatusIndicator.php",
+		"Spec\\IStrategies":
+			"includes/Strategies/IStrategies.php",
+		"Spec\\Strategies":
+			"includes/Strategies/Strategies.php",
+		"Spec\\IExtractStatusStrategy":
+			"includes/ExtractStatus/IExtractStatusStrategy.php",
+		"Spec\\ExtractStatusDefaultStrategy":
+			"includes/ExtractStatus/ExtractStatusDefaultStrategy.php",
+		"Spec\\ExtractStatusByPatternStrategy":
+			"includes/ExtractStatus/ExtractStatusByPatternStrategy.php",
+		"Spec\\ExtractStatusStrategies":
+			"includes/ExtractStatus/ExtractStatusStrategies.php",
+		"Spec\\IInvokeSubpageStrategy":
+			"includes/InvokeSubpage/IInvokeSubpageStrategy.php",
+		"Spec\\InvokeSubpageDefaultStrategy":
+			"includes/InvokeSubpage/InvokeSubpageDefaultStrategy.php",
+		"Spec\\InvokeSubpageByContentTypeStrategy":
+			"includes/InvokeSubpage/InvokeSubpageByContentTypeStrategy.php",
+		"Spec\\InvokeSubpageStrategies":
+			"includes/InvokeSubpage/InvokeSubpageStrategies.php",
+		"Spec\\Tests\\StrategiesTestCase":
+			"tests/phpunit/includes/Strategies/StrategiesTestCase.php",
+		"Spec\\Tests\\InvokeSubpageStrategyTestCase":
+			"tests/phpunit/includes/InvokeSubpage/InvokeSubpageStrategyTestCase.php"
 	},
 	"config": {
-		"SpecFinalResults": [
+		"ChangeObserver": "",
+		"SpecExtractStatus": [
 			{
-				"class": "Spec\\FinalResultByPatternStrategy",
-				"name": "failed",
-				"pattern": "/\\bfailed\\b/"
+				"class": "Spec\\ExtractStatusByPatternStrategy",
+				"name": "failing",
+				"pattern": "/\\b(failed|failing|bad|not\\s+ok)\\b/"
 			},
 			{
-				"class": "Spec\\FinalResultByPatternStrategy",
+				"class": "Spec\\ExtractStatusByPatternStrategy",
 				"name": "pending",
 				"pattern": "/\\bpending\\b/"
 			},
 			{
-				"class": "Spec\\FinalResultByPatternStrategy",
+				"class": "Spec\\ExtractStatusByPatternStrategy",
 				"name": "good",
-				"pattern": "/\\bgood\\b/"
+				"pattern": "/\\b(good|ok)\\b/"
 			}
 		],
-		"SpecSubpages": [
+		"SpecInvokeSubpages": [
 			{
-				"class": "Spec\\IndicatorLinkByContentTypeStrategy",
+				"class": "Spec\\InvokeSubpageByContentTypeStrategy",
 				"type": "Scribunto",
-				"name": "lua"
+				"name": "spec"
 			}
 		]
 	},
-	"callback": "Spec\\Hooks::onExtensionLoad",
+	"callback": "Spec\\Hooks::onExtensionSetup",
 	"ExtensionMessagesFiles": {
 	},
 	"Hooks": {
-		"ArticleViewHeader": [
-			"Spec\\Hooks::onArticleViewHeader"
+		"ContentAlterParserOutput": [
+			"Spec\\Hooks::onContentAlterParserOutput",
+			"Spec\\StatusCategory::onContentAlterParserOutput",
+			"Spec\\StatusLog::onContentAlterParserOutput"
+		],
+		"OutputPageParserOutput": [
+			"Spec\\StatusIndicator::onOutputPageParserOutput"
 		],
 		"UnitTestsList": [
 			"Spec\\Hooks::onUnitTestsList"
@@ -74,12 +104,29 @@
 		"remoteExtPath": "Spec/modules"
 	},
 	"TrackingCategories": [
-		"spec-test-category-good",
-		"spec-test-category-pending",
-		"spec-test-category-missing",
-		"spec-test-category-unknown"
+		"spec-tracking-category-good",
+		"spec-tracking-category-pending",
+		"spec-tracking-category-failing",
+		"spec-tracking-category-missing",
+		"spec-tracking-category-unknown"
 	],
 	"SpecialPages": {
+	},
+	"LogTypes": [
+		"track"
+	],
+	"LogNames": {
+		"track": "spec-log-name"
+	},
+	"LogHeaders": {
+		"track": "spec-log-header"
+	},
+	"LogActions": {
+		"track/good": "spec-log-entry-good",
+		"track/pending": "spec-log-entry-pending",
+		"track/failing": "spec-log-entry-failing",
+		"track/missing": "spec-log-entry-missing",
+		"track/unknown": "spec-log-entry-unknown"
 	},
 	"manifest_version": 1
 }

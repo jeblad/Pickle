@@ -8,16 +8,16 @@
 	"spec-test-page-name": "Subspace name used for the test page. Takes one argument that is the parent module page.",
 	"spec-test-text-good": "{{spec-indicator-desc|good}} A good result is one where all reported tests were ok.",
 	"spec-test-text-pending": "{{spec-indicator-desc|pending}} A pending result is one where one or more reported tests were pending.",
-	"spec-test-text-failed": "{{spec-indicator-desc|failed}} A failed result is one where one or more reported tests were not ok.",
+	"spec-test-text-failing": "{{spec-indicator-desc|failed}} A failed result is one where one or more reported tests were not ok.",
 	"spec-test-text-missing": "{{spec-indicator-desc|missing}} A missing result is one where the tests could not be found.",
 	"spec-test-text-unknown": "{{spec-indicator-desc|unknown}} An unknown result is one where the reported tests could not be parsed.",
 	"spec-test-page-exist": "{{spec-result-desc}} The spec page exist, and is of proper type. Invoke and run a specific exported method from the page, assuming the page contains a valid spec.",
 	"spec-test-page-not-exist": "{{spec-result-desc}} The spec page does not exist. Use of this message is most likely due to an undefined spec page. There are no known module to invoke, other than based upon assumptions.",
 	"spec-other-page-exist": "{{spec-result-desc|There is a page there, but it is not of proper type. Use of this message is most likely due to a page being moved into the Module namespace.There are no known module to invoke, other than based upon assumptions.}}",
 	"spec-other-page-not-exist": "{{spec-result-desc|The other page does not exist. Use of this message is most likely due to an error, as a missing should be of Scribunto-type. There are no known module to invoke, other than based upon assumptions.}}",
-	"spec-test-category-good": "{{spec-category-desc|good}} ",
-	"spec-test-category-pending": "{{spec-category-desc|pending}} ",
-	"spec-test-category-missing": "{{spec-category-desc|missing}} ",
-	"spec-test-category-unknown": "{{spec-category-desc|unknown}} "
+	"spec-tracking-category-good": "{{spec-category-desc|good}} ",
+	"spec-tracking-category-pending": "{{spec-category-desc|pending}} ",
+	"spec-tracking-category-missing": "{{spec-category-desc|missing}} ",
+	"spec-tracking-category-unknown": "{{spec-category-desc|unknown}} "
 
 }
