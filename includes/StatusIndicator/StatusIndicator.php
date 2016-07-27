@@ -27,6 +27,11 @@ class StatusIndicator {
 	public static function makeLink( $status, $url ) {
 
 		// Get the message containing the text to use for the link
+		// @message spec-test-text-good
+		// @message spec-test-text-pending
+		// @message spec-test-text-failing
+		// @message spec-test-text-missing
+		// @message spec-test-text-unknown
 		$msg = wfMessage( 'spec-test-text-' . $status )->inContentLanguage();
 		if ( $msg->isDisabled() ) {
 			return null;
@@ -55,6 +60,11 @@ class StatusIndicator {
 	public static function makeNote( $status ) {
 
 		// Get the message containing the text to use for the link
+		// @message spec-test-text-good
+		// @message spec-test-text-pending
+		// @message spec-test-text-failing
+		// @message spec-test-text-missing
+		// @message spec-test-text-unknown
 		$msg = wfMessage( 'spec-test-text-' . $status )->inContentLanguage();
 		if ( $msg->isDisabled() ) {
 			return null;

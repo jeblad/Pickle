@@ -30,6 +30,7 @@ class InvokeSubpageByContentTypeStrategy implements IInvokeSubpageStrategy {
 	 */
 	public function getInvoke( \Title &$title ) {
 		$subpage = $this->getSubpageBaseText( $title );
+		// @message spec-spec-invoke
 		return wfMessage( 'spec-' . $this->opts['name'] . '-invoke', $subpage->plain() );
 	}
 
@@ -38,6 +39,7 @@ class InvokeSubpageByContentTypeStrategy implements IInvokeSubpageStrategy {
 	 */
 	public function getSubpagePrefixedText( \Title &$title ) {
 		$text = $title->getPrefixedText();
+		// @message spec-spec-subpage
 		return wfMessage( 'spec-' . $this->opts['name'] . '-subpage', $text );
 	}
 
@@ -46,6 +48,7 @@ class InvokeSubpageByContentTypeStrategy implements IInvokeSubpageStrategy {
 	 */
 	public function getSubpageBaseText( \Title &$title ) {
 		$baseText = $title->getBaseText();
+		// @message spec-spec-subpage
 		return wfMessage( 'spec-' . $this->opts['name'] . '-subpage', $baseText );
 	}
 

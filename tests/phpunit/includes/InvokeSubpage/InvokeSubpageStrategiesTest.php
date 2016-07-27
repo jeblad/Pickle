@@ -38,7 +38,7 @@ class InvokeSubpageStrategiesTest extends StrategiesTestCase {
 	public function provideFind() {
 		return [
 			[ 'spec-default-invoke', false, 'Scribunto' ],
-			[ 'spec-spec-invoke', true, 'Scribunto' ],
+			[ 'spec-test-invoke', true, 'Scribunto' ],
 			[ 'spec-default-invoke', false, 'Other' ],
 			[ 'spec-default-invoke', true, 'Other' ]
 		];
@@ -69,7 +69,7 @@ class InvokeSubpageStrategiesTest extends StrategiesTestCase {
 		$test->registerStrategy(
 			[
 				'class' => 'Spec\InvokeSubpageByContentTypeStrategy',
-				'name' => 'spec',
+				'name' => 'test',
 				'type' => 'Scribunto'
 			]
 		);

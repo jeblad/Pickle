@@ -67,7 +67,7 @@
 			{
 				"class": "Spec\\InvokeSubpageByContentTypeStrategy",
 				"type": "Scribunto",
-				"name": "spec"
+				"name": "test"
 			}
 		]
 	},

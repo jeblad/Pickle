@@ -20,7 +20,7 @@
 #mw-indicator-mw-speclink span.mw-speclink-good {
 	background-image: url(images/info-green-inner.png);
 }
-#mw-indicator-mw-speclink a.mw-speclink-failed,
-#mw-indicator-mw-speclink span.mw-speclink-failed {
+#mw-indicator-mw-speclink a.mw-speclink-failing,
+#mw-indicator-mw-speclink span.mw-speclink-failing {
 	background-image: url(images/info-red-inner.png);
 }
