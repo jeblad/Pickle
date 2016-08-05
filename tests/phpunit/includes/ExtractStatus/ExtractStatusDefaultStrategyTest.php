@@ -14,6 +14,11 @@ class ExtractStatusDefaultStrategyTest extends MediaWikiTestCase {
 
 	protected $conf = [];
 
+	public function testOnCodeToInterface() {
+		$test = new ExtractStatusDefaultStrategy( $this->conf );
+		$this->assertInstanceOf( 'Spec\\IExtractStatusStrategy', $test );
+	}
+
 	public function testOnGetName() {
 		$test = new ExtractStatusDefaultStrategy( $this->conf );
 		$this->assertEquals( 'unknown', $test->getName() );

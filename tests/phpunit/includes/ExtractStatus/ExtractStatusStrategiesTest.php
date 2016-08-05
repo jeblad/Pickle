@@ -10,10 +10,15 @@ use \Spec\ExtractStatusStrategies;
  *
  * @covers \Spec\ExtractStatusStrategies
  */
-class ExtractStatusStrategiesTest extends StrategiesTestCase {
+class ExtractStatusStrategiesTest extends SingletonsTestCase {
 
 	public static function stratClass() {
 		return 'Spec\ExtractStatusStrategies';
+	}
+
+	public function testOnCodeToInterface() {
+		$test = ExtractStatusStrategies::getInstance();
+		$this->assertInstanceOf( 'Spec\\ISingletons', $test );
 	}
 
 	public function testWho() {
@@ -22,16 +27,16 @@ class ExtractStatusStrategiesTest extends StrategiesTestCase {
 	}
 
 	public function testInit() {
-		$testA = ExtractStatusStrategies::init();
-		$testB = ExtractStatusStrategies::init();
+		$testA = ExtractStatusStrategies::getInstance();
+		$testB = ExtractStatusStrategies::getInstance();
 		$this->assertEquals( ExtractStatusStrategies::who(), get_class( $testA ) );
 		$this->assertEquals( $testA, $testB );
 	}
 
-	public function testRegisterStrategy() {
-		$struct = [ 'class' => 'Spec\\ExtractStatusByPatternStrategy' ];
-		$test = ExtractStatusStrategies::init();
-		$instance = $test->registerStrategy( $struct );
+	public function testRegister() {
+		$struct = [ 'class' => 'Spec\ExtractStatusByPatternStrategy' ];
+		$test = ExtractStatusStrategies::getInstance();
+		$instance = $test->register( $struct );
 		$this->assertEquals( get_class( $instance ), $struct['class'] );
 	}
 
@@ -51,15 +56,15 @@ class ExtractStatusStrategiesTest extends StrategiesTestCase {
 	 * @dataProvider provideFindState
 	 */
 	public function testFindState( $expect, $str ) {
-		$test = ExtractStatusStrategies::init();
-		$test->registerStrategy(
+		$test = ExtractStatusStrategies::getInstance();
+		$test->register(
 			[
 				'class' => 'Spec\ExtractStatusByPatternStrategy',
 				'name' => 'ping',
 				'pattern' => '/\bfoo\b/'
 			]
 		);
-		$test->registerStrategy(
+		$test->register(
 			[
 				'class' => 'Spec\ExtractStatusByPatternStrategy',
 				'name' => 'pong',

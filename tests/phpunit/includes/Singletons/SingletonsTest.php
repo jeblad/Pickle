@@ -2,38 +2,43 @@
 
 namespace Spec\Tests;
 
-use \Spec\Strategies;
+use \Spec\Singletons;
 
 /**
  * @group Spec
  *
- * @covers \Spec\Strategies
+ * @covers \Spec\Singletons
  */
-class StrategiesTest extends StrategiesTestCase {
+class SingletonsTest extends SingletonsTestCase {
 
 	public static function stratClass() {
-		return 'Spec\Strategies';
+		return 'Spec\Singletons';
+	}
+
+	public function testOnCodeToInterface() {
+		$test = Singletons::getInstance();
+		$this->assertInstanceOf( 'Spec\\ISingletons', $test );
 	}
 
 	public function testInit() {
-		$testA = Strategies::init();
-		$testB = Strategies::init();
+		$testA = Singletons::getInstance();
+		$testB = Singletons::getInstance();
 		$this->assertEquals( $testA, $testB );
 	}
 
 	public function testOnExport() {
-		$instance = Strategies::init();
+		$instance = Singletons::getInstance();
 		$this->assertEquals( [], $instance->export() );
 	}
 
 	public function testOnImport() {
-		$instance = Strategies::init();
+		$instance = Singletons::getInstance();
 		$instance->import( [ 1, 2, 3 ] );
 		$this->assertEquals( [ 1, 2, 3 ], $instance->export() );
 	}
 
 	public function testOnReset() {
-		$instance = Strategies::init();
+		$instance = Singletons::getInstance();
 		$instance->import( [ 1, 2, 3 ] );
 		$instance->reset();
 		$this->assertEquals( [], $instance->export() );

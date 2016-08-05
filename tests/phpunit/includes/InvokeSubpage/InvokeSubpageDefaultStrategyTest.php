@@ -14,6 +14,11 @@ class InvokeSubpageDefaultStrategyTest extends InvokeSubpageStrategyTestCase {
 
 	protected $conf = [];
 
+	public function testOnCodeToInterface() {
+		$test = new InvokeSubpageDefaultStrategy( $this->conf );
+		$this->assertInstanceOf( 'Spec\\IInvokeSubpageStrategy', $test );
+	}
+
 	public function testOnGetSubpagePrefixedText() {
 		$test = new InvokeSubpageDefaultStrategy( $this->conf );
 		$str = $test->getSubpagePrefixedText( $this->stub )->inLanguage( 'qqx' )->plain();

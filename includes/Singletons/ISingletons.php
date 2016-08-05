@@ -3,39 +3,44 @@
 namespace Spec;
 
 /**
- * Singleton with strategies
+ * Set of singletons
  */
-interface IStrategies {
+interface ISingletons {
 
 	/**
-	 * Export the strategies of the singleton
+	 * Export the singletons
 	 * The exported structure should be treated as oblique.
 	 * Should only be used during test!
-	 *
-	 * @param array holding the new strategies
 	 */
 	public function export();
 
 	/**
-	 * Import the strategies of the singleton
+	 * Import the singletons
 	 * The imported structure should be treated as oblique.
 	 * Should only be used during test!
 	 *
-	 * @param array holding the new strategies
+	 * @param array holding the new singletons
 	 */
 	public function import( array $arr = null );
 
 	/**
-	 * Reset the singleton
+	 * Reset the singletons
 	 * Should only be used during test!
 	 */
 	public function reset();
 
 	/**
-	 * Register a strategy
+	 * Register a class
 	 *
 	 * @param array describing the result
-	 * @return ISubpageStrategy
+	 * @return Object
 	 */
-	public function registerStrategy( array $struct );
+	public function register( array $struct );
+
+	/**
+	 * Check if a class has no instances
+	 *
+	 * @return boolean
+	 */
+	public function isEmpty();
 }

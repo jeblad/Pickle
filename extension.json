@@ -13,16 +13,55 @@
 			"includes/Hooks.php",
 		"Spec\\Common":
 			"includes/Common.php",
-		"Spec\\StatusCategory":
-			"includes/StatusCategory/StatusCategory.php",
-		"Spec\\StatusLog":
-			"includes/StatusLog/StatusLog.php",
-		"Spec\\StatusIndicator":
-			"includes/StatusIndicator/StatusIndicator.php",
-		"Spec\\IStrategies":
-			"includes/Strategies/IStrategies.php",
-		"Spec\\Strategies":
-			"includes/Strategies/Strategies.php",
+
+		"Spec\\ITrackObserver":
+			"includes/TrackObserver/ITrackObserver.php",
+		"Spec\\TrackObserver":
+			"includes/TrackObserver/TrackObserver.php",
+
+		"Spec\\ISingletons":
+			"includes/Singletons/ISingletons.php",
+		"Spec\\Singletons":
+			"includes/Singletons/Singletons.php",
+
+		"Spec\\TNamedStrategy":
+			"includes/TNamedStrategy.php",
+		"Spec\\TNamedStrategies":
+			"includes/TNamedStrategies.php",
+
+		"Spec\\ITrackLogEntryStrategy":
+			"includes/TrackLogEntry/ITrackLogEntryStrategy.php",
+		"Spec\\TrackLogEntryBaseStrategy":
+			"includes/TrackLogEntry/TrackLogEntryBaseStrategy.php",
+		"Spec\\TrackLogEntryDefaultStrategy":
+			"includes/TrackLogEntry/TrackLogEntryDefaultStrategy.php",
+		"Spec\\TrackLogEntryCommonStrategy":
+			"includes/TrackLogEntry/TrackLogEntryCommonStrategy.php",
+		"Spec\\TrackLogEntryStrategies":
+			"includes/TrackLogEntry/TrackLogEntryStrategies.php",
+
+		"Spec\\ITrackCategoryStrategy":
+			"includes/TrackCategory/ITrackCategoryStrategy.php",
+		"Spec\\TrackCategoryBaseStrategy":
+			"includes/TrackCategory/TrackCategoryBaseStrategy.php",
+		"Spec\\TrackCategoryDefaultStrategy":
+			"includes/TrackCategory/TrackCategoryDefaultStrategy.php",
+		"Spec\\TrackCategoryCommonStrategy":
+			"includes/TrackCategory/TrackCategoryCommonStrategy.php",
+		"Spec\\TrackCategoryStrategies":
+			"includes/TrackCategory/TrackCategoryStrategies.php",
+
+		"Spec\\ITrackIndicatorStrategy":
+			"includes/TrackIndicator/ITrackIndicatorStrategy.php",
+		"Spec\\TrackIndicatorBaseStrategy":
+			"includes/TrackIndicator/TrackIndicatorBaseStrategy.php",
+		"Spec\\TrackIndicatorDefaultStrategy":
+			"includes/TrackIndicator/TrackIndicatorDefaultStrategy.php",
+		"Spec\\TrackIndicatorCommonStrategy":
+			"includes/TrackIndicator/TrackIndicatorCommonStrategy.php",
+		"Spec\\TrackIndicatorStrategies":
+			"includes/TrackIndicator/TrackIndicatorStrategies.php",
+
 		"Spec\\IExtractStatusStrategy":
 			"includes/ExtractStatus/IExtractStatusStrategy.php",
 		"Spec\\ExtractStatusDefaultStrategy":
@@ -39,14 +78,77 @@
 			"includes/InvokeSubpage/InvokeSubpageByContentTypeStrategy.php",
 		"Spec\\InvokeSubpageStrategies":
 			"includes/InvokeSubpage/InvokeSubpageStrategies.php",
-		"Spec\\Tests\\StrategiesTestCase":
-			"tests/phpunit/includes/Strategies/StrategiesTestCase.php",
+
+		"Spec\\Tests\\SingletonsTestCase":
+			"tests/phpunit/includes/Singletons/SingletonsTestCase.php",
+
+		"Spec\\Tests\\TrackLogEntryStrategyTestCase":
+			"tests/phpunit/includes/TrackLogEntry/TrackLogEntryStrategyTestCase.php",
+
+		"Spec\\Tests\\TrackCategoryStrategyTestCase":
+			"tests/phpunit/includes/TrackCategory/TrackCategoryStrategyTestCase.php",
+
+		"Spec\\Tests\\TrackIndicatorStrategyTestCase":
+			"tests/phpunit/includes/TrackIndicator/TrackIndicatorStrategyTestCase.php",
+
 		"Spec\\Tests\\InvokeSubpageStrategyTestCase":
 			"tests/phpunit/includes/InvokeSubpage/InvokeSubpageStrategyTestCase.php"
 	},
 	"config": {
+        "_prefix": "wgSpec",
 		"TrackObserverID": 3,
-		"SpecExtractStatus": [
+		"TrackIndicator": [
+			{
+				"class": "Spec\\TrackIndicatorCommonStrategy",
+				"name": "failing"
+			},
+			{
+				"class": "Spec\\TrackIndicatorCommonStrategy",
+				"name": "pending"
+			},
+			{
+				"class": "Spec\\TrackIndicatorCommonStrategy",
+				"name": "good"
+			},
+			{
+				"class": "Spec\\TrackIndicatorDefaultStrategy"
+			}
+		],
+		"TrackCategory": [
+			{
+				"class": "Spec\\TrackCategoryCommonStrategy",
+				"name": "failing"
+			},
+			{
+				"class": "Spec\\TrackCategoryCommonStrategy",
+				"name": "pending"
+			},
+			{
+				"class": "Spec\\TrackCategoryCommonStrategy",
+				"name": "good"
+			},
+			{
+				"class": "Spec\\TrackCategoryDefaultStrategy"
+			}
+		],
+		"TrackLogEntry": [
+			{
+				"class": "Spec\\TrackLogEntryCommonStrategy",
+				"name": "failing"
+			},
+			{
+				"class": "Spec\\TrackLogEntryCommonStrategy",
+				"name": "pending"
+			},
+			{
+				"class": "Spec\\TrackLogEntryCommonStrategy",
+				"name": "good"
+			},
+			{
+				"class": "Spec\\TrackLogEntryDefaultStrategy"
+			}
+		],
+		"ExtractStatus": [
 			{
 				"class": "Spec\\ExtractStatusByPatternStrategy",
 				"name": "failing",
@@ -61,13 +163,19 @@
 				"class": "Spec\\ExtractStatusByPatternStrategy",
 				"name": "good",
 				"pattern": "/\\b(good|ok)\\b/"
+			},
+			{
+				"class": "Spec\\ExtractStatusDefaultStrategy"
 			}
 		],
-		"SpecInvokeSubpages": [
+		"InvokeSubpage": [
 			{
 				"class": "Spec\\InvokeSubpageByContentTypeStrategy",
 				"type": "Scribunto",
 				"name": "test"
+			},
+			{
+				"class": "Spec\\InvokeSubpageDefaultStrategy"
 			}
 		]
 	},
@@ -77,11 +185,11 @@
 	"Hooks": {
 		"ContentAlterParserOutput": [
 			"Spec\\Hooks::onContentAlterParserOutput",
-			"Spec\\StatusCategory::onContentAlterParserOutput"
+			"Spec\\TrackCategoryStrategies::onContentAlterParserOutput"
 		],
 		"OutputPageParserOutput": [
-			"Spec\\StatusIndicator::onOutputPageParserOutput",
-			"Spec\\StatusLog::onOutputPageParserOutput"
+			"Spec\\TrackIndicatorStrategies::onOutputPageParserOutput",
+			"Spec\\TrackLogEntryStrategies::onOutputPageParserOutput"
 		],
 		"UnitTestsList": [
 			"Spec\\Hooks::onUnitTestsList"

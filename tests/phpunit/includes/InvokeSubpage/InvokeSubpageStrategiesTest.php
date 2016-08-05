@@ -10,10 +10,15 @@ use \Spec\InvokeSubpageStrategies;
  *
  * @covers \Spec\InvokeSubpageStrategies
  */
-class InvokeSubpageStrategiesTest extends StrategiesTestCase {
+class InvokeSubpageStrategiesTest extends SingletonsTestCase {
 
 	public static function stratClass() {
 		return 'Spec\InvokeSubpageStrategies';
+	}
+
+	public function testOnCodeToInterface() {
+		$test = InvokeSubpageStrategies::getInstance();
+		$this->assertInstanceOf( 'Spec\\ISingletons', $test );
 	}
 
 	public function testWho() {
@@ -22,16 +27,16 @@ class InvokeSubpageStrategiesTest extends StrategiesTestCase {
 	}
 
 	public function testInit() {
-		$testA = InvokeSubpageStrategies::init();
-		$testB = InvokeSubpageStrategies::init();
+		$testA = InvokeSubpageStrategies::getInstance();
+		$testB = InvokeSubpageStrategies::getInstance();
 		$this->assertEquals( InvokeSubpageStrategies::who(), get_class( $testA ) );
 		$this->assertEquals( $testA, $testB );
 	}
 
-	public function testRegisterStrategy() {
-		$struct = [ 'class' => 'Spec\\InvokeSubpageByContentTypeStrategy' ];
-		$test = InvokeSubpageStrategies::init();
-		$instance = $test->registerStrategy( $struct );
+	public function testRegister() {
+		$struct = [ 'class' => 'Spec\InvokeSubpageByContentTypeStrategy' ];
+		$test = InvokeSubpageStrategies::getInstance();
+		$instance = $test->register( $struct );
 		$this->assertEquals( get_class( $instance ), $struct['class'] );
 	}
 
@@ -65,15 +70,15 @@ class InvokeSubpageStrategiesTest extends StrategiesTestCase {
 			->method( 'getContentModel' )
 			->will( $this->returnValue( $type ) );
 
-		$test = InvokeSubpageStrategies::init();
-		$test->registerStrategy(
+		$test = InvokeSubpageStrategies::getInstance();
+		$test->register(
 			[
 				'class' => 'Spec\InvokeSubpageByContentTypeStrategy',
 				'name' => 'test',
 				'type' => 'Scribunto'
 			]
 		);
-		$test->registerStrategy(
+		$test->register(
 			[
 				'class' => 'Spec\InvokeSubpageDefaultStrategy'
 			]

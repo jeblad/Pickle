@@ -1,9 +1,35 @@
 {
-  "name": "jeblad/spec",
+	"name": "jeblad/spec",
   "type": "mediawiki-extension",
+	"description": "Provides basic functionality to do testing of modules in Mediawiki.",
+	"keywords"   : [
+		"wiki",
+		"MediaWiki",
+		"extension",
+		"testing",
+		"Spec"
+	],
+	"homepage" : "https://www.mediawiki.org/wiki/Extension:Spec",
+	"license" : "GPL-2.0",
+	"authors": [
+		{
+			"name" : "John Erling Blad",
+			"email": "jeblad@gmail.com",
+			"role" : "Developer"
+		}
+	],
+	"support"    : {
+		"wiki"  : "https://www.mediawiki.org/wiki/Extension:Spec",
+		"forum" : "https://www.mediawiki.org/wiki/Extension_talk:Spec",
+		"source": "https://git.wikimedia.org/tree/mediawiki%2Fextensions%2FBootstrap",
+		"issues": "https://phabricator.wikimedia.org/project/view/2053/",
+		"irc"   : "irc://irc.freenode.org/mediawiki"
+},
+	"prepend-autoloader": false,
+	"optimize-autoloader": true,
   "require-dev": {
-	"jakub-onderka/php-parallel-lint": "0.9.2",
-	"mediawiki/mediawiki-codesniffer": "0.7.2"
+	"jakub-onderka/php-parallel-lint": ">=0.9.2",
+	"mediawiki/mediawiki-codesniffer": ">=0.7.2"
   },
   "scripts": {
 	"fix": "phpcbf",

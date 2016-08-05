@@ -37,7 +37,7 @@ class Hooks {
 		}
 
 		// try to find a subpage to invoke
-		$invokeStrategy = InvokeSubpageStrategies::init()->find( $title );
+		$invokeStrategy = InvokeSubpageStrategies::getInstance()->find( $title );
 		if ( $invokeStrategy === null ) {
 			return true;
 		}
@@ -51,7 +51,7 @@ class Hooks {
 		// check if this page can be detected as a subpage itself
 		$baseTitle = $title->getBaseTitle();
 		if ( $baseTitle !== null ) {
-			$baseInvokeStrategy = InvokeSubpageStrategies::init()->find( $baseTitle );
+			$baseInvokeStrategy = InvokeSubpageStrategies::getInstance()->find( $baseTitle );
 			if ( $baseInvokeStrategy !== null ) {
 				$maybePageMsg = $invokeStrategy->getSubpagePrefixedText( $baseTitle );
 				if ( ! $maybePageMsg->isDisabled() ) {
@@ -65,7 +65,7 @@ class Hooks {
 		}
 
 		// try to find the final status strategy
-		$statusStrategy = ExtractStatusStrategies::init()->find( $invokeMsg->parse() );
+		$statusStrategy = ExtractStatusStrategies::getInstance()->find( $invokeMsg->parse() );
 		if ( $statusStrategy === null ) {
 			return true;
 		}
@@ -81,8 +81,6 @@ class Hooks {
 			serialize( $statusStrategy->getName() ) );
 		$parserOutput->setExtensionData( 'spec-subpage-message',
 			$invokeStrategy->getSubpagePrefixedText( $title ) );
-		$parserOutput->setExtensionData( 'spec-tracking-category-key',
-			'spec-tracking-category-' . $statusStrategy->getName() );
 
 		return true;
 	}
@@ -91,29 +89,10 @@ class Hooks {
 	 * Setup for the extension
 	 */
 	public static function onExtensionSetup() {
-		global $wgSpecExtractStatus, $wgSpecInvokeSubpages;
-		global $wgTrackObserverID, $wgTrackObserverUser;
 		global $wgDebugComments;
 
 		// turn on comments while in development
 		$wgDebugComments = true;
-
-		// the user we use as an alias for "anyone" during automatic inferred status changes
-		$wgTrackObserverUser = \User::newFromID( $wgTrackObserverID );
-
-		// @todo generalize
-		$results = ExtractStatusStrategies::init();
-		foreach ( $wgSpecExtractStatus as $struct ) {
-			$results->registerStrategy( $struct );
-		}
-		$results->registerStrategy( [ 'class' => 'Spec\ExtractStatusDefaultStrategy' ] );
-
-		// @todo generalize
-		$results = InvokeSubpageStrategies::init();
-		foreach ( $wgSpecInvokeSubpages as $struct ) {
-			$results->registerStrategy( $struct );
-		}
-		$results->registerStrategy( [ 'class' => 'Spec\InvokeSubpageDefaultStrategy' ] );
 	}
 
 	/**

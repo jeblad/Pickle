@@ -18,6 +18,11 @@ class ExtractStatusByPatternStrategyTest extends MediaWikiTestCase {
 		"pattern" => "/\\bgood\\b/"
 	];
 
+	public function testOnCodeToInterface() {
+		$test = new ExtractStatusByPatternStrategy( $this->conf );
+		$this->assertInstanceOf( 'Spec\\IExtractStatusStrategy', $test );
+	}
+
 	public function testOnGetName() {
 		$test = new ExtractStatusByPatternStrategy( $this->conf );
 		$this->assertEquals( 'good', $test->getName() );

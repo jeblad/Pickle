@@ -18,6 +18,11 @@ class InvokeSubpageByContentTypeStrategyTest extends InvokeSubpageStrategyTestCa
 		"name" => "test"
 	];
 
+	public function testOnCodeToInterface() {
+		$test = new InvokeSubpageByContentTypeStrategy( $this->conf );
+		$this->assertInstanceOf( 'Spec\\IInvokeSubpageStrategy', $test );
+	}
+
 	public function testOnGetSubpagePrefixedText() {
 		$test = new InvokeSubpageByContentTypeStrategy( $this->conf );
 		$str = $test->getSubpagePrefixedText( $this->stub )->inLanguage( 'qqx' )->plain();

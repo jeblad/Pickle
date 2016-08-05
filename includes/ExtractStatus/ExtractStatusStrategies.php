@@ -5,13 +5,27 @@ namespace Spec;
 /**
  * Strategies to identify final result from specs
  */
-class ExtractStatusStrategies extends Strategies {
+class ExtractStatusStrategies extends Singletons {
 
 	/**
 	 * Who am I
 	 */
 	public static function who() {
 		return __CLASS__;
+	}
+
+	/**
+	 * Configure the strategies
+	 */
+	public static function init() {
+		global $wgSpecExtractStatus;
+
+		$results = ExtractStatusStrategies::getInstance();
+		foreach ( $wgSpecExtractStatus as $struct ) {
+			$results->register( $struct );
+		}
+
+		return true;
 	}
 
 	/**
@@ -24,7 +38,10 @@ class ExtractStatusStrategies extends Strategies {
 	 * @return string
 	 */
 	public function find( $str ) {
-		foreach ( $this->strategies as $strategy ) {
+		if ( $this->isEmpty() ) {
+			ExtractStatusStrategies::init();
+		}
+		foreach ( $this->instances as $strategy ) {
 			if ( $strategy->checkState( $str ) ) {
 				return $strategy;
 			}

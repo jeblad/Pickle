@@ -2,9 +2,9 @@
 
 namespace Spec\Tests;
 
-use \Spec\Strategies;
+use \Spec\Singletons;
 
-class StrategiesTestCase extends \MediaWikiTestCase {
+class SingletonsTestCase extends \MediaWikiTestCase {
 
 	protected $stuff = null;
 
@@ -14,13 +14,13 @@ class StrategiesTestCase extends \MediaWikiTestCase {
 
 	public function setUp() {
 		parent::setUp();
-		$thingy = Strategies::init( static::stratClass() );
+		$thingy = Singletons::getInstance( static::stratClass() );
 		$this->stuff = $thingy->export();
 		$thingy->reset();
 	}
 
 	public function tearDown() {
-		$thingy = Strategies::init( static::stratClass() );
+		$thingy = Singletons::getInstance( static::stratClass() );
 		$thingy->import( $this->stuff );
 		parent::tearDown();
 	}

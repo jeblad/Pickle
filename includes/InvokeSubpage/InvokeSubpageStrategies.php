@@ -4,8 +4,11 @@ namespace Spec;
 
 /**
  * Strategies to identify message from specsbase page type
+ *
+ * file
+ * @ingroup Extensions
  */
-class InvokeSubpageStrategies extends Strategies {
+class InvokeSubpageStrategies extends Singletons {
 
 	/**
 	 * Who am I
@@ -15,16 +18,33 @@ class InvokeSubpageStrategies extends Strategies {
 	}
 
 	/**
+	 * Configure the strategies
+	 */
+	public static function init() {
+		global $wgSpecInvokeSubpage;
+
+		$results = InvokeSubpageStrategies::getInstance();
+		foreach ( $wgSpecInvokeSubpage as $struct ) {
+			$results->register( $struct );
+		}
+
+		return true;
+	}
+
+	/**
 	 * Checks if the string has any of the strategies stored patterns
 	 *
-	 * @see \Spec\IInvokeSubpageStrategy::findInvoke()
+	 * @see \Spec\IInvokeSubpageStrategy::find()
 	 *
 	 * @param Title $title
 	 *
 	 * @return string
 	 */
 	public function find( \Title $title ) {
-		foreach ( $this->strategies as $strategy ) {
+		if ( $this->isEmpty() ) {
+			InvokeSubpageStrategies::init();
+		}
+		foreach ( $this->instances as $strategy ) {
 			if ( $strategy->checkType( $title ) ) {
 				return $strategy;
 			}
