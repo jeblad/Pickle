@@ -5,7 +5,6 @@ namespace Spec;
 /**
  * Strategy to create categories
  *
- * file
  * @ingroup Extensions
  *
  * @license GNU GPL v2+
@@ -47,8 +46,9 @@ class TrackCategoryStrategies extends Singletons {
 	) {
 
 		$currentKey = $parserOutput->getExtensionData( 'spec-status-current' );
+		$currentType = $parserOutput->getExtensionData( 'spec-page-type' );
 
-		if ( $currentKey !== null ) {
+		if ( $currentKey !== null && $currentType === 'normal' ) {
 			$strategy = self::getInstance()->find( $currentKey );
 			if ( $strategy === null ) {
 				return true;

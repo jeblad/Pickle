@@ -15,6 +15,35 @@ namespace Spec;
 class Hooks {
 
 	/**
+	 * Get final strategy
+	 */
+	public static function getFinalStrategy(
+		IInvokeSubpageStrategy $strategy,
+		\Title $title
+	) {
+		// get the message containing the invoke call
+		$invokeMsg = $strategy->getInvoke( $title );
+		if ( $invokeMsg->isDisabled() ) {
+			return null;
+		}
+
+		// try to squash the text into submission
+		$text = $invokeMsg->parse();
+		$tapStrategy = TestAnythingProtocolStrategies::getInstance()->find( $text );
+		if ( $tapStrategy !== null ) {
+			$text = $tapStrategy->parse( $text );
+		}
+
+		// try to find the final status strategy
+		$statusStrategy = ExtractStatusStrategies::getInstance()->find( $text );
+		if ( $statusStrategy === null ) {
+			return null;
+		}
+
+		return $statusStrategy;
+	}
+
+	/**
 	 * Page indicator for module with spec tests
 	 */
 	public static function onContentAlterParserOutput(
@@ -42,12 +71,6 @@ class Hooks {
 			return true;
 		}
 
-		// get the message containing the invoke call
-		$invokeMsg = $invokeStrategy->getInvoke( $title );
-		if ( $invokeMsg->isDisabled() ) {
-			return true;
-		}
-
 		// check if this page can be detected as a subpage itself
 		$baseTitle = $title->getBaseTitle();
 		if ( $baseTitle !== null ) {
@@ -57,6 +80,21 @@ class Hooks {
 				if ( ! $maybePageMsg->isDisabled() ) {
 					$maybePage = $maybePageMsg->plain();
 					if ( $maybePage == $title->getPrefixedText() ) {
+						wfDebug( 'uses the base page' );
+
+						// fast forward
+						$statusStrategy = self::getFinalStrategy( $baseInvokeStrategy, $baseTitle );
+						if ( $statusStrategy === null ) {
+							return true;
+						}
+
+						wfDebug( 'passed fast forward' );
+						$parserOutput->setExtensionData( 'spec-status-current',
+							$statusStrategy->getName() );
+						$parserOutput->setExtensionData( 'spec-page-type',
+							'test' );
+
+						wfDebug( 'more or less done' );
 						// $out->addHelpLink( '//mediawiki.org/wiki/Special:MyLanguage/Help:Spec', true );
 						return true;
 					}
@@ -64,8 +102,8 @@ class Hooks {
 			}
 		}
 
-		// try to find the final status strategy
-		$statusStrategy = ExtractStatusStrategies::getInstance()->find( $invokeMsg->parse() );
+		// fast forward
+		$statusStrategy = self::getFinalStrategy( $invokeStrategy, $title );
 		if ( $statusStrategy === null ) {
 			return true;
 		}
@@ -81,6 +119,9 @@ class Hooks {
 			serialize( $statusStrategy->getName() ) );
 		$parserOutput->setExtensionData( 'spec-subpage-message',
 			$invokeStrategy->getSubpagePrefixedText( $title ) );
+		// @todo this must be adjusted on module content, like data modules
+		$parserOutput->setExtensionData( 'spec-page-type',
+			'normal' );
 
 		return true;
 	}

@@ -5,7 +5,6 @@ namespace Spec;
 /**
  * Strategies to identify message from specsbase page type
  *
- * file
  * @ingroup Extensions
  */
 class InvokeSubpageStrategies extends Singletons {
@@ -33,8 +32,6 @@ class InvokeSubpageStrategies extends Singletons {
 
 	/**
 	 * Checks if the string has any of the strategies stored patterns
-	 *
-	 * @see \Spec\IInvokeSubpageStrategy::find()
 	 *
 	 * @param Title $title
 	 *

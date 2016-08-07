@@ -62,6 +62,17 @@
 		"Spec\\TrackIndicatorStrategies":
 			"includes/TrackIndicator/TrackIndicatorStrategies.php",
 
+		"Spec\\ITestAnythingProtocolStrategy":
+			"includes/TestAnythingProtocol/ITestAnythingProtocolStrategy.php",
+		"Spec\\TestAnythingProtocolBaseStrategy":
+			"includes/TestAnythingProtocol/TestAnythingProtocolBaseStrategy.php",
+		"Spec\\TestAnythingProtocolCommonStrategy":
+			"includes/TestAnythingProtocol/TestAnythingProtocolCommonStrategy.php",
+		"Spec\\TestAnythingProtocol13Strategy":
+			"includes/TestAnythingProtocol/TestAnythingProtocol13Strategy.php",
+		"Spec\\TestAnythingProtocolStrategies":
+			"includes/TestAnythingProtocol/TestAnythingProtocolStrategies.php",
+
 		"Spec\\IExtractStatusStrategy":
 			"includes/ExtractStatus/IExtractStatusStrategy.php",
 		"Spec\\ExtractStatusDefaultStrategy":
@@ -70,6 +81,7 @@
 			"includes/ExtractStatus/ExtractStatusByPatternStrategy.php",
 		"Spec\\ExtractStatusStrategies":
 			"includes/ExtractStatus/ExtractStatusStrategies.php",
+
 		"Spec\\IInvokeSubpageStrategy":
 			"includes/InvokeSubpage/IInvokeSubpageStrategy.php",
 		"Spec\\InvokeSubpageDefaultStrategy":
@@ -87,6 +99,9 @@
 
 		"Spec\\Tests\\TrackCategoryStrategyTestCase":
 			"tests/phpunit/includes/TrackCategory/TrackCategoryStrategyTestCase.php",
+
+		"Spec\\Tests\\TestAnythingProtocolStrategyTestCase":
+			"tests/phpunit/includes/TestAnythingProtocol/TestAnythingProtocolStrategyTestCase.php",
 
 		"Spec\\Tests\\TrackIndicatorStrategyTestCase":
 			"tests/phpunit/includes/TrackIndicator/TrackIndicatorStrategyTestCase.php",
@@ -148,26 +163,6 @@
 				"class": "Spec\\TrackLogEntryDefaultStrategy"
 			}
 		],
-		"ExtractStatus": [
-			{
-				"class": "Spec\\ExtractStatusByPatternStrategy",
-				"name": "failing",
-				"pattern": "/\\b(failed|failing|bad|not\\s+ok)\\b/"
-			},
-			{
-				"class": "Spec\\ExtractStatusByPatternStrategy",
-				"name": "pending",
-				"pattern": "/\\bpending\\b/"
-			},
-			{
-				"class": "Spec\\ExtractStatusByPatternStrategy",
-				"name": "good",
-				"pattern": "/\\b(good|ok)\\b/"
-			},
-			{
-				"class": "Spec\\ExtractStatusDefaultStrategy"
-			}
-		],
 		"InvokeSubpage": [
 			{
 				"class": "Spec\\InvokeSubpageByContentTypeStrategy",
@@ -176,6 +171,34 @@
 			},
 			{
 				"class": "Spec\\InvokeSubpageDefaultStrategy"
+			}
+		],
+		"TestAnythingProtocol": [
+			{
+				"class": "Spec\\TestAnythingProtocol13Strategy"
+			},
+			{
+				"class": "Spec\\TestAnythingProtocolCommonStrategy"
+			}
+		],
+		"ExtractStatus": [
+			{
+				"class": "Spec\\ExtractStatusByPatternStrategy",
+				"name": "failing",
+				"pattern": "/^(fail(ing|ed|)|bad|not\\s+ok|bail(ing|ed|)\\s+out!)$/i"
+			},
+			{
+				"class": "Spec\\ExtractStatusByPatternStrategy",
+				"name": "pending",
+				"pattern": "/^(pending|todo|skipp?(ing|ed|))$/i"
+			},
+			{
+				"class": "Spec\\ExtractStatusByPatternStrategy",
+				"name": "good",
+				"pattern": "/^(good|ok)$/i"
+			},
+			{
+				"class": "Spec\\ExtractStatusDefaultStrategy"
 			}
 		]
 	},

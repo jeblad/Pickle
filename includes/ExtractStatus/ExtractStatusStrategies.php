@@ -4,6 +4,8 @@ namespace Spec;
 
 /**
  * Strategies to identify final result from specs
+ *
+ * @ingroup Extensions
  */
 class ExtractStatusStrategies extends Singletons {
 
@@ -30,8 +32,6 @@ class ExtractStatusStrategies extends Singletons {
 
 	/**
 	 * Checks if the string has any of the strategies stored patterns
-	 *
-	 * @see \Spec\IExtractStatusStrategy::checkState()
 	 *
 	 * @param string $str
 	 *

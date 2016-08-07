@@ -5,7 +5,6 @@ namespace Spec;
 /**
  * Strategy to create log entries
  *
- * file
  * @ingroup Extensions
  *
  * @license GNU GPL v2+
