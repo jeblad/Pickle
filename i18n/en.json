@@ -30,5 +30,10 @@
 	"spec-track-log-entry-pending": "{{GENDER:$2|inferred automatically}} that $1 has pending tests",
 	"spec-track-log-entry-failing": "{{GENDER:$2|inferred automatically}} that $1 has failing tests",
 	"spec-track-log-entry-missing": "{{GENDER:$2|inferred automatically}} that $1 is missing tests",
-	"spec-track-log-entry-unknown": "{{GENDER:$2|inferred automatically}} that $1 has unknown tests"
+	"spec-track-log-entry-unknown": "{{GENDER:$2|inferred automatically}} that $1 has unknown tests",
+	"spec-console-title": "Test console",
+	"spec-console-empty": "No reports available.",
+	"spec-console-cleared": "Clearded console.",
+	"spec-console-run": "Run",
+	"spec-console-clear": "Clear"
 }

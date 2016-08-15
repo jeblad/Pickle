@@ -30,5 +30,10 @@
 	"spec-track-log-entry-pending": "{{logentry}}",
 	"spec-track-log-entry-failing": "{{logentry}}",
 	"spec-track-log-entry-missing": "{{logentry}}",
-	"spec-track-log-entry-unknown": "{{logentry}}"
+	"spec-track-log-entry-unknown": "{{logentry}}",
+	"spec-console-title": "Area used for test reports. Can be empty, but will then have a message about this.",
+	"spec-console-empty": "Message used to clarify that the output area is initially empty.",
+	"spec-console-cleared": "Message used to clarify that the output area is cleared.",
+	"spec-console-run": "Button to initiate a run of a test case. After the completed run the report will be appended to the output area.",
+	"spec-console-clear": "Button to initiate a clearing of previous test cases. After clearing the output area a message to the effect will be injected."
 }

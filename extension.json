@@ -91,6 +91,16 @@
 		"Spec\\InvokeSubpageStrategies":
 			"includes/InvokeSubpage/InvokeSubpageStrategies.php",
 
+		"Spec\\ITestConsoleView":
+			"includes/TestConsole/ITestConsoleView.php",
+		"Spec\\TestConsoleView":
+			"includes/TestConsole/TestConsoleView.php",
+
+		"Spec\\ISubLinksView":
+			"includes/SubLinks/ISubLinksView.php",
+		"Spec\\SubLinksView":
+			"includes/SubLinks/SubLinksView.php",
+
 		"Spec\\Tests\\SingletonsTestCase":
 			"tests/phpunit/includes/Singletons/SingletonsTestCase.php",
 
@@ -212,7 +222,14 @@
 		],
 		"OutputPageParserOutput": [
 			"Spec\\TrackIndicatorStrategies::onOutputPageParserOutput",
-			"Spec\\TrackLogEntryStrategies::onOutputPageParserOutput"
+			"Spec\\TrackLogEntryStrategies::onOutputPageParserOutput",
+			"Spec\\SubLinksView::onOutputPageParserOutput"
+		],
+		"EditPageBeforeEditChecks": [
+			"Spec\\TestConsoleView::onEditPageBeforeEditChecks"
+		],
+		"EditPage::showReadOnlyForm:initial": [
+			"Spec\\TestConsoleView::onShowReadOnlyFormInitial"
 		],
 		"UnitTestsList": [
 			"Spec\\Hooks::onUnitTestsList"
@@ -224,10 +241,28 @@
 		]
 	},
 	"ResourceModules": {
-		"ext.spec.defaultDisplay": {
+		"ext.spec.default": {
 			"styles": {
-				"0": "ext.spec.defaultDisplay.css"
+				"0": "ext.spec.default.css"
 			}
+		},
+		"ext.spec.console": {
+			"styles": {
+				"0": "ext.spec.console.css"
+			},
+			"scripts": {
+				"0": "ext.spec.console.js"
+			},
+			"dependencies": [
+				"jquery.spinner"
+			],
+			"messages": [
+				"spec-console-title",
+				"spec-console-empty",
+				"spec-console-cleared",
+				"spec-console-run",
+				"spec-console-clear"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {

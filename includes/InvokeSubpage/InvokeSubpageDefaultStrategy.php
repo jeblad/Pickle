@@ -9,11 +9,22 @@ use \Spec\IInvokeSubpageStrategy;
  */
 class InvokeSubpageDefaultStrategy implements IInvokeSubpageStrategy {
 
+	protected $opts;
+
 	/**
 	 * @param array structure from extension setup
 	 */
 	public function __construct( array $opts ) {
-		// empty
+		$this->opts = array_merge(
+			[
+				'testerQuestion' => "= p ( p ) :tap()",
+				'testeeQuestion' => "= require '%s' ( p ) :tap()"
+			],
+			$opts,
+			[
+				'name' => 'default',
+				'type' => null
+			] );
 	}
 
 	/**
@@ -45,6 +56,21 @@ class InvokeSubpageDefaultStrategy implements IInvokeSubpageStrategy {
 	public function getSubpageBaseText( \Title &$title ) {
 		$baseText = $title->getBaseText();
 		return wfMessage( 'spec-default-subpage', $baseText );
+	}
+
+	/**
+	 * @see \Spec\IInvokeSubpageStrategy::getTesterQuestion()
+	 */
+	public function getTesterQuestion( \Title &$title ) {
+		return $this->opts['testerQuestion'];
+	}
+
+	/**
+	 * @see \Spec\IInvokeSubpageStrategy::getTesteeQuestion()
+	 */
+	public function getTesteeQuestion( \Title &$title ) {
+		$prefixedText = $this->getSubpagePrefixedText( $title );
+		return sprintf( $this->opts['testeeQuestion'], $prefixedText->plain() );
 	}
 
 }

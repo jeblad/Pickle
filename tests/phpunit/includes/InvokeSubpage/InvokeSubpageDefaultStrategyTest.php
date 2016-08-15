@@ -12,7 +12,7 @@ use \Spec\InvokeSubpageDefaultStrategy;
  */
 class InvokeSubpageDefaultStrategyTest extends InvokeSubpageStrategyTestCase {
 
-	protected $conf = [];
+	protected $conf = [ 'testerQuestion' => 'tester', 'testeeQuestion' => 'tester %s' ];
 
 	public function testOnCodeToInterface() {
 		$test = new InvokeSubpageDefaultStrategy( $this->conf );
@@ -46,5 +46,18 @@ class InvokeSubpageDefaultStrategyTest extends InvokeSubpageStrategyTestCase {
 		$this->assertTrue( $bool );
 		$bool = $test->checkType( $this->stub );
 		$this->assertTrue( $bool );
+	}
+
+	public function testOnGetTesterQuestion() {
+		$test = new InvokeSubpageDefaultStrategy( $this->conf );
+		$call = $test->getTesterQuestion( $this->stub );
+		$this->assertContains( 'tester', $call );
+	}
+
+	public function testOnGetTesteeQuestion() {
+		$test = new InvokeSubpageDefaultStrategy( $this->conf );
+		$call = $test->getTesteeQuestion( $this->stub );
+		$this->assertContains( 'tester', $call );
+		$this->assertContains( 'bar:baz', $call );
 	}
 }

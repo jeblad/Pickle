@@ -39,4 +39,20 @@ interface IInvokeSubpageStrategy {
 	 * @return Message
 	 */
 	public function getSubpageBaseText( \Title &$title );
+
+	/**
+	 * Get the question part of the console call for the tester
+	 *
+	 * @param \Title title to use while constructing the call (not in use)
+	 * @return simplexml_load_string
+	 */
+	public function getTesterQuestion( \Title &$title );
+
+	/**
+	 * Get the question part of the console call for the testee
+	 *
+	 * @param \Title title to use while constructing the call (not in use)
+	 * @return simplexml_load_string
+	 */
+	public function getTesteeQuestion( \Title &$title );
 }

@@ -116,7 +116,7 @@ abstract class TrackIndicatorBaseStrategy implements ITrackIndicatorStrategy {
 
 		if ( $elem !== null ) {
 			$res = $out->setIndicators( [ $this->getClassKey() => $elem ] );
-			$out->addModuleStyles( 'ext.spec.defaultDisplay' );
+			$out->addModuleStyles( 'ext.spec.default' );
 		}
 
 		return $elem;

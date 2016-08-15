@@ -26,5 +26,10 @@
 	"spec-track-log-entry-pending": "{{GENDER:$2|utledet automatisk}} at siden $1 har ventende tester",
 	"spec-track-log-entry-failing": "{{GENDER:$2|utledet automatisk}} at siden $1 har feilende tester",
 	"spec-track-log-entry-missing": "{{GENDER:$2|utledet automatisk}} at siden $1 mangler tester",
-	"spec-track-log-entry-unknown": "{{GENDER:$2|utledet automatisk}} at siden $1 har ukjente tester"
+	"spec-track-log-entry-unknown": "{{GENDER:$2|utledet automatisk}} at siden $1 har ukjente tester",
+	"spec-console-title": "Testkonsoll",
+	"spec-console-empty": "Ingen rapporter tilgjengelig.",
+	"spec-console-cleared": "Ryddet konsollet.",
+	"spec-console-run": "Kjør",
+	"spec-console-clear": "Tøm"
 }

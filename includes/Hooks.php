@@ -71,7 +71,7 @@ class Hooks {
 			return true;
 		}
 
-		// check if this page can be detected as a subpage itself
+		// check if this page is a subpage itself
 		$baseTitle = $title->getBaseTitle();
 		if ( $baseTitle !== null ) {
 			$baseInvokeStrategy = InvokeSubpageStrategies::getInstance()->find( $baseTitle );
@@ -93,6 +93,9 @@ class Hooks {
 							$statusStrategy->getName() );
 						$parserOutput->setExtensionData( 'spec-page-type',
 							'test' );
+
+						$parserOutput->setExtensionData( 'spec-console-question',
+							$invokeStrategy->getTesterQuestion( $title ) );
 
 						wfDebug( 'more or less done' );
 						// $out->addHelpLink( '//mediawiki.org/wiki/Special:MyLanguage/Help:Spec', true );
@@ -119,6 +122,7 @@ class Hooks {
 			serialize( $statusStrategy->getName() ) );
 		$parserOutput->setExtensionData( 'spec-subpage-message',
 			$invokeStrategy->getSubpagePrefixedText( $title ) );
+
 		// @todo this must be adjusted on module content, like data modules
 		$parserOutput->setExtensionData( 'spec-page-type',
 			'normal' );
