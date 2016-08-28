@@ -29,7 +29,8 @@
 	"optimize-autoloader": true,
   "require-dev": {
 	"jakub-onderka/php-parallel-lint": ">=0.9.2",
-	"mediawiki/mediawiki-codesniffer": ">=0.7.2"
+	"mediawiki/mediawiki-codesniffer": ">=0.7.2",
+	"liuggio/fastest": "dev-master"
   },
   "scripts": {
 	"fix": "phpcbf",

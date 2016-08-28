@@ -101,6 +101,9 @@
 		"Spec\\SubLinksView":
 			"includes/SubLinks/SubLinksView.php",
 
+		"Spec\\LuaLibrary":
+			"includes/LuaLibrary/LuaLibrary.php",
+
 		"Spec\\Tests\\SingletonsTestCase":
 			"tests/phpunit/includes/Singletons/SingletonsTestCase.php",
 
@@ -231,6 +234,12 @@
 		"EditPage::showReadOnlyForm:initial": [
 			"Spec\\TestConsoleView::onShowReadOnlyFormInitial"
 		],
+		"ScribuntoExternalLibraries": [
+			"Spec\\LuaLibrary::registerScribuntoLibraries"
+		],
+		"ScribuntoExternalLibraryPaths": [
+			"Spec\\LuaLibrary::registerScribuntoExternalLibraryPaths"
+		],
 		"UnitTestsList": [
 			"Spec\\Hooks::onUnitTestsList"
 		]
@@ -263,6 +272,10 @@
 				"spec-console-run",
 				"spec-console-clear"
 			]
+		},
+		"ext.spec.report": {
+			"styles": "ext.spec.report.css",
+			"position": "top"
 		}
 	},
 	"ResourceFileModulePaths": {
