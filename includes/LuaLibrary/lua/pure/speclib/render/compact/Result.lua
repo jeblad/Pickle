@@ -1,6 +1,6 @@
 --- Subclass for report renderer
 
-local Base = require 'speclib/render/full/Result'
+local Base = require 'speclib/render/ResultBase'
 
 local Render = {}
 Render.__index = Render

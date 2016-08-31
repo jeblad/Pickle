@@ -24,43 +24,17 @@ local function testCreate( ... )
 	return type( makeTest( ... ) )
 end
 
-local function testState( bool )
-	local p = fix.create()
-	if bool then
-		p:ok()
-	else
-		p:notOk()
-	end
-	return makeTest():realizeState( p, 'qqx' )
+local function testKey( ... )
+	return makeTest():key( ... )
 end
 
-local function testSkip( ... )
-	local p = fix.create():setSkip( ... )
-	return makeTest():realizeSkip( p, 'qqx' )
+local function testBodyOk( ... )
+	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):ok()
+	return makeTest():realizeBody( p, 'qqx' )
 end
 
-local function testTodo( ... )
-	local p = fix.create():setTodo( ... )
-	return makeTest():realizeTodo( p, 'qqx' )
-end
-
-local function testDescription( ... )
-	local p = fix.create():setDescription( ... )
-	return makeTest():realizeDescription( p, 'qqx' )
-end
-
-local function testHeaderSkip( ... )
-	local p = fix.create():setDescription( 'testing' ):setSkip( ... ):notOk()
-	return makeTest():realizeHeader( p, 'qqx' )
-end
-
-local function testHeaderTodo( ... )
-	local p = fix.create():setDescription( 'testing' ):setTodo( ... ):ok()
-	return makeTest():realizeHeader( p, 'qqx' )
-end
-
-local function testBody( ... )
-	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' )
+local function testBodyNotOk( ... )
+	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):notOk()
 	return makeTest():realizeBody( p, 'qqx' )
 end
 
@@ -80,39 +54,17 @@ local tests = {
 	  args = { 'a', 'b', 'c' },
 	  expect = { 'table' }
 	},
-	{ name = name .. '.state ()', func = testState,
-	  args = { false },
-	  expect = { '(spec-report-full-is-not-ok)' }
-	},
-	{ name = name .. '.state ()', func = testState,
-	  args = { true },
-	  expect = { '(spec-report-full-is-ok)' }
-	},
-	{ name = name .. '.skip ()', func = testSkip,
+	{ name = name .. '.key ()', func = testKey,
 	  args = { 'foo' },
-	  expect = { '(spec-report-full-wrap-skip: (foo))' }
+	  expect = { 'spec-report-full-foo' }
 	},
-	{ name = name .. '.todo ()', func = testTodo,
-	  args = { 'bar' },
-	  expect = { '(spec-report-full-wrap-todo: bar)' }
+	{ name = name .. '.body ()', func = testBodyOk,
+	  expect = { "\n"
+			.. '(spec-report-full-wrap-line: (foo))' .. "\n"
+			.. '(spec-report-full-wrap-line: (bar))' .. "\n"
+			.. '(spec-report-full-wrap-line: (baz))' }
 	},
-	{ name = name .. '.description ()', func = testDescription,
-	  args = { 'baz' },
-	  expect = { '(spec-report-full-wrap-description: baz)' }
-	},
-	{ name = name .. '.header ()', func = testHeaderSkip,
-	  args = { 'baz' },
-	  expect = { '(spec-report-full-is-not-ok)'
-			.. '(spec-report-full-wrap-description: testing)'
-			.. '# (spec-report-full-wrap-skip: (baz))' }
-	},
-	{ name = name .. '.header ()', func = testHeaderTodo,
-	  args = { 'baz' },
-	  expect = { '(spec-report-full-is-ok)'
-			.. '(spec-report-full-wrap-description: testing)'
-			.. '# (spec-report-full-wrap-todo: baz)' }
-	},
-	{ name = name .. '.body ()', func = testBody,
+	{ name = name .. '.body ()', func = testBodyNotOk,
 	  expect = { "\n"
 			.. '(spec-report-full-wrap-line: (foo))' .. "\n"
 			.. '(spec-report-full-wrap-line: (bar))' .. "\n"
