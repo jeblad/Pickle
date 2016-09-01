@@ -28,12 +28,12 @@ end
 function Stack:layout()
     local t = {}
     for i,v in ipairs( self._stack ) do
-        table.insert( t, i )
+        t[i] = type( v )
     end
     return t
 end
 
-function Stack:head()
+function Stack:bottom()
     return self._stack[1]
 end
 

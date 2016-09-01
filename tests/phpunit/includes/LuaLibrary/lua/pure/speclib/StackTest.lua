@@ -18,36 +18,46 @@ end
 
 local function testCreate( ... )
 	return type( makeStack( ... ) )
+end
 
+local function testIsEmpty( ... )
+	return makeStack( ... ):isEmpty()
+end
+
+local function testDepth( ... )
+	return makeStack( ... ):depth()
+end
+
+local function testLayout( ... )
+	return makeStack( ... ):layout()
+end
+
+local function testBottom( ... )
+	return makeStack( ... ):bottom()
 end
 
 local function testTop( ... )
 	return makeStack( ... ):top()
-
 end
 
 local function testPush( ... )
 	local test = makeStack():push( ... )
 	return test:top()
-
 end
 
 local function testPop( ... )
 	local test = makeStack( ... ):pop()
 	return test:top()
-
 end
 
 local function testExport( ... )
 	local test = makeStack( ... )
 	return { test:export() }, test:top()
-
 end
 
 local function testFlush( ... )
 	local test = makeStack( ... )
 	return { test:flush() }, test:top()
-
 end
 
 local tests = {
@@ -65,6 +75,34 @@ local tests = {
 	{ name = 'stack.create (multiple value type)', func = testCreate, type='ToString',
 	  args = { 'a', 'b', 'c' },
 	  expect = { 'table' }
+	},
+	{ name = 'stack.isEmpty (nil value)', func = testIsEmpty,
+	  args = { nil },
+	  expect = { true }
+	},
+	{ name = 'stack.isEmpty (string value)', func = testIsEmpty,
+	  args = { '' },
+	  expect = { false }
+	},
+	{ name = 'stack.depth (nil value)', func = testDepth,
+	  args = { nil },
+	  expect = { 0 }
+	},
+	{ name = 'stack.depth (string value)', func = testDepth,
+	  args = { '' },
+	  expect = { 1 }
+	},
+	{ name = 'stack.depth (3x string values)', func = testDepth,
+	  args = { 'foo', 'bar', 'baz' },
+	  expect = { 3 }
+	},
+	{ name = 'stack.layout (various values)', func = testLayout,
+	  args = { 'foo', {'bar'}, 'baz', 42 },
+	  expect = { {'string', 'table', 'string', 'number'} }
+	},
+	{ name = 'stack.bottom (3x string values)', func = testBottom,
+	  args = { 'foo', 'bar', 'baz' },
+	  expect = { 'foo' }
 	},
 	{ name = 'stack.top (nil value)', func = testTop,
 	  args = { nil },
