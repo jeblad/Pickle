@@ -1,26 +1,40 @@
 --- Baseclass for Expect and Subject
--- This holds nearly all the common stuff.
 
-local Report = require 'speclib/report/Result'
+-- pure libs
 local Stack = require 'speclib/Stack'
 local util = require 'speclib/util'
 
+-- non-pure libs
+local Report
+if mw.spec then
+    -- structure exist, make access simpler
+    Report = mw.spec.stack
+else
+    -- structure does not exist, require the libs
+    Report = require 'speclib/report/Result'
+end
+
+-- @var class var for lib
 local Adapt = {}
---Adapt.__index = Adapt
+
+--- Lookup of missing class members
 function Adapt:__index( key )
     return Adapt[key]
 end
 
+--- Transform names in camel case into hyphen separated keys
 local function buildName( str )
 	return str:gsub("([A-Z])", function(str) return '-'..string.lower(str) end )
 end
 
+--- Create a new instance
 function Adapt.create( ... )
     local self = setmetatable( {}, Adapt )
     self:_init( ... )
     return self
 end
 
+--- Initialize a new instance
 function Adapt:_init( ... )
     local t = { ... }
     self._processes = Stack.create()
@@ -60,7 +74,10 @@ function Adapt:eval()
     return unpack( tmp )
 end
 
-function makePickProcess( name, idx )
+--- Make a delayed process for the pick functions
+-- This is a private function that will create a function with a closure.
+-- It will create an additional delayed function for the provided definition.
+local function makePickProcess( name, idx )
     local g = function( ... )
         local t = { ... }
         return t[idx]
@@ -73,17 +90,23 @@ function makePickProcess( name, idx )
     return f
 end
 
+-- @var table of definitions for the pick functions
+-- Format is ''name'' = ''index''
 local picks = { first = 1, second = 2, third = 3, fourth = 4,
     fifth = 5, sixth = 6, seventh = 7, eight = 8,
     ninth = 9, tenth = 10, eleventh = 11, twelfth = 12
 }
 
+-- loop over the pick definitions and create the functions
 for name,val in pairs( picks ) do
     assert( not Adapt[alias], alias )
     Adapt[name] = makePickProcess( name, val )
 end
 
-function makeGeneralProcess( name, func )
+--- Make a delayed process for the general functions
+-- This is a private function that will create a function with a closure.
+-- The delayed function comes from the provided definition.
+local function makeGeneralProcess( name, func )
     local f = function( self )
         self:report():addLine( 'spec-adapt-process-'..buildName( name ) )
         self:addProcess( func )
@@ -92,6 +115,8 @@ function makeGeneralProcess( name, func )
     return f
 end
 
+-- @var table of definitions for the pick functions
+-- Format is ''name'' = { ''function'', { ''aliases, ... }
 local general = {
     asType = {
         function( val )
@@ -190,6 +215,7 @@ local general = {
         { 'fraction', 'asFrac', 'frac' } },
 }
 
+-- loop over the general definitions and create the functions
 for name,lst in pairs( general ) do
     local func = lst[1]
     Adapt[name] = makeGeneralProcess( name, func )
@@ -199,11 +225,16 @@ for name,lst in pairs( general ) do
     end
 end
 
+--- Set the accessor for the other party
+-- For a subject the other part will be the expect, and for expect it will
+-- be the subject.
 function Adapt:setOther( func )
     assert( type( func ) == 'function' )
     self._other = func
 end
 
+--- Get the other part
+-- Note that this is the real other part, and not a previously set accessor.
 function Adapt:other()
     if self._other then
         return self._other()
@@ -211,11 +242,16 @@ function Adapt:other()
     return nil
 end
 
+--- Reorder the pair of parties involved in the condition
+-- This can be overridden in subclasses
 function Adapt:reorder( ... )
     return ...
 end
 
-function makeConditionProcess( name, func, other )
+--- Make a delayed process for the condition functions
+-- This is a private function that will create a function with a closure.
+-- The delayed function comes from the provided definition.
+local function makeConditionProcess( name, func, other )
     local f = function( self )
         local report = self:report()
         self:report():addLine( 'spec-adapt-condition-'..buildName( name ) )
@@ -230,6 +266,8 @@ function makeConditionProcess( name, func, other )
     return f
 end
 
+-- @var table of definitions for the pick functions
+-- Format is ''name'' = { ''function'', { ''aliases, ... }
 local conditions = {
     toBeEqual = {
         function ( a, b )
@@ -321,6 +359,7 @@ local conditions = {
         { 'umatch', 'isUMatch', 'ifUMatch' } },
 }
 
+-- loop over the condition definitions and create the functions
 for name,lst in pairs( conditions ) do
     local func = lst[1]
     Adapt[name] = makeConditionProcess( name, func ) -- @todo define other
@@ -330,4 +369,5 @@ for name,lst in pairs( conditions ) do
     end
 end
 
+-- Return the final class
 return Adapt

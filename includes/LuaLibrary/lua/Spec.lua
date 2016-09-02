@@ -1,23 +1,34 @@
+-- accesspoints for the bilerplate
 local php
---local Stack = require 'speclib/Stack'
-local Expect = require 'speclib/engine/Expect'
-local Subject = require 'speclib/engine/Subject'
---local Renders = require 'speclib/render/Renders'
---local Plan = require 'speclib/report/Plan'
+local options
 
---function Expect.other() return Subject end
---function Subject.other() return Expect end
---Subject.other = Expect
+-- @var structure for storage of the lib
+local spec = {}
+
+-- spec.util = require 'speclib/util'
+-- spec.stack = require 'speclib/Stack'
+spec.adapt = require 'speclib/engine/Adapt'
+spec.expect = require 'speclib/engine/Expect'
+spec.subject = require 'speclib/engine/Subject'
+spec.constituent = require 'speclib/report/Constituent'
+--spec.renders = require 'speclib/render/Renders'
+--local Plan = require 'speclib/report/Plan'
+--[[
+    for k,v in pairs( util ) do
+    if not spec[k] then
+        spec[k] = v
+    end
+end
+--]]
 
 local export = {
-    subject = Subject,
-    expect = Expect
+    subject = spec.subject,
+    expect = spec.expect
 }
 
-local spec = {
-    subject = Subject,
-    expect = Expect
-}
+-- create the access to othe other parties
+function spec.expect.other() return Subject end
+function spec.subject.other() return Expect end
 
 function spec.report( frame )
     local style = frame.args[1]
@@ -26,12 +37,15 @@ function spec.report( frame )
 end
 
 --- install the module in the global space
-function spec.setupInterface()
+function spec.setupInterface( opts )
+
     -- boilerplate
+    spec.setupInterface = nil
     php = mw_interface
     mw_interface = nil
+	options = opts
 
-    -- register lib in mw global
+    -- register main lib
     mw = mw or {}
     mw.spec = spec
     package.loaded['mw.spec'] = spec
@@ -40,9 +54,10 @@ function spec.setupInterface()
     for k,v in pairs( export ) do
         if not mw[k] then
             mw[k] = v
-            package.loaded['mw.'..k] = v
+            --package.loaded['mw.'..k] = v
         end
     end
 end
 
+-- Return the final library
 return spec

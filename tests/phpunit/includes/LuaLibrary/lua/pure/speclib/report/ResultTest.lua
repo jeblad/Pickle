@@ -154,7 +154,7 @@ local tests = {
 	},
 	{ name = name .. '.description ()', func = testGetSetDescription,
 	  args = { 'baz' },
-	  expect = { { 'baz' } }
+	  expect = { 'baz' }
 	},
 }
 

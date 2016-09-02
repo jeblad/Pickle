@@ -3,7 +3,6 @@
 -- @license GNU GPL v2+
 -- @author John Erling Blad < jeblad@gmail.com >
 
-
 local testframework = require 'Module:TestFramework'
 
 local stack = require 'speclib/Stack'
@@ -98,7 +97,7 @@ local tests = {
 	},
 	{ name = 'stack.layout (various values)', func = testLayout,
 	  args = { 'foo', {'bar'}, 'baz', 42 },
-	  expect = { {'string', 'table', 'string', 'number'} }
+	  expect = { { 'string', 'table', 'string', 'number' } }
 	},
 	{ name = 'stack.bottom (3x string values)', func = testBottom,
 	  args = { 'foo', 'bar', 'baz' },

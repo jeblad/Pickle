@@ -27,8 +27,8 @@ class LuaLibrary extends Scribunto_LuaLibraryBase {
 
 		$extraLibraries['spec'] = [
 			'class' => '\Spec\LuaLibrary',
+			// @todo this should be deferred until it is used, this is preliminary
 			'deferLoad' => false
-			// 'deferLoad' => true
 		];
 
 		return true;

@@ -1,17 +1,31 @@
 --- Subclass to do specialization of the Adapt class
--- This is the spesialization to register access to expectations
+-- This is the spesialization to register access to subjects
 
-local Adapt = require 'speclib/engine/Adapt'
+-- pure libs
 local Stack = require 'speclib/Stack'
 
+-- non-pure libs
+local Adapt
+if mw.spec then
+    -- structure exist, make access simpler
+    Adapt = mw.spec.adapt
+else
+    -- structure does not exist, require the libs
+    Adapt = require 'speclib/engine/Adapt'
+end
+
+-- @var class var for lib
 local Subject = {}
---Subject.__index = Subject
+
+--- Lookup of missing class members
 function Subject:__index( key )
     return Subject[key]
 end
 
+-- @var metatable for the class
 local mt = { __index = Adapt }
 
+--- Get a clone or create a new instance
 function mt:__call( ... )
     local t = { ... }
     Subject.stack:push( #t == 0 and Subject.stack:top() or Subject.create( t ) )
@@ -20,17 +34,20 @@ end
 
 setmetatable( Subject, mt )
 
--- @var stack holding the references to defined subjects
+-- @var class var for stack, holding a references to defined subjects
 Subject.stack = Stack.create()
 
+-- @var class var for other, holding a reference to the expects
 Subject.other = nil
 
+--- Create a new instance
 function Subject.create( ... )
     local self = setmetatable( {}, Subject )
     self:_init( ... )
     return self
 end
 
+--- Initialize a new instance
 function Subject:_init( ... )
     Adapt._init( self, ... )
     if Subject.other ~= nil then
@@ -40,4 +57,5 @@ function Subject:_init( ... )
     return self
 end
 
+-- Return the final class
 return Subject

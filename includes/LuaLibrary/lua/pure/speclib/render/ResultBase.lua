@@ -1,24 +1,35 @@
 --- Baseclass for report renderer
 
+-- @var class var for lib
 local Render = {}
-Render.__index = Render
 
+--- Lookup of missing class members
+function Render:__index( key )
+    return Render[key]
+end
+
+--- Create a new instance
 function Render.create( ... )
     local self = setmetatable( {}, Render )
     self:_init( ... )
     return self
 end
 
+--- Initialize a new instance
 function Render:_init( ... )
     return self
 end
 
+--- Override key construction
 function Render:key( str )
     error('Method should be overridden')
     return nil
 end
 
+--- Realize reported data for skip
+-- The "skip" is a message identified by a key.
 function Render:realizeSkip( src, lang )
+    assert( src, 'Failed to provide a source' )
 
     if not src:hasSkip() then
         return ''
@@ -48,7 +59,10 @@ function Render:realizeSkip( src, lang )
     return outer:plain()
 end
 
+--- Realize reported data for todo
+-- The "todo" is a text string.
 function Render:realizeTodo( src, lang )
+    assert( src, 'Failed to provide a source' )
 
     if not src:hasTodo() then
         return ''
@@ -68,7 +82,10 @@ function Render:realizeTodo( src, lang )
     return outer:plain()
 end
 
+--- Realize reported data for description
+-- The "description" is a text string.
 function Render:realizeDescription( src, lang )
+    assert( src, 'Failed to provide a source' )
 
     if not src:hasDescription() then
         return ''
@@ -88,7 +105,9 @@ function Render:realizeDescription( src, lang )
     return outer:plain()
 end
 
+--- Realize reported data for state
 function Render:realizeState( src, lang )
+    assert( src, 'Failed to provide a source' )
 
     local msg = mw.message.new( src:isOk() and self:key( 'is-ok' ) or self:key( 'is-not-ok' ) )
 
@@ -103,7 +122,11 @@ function Render:realizeState( src, lang )
     return msg:plain()
 end
 
+--- Realize reported data for header
+-- The "header" is a composite.
 function Render:realizeHeader( src, lang )
+    assert( src, 'Failed to provide a source' )
+
     local t = { self:realizeState( src, lang ) }
 
     if src:hasDescription() then
@@ -119,7 +142,9 @@ function Render:realizeHeader( src, lang )
     return table.concat( t, '' )
 end
 
+--- Realize reported data for a line
 function Render:realizeLine( param, lang )
+    assert( param, 'Failed to provide a parameter' )
 
     local realization = ''
     local inner = mw.message.new( unpack( param ) )
@@ -145,7 +170,10 @@ function Render:realizeLine( param, lang )
     return outer:plain()
 end
 
+--- Realize reported data for body
+-- The "body" is a composite.
 function Render:realizeBody( src, lang )
+    assert( src, 'Failed to provide a source' )
 
     local t = {}
 
@@ -156,5 +184,5 @@ function Render:realizeBody( src, lang )
     return #t == 0 and '' or ( "\n"  .. table.concat( t, "\n" ) )
 end
 
-
+-- Return the final class
 return Render

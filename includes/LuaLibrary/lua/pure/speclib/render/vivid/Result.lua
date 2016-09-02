@@ -1,25 +1,40 @@
 --- Subclass for report renderer
 
+-- pure libs
 local Base = require 'speclib/render/ResultBase'
 
+-- @var class var for lib
 local Render = {}
-Render.__index = Render
 
+--- Lookup of missing class members
+function Render:__index( key )
+    return Render[key]
+end
+
+-- @var metatable for the class
+setmetatable( Render, { __index = Base } )
+
+--- Create a new instance
 function Render.create( ... )
     local self = setmetatable( {}, Render )
     self:_init( ... )
     return self
 end
 
+--- Initialize a new instance
 function Render:_init( ... )
     return self
 end
 
+--- Override key construction
 function Render:key( str )
+    assert( str, 'Failed to provide a string' )
     return 'spec-report-vivid-' .. str
 end
 
+--- Override realization of reported data for skip
 function Render:realizeSkip( src, lang )
+    assert( src, 'Failed to provide a source' )
 
     local html = mw.html.create( 'span' )
         :addClass( 'mw-spec-skip' )
@@ -33,7 +48,9 @@ function Render:realizeSkip( src, lang )
     return html
 end
 
+--- Override realization of reported data for todo
 function Render:realizeTodo( src, lang )
+    assert( src, 'Failed to provide a source' )
 
     local html = mw.html.create( 'span' )
         :addClass( 'mw-spec-todo' )
@@ -47,7 +64,9 @@ function Render:realizeTodo( src, lang )
     return html
 end
 
+--- Override realization of reported data for description
 function Render:realizeDescription( src, lang )
+    assert( src, 'Failed to provide a source' )
 
     local html = mw.html.create( 'span' )
         :addClass( 'mw-spec-description' )
@@ -61,7 +80,9 @@ function Render:realizeDescription( src, lang )
     return html
 end
 
+--- Override realization of reported data for state
 function Render:realizeState( src, lang )
+    assert( src, 'Failed to provide a source' )
 
     local html = mw.html.create( 'span' )
         :addClass( 'mw-spec-state' )
@@ -75,7 +96,10 @@ function Render:realizeState( src, lang )
     return html
 end
 
+--- Override realization of reported data for header
 function Render:realizeHeader( src, lang )
+    assert( src, 'Failed to provide a source' )
+
     local html = mw.html.create( 'div' )
         :addClass( 'mw-spec-header' )
         :node( self:realizeState( src, lang ) )
@@ -100,7 +124,10 @@ function Render:realizeHeader( src, lang )
     return html
 end
 
+--- Override realization of reported data for line
 function Render:realizeLine( param, lang )
+    assert( param, 'Failed to provide a parameter' )
+
     local html = mw.html.create( 'dd' )
         :addClass( 'mw-spec-line' )
 
@@ -113,9 +140,12 @@ function Render:realizeLine( param, lang )
     return html
 end
 
+--- Override realization of reported data for body
+-- The "body" is a composite.
 -- @todo this should probably be realize() as it should contain
--- the header as a dt
+-- the header as a "dt".
 function Render:realizeBody( src, lang )
+    assert( src, 'Failed to provide a source' )
 
     if src:numLines() > 0 then
         local html = mw.html.create( 'dl' )
@@ -135,5 +165,5 @@ function Render:realizeBody( src, lang )
     return ''
 end
 
-
+-- Return the final class
 return Render
