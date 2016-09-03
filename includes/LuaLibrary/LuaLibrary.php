@@ -62,10 +62,11 @@ class LuaLibrary extends Scribunto_LuaLibraryBase {
 	 * @return array
 	 */
 	public function register() {
+		global $wgSpecTrackIndicator;
 		return $this->getEngine()->registerInterface(
 			__DIR__ . '/lua/Spec.lua',
 			[ 'addResourceLoaderModules' => [ $this, 'addResourceLoaderModules' ] ],
-			[]
+			[ $wgSpecTrackIndicator ]
 		);
 	}
 

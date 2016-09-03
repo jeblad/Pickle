@@ -20,6 +20,7 @@ spec.constituent = require 'speclib/report/Constituent'
     end
 end
 --]]
+spec.extractors = require 'speclib/extractor/ExtractorStrategies'
 
 local export = {
     subject = spec.subject,

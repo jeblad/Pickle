@@ -125,6 +125,7 @@
 	"config": {
         "_prefix": "wgSpec",
 		"TrackObserverID": 3,
+		"Styles": [ "compact", "full", "vivid" ],
 		"TrackIndicator": [
 			{
 				"class": "Spec\\TrackIndicatorCommonStrategy",
