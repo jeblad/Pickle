@@ -1,6 +1,9 @@
 --- Baseclass for extractor strategies
 -- This should be a strategy pattern
 
+-- pure libs
+local Stack = require 'speclib/Stack'
+
 local ExtractorStrategies = {}
 function ExtractorStrategies:__index( key )
     return ExtractorStrategies[key]

@@ -125,7 +125,15 @@
 	"config": {
         "_prefix": "wgSpec",
 		"TrackObserverID": 3,
-		"Styles": [ "compact", "full", "vivid" ],
+		"RenderStyles": {
+			"compact": "speclib/render/compact",
+			"full": "speclib/render/full",
+			"vivid": "speclib/render/vivid"
+		},
+		"RenderTypes": {
+			"result": "ResultRenderStrategy",
+			"plan": "PlanRenderStrategy"
+		},
 		"TrackIndicator": [
 			{
 				"class": "Spec\\TrackIndicatorCommonStrategy",

@@ -11,7 +11,8 @@ spec.adapt = require 'speclib/engine/Adapt'
 spec.expect = require 'speclib/engine/Expect'
 spec.subject = require 'speclib/engine/Subject'
 spec.constituent = require 'speclib/report/Constituent'
---spec.renders = require 'speclib/render/Renders'
+spec.renders = require 'speclib/render/Renders'
+spec.frame = require 'speclib/engine/Frame'
 --local Plan = require 'speclib/report/Plan'
 --[[
     for k,v in pairs( util ) do
@@ -50,6 +51,14 @@ function spec.setupInterface( opts )
     mw = mw or {}
     mw.spec = spec
     package.loaded['mw.spec'] = spec
+
+    -- register render styles
+    for k,v in pairs( opts.styles ) do
+        local style = spec.renders:registerStyle( k )
+        for l,w in pairs( opts.types ) do
+            style:registerType( l, require( v .. '/' .. w ) )
+        end
+    end
 
     -- set up additional access points
     for k,v in pairs( export ) do

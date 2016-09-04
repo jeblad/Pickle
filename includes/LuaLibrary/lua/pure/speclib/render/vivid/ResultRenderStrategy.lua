@@ -1,39 +1,39 @@
 --- Subclass for report renderer
 
 -- pure libs
-local Base = require 'speclib/render/ResultBase'
+local Base = require 'speclib/render/ResultRenderBase'
 
 -- @var class var for lib
-local Render = {}
+local ResultRender = {}
 
 --- Lookup of missing class members
-function Render:__index( key )
-    return Render[key]
+function ResultRender:__index( key )
+    return ResultRender[key]
 end
 
 -- @var metatable for the class
-setmetatable( Render, { __index = Base } )
+setmetatable( ResultRender, { __index = Base } )
 
 --- Create a new instance
-function Render.create( ... )
-    local self = setmetatable( {}, Render )
+function ResultRender.create( ... )
+    local self = setmetatable( {}, ResultRender )
     self:_init( ... )
     return self
 end
 
 --- Initialize a new instance
-function Render:_init( ... )
+function ResultRender:_init( ... )
     return self
 end
 
 --- Override key construction
-function Render:key( str )
+function ResultRender:key( str )
     assert( str, 'Failed to provide a string' )
-    return 'spec-report-vivid-' .. str
+    return 'spec-report-result-vivid-' .. str
 end
 
 --- Override realization of reported data for skip
-function Render:realizeSkip( src, lang )
+function ResultRender:realizeSkip( src, lang )
     assert( src, 'Failed to provide a source' )
 
     local html = mw.html.create( 'span' )
@@ -49,7 +49,7 @@ function Render:realizeSkip( src, lang )
 end
 
 --- Override realization of reported data for todo
-function Render:realizeTodo( src, lang )
+function ResultRender:realizeTodo( src, lang )
     assert( src, 'Failed to provide a source' )
 
     local html = mw.html.create( 'span' )
@@ -65,7 +65,7 @@ function Render:realizeTodo( src, lang )
 end
 
 --- Override realization of reported data for description
-function Render:realizeDescription( src, lang )
+function ResultRender:realizeDescription( src, lang )
     assert( src, 'Failed to provide a source' )
 
     local html = mw.html.create( 'span' )
@@ -81,7 +81,7 @@ function Render:realizeDescription( src, lang )
 end
 
 --- Override realization of reported data for state
-function Render:realizeState( src, lang )
+function ResultRender:realizeState( src, lang )
     assert( src, 'Failed to provide a source' )
 
     local html = mw.html.create( 'span' )
@@ -97,7 +97,7 @@ function Render:realizeState( src, lang )
 end
 
 --- Override realization of reported data for header
-function Render:realizeHeader( src, lang )
+function ResultRender:realizeHeader( src, lang )
     assert( src, 'Failed to provide a source' )
 
     local html = mw.html.create( 'div' )
@@ -125,7 +125,7 @@ function Render:realizeHeader( src, lang )
 end
 
 --- Override realization of reported data for line
-function Render:realizeLine( param, lang )
+function ResultRender:realizeLine( param, lang )
     assert( param, 'Failed to provide a parameter' )
 
     local html = mw.html.create( 'dd' )
@@ -144,7 +144,7 @@ end
 -- The "body" is a composite.
 -- @todo this should probably be realize() as it should contain
 -- the header as a "dt".
-function Render:realizeBody( src, lang )
+function ResultRender:realizeBody( src, lang )
     assert( src, 'Failed to provide a source' )
 
     if src:numLines() > 0 then
@@ -166,4 +166,4 @@ function Render:realizeBody( src, lang )
 end
 
 -- Return the final class
-return Render
+return ResultRender

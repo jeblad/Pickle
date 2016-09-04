@@ -6,9 +6,9 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'speclib/render/compact/Result'
-local name = 'result'
-local class = 'Result'
+local lib = require 'speclib/render/compact/ResultRenderStrategy'
+local name = 'resultRender'
+local class = 'ResultRender'
 
 local fix = require 'speclib/report/Result'
 
@@ -56,16 +56,16 @@ local tests = {
 	},
 	{ name = name .. '.key ()', func = testKey,
 	  args = { 'foo' },
-	  expect = { 'spec-report-compact-foo' }
+	  expect = { 'spec-report-result-compact-foo' }
 	},
 	{ name = name .. '.body ok ()', func = testBodyOk,
 	  expect = { '' }
 	},
 	{ name = name .. '.body not ok ()', func = testBodyNotOk,
 	  expect = { "\n"
-			.. '(spec-report-compact-wrap-line: (foo))' .. "\n"
-			.. '(spec-report-compact-wrap-line: (bar))' .. "\n"
-			.. '(spec-report-compact-wrap-line: (baz))' }
+			.. '(spec-report-result-compact-wrap-line: (foo))' .. "\n"
+			.. '(spec-report-result-compact-wrap-line: (bar))' .. "\n"
+			.. '(spec-report-result-compact-wrap-line: (baz))' }
 	},
 }
 

@@ -6,9 +6,9 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'speclib/render/full/Result'
-local name = 'result'
-local class = 'Result'
+local lib = require 'speclib/render/full/ResultRenderStrategy'
+local name = 'resultRender'
+local class = 'ResultRender'
 
 local fix = require 'speclib/report/Result'
 
@@ -56,19 +56,19 @@ local tests = {
 	},
 	{ name = name .. '.key ()', func = testKey,
 	  args = { 'foo' },
-	  expect = { 'spec-report-full-foo' }
+	  expect = { 'spec-report-result-full-foo' }
 	},
 	{ name = name .. '.body ()', func = testBodyOk,
 	  expect = { "\n"
-			.. '(spec-report-full-wrap-line: (foo))' .. "\n"
-			.. '(spec-report-full-wrap-line: (bar))' .. "\n"
-			.. '(spec-report-full-wrap-line: (baz))' }
+			.. '(spec-report-result-full-wrap-line: (foo))' .. "\n"
+			.. '(spec-report-result-full-wrap-line: (bar))' .. "\n"
+			.. '(spec-report-result-full-wrap-line: (baz))' }
 	},
 	{ name = name .. '.body ()', func = testBodyNotOk,
 	  expect = { "\n"
-			.. '(spec-report-full-wrap-line: (foo))' .. "\n"
-			.. '(spec-report-full-wrap-line: (bar))' .. "\n"
-			.. '(spec-report-full-wrap-line: (baz))' }
+			.. '(spec-report-result-full-wrap-line: (foo))' .. "\n"
+			.. '(spec-report-result-full-wrap-line: (bar))' .. "\n"
+			.. '(spec-report-result-full-wrap-line: (baz))' }
 	},
 }
 

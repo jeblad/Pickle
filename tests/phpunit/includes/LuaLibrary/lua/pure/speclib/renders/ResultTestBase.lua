@@ -6,9 +6,9 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'speclib/render/ResultBase'
-local name = 'result'
-local class = 'Result'
+local lib = require 'speclib/render/ReportRenderBase'
+local name = 'reportRender'
+local class = 'ReportRender'
 
 local fix = require 'speclib/report/Result'
 
@@ -82,41 +82,41 @@ local tests = {
 	},
 	{ name = name .. '.state ()', func = testState,
 	  args = { false },
-	  expect = { '(spec-report-full-is-not-ok)' }
+	  expect = { '(spec-report-result-full-is-not-ok)' }
 	},
 	{ name = name .. '.state ()', func = testState,
 	  args = { true },
-	  expect = { '(spec-report-full-is-ok)' }
+	  expect = { '(spec-report-result-full-is-ok)' }
 	},
 	{ name = name .. '.skip ()', func = testSkip,
 	  args = { 'foo' },
-	  expect = { '(spec-report-full-wrap-skip: (foo))' }
+	  expect = { '(spec-report-result-full-wrap-skip: (foo))' }
 	},
 	{ name = name .. '.todo ()', func = testTodo,
 	  args = { 'bar' },
-	  expect = { '(spec-report-full-wrap-todo: bar)' }
+	  expect = { '(spec-report-result-full-wrap-todo: bar)' }
 	},
 	{ name = name .. '.description ()', func = testDescription,
 	  args = { 'baz' },
-	  expect = { '(spec-report-full-wrap-description: baz)' }
+	  expect = { '(spec-report-result-full-wrap-description: baz)' }
 	},
 	{ name = name .. '.header ()', func = testHeaderSkip,
 	  args = { 'baz' },
-	  expect = { '(spec-report-full-is-not-ok)'
-			.. '(spec-report-full-wrap-description: testing)'
-			.. '# (spec-report-full-wrap-skip: (baz))' }
+	  expect = { '(spec-report-result-full-is-not-ok)'
+			.. '(spec-report-result-full-wrap-description: testing)'
+			.. '# (spec-report-result-full-wrap-skip: (baz))' }
 	},
 	{ name = name .. '.header ()', func = testHeaderTodo,
 	  args = { 'baz' },
-	  expect = { '(spec-report-full-is-ok)'
-			.. '(spec-report-full-wrap-description: testing)'
-			.. '# (spec-report-full-wrap-todo: baz)' }
+	  expect = { '(spec-report-result-full-is-ok)'
+			.. '(spec-report-result-full-wrap-description: testing)'
+			.. '# (spec-report-result-full-wrap-todo: baz)' }
 	},
 	{ name = name .. '.body ()', func = testBody,
 	  expect = { "\n"
-			.. '(spec-report-full-wrap-line: (foo))' .. "\n"
-			.. '(spec-report-full-wrap-line: (bar))' .. "\n"
-			.. '(spec-report-full-wrap-line: (baz))' }
+			.. '(spec-report-result-full-wrap-line: (foo))' .. "\n"
+			.. '(spec-report-result-full-wrap-line: (bar))' .. "\n"
+			.. '(spec-report-result-full-wrap-line: (baz))' }
 	},
 }
 

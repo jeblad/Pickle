@@ -45,7 +45,7 @@ end
 function Plan:_init( ... )
     Constituent._init( self, ... )
     self._constituents = Stack.create()
-    self._type = 'Plan'
+    self._type = 'plan'
     return self
 end
 

@@ -1,39 +1,39 @@
 --- Subclass for report renderer
 
 -- pure libs
-local Base = require 'speclib/render/ResultBase'
+local Base = require 'speclib/render/ResultRenderBase'
 
 -- @var class var for lib
-local Render = {}
+local ResultRender = {}
 
 --- Lookup of missing class members
-function Render:__index( key )
-    return Render[key]
+function ResultRender:__index( key )
+    return ResultRender[key]
 end
 
 -- @var metatable for the class
-setmetatable( Render, { __index = Base } )
+setmetatable( ResultRender, { __index = Base } )
 
 --- Create a new instance
-function Render.create( ... )
-    local self = setmetatable( {}, Render )
+function ResultRender.create( ... )
+    local self = setmetatable( {}, ResultRender )
     self:_init( ... )
     return self
 end
 
 --- Initialize a new instance
-function Render:_init( ... )
+function ResultRender:_init( ... )
     return self
 end
 
 --- Override key construction
-function Render:key( str )
+function ResultRender:key( str )
     assert( str, 'Failed to provide a string' )
-    return 'spec-report-compact-' .. str
+    return 'spec-report-result-compact-' .. str
 end
 
 --- Override realization of reported data for body
-function Render:realizeBody( src, lang )
+function ResultRender:realizeBody( src, lang )
     assert( src, 'Failed to provide a source' )
 
     if src:isOk() then
@@ -52,4 +52,4 @@ function Render:realizeBody( src, lang )
 end
 
 -- Return the final class
-return Render
+return ResultRender

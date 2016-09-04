@@ -6,9 +6,9 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'speclib/render/vivid/Result'
-local name = 'result'
-local class = 'Result'
+local lib = require 'speclib/render/vivid/ResultRenderStrategy'
+local name = 'resultRender'
+local class = 'ResultRender'
 
 local fix = require 'speclib/report/Result'
 
@@ -91,51 +91,51 @@ local tests = {
 	},
 	{ name = name .. '.key ()', func = testKey,
 	  args = { 'foo' },
-	  expect = { 'spec-report-vivid-foo' }
+	  expect = { 'spec-report-result-vivid-foo' }
 	},
 	{ name = name .. '.state ()', func = testState,
 	  args = { false },
 	  expect = { '<span class="mw-spec-state" lang="qqx">'
-			.. '(spec-report-vivid-is-not-ok)'
+			.. '(spec-report-result-vivid-is-not-ok)'
 			.. '</span>' }
 	},
 	{ name = name .. '.state ()', func = testState,
 	  args = { true },
 	  expect = { '<span class="mw-spec-state" lang="qqx">'
-			.. '(spec-report-vivid-is-ok)'
+			.. '(spec-report-result-vivid-is-ok)'
 			.. '</span>' }
 	},
 	{ name = name .. '.skip ()', func = testSkip,
 	  args = { 'foo' },
 	  expect = { '<span class="mw-spec-skip" lang="qqx">'
-			.. '(spec-report-vivid-wrap-skip: (foo))'
+			.. '(spec-report-result-vivid-wrap-skip: (foo))'
 			.. '</span>' }
 	},
 	{ name = name .. '.todo ()', func = testTodo,
 	  args = { 'bar' },
 	  expect = { '<span class="mw-spec-todo" lang="qqx">'
-			.. '(spec-report-vivid-wrap-todo: bar)'
+			.. '(spec-report-result-vivid-wrap-todo: bar)'
 			.. '</span>'  }
 	},
 	{ name = name .. '.description ()', func = testDescription,
 	  args = { 'baz' },
 	  expect = { '<span class="mw-spec-description" lang="qqx">'
-			.. '(spec-report-vivid-wrap-description: baz)'
+			.. '(spec-report-result-vivid-wrap-description: baz)'
 			.. '</span>' }
 	},
 	{ name = name .. '.header ()', func = testHeaderSkip,
 	  args = { 'baz' },
 	  expect = { '<div class="mw-spec-header">'
 			.. '<span class="mw-spec-state" lang="qqx">'
-			.. '(spec-report-vivid-is-not-ok)'
+			.. '(spec-report-result-vivid-is-not-ok)'
 			.. '</span>'
 			.. '<span class="mw-spec-description" lang="qqx">'
-			.. '(spec-report-vivid-wrap-description: testing)'
+			.. '(spec-report-result-vivid-wrap-description: testing)'
 			.. '</span>'
 			.. '<span class="mw-spec-comment">'
 			.. '# '
 			.. '<span class="mw-spec-skip" lang="qqx">'
-			.. '(spec-report-vivid-wrap-skip: (baz))'
+			.. '(spec-report-result-vivid-wrap-skip: (baz))'
 			.. '</span>'
 			.. '</span>'
 			.. '</div>' }
@@ -144,31 +144,31 @@ local tests = {
 	  args = { 'baz' },
 	  expect = { '<div class="mw-spec-header">'
 			.. '<span class="mw-spec-state" lang="qqx">'
-			.. '(spec-report-vivid-is-ok)'
+			.. '(spec-report-result-vivid-is-ok)'
 			.. '</span>'
 			.. '<span class="mw-spec-description" lang="qqx">'
-			.. '(spec-report-vivid-wrap-description: testing)'
+			.. '(spec-report-result-vivid-wrap-description: testing)'
 			.. '</span>'
 			.. '<span class="mw-spec-comment">'
 			.. '# '
 			.. '<span class="mw-spec-todo" lang="qqx">'
-			.. '(spec-report-vivid-wrap-todo: baz)'
+			.. '(spec-report-result-vivid-wrap-todo: baz)'
 			.. '</span>'
 			.. '</span>'
 			.. '</div>' }
 	},
 	{ name = name .. '.body ()', func = testBodyOk,
 	  expect = { '<dl class="mw-spec-body">'
-			.. '<dd class="mw-spec-line" lang="qqx">(spec-report-vivid-wrap-line: (foo))</dd>'
-			.. '<dd class="mw-spec-line" lang="qqx">(spec-report-vivid-wrap-line: (bar))</dd>'
-			.. '<dd class="mw-spec-line" lang="qqx">(spec-report-vivid-wrap-line: (baz))</dd>'
+			.. '<dd class="mw-spec-line" lang="qqx">(spec-report-result-vivid-wrap-line: (foo))</dd>'
+			.. '<dd class="mw-spec-line" lang="qqx">(spec-report-result-vivid-wrap-line: (bar))</dd>'
+			.. '<dd class="mw-spec-line" lang="qqx">(spec-report-result-vivid-wrap-line: (baz))</dd>'
 			.. '</dl>' }
 	},
 	{ name = name .. '.body ()', func = testBodyNotOk,
 	  expect = { '<dl class="mw-spec-body" style="display:none">'
-			.. '<dd class="mw-spec-line" lang="qqx">(spec-report-vivid-wrap-line: (foo))</dd>'
-			.. '<dd class="mw-spec-line" lang="qqx">(spec-report-vivid-wrap-line: (bar))</dd>'
-			.. '<dd class="mw-spec-line" lang="qqx">(spec-report-vivid-wrap-line: (baz))</dd>'
+			.. '<dd class="mw-spec-line" lang="qqx">(spec-report-result-vivid-wrap-line: (foo))</dd>'
+			.. '<dd class="mw-spec-line" lang="qqx">(spec-report-result-vivid-wrap-line: (bar))</dd>'
+			.. '<dd class="mw-spec-line" lang="qqx">(spec-report-result-vivid-wrap-line: (baz))</dd>'
 			.. '</dl>' }
 	},
 }

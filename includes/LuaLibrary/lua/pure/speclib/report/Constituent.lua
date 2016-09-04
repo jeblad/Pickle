@@ -17,7 +17,7 @@ end
 
 --- Initialize a new instance
 function Constituent:_init( ... )
-    self._type = 'Constituent'
+    self._type = 'constituent'
     return self
 end
 

@@ -41,7 +41,7 @@ function Result:_init( ... )
     self._todo = false
     self._lang = false
     self._lines:push( ... )
-    self._type = 'Result'
+    self._type = 'result'
     return self
 end
 

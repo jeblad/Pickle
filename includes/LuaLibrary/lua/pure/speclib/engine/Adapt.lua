@@ -22,11 +22,6 @@ function Adapt:__index( key )
     return Adapt[key]
 end
 
---- Transform names in camel case into hyphen separated keys
-local function buildName( str )
-	return str:gsub("([A-Z])", function(str) return '-'..string.lower(str) end )
-end
-
 --- Create a new instance
 function Adapt.create( ... )
     local self = setmetatable( {}, Adapt )
@@ -108,7 +103,7 @@ end
 -- The delayed function comes from the provided definition.
 local function makeGeneralProcess( name, func )
     local f = function( self )
-        self:report():addLine( 'spec-adapt-process-'..buildName( name ) )
+        self:report():addLine( 'spec-adapt-process-'..util.buildName( name ) )
         self:addProcess( func )
         return self
     end
@@ -254,7 +249,7 @@ end
 local function makeConditionProcess( name, func, other )
     local f = function( self )
         local report = self:report()
-        self:report():addLine( 'spec-adapt-condition-'..buildName( name ) )
+        self:report():addLine( 'spec-adapt-condition-'..util.buildName( name ) )
         self:report():addLine( mw.dumpObject({ self:reorder( self:eval(), other or self:other() ) }) )
         local final = func( self:reorder( self:eval(), other or self:other() ) )
         if final then

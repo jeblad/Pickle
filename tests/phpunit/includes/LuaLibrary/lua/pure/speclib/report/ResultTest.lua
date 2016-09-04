@@ -8,7 +8,7 @@ local testframework = require 'Module:TestFramework'
 
 local lib = require 'speclib/report/Result'
 local name = 'result'
-local class = 'Result'
+local class = 'result'
 
 local function makeTest( ... )
 	return lib.create( ... )

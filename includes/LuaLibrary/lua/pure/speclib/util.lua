@@ -5,6 +5,13 @@
 -- @var Table holding the modules exported members
 local util = {}
 
+--- Transform names in camel case into hyphen separated keys
+-- @param string in camel case
+-- @return hyphenated string
+function util.buildName( str )
+	return str:gsub("([A-Z])", function(str) return '-'..string.lower(str) end )
+end
+
 -- raw count of all the items in the provided table
 -- @provenance reformatted exported version of 'local function count(t)' in Moses
 -- @param t table that has its entries counted
