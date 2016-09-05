@@ -22,15 +22,23 @@ end
 
 --- Initialize a new instance
 function Extractor:_init()
-    Base._init( self, '[%d]+[.]?[%d]*' )
+    Base._init( self,
+        { '^[-+]?%d+%.%d+$', 0, 0 },
+        { '^[-+]?%d+%.%d+[%s%p]', 0, -1 },
+        { '[%s%p][-+]?%d+%.%d+$', 1, 0 },
+        { '[%s%p][-+]?%d+%.%d+[%s%p]', 1, -1 },
+        { '^[-+]?%d+$', 0, 0 },
+        { '^[-+]?%d+[%s%p]', 0, -1 },
+        { '[%s%p][-+]?%d+$', 1, 0 },
+        { '[%s%p][-+]?%d+[%s%p]', 1, -1 } )
+    self._type = 'number'
     return self
 end
 
 --- Cast the string into the correct type for this strategy
 -- There are no safeguards for erroneous casts
-function Extractor:cast( str )
-    error( 'Failed to provide a string' )
-    return tonumber( str )
+function Extractor:cast( str, start, finish )
+    return tonumber( mw.ustring.sub( str, start, finish ) )
 end
 
 -- Return the final class
