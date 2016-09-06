@@ -55,9 +55,9 @@ function spec.setupInterface( opts )
     package.loaded['mw.spec'] = spec
 
     -- register render styles
-    for k,v in pairs( opts.styles ) do
+    for k,v in pairs( opts.renderStyles ) do
         local style = spec.renders:registerStyle( k )
-        for l,w in pairs( opts.types ) do
+        for l,w in pairs( opts.renderTypes ) do
             style:registerType( l, require( v .. '/' .. w ) )
         end
     end

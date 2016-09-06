@@ -70,8 +70,8 @@ class LuaLibrary extends Scribunto_LuaLibraryBase {
 			__DIR__ . '/lua/non-pure/Spec.lua',
 			[ 'addResourceLoaderModules' => [ $this, 'addResourceLoaderModules' ] ],
 			[
-				'styles' => $wgSpecRenderStyles,
-				'types' => $wgSpecRenderTypes,
+				'renderStyles' => $wgSpecRenderStyles,
+				'renderTypes' => $wgSpecRenderTypes,
 				'extractorStrategies' => $wgSpecExtractorStrategy ]
 		);
 	}
