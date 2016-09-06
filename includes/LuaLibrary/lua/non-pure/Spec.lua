@@ -21,7 +21,9 @@ spec.frame = require 'speclib/engine/Frame'
     end
 end
 --]]
-spec.extractors = require 'speclib/extractor/Extractors'
+
+-- require libs and create an instance
+spec.extractors = require( 'speclib/extractor/Extractors' ).create()
 
 local export = {
     subject = spec.subject,
@@ -59,6 +61,12 @@ function spec.setupInterface( opts )
             style:registerType( l, require( v .. '/' .. w ) )
         end
     end
+
+    -- register extractor types
+    for _,v in ipairs( opts.extractorStrategies ) do
+        local style = spec.extractors:register( require( v ).create() )
+    end
+
 
     -- set up additional access points
     for k,v in pairs( export ) do

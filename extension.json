@@ -134,6 +134,13 @@
 			"result": "ResultRenderStrategy",
 			"plan": "PlanRenderStrategy"
 		},
+		"ExtractorStrategy": [
+			"speclib/extractor/NilExtractorStrategy",
+			"speclib/extractor/FalseExtractorStrategy",
+			"speclib/extractor/TrueExtractorStrategy",
+			"speclib/extractor/StringExtractorStrategy",
+			"speclib/extractor/NumberExtractorStrategy"
+		],
 		"TrackIndicator": [
 			{
 				"class": "Spec\\TrackIndicatorCommonStrategy",

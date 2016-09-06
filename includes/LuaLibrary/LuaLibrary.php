@@ -64,10 +64,15 @@ class LuaLibrary extends Scribunto_LuaLibraryBase {
 	public function register() {
 		global $wgSpecRenderStyles;
 		global $wgSpecRenderTypes;
+		global $wgSpecExtractorStrategy;
+
 		return $this->getEngine()->registerInterface(
-			__DIR__ . '/lua/Spec.lua',
+			__DIR__ . '/lua/non-pure/Spec.lua',
 			[ 'addResourceLoaderModules' => [ $this, 'addResourceLoaderModules' ] ],
-			[ 'styles' => $wgSpecRenderStyles, 'types' => $wgSpecRenderTypes ]
+			[
+				'styles' => $wgSpecRenderStyles,
+				'types' => $wgSpecRenderTypes,
+				'extractorStrategies' => $wgSpecExtractorStrategy ]
 		);
 	}
 

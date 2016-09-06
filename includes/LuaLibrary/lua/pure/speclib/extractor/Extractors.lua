@@ -35,20 +35,23 @@ function Extractors:register( strategy )
 end
 
 function Extractors:find( str, pos )
-    assert( str, 'Failed to provide a string' )
+    --assert( str, 'Failed to provide a string' )
     local first = mw.ustring.len( str ) + 1
     local last
     local strategy = nil
     for _,v in ipairs( { self._strategies:export() } ) do
-        local start, finish = v:find( str, pos )
-        if start<first then
+        local start, finish = v:find( str, pos or 1 )
+        if start and start<first then
             first = start
             last = finish
             strategy = v
         end
     end
 
-    return strategy, first, last
+    if strategy then
+        return strategy, first, last
+    end
+    return nil
 end
 
 -- Return the final class
