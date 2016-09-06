@@ -38,6 +38,9 @@ end
 --- Cast the string into the correct type for this strategy
 -- There are no safeguards for erroneous casts
 function Extractor:cast( str, start, finish )
+    if not finish then
+        start, finish = self:find( str, (start or 1) )
+    end
     return tonumber( mw.ustring.sub( str, start, finish ) )
 end
 

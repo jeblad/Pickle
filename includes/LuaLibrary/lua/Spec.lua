@@ -21,7 +21,7 @@ spec.frame = require 'speclib/engine/Frame'
     end
 end
 --]]
-spec.extractors = require 'speclib/extractor/ExtractorStrategies'
+spec.extractors = require 'speclib/extractor/Extractors'
 
 local export = {
     subject = spec.subject,
