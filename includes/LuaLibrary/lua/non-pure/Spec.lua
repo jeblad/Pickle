@@ -23,7 +23,7 @@ end
 --]]
 
 -- require libs and create an instance
-spec.extractors = require( 'speclib/extractor/Extractors' ).create()
+spec.extractors = require( 'speclib/extractor/ExtractorStrategies' ).create()
 
 local export = {
     subject = spec.subject,

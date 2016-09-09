@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'speclib/extractor/Extractors'
+local lib = require 'speclib/extractor/ExtractorStrategies'
 local name = 'extractor'
 
 local function makeTest( ... )
