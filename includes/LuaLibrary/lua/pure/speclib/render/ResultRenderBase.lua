@@ -68,7 +68,7 @@ function ResultRender:realizeTodo( src, lang )
         return ''
     end
 
-    local realization = src:getTodo()
+    local realization = mw.text.encode( src:getTodo() )
     local outer = mw.message.new( self:key( 'wrap-todo' ), realization )
 
     if lang then
@@ -91,7 +91,7 @@ function ResultRender:realizeDescription( src, lang )
         return ''
     end
 
-    local realization = src:getDescription()
+    local realization = mw.text.encode( src:getDescription() )
     local outer = mw.message.new( self:key( 'wrap-description' ), realization )
 
     if lang then
@@ -156,6 +156,8 @@ function ResultRender:realizeLine( param, lang )
     if not inner:isDisabled() then
         realization = inner:plain()
     end
+
+    realization = mw.text.encode( realization )
 
     local outer = mw.message.new( self:key( 'wrap-line' ), realization )
 

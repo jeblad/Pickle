@@ -141,7 +141,7 @@ This subsystem is central to proper operation of the extension.
 ## render
 This is a set of classes for rendering reports in the proper format. It contains sets of renderers for a specific _style_ and for each _type_ of report. Each style is in a different named folder, with libraries for rendering a specific report (a type) being called the same in all folders. There are three types that covers most of the use cases; [compact](https://github.com/jeblad/spec/tree/master/includes/LuaLibrary/lua/pure/speclib/render/compact), [full](https://github.com/jeblad/spec/tree/master/includes/LuaLibrary/lua/pure/speclib/render/full), and [vivid](https://github.com/jeblad/spec/tree/master/includes/LuaLibrary/lua/pure/speclib/render/vivid). The compact style is for interactive use in the test console. The full style is for text views where it is necessary to include all details, typically for integration with other systems. The vivid style is for use in the parser function.
 
-Routines for this subsystem has paths from source to sink, and should escape text before it is returned.
+Routines for this subsystem has paths from source to sink, and should escape text if necessary before it is returned. Still note that this subsystem will only be able to display its output after sanitizion, so there isn't any real security risk only a need to aoid messing up the output.
 
 This subsystem is central to proper operation of the extension.
 
