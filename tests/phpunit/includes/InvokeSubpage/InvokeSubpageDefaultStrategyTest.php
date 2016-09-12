@@ -23,7 +23,7 @@ class InvokeSubpageDefaultStrategyTest extends InvokeSubpageStrategyTestCase {
 		$test = new InvokeSubpageDefaultStrategy( $this->conf );
 		$str = $test->getSubpagePrefixedText( $this->stub )->inLanguage( 'qqx' )->plain();
 		$this->assertContains( 'spec-default-subpage', $str );
-		$this->assertContains( 'bar:baz', $str );
+		$this->assertContains( 'Scribunto:baz', $str );
 	}
 
 	public function testOnGetSubpageBaseText() {
@@ -33,11 +33,18 @@ class InvokeSubpageDefaultStrategyTest extends InvokeSubpageStrategyTestCase {
 		$this->assertContains( 'foo', $str );
 	}
 
+	public function testOnGetSubpageTitle() {
+		$test = new InvokeSubpageDefaultStrategy( $this->conf );
+		$title = $test->getSubpageTitle( $this->stub );
+		$this->assertEquals( 'Title', get_class( $title ) );
+		$this->assertEquals( 'Scribunto:baz/spec', $title->getText() );
+	}
+
 	public function testOnGetInvoke() {
 		$test = new InvokeSubpageDefaultStrategy( $this->conf );
 		$str = $test->getInvoke( $this->stub )->inLanguage( 'qqx' )->plain();
 		$this->assertContains( 'spec-default-invoke', $str );
-		$this->assertContains( 'foo', $str );
+		$this->assertContains( 'foo/spec', $str );
 	}
 
 	public function testOnCheckType() {
@@ -46,6 +53,12 @@ class InvokeSubpageDefaultStrategyTest extends InvokeSubpageStrategyTestCase {
 		$this->assertTrue( $bool );
 		$bool = $test->checkType( $this->stub );
 		$this->assertTrue( $bool );
+	}
+
+	public function testOnCheckSubpageType() {
+		$test = new InvokeSubpageDefaultStrategy( $this->conf );
+		// this is the wrong type, but it verifies that the title is created
+		$this->assertTrue( $test->checkSubpageType( $this->stub, 'wikitext' ) );
 	}
 
 	public function testOnGetTesterQuestion() {
@@ -58,6 +71,6 @@ class InvokeSubpageDefaultStrategyTest extends InvokeSubpageStrategyTestCase {
 		$test = new InvokeSubpageDefaultStrategy( $this->conf );
 		$call = $test->getTesteeQuestion( $this->stub );
 		$this->assertContains( 'tester', $call );
-		$this->assertContains( 'bar:baz', $call );
+		$this->assertContains( 'Scribunto:baz', $call );
 	}
 }

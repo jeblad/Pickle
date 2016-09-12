@@ -44,7 +44,9 @@ class TrackLogEntryStrategies extends Singletons {
 		$currentKey = $parserOutput->getExtensionData( 'spec-status-current' );
 		$previousKey = $parserOutput->getExtensionData( 'spec-status-previous' );
 
-		if ( $currentKey !== null && $currentKey !== $previousKey ) {
+		if ( $currentKey !== null
+				&& $currentKey !== $previousKey
+				&& in_array( $currentType, [ 'normal' ] ) ) {
 			$strategy = self::getInstance()->find( $currentKey );
 			if ( $strategy === null ) {
 				return true;

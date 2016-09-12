@@ -35,6 +35,13 @@ class InvokeSubpageDefaultStrategy implements IInvokeSubpageStrategy {
 	}
 
 	/**
+	 * @see \Spec\IInvokeSubpageStrategy::checkSubpageType()
+	 */
+	public function checkSubpageType( \Title &$title, $type = null ) {
+		return true;
+	}
+
+	/**
 	 * @see \Spec\IInvokeSubpageStrategy::getInvoke()
 	 */
 	public function getInvoke( \Title &$title ) {
@@ -56,6 +63,13 @@ class InvokeSubpageDefaultStrategy implements IInvokeSubpageStrategy {
 	public function getSubpageBaseText( \Title &$title ) {
 		$baseText = $title->getBaseText();
 		return wfMessage( 'spec-default-subpage', $baseText );
+	}
+
+	/**
+	 * @see \Spec\IInvokeSubpageStrategy::getSubpageTitle()
+	 */
+	public function getSubpageTitle( \Title &$title ) {
+		return \Title::newFromText( $this->getSubpagePrefixedText( $title )->plain() );
 	}
 
 	/**

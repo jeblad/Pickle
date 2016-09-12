@@ -14,7 +14,7 @@ class InvokeSubpageStrategyTestCase extends \MediaWikiTestCase {
 		$this->stub
 			->expects( $this->any() )
 			->method( 'getPrefixedText' )
-			->will( $this->returnValue( 'bar:baz' ) );
+			->will( $this->returnValue( 'Scribunto:baz' ) );
 		$this->stub
 			->expects( $this->any() )
 			->method( 'getBaseText' )

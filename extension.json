@@ -141,6 +141,13 @@
 			"speclib/extractor/StringExtractorStrategy",
 			"speclib/extractor/NumberExtractorStrategy"
 		],
+		"NeglectPages": [
+			"/doc",
+			"/conf",
+			"/data",
+			"/i18n",
+			"/l10n"
+		],
 		"TrackIndicator": [
 			{
 				"class": "Spec\\TrackIndicatorCommonStrategy",
@@ -153,6 +160,14 @@
 			{
 				"class": "Spec\\TrackIndicatorCommonStrategy",
 				"name": "good"
+			},
+			{
+				"class": "Spec\\TrackIndicatorCommonStrategy",
+				"name": "exists"
+			},
+			{
+				"class": "Spec\\TrackIndicatorCommonStrategy",
+				"name": "missing"
 			},
 			{
 				"class": "Spec\\TrackIndicatorDefaultStrategy"
@@ -172,6 +187,14 @@
 				"name": "good"
 			},
 			{
+				"class": "Spec\\TrackCategoryCommonStrategy",
+				"name": "exists"
+			},
+			{
+				"class": "Spec\\TrackCategoryCommonStrategy",
+				"name": "missing"
+			},
+			{
 				"class": "Spec\\TrackCategoryDefaultStrategy"
 			}
 		],
@@ -189,6 +212,14 @@
 				"name": "good"
 			},
 			{
+				"class": "Spec\\TrackLogEntryCommonStrategy",
+				"name": "exists"
+			},
+			{
+				"class": "Spec\\TrackLogEntryCommonStrategy",
+				"name": "missing"
+			},
+			{
 				"class": "Spec\\TrackLogEntryDefaultStrategy"
 			}
 		],
@@ -196,7 +227,12 @@
 			{
 				"class": "Spec\\InvokeSubpageByContentTypeStrategy",
 				"type": "Scribunto",
-				"name": "test"
+				"name": "testspec"
+			},
+			{
+				"class": "Spec\\InvokeSubpageByContentTypeStrategy",
+				"type": "Scribunto",
+				"name": "testcase"
 			},
 			{
 				"class": "Spec\\InvokeSubpageDefaultStrategy"

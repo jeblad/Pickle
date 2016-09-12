@@ -16,6 +16,14 @@ interface IInvokeSubpageStrategy {
 	public function checkType( \Title &$title );
 
 	/**
+	 * Checks if the subpage title has the strategys stored type
+	 *
+	 * @param Title $title
+	 * @return boolean
+	 */
+	public function checkSubpageType( \Title &$title );
+
+	/**
 	 * Get the invoke
 	 * It is parsed as wikitext, and will most likely contain an invoke call.
 	 *
@@ -39,6 +47,14 @@ interface IInvokeSubpageStrategy {
 	 * @return Message
 	 */
 	public function getSubpageBaseText( \Title &$title );
+
+	/**
+	 * Get the SubpageTitle
+	 * The prefixed text is interpreted as the text for a title.
+	 *
+	 * @return Title
+	 */
+	public function getSubpageTitle( \Title &$title );
 
 	/**
 	 * Get the question part of the console call for the tester

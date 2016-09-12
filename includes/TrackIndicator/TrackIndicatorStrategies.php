@@ -48,7 +48,8 @@ class TrackIndicatorStrategies extends Singletons {
 		$subpageMsg = $parserOutput->getExtensionData( 'spec-subpage-message' );
 		$currentType = $parserOutput->getExtensionData( 'spec-page-type' );
 
-		if ( $currentKey !== null && in_array( $currentType, [ 'normal', 'test' ] ) ) {
+		if ( $currentKey !== null
+				&& in_array( $currentType, [ 'normal', 'test' ] ) ) {
 			$strategy = self::getInstance()->find( $currentKey );
 			if ( $strategy === null ) {
 				return true;

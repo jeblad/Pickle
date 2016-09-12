@@ -108,10 +108,10 @@ abstract class TrackIndicatorBaseStrategy implements ITrackIndicatorStrategy {
 	public function addIndicator( \Title $title = null, \OutputPage &$out ) {
 		$elem = null;
 
-		if ( $title !== null ) {
-			$elem = $this->makeLink( $title->getLocalURL() );
-		} else {
+		if ( $title === null ) {
 			$elem = $this->makeNote();
+		} else {
+			$elem = $this->makeLink( $title->getLocalURL() );
 		}
 
 		if ( $elem !== null ) {

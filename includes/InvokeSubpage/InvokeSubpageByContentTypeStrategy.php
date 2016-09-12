@@ -33,11 +33,22 @@ class InvokeSubpageByContentTypeStrategy implements IInvokeSubpageStrategy {
 	}
 
 	/**
+	 * @see \Spec\IInvokeSubpageStrategy::checkSubpageType()
+	 */
+	public function checkSubpageType( \Title &$title, $type = null ) {
+		// this will be cached
+		$subpage = \Title::newFromText( $this->getSubpagePrefixedText( $title )->plain() );
+		return ( $type === null
+			? ( $subpage->exists() && $subpage->getContentModel() === $this->opts['type'] )
+			: ( $subpage->getContentModel() === $type ) );
+	}
+
+	/**
 	 * @see \Spec\IInvokeSubpageStrategy::getInvoke()
 	 */
 	public function getInvoke( \Title &$title ) {
 		$subpage = $this->getSubpageBaseText( $title );
-		// @message spec-spec-invoke
+		// @message spec-spectype-invoke
 		return wfMessage( 'spec-' . $this->opts['name'] . '-invoke', $subpage->plain() );
 	}
 
@@ -46,7 +57,7 @@ class InvokeSubpageByContentTypeStrategy implements IInvokeSubpageStrategy {
 	 */
 	public function getSubpagePrefixedText( \Title &$title ) {
 		$text = $title->getPrefixedText();
-		// @message spec-spec-subpage
+		// @message spec-spectype-subpage
 		return wfMessage( 'spec-' . $this->opts['name'] . '-subpage', $text );
 	}
 
@@ -55,8 +66,15 @@ class InvokeSubpageByContentTypeStrategy implements IInvokeSubpageStrategy {
 	 */
 	public function getSubpageBaseText( \Title &$title ) {
 		$baseText = $title->getBaseText();
-		// @message spec-spec-subpage
+		// @message spec-spectype-subpage
 		return wfMessage( 'spec-' . $this->opts['name'] . '-subpage', $baseText );
+	}
+
+	/**
+	 * @see \Spec\IInvokeSubpageStrategy::getSubpageTitle()
+	 */
+	public function getSubpageTitle( \Title &$title ) {
+		return \Title::newFromText( $this->getSubpagePrefixedText( $title )->plain() );
 	}
 
 	/**

@@ -48,7 +48,8 @@ class TrackCategoryStrategies extends Singletons {
 		$currentKey = $parserOutput->getExtensionData( 'spec-status-current' );
 		$currentType = $parserOutput->getExtensionData( 'spec-page-type' );
 
-		if ( $currentKey !== null && $currentType === 'normal' ) {
+		if ( $currentKey !== null
+				&& in_array( $currentType, [ 'normal' ] ) ) {
 			$strategy = self::getInstance()->find( $currentKey );
 			if ( $strategy === null ) {
 				return true;

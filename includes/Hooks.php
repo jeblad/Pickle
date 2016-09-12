@@ -21,14 +21,8 @@ class Hooks {
 		IInvokeSubpageStrategy $strategy,
 		\Title $title
 	) {
-		// get the message containing the invoke call
-		$invokeMsg = $strategy->getInvoke( $title );
-		if ( $invokeMsg->isDisabled() ) {
-			return null;
-		}
-
 		// try to squash the text into submission
-		$text = $invokeMsg->parse();
+		$text = $strategy->getInvoke( $title )->parse();
 		$tapStrategy = TestAnythingProtocolStrategies::getInstance()->find( $text );
 		if ( $tapStrategy !== null ) {
 			$text = $tapStrategy->parse( $text );
@@ -51,18 +45,21 @@ class Hooks {
 		\Title $title,
 		\ParserOutput $parserOutput
 	) {
+		global $wgSpecNeglectPages;
 
-		// If there is no title, then bail out
-		if ( $title === null ) {
+		// Try to bail out early
+		if ( $title === null
+			|| $title->getArticleID() === 0
+			|| $title->getContentModel() !== CONTENT_MODEL_SCRIBUNTO ) {
 			return true;
 		}
-		if ( $title->getArticleID() === 0 ) {
-			return true;
-		}
 
-		// If the content model is wrong, then bail out
-		if ( $title->getContentModel() !== CONTENT_MODEL_SCRIBUNTO ) {
-			return true;
+		// @todo refactor, this is a quick fix
+		$text = $title->getText();
+		foreach ( $wgSpecNeglectPages as $pattern ) {
+			if ( strpos( $text, $pattern ) !== false ) {
+				return true;
+			}
 		}
 
 		// try to find a subpage to invoke
@@ -71,47 +68,71 @@ class Hooks {
 			return true;
 		}
 
-		// check if this page is a subpage itself
-		$baseTitle = $title->getBaseTitle();
-		if ( $baseTitle !== null ) {
-			$baseInvokeStrategy = InvokeSubpageStrategies::getInstance()->find( $baseTitle );
-			if ( $baseInvokeStrategy !== null ) {
-				$maybePageMsg = $invokeStrategy->getSubpagePrefixedText( $baseTitle );
-				if ( ! $maybePageMsg->isDisabled() ) {
-					$maybePage = $maybePageMsg->plain();
-					if ( $maybePage == $title->getPrefixedText() ) {
-						wfDebug( 'uses the base page' );
+		// subpages need special handling
+		if ( $title->isSubpage() ) {
+			// check if this page is a valid subpage itself
+			$baseTitle = $title->getBaseTitle();
+			if ( $baseTitle !== null ) {
+				$baseInvokeStrategy = InvokeSubpageStrategies::getInstance()->find( $baseTitle );
+				if ( $baseInvokeStrategy !== null ) {
+					$maybePageMsg = $baseInvokeStrategy->getSubpagePrefixedText( $baseTitle );
+					if ( ! $maybePageMsg->isDisabled() ) {
+						$maybePage = $maybePageMsg->plain();
+						if ( $maybePage == $title->getPrefixedText() ) {
 
-						// fast forward
-						$statusStrategy = self::getFinalStrategy( $baseInvokeStrategy, $baseTitle );
-						if ( $statusStrategy === null ) {
+							// at this point the page type is "normal"
+							$parserOutput->setExtensionData( 'spec-page-type', 'test' );
+
+							// if invocation is disabled, then the state will be set to "exists" or "missing"
+							if ( $baseInvokeStrategy->getInvoke( $baseTitle )->isDisabled() ) {
+								$parserOutput->setExtensionData( 'spec-status-current',
+									'unknown' );
+								return true;
+							}
+
+							// if status isn't found, then the state will be set to "unknown"
+							$statusStrategy = self::getFinalStrategy( $baseInvokeStrategy, $baseTitle );
+							if ( $statusStrategy === null ) {
+								$parserOutput->setExtensionData( 'spec-status-current',
+									'unknown' );
+								return true;
+							}
+
+							// default when nothing goes wrong
+							$parserOutput->setExtensionData( 'spec-status-current',
+								$statusStrategy->getName() );
+
+							// $out->addHelpLink( '//mediawiki.org/wiki/Special:MyLanguage/Help:Spec', true );
 							return true;
 						}
-
-						wfDebug( 'passed fast forward' );
-						$parserOutput->setExtensionData( 'spec-status-current',
-							$statusStrategy->getName() );
-						$parserOutput->setExtensionData( 'spec-page-type',
-							'test' );
-
-						$parserOutput->setExtensionData( 'spec-console-question',
-							$invokeStrategy->getTesterQuestion( $title ) );
-
-						wfDebug( 'more or less done' );
-						// $out->addHelpLink( '//mediawiki.org/wiki/Special:MyLanguage/Help:Spec', true );
-						return true;
 					}
 				}
 			}
 		}
 
-		// fast forward
-		$statusStrategy = self::getFinalStrategy( $invokeStrategy, $title );
-		if ( $statusStrategy === null ) {
+		// at this point the page type is "normal"
+		$parserOutput->setExtensionData( 'spec-page-type', 'normal' );
+
+		// at this point it is safe to save the expected subpage
+		$parserOutput->setExtensionData( 'spec-subpage-message',
+			$invokeStrategy->getSubpagePrefixedText( $title ) );
+
+		// if invocation is disabled, then the state will be set to "exists" or "missing"
+		if ( $invokeStrategy->getInvoke( $title )->isDisabled() ) {
+			$parserOutput->setExtensionData( 'spec-status-current',
+				$invokeStrategy->getSubpageTitle( $title )->exists() ? 'exists' : 'missing' );
 			return true;
 		}
 
-		// keep the current state and forward data
+		// if status isn't found, then the state will be set to "unknown"
+		$statusStrategy = self::getFinalStrategy( $invokeStrategy, $title );
+		if ( $statusStrategy === null ) {
+			$parserOutput->setExtensionData( 'spec-status-current',
+				'unknown' );
+			return true;
+		}
+
+		// keep the current state as page property and forward extension data
 		$pageProps = \PageProps::getInstance()->getProperties( $title, 'spec-status' );
 		$previousStatus = unserialize( $pageProps[$title->getArticleId()] );
 		$parserOutput->setExtensionData( 'spec-status-previous',
@@ -120,13 +141,6 @@ class Hooks {
 			$statusStrategy->getName() );
 		$parserOutput->setProperty( 'spec-status',
 			serialize( $statusStrategy->getName() ) );
-		$parserOutput->setExtensionData( 'spec-subpage-message',
-			$invokeStrategy->getSubpagePrefixedText( $title ) );
-
-		// @todo this must be adjusted on module content, like data modules
-		$parserOutput->setExtensionData( 'spec-page-type',
-			'normal' );
-
 		return true;
 	}
 

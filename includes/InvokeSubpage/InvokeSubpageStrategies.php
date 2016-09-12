@@ -42,7 +42,7 @@ class InvokeSubpageStrategies extends Singletons {
 			InvokeSubpageStrategies::init();
 		}
 		foreach ( $this->instances as $strategy ) {
-			if ( $strategy->checkType( $title ) ) {
+			if ( $strategy->checkSubpageType( $title ) ) {
 				return $strategy;
 			}
 		}
