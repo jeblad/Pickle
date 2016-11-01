@@ -14,10 +14,10 @@
 		"Spec\\Common":
 			"includes/Common.php",
 
-		"Spec\\ITrackObserver":
-			"includes/TrackObserver/ITrackObserver.php",
-		"Spec\\TrackObserver":
-			"includes/TrackObserver/TrackObserver.php",
+		"Spec\\ITrackUser":
+			"includes/TrackUser/ITrackUser.php",
+		"Spec\\TrackUser":
+			"includes/TrackUser/TrackUser.php",
 
 		"Spec\\ISingletons":
 			"includes/Singletons/ISingletons.php",
@@ -124,7 +124,7 @@
 	},
 	"config": {
         "_prefix": "wgSpec",
-		"TrackObserverID": 3,
+		"TrackUserID": 3,
 		"RenderStyles": {
 			"compact": "speclib/render/compact",
 			"full": "speclib/render/full",

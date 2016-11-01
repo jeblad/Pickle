@@ -3,9 +3,9 @@
 namespace Spec;
 
 /**
- * Track observer
+ * Track user
  */
-interface ITrackObserver {
+interface ITrackUser {
 
 	/**
 	 * Get the user

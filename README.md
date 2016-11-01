@@ -77,7 +77,7 @@ Support libraries
 * Singletons (PHP)
 * Sublinks (PHP)
 * TestAnythingProtocol (PHP)
-* TrackObserver (PHP)
+* TrackUser (PHP)
 * TNamedStrategies.php
 * TNamedStrategy.php
 * util.lua
@@ -205,10 +205,10 @@ There are no direct path from source to sink in the code except for the title ob
 
 This subsystem is decoupled from the rest of the system, and only respond on messages passed as extension data.
 
-## TrackObserver
+## TrackUser
 This is a system user that will be used for reporting state changes that can't be attributed to a specific user. The scenario is typically that some change has taken place that impact a Lua module, and that module is under test. When a user does something that triggers a rendering of the page, the state change is detected, and then the normal behavior would be to log the change with the active user. This would be rather unpopular, as it would not reflect the real cause of the state change. Instead of using that user an alternate account is used.
 
-The user is defined through its numeric id, the entry `TrackObserverID` from [extension.json](https://github.com/jeblad/spec/blob/master/extension.json), which work quite well for a single site. On a multisite setup it is necessary to block name changes.
+The user is defined through its numeric id, the entry `TrackUserID` from [extension.json](https://github.com/jeblad/spec/blob/master/extension.json), which work quite well for a single site. On a multisite setup it is necessary to block name changes.
 
 The user class is a singleton as there should be no more than one instance.
 

@@ -29,7 +29,7 @@ class TrackLogEntryCommonStrategy extends TrackLogEntryBaseStrategy {
 			$logEntry = new \ManualLogEntry( 'track', $this->opts['name'] );
 		}
 
-		$logEntry->setPerformer( \Spec\TrackObserver::getUser() );
+		$logEntry->setPerformer( \Spec\TrackUser::getUser() );
 		$logEntry->setTarget( $title );
 		$logEntry->setIsPatrollable( false );
 
