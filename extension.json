@@ -271,13 +271,18 @@
 	"ExtensionMessagesFiles": {
 	},
 	"Hooks": {
+		"SpecTesterGadgets": [
+			"Spec\\TrackIndicatorStrategies::addIndicator"
+		],
+		"SpecTesteeGadgets": [
+			"Spec\\TrackIndicatorStrategies::addIndicator",
+			"Spec\\TrackCategoryStrategies::addCategorization",
+			"Spec\\TrackLogEntryStrategies::addLogEntry"
+		],
 		"ContentAlterParserOutput": [
-			"Spec\\Hooks::onContentAlterParserOutput",
-			"Spec\\TrackCategoryStrategies::onContentAlterParserOutput"
+			"Spec\\Hooks::onContentAlterParserOutput"
 		],
 		"OutputPageParserOutput": [
-			"Spec\\TrackIndicatorStrategies::onOutputPageParserOutput",
-			"Spec\\TrackLogEntryStrategies::onOutputPageParserOutput",
 			"Spec\\SubLinksView::onOutputPageParserOutput"
 		],
 		"EditPageBeforeEditChecks": [

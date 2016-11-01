@@ -80,27 +80,27 @@ class Hooks {
 						$maybePage = $maybePageMsg->plain();
 						if ( $maybePage == $title->getPrefixedText() ) {
 
-							// at this point the page type is "normal"
-							$parserOutput->setExtensionData( 'spec-page-type', 'test' );
+							// start collecting args for the hook
+							$args = [
+								// at this point the page type is test"
+								'page-type' => 'normal',
+							];
 
 							// if invocation is disabled, then the state will be set to "exists" or "missing"
 							if ( $baseInvokeStrategy->getInvoke( $baseTitle )->isDisabled() ) {
-								$parserOutput->setExtensionData( 'spec-status-current',
-									'unknown' );
-								return true;
+								$args[ 'status-current' ] = 'unknown';
+							} else {
+								// if status isn't found, then the state will be set to "unknown"
+								$statusStrategy = self::getFinalStrategy( $baseInvokeStrategy, $baseTitle );
+								if ( $statusStrategy === null ) {
+									$args[ 'status-current' ] = 'unknown';
+								} else {
+									$args[ 'status-current' ] = $statusStrategy->getName();
+								}
 							}
 
-							// if status isn't found, then the state will be set to "unknown"
-							$statusStrategy = self::getFinalStrategy( $baseInvokeStrategy, $baseTitle );
-							if ( $statusStrategy === null ) {
-								$parserOutput->setExtensionData( 'spec-status-current',
-									'unknown' );
-								return true;
-							}
-
-							// default when nothing goes wrong
-							$parserOutput->setExtensionData( 'spec-status-current',
-								$statusStrategy->getName() );
+							// run registered callbacks to create testee gadgets
+							\Hooks::run( 'SpecTesterGadgets', [ $title, $parserOutput, $args ] );
 
 							// $out->addHelpLink( '//mediawiki.org/wiki/Special:MyLanguage/Help:Spec', true );
 							return true;
@@ -110,37 +110,36 @@ class Hooks {
 			}
 		}
 
-		// at this point the page type is "normal"
-		$parserOutput->setExtensionData( 'spec-page-type', 'normal' );
-
-		// at this point it is safe to save the expected subpage
-		$parserOutput->setExtensionData( 'spec-subpage-message',
-			$invokeStrategy->getSubpagePrefixedText( $title ) );
-
-		// if invocation is disabled, then the state will be set to "exists" or "missing"
-		if ( $invokeStrategy->getInvoke( $title )->isDisabled() ) {
-			$parserOutput->setExtensionData( 'spec-status-current',
-				$invokeStrategy->getSubpageTitle( $title )->exists() ? 'exists' : 'missing' );
-			return true;
-		}
-
-		// if status isn't found, then the state will be set to "unknown"
-		$statusStrategy = self::getFinalStrategy( $invokeStrategy, $title );
-		if ( $statusStrategy === null ) {
-			$parserOutput->setExtensionData( 'spec-status-current',
-				'unknown' );
-			return true;
-		}
-
-		// keep the current state as page property and forward extension data
+		// keep the current state as page property for later
 		$pageProps = \PageProps::getInstance()->getProperties( $title, 'spec-status' );
 		$previousStatus = unserialize( $pageProps[$title->getArticleId()] );
-		$parserOutput->setExtensionData( 'spec-status-previous',
-			$previousStatus === null ? '' : $previousStatus );
-		$parserOutput->setExtensionData( 'spec-status-current',
-			$statusStrategy->getName() );
-		$parserOutput->setProperty( 'spec-status',
-			serialize( $statusStrategy->getName() ) );
+		$statusStrategy = self::getFinalStrategy( $invokeStrategy, $title );
+		$parserOutput->setProperty( 'spec-status', serialize( $statusStrategy->getName() ) );
+
+		// start collecting args for the hook
+		$args = [
+			// at this point the page type is "normal"
+			'page-type' => 'normal',
+			// at this point it is safe to expect the subpage
+			'subpage-message' => $invokeStrategy->getSubpagePrefixedText( $title ),
+		];
+		// if invocation is disabled, then the state will be set to "exists" or "missing"
+		if ( $invokeStrategy->getInvoke( $title )->isDisabled() ) {
+			$args[ 'status-current' ] =
+				$invokeStrategy->getSubpageTitle( $title )->exists() ? 'exists' : 'missing';
+		} else {
+			// if status isn't found, then the state will be set to "unknown"
+			if ( $statusStrategy === null ) {
+				$args[ 'status-current' ] = 'unknown';
+			} else {
+				// should be safe to set these now
+				$args[ 'status-previous' ] = $previousStatus === null ? '' : $previousStatus;
+				$args[ 'status-current' ] = $statusStrategy->getName();
+			}
+		}
+
+		// run registered callbacks to create testee gadgets
+		\Hooks::run( 'SpecTesteeGadgets', [ $title, $parserOutput, $args ] );
 		return true;
 	}
 

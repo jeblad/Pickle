@@ -11,9 +11,9 @@ interface ITrackIndicatorStrategy {
 	 * Add a new track indicator
 	 *
 	 * @param \Title target for the indicator
-	 * @param \OutputPage output page where the indicator should be put
+	 * @param \ParserOutput where the indicator should be added
 	 *
 	 * @return Message
 	 */
-	public function addIndicator( \Title $title = null, \OutputPage &$out );
+	public function addIndicator( \Title $title = null, \ParserOutput &$parserOutput );
 }

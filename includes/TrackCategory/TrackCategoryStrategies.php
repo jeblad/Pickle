@@ -36,17 +36,21 @@ class TrackCategoryStrategies extends Singletons {
 	}
 
 	/**
-	 * Add change log for tested module
+	 * Add track category for tested module
 	 * This is a callback for a hook registered in extensions.json
 	 */
-	public static function onContentAlterParserOutput(
-		\Content $content,
+	public static function addCategorization(
 		\Title $title,
-		\ParserOutput $parserOutput
+		\ParserOutput $parserOutput,
+		array $states = null
 	) {
 
-		$currentKey = $parserOutput->getExtensionData( 'spec-status-current' );
-		$currentType = $parserOutput->getExtensionData( 'spec-page-type' );
+		if ( $states == null ) {
+			return true;
+		}
+
+		$currentKey = $states[ 'status-current' ];
+		$currentType = $states[ 'page-type' ];
 
 		if ( $currentKey !== null
 				&& in_array( $currentType, [ 'normal' ] ) ) {

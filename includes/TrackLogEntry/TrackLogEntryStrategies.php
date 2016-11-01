@@ -36,13 +36,21 @@ class TrackLogEntryStrategies extends Singletons {
 	}
 
 	/**
-	 * Add change log for tested module
+	 * Add track log for tested module
 	 * This is a callback for a hook registered in extensions.json
 	 */
-	public static function onOutputPageParserOutput( \OutputPage &$out, \ParserOutput $parserOutput ) {
+	public static function addLogEntry(
+		\Title $title,
+		\ParserOutput &$parserOutput,
+		array $states = null
+	) {
 
-		$currentKey = $parserOutput->getExtensionData( 'spec-status-current' );
-		$previousKey = $parserOutput->getExtensionData( 'spec-status-previous' );
+		if ( $states == null ) {
+			return true;
+		}
+
+		$currentKey = $states[ 'status-current' ];
+		$previousKey = $states[ 'status-previous' ];
 
 		if ( $currentKey !== null
 				&& $currentKey !== $previousKey
@@ -51,9 +59,11 @@ class TrackLogEntryStrategies extends Singletons {
 			if ( $strategy === null ) {
 				return true;
 			}
-			$strategy->addLogEntry( $out->getTitle() );
+			$strategy->addLogEntry( $title );
 		}
 
 		return true;
 	}
+
+
 }

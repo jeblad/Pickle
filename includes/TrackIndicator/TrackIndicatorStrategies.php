@@ -36,17 +36,22 @@ class TrackIndicatorStrategies extends Singletons {
 	}
 
 	/**
-	 * Add change log for tested module
-	 * This is a callback for a hook registered in extensions.json
+	 * Add track indicator for tested module
+	 * This is a replacement for a hook registered in extensions.json
 	 */
-	public static function onOutputPageParserOutput(
-		\OutputPage &$out,
-		\ParserOutput $parserOutput
+	public static function addIndicator(
+		\Title $title,
+		\ParserOutput &$parserOutput,
+		array $states = null
 	) {
 
-		$currentKey = $parserOutput->getExtensionData( 'spec-status-current' );
-		$subpageMsg = $parserOutput->getExtensionData( 'spec-subpage-message' );
-		$currentType = $parserOutput->getExtensionData( 'spec-page-type' );
+		if ( $states == null ) {
+			return true;
+		}
+
+		$currentKey = $states[ 'status-current' ];
+		$subpageMsg = $states[ 'subpage-message' ];
+		$currentType = $states[ 'page-type' ];
 
 		if ( $currentKey !== null
 				&& in_array( $currentType, [ 'normal', 'test' ] ) ) {
@@ -57,7 +62,7 @@ class TrackIndicatorStrategies extends Singletons {
 			if ( $subpageMsg !== null ) {
 				$title = $subpageMsg->isDisabled() ? null : \Title::newFromText( $subpageMsg->plain() );
 			}
-			$strategy->addIndicator( $title, $out );
+			$strategy->addIndicator( $title, $parserOutput, $states );
 		}
 
 		return true;

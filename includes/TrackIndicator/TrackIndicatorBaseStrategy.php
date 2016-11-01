@@ -105,7 +105,7 @@ abstract class TrackIndicatorBaseStrategy implements ITrackIndicatorStrategy {
 	/**
 	 * @see \Spec\ITrackIndicatorStrategy::addIndicator()
 	 */
-	public function addIndicator( \Title $title = null, \OutputPage &$out ) {
+	public function addIndicator( \Title $title = null, \ParserOutput &$parserOutput ) {
 		$elem = null;
 
 		if ( $title === null ) {
@@ -115,8 +115,8 @@ abstract class TrackIndicatorBaseStrategy implements ITrackIndicatorStrategy {
 		}
 
 		if ( $elem !== null ) {
-			$res = $out->setIndicators( [ $this->getClassKey() => $elem ] );
-			$out->addModuleStyles( 'ext.spec.default' );
+			$res = $parserOutput->setIndicator( $this->getClassKey(), $elem );
+			$parserOutput->addModuleStyles( 'ext.spec.default' );
 		}
 
 		return $elem;

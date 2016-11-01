@@ -11,7 +11,7 @@ abstract class TrackIndicatorStrategyTestCase extends \MediaWikiTestCase {
 		parent::setUp();
 		$this->stubTitle = $this->getMockBuilder( '\Title' )
 			->getMock();
-		$this->stubPOut = $this->getMockBuilder( '\OutputPage' )
+		$this->stubPOut = $this->getMockBuilder( '\ParserOutput' )
 			->disableOriginalConstructor()
 			->setMethods( [ 'setIndicators' ] )
 			->getMock();
