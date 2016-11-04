@@ -4,14 +4,15 @@ namespace Spec;
 
 /**
  * Concrete strategy for categories
+ * Encapsulates a default category as an adapter. The default category is used when no other
+ * matching entry can be found.
  *
- * file
  * @ingroup Extensions
  *
  * @license GNU GPL v2+
  * @author John Erling Blad
  */
-class TrackCategoryDefaultStrategy extends TrackCategoryBaseStrategy {
+class CategoryDefault extends CategoryBase {
 
 	/**
 	 * @param array structure from extension setup

@@ -3,10 +3,10 @@
 namespace Spec;
 
 /**
- * Track category base strategy
- * This class is abstract as it should not be instantiated on its own.
+ * Category base
+ * Encapsulates the base category as an adapter.
  */
-abstract class TrackCategoryBaseStrategy implements ITrackCategoryStrategy {
+abstract class CategoryBase implements ICategory {
 
 	use TNamedStrategy;
 
@@ -20,7 +20,7 @@ abstract class TrackCategoryBaseStrategy implements ITrackCategoryStrategy {
 	}
 
 	/**
-	 * @see \Spec\ITrackCategoryStrategy::addCategorization()
+	 * @see \Spec\ICategory::addCategorization()
 	 */
 	public function addCategorization( \Title $title, \ParserOutput $parserOutput ) {
 

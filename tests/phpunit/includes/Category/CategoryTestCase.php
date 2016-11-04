@@ -2,7 +2,7 @@
 
 namespace Spec\Tests;
 
-abstract class TrackCategoryStrategyTestCase extends \MediaWikiTestCase {
+abstract class CategoryTestCase extends \MediaWikiTestCase {
 
 	protected $stubTitle;
 	protected $stubPOut;
@@ -47,7 +47,7 @@ abstract class TrackCategoryStrategyTestCase extends \MediaWikiTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = $this->newInstance( $this->conf );
-		$this->assertInstanceOf( 'Spec\\ITrackCategoryStrategy', $test );
+		$this->assertInstanceOf( 'Spec\\ICategory', $test );
 	}
 
 	public function testOnAddCategory() {

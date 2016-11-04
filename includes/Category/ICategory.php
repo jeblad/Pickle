@@ -3,9 +3,10 @@
 namespace Spec;
 
 /**
- * Track category strategy
+ * Category interface
+ * Encapsulates the log entry as an adapter.
  */
-interface ITrackCategoryStrategy {
+interface ICategory {
 
 	/**
 	 * Add a new track category

@@ -10,7 +10,7 @@ namespace Spec;
  * @license GNU GPL v2+
  * @author John Erling Blad
  */
-class TrackCategoryStrategies extends Strategies {
+class CategoryFactory extends Strategies {
 
 	use TNamedStrategies;
 
@@ -25,10 +25,10 @@ class TrackCategoryStrategies extends Strategies {
 	 * Configure the strategies
 	 */
 	public static function init() {
-		global $wgSpecTrackCategory;
+		global $wgSpecCategory;
 
-		$results = TrackCategoryStrategies::getInstance();
-		foreach ( $wgSpecTrackCategory as $struct ) {
+		$results = CategoryFactory::getInstance();
+		foreach ( $wgSpecCategory as $struct ) {
 			$results->register( $struct );
 		}
 

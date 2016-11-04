@@ -40,16 +40,16 @@
 		"Spec\\LogEntryFactory":
 			"includes/LogEntry/LogEntryFactory.php",
 
-		"Spec\\ITrackCategoryStrategy":
-			"includes/TrackCategory/ITrackCategoryStrategy.php",
-		"Spec\\TrackCategoryBaseStrategy":
-			"includes/TrackCategory/TrackCategoryBaseStrategy.php",
-		"Spec\\TrackCategoryDefaultStrategy":
-			"includes/TrackCategory/TrackCategoryDefaultStrategy.php",
-		"Spec\\TrackCategoryCommonStrategy":
-			"includes/TrackCategory/TrackCategoryCommonStrategy.php",
-		"Spec\\TrackCategoryStrategies":
-			"includes/TrackCategory/TrackCategoryStrategies.php",
+		"Spec\\ICategory":
+			"includes/Category/ICategory.php",
+		"Spec\\CategoryBase":
+			"includes/Category/CategoryBase.php",
+		"Spec\\CategoryDefault":
+			"includes/Category/CategoryDefault.php",
+		"Spec\\CategoryCommon":
+			"includes/Category/CategoryCommon.php",
+		"Spec\\CategoryFactory":
+			"includes/Category/CategoryFactory.php",
 
 		"Spec\\ITrackIndicatorStrategy":
 			"includes/TrackIndicator/ITrackIndicatorStrategy.php",
@@ -110,8 +110,8 @@
 		"Spec\\Tests\\LogEntryTestCase":
 			"tests/phpunit/includes/LogEntry/LogEntryTestCase.php",
 
-		"Spec\\Tests\\TrackCategoryStrategyTestCase":
-			"tests/phpunit/includes/TrackCategory/TrackCategoryStrategyTestCase.php",
+		"Spec\\Tests\\CategoryTestCase":
+			"tests/phpunit/includes/Category/CategoryTestCase.php",
 
 		"Spec\\Tests\\TestAnythingProtocolStrategyTestCase":
 			"tests/phpunit/includes/TestAnythingProtocol/TestAnythingProtocolStrategyTestCase.php",
@@ -173,29 +173,29 @@
 				"class": "Spec\\TrackIndicatorDefaultStrategy"
 			}
 		],
-		"TrackCategory": [
+		"Category": [
 			{
-				"class": "Spec\\TrackCategoryCommonStrategy",
+				"class": "Spec\\CategoryCommonStrategy",
 				"name": "failing"
 			},
 			{
-				"class": "Spec\\TrackCategoryCommonStrategy",
+				"class": "Spec\\CategoryCommonStrategy",
 				"name": "pending"
 			},
 			{
-				"class": "Spec\\TrackCategoryCommonStrategy",
+				"class": "Spec\\CategoryCommonStrategy",
 				"name": "good"
 			},
 			{
-				"class": "Spec\\TrackCategoryCommonStrategy",
+				"class": "Spec\\CategoryCommonStrategy",
 				"name": "exists"
 			},
 			{
-				"class": "Spec\\TrackCategoryCommonStrategy",
+				"class": "Spec\\CategoryCommonStrategy",
 				"name": "missing"
 			},
 			{
-				"class": "Spec\\TrackCategoryDefaultStrategy"
+				"class": "Spec\\CategoryDefaultStrategy"
 			}
 		],
 		"LogEntry": [
@@ -276,7 +276,7 @@
 		],
 		"SpecTesteeGadgets": [
 			"Spec\\TrackIndicatorStrategies::addIndicator",
-			"Spec\\TrackCategoryStrategies::addCategorization",
+			"Spec\\CategoryFactory::addCategorization",
 			"Spec\\LogEntryFactory::addLogEntry"
 		],
 		"ContentAlterParserOutput": [

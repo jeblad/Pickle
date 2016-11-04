@@ -26,14 +26,14 @@ class TrackIndicatorCommonStrategyTest extends TrackIndicatorStrategyTestCase {
 			[
 				'foo',
 				[
-					"class" => "Spec\\TrackCategoryCommonStrategy",
+					"class" => "Spec\\CategoryCommonStrategy",
 					"name" => "foo"
 				]
 			],
 			[
 				'',
 				[
-					"class" => "Spec\\TrackCategoryCommonStrategy"
+					"class" => "Spec\\CategoryCommonStrategy"
 				]
 			]
 		];

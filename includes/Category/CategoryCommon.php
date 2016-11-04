@@ -3,15 +3,16 @@
 namespace Spec;
 
 /**
- * Common strategy for categories
+ * Concrete strategy for categories
+ * Encapsulates a common category as an adapter. The common category is used when recognized
+ * entries are found.
  *
- * file
  * @ingroup Extensions
  *
  * @license GNU GPL v2+
  * @author John Erling Blad
  */
-class TrackCategoryCommonStrategy extends TrackCategoryBaseStrategy {
+class CategoryCommon extends CategoryBase {
 
 	/**
 	 * @param array structure from extension setup

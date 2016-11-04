@@ -95,7 +95,7 @@ The tests follows spec-style, with _describe_, _context_, and _it_. Those will t
 Test data can be provided to _describe_, _context_, and _it_ as nearly free form text. The data from the text is [extracted](https://github.com/jeblad/spec/tree/master/includes/LuaLibrary/lua/pure/speclib/extractor) and casted into the correct type. The present set of extractors are far from comprehensive, but assumed to be sufficient to make the system functional.
 
 ## Interface design
-The extension does not provide additional subsystems that can be used by the system (site) as such, but will itself use features from the system. In particular [TrackCategory](https://github.com/jeblad/spec/tree/master/includes/TrackCategory), [TrackIndicator](https://github.com/jeblad/spec/tree/master/includes/TrackIndicator), and [LogEntry](https://github.com/jeblad/spec/tree/master/includes/LogEntry), will access facilities from Mediawiki. How this is done is described on [Help:Spec/Tracking categories](https://www.mediawiki.org/wiki/Help:Spec/Tracking_categories), [Help:Spec/Page status indicators](https://www.mediawiki.org/wiki/Help:Spec/Page_status_indicators), and [Help:Spec/Test status log](https://www.mediawiki.org/wiki/Help:Spec/Test_status_log).
+The extension does not provide additional subsystems that can be used by the system (site) as such, but will itself use features from the system. In particular [Category](https://github.com/jeblad/spec/tree/master/includes/Category), [TrackIndicator](https://github.com/jeblad/spec/tree/master/includes/TrackIndicator), and [LogEntry](https://github.com/jeblad/spec/tree/master/includes/LogEntry), will access facilities from Mediawiki. How this is done is described on [Help:Spec/Tracking categories](https://www.mediawiki.org/wiki/Help:Spec/Tracking_categories), [Help:Spec/Page status indicators](https://www.mediawiki.org/wiki/Help:Spec/Page_status_indicators), and [Help:Spec/Test status log](https://www.mediawiki.org/wiki/Help:Spec/Test_status_log).
 
 In addition to facilities used by the extension it is possible to make new site specific testing frameworks as long as it exports TAP-formatted reports. By following the [TAP standard](https://testanything.org/) (it is a _personal standard_, and not a rigid one) the extension can use the new framework as its own. If the call must be changed, possibly also the name of the subpage holding the tests, then the configuration must be adjusted. The configuration section in [extension.json](https://github.com/jeblad/spec/blob/master/extension.json) would be _InvokeSubpage_.
 
@@ -178,10 +178,10 @@ On each click of the button a new report will be rendered, in order and in a com
 
 The user interface is created whenever a proper subpage is detected.
 
-## TrackCategory
+## Category
 If the `spec-status-current` extension data is set to a valid state, then it will be passed on to Mediawiki as a [tracking category](https://www.mediawiki.org/wiki/Help:Tracking_categories), and then used in the provided tools for such categories. The names of the tracking categories are formed from message keys created from the name.
 
-The categories are defined trough entries in `TrackCategory` from [extension.json](https://github.com/jeblad/spec/blob/master/extension.json). Only named entries will be acted upon, less the default strategy which has an overridden name. The names the strategies respond to comes from `ExtractStatus` upstream in the pipeline.
+The categories are defined trough entries in `Category` from [extension.json](https://github.com/jeblad/spec/blob/master/extension.json). Only named entries will be acted upon, less the default strategy which has an overridden name. The names the strategies respond to comes from `ExtractStatus` upstream in the pipeline.
 
 There are no direct path from source to sink in the code except for the title object, but this object should be properly handled by the existing system.
 
