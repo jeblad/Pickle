@@ -47,7 +47,7 @@ class LogEntryDefaultTest extends LogEntryTestCase {
 					'subtype' => 'unknown'
 				],
 				[
-					"class" => "Spec\\LogEntryCommon",
+					"class" => "Spec\\LogEntryDefault",
 					"name" => "foo"
 				]
 			],
@@ -57,7 +57,7 @@ class LogEntryDefaultTest extends LogEntryTestCase {
 					'subtype' => 'unknown'
 				],
 				[
-					"class" => "Spec\\LogEntryCommon"
+					"class" => "Spec\\LogEntryDefault"
 				]
 			]
 		];
