@@ -4,14 +4,15 @@ namespace Spec;
 
 /**
  * Concrete strategy for log entries
+ * Encapsulates a default log entry as an adapter. The default log entry is used when no other
+ * matching entry can be found.
  *
- * file
  * @ingroup Extensions
  *
  * @license GNU GPL v2+
  * @author John Erling Blad
  */
-class TrackLogEntryDefaultStrategy extends TrackLogEntryBaseStrategy {
+class LogEntryDefault extends LogEntryBase {
 
 	/**
 	 * @param array structure from extension setup
@@ -21,7 +22,7 @@ class TrackLogEntryDefaultStrategy extends TrackLogEntryBaseStrategy {
 	}
 
 	/**
-	 * @see \Spec\TrackLogEntryBaseStrategy::newLogEntry()
+	 * @see \Spec\LogEntryBaseStrategy::newLogEntry()
 	 */
 	public function newLogEntry( \Title $title, \LogEntry $logEntry = null ) {
 

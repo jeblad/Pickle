@@ -29,16 +29,16 @@
 		"Spec\\TNamedStrategies":
 			"includes/Strategies/TNamedStrategies.php",
 
-		"Spec\\ITrackLogEntryStrategy":
-			"includes/TrackLogEntry/ITrackLogEntryStrategy.php",
-		"Spec\\TrackLogEntryBaseStrategy":
-			"includes/TrackLogEntry/TrackLogEntryBaseStrategy.php",
-		"Spec\\TrackLogEntryDefaultStrategy":
-			"includes/TrackLogEntry/TrackLogEntryDefaultStrategy.php",
-		"Spec\\TrackLogEntryCommonStrategy":
-			"includes/TrackLogEntry/TrackLogEntryCommonStrategy.php",
-		"Spec\\TrackLogEntryStrategies":
-			"includes/TrackLogEntry/TrackLogEntryStrategies.php",
+		"Spec\\ILogEntry":
+			"includes/LogEntry/ILogEntry.php",
+		"Spec\\LogEntryBase":
+			"includes/LogEntry/LogEntryBase.php",
+		"Spec\\LogEntryDefault":
+			"includes/LogEntry/LogEntryDefault.php",
+		"Spec\\LogEntryCommon":
+			"includes/LogEntry/LogEntryCommon.php",
+		"Spec\\LogEntryFactory":
+			"includes/LogEntry/LogEntryFactory.php",
 
 		"Spec\\ITrackCategoryStrategy":
 			"includes/TrackCategory/ITrackCategoryStrategy.php",
@@ -107,8 +107,8 @@
 		"Spec\\Tests\\StrategiesTestCase":
 			"tests/phpunit/includes/Strategies/StrategiesTestCase.php",
 
-		"Spec\\Tests\\TrackLogEntryStrategyTestCase":
-			"tests/phpunit/includes/TrackLogEntry/TrackLogEntryStrategyTestCase.php",
+		"Spec\\Tests\\LogEntryTestCase":
+			"tests/phpunit/includes/LogEntry/LogEntryTestCase.php",
 
 		"Spec\\Tests\\TrackCategoryStrategyTestCase":
 			"tests/phpunit/includes/TrackCategory/TrackCategoryStrategyTestCase.php",
@@ -198,29 +198,29 @@
 				"class": "Spec\\TrackCategoryDefaultStrategy"
 			}
 		],
-		"TrackLogEntry": [
+		"LogEntry": [
 			{
-				"class": "Spec\\TrackLogEntryCommonStrategy",
+				"class": "Spec\\LogEntryCommon",
 				"name": "failing"
 			},
 			{
-				"class": "Spec\\TrackLogEntryCommonStrategy",
+				"class": "Spec\\LogEntryCommon",
 				"name": "pending"
 			},
 			{
-				"class": "Spec\\TrackLogEntryCommonStrategy",
+				"class": "Spec\\LogEntryCommon",
 				"name": "good"
 			},
 			{
-				"class": "Spec\\TrackLogEntryCommonStrategy",
+				"class": "Spec\\LogEntryCommon",
 				"name": "exists"
 			},
 			{
-				"class": "Spec\\TrackLogEntryCommonStrategy",
+				"class": "Spec\\LogEntryCommon",
 				"name": "missing"
 			},
 			{
-				"class": "Spec\\TrackLogEntryDefaultStrategy"
+				"class": "Spec\\LogEntryDefault"
 			}
 		],
 		"InvokeSubpage": [
@@ -277,7 +277,7 @@
 		"SpecTesteeGadgets": [
 			"Spec\\TrackIndicatorStrategies::addIndicator",
 			"Spec\\TrackCategoryStrategies::addCategorization",
-			"Spec\\TrackLogEntryStrategies::addLogEntry"
+			"Spec\\LogEntryFactory::addLogEntry"
 		],
 		"ContentAlterParserOutput": [
 			"Spec\\Hooks::onContentAlterParserOutput"

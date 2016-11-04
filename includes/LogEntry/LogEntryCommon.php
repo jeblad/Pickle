@@ -4,14 +4,15 @@ namespace Spec;
 
 /**
  * Concrete strategy for log entries
+ * Encapsulates a common log entry as an adapter. The common log entry is used when recognized
+ * entries are found.
  *
- * file
  * @ingroup Extensions
  *
  * @license GNU GPL v2+
  * @author John Erling Blad
  */
-class TrackLogEntryCommonStrategy extends TrackLogEntryBaseStrategy {
+class LogEntryCommon extends LogEntryBase {
 
 	/**
 	 * @param array structure from extension setup
@@ -21,7 +22,7 @@ class TrackLogEntryCommonStrategy extends TrackLogEntryBaseStrategy {
 	}
 
 	/**
-	 * @see \Spec\TrackLogEntryBaseStrategy::newLogEntry()
+	 * @see \Spec\LogEntryBaseStrategy::newLogEntry()
 	 */
 	public function newLogEntry( \Title $title, \LogEntry $logEntry = null ) {
 

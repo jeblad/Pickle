@@ -3,9 +3,10 @@
 namespace Spec;
 
 /**
- * Track log strategy
+ * Log entry base
+ * Encapsulates the log entry as an adapter.
  */
-abstract class TrackLogEntryBaseStrategy implements ITrackLogEntryStrategy {
+abstract class LogEntryBase implements ILogEntry {
 
 	use TNamedStrategy;
 
@@ -21,7 +22,7 @@ abstract class TrackLogEntryBaseStrategy implements ITrackLogEntryStrategy {
 	abstract function newLogEntry( \Title $title, \LogEntry $logEntry = null );
 
 	/**
-	 * @see \Spec\ITrackLogEntryStrategy::addLogEntry()
+	 * @see \Spec\ILogEntryStrategy::addLogEntry()
 	 */
 	public function addLogEntry( \Title $title, \LogEntry $logEntry = null ) {
 

@@ -3,22 +3,22 @@
 namespace Spec\Tests;
 
 use MediaWikiTestCase;
-use \Spec\TrackLogEntryDefaultStrategy;
+use \Spec\LogEntryDefault;
 
 /**
  * @group Spec
  *
- * @covers \Spec\TrackLogEntryDefaultStrategy
+ * @covers \Spec\LogEntryDefault
  */
-class TrackLogEntryDefaultStrategyTest extends TrackLogEntryStrategyTestCase {
+class LogEntryDefaultTest extends LogEntryTestCase {
 
 	protected $conf = [
-		"class" => "Spec\\TrackLogEntryDefaultStrategy",
+		"class" => "Spec\\LogEntryDefault",
 		"name" => "test"
 	];
 
 	protected function newInstance( $conf ) {
-		return new TrackLogEntryDefaultStrategy( $conf );
+		return new LogEntryDefault( $conf );
 	}
 
 	public function provideGetName() {
@@ -26,13 +26,13 @@ class TrackLogEntryDefaultStrategyTest extends TrackLogEntryStrategyTestCase {
 			[
 				'unknown',
 				[
-					"class" => "Spec\\TrackLogEntryDefaultStrategy"
+					"class" => "Spec\\LogEntryDefault"
 				]
 			],
 			[
 				'unknown',
 				[
-					"class" => "Spec\\TrackLogEntryDefaultStrategy",
+					"class" => "Spec\\LogEntryDefault",
 					"name" => "foo"
 				]
 			]
@@ -47,7 +47,7 @@ class TrackLogEntryDefaultStrategyTest extends TrackLogEntryStrategyTestCase {
 					'subtype' => 'unknown'
 				],
 				[
-					"class" => "Spec\\TrackLogEntryCommonStrategy",
+					"class" => "Spec\\LogEntryCommon",
 					"name" => "foo"
 				]
 			],
@@ -57,7 +57,7 @@ class TrackLogEntryDefaultStrategyTest extends TrackLogEntryStrategyTestCase {
 					'subtype' => 'unknown'
 				],
 				[
-					"class" => "Spec\\TrackLogEntryCommonStrategy"
+					"class" => "Spec\\LogEntryCommon"
 				]
 			]
 		];

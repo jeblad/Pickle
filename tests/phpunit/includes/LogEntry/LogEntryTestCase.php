@@ -2,7 +2,7 @@
 
 namespace Spec\Tests;
 
-abstract class TrackLogEntryStrategyTestCase extends \MediaWikiTestCase {
+abstract class LogEntryTestCase extends \MediaWikiTestCase {
 
 	protected $stubTitle;
 
@@ -36,7 +36,7 @@ abstract class TrackLogEntryStrategyTestCase extends \MediaWikiTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = $this->newInstance( $this->conf );
-		$this->assertInstanceOf( 'Spec\\ITrackLogEntryStrategy', $test );
+		$this->assertInstanceOf( 'Spec\\ILogEntry', $test );
 	}
 
 	/**

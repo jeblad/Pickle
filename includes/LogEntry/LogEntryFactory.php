@@ -4,13 +4,15 @@ namespace Spec;
 
 /**
  * Strategy to create log entries
+ * This is a factory for the log entries implemented as a common set of factories. The entries will
+ * be adapted according to the current state.
  *
  * @ingroup Extensions
  *
  * @license GNU GPL v2+
  * @author John Erling Blad
  */
-class TrackLogEntryStrategies extends Strategies {
+class LogEntryFactory extends Strategies {
 
 	use TNamedStrategies;
 
@@ -25,10 +27,10 @@ class TrackLogEntryStrategies extends Strategies {
 	 * Configure the strategies
 	 */
 	public static function init() {
-		global $wgSpecTrackLogEntry;
+		global $wgSpecLogEntry;
 
-		$results = TrackLogEntryStrategies::getInstance();
-		foreach ( $wgSpecTrackLogEntry as $struct ) {
+		$results = LogEntryStrategies::getInstance();
+		foreach ( $wgSpecLogEntry as $struct ) {
 			$results->register( $struct );
 		}
 

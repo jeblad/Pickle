@@ -3,13 +3,14 @@
 namespace Spec;
 
 /**
- * Track log strategy
+ * Log entry interface
+ * Encapsulates the log entry as an adapter.
  */
-interface ITrackLogEntryStrategy {
+interface ILogEntry {
 
 	/**
-	 * Add a new track log entry
-	 * This will create a new log entry, insert it in the log and publish it.
+	 * Add a log entry
+	 * This will create a log entry, insert it in the log and publish it.
 	 *
 	 * @param \Title target of the logged action
 	 * @param \LogEntry|null predefined log entry for testing purposes
