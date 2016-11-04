@@ -5,7 +5,7 @@ namespace Spec;
 /**
  * Track indicator strategy
  */
-interface ITrackIndicatorStrategy {
+interface IIndicator {
 
 	/**
 	 * Add a new track indicator

@@ -10,7 +10,7 @@ namespace Spec;
  * @license GNU GPL v2+
  * @author John Erling Blad
  */
-class TrackIndicatorStrategies extends Strategies {
+class IndicatorFactory extends Strategies {
 
 	use TNamedStrategies;
 
@@ -25,10 +25,10 @@ class TrackIndicatorStrategies extends Strategies {
 	 * Configure the strategies
 	 */
 	public static function init() {
-		global $wgSpecTrackIndicator;
+		global $wgSpecIndicator;
 
-		$results = TrackIndicatorStrategies::getInstance();
-		foreach ( $wgSpecTrackIndicator as $struct ) {
+		$results = IndicatorFactory::getInstance();
+		foreach ( $wgSpecIndicator as $struct ) {
 			$results->register( $struct );
 		}
 

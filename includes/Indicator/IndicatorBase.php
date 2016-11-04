@@ -5,7 +5,7 @@ namespace Spec;
 /**
  * Track indicator base strategy
  */
-abstract class TrackIndicatorBaseStrategy implements ITrackIndicatorStrategy {
+abstract class IndicatorBase implements IIndicator {
 
 	use TNamedStrategy;
 
@@ -103,7 +103,7 @@ abstract class TrackIndicatorBaseStrategy implements ITrackIndicatorStrategy {
 	}
 
 	/**
-	 * @see \Spec\ITrackIndicatorStrategy::addIndicator()
+	 * @see \Spec\IIndicator::addIndicator()
 	 */
 	public function addIndicator( \Title $title = null, \ParserOutput &$parserOutput ) {
 		$elem = null;

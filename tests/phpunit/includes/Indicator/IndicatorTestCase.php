@@ -2,7 +2,7 @@
 
 namespace Spec\Tests;
 
-abstract class TrackIndicatorStrategyTestCase extends \MediaWikiTestCase {
+abstract class IndicatorTestCase extends \MediaWikiTestCase {
 
 	protected $stubTitle;
 	protected $stubPOut;
@@ -30,7 +30,7 @@ abstract class TrackIndicatorStrategyTestCase extends \MediaWikiTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = $this->newInstance( $this->conf );
-		$this->assertInstanceOf( 'Spec\\ITrackIndicatorStrategy', $test );
+		$this->assertInstanceOf( 'Spec\\IIndicator', $test );
 	}
 
 	/**

@@ -11,7 +11,7 @@ namespace Spec;
  * @license GNU GPL v2+
  * @author John Erling Blad
  */
-class TrackIndicatorDefaultStrategy extends TrackIndicatorBaseStrategy {
+class IndicatorDefault extends IndicatorBase {
 
 	/**
 	 * @param array structure from extension setup

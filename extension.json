@@ -51,16 +51,16 @@
 		"Spec\\CategoryFactory":
 			"includes/Category/CategoryFactory.php",
 
-		"Spec\\ITrackIndicatorStrategy":
-			"includes/TrackIndicator/ITrackIndicatorStrategy.php",
-		"Spec\\TrackIndicatorBaseStrategy":
-			"includes/TrackIndicator/TrackIndicatorBaseStrategy.php",
-		"Spec\\TrackIndicatorDefaultStrategy":
-			"includes/TrackIndicator/TrackIndicatorDefaultStrategy.php",
-		"Spec\\TrackIndicatorCommonStrategy":
-			"includes/TrackIndicator/TrackIndicatorCommonStrategy.php",
-		"Spec\\TrackIndicatorStrategies":
-			"includes/TrackIndicator/TrackIndicatorStrategies.php",
+		"Spec\\IIndicator":
+			"includes/Indicator/IIndicator.php",
+		"Spec\\IndicatorBase":
+			"includes/Indicator/IndicatorBase.php",
+		"Spec\\IndicatorDefault":
+			"includes/Indicator/IndicatorDefault.php",
+		"Spec\\IndicatorCommon":
+			"includes/Indicator/IndicatorCommon.php",
+		"Spec\\IndicatorFactory":
+			"includes/Indicator/IndicatorFactory.php",
 
 		"Spec\\ITestAnythingProtocolStrategy":
 			"includes/TestAnythingProtocol/ITestAnythingProtocolStrategy.php",
@@ -116,8 +116,8 @@
 		"Spec\\Tests\\TestAnythingProtocolStrategyTestCase":
 			"tests/phpunit/includes/TestAnythingProtocol/TestAnythingProtocolStrategyTestCase.php",
 
-		"Spec\\Tests\\TrackIndicatorStrategyTestCase":
-			"tests/phpunit/includes/TrackIndicator/TrackIndicatorStrategyTestCase.php",
+		"Spec\\Tests\\IndicatorTestCase":
+			"tests/phpunit/includes/Indicator/IndicatorTestCase.php",
 
 		"Spec\\Tests\\InvokeSubpageStrategyTestCase":
 			"tests/phpunit/includes/InvokeSubpage/InvokeSubpageStrategyTestCase.php"
@@ -148,54 +148,54 @@
 			"/i18n",
 			"/l10n"
 		],
-		"TrackIndicator": [
+		"Indicator": [
 			{
-				"class": "Spec\\TrackIndicatorCommonStrategy",
+				"class": "Spec\\IndicatorCommon",
 				"name": "failing"
 			},
 			{
-				"class": "Spec\\TrackIndicatorCommonStrategy",
+				"class": "Spec\\IndicatorCommon",
 				"name": "pending"
 			},
 			{
-				"class": "Spec\\TrackIndicatorCommonStrategy",
+				"class": "Spec\\IndicatorCommon",
 				"name": "good"
 			},
 			{
-				"class": "Spec\\TrackIndicatorCommonStrategy",
+				"class": "Spec\\IndicatorCommon",
 				"name": "exists"
 			},
 			{
-				"class": "Spec\\TrackIndicatorCommonStrategy",
+				"class": "Spec\\IndicatorCommon",
 				"name": "missing"
 			},
 			{
-				"class": "Spec\\TrackIndicatorDefaultStrategy"
+				"class": "Spec\\IndicatorDefault"
 			}
 		],
 		"Category": [
 			{
-				"class": "Spec\\CategoryCommonStrategy",
+				"class": "Spec\\CategoryCommon",
 				"name": "failing"
 			},
 			{
-				"class": "Spec\\CategoryCommonStrategy",
+				"class": "Spec\\CategoryCommon",
 				"name": "pending"
 			},
 			{
-				"class": "Spec\\CategoryCommonStrategy",
+				"class": "Spec\\CategoryCommon",
 				"name": "good"
 			},
 			{
-				"class": "Spec\\CategoryCommonStrategy",
+				"class": "Spec\\CategoryCommon",
 				"name": "exists"
 			},
 			{
-				"class": "Spec\\CategoryCommonStrategy",
+				"class": "Spec\\CategoryCommon",
 				"name": "missing"
 			},
 			{
-				"class": "Spec\\CategoryDefaultStrategy"
+				"class": "Spec\\CategoryDefault"
 			}
 		],
 		"LogEntry": [
@@ -272,10 +272,10 @@
 	},
 	"Hooks": {
 		"SpecTesterGadgets": [
-			"Spec\\TrackIndicatorStrategies::addIndicator"
+			"Spec\\IndicatorFactory::addIndicator"
 		],
 		"SpecTesteeGadgets": [
-			"Spec\\TrackIndicatorStrategies::addIndicator",
+			"Spec\\IndicatorFactory::addIndicator",
 			"Spec\\CategoryFactory::addCategorization",
 			"Spec\\LogEntryFactory::addLogEntry"
 		],
