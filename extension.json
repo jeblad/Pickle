@@ -25,9 +25,9 @@
 			"includes/Strategies/Strategies.php",
 
 		"Spec\\TNamedStrategy":
-			"includes/TNamedStrategy.php",
+			"includes/Strategies/TNamedStrategy.php",
 		"Spec\\TNamedStrategies":
-			"includes/TNamedStrategies.php",
+			"includes/Strategies/TNamedStrategies.php",
 
 		"Spec\\ITrackLogEntryStrategy":
 			"includes/TrackLogEntry/ITrackLogEntryStrategy.php",
