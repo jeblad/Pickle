@@ -3,7 +3,8 @@
 namespace Spec;
 
 /**
- * Track indicator base strategy
+ * Indicator base
+ * Encapsulates the base indicator as an adapter.
  */
 abstract class IndicatorBase implements IIndicator {
 

@@ -3,9 +3,10 @@
 namespace Spec;
 
 /**
- * Default strategy for indicators
+ * Concrete strategy for indicators
+ * Encapsulates a default indicator as an adapter. The default indicator is used when no other
+ * matching entry can be found.
  *
- * file
  * @ingroup Extensions
  *
  * @license GNU GPL v2+

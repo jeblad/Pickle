@@ -3,7 +3,8 @@
 namespace Spec;
 
 /**
- * Track indicator strategy
+ * Indicator interface
+ * Encapsulates the indicator as an adapter.
  */
 interface IIndicator {
 

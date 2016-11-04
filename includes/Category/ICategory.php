@@ -4,7 +4,7 @@ namespace Spec;
 
 /**
  * Category interface
- * Encapsulates the log entry as an adapter.
+ * Encapsulates the category as an adapter.
  */
 interface ICategory {
 
