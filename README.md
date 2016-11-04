@@ -76,7 +76,7 @@ To extract and track the state
 Support libraries
 * Strategies (PHP)
 * Sublinks (PHP)
-* TestAnythingProtocol (PHP)
+* TAP (PHP)
 * TrackUser (PHP)
 * TNamedStrategies.php
 * TNamedStrategy.php
@@ -86,7 +86,7 @@ Support libraries
 ## Concept of execution
 The extension interact with the core system through hooks registered in [Hooks.php](https://github.com/jeblad/spec/blob/master/includes/Hooks.php) especially `Spec\Hooks::onContentAlterParserOutput()`. This function will track state changes, and set [page properties](https://www.mediawiki.org/wiki/Manual:Page_props_table) and extension data accordingly. Other hooks will then pick up the extension data and act on them, thereby setting [page indicators](https://www.mediawiki.org/wiki/Help:Page_status_indicators), [tracking categories](https://www.mediawiki.org/wiki/Help:Tracking_categories), and do [public logging](https://www.mediawiki.org/wiki/Manual:Logging_to_Special:Log).
 
-The call `Spec\Hooks::onContentAlterParserOutput()` will also run a call to identify a strategy to invoke the proper subpage ([InvokeSuppage](https://github.com/jeblad/spec/tree/master/includes/InvokeSubpage)), process the result from that page ([TestAnythingProtocol](https://github.com/jeblad/spec/tree/master/includes/TestAnythingProtocol)), and then identify the status from the remaining data ([ExtractStatus](https://github.com/jeblad/spec/tree/master/includes/ExtractStatus)). The call is set up so it can handle both calls made for the tester (aka the spec-page) and the testee (aka the ordinary module).
+The call `Spec\Hooks::onContentAlterParserOutput()` will also run a call to identify a strategy to invoke the proper subpage ([InvokeSuppage](https://github.com/jeblad/spec/tree/master/includes/InvokeSubpage)), process the result from that page ([TAP](https://github.com/jeblad/spec/tree/master/includes/TAP)), and then identify the status from the remaining data ([ExtractStatus](https://github.com/jeblad/spec/tree/master/includes/ExtractStatus)). The call is set up so it can handle both calls made for the tester (aka the spec-page) and the testee (aka the ordinary module).
 
 The test itself is run as Lua, and is set up in the `Spec.setupInterface()` call ([Spec.lua](https://github.com/jeblad/spec/blob/master/includes/LuaLibrary/lua/non-pure/Spec.lua)) by a call from  `Spec\LuaLibrary::register()` ([LuaLibrary.php](https://github.com/jeblad/spec/blob/master/includes/LuaLibrary/LuaLibrary.php)).
 
@@ -164,7 +164,7 @@ No values should be passed directly from source to sink in this subsystem.
 
 This subsystem is decoupled from the rest of the system, and only respond on messages passed as extension data. If necessary the subsystem can be completly removed.
 
-## TestAnythingProtocol
+## TAP
 A parser to compact a messy and large TAP report into something that is easier to parse repeatedly. This compacted report will maintain the fallback chain, but in its present form it is hardcoded. It could be wise to generalize the form.
 
 No values should be passed directly from source to sink in this subsystem.

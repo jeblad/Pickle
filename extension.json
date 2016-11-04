@@ -62,16 +62,16 @@
 		"Spec\\IndicatorFactory":
 			"includes/Indicator/IndicatorFactory.php",
 
-		"Spec\\ITestAnythingProtocolStrategy":
-			"includes/TestAnythingProtocol/ITestAnythingProtocolStrategy.php",
-		"Spec\\TestAnythingProtocolBaseStrategy":
-			"includes/TestAnythingProtocol/TestAnythingProtocolBaseStrategy.php",
-		"Spec\\TestAnythingProtocolCommonStrategy":
-			"includes/TestAnythingProtocol/TestAnythingProtocolCommonStrategy.php",
-		"Spec\\TestAnythingProtocol13Strategy":
-			"includes/TestAnythingProtocol/TestAnythingProtocol13Strategy.php",
-		"Spec\\TestAnythingProtocolStrategies":
-			"includes/TestAnythingProtocol/TestAnythingProtocolStrategies.php",
+		"Spec\\ITAPParser":
+			"includes/TAP/ITAPParser.php",
+		"Spec\\TAPBaseParser":
+			"includes/TAP/TAPBaseParser.php",
+		"Spec\\TAPCommonParser":
+			"includes/TAP/TAPCommonParser.php",
+		"Spec\\TAP13Parser":
+			"includes/TAP/TAP13Parser.php",
+		"Spec\\TAPStrategies":
+			"includes/TAP/TAPStrategies.php",
 
 		"Spec\\IExtractStatusStrategy":
 			"includes/ExtractStatus/IExtractStatusStrategy.php",
@@ -113,8 +113,8 @@
 		"Spec\\Tests\\CategoryTestCase":
 			"tests/phpunit/includes/Category/CategoryTestCase.php",
 
-		"Spec\\Tests\\TestAnythingProtocolStrategyTestCase":
-			"tests/phpunit/includes/TestAnythingProtocol/TestAnythingProtocolStrategyTestCase.php",
+		"Spec\\Tests\\TAPParserTestCase":
+			"tests/phpunit/includes/TAP/TAPParserTestCase.php",
 
 		"Spec\\Tests\\IndicatorTestCase":
 			"tests/phpunit/includes/Indicator/IndicatorTestCase.php",
@@ -238,12 +238,12 @@
 				"class": "Spec\\InvokeSubpageDefaultStrategy"
 			}
 		],
-		"TestAnythingProtocol": [
+		"TAP": [
 			{
-				"class": "Spec\\TestAnythingProtocol13Strategy"
+				"class": "Spec\\TAP13Parser"
 			},
 			{
-				"class": "Spec\\TestAnythingProtocolCommonStrategy"
+				"class": "Spec\\TAPCommonParser"
 			}
 		],
 		"ExtractStatus": [

@@ -3,22 +3,22 @@
 namespace Spec\Tests;
 
 use MediaWikiTestCase;
-use \Spec\TestAnythingProtocol13Strategy;
+use \Spec\TAPCommonParser;
 
 /**
  * @group Spec
  *
- * @covers \Spec\TestAnythingProtocol13Strategy
+ * @covers \Spec\TAPCommonParser
  */
-class TestAnythingProtocol13StrategyTest extends TestAnythingProtocolStrategyTestCase {
+class TAPCommonParserTest extends TAPParserTestCase {
 
 	protected $conf = [
-		"class" => "Spec\\TestAnythingProtocol13Strategy",
+		"class" => "Spec\\TAPCommonParser",
 		"name" => "test"
 	];
 
 	protected function newInstance( $conf ) {
-		return new TestAnythingProtocol13Strategy( $conf );
+		return new TAPCommonParser( $conf );
 	}
 
 	public function provideGetName() {
@@ -26,14 +26,14 @@ class TestAnythingProtocol13StrategyTest extends TestAnythingProtocolStrategyTes
 			[
 				'foo',
 				[
-					"class" => "Spec\\TestAnythingProtocol13Strategy",
+					"class" => "Spec\\TAPCommonParser",
 					"name" => "foo"
 				]
 			],
 			[
-				'tap-13',
+				'tap',
 				[
-					"class" => "Spec\\TestAnythingProtocol13Strategy"
+					"class" => "Spec\\TAPCommonParser"
 				]
 			]
 		];
@@ -46,7 +46,8 @@ class TestAnythingProtocol13StrategyTest extends TestAnythingProtocolStrategyTes
 					[ 2, 0, 0 ],
 					[ 2, 0, 1 ]
 				],
-				"ok 1 - Input file opened\n"
+				"1..4\n"
+				. "ok 1 - Input file opened\n"
 				. "not ok 2 - First line of the input valid\n"
 				. "ok 3 - Read the rest of the file\n"
 				. "not ok 4 - Summarized correctly # TODO Not written yet"
@@ -64,10 +65,13 @@ class TestAnythingProtocol13StrategyTest extends TestAnythingProtocolStrategyTes
 
 	public function provideValidExamples() {
 		return [
-			[ 'bad', true, "TAP version 13\nok 1 - test\n" ],
-			[ 'good', true, "TAP version 13\nnot ok 1 - test\n" ],
-			[ 'todo', true, "TAP version 13\nnot ok 1 - #todo\n" ],
-			[ 'skipped', true, "TAP version 13\nnot ok 1 - #skipped\n" ]
+			[ 'bad', false, "ok 1 - test\n" ],
+			[ 'unknown', false, "ok 1 - test #todo\n" ],
+			[ 'bad', true, "1..2\nok 1 - test\n" ],
+			[ 'bad', true, "1..1\nok 1 - test\n" ],
+			[ 'good', true, "1..1\nnot ok 1 - test\n" ],
+			[ 'todo', true, "1..1\nnot ok 1 - #todo\n" ],
+			[ 'skipped', true, "1..1\nnot ok 1 - #skipped\n" ]
 		];
 	}
 

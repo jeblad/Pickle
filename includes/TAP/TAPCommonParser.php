@@ -2,13 +2,13 @@
 
 namespace Spec;
 
-use \Spec\ITestAnythingProtocolStrategy;
+use \Spec\ITAPParser;
 
 /**
  * Squash a tap into its final form
  * This is more or less valid for all previous versions of tap.
  */
-class TestAnythingProtocolCommonStrategy extends TestAnythingProtocolBaseStrategy {
+class TAPCommonParser extends TAPBaseParser {
 
 	protected $opts;
 
@@ -20,7 +20,7 @@ class TestAnythingProtocolCommonStrategy extends TestAnythingProtocolBaseStrateg
 	}
 
 	/**
-	 * @see \Spec\ITestAnythingProtocolStrategy::parse()
+	 * @see \Spec\ITAPParser::parse()
 	 */
 	public function parse( $str ) {
 		$count = self::getCount( $str );
@@ -54,7 +54,7 @@ class TestAnythingProtocolCommonStrategy extends TestAnythingProtocolBaseStrateg
 	}
 
 	/**
-	 * @see \Spec\ITestAnythingProtocolStrategy::stats()
+	 * @see \Spec\ITAPParser::stats()
 	 */
 	public function stats( $str ) {
 		$good = [ 0, 0, 0 ];
@@ -90,7 +90,7 @@ class TestAnythingProtocolCommonStrategy extends TestAnythingProtocolBaseStrateg
 	}
 
 	/**
-	 * @see \Spec\ITestAnythingProtocolStrategy::checkValid()
+	 * @see \Spec\ITAPParser::checkValid()
 	 */
 	public function checkValid( $str ) {
 		return ( $this->getVersion( $str ) !== false ?: $this->getCount( $str ) !== false );

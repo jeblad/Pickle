@@ -23,7 +23,7 @@ class Hooks {
 	) {
 		// try to squash the text into submission
 		$text = $strategy->getInvoke( $title )->parse();
-		$tapStrategy = TestAnythingProtocolStrategies::getInstance()->find( $text );
+		$tapStrategy = TAPStrategies::getInstance()->find( $text );
 		if ( $tapStrategy !== null ) {
 			$text = $tapStrategy->parse( $text );
 		}

@@ -2,7 +2,7 @@
 
 namespace Spec\Tests;
 
-abstract class TestAnythingProtocolStrategyTestCase extends \MediaWikiTestCase {
+abstract class TAPParserTestCase extends \MediaWikiTestCase {
 
 	abstract protected function newInstance( $conf );
 
@@ -18,7 +18,7 @@ abstract class TestAnythingProtocolStrategyTestCase extends \MediaWikiTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = $this->newInstance( $this->conf );
-		$this->assertInstanceOf( 'Spec\\ITestAnythingProtocolStrategy', $test );
+		$this->assertInstanceOf( 'Spec\\ITAPParser', $test );
 	}
 
 	public function providerForVersionAndCount() {

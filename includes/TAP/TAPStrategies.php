@@ -7,7 +7,7 @@ namespace Spec;
  *
  * @ingroup Extensions
  */
-class TestAnythingProtocolStrategies extends Strategies {
+class TAPStrategies extends Strategies {
 
 	/**
 	 * Who am I
@@ -20,10 +20,10 @@ class TestAnythingProtocolStrategies extends Strategies {
 	 * Configure the strategies
 	 */
 	public static function init() {
-		global $wgSpecTestAnythingProtocol;
+		global $wgSpecTAP;
 
-		$results = TestAnythingProtocolStrategies::getInstance();
-		foreach ( $wgSpecTestAnythingProtocol as $struct ) {
+		$results = TAPStrategies::getInstance();
+		foreach ( $wgSpecTAP as $struct ) {
 			$results->register( $struct );
 		}
 
@@ -39,11 +39,11 @@ class TestAnythingProtocolStrategies extends Strategies {
 	 */
 	public function find( $str ) {
 		if ( $this->isEmpty() ) {
-			TestAnythingProtocolStrategies::init();
+			TAPStrategies::init();
 		}
-		foreach ( $this->instances as $strategy ) {
-			if ( $strategy->checkValid( $str ) ) {
-				return $strategy;
+		foreach ( $this->instances as $parser ) {
+			if ( $parser->checkValid( $str ) ) {
+				return $parser;
 			}
 		}
 		return null;

@@ -3,39 +3,39 @@
 namespace Spec\Tests;
 
 use MediaWikiTestCase;
-use \Spec\TestAnythingProtocolStrategies;
+use \Spec\TAPStrategies;
 
 /**
  * @group Spec
  *
- * @covers \Spec\TestAnythingProtocolStrategies
+ * @covers \Spec\TAPStrategies
  */
-class TestAnythingProtocolStrategiesTest extends StrategiesTestCase {
+class TAPStrategiesTest extends StrategiesTestCase {
 
 	public static function stratClass() {
-		return 'Spec\TestAnythingProtocolStrategies';
+		return 'Spec\TAPStrategies';
 	}
 
 	public function testOnCodeToInterface() {
-		$test = TestAnythingProtocolStrategies::getInstance();
+		$test = TAPStrategies::getInstance();
 		$this->assertInstanceOf( 'Spec\\IStrategies', $test );
 	}
 
 	public function testWho() {
-		$test = TestAnythingProtocolStrategies::who();
-		$this->assertEquals( 'Spec\TestAnythingProtocolStrategies', $test );
+		$test = TAPStrategies::who();
+		$this->assertEquals( 'Spec\TAPStrategies', $test );
 	}
 
 	public function testInit() {
-		$testA = TestAnythingProtocolStrategies::getInstance();
-		$testB = TestAnythingProtocolStrategies::getInstance();
-		$this->assertEquals( TestAnythingProtocolStrategies::who(), get_class( $testA ) );
+		$testA = TAPStrategies::getInstance();
+		$testB = TAPStrategies::getInstance();
+		$this->assertEquals( TAPStrategies::who(), get_class( $testA ) );
 		$this->assertEquals( $testA, $testB );
 	}
 
 	public function testRegister() {
-		$struct = [ 'class' => 'Spec\TestAnythingProtocolCommonStrategy' ];
-		$test = TestAnythingProtocolStrategies::getInstance();
+		$struct = [ 'class' => 'Spec\TAPCommonParser' ];
+		$test = TAPStrategies::getInstance();
 		$instance = $test->register( $struct );
 		$this->assertEquals( get_class( $instance ), $struct['class'] );
 	}
@@ -56,25 +56,25 @@ class TestAnythingProtocolStrategiesTest extends StrategiesTestCase {
 	 */
 	public function testFind( $expect, $name, $str ) {
 
-		$test = TestAnythingProtocolStrategies::getInstance();
+		$test = TAPStrategies::getInstance();
 		$test->register(
 			[
-				'class' => 'Spec\TestAnythingProtocol13Strategy',
+				'class' => 'Spec\TAP13Parser',
 				'name' => 'tap-13'
 			]
 		);
 		$test->register(
 			[
-				'class' => 'Spec\TestAnythingProtocolCommonStrategy',
+				'class' => 'Spec\TAPCommonParser',
 				'name' => 'tap'
 			]
 		);
-		$strategy = $test->find( $str );
+		$parser = $test->find( $str );
 		if ( $name === null ) {
-			$this->assertNull( $strategy );
+			$this->assertNull( $parser );
 		} else {
-			$this->assertEquals( $name, $strategy->getName() );
-			$this->assertEquals( $expect, $strategy->parse( $str ) );
+			$this->assertEquals( $name, $parser->getName() );
+			$this->assertEquals( $expect, $parser->parse( $str ) );
 		}
 	}
 }

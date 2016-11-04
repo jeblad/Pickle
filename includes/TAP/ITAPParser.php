@@ -5,7 +5,7 @@ namespace Spec;
 /**
  * Squash TAP into an overall result
  */
-interface ITestAnythingProtocolStrategy {
+interface ITAPParser {
 
 	/**
 	 * Checks if the text is accoring to a given version

@@ -3,10 +3,10 @@
 namespace Spec;
 
 /**
- * Track category base strategy
+ * TAP base Parser
  * This class is abstract as it should not be instantiated on its own.
  */
-abstract class TestAnythingProtocolBaseStrategy implements ITestAnythingProtocolStrategy {
+abstract class TAPBaseParser implements ITAPParser {
 
 	use TNamedStrategy;
 
@@ -125,7 +125,7 @@ abstract class TestAnythingProtocolBaseStrategy implements ITestAnythingProtocol
 	}
 
 	 /**
-	 * @see \Spec\ITestAnythingProtocolStrategy::getName()
+	 * @see \Spec\ITAPParser::getName()
 	 */
 	public function getName() {
 		return $this->opts['name'];
