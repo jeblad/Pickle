@@ -82,12 +82,12 @@
 		"Spec\\ExtractStatusStrategies":
 			"includes/ExtractStatus/ExtractStatusStrategies.php",
 
-		"Spec\\IInvokeSubpageStrategy":
-			"includes/InvokeSubpage/IInvokeSubpageStrategy.php",
-		"Spec\\InvokeSubpageDefaultStrategy":
-			"includes/InvokeSubpage/InvokeSubpageDefaultStrategy.php",
-		"Spec\\InvokeSubpageByContentTypeStrategy":
-			"includes/InvokeSubpage/InvokeSubpageByContentTypeStrategy.php",
+		"Spec\\IInvokeSubpage":
+			"includes/InvokeSubpage/IInvokeSubpage.php",
+		"Spec\\InvokeSubpageDefault":
+			"includes/InvokeSubpage/InvokeSubpageDefault.php",
+		"Spec\\InvokeSubpageByContentType":
+			"includes/InvokeSubpage/InvokeSubpageByContentType.php",
 		"Spec\\InvokeSubpageStrategies":
 			"includes/InvokeSubpage/InvokeSubpageStrategies.php",
 
@@ -119,8 +119,8 @@
 		"Spec\\Tests\\IndicatorTestCase":
 			"tests/phpunit/includes/Indicator/IndicatorTestCase.php",
 
-		"Spec\\Tests\\InvokeSubpageStrategyTestCase":
-			"tests/phpunit/includes/InvokeSubpage/InvokeSubpageStrategyTestCase.php"
+		"Spec\\Tests\\InvokeSubpageTestCase":
+			"tests/phpunit/includes/InvokeSubpage/InvokeSubpageTestCase.php"
 	},
 	"config": {
         "_prefix": "wgSpec",
@@ -225,17 +225,17 @@
 		],
 		"InvokeSubpage": [
 			{
-				"class": "Spec\\InvokeSubpageByContentTypeStrategy",
+				"class": "Spec\\InvokeSubpageByContentType",
 				"type": "Scribunto",
 				"name": "testspec"
 			},
 			{
-				"class": "Spec\\InvokeSubpageByContentTypeStrategy",
+				"class": "Spec\\InvokeSubpageByContentType",
 				"type": "Scribunto",
 				"name": "testcase"
 			},
 			{
-				"class": "Spec\\InvokeSubpageDefaultStrategy"
+				"class": "Spec\\InvokeSubpageDefault"
 			}
 		],
 		"TAP": [

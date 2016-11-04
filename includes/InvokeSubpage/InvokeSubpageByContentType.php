@@ -2,12 +2,12 @@
 
 namespace Spec;
 
-use \Spec\IInvokeSubpageStrategy;
+use \Spec\IInvokeSubpage;
 
 /**
  * Identify InvokeSubpage and find a message
  */
-class InvokeSubpageDefaultStrategy implements IInvokeSubpageStrategy {
+class InvokeSubpageByContentType implements IInvokeSubpage {
 
 	protected $opts;
 
@@ -17,70 +17,75 @@ class InvokeSubpageDefaultStrategy implements IInvokeSubpageStrategy {
 	public function __construct( array $opts ) {
 		$this->opts = array_merge(
 			[
+				'name' => '',
+				'type' => 'Scribunto',
 				'testerQuestion' => "= p ( p ) :tap()",
 				'testeeQuestion' => "= require '%s' ( p ) :tap()"
 			],
-			$opts,
-			[
-				'name' => 'default',
-				'type' => null
-			] );
+			$opts );
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpageStrategy::checkType()
+	 * @see \Spec\IInvokeSubpage::checkType()
 	 */
 	public function checkType( \Title &$title ) {
-		return true;
+		return $title->exists() && $title->getContentModel() === $this->opts['type'];
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpageStrategy::checkSubpageType()
+	 * @see \Spec\IInvokeSubpage::checkSubpageType()
 	 */
 	public function checkSubpageType( \Title &$title, $type = null ) {
-		return true;
+		// this will be cached
+		$subpage = \Title::newFromText( $this->getSubpagePrefixedText( $title )->plain() );
+		return ( $type === null
+			? ( $subpage->exists() && $subpage->getContentModel() === $this->opts['type'] )
+			: ( $subpage->getContentModel() === $type ) );
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpageStrategy::getInvoke()
+	 * @see \Spec\IInvokeSubpage::getInvoke()
 	 */
 	public function getInvoke( \Title &$title ) {
 		$subpage = $this->getSubpageBaseText( $title );
-		return wfMessage( 'spec-default-invoke', $subpage->plain() );
+		// @message spec-spectype-invoke
+		return wfMessage( 'spec-' . $this->opts['name'] . '-invoke', $subpage->plain() );
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpageStrategy::getSubpageText()
+	 * @see \Spec\IInvokeSubpage::getSubpagePrefixedText()
 	 */
 	public function getSubpagePrefixedText( \Title &$title ) {
 		$text = $title->getPrefixedText();
-		return wfMessage( 'spec-default-subpage', $text );
+		// @message spec-spectype-subpage
+		return wfMessage( 'spec-' . $this->opts['name'] . '-subpage', $text );
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpageStrategy::getSubpageBaseText()
+	 * @see \Spec\IInvokeSubpage::getSubpageBaseText()
 	 */
 	public function getSubpageBaseText( \Title &$title ) {
 		$baseText = $title->getBaseText();
-		return wfMessage( 'spec-default-subpage', $baseText );
+		// @message spec-spectype-subpage
+		return wfMessage( 'spec-' . $this->opts['name'] . '-subpage', $baseText );
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpageStrategy::getSubpageTitle()
+	 * @see \Spec\IInvokeSubpage::getSubpageTitle()
 	 */
 	public function getSubpageTitle( \Title &$title ) {
 		return \Title::newFromText( $this->getSubpagePrefixedText( $title )->plain() );
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpageStrategy::getTesterQuestion()
+	 * @see \Spec\IInvokeSubpage::getTesterQuestion()
 	 */
 	public function getTesterQuestion( \Title &$title ) {
 		return $this->opts['testerQuestion'];
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpageStrategy::getTesteeQuestion()
+	 * @see \Spec\IInvokeSubpage::getTesteeQuestion()
 	 */
 	public function getTesteeQuestion( \Title &$title ) {
 		$prefixedText = $this->getSubpagePrefixedText( $title );

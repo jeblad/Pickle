@@ -5,7 +5,7 @@ namespace Spec;
 /**
  * Indicator link according to an identified result
  */
-interface IInvokeSubpageStrategy {
+interface IInvokeSubpage {
 
 	/**
 	 * Checks if the title has the strategys stored type

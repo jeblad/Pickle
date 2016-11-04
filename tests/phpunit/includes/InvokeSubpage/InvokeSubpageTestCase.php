@@ -2,7 +2,7 @@
 
 namespace Spec\Tests;
 
-class InvokeSubpageStrategyTestCase extends \MediaWikiTestCase {
+class InvokeSubpageTestCase extends \MediaWikiTestCase {
 
 	protected $stub;
 

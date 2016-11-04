@@ -34,7 +34,7 @@ class InvokeSubpageStrategiesTest extends StrategiesTestCase {
 	}
 
 	public function testRegister() {
-		$struct = [ 'class' => 'Spec\InvokeSubpageByContentTypeStrategy' ];
+		$struct = [ 'class' => 'Spec\InvokeSubpageByContentType' ];
 		$test = InvokeSubpageStrategies::getInstance();
 		$instance = $test->register( $struct );
 		$this->assertEquals( get_class( $instance ), $struct['class'] );
@@ -76,14 +76,14 @@ class InvokeSubpageStrategiesTest extends StrategiesTestCase {
 		$test = InvokeSubpageStrategies::getInstance();
 		$test->register(
 			[
-				'class' => 'Spec\InvokeSubpageByContentTypeStrategy',
+				'class' => 'Spec\InvokeSubpageByContentType',
 				'name' => 'testspec',
 				'type' => 'Scribunto'
 			]
 		);
 		$test->register(
 			[
-				'class' => 'Spec\InvokeSubpageDefaultStrategy'
+				'class' => 'Spec\InvokeSubpageDefault'
 			]
 		);
 		$this->markTestIncomplete( "This test isn't correct in its present form" );
