@@ -73,12 +73,12 @@
 		"Spec\\TAPStrategies":
 			"includes/TAP/TAPStrategies.php",
 
-		"Spec\\IExtractStatusStrategy":
-			"includes/ExtractStatus/IExtractStatusStrategy.php",
-		"Spec\\ExtractStatusDefaultStrategy":
-			"includes/ExtractStatus/ExtractStatusDefaultStrategy.php",
-		"Spec\\ExtractStatusByPatternStrategy":
-			"includes/ExtractStatus/ExtractStatusByPatternStrategy.php",
+		"Spec\\IExtractStatus":
+			"includes/ExtractStatus/IExtractStatus.php",
+		"Spec\\ExtractStatusDefault":
+			"includes/ExtractStatus/ExtractStatusDefault.php",
+		"Spec\\ExtractStatusByPattern":
+			"includes/ExtractStatus/ExtractStatusByPattern.php",
 		"Spec\\ExtractStatusStrategies":
 			"includes/ExtractStatus/ExtractStatusStrategies.php",
 
@@ -248,22 +248,22 @@
 		],
 		"ExtractStatus": [
 			{
-				"class": "Spec\\ExtractStatusByPatternStrategy",
+				"class": "Spec\\ExtractStatusByPattern",
 				"name": "failing",
 				"pattern": "/^(fail(ing|ed|)|bad|not\\s+ok|bail(ing|ed|)\\s+out!)$/i"
 			},
 			{
-				"class": "Spec\\ExtractStatusByPatternStrategy",
+				"class": "Spec\\ExtractStatusByPattern",
 				"name": "pending",
 				"pattern": "/^(pending|todo|skipp?(ing|ed|))$/i"
 			},
 			{
-				"class": "Spec\\ExtractStatusByPatternStrategy",
+				"class": "Spec\\ExtractStatusByPattern",
 				"name": "good",
 				"pattern": "/^(good|ok)$/i"
 			},
 			{
-				"class": "Spec\\ExtractStatusDefaultStrategy"
+				"class": "Spec\\ExtractStatusDefault"
 			}
 		]
 	},

@@ -5,7 +5,7 @@ namespace Spec;
 /**
  * Identify final test state from a set of specs as seen from a message
  */
-interface IExtractStatusStrategy {
+interface IExtractStatus {
 
 	/**
 	 * Checks if the string has the strategys stored pattern

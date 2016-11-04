@@ -2,12 +2,12 @@
 
 namespace Spec;
 
-use \Spec\IExtractStatusStrategy;
+use \Spec\IExtractStatus;
 
 /**
  * Identify final test state from a set of specs as seen from a message
  */
-class ExtractStatusByPatternStrategy implements IExtractStatusStrategy {
+class ExtractStatusByPattern implements IExtractStatus {
 
 	protected $opts;
 
@@ -19,14 +19,14 @@ class ExtractStatusByPatternStrategy implements IExtractStatusStrategy {
 	}
 
 	/**
-	 * @see \Spec\IExtractStatusStrategy::checkState()
+	 * @see \Spec\IExtractStatus::checkState()
 	 */
 	public function checkState( $str ) {
 		return preg_match( $this->opts['pattern'], $str );
 	}
 
 	 /**
-	 * @see \Spec\IExtractStatusStrategy::getName()
+	 * @see \Spec\IExtractStatus::getName()
 	 */
 	public function getName() {
 		return $this->opts['name'];

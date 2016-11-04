@@ -34,7 +34,7 @@ class ExtractStatusStrategiesTest extends StrategiesTestCase {
 	}
 
 	public function testRegister() {
-		$struct = [ 'class' => 'Spec\ExtractStatusByPatternStrategy' ];
+		$struct = [ 'class' => 'Spec\ExtractStatusByPattern' ];
 		$test = ExtractStatusStrategies::getInstance();
 		$instance = $test->register( $struct );
 		$this->assertEquals( get_class( $instance ), $struct['class'] );
@@ -59,14 +59,14 @@ class ExtractStatusStrategiesTest extends StrategiesTestCase {
 		$test = ExtractStatusStrategies::getInstance();
 		$test->register(
 			[
-				'class' => 'Spec\ExtractStatusByPatternStrategy',
+				'class' => 'Spec\ExtractStatusByPattern',
 				'name' => 'ping',
 				'pattern' => '/\bfoo\b/'
 			]
 		);
 		$test->register(
 			[
-				'class' => 'Spec\ExtractStatusByPatternStrategy',
+				'class' => 'Spec\ExtractStatusByPattern',
 				'name' => 'pong',
 				'pattern' => '/\bbar\b/'
 			]

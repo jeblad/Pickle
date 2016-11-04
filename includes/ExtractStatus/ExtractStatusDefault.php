@@ -2,12 +2,12 @@
 
 namespace Spec;
 
-use \Spec\IExtractStatusStrategy;
+use \Spec\IExtractStatus;
 
 /**
  * Default final result from a set of specs as seen from a message
  */
-class ExtractStatusDefaultStrategy implements IExtractStatusStrategy {
+class ExtractStatusDefault implements IExtractStatus {
 
 	/**
 	 * @param array structure from extension setup
@@ -17,14 +17,14 @@ class ExtractStatusDefaultStrategy implements IExtractStatusStrategy {
 	}
 
 	/**
-	 * @see \Spec\IExtractStatusStrategy::checkState()
+	 * @see \Spec\IExtractStatus::checkState()
 	 */
 	public function checkState( $str ) {
 		return 1;
 	}
 
 	 /**
-	 * @see \Spec\IExtractStatusStrategy::getName()
+	 * @see \Spec\IExtractStatus::getName()
 	 */
 	public function getName() {
 		return 'unknown';

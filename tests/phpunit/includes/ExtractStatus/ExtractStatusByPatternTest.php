@@ -3,28 +3,28 @@
 namespace Spec\Tests;
 
 use MediaWikiTestCase;
-use \Spec\ExtractStatusByPatternStrategy;
+use \Spec\ExtractStatusByPattern;
 
 /**
  * @group Spec
  *
- * @covers \Spec\ExtractStatusByPatternStrategy
+ * @covers \Spec\ExtractStatusByPattern
  */
-class ExtractStatusByPatternStrategyTest extends MediaWikiTestCase {
+class ExtractStatusByPatternTest extends MediaWikiTestCase {
 
 	protected $conf = [
-		"class" => "Spec\\ExtractStatusByPatternStrategy",
+		"class" => "Spec\\ExtractStatusByPattern",
 		"name" => "good",
 		"pattern" => "/\\bgood\\b/"
 	];
 
 	public function testOnCodeToInterface() {
-		$test = new ExtractStatusByPatternStrategy( $this->conf );
-		$this->assertInstanceOf( 'Spec\\IExtractStatusStrategy', $test );
+		$test = new ExtractStatusByPattern( $this->conf );
+		$this->assertInstanceOf( 'Spec\\IExtractStatus', $test );
 	}
 
 	public function testOnGetName() {
-		$test = new ExtractStatusByPatternStrategy( $this->conf );
+		$test = new ExtractStatusByPattern( $this->conf );
 		$this->assertEquals( 'good', $test->getName() );
 	}
 
@@ -42,7 +42,7 @@ class ExtractStatusByPatternStrategyTest extends MediaWikiTestCase {
 	 * @dataProvider provideCheckState
 	 */
 	public function testCheckState( $expect, $str ) {
-		$test = new ExtractStatusByPatternStrategy( $this->conf );
+		$test = new ExtractStatusByPattern( $this->conf );
 		$this->assertEquals( $expect, $test->checkState( $str ) );
 	}
 }
