@@ -10,7 +10,7 @@ use \Spec\InvokeSubpageStrategies;
  *
  * @covers \Spec\InvokeSubpageStrategies
  */
-class InvokeSubpageStrategiesTest extends SingletonsTestCase {
+class InvokeSubpageStrategiesTest extends StrategiesTestCase {
 
 	public static function stratClass() {
 		return 'Spec\InvokeSubpageStrategies';
@@ -18,7 +18,7 @@ class InvokeSubpageStrategiesTest extends SingletonsTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = InvokeSubpageStrategies::getInstance();
-		$this->assertInstanceOf( 'Spec\\ISingletons', $test );
+		$this->assertInstanceOf( 'Spec\\IStrategies', $test );
 	}
 
 	public function testWho() {

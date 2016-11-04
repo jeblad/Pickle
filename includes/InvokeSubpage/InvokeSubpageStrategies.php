@@ -7,7 +7,7 @@ namespace Spec;
  *
  * @ingroup Extensions
  */
-class InvokeSubpageStrategies extends Singletons {
+class InvokeSubpageStrategies extends Strategies {
 
 	/**
 	 * Who am I

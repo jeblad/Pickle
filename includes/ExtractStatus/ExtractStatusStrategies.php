@@ -7,7 +7,7 @@ namespace Spec;
  *
  * @ingroup Extensions
  */
-class ExtractStatusStrategies extends Singletons {
+class ExtractStatusStrategies extends Strategies {
 
 	/**
 	 * Who am I

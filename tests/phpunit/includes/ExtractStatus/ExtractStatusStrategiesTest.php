@@ -10,7 +10,7 @@ use \Spec\ExtractStatusStrategies;
  *
  * @covers \Spec\ExtractStatusStrategies
  */
-class ExtractStatusStrategiesTest extends SingletonsTestCase {
+class ExtractStatusStrategiesTest extends StrategiesTestCase {
 
 	public static function stratClass() {
 		return 'Spec\ExtractStatusStrategies';
@@ -18,7 +18,7 @@ class ExtractStatusStrategiesTest extends SingletonsTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = ExtractStatusStrategies::getInstance();
-		$this->assertInstanceOf( 'Spec\\ISingletons', $test );
+		$this->assertInstanceOf( 'Spec\\IStrategies', $test );
 	}
 
 	public function testWho() {

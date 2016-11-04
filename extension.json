@@ -19,10 +19,10 @@
 		"Spec\\TrackUser":
 			"includes/TrackUser/TrackUser.php",
 
-		"Spec\\ISingletons":
-			"includes/Singletons/ISingletons.php",
-		"Spec\\Singletons":
-			"includes/Singletons/Singletons.php",
+		"Spec\\IStrategies":
+			"includes/Strategies/IStrategies.php",
+		"Spec\\Strategies":
+			"includes/Strategies/Strategies.php",
 
 		"Spec\\TNamedStrategy":
 			"includes/TNamedStrategy.php",
@@ -104,8 +104,8 @@
 		"Spec\\LuaLibrary":
 			"includes/LuaLibrary/LuaLibrary.php",
 
-		"Spec\\Tests\\SingletonsTestCase":
-			"tests/phpunit/includes/Singletons/SingletonsTestCase.php",
+		"Spec\\Tests\\StrategiesTestCase":
+			"tests/phpunit/includes/Strategies/StrategiesTestCase.php",
 
 		"Spec\\Tests\\TrackLogEntryStrategyTestCase":
 			"tests/phpunit/includes/TrackLogEntry/TrackLogEntryStrategyTestCase.php",

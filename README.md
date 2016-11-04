@@ -74,7 +74,7 @@ To extract and track the state
 * InvokeSubpage (PHP)
 
 Support libraries
-* Singletons (PHP)
+* Strategies (PHP)
 * Sublinks (PHP)
 * TestAnythingProtocol (PHP)
 * TrackUser (PHP)
@@ -152,8 +152,8 @@ This subsystem has paths from source to sink, but should not pose any risk in it
 
 This subsystem is central to proper operation of the extension.
 
-## Singletons
-This is a utility class that holds a number of singletons. Main purpose is to create a singleton that can be easilly tested. Most of the strategies use this as a base class.
+## Strategies
+This is a utility class that holds a number of strategies. Main purpose is to replace the pesky singletons with something that can be easilly tested. Most of the strategies use this as a base class.
 
 This subsystem is central to proper operation of the extension.
 

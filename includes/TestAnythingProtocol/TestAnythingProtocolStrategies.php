@@ -7,7 +7,7 @@ namespace Spec;
  *
  * @ingroup Extensions
  */
-class TestAnythingProtocolStrategies extends Singletons {
+class TestAnythingProtocolStrategies extends Strategies {
 
 	/**
 	 * Who am I

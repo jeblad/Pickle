@@ -3,28 +3,28 @@
 namespace Spec;
 
 /**
- * Set of singletons
+ * Set of strategies
  */
-interface ISingletons {
+interface IStrategies {
 
 	/**
-	 * Export the singletons
+	 * Export the strategies
 	 * The exported structure should be treated as oblique.
 	 * Should only be used during test!
 	 */
 	public function export();
 
 	/**
-	 * Import the singletons
+	 * Import the strategies
 	 * The imported structure should be treated as oblique.
 	 * Should only be used during test!
 	 *
-	 * @param array holding the new singletons
+	 * @param array holding the new strategies
 	 */
 	public function import( array $arr = null );
 
 	/**
-	 * Reset the singletons
+	 * Reset the strategies
 	 * Should only be used during test!
 	 */
 	public function reset();

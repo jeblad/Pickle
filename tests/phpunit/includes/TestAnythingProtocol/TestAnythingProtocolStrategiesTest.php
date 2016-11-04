@@ -10,7 +10,7 @@ use \Spec\TestAnythingProtocolStrategies;
  *
  * @covers \Spec\TestAnythingProtocolStrategies
  */
-class TestAnythingProtocolStrategiesTest extends SingletonsTestCase {
+class TestAnythingProtocolStrategiesTest extends StrategiesTestCase {
 
 	public static function stratClass() {
 		return 'Spec\TestAnythingProtocolStrategies';
@@ -18,7 +18,7 @@ class TestAnythingProtocolStrategiesTest extends SingletonsTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = TestAnythingProtocolStrategies::getInstance();
-		$this->assertInstanceOf( 'Spec\\ISingletons', $test );
+		$this->assertInstanceOf( 'Spec\\IStrategies', $test );
 	}
 
 	public function testWho() {

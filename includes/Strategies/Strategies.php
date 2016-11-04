@@ -3,9 +3,9 @@
 namespace Spec;
 
 /**
- * Set of singletons
+ * Set of strategies
  */
-class Singletons implements ISingletons {
+class Strategies implements IStrategies {
 
 	private static $classes = [];
 
@@ -21,7 +21,7 @@ class Singletons implements ISingletons {
 	}
 
 	/**
-	 * Get the instance and if necessary initialize the singleton
+	 * Get the instance and if necessary initialize the strategy
 	 * This does an injection of the class name to make it possible to instantiate a subclass.
 	 */
 	public static function getInstance( $className = null ) {

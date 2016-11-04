@@ -10,7 +10,7 @@ use \Spec\TrackCategoryStrategies;
  *
  * @covers \Spec\TrackCategoryStrategies
  */
-class TrackCategoryStrategiesTest extends SingletonsTestCase {
+class TrackCategoryStrategiesTest extends StrategiesTestCase {
 
 	public static function stratClass() {
 		return 'Spec\TrackCategoryStrategies';
@@ -18,7 +18,7 @@ class TrackCategoryStrategiesTest extends SingletonsTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = TrackCategoryStrategies::getInstance();
-		$this->assertInstanceOf( 'Spec\\ISingletons', $test );
+		$this->assertInstanceOf( 'Spec\\IStrategies', $test );
 	}
 
 	public function testWho() {

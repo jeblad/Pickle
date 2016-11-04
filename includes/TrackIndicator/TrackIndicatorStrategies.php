@@ -10,7 +10,7 @@ namespace Spec;
  * @license GNU GPL v2+
  * @author John Erling Blad
  */
-class TrackIndicatorStrategies extends Singletons {
+class TrackIndicatorStrategies extends Strategies {
 
 	use TNamedStrategies;
 

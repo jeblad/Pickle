@@ -10,7 +10,7 @@ use \Spec\TrackLogEntryStrategies;
  *
  * @covers \Spec\TrackLogEntryStrategies
  */
-class TrackLogEntryStrategiesTest extends SingletonsTestCase {
+class TrackLogEntryStrategiesTest extends StrategiesTestCase {
 
 	public static function stratClass() {
 		return 'Spec\TrackLogEntryStrategies';
@@ -18,7 +18,7 @@ class TrackLogEntryStrategiesTest extends SingletonsTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = TrackLogEntryStrategies::getInstance();
-		$this->assertInstanceOf( 'Spec\\ISingletons', $test );
+		$this->assertInstanceOf( 'Spec\\IStrategies', $test );
 	}
 
 	public function testWho() {
