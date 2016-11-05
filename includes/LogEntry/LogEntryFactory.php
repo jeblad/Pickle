@@ -67,5 +67,4 @@ class LogEntryFactory extends Strategies {
 		return true;
 	}
 
-
 }

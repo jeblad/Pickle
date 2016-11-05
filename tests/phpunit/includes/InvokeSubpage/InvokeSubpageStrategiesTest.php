@@ -43,11 +43,11 @@ class InvokeSubpageStrategiesTest extends StrategiesTestCase {
 	public function provideFind() {
 		return [
 			[ 'spec-default-invoke', false, 'wikitext' ],
-			//[ 'spec-test-invoke', true, 'Scribunto' ],
+			// [ 'spec-test-invoke', true, 'Scribunto' ],
 			[ 'spec-testspec-invoke', true, 'wikitext' ],
-			//[ 'spec-default-invoke', false, 'Scribunto' ],
-			//[ 'spec-test-invoke', true, 'Scribunto' ],
-			//[ 'spec-testspec-invoke', true, 'Scribunto' ],
+			// [ 'spec-default-invoke', false, 'Scribunto' ],
+			// [ 'spec-test-invoke', true, 'Scribunto' ],
+			// [ 'spec-testspec-invoke', true, 'Scribunto' ],
 			[ 'spec-default-invoke', false, 'Other' ],
 			[ 'spec-default-invoke', true, 'Other' ]
 		];
