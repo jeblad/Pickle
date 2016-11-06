@@ -14,7 +14,7 @@ class Hooks {
 	 * Get final strategy
 	 */
 	public static function getFinalStrategy(
-		IInvokeSubpageStrategy $strategy,
+		IInvokeSubpage $strategy,
 		\Title $title
 	) {
 		// try to squash the text into submission
