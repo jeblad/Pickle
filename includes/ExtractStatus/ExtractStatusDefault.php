@@ -5,7 +5,11 @@ namespace Spec;
 use \Spec\IExtractStatus;
 
 /**
- * Default final result from a set of specs as seen from a message
+ * Concrete strategy to extract stratus
+ * Encapsulates a default extract status as a strategy. The default extract strategy is used when
+ * no other matching entry can be found.
+ *
+ * @ingroup Extensions
  */
 class ExtractStatusDefault implements IExtractStatus {
 

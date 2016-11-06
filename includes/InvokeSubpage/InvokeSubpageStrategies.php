@@ -3,7 +3,9 @@
 namespace Spec;
 
 /**
- * Strategies to identify message from specsbase page type
+ * Strategies to find an invoke subpage strategy
+ * This is a factory for the invoke subpages implemented as a common set of strategies. The
+ * entries will be found according to the title.
  *
  * @ingroup Extensions
  */

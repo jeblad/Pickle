@@ -4,13 +4,10 @@ namespace Spec;
 
 /**
  * Strategy to create log entries
- * This is a factory for the log entries implemented as a common set of factories. The entries will
- * be adapted according to the current state.
+ * This is a factory for the log entries implemented as a common set of factories. The entries
+ * will be adapted according to the current state.
  *
  * @ingroup Extensions
- *
- * @license GNU GPL v2+
- * @author John Erling Blad
  */
 class LogEntryFactory extends Strategies {
 

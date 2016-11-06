@@ -4,6 +4,8 @@ namespace Spec;
 
 /**
  * Test console view
+ *
+ * @ingroup Extensions
  */
 abstract class SubLinksView implements ISubLinksView {
 

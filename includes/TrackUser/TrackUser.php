@@ -4,6 +4,8 @@ namespace Spec;
 
 /**
  * Track observer
+ *
+ * @ingroup Extensions
  */
 abstract class TrackUser implements ITrackUser {
 

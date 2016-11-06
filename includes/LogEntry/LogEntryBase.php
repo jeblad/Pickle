@@ -4,7 +4,9 @@ namespace Spec;
 
 /**
  * Log entry base
- * Encapsulates the log entry as an adapter.
+ * Encapsulates the abstract base class log entry as an adapter.
+ *
+ * @ingroup Extensions
  */
 abstract class LogEntryBase implements ILogEntry {
 

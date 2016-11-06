@@ -4,7 +4,9 @@ namespace Spec;
 
 /**
  * Category base
- * Encapsulates the base category as an adapter.
+ * Encapsulates the abstract base class category as an adapter.
+ *
+ * @ingroup Extensions
  */
 abstract class CategoryBase implements ICategory {
 

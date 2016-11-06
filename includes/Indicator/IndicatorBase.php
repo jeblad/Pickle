@@ -4,7 +4,9 @@ namespace Spec;
 
 /**
  * Indicator base
- * Encapsulates the base indicator as an adapter.
+ * Encapsulates the abstract base class indicator as an adapter.
+ *
+ * @ingroup Extensions
  */
 abstract class IndicatorBase implements IIndicator {
 

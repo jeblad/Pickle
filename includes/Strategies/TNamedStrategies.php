@@ -3,6 +3,8 @@
 namespace Spec;
 
 /**
+ *
+ * @ingroup Extensions
  * @group Spec
  */
 trait TNamedStrategies {

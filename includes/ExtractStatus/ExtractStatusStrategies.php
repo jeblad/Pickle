@@ -3,7 +3,9 @@
 namespace Spec;
 
 /**
- * Strategies to identify final result from specs
+ * Strategies to find an extract status strategy
+ * This is a factory for the extracted statuses implemented as a common set of strategies. The
+ * entries will be found according to the current result.
  *
  * @ingroup Extensions
  */

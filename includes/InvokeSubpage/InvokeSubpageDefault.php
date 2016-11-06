@@ -5,7 +5,11 @@ namespace Spec;
 use \Spec\IInvokeSubpage;
 
 /**
- * Identify InvokeSubpage and find a message
+ * Concrete strategy to invoke subpage
+ * Encapsulates a default invoke subpage as a strategy. The default invoke subpage is used when
+ * no other matching entry can be found.
+ *
+ * @ingroup Extensions
  */
 class InvokeSubpageDefault implements IInvokeSubpage {
 

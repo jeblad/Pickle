@@ -6,7 +6,10 @@ use \Spec\ITAPParser;
 
 /**
  * Squash a tap into its final form
- * This is more or less valid for all previous versions of tap.
+ * Encapsulates a common TAP parser as an adapter. The common TAP parser is used when recognized
+ * entries are found.
+ *
+ * @ingroup Extensions
  */
 class TAPCommonParser extends TAPBaseParser {
 

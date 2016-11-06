@@ -8,9 +8,6 @@ namespace Spec;
  * entries are found.
  *
  * @ingroup Extensions
- *
- * @license GNU GPL v2+
- * @author John Erling Blad
  */
 class LogEntryCommon extends LogEntryBase {
 

@@ -4,6 +4,8 @@ namespace Spec;
 
 /**
  * Track user
+ *
+ * @ingroup Extensions
  */
 interface ITrackUser {
 

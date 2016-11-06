@@ -4,7 +4,9 @@ namespace Spec;
 
 /**
  * TAP base Parser
- * This class is abstract as it should not be instantiated on its own.
+ * Encapsulates the abstract base class for TAP parser as an adapter.
+ *
+ * @ingroup Extensions
  */
 abstract class TAPBaseParser implements ITAPParser {
 

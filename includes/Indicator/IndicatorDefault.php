@@ -8,9 +8,6 @@ namespace Spec;
  * matching entry can be found.
  *
  * @ingroup Extensions
- *
- * @license GNU GPL v2+
- * @author John Erling Blad
  */
 class IndicatorDefault extends IndicatorBase {
 

@@ -5,6 +5,8 @@ namespace Spec;
 /**
  * Indicator interface
  * Encapsulates the indicator as an adapter.
+ *
+ * @ingroup Extensions
  */
 interface IIndicator {
 

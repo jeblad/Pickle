@@ -4,6 +4,8 @@ namespace Spec;
 
 /**
  * Squash TAP into an overall result
+ *
+ * @ingroup Extensions
  */
 interface ITAPParser {
 

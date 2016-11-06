@@ -5,11 +5,7 @@ namespace Spec;
 /**
  * Hook handlers for the Spec extension
  *
- * @file
  * @ingroup Extensions
- *
- * @license GNU GPL v2+
- * @author John Erling Blad
  */
 
 class Hooks {

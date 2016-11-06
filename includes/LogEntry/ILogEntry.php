@@ -5,6 +5,8 @@ namespace Spec;
 /**
  * Log entry interface
  * Encapsulates the log entry as an adapter.
+ *
+ * @ingroup Extensions
  */
 interface ILogEntry {
 

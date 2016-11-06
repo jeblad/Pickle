@@ -6,6 +6,8 @@ namespace Spec;
  * Set of strategies
  * This is the base class for a factory for strategy patterns, allowing strategies to be registered
  * and the factory to be tested by providing methods for exporting and importing definitions.
+ *
+ * @ingroup Extensions
  */
 class Strategies implements IStrategies {
 

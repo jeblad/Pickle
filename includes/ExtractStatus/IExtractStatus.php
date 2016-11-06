@@ -3,7 +3,11 @@
 namespace Spec;
 
 /**
- * Identify final test state from a set of specs as seen from a message
+ * Extract status interface
+ * Encapsulates the extracted status as a strategy.
+ * Identifies the final test state from a set of specs as seen from a message.
+ *
+ * @ingroup Extensions
  */
 interface IExtractStatus {
 

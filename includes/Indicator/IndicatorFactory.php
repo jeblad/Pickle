@@ -4,11 +4,10 @@ namespace Spec;
 
 /**
  * Strategy to create indicators
+ * This is a factory for the indicators implemented as a common set of factories. The entries
+ * will be adapted according to the current state.
  *
  * @ingroup Extensions
- *
- * @license GNU GPL v2+
- * @author John Erling Blad
  */
 class IndicatorFactory extends Strategies {
 

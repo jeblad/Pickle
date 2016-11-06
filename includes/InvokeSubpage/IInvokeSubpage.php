@@ -3,7 +3,11 @@
 namespace Spec;
 
 /**
- * Indicator link according to an identified result
+ * Invoke subpage interface
+ * Encapsulates the invoke subpage as a strategy.
+ * Identifies the subpage to invoke by message from a given title.
+ *
+ * @ingroup Extensions
  */
 interface IInvokeSubpage {
 

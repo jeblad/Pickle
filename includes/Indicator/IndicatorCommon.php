@@ -9,9 +9,6 @@ namespace Spec;
  *
  * file
  * @ingroup Extensions
- *
- * @license GNU GPL v2+
- * @author John Erling Blad
  */
 class IndicatorCommon extends IndicatorBase {
 

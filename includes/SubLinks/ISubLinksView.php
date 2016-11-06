@@ -4,6 +4,8 @@ namespace Spec;
 
 /**
  * Builder for the view
+ *
+ * @ingroup Extensions
  */
 interface ISubLinksView {
 

@@ -5,7 +5,12 @@ namespace Spec;
 use \Spec\IExtractStatus;
 
 /**
- * Identify final test state from a set of specs as seen from a message
+ * Concrete strategy to extract status
+ * Encapsulates an extract status as a strategy. This extract status is used when a matching
+ * entry can be found.
+ * Identify final test state from a set of specs as seen from a message.
+ *
+ * @ingroup Extensions
  */
 class ExtractStatusByPattern implements IExtractStatus {
 

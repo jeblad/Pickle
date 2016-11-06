@@ -5,6 +5,8 @@ namespace Spec;
 /**
  * Category interface
  * Encapsulates the category as an adapter.
+ *
+ * @ingroup Extensions
  */
 interface ICategory {
 

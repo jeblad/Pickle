@@ -5,7 +5,12 @@ namespace Spec;
 use \Spec\IInvokeSubpage;
 
 /**
- * Identify InvokeSubpage and find a message
+ * Concrete strategy to invoke subpage
+ * Encapsulates an invoke subpage as a strategy. This invoke subpage is used when a matching
+ * entry can be found.
+ * Identifies the subpage to invoke by message from a given title.
+ *
+ * @ingroup Extensions
  */
 class InvokeSubpageByContentType implements IInvokeSubpage {
 

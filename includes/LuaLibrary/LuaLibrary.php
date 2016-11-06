@@ -7,8 +7,7 @@ use Scribunto_LuaLibraryBase;
 /**
  * Registers our lua modules to Scribunto
  *
- * @licence GNU GPL v2+
- * @author John Erling Blad < jeblad@gmail.com >
+ * @ingroup Extensions
  */
 
 class LuaLibrary extends Scribunto_LuaLibraryBase {
