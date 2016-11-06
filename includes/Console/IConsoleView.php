@@ -7,7 +7,7 @@ namespace Spec;
  *
  * @ingroup Extensions
  */
-interface ITestConsoleView {
+interface IConsoleView {
 
 	/**
 	 * Build the view

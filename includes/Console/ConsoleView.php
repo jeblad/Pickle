@@ -7,7 +7,7 @@ namespace Spec;
  *
  * @ingroup Extensions
  */
-abstract class TestConsoleView implements ITestConsoleView {
+abstract class ConsoleView implements IConsoleView {
 
 	/**
 	 * Get Lua question
