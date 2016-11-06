@@ -171,7 +171,7 @@ No values should be passed directly from source to sink in this subsystem.
 
 This subsystem is central to proper operation of the extension, but it can be removed if necessary.
 
-## TestConsole
+## Console
 The visual design of the test console follows the same idea as the debug console, where a panel is positioned below the usual editor and then extended with Javascript in the browser. It is only the `div` that is added directly from the PHP code, but additional code includes [ext.spec.console.js](https://github.com/jeblad/spec/blob/master/modules/ext.spec.console.js) which creates more of the user interface.
 
 On each click of the button a new report will be rendered, in order and in a compact fashion.

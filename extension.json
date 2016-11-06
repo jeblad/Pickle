@@ -91,10 +91,10 @@
 		"Spec\\InvokeSubpageStrategies":
 			"includes/InvokeSubpage/InvokeSubpageStrategies.php",
 
-		"Spec\\ITestConsoleView":
-			"includes/TestConsole/ITestConsoleView.php",
-		"Spec\\TestConsoleView":
-			"includes/TestConsole/TestConsoleView.php",
+		"Spec\\IConsoleView":
+			"includes/Console/IConsoleView.php",
+		"Spec\\ConsoleView":
+			"includes/Console/ConsoleView.php",
 
 		"Spec\\ISubLinksView":
 			"includes/SubLinks/ISubLinksView.php",
@@ -286,10 +286,10 @@
 			"Spec\\SubLinksView::onOutputPageParserOutput"
 		],
 		"EditPageBeforeEditChecks": [
-			"Spec\\TestConsoleView::onEditPageBeforeEditChecks"
+			"Spec\\ConsoleView::onEditPageBeforeEditChecks"
 		],
 		"EditPage::showReadOnlyForm:initial": [
-			"Spec\\TestConsoleView::onShowReadOnlyFormInitial"
+			"Spec\\ConsoleView::onShowReadOnlyFormInitial"
 		],
 		"ScribuntoExternalLibraries": [
 			"Spec\\LuaLibrary::registerScribuntoLibraries"
