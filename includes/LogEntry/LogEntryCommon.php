@@ -27,7 +27,7 @@ class LogEntryCommon extends LogEntryBase {
 			$logEntry = new \ManualLogEntry( 'track', $this->opts['name'] );
 		}
 
-		$logEntry->setPerformer( \Spec\TrackUser::getUser() );
+		$logEntry->setPerformer( \Spec\Observer::getUser() );
 		$logEntry->setTarget( $title );
 		$logEntry->setIsPatrollable( false );
 

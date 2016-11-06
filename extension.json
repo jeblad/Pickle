@@ -14,10 +14,10 @@
 		"Spec\\Common":
 			"includes/Common.php",
 
-		"Spec\\ITrackUser":
-			"includes/TrackUser/ITrackUser.php",
-		"Spec\\TrackUser":
-			"includes/TrackUser/TrackUser.php",
+		"Spec\\IObserver":
+			"includes/Observer/IObserver.php",
+		"Spec\\Observer":
+			"includes/Observer/Observer.php",
 
 		"Spec\\IStrategies":
 			"includes/Strategies/IStrategies.php",
@@ -124,7 +124,7 @@
 	},
 	"config": {
         "_prefix": "wgSpec",
-		"TrackUserID": 3,
+		"ObserverID": 3,
 		"RenderStyles": {
 			"compact": "speclib/render/compact",
 			"full": "speclib/render/full",

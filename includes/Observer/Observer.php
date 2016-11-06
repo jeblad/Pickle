@@ -3,22 +3,22 @@
 namespace Spec;
 
 /**
- * Track observer
+ * Observer
  *
  * @ingroup Extensions
  */
-abstract class TrackUser implements ITrackUser {
+abstract class Observer implements IObserver {
 
 	protected static $instance = null;
 
 	/**
-	 * @see \Spec\ITrackUser::getName()
+	 * @see \Spec\IObserver::getName()
 	 */
 	public static function getUser() {
-		global $wgSpecTrackUserID;
+		global $wgSpecObserverID;
 
 		if ( self::$instance === null ) {
-			self::$instance = \User::newFromID( $wgSpecTrackUserID );
+			self::$instance = \User::newFromID( $wgSpecObserverID );
 		}
 		return self::$instance;
 	}

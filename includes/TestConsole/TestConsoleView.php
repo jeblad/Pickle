@@ -102,7 +102,7 @@ abstract class TestConsoleView implements ITestConsoleView {
 
 	/**
 	 * @todo This doc section must be wrong
-	 * @see \Spec\ITrackUser::getName()
+	 * @see \Spec\IObserver::getName()
 	 */
 	public function makeForm() {
 		$editor->editFormTextAfterTools .= '<div id="mw-scribunto-console"></div>';

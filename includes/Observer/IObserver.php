@@ -3,11 +3,11 @@
 namespace Spec;
 
 /**
- * Track user
+ * Observer
  *
  * @ingroup Extensions
  */
-interface ITrackUser {
+interface IObserver {
 
 	/**
 	 * Get the user
