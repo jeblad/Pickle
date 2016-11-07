@@ -40,10 +40,7 @@ abstract class ConsoleView implements IConsoleView {
 	}
 
 	/**
-	 * Build the bare bone test console
-	 *
-	 * @param EditPage $editor
-	 * @param OutputPage $output
+	 * @see \Spec\IConsoleView::build()
 	 */
 	public static function build( \EditPage &$editor, \OutputPage $output ) {
 
