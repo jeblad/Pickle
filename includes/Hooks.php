@@ -35,6 +35,7 @@ class Hooks {
 
 	/**
 	 * Page indicator for module with spec tests
+	 * @todo design debt
 	 */
 	public static function onContentAlterParserOutput(
 		\Content $content,
