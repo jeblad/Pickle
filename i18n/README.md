@@ -13,7 +13,7 @@ If you need a glossary, a lot of the terms are tecnical jargon, one is defined a
 There should be a template `spec-indicator-desc` reading
 
 > This is the text for the link to the spec page, given that the test result is "{{{1}}}". Should be
->  a very minimalistic text that can be used as link in the page indicators.
+> a very minimalistic text that can be used as link in the page indicators.
 
 There should be a template `spec-indicator-desc` reading
 
