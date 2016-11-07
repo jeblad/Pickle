@@ -96,10 +96,12 @@ class Hooks {
 								}
 							}
 
+							// add the usual help link
+							HelpView::build();
+
 							// run registered callbacks to create testee gadgets
 							\Hooks::run( 'SpecTesterGadgets', [ $title, $parserOutput, $args ] );
 
-							// $out->addHelpLink( '//mediawiki.org/wiki/Special:MyLanguage/Help:Spec', true );
 							return true;
 						}
 					}

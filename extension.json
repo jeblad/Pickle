@@ -91,6 +91,11 @@
 		"Spec\\InvokeSubpageStrategies":
 			"includes/InvokeSubpage/InvokeSubpageStrategies.php",
 
+		"Spec\\IHelpView":
+			"includes/Help/IHelpView.php",
+		"Spec\\HelpView":
+			"includes/Help/HelpView.php",
+
 		"Spec\\IConsoleView":
 			"includes/Console/IConsoleView.php",
 		"Spec\\ConsoleView":
