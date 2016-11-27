@@ -156,26 +156,27 @@
 		"Indicator": [
 			{
 				"class": "Spec\\IndicatorCommon",
-				"name": "failing"
+				"name": "failing",
+				"icon": "critical-fail"
 			},
 			{
 				"class": "Spec\\IndicatorCommon",
-				"name": "pending"
+				"name": "pending",
+				"icon": "warning-unknown"
 			},
 			{
 				"class": "Spec\\IndicatorCommon",
-				"name": "good"
+				"name": "good",
+				"icon": "information-good"
 			},
 			{
 				"class": "Spec\\IndicatorCommon",
-				"name": "exists"
+				"name": "missing",
+				"icon": "warning-unknown"
 			},
 			{
-				"class": "Spec\\IndicatorCommon",
-				"name": "missing"
-			},
-			{
-				"class": "Spec\\IndicatorDefault"
+				"class": "Spec\\IndicatorDefault",
+				"icon": "warning-unknown"
 			}
 		],
 		"Category": [
@@ -312,6 +313,22 @@
 		]
 	},
 	"ResourceModules": {
+		"ext.spec.indicator.icon": {
+			"position": "left center",
+			"class": "ResourceLoaderImageModule",
+			"selector": ".mw-ui-icon-{name}",
+			"images": {
+				"critical-good": "images/ext.spec.indicator.icon/critical-good.svg",
+				"critical-unknown": "images/ext.spec.indicator.icon/critical-unknown.svg",
+				"critical-fail": "images/ext.spec.indicator.icon/critical-fail.svg",
+				"warning-good": "images/ext.spec.indicator.icon/warning-good.svg",
+				"warning-unknown": "images/ext.spec.indicator.icon/warning-unknown.svg",
+				"warning-fail": "images/ext.spec.indicator.icon/warning-fail.svg",
+				"information-good": "images/ext.spec.indicator.icon/information-good.svg",
+				"information-unknown": "images/ext.spec.indicator.icon/information-unknown.svg",
+				"information-fail": "images/ext.spec.indicator.icon/information-fail.svg"
+			}
+		}, 
 		"ext.spec.default": {
 			"styles": {
 				"0": "ext.spec.default.css"

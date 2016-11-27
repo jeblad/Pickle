@@ -14,7 +14,8 @@ class IndicatorDefaultTest extends IndicatorTestCase {
 
 	protected $conf = [
 		"class" => "Spec\\IndicatorDefault",
-		"name" => "test"
+		"name" => "test",
+		"icon" => "bar"
 	];
 
 	protected function newInstance( $conf ) {

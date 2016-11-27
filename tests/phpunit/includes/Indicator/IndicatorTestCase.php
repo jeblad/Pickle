@@ -51,6 +51,14 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 		$this->assertContains( $test->getName(), $test->getKey() );
 	}
 
+	public function testOnGetIcon() {
+		$test = $this->newInstance( $this->conf );
+		$this->assertNotNull( $test );
+
+		$this->assertRegExp( '/^[-\w]+$/', $test->getIcon() );
+		// $this->assertContains( $test->getName(), $test->getKey() );
+	}
+
 	public function testOnGetMessageKey() {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );

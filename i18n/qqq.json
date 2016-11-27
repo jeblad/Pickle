@@ -14,7 +14,6 @@
 	"spec-test-text-good": "{{spec-gloss}} {{spec-indicator-desc|good}} A good result is one where all reported tests were ok.",
 	"spec-test-text-pending": "{{spec-gloss}} {{spec-indicator-desc|pending}} A pending result is one where one or more reported tests were pending.",
 	"spec-test-text-failing": "{{spec-gloss}} {{spec-indicator-desc|failed}} A failed result is one where one or more reported tests were not ok.",
-	"spec-test-text-exists": "{{spec-gloss}} {{spec-indicator-desc|exists}} An exists result is one where a test page could be found but not parsed.",
 	"spec-test-text-missing": "{{spec-gloss}} {{spec-indicator-desc|missing}} A missing result is one where the test page could not be found.",
 	"spec-test-text-unknown": "{{spec-gloss}} {{spec-indicator-desc|unknown}} An unknown result is one where the reported tests could not be parsed.",
 	"spec-tracking-category-good": "{{spec-gloss}} {{spec-category-desc|good}} ",

@@ -38,7 +38,7 @@ abstract class IndicatorBase implements IIndicator {
 			[
 				'href' => $url,
 				'target' => '_blank',
-				'class' => [ $this->getClassKey(), $this->getKey() ]
+				'class' => [ $this->getClassKey(), $this->getKey(), $this->getIcon() ]
 			],
 			$msg->parse()
 		);
@@ -70,7 +70,7 @@ abstract class IndicatorBase implements IIndicator {
 		$elem = \Html::rawElement(
 			'span',
 			[
-				'class' => [ $this->getClassKey(), $this->getKey() ]
+				'class' => [ $this->getClassKey(), $this->getKey(), $this->getIcon() ]
 			],
 			$msg->parse()
 		);
@@ -85,6 +85,15 @@ abstract class IndicatorBase implements IIndicator {
 	 */
 	public function getKey() {
 		return $this->getClassKey() . '-' . $this->opts['name'];
+	}
+
+	/**
+	 * Get the icon
+	 *
+	 * @return string
+	 */
+	public function getIcon() {
+		return 'mw-ui-icon-' . $this->opts['icon'];
 	}
 
 	/**
@@ -119,7 +128,7 @@ abstract class IndicatorBase implements IIndicator {
 
 		if ( $elem !== null ) {
 			$res = $parserOutput->setIndicator( $this->getClassKey(), $elem );
-			$parserOutput->addModuleStyles( 'ext.spec.default' );
+			$parserOutput->addModuleStyles( [ 'ext.spec.default', 'ext.spec.indicator.icon' ] );
 		}
 
 		return $elem;

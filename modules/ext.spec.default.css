@@ -1,8 +1,8 @@
 #mw-indicator-mw-speclink a,
 #mw-indicator-mw-speclink span {
-	background-image: url(images/info-other.png);
+	/*background-image: url(images/info-other.png);*/
 	background-repeat: no-repeat;
-	background-position: left center;
+	/*background-position: left center;*/
 	padding-left: 28px;
 	display: inline-block;
 	height: 24px;
@@ -14,13 +14,13 @@
 #mw-indicator-mw-speclink span.mw-speclink-unknown,
 #mw-indicator-mw-speclink a.mw-speclink-pending,
 #mw-indicator-mw-speclink span.mw-speclink-pending {
-	background-image: url(images/info-yellow-inner.png);
+	/*background-image: url(images/info-yellow-inner.png);*/
 }
 #mw-indicator-mw-speclink a.mw-speclink-good,
 #mw-indicator-mw-speclink span.mw-speclink-good {
-	background-image: url(images/info-green-inner.png);
+	/*background-image: url(images/info-green-inner.png);*/
 }
 #mw-indicator-mw-speclink a.mw-speclink-failing,
 #mw-indicator-mw-speclink span.mw-speclink-failing {
-	background-image: url(images/info-red-inner.png);
+	/*background-image: url(images/info-red-inner.png);*/
 }

@@ -30,10 +30,16 @@
   "require-dev": {
 	"jakub-onderka/php-parallel-lint": ">=0.9.2",
 	"mediawiki/mediawiki-codesniffer": ">=0.7.2",
-	"liuggio/fastest": "dev-master"
+	"liuggio/fastest": "dev-master",
+	"svg/svgo": ">=0.7"
   },
   "scripts": {
-	"fix": "phpcbf",
+	"fix": [
+		"phpcbf"
+	],
+	"minify": [
+		"find modules/images -type d -path minified  -prune -o -type d -execdir svgo --pretty --indent=2 -i . -o ./minified \\;"
+	],
 	"test": [
 	  "parallel-lint . --exclude vendor",
 	  "phpcs -p -s"
