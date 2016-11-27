@@ -18,6 +18,8 @@ abstract class TAPParserTestCase extends \MediaWikiTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = $this->newInstance( $this->conf );
+		$this->assertNotNull( $test );
+
 		$this->assertInstanceOf( 'Spec\\ITAPParser', $test );
 	}
 
@@ -35,6 +37,8 @@ abstract class TAPParserTestCase extends \MediaWikiTestCase {
 	 */
 	public function testOnVersion( $version, $count, $str ) {
 		$test = $this->newInstance( $this->conf );
+		$this->assertNotNull( $test );
+
 		$this->assertEquals( $version, $test->getVersion( $str ) );
 	}
 
@@ -43,6 +47,8 @@ abstract class TAPParserTestCase extends \MediaWikiTestCase {
 	 */
 	public function testOnCount( $version, $count, $str ) {
 		$test = $this->newInstance( $this->conf );
+		$this->assertNotNull( $test );
+
 		$this->assertEquals( $count, $test->getCount( $str ) );
 	}
 
@@ -72,6 +78,8 @@ abstract class TAPParserTestCase extends \MediaWikiTestCase {
 	 */
 	public function testOnChecks( $expect, $str ) {
 		$test = $this->newInstance( $this->conf );
+		$this->assertNotNull( $test );
+
 		$this->assertEquals( $expect[0], $test->isOk( $str ) );
 		$this->assertEquals( $expect[1], $test->isNotOk( $str ) );
 		$this->assertEquals( $expect[2], $test->isSkip( $str ) );

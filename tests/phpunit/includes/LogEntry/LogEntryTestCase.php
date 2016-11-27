@@ -36,6 +36,8 @@ abstract class LogEntryTestCase extends \MediaWikiTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = $this->newInstance( $this->conf );
+		$this->assertNotNull( $test );
+
 		$this->assertInstanceOf( 'Spec\\ILogEntry', $test );
 	}
 
@@ -45,6 +47,7 @@ abstract class LogEntryTestCase extends \MediaWikiTestCase {
 	public function testOnNewLogEntry( $expect, $conf ) {
 		$test = $this->newInstance( $conf );
 		$this->assertNotNull( $test );
+
 		$logEntry = $test->newLogEntry( $this->stubTitle );
 		$this->assertNotNull( $logEntry );
 		$this->assertEquals( $expect['type'], $logEntry->getType() );

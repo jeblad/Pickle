@@ -56,7 +56,7 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 		$this->assertNotNull( $test );
 
 		$this->assertRegExp( '/^[-\w]+$/', $test->getIcon() );
-		// $this->assertContains( $test->getName(), $test->getKey() );
+		$this->assertContains( 'bar', $test->getIcon() );
 	}
 
 	public function testOnGetMessageKey() {
@@ -85,6 +85,7 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 	public function testOnMakeLink() {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );
+
 		$elem = $test->makeLink( 'http://example.com', 'qqx' );
 		$this->assertNotNull( $elem );
 		$this->assertContains( '<a ', $elem );
@@ -95,6 +96,7 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 	public function testOnMakeNote() {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );
+
 		$elem = $test->makeNote( 'qqx' );
 		$this->assertNotNull( $elem );
 		$this->assertContains( '<span ', $elem );
