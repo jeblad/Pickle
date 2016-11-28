@@ -9,7 +9,7 @@ namespace Spec;
  *
  * @ingroup Extensions
  */
-class LogEntryCommon extends LogEntryBase {
+class LogEntryCommon extends ALogEntry {
 
 	/**
 	 * @param array structure from extension setup
@@ -19,7 +19,7 @@ class LogEntryCommon extends LogEntryBase {
 	}
 
 	/**
-	 * @see \Spec\LogEntryBaseStrategy::newLogEntry()
+	 * @see \Spec\ALogEntryStrategy::newLogEntry()
 	 */
 	public function newLogEntry( \Title $title, \LogEntry $logEntry = null ) {
 

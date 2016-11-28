@@ -29,10 +29,8 @@
 		"Spec\\TNamedStrategies":
 			"includes/Strategies/TNamedStrategies.php",
 
-		"Spec\\ILogEntry":
-			"includes/LogEntry/ILogEntry.php",
-		"Spec\\LogEntryBase":
-			"includes/LogEntry/LogEntryBase.php",
+		"Spec\\ALogEntry":
+			"includes/LogEntry/ALogEntry.php",
 		"Spec\\LogEntryDefault":
 			"includes/LogEntry/LogEntryDefault.php",
 		"Spec\\LogEntryCommon":
@@ -40,10 +38,8 @@
 		"Spec\\LogEntryFactory":
 			"includes/LogEntry/LogEntryFactory.php",
 
-		"Spec\\ICategory":
-			"includes/Category/ICategory.php",
-		"Spec\\CategoryBase":
-			"includes/Category/CategoryBase.php",
+		"Spec\\ACategory":
+			"includes/Category/ACategory.php",
 		"Spec\\CategoryDefault":
 			"includes/Category/CategoryDefault.php",
 		"Spec\\CategoryCommon":
@@ -51,10 +47,8 @@
 		"Spec\\CategoryFactory":
 			"includes/Category/CategoryFactory.php",
 
-		"Spec\\IIndicator":
-			"includes/Indicator/IIndicator.php",
-		"Spec\\IndicatorBase":
-			"includes/Indicator/IndicatorBase.php",
+		"Spec\\AIndicator":
+			"includes/Indicator/AIndicator.php",
 		"Spec\\IndicatorDefault":
 			"includes/Indicator/IndicatorDefault.php",
 		"Spec\\IndicatorCommon":

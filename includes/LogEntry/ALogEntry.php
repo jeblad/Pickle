@@ -8,9 +8,20 @@ namespace Spec;
  *
  * @ingroup Extensions
  */
-abstract class LogEntryBase implements ILogEntry {
+abstract class ALogEntry {
 
 	use TNamedStrategy;
+
+	protected $opts;
+
+	/**
+	 * Clone the opts
+	 *
+	 * @return array
+	 */
+	public function cloneOpts() {
+		return array_merge( [], $this->opts );
+	}
 
 	/**
 	 * Create a new track log entry
@@ -24,7 +35,13 @@ abstract class LogEntryBase implements ILogEntry {
 	abstract function newLogEntry( \Title $title, \LogEntry $logEntry = null );
 
 	/**
-	 * @see \Spec\ILogEntryStrategy::addLogEntry()
+	 * Add a log entry
+	 * This will create a log entry, insert it in the log and publish it.
+	 *
+	 * @param \Title target of the logged action
+	 * @param \LogEntry|null predefined log entry for testing purposes
+	 *
+	 * @return LogEntry|null
 	 */
 	public function addLogEntry( \Title $title, \LogEntry $logEntry = null ) {
 

@@ -10,9 +10,20 @@ use MediaWiki\Logger\LoggerFactory;
  *
  * @ingroup Extensions
  */
-abstract class IndicatorBase implements IIndicator {
+abstract class AIndicator {
 
 	use TNamedStrategy;
+
+	protected $opts;
+
+	/**
+	 * Clone the opts
+	 *
+	 * @return array
+	 */
+	public function cloneOpts() {
+		return array_merge( [], $this->opts );
+	}
 
 	/**
 	 * Make a page status indicator link given status and url
@@ -125,7 +136,12 @@ abstract class IndicatorBase implements IIndicator {
 	}
 
 	/**
-	 * @see \Spec\IIndicator::addIndicator()
+	 * Add a new track indicator
+	 *
+	 * @param \Title target for the indicator
+	 * @param \ParserOutput where the indicator should be added
+	 *
+	 * @return Message
 	 */
 	public function addIndicator( \Title $title = null, \ParserOutput &$parserOutput ) {
 		$elem = null;

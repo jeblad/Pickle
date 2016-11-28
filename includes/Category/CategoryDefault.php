@@ -9,7 +9,7 @@ namespace Spec;
  *
  * @ingroup Extensions
  */
-class CategoryDefault extends CategoryBase {
+class CategoryDefault extends ACategory {
 
 	/**
 	 * @param array structure from extension setup

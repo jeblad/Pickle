@@ -65,7 +65,7 @@ class LogEntryFactory extends Strategies {
 				->debug( 'Found concrete log entry: {name}',
 					array_merge(
 						[ 'method' => __METHOD__ ],
-						$strategy->opts ?: [] ) );
+						$strategy->cloneOpts() ?: [] ) );
 
 			$strategy->addLogEntry( $title );
 		}

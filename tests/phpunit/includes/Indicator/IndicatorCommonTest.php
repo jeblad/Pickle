@@ -13,7 +13,7 @@ use \Spec\IndicatorCommon;
 class IndicatorCommonTest extends IndicatorTestCase {
 
 	protected $conf = [
-		"class" => "Spec\\Indicatory",
+		"class" => "Spec\\IndicatorCommon",
 		"name" => "good",
 		"icon" => "bar"
 	];
@@ -27,14 +27,14 @@ class IndicatorCommonTest extends IndicatorTestCase {
 			[
 				'foo',
 				[
-					"class" => "Spec\\CategoryCommon",
+					"class" => "Spec\\IndicatorCommon",
 					"name" => "foo"
 				]
 			],
 			[
 				'',
 				[
-					"class" => "Spec\\CategoryCommon"
+					"class" => "Spec\\IndicatorCommon"
 				]
 			]
 		];

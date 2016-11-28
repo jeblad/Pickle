@@ -68,7 +68,7 @@ class IndicatorFactory extends Strategies {
 				->debug( 'Found concrete indicator: {name}',
 					array_merge(
 						[ 'method' => __METHOD__ ],
-						$strategy->opts ?: [] ) );
+						$strategy->cloneOpts() ?: [] ) );
 
 			$strategy->addIndicator( $title, $parserOutput, $states );
 		}

@@ -10,7 +10,7 @@ namespace Spec;
  * file
  * @ingroup Extensions
  */
-class IndicatorCommon extends IndicatorBase {
+class IndicatorCommon extends AIndicator {
 
 	/**
 	 * @param array structure from extension setup

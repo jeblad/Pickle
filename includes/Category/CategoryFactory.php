@@ -64,7 +64,7 @@ class CategoryFactory extends Strategies {
 				->debug( 'Found concrete category: {name}',
 					array_merge(
 						[ 'method' => __METHOD__ ],
-						$strategy->opts ?: [] ) );
+						$strategy->cloneOpts() ?: [] ) );
 
 			$strategy->addCategorization( $title, $parserOutput );
 		}

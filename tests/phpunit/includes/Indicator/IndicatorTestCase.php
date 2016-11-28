@@ -30,7 +30,7 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = $this->newInstance( $this->conf );
-		$this->assertInstanceOf( 'Spec\\IIndicator', $test );
+		$this->assertInstanceOf( 'Spec\\AIndicator', $test );
 	}
 
 	/**
