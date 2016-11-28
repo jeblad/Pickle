@@ -47,8 +47,11 @@ class ExtractStatusStrategies extends Strategies {
 		}
 		foreach ( $this->instances as $strategy ) {
 			if ( $strategy->checkState( $str ) ) {
-				LoggerFactory::getInstance( 'Spec' )->debug( 'Found extract status strategy: {name}',
-					array_merge( [ 'method' => __METHOD__ ], $strategy->opts ?: [] ) );
+				LoggerFactory::getInstance( 'Spec' )
+					->debug( 'Found extract status strategy: {name}',
+						array_merge(
+							[ 'method' => __METHOD__ ],
+							$strategy->opts ?: [] ) );
 				return $strategy;
 			}
 		}

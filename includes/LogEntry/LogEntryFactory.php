@@ -61,8 +61,11 @@ class LogEntryFactory extends Strategies {
 				return true;
 			}
 
-			LoggerFactory::getInstance( 'Spec' )->debug( 'Found concrete log entry: {name}',
-				array_merge( [ 'method' => __METHOD__ ], $strategy->opts ?: [] ) );
+			LoggerFactory::getInstance( 'Spec' )
+				->debug( 'Found concrete log entry: {name}',
+					array_merge(
+						[ 'method' => __METHOD__ ],
+						$strategy->opts ?: [] ) );
 
 			$strategy->addLogEntry( $title );
 		}

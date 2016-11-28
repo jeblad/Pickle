@@ -31,7 +31,7 @@ class Hooks {
 		$tapStrategy = TAPStrategies::getInstance()->find( $text );
 		if ( $tapStrategy !== null ) {
 			$text = $tapStrategy->parse( $text );
-			$logger->debug( 'Found TAP, second parse: {text}', [
+			$logger->debug( 'Found TAP, optional parse: {text}', [
 				'text' => $text,
 				'title' => $title->getFullText(),
 				'method' => __METHOD__

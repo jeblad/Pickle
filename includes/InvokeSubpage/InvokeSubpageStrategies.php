@@ -47,8 +47,11 @@ class InvokeSubpageStrategies extends Strategies {
 		}
 		foreach ( $this->instances as $strategy ) {
 			if ( $strategy->checkSubpageType( $title ) ) {
-				LoggerFactory::getInstance( 'Spec' )->debug( 'Found invoke subpage strategy: {name}',
-					array_merge( [ 'method' => __METHOD__ ], $strategy->opts ?: [] ) );
+				LoggerFactory::getInstance( 'Spec' )
+					->debug( 'Found invoke subpage strategy: {name}',
+						array_merge(
+							[ 'method' => __METHOD__ ],
+							$strategy->opts ?: [] ) );
 				return $strategy;
 			}
 		}

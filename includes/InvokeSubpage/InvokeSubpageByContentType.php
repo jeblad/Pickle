@@ -14,7 +14,7 @@ use \Spec\IInvokeSubpage;
  */
 class InvokeSubpageByContentType implements IInvokeSubpage {
 
-	//protected $opts;
+	// protected $opts;
 
 	/**
 	 * @param array structure from extension setup

@@ -64,8 +64,11 @@ class IndicatorFactory extends Strategies {
 				$title = $subpageMsg->isDisabled() ? null : \Title::newFromText( $subpageMsg->plain() );
 			}
 
-			LoggerFactory::getInstance( 'Spec' )->debug( 'Found concrete indicator: {name}',
-				array_merge( [ 'method' => __METHOD__ ], $strategy->opts ?: [] ) );
+			LoggerFactory::getInstance( 'Spec' )
+				->debug( 'Found concrete indicator: {name}',
+					array_merge(
+						[ 'method' => __METHOD__ ],
+						$strategy->opts ?: [] ) );
 
 			$strategy->addIndicator( $title, $parserOutput, $states );
 		}

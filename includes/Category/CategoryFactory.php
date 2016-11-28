@@ -60,8 +60,11 @@ class CategoryFactory extends Strategies {
 				return true;
 			}
 
-			LoggerFactory::getInstance( 'Spec' )->debug( 'Found concrete category: {name}',
-				array_merge( [ 'method' => __METHOD__ ], $strategy->opts ?: [] ) );
+			LoggerFactory::getInstance( 'Spec' )
+				->debug( 'Found concrete category: {name}',
+					array_merge(
+						[ 'method' => __METHOD__ ],
+						$strategy->opts ?: [] ) );
 
 			$strategy->addCategorization( $title, $parserOutput );
 		}
