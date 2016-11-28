@@ -14,7 +14,7 @@ use \Spec\IExtractStatus;
  */
 class ExtractStatusByPattern implements IExtractStatus {
 
-	protected $opts;
+	// protected $opts;
 
 	/**
 	 * @param array structure from extension setup

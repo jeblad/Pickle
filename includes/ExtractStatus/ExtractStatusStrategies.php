@@ -2,6 +2,8 @@
 
 namespace Spec;
 
+use MediaWiki\Logger\LoggerFactory;
+
 /**
  * Strategies to find an extract status strategy
  * This is a factory for the extracted statuses implemented as a common set of strategies. The
@@ -45,6 +47,8 @@ class ExtractStatusStrategies extends Strategies {
 		}
 		foreach ( $this->instances as $strategy ) {
 			if ( $strategy->checkState( $str ) ) {
+				LoggerFactory::getInstance( 'Spec' )->debug( 'Found extract status strategy: {name}',
+					array_merge( [ 'method' => __METHOD__ ], $strategy->opts ?: [] ) );
 				return $strategy;
 			}
 		}

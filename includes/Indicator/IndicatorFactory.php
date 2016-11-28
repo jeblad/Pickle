@@ -2,6 +2,8 @@
 
 namespace Spec;
 
+use MediaWiki\Logger\LoggerFactory;
+
 /**
  * Strategy to create indicators
  * This is a factory for the indicators implemented as a common set of factories. The entries
@@ -40,7 +42,7 @@ class IndicatorFactory extends Strategies {
 	 */
 	public static function addIndicator(
 		\Title $title,
-		\ParserOutput &$parserOutput,
+		\ParserOutput $parserOutput,
 		array $states = null
 	) {
 
@@ -61,6 +63,10 @@ class IndicatorFactory extends Strategies {
 			if ( $subpageMsg !== null ) {
 				$title = $subpageMsg->isDisabled() ? null : \Title::newFromText( $subpageMsg->plain() );
 			}
+
+			LoggerFactory::getInstance( 'Spec' )->debug( 'Found concrete indicator: {name}',
+				array_merge( [ 'method' => __METHOD__ ], $strategy->opts ?: [] ) );
+
 			$strategy->addIndicator( $title, $parserOutput, $states );
 		}
 

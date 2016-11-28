@@ -13,7 +13,7 @@ use \Spec\IInvokeSubpage;
  */
 class InvokeSubpageDefault implements IInvokeSubpage {
 
-	protected $opts;
+	// protected $opts;
 
 	/**
 	 * @param array structure from extension setup

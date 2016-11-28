@@ -2,6 +2,8 @@
 
 namespace Spec;
 
+use MediaWiki\Logger\LoggerFactory;
+
 /**
  * Hook handlers for the Spec extension
  *
@@ -17,20 +19,35 @@ class Hooks {
 		IInvokeSubpage $strategy,
 		\Title $title
 	) {
+		$logger = LoggerFactory::getInstance( 'Spec' );
+
 		// try to squash the text into submission
 		$text = $strategy->getInvoke( $title )->parse();
+		$logger->debug( 'Raw text: {text}', [
+			'text' => $text,
+			'title' => $title->getFullText(),
+			'method' => __METHOD__
+		] );
 		$tapStrategy = TAPStrategies::getInstance()->find( $text );
 		if ( $tapStrategy !== null ) {
 			$text = $tapStrategy->parse( $text );
+			$logger->debug( 'Found TAP, second parse: {text}', [
+				'text' => $text,
+				'title' => $title->getFullText(),
+				'method' => __METHOD__
+			] );
 		}
-		wfDebugLog( 'Spec', "parse result: {$text}" );
 
 		// try to find the final status strategy
 		$statusStrategy = ExtractStatusStrategies::getInstance()->find( $text );
 		if ( $statusStrategy === null ) {
 			return null;
 		}
-		wfDebugLog( 'Spec', "extract result: {$statusStrategy->getName()}" );
+		$logger->debug( 'Extracted status: {text}', [
+			'text' => $statusStrategy->getName(),
+			'title' => $title->getFullText(),
+			'method' => __METHOD__
+		] );
 
 		return $statusStrategy;
 	}
@@ -45,6 +62,8 @@ class Hooks {
 		\ParserOutput $parserOutput
 	) {
 		global $wgSpecNeglectPages;
+
+		$logger = LoggerFactory::getInstance( 'Spec' );
 
 		// Try to bail out early
 		if ( $title === null
@@ -97,7 +116,11 @@ class Hooks {
 									$args[ 'status-current' ] = $statusStrategy->getName();
 								}
 							}
-							wfDebugLog( 'Spec', "adjusted result: {$args[ 'status-current' ]}" );
+							$logger->debug( 'Current status: {text}', [
+								'text' => $args[ 'status-current' ],
+								'title' => $title->getFullText(),
+								'method' => __METHOD__
+							] );
 
 							// add the usual help link
 							HelpView::build();
@@ -139,7 +162,11 @@ class Hooks {
 				$args[ 'status-current' ] = $statusStrategy->getName();
 			}
 		}
-		wfDebugLog( 'Spec', "adjusted result: {$args[ 'status-current' ]}" );
+		$logger->debug( 'Current status: {text}', [
+			'text' => $args[ 'status-current' ],
+			'title' => $title->getFullText(),
+			'method' => __METHOD__
+		] );
 
 		// run registered callbacks to create testee gadgets
 		\Hooks::run( 'SpecTesteeGadgets', [ $title, $parserOutput, $args ] );

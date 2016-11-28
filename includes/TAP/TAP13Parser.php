@@ -12,7 +12,7 @@ use \Spec\ITAPParser;
  */
 class TAP13Parser extends TAPBaseParser {
 
-	protected $opts;
+	//protected $opts;
 
 	/**
 	 * @param array structure from extension setup

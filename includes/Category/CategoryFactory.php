@@ -2,6 +2,8 @@
 
 namespace Spec;
 
+use MediaWiki\Logger\LoggerFactory;
+
 /**
  * Strategy to create categories
  * This is a factory for the categories implemented as a common set of factories. The entries
@@ -57,6 +59,10 @@ class CategoryFactory extends Strategies {
 			if ( $strategy === null ) {
 				return true;
 			}
+
+			LoggerFactory::getInstance( 'Spec' )->debug( 'Found concrete category: {name}',
+				array_merge( [ 'method' => __METHOD__ ], $strategy->opts ?: [] ) );
+
 			$strategy->addCategorization( $title, $parserOutput );
 		}
 

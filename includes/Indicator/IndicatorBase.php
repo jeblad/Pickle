@@ -2,6 +2,8 @@
 
 namespace Spec;
 
+use MediaWiki\Logger\LoggerFactory;
+
 /**
  * Indicator base
  * Encapsulates the abstract base class indicator as an adapter.
@@ -29,7 +31,10 @@ abstract class IndicatorBase implements IIndicator {
 		$msg = wfMessage( $this->getMessageKey() );
 		$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );
 		if ( $msg->isDisabled() ) {
-			wfDebugLog( 'Spec', "disabled message: {$this->getMessageKey()}" );
+			LoggerFactory::getInstance( 'Spec' )->debug( 'Found disabled message: {key}', [
+				'key' => $this->getMessageKey(),
+				'method' => __METHOD__
+			] );
 			return null;
 		}
 
@@ -64,7 +69,10 @@ abstract class IndicatorBase implements IIndicator {
 		$msg = wfMessage( $this->getMessageKey() );
 		$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );
 		if ( $msg->isDisabled() ) {
-			wfDebugLog( 'Spec', "disabled message: {$this->getMessageKey()}" );
+			LoggerFactory::getInstance( 'Spec' )->debug( 'Found disabled message: {key}', [
+				'key' => $this->getMessageKey(),
+				'method' => __METHOD__
+			] );
 			return null;
 		}
 

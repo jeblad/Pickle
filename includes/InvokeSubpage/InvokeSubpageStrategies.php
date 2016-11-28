@@ -2,6 +2,8 @@
 
 namespace Spec;
 
+use MediaWiki\Logger\LoggerFactory;
+
 /**
  * Strategies to find an invoke subpage strategy
  * This is a factory for the invoke subpages implemented as a common set of strategies. The
@@ -45,6 +47,8 @@ class InvokeSubpageStrategies extends Strategies {
 		}
 		foreach ( $this->instances as $strategy ) {
 			if ( $strategy->checkSubpageType( $title ) ) {
+				LoggerFactory::getInstance( 'Spec' )->debug( 'Found invoke subpage strategy: {name}',
+					array_merge( [ 'method' => __METHOD__ ], $strategy->opts ?: [] ) );
 				return $strategy;
 			}
 		}

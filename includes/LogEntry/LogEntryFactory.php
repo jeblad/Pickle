@@ -2,6 +2,8 @@
 
 namespace Spec;
 
+use MediaWiki\Logger\LoggerFactory;
+
 /**
  * Strategy to create log entries
  * This is a factory for the log entries implemented as a common set of factories. The entries
@@ -40,7 +42,7 @@ class LogEntryFactory extends Strategies {
 	 */
 	public static function addLogEntry(
 		\Title $title,
-		\ParserOutput &$parserOutput,
+		\ParserOutput $parserOutput,
 		array $states = null
 	) {
 
@@ -58,6 +60,10 @@ class LogEntryFactory extends Strategies {
 			if ( $strategy === null ) {
 				return true;
 			}
+
+			LoggerFactory::getInstance( 'Spec' )->debug( 'Found concrete log entry: {name}',
+				array_merge( [ 'method' => __METHOD__ ], $strategy->opts ?: [] ) );
+
 			$strategy->addLogEntry( $title );
 		}
 

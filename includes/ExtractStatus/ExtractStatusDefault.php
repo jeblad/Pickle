@@ -17,7 +17,7 @@ class ExtractStatusDefault implements IExtractStatus {
 	 * @param array structure from extension setup
 	 */
 	public function __construct( array $opts ) {
-		// empty
+		$this->opts = array_merge( [], $opts );
 	}
 
 	/**
