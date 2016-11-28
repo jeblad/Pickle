@@ -27,6 +27,8 @@ class TAPCommonParser extends TAPBaseParser {
 	 */
 	public function parse( $str ) {
 		$count = self::getCount( $str );
+
+		// check if we got everything
 		if ( $count === false ) {
 			// must set count
 			return 'bad';
@@ -36,22 +38,37 @@ class TAPCommonParser extends TAPBaseParser {
 			// wrong overall count
 			return 'bad';
 		}
+
+		// at least one cleraly bad?
 		if ( $stats[1][0] > $stats[1][1] + $stats[1][2] ) {
-			// some tests clearly marked as bad
+			// some tests marked as bad
 			return 'bad';
 		}
-		if ( $stats[0][0] > $stats[0][1] + $stats[0][2] ) {
-			// some tests clearly marked as good
+
+		// any todo?
+		if ( $stats[1][2] > 0 ) {
+			// some tests marked as bad
+			return 'todo-bad';
+		} elseif ( $stats[0][2] > 0 ) {
+			// some tests marked as good
+			return 'todo-good';
+		}
+
+		// any skipped
+		if ( $stats[1][1] > 0 ) {
+			// some tests marked as bad
+			return 'skip-bad';
+		} elseif ( $stats[0][1] > 0 ) {
+			// some tests marked as good
+			return 'skip-good';
+		}
+
+		// at least one clearly good?
+		if ( $stats[0][0] > 0 && $stats[0][1] + $stats[0][2] === 0 ) {
+			// some tests marked as good
 			return 'good';
 		}
-		if ( ( $stats[0][2] + $stats[1][2] ) > 0 ) {
-			// some tests clearly marked as todo
-			return 'todo';
-		}
-		if ( ( $stats[0][1] + $stats[1][1] ) > 0 ) {
-			// some tests clearly marked as skipped
-			return 'skipped';
-		}
+
 		// probably a test set without any tests
 		return 'unknown';
 	}

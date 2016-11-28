@@ -23,12 +23,14 @@ class Hooks {
 		if ( $tapStrategy !== null ) {
 			$text = $tapStrategy->parse( $text );
 		}
+		wfDebugLog( 'Spec', "parse result: {$text}" );
 
 		// try to find the final status strategy
 		$statusStrategy = ExtractStatusStrategies::getInstance()->find( $text );
 		if ( $statusStrategy === null ) {
 			return null;
 		}
+		wfDebugLog( 'Spec', "extract result: {$statusStrategy->getName()}" );
 
 		return $statusStrategy;
 	}
@@ -95,6 +97,7 @@ class Hooks {
 									$args[ 'status-current' ] = $statusStrategy->getName();
 								}
 							}
+							wfDebugLog( 'Spec', "adjusted result: {$args[ 'status-current' ]}" );
 
 							// add the usual help link
 							HelpView::build();
@@ -136,6 +139,7 @@ class Hooks {
 				$args[ 'status-current' ] = $statusStrategy->getName();
 			}
 		}
+		wfDebugLog( 'Spec', "adjusted result: {$args[ 'status-current' ]}" );
 
 		// run registered callbacks to create testee gadgets
 		\Hooks::run( 'SpecTesteeGadgets', [ $title, $parserOutput, $args ] );

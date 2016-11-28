@@ -23,12 +23,13 @@ abstract class IndicatorBase implements IIndicator {
 		// Get the message containing the text to use for the link
 		// @message spec-test-text-good
 		// @message spec-test-text-pending
-		// @message spec-test-text-failing
+		// @message spec-test-text-fail
 		// @message spec-test-text-missing
 		// @message spec-test-text-unknown
 		$msg = wfMessage( $this->getMessageKey() );
 		$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );
 		if ( $msg->isDisabled() ) {
+			wfDebugLog( 'Spec', "disabled message: {$this->getMessageKey()}" );
 			return null;
 		}
 
@@ -57,12 +58,13 @@ abstract class IndicatorBase implements IIndicator {
 		// Get the message containing the text to use for the link
 		// @message spec-test-text-good
 		// @message spec-test-text-pending
-		// @message spec-test-text-failing
+		// @message spec-test-text-fail
 		// @message spec-test-text-missing
 		// @message spec-test-text-unknown
 		$msg = wfMessage( $this->getMessageKey() );
 		$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );
 		if ( $msg->isDisabled() ) {
+			wfDebugLog( 'Spec', "disabled message: {$this->getMessageKey()}" );
 			return null;
 		}
 
@@ -93,7 +95,7 @@ abstract class IndicatorBase implements IIndicator {
 	 * @return string
 	 */
 	public function getIcon() {
-		return 'mw-ui-icon-' . $this->opts['icon'];
+		return 'mw-speclink-icon-' . $this->opts['icon'];
 	}
 
 	/**

@@ -73,7 +73,7 @@ abstract class TAPBaseParser implements ITAPParser {
 	 * @return boolean
 	 */
 	public static function isSkip( $line ) {
-		return ( preg_match( '/#\s*(skip\S*)\b/i', $line ) === 1 );
+		return ( preg_match( '/#\s*(skipp?(ing|ed|))\b/i', $line ) === 1 );
 	}
 
 	/**
