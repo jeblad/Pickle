@@ -12,6 +12,17 @@ abstract class ATAPParser {
 
 	use TNamedStrategy;
 
+	protected $opts;
+
+	/**
+	 * Clone the opts
+	 *
+	 * @return array
+	 */
+	public function cloneOpts() {
+		return array_merge( [], $this->opts );
+	}
+
 	/**
 	 * Try to get the version of the test result
 	 *

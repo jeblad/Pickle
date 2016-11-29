@@ -48,7 +48,7 @@ class TAPStrategies extends Strategies {
 				LoggerFactory::getInstance( 'Spec' )->debug( 'Found parser strategy: {name}',
 					array_merge(
 						[ 'method' => __METHOD__ ],
-						$parser->opts ?: [] ) );
+						$parser->cloneOpts() ?: [] ) );
 				return $parser;
 			}
 		}
