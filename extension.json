@@ -194,26 +194,47 @@
 		"Category": [
 			{
 				"class": "Spec\\CategoryCommon",
-				"name": "failing"
+				"name": "fail",
+				"key": "fail"
 			},
 			{
 				"class": "Spec\\CategoryCommon",
-				"name": "pending"
+				"name": "pending",
+				"key": "pending"
 			},
 			{
 				"class": "Spec\\CategoryCommon",
-				"name": "good"
+				"name": "good",
+				"key": "good"
 			},
 			{
 				"class": "Spec\\CategoryCommon",
-				"name": "exists"
+				"name": "todo-fail",
+				"key": "pending"
 			},
 			{
 				"class": "Spec\\CategoryCommon",
-				"name": "missing"
+				"name": "todo-good",
+				"key": "pending"
 			},
 			{
-				"class": "Spec\\CategoryDefault"
+				"class": "Spec\\CategoryCommon",
+				"name": "skip-fail",
+				"key": "pending"
+			},
+			{
+				"class": "Spec\\CategoryCommon",
+				"name": "skip-good",
+				"key": "pending"
+			},
+			{
+				"class": "Spec\\CategoryCommon",
+				"name": "missing",
+				"key": "missing"
+			},
+			{
+				"class": "Spec\\CategoryDefault",
+				"key": "unknown"
 			}
 		],
 		"LogEntry": [

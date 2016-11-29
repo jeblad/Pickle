@@ -32,7 +32,27 @@ class CategoryDefaultTest extends CategoryTestCase {
 				'unknown',
 				[
 					"class" => "Spec\\CategoryDefault",
-					"name" => "foo"
+					"name" => "foo",
+					"key" => "baz"
+				]
+			]
+		];
+	}
+
+	public function provideGetKey() {
+		return [
+			[
+				'spec-tracking-category-unknown',
+				[
+					"class" => "Spec\\CategoryDefault",
+					"name" => "foo",
+					"key" => "baz"
+				]
+			],
+			[
+				'spec-tracking-category-unknown',
+				[
+					"class" => "Spec\\CategoryDefault"
 				]
 			]
 		];

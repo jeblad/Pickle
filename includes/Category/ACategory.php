@@ -29,7 +29,7 @@ abstract class ACategory {
 	 * @return string
 	 */
 	public function getKey() {
-		return 'spec-tracking-category-' . $this->opts['name'];
+		return 'spec-tracking-category-' . $this->opts['key'];
 	}
 
 	/**

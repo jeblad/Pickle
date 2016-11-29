@@ -37,12 +37,14 @@ abstract class CategoryTestCase extends \MediaWikiTestCase {
 		$this->assertEquals( $expect, $test->getName() );
 	}
 
-	public function testOnGetKey() {
-		$test = $this->newInstance( $this->conf );
+	/**
+	 * @dataProvider provideGetKey
+	 */
+	public function testOnGetKey( $expect, $conf ) {
+		$test = $this->newInstance( $conf );
 		$this->assertNotNull( $test );
 
-		$this->assertRegExp( '/^[-\w]+$/', $test->getKey() );
-		$this->assertContains( $test->getName(), $test->getKey() );
+		$this->assertEquals( $expect, $test->getKey() );
 	}
 
 	public function testOnCodeToInterface() {

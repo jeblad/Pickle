@@ -14,7 +14,8 @@ class CategoryCommonTest extends CategoryTestCase {
 
 	protected $conf = [
 		"class" => "Spec\\CategoryCommon",
-		"name" => "test"
+		"name" => "test",
+		"key" => "baz"
 	];
 
 	protected function newInstance( $conf ) {
@@ -27,11 +28,31 @@ class CategoryCommonTest extends CategoryTestCase {
 				'foo',
 				[
 					"class" => "Spec\\CategoryCommon",
-					"name" => "foo"
+					"name" => "foo",
+					"key" => "baz"
 				]
 			],
 			[
 				'',
+				[
+					"class" => "Spec\\CategoryCommon"
+				]
+			]
+		];
+	}
+
+	public function provideGetKey() {
+		return [
+			[
+				'spec-tracking-category-baz',
+				[
+					"class" => "Spec\\CategoryCommon",
+					"name" => "foo",
+					"key" => "baz"
+				]
+			],
+			[
+				'spec-tracking-category-unknown',
 				[
 					"class" => "Spec\\CategoryCommon"
 				]
