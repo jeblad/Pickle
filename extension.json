@@ -210,22 +210,22 @@
 			{
 				"class": "Spec\\CategoryCommon",
 				"name": "todo-fail",
-				"key": "pending"
+				"key": "todo"
 			},
 			{
 				"class": "Spec\\CategoryCommon",
 				"name": "todo-good",
-				"key": "pending"
+				"key": "todo"
 			},
 			{
 				"class": "Spec\\CategoryCommon",
 				"name": "skip-fail",
-				"key": "pending"
+				"key": "skip"
 			},
 			{
 				"class": "Spec\\CategoryCommon",
 				"name": "skip-good",
-				"key": "pending"
+				"key": "skip"
 			},
 			{
 				"class": "Spec\\CategoryCommon",
@@ -417,7 +417,9 @@
 	"TrackingCategories": [
 		"spec-tracking-category-good",
 		"spec-tracking-category-pending",
-		"spec-tracking-category-failing",
+		"spec-tracking-category-todo",
+		"spec-tracking-category-skip",
+		"spec-tracking-category-fail",
 		"spec-tracking-category-missing",
 		"spec-tracking-category-unknown"
 	],
