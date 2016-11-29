@@ -51,7 +51,7 @@ class InvokeSubpageStrategies extends Strategies {
 					->debug( 'Found invoke subpage strategy: {name}',
 						array_merge(
 							[ 'method' => __METHOD__ ],
-							$strategy->opts ?: [] ) );
+							$strategy->cloneOpts() ?: [] ) );
 				return $strategy;
 			}
 		}

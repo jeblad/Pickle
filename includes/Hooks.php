@@ -16,7 +16,7 @@ class Hooks {
 	 * Get final strategy
 	 */
 	public static function getFinalStrategy(
-		IInvokeSubpage $strategy,
+		AInvokeSubpage $strategy,
 		\Title $title
 	) {
 		$logger = LoggerFactory::getInstance( 'Spec' );

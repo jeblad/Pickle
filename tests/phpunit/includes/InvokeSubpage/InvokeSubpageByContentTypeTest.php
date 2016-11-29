@@ -20,7 +20,7 @@ class InvokeSubpageByContentTypeTest extends InvokeSubpageTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = new InvokeSubpageByContentType( $this->conf );
-		$this->assertInstanceOf( 'Spec\\IInvokeSubpage', $test );
+		$this->assertInstanceOf( 'Spec\\AInvokeSubpage', $test );
 	}
 
 	public function testOnGetSubpagePrefixedText() {

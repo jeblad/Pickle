@@ -2,7 +2,7 @@
 
 namespace Spec;
 
-use \Spec\IExtractStatus;
+use \Spec\AExtractStatus;
 
 /**
  * Concrete strategy to extract stratus
@@ -11,7 +11,7 @@ use \Spec\IExtractStatus;
  *
  * @ingroup Extensions
  */
-class ExtractStatusDefault implements IExtractStatus {
+class ExtractStatusDefault extends AExtractStatus {
 
 	/**
 	 * @param array structure from extension setup
@@ -21,14 +21,14 @@ class ExtractStatusDefault implements IExtractStatus {
 	}
 
 	/**
-	 * @see \Spec\IExtractStatus::checkState()
+	 * @see \Spec\AExtractStatus::checkState()
 	 */
 	public function checkState( $str ) {
 		return 1;
 	}
 
 	 /**
-	 * @see \Spec\IExtractStatus::getName()
+	 * @see \Spec\AExtractStatus::getName()
 	 */
 	public function getName() {
 		return 'unknown';

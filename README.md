@@ -126,7 +126,7 @@ The unit finds a strategy for accessing a subpage, where the test has a positive
 
 The strategies use options from the section `InvokeSubpage` in the extensions own [extension.json](https://github.com/jeblad/spec/blob/master/extension.json). It is possible to adapt this section to additional entries, typically new ways to invoke the subpage.
 
-The strategy classes are divided into a common [interface](https://github.com/jeblad/spec/blob/master/includes/InvokeSubpage/IInvokeSubpageStrategy.php) and a [singleton](https://github.com/jeblad/spec/blob/master/includes/InvokeSubpage/InvokeSubpageStrategies.php), where the singleton is the access point for higher level code. All PHP classes that implements the strategy are implementations of the interface.
+The strategy classes are divided into a common [interface](https://github.com/jeblad/spec/blob/master/includes/InvokeSubpage/AInvokeSubpageStrategy.php) and a [singleton](https://github.com/jeblad/spec/blob/master/includes/InvokeSubpage/InvokeSubpageStrategies.php), where the singleton is the access point for higher level code. All PHP classes that implements the strategy are implementations of the interface.
 
 ### ExtractStatus
 
@@ -134,7 +134,7 @@ The unit finds a strategy for interpreting the report from a subpage, where the 
 
 The strategies use options from the section `ExtractStatus` in the extensions own [extension.json](https://github.com/jeblad/spec/blob/master/extension.json). It is possible to adapt this section to additional entries, typically new states.
 
-The strategy classes are divided into a common [interface](https://github.com/jeblad/spec/blob/master/includes/ExtractStatus/IExtractStatus.php) and a [singleton](https://github.com/jeblad/spec/blob/master/includes/ExtractStatus/ExtractStatusStrategies.php), where the singleton is the accesspoint for higher level code. All PHP classes that implements the strategy are implementations of the interface.
+The strategy classes are divided into a common [interface](https://github.com/jeblad/spec/blob/master/includes/ExtractStatus/AExtractStatus.php) and a [singleton](https://github.com/jeblad/spec/blob/master/includes/ExtractStatus/ExtractStatusStrategies.php), where the singleton is the accesspoint for higher level code. All PHP classes that implements the strategy are implementations of the interface.
 
 ### LuaLibrary
 

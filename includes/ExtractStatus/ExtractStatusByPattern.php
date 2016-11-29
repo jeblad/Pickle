@@ -2,7 +2,7 @@
 
 namespace Spec;
 
-use \Spec\IExtractStatus;
+use \Spec\AExtractStatus;
 
 /**
  * Concrete strategy to extract status
@@ -12,9 +12,7 @@ use \Spec\IExtractStatus;
  *
  * @ingroup Extensions
  */
-class ExtractStatusByPattern implements IExtractStatus {
-
-	// protected $opts;
+class ExtractStatusByPattern extends AExtractStatus {
 
 	/**
 	 * @param array structure from extension setup
@@ -24,14 +22,14 @@ class ExtractStatusByPattern implements IExtractStatus {
 	}
 
 	/**
-	 * @see \Spec\IExtractStatus::checkState()
+	 * @see \Spec\AExtractStatus::checkState()
 	 */
 	public function checkState( $str ) {
 		return preg_match( $this->opts['pattern'], $str );
 	}
 
 	 /**
-	 * @see \Spec\IExtractStatus::getName()
+	 * @see \Spec\AExtractStatus::getName()
 	 */
 	public function getName() {
 		return $this->opts['name'];

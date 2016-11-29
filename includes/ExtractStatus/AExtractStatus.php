@@ -3,13 +3,24 @@
 namespace Spec;
 
 /**
- * Extract status interface
+ * Extract status base
  * Encapsulates the extracted status as a strategy.
  * Identifies the final test state from a set of specs as seen from a message.
  *
  * @ingroup Extensions
  */
-interface IExtractStatus {
+abstract class AExtractStatus {
+
+	protected $opts;
+
+	/**
+	 * Clone the opts
+	 *
+	 * @return array
+	 */
+	public function cloneOpts() {
+		return array_merge( [], $this->opts );
+	}
 
 	/**
 	 * Checks if the string has the strategys stored pattern
@@ -17,13 +28,13 @@ interface IExtractStatus {
 	 * @param string $str
 	 * @return boolean
 	 */
-	public function checkState( $str );
+	abstract public function checkState( $str );
 
 	/**
 	 * Get member name
 	 *
 	 * @return string
 	 */
-	public function getName();
+	abstract public function getName();
 
 }

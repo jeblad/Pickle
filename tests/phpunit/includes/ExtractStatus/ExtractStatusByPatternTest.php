@@ -20,7 +20,7 @@ class ExtractStatusByPatternTest extends MediaWikiTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = new ExtractStatusByPattern( $this->conf );
-		$this->assertInstanceOf( 'Spec\\IExtractStatus', $test );
+		$this->assertInstanceOf( 'Spec\\AExtractStatus', $test );
 	}
 
 	public function testOnGetName() {

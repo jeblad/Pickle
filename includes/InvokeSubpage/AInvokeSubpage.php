@@ -9,7 +9,18 @@ namespace Spec;
  *
  * @ingroup Extensions
  */
-interface IInvokeSubpage {
+abstract class AInvokeSubpage {
+
+	protected $opts;
+
+	/**
+	 * Clone the opts
+	 *
+	 * @return array
+	 */
+	public function cloneOpts() {
+		return array_merge( [], $this->opts );
+	}
 
 	/**
 	 * Checks if the title has the strategys stored type
@@ -17,7 +28,7 @@ interface IInvokeSubpage {
 	 * @param Title $title
 	 * @return boolean
 	 */
-	public function checkType( \Title &$title );
+	abstract public function checkType( \Title &$title );
 
 	/**
 	 * Checks if the subpage title has the strategys stored type
@@ -25,7 +36,7 @@ interface IInvokeSubpage {
 	 * @param Title $title
 	 * @return boolean
 	 */
-	public function checkSubpageType( \Title &$title );
+	abstract public function checkSubpageType( \Title &$title );
 
 	/**
 	 * Get the invoke
@@ -34,7 +45,7 @@ interface IInvokeSubpage {
 	 * @param string the base path
 	 * @return Message
 	 */
-	public function getInvoke( \Title &$title );
+	abstract public function getInvoke( \Title &$title );
 
 	/**
 	 * Get the SubpagePrefixedText
@@ -42,7 +53,7 @@ interface IInvokeSubpage {
 	 *
 	 * @return Message
 	 */
-	public function getSubpagePrefixedText( \Title &$title );
+	abstract public function getSubpagePrefixedText( \Title &$title );
 
 	/**
 	 * Get the SubpageBaseText
@@ -50,7 +61,7 @@ interface IInvokeSubpage {
 	 *
 	 * @return Message
 	 */
-	public function getSubpageBaseText( \Title &$title );
+	abstract public function getSubpageBaseText( \Title &$title );
 
 	/**
 	 * Get the SubpageTitle
@@ -58,7 +69,7 @@ interface IInvokeSubpage {
 	 *
 	 * @return Title
 	 */
-	public function getSubpageTitle( \Title &$title );
+	abstract public function getSubpageTitle( \Title &$title );
 
 	/**
 	 * Get the question part of the console call for the tester
@@ -66,7 +77,7 @@ interface IInvokeSubpage {
 	 * @param \Title title to use while constructing the call (not in use)
 	 * @return simplexml_load_string
 	 */
-	public function getTesterQuestion( \Title &$title );
+	abstract public function getTesterQuestion( \Title &$title );
 
 	/**
 	 * Get the question part of the console call for the testee
@@ -74,5 +85,5 @@ interface IInvokeSubpage {
 	 * @param \Title title to use while constructing the call (not in use)
 	 * @return simplexml_load_string
 	 */
-	public function getTesteeQuestion( \Title &$title );
+	abstract public function getTesteeQuestion( \Title &$title );
 }

@@ -2,7 +2,7 @@
 
 namespace Spec;
 
-use \Spec\ITAPParser;
+use \Spec\ATAPParser;
 
 /**
  * Squash a tap into its final form
@@ -10,7 +10,7 @@ use \Spec\ITAPParser;
  *
  * @ingroup Extensions
  */
-class TAP13Parser extends TAPBaseParser {
+class TAP13Parser extends ATAPParser {
 
 	// protected $opts;
 
@@ -22,7 +22,7 @@ class TAP13Parser extends TAPBaseParser {
 	}
 
 	/**
-	 * @see \Spec\ITAPParser::Parser()
+	 * @see \Spec\ATAPParser::Parser()
 	 */
 	public function parse( $str ) {
 		$count = self::getCount( $str );
@@ -72,7 +72,7 @@ class TAP13Parser extends TAPBaseParser {
 	}
 
 	/**
-	 * @see \Spec\ITAPParser::stats()
+	 * @see \Spec\ATAPParser::stats()
 	 */
 	public function stats( $str ) {
 		$good = [ 0, 0, 0 ];
@@ -107,7 +107,7 @@ class TAP13Parser extends TAPBaseParser {
 	}
 
 	/**
-	 * @see \Spec\ITAPParser::checkValid()
+	 * @see \Spec\ATAPParser::checkValid()
 	 */
 	public function checkValid( $str ) {
 		return ( $this->getVersion( $str ) === 13 );

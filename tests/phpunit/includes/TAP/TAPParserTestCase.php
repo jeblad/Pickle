@@ -20,7 +20,7 @@ abstract class TAPParserTestCase extends \MediaWikiTestCase {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );
 
-		$this->assertInstanceOf( 'Spec\\ITAPParser', $test );
+		$this->assertInstanceOf( 'Spec\\ATAPParser', $test );
 	}
 
 	public function providerForVersionAndCount() {

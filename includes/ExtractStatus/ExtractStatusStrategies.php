@@ -51,7 +51,7 @@ class ExtractStatusStrategies extends Strategies {
 					->debug( 'Found extract status strategy: {name}',
 						array_merge(
 							[ 'method' => __METHOD__ ],
-							$strategy->opts ?: [] ) );
+							$strategy->cloneOpts() ?: [] ) );
 				return $strategy;
 			}
 		}

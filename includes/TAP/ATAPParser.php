@@ -8,7 +8,7 @@ namespace Spec;
  *
  * @ingroup Extensions
  */
-abstract class TAPBaseParser implements ITAPParser {
+abstract class ATAPParser {
 
 	use TNamedStrategy;
 
@@ -127,9 +127,26 @@ abstract class TAPBaseParser implements ITAPParser {
 	}
 
 	 /**
-	 * @see \Spec\ITAPParser::getName()
+	 * @see \Spec\ATAPParser::getName()
 	 */
 	public function getName() {
 		return $this->opts['name'];
 	}
+
+	/**
+	 * Checks if the text is accoring to a given version
+	 *
+	 * @param string result from the evaluation
+	 * @return boolean
+	 */
+	abstract public function checkValid( $str );
+
+	/**
+	 * Get the parsed form
+	 * This isn't really a parser, it just squashes the string into submission.
+	 *
+	 * @param string result from the evaluation
+	 * @return string
+	 */
+	abstract public function parse( $str );
 }

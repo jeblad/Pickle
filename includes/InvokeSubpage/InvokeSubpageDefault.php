@@ -2,7 +2,7 @@
 
 namespace Spec;
 
-use \Spec\IInvokeSubpage;
+use \Spec\AInvokeSubpage;
 
 /**
  * Concrete strategy to invoke subpage
@@ -11,7 +11,7 @@ use \Spec\IInvokeSubpage;
  *
  * @ingroup Extensions
  */
-class InvokeSubpageDefault implements IInvokeSubpage {
+class InvokeSubpageDefault extends AInvokeSubpage {
 
 	// protected $opts;
 
@@ -32,21 +32,21 @@ class InvokeSubpageDefault implements IInvokeSubpage {
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpage::checkType()
+	 * @see \Spec\AInvokeSubpage::checkType()
 	 */
 	public function checkType( \Title &$title ) {
 		return true;
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpage::checkSubpageType()
+	 * @see \Spec\AInvokeSubpage::checkSubpageType()
 	 */
 	public function checkSubpageType( \Title &$title, $type = null ) {
 		return true;
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpage::getInvoke()
+	 * @see \Spec\AInvokeSubpage::getInvoke()
 	 */
 	public function getInvoke( \Title &$title ) {
 		$subpage = $this->getSubpageBaseText( $title );
@@ -54,7 +54,7 @@ class InvokeSubpageDefault implements IInvokeSubpage {
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpage::getSubpageText()
+	 * @see \Spec\AInvokeSubpage::getSubpageText()
 	 */
 	public function getSubpagePrefixedText( \Title &$title ) {
 		$text = $title->getPrefixedText();
@@ -62,7 +62,7 @@ class InvokeSubpageDefault implements IInvokeSubpage {
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpage::getSubpageBaseText()
+	 * @see \Spec\AInvokeSubpage::getSubpageBaseText()
 	 */
 	public function getSubpageBaseText( \Title &$title ) {
 		$baseText = $title->getBaseText();
@@ -70,21 +70,21 @@ class InvokeSubpageDefault implements IInvokeSubpage {
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpage::getSubpageTitle()
+	 * @see \Spec\AInvokeSubpage::getSubpageTitle()
 	 */
 	public function getSubpageTitle( \Title &$title ) {
 		return \Title::newFromText( $this->getSubpagePrefixedText( $title )->plain() );
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpage::getTesterQuestion()
+	 * @see \Spec\AInvokeSubpage::getTesterQuestion()
 	 */
 	public function getTesterQuestion( \Title &$title ) {
 		return $this->opts['testerQuestion'];
 	}
 
 	/**
-	 * @see \Spec\IInvokeSubpage::getTesteeQuestion()
+	 * @see \Spec\AInvokeSubpage::getTesteeQuestion()
 	 */
 	public function getTesteeQuestion( \Title &$title ) {
 		$prefixedText = $this->getSubpagePrefixedText( $title );

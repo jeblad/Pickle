@@ -56,10 +56,8 @@
 		"Spec\\IndicatorFactory":
 			"includes/Indicator/IndicatorFactory.php",
 
-		"Spec\\ITAPParser":
-			"includes/TAP/ITAPParser.php",
-		"Spec\\TAPBaseParser":
-			"includes/TAP/TAPBaseParser.php",
+		"Spec\\ATAPParser":
+			"includes/TAP/ATAPParser.php",
 		"Spec\\TAPCommonParser":
 			"includes/TAP/TAPCommonParser.php",
 		"Spec\\TAP13Parser":
@@ -67,8 +65,8 @@
 		"Spec\\TAPStrategies":
 			"includes/TAP/TAPStrategies.php",
 
-		"Spec\\IExtractStatus":
-			"includes/ExtractStatus/IExtractStatus.php",
+		"Spec\\AExtractStatus":
+			"includes/ExtractStatus/AExtractStatus.php",
 		"Spec\\ExtractStatusDefault":
 			"includes/ExtractStatus/ExtractStatusDefault.php",
 		"Spec\\ExtractStatusByPattern":
@@ -76,8 +74,8 @@
 		"Spec\\ExtractStatusStrategies":
 			"includes/ExtractStatus/ExtractStatusStrategies.php",
 
-		"Spec\\IInvokeSubpage":
-			"includes/InvokeSubpage/IInvokeSubpage.php",
+		"Spec\\AInvokeSubpage":
+			"includes/InvokeSubpage/AInvokeSubpage.php",
 		"Spec\\InvokeSubpageDefault":
 			"includes/InvokeSubpage/InvokeSubpageDefault.php",
 		"Spec\\InvokeSubpageByContentType":
