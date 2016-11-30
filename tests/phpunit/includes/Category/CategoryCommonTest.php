@@ -33,7 +33,7 @@ class CategoryCommonTest extends CategoryTestCase {
 				]
 			],
 			[
-				'',
+				'none',
 				[
 					"class" => "Spec\\CategoryCommon"
 				]

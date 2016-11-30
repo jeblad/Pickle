@@ -18,7 +18,7 @@ class ExtractStatusByPattern extends AExtractStatus {
 	 * @param array structure from extension setup
 	 */
 	public function __construct( array $opts ) {
-		$this->opts = array_merge( [ 'name' => '', 'pattern' => '/^$/' ], $opts );
+		$this->opts = array_merge( [ 'name' => 'none', 'pattern' => '/^$/' ], $opts );
 	}
 
 	/**
@@ -26,13 +26,6 @@ class ExtractStatusByPattern extends AExtractStatus {
 	 */
 	public function checkState( $str ) {
 		return preg_match( $this->opts['pattern'], $str );
-	}
-
-	 /**
-	 * @see \Spec\AExtractStatus::getName()
-	 */
-	public function getName() {
-		return $this->opts['name'];
 	}
 
 }

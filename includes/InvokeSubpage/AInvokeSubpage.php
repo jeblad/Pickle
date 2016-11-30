@@ -11,6 +11,8 @@ namespace Spec;
  */
 abstract class AInvokeSubpage {
 
+	use TNamedStrategy;
+
 	protected $opts;
 
 	/**

@@ -13,8 +13,6 @@ use \Spec\ATAPParser;
  */
 class TAPCommonParser extends ATAPParser {
 
-	// protected $opts;
-
 	/**
 	 * @param array structure from extension setup
 	 */

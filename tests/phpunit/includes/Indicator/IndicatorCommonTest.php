@@ -32,7 +32,7 @@ class IndicatorCommonTest extends IndicatorTestCase {
 				]
 			],
 			[
-				'',
+				'none',
 				[
 					"class" => "Spec\\IndicatorCommon"
 				]

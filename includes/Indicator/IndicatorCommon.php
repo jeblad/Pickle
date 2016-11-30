@@ -16,6 +16,6 @@ class IndicatorCommon extends AIndicator {
 	 * @param array structure from extension setup
 	 */
 	public function __construct( array $opts ) {
-		$this->opts = array_merge( [ 'name' => '' ], $opts );
+		$this->opts = array_merge( [ 'name' => 'none' ], $opts );
 	}
 }

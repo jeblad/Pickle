@@ -12,8 +12,6 @@ use \Spec\ATAPParser;
  */
 class TAP13Parser extends ATAPParser {
 
-	// protected $opts;
-
 	/**
 	 * @param array structure from extension setup
 	 */

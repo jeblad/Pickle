@@ -12,7 +12,10 @@ use \Spec\InvokeSubpageDefault;
  */
 class InvokeSubpageDefaultTest extends InvokeSubpageTestCase {
 
-	protected $conf = [ 'testerQuestion' => 'tester', 'testeeQuestion' => 'tester %s' ];
+	protected $conf = [
+		'testerQuestion' => 'tester',
+		'testeeQuestion' => 'tester %s'
+	];
 
 	public function testOnCodeToInterface() {
 		$test = new InvokeSubpageDefault( $this->conf );

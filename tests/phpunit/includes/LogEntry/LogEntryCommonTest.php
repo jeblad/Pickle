@@ -31,7 +31,7 @@ class LogEntryCommonTest extends LogEntryTestCase {
 				]
 			],
 			[
-				'',
+				'none',
 				[
 					"class" => "Spec\\LogEntryCommon"
 				]
@@ -54,7 +54,7 @@ class LogEntryCommonTest extends LogEntryTestCase {
 			[
 				[
 					'type' => 'track',
-					'subtype' => ''
+					'subtype' => 'none'
 				],
 				[
 					"class" => "Spec\\LogEntryCommon"

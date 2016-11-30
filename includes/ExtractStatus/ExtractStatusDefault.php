@@ -17,7 +17,7 @@ class ExtractStatusDefault extends AExtractStatus {
 	 * @param array structure from extension setup
 	 */
 	public function __construct( array $opts ) {
-		$this->opts = array_merge( [], $opts );
+		$this->opts = array_merge( [ 'name' => 'unknown' ], $opts );
 	}
 
 	/**
@@ -25,13 +25,6 @@ class ExtractStatusDefault extends AExtractStatus {
 	 */
 	public function checkState( $str ) {
 		return 1;
-	}
-
-	 /**
-	 * @see \Spec\AExtractStatus::getName()
-	 */
-	public function getName() {
-		return 'unknown';
 	}
 
 }

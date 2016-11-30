@@ -11,6 +11,8 @@ namespace Spec;
  */
 abstract class AExtractStatus {
 
+	use TNamedStrategy;
+
 	protected $opts;
 
 	/**
@@ -29,12 +31,5 @@ abstract class AExtractStatus {
 	 * @return boolean
 	 */
 	abstract public function checkState( $str );
-
-	/**
-	 * Get member name
-	 *
-	 * @return string
-	 */
-	abstract public function getName();
 
 }
