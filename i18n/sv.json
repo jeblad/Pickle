@@ -33,6 +33,7 @@
 	"spec-track-log-entry-good": "{{GENDER:$2|härledd automatiskt}} att sidan $1 har goda testar",
 	"spec-track-log-entry-pending": "{{GENDER:$2|härledd automatiskt}} att sidan $1 har utsätt testar",
 	"spec-track-log-entry-fail": "{{GENDER:$2|härledd automatiskt}} att sidan $1 har feilande testar",
+	"spec-track-log-entry-exists": "{{GENDER:$2|härledd automatiskt}} att sidan $1 har testar",
 	"spec-track-log-entry-missing": "{{GENDER:$2|härledd automatiskt}} att sidan $1 manglar testar",
 	"spec-track-log-entry-unknown": "{{GENDER:$2|härledd automatiskt}} att sidan $1 har ukjende testar",
 	"spec-console-title": "Testkonsol",
