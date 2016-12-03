@@ -32,7 +32,7 @@
 	"spec-track-log-header": "Dende loggen viser et sammendrag af ændringsresultater fra testede moduler.",
 	"spec-track-log-entry-good": "{{GENDER:$2|utledt automatisk}} at siden $1 har gode tester",
 	"spec-track-log-entry-pending": "{{GENDER:$2|utledt automatisk}} at siden $1 har udsadte tester",
-	"spec-track-log-entry-failing": "{{GENDER:$2|utledt automatisk}} at siden $1 har fejlende tester",
+	"spec-track-log-entry-fail": "{{GENDER:$2|utledt automatisk}} at siden $1 har fejlende tester",
 	"spec-track-log-entry-missing": "{{GENDER:$2|utledt automatisk}} at siden $1 mangler tester",
 	"spec-track-log-entry-unknown": "{{GENDER:$2|utledt automatisk}} at siden $1 har ukendte tester",
 	"spec-console-title": "Testkonsoll",

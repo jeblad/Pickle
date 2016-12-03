@@ -240,7 +240,7 @@
 		"LogEntry": [
 			{
 				"class": "Spec\\LogEntryCommon",
-				"name": "failing"
+				"name": "fail"
 			},
 			{
 				"class": "Spec\\LogEntryCommon",
@@ -437,7 +437,7 @@
 	"LogActions": {
 		"track/good": "spec-track-log-entry-good",
 		"track/pending": "spec-track-log-entry-pending",
-		"track/failing": "spec-track-log-entry-failing",
+		"track/fail": "spec-track-log-entry-fail",
 		"track/missing": "spec-track-log-entry-missing",
 		"track/unknown": "spec-track-log-entry-unknown"
 	},

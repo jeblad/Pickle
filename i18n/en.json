@@ -38,7 +38,7 @@
 	"spec-track-log-header": "This log shows a summary of change results from tested modules.",
 	"spec-track-log-entry-good": "{{GENDER:$2|inferred automatically}} that $1 has good tests",
 	"spec-track-log-entry-pending": "{{GENDER:$2|inferred automatically}} that $1 has pending tests",
-	"spec-track-log-entry-failing": "{{GENDER:$2|inferred automatically}} that $1 has failing tests",
+	"spec-track-log-entry-fail": "{{GENDER:$2|inferred automatically}} that $1 has failing tests",
 	"spec-track-log-entry-exists": "{{GENDER:$2|inferred automatically}} that $1 has a test page",
 	"spec-track-log-entry-missing": "{{GENDER:$2|inferred automatically}} that $1 is missing a test page",
 	"spec-track-log-entry-unknown": "{{GENDER:$2|inferred automatically}} that $1 has unknown tests",
