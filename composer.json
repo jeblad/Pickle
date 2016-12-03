@@ -1,52 +1,56 @@
 {
 	"name": "jeblad/spec",
-  "type": "mediawiki-extension",
+	"type": "mediawiki-extension",
 	"description": "Provides basic functionality to do testing of modules in Mediawiki.",
-	"keywords"   : [
+	"keywords": [
 		"wiki",
 		"MediaWiki",
 		"extension",
 		"testing",
 		"Spec"
 	],
-	"homepage" : "https://www.mediawiki.org/wiki/Extension:Spec",
-	"license" : "GPL-2.0",
+	"homepage": "https://www.mediawiki.org/wiki/Extension:Spec",
+	"license": "GPL-2.0",
 	"authors": [
 		{
-			"name" : "John Erling Blad",
+			"name": "John Erling Blad",
 			"email": "jeblad@gmail.com",
-			"role" : "Developer"
+			"role": "Developer"
 		}
 	],
-	"support"    : {
-		"wiki"  : "https://www.mediawiki.org/wiki/Extension:Spec",
-		"forum" : "https://www.mediawiki.org/wiki/Extension_talk:Spec",
+	"support": {
+		"wiki": "https://www.mediawiki.org/wiki/Extension:Spec",
+		"forum": "https://www.mediawiki.org/wiki/Extension_talk:Spec",
 		"source": "https://git.wikimedia.org/tree/mediawiki%2Fextensions%2FBootstrap",
 		"issues": "https://phabricator.wikimedia.org/project/view/2053/",
-		"irc"   : "irc://irc.freenode.org/mediawiki"
-},
-	"prepend-autoloader": false,
-	"optimize-autoloader": true,
-  "require-dev": {
-	"jakub-onderka/php-parallel-lint": ">=0.9.2",
-	"mediawiki/mediawiki-codesniffer": ">=0.7.2",
-	"liuggio/fastest": "dev-master",
-	"svg/svgo": ">=0.7"
-  },
-  "scripts": {
-	"fix": [
-		"phpcbf"
-	],
-	"minify": [
-		"find modules/images -type d -path minified  -prune -o -type d -execdir svgo --pretty --indent=2 -i . -o ./minified \\;"
-	],
-	"test": [
-	  "parallel-lint . --exclude vendor",
-	  "phpcs -p -s"
-	]
-  },
-  "require": {
-	"php": ">=5.6",
-	"composer/installers": "~1.0"
-  }
+		"irc": "irc://irc.freenode.org/mediawiki"
+	},
+	"config": {
+		"prepend-autoloader": false,
+		"optimize-autoloader": true
+	},
+	"require-dev": {
+		"jakub-onderka/php-parallel-lint": ">=0.9.2",
+		"mediawiki/mediawiki-codesniffer": ">=0.7.2",
+		"liuggio/fastest": "~1.4"
+	},
+	"scripts": {
+		"fix": [
+			"phpcbf"
+		],
+		"minify": [
+			"find modules/images -type d -path minified  -prune -o -type d -execdir svgo --pretty --indent=2 -i . -o ./minified \\;"
+		],
+		"test": [
+			"parallel-lint . --exclude vendor",
+			"phpcs -p -s"
+		]
+	},
+	"require": {
+		"php": ">=5.6",
+		"composer/installers": "~1.0"
+	},
+	"suggest": {
+		"ext-apc": "Local data and opcode cache"
+	}
 }
