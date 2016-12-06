@@ -367,19 +367,44 @@
 	},
 	"ResourceModules": {
 		"ext.spec.indicator.icon": {
-			"position": "left center",
+			"prefix": "mw-speclink-icon",
+			"position": "bottom",
 			"class": "ResourceLoaderImageModule",
-			"selector": ".mw-speclink-icon-{name}",
+			"selectorWithoutVariant": ".{prefix}-{name}",
+			"selectorWithVariant": ".{prefix}-{variant}-{name}",
+			"variants": {
+				"critical": {
+					"color": "#d11d13",
+					"global": true
+				},
+				"warning": {
+					"color": "#ffb50d",
+					"global": true
+				},
+				"information": {
+					"color": "#00af8b",
+					"global": true
+				}
+			},
 			"images": {
-				"critical-good": "images/ext.spec.indicator.icon/critical-good.svg",
-				"critical-unknown": "images/ext.spec.indicator.icon/critical-unknown.svg",
-				"critical-fail": "images/ext.spec.indicator.icon/critical-fail.svg",
-				"warning-good": "images/ext.spec.indicator.icon/warning-good.svg",
-				"warning-unknown": "images/ext.spec.indicator.icon/warning-unknown.svg",
-				"warning-fail": "images/ext.spec.indicator.icon/warning-fail.svg",
-				"information-good": "images/ext.spec.indicator.icon/information-good.svg",
-				"information-unknown": "images/ext.spec.indicator.icon/information-unknown.svg",
-				"information-fail": "images/ext.spec.indicator.icon/information-fail.svg"
+				"good": {
+					"file": {
+						"ltr": "images/ext.spec.indicator.icon/good-ltr.svg",
+						"rtl": "images/ext.spec.indicator.icon/good-rtl.svg"
+					}
+				},
+				"fail": {
+					"file": {
+						"ltr": "images/ext.spec.indicator.icon/fail-ltr.svg",
+						"rtl": "images/ext.spec.indicator.icon/fail-rtl.svg"
+					}
+				},
+				"unknown": {
+					"file": {
+						"ltr": "images/ext.spec.indicator.icon/unknown-ltr.svg",
+						"rtl": "images/ext.spec.indicator.icon/unknown-rtl.svg"
+					}
+				}
 			}
 		}, 
 		"ext.spec.default": {
