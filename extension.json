@@ -14,8 +14,6 @@
 		"Spec\\Common":
 			"includes/Common.php",
 
-		"Spec\\IObserver":
-			"includes/Observer/IObserver.php",
 		"Spec\\Observer":
 			"includes/Observer/Observer.php",
 
@@ -83,13 +81,9 @@
 		"Spec\\InvokeSubpageStrategies":
 			"includes/InvokeSubpage/InvokeSubpageStrategies.php",
 
-		"Spec\\IHelpView":
-			"includes/Help/IHelpView.php",
 		"Spec\\HelpView":
 			"includes/Help/HelpView.php",
 
-		"Spec\\IConsoleView":
-			"includes/Console/IConsoleView.php",
 		"Spec\\ConsoleView":
 			"includes/Console/ConsoleView.php",
 

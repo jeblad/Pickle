@@ -7,12 +7,14 @@ namespace Spec;
  *
  * @ingroup Extensions
  */
-abstract class Observer implements IObserver {
+class Observer {
 
 	protected static $instance = null;
 
 	/**
-	 * @see \Spec\IObserver::getName()
+	 * Get the user
+	 *
+	 * @return string
 	 */
 	public static function getUser() {
 		global $wgSpecObserverID;

@@ -9,7 +9,7 @@ namespace Spec;
  *
  * @ingroup Extensions
  */
-class HelpView implements IHelpView {
+class HelpView {
 
 	protected $out;
 
@@ -21,7 +21,12 @@ class HelpView implements IHelpView {
 	}
 
 	/**
-	 * @see \Spec\IHelpView::build()
+	 * Build the help view
+	 * This isn't really part of a normal MVC design pattern, it will only build a minimal view.
+	 *
+	 * @param OutputPage $out
+	 *
+	 * @return \OutputPage outcome of the call
 	 */
 	public static function build( \OutputPage $output = null ) {
 		global $wgOut;

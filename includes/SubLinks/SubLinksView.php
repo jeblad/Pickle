@@ -7,7 +7,7 @@ namespace Spec;
  *
  * @ingroup Extensions
  */
-abstract class SubLinksView implements ISubLinksView {
+class SubLinksView implements ISubLinksView {
 
 	/**
 	 * @see \Spec\ISubLinksView::makeLink()
