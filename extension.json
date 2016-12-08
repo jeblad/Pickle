@@ -143,46 +143,46 @@
 			{
 				"class": "Spec\\IndicatorCommon",
 				"name": "fail",
-				"icon": "critical-fail"
+				"icon": "red-fail"
 			},
 			{
 				"class": "Spec\\IndicatorCommon",
 				"name": "todo-fail",
-				"icon": "warning-fail"
+				"icon": "yellow-fail"
 			},
 			{
 				"class": "Spec\\IndicatorCommon",
 				"name": "todo-good",
-				"icon": "warning-good"
+				"icon": "yellow-good"
 			},
 			{
 				"class": "Spec\\IndicatorCommon",
 				"name": "skip-fail",
-				"icon": "warning-fail"
+				"icon": "yellow-fail"
 			},
 			{
 				"class": "Spec\\IndicatorCommon",
 				"name": "skip-good",
-				"icon": "warning-good"
+				"icon": "yellow-good"
 			},
 			{
 				"class": "Spec\\IndicatorCommon",
 				"name": "pending",
-				"icon": "warning-unknown"
+				"icon": "yellow-unknown"
 			},
 			{
 				"class": "Spec\\IndicatorCommon",
 				"name": "good",
-				"icon": "information-good"
+				"icon": "green-good"
 			},
 			{
 				"class": "Spec\\IndicatorCommon",
 				"name": "missing",
-				"icon": "warning-unknown"
+				"icon": "yellow-unknown"
 			},
 			{
 				"class": "Spec\\IndicatorDefault",
-				"icon": "warning-unknown"
+				"icon": "yellow-unknown"
 			}
 		],
 		"Category": [
@@ -364,20 +364,17 @@
 			"prefix": "mw-speclink-icon",
 			"position": "bottom",
 			"class": "ResourceLoaderImageModule",
-			"selectorWithoutVariant": ".{prefix}-{name}",
+			"selectorWithoutVariant": ".{prefix}-black-{name}",
 			"selectorWithVariant": ".{prefix}-{variant}-{name}",
 			"variants": {
-				"critical": {
-					"color": "#d11d13",
-					"global": true
+				"red": {
+					"color": "#d11d13"
 				},
-				"warning": {
-					"color": "#ffb50d",
-					"global": true
+				"yellow": {
+					"color": "#ffb50d"
 				},
-				"information": {
-					"color": "#00af8b",
-					"global": true
+				"green": {
+					"color": "#00af8b"
 				}
 			},
 			"images": {
@@ -385,19 +382,22 @@
 					"file": {
 						"ltr": "images/ext.spec.indicator.icon/good-ltr.svg",
 						"rtl": "images/ext.spec.indicator.icon/good-rtl.svg"
-					}
+					},
+                    "variants": [ "green", "yellow" ]
 				},
 				"fail": {
 					"file": {
 						"ltr": "images/ext.spec.indicator.icon/fail-ltr.svg",
 						"rtl": "images/ext.spec.indicator.icon/fail-rtl.svg"
-					}
+					},
+                    "variants": [ "red", "yellow" ]
 				},
 				"unknown": {
 					"file": {
 						"ltr": "images/ext.spec.indicator.icon/unknown-ltr.svg",
 						"rtl": "images/ext.spec.indicator.icon/unknown-rtl.svg"
-					}
+					},
+                    "variants": [ "yellow" ]
 				}
 			}
 		}, 
