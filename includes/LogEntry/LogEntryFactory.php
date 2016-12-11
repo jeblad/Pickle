@@ -28,7 +28,7 @@ class LogEntryFactory extends Strategies {
 	public static function init() {
 		global $wgSpecLogEntry;
 
-		$results = LogEntryStrategies::getInstance();
+		$results = LogEntryFactory::getInstance();
 		foreach ( $wgSpecLogEntry as $struct ) {
 			$results->register( $struct );
 		}
@@ -50,8 +50,15 @@ class LogEntryFactory extends Strategies {
 			return true;
 		}
 
-		$currentKey = $states[ 'status-current' ];
-		$previousKey = $states[ 'status-previous' ];
+		$currentKey = array_key_exists( 'status-current', $states )
+			? $states[ 'status-current' ]
+			: null;
+		$previousKey = array_key_exists( 'status-previous', $states )
+			? $states[ 'status-previous' ]
+			: null;
+		$currentType = array_key_exists( 'page-type', $states )
+			? $states[ 'page-type' ]
+			: false;
 
 		if ( $currentKey !== null
 				&& $currentKey !== $previousKey

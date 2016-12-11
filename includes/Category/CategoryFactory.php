@@ -50,8 +50,12 @@ class CategoryFactory extends Strategies {
 			return true;
 		}
 
-		$currentKey = $states[ 'status-current' ];
-		$currentType = $states[ 'page-type' ];
+		$currentKey = array_key_exists( 'status-current', $states )
+			? $states[ 'status-current' ]
+			: null;
+		$currentType = array_key_exists( 'page-type', $states )
+			? $states[ 'page-type' ]
+			: false;
 
 		if ( $currentKey !== null
 				&& in_array( $currentType, [ 'normal' ] ) ) {
