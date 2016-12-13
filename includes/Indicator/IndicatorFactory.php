@@ -50,15 +50,17 @@ class IndicatorFactory extends Strategies {
 			return true;
 		}
 
-		$currentKey = array_key_exists( 'status-current', $states )
-			? $states[ 'status-current' ]
-			: null;
-		$subpageMsg = array_key_exists( 'subpage-message', $states )
-			? $states[ 'subpage-message' ]
-			: null;
-		$currentType = array_key_exists( 'page-type', $states )
-			? $states[ 'page-type' ]
-			: false;
+		$mergedStates = array_merge(
+			[
+				'status-current' => null,
+				'subpage-message' => null,
+				'page-type' => false
+			],
+			$states );
+
+		$currentKey = $mergedStates[ 'status-current' ];
+		$subpageMsg = $mergedStates[ 'subpage-message' ];
+		$currentType = $mergedStates[ 'page-type' ];
 
 		if ( $currentKey !== null
 				&& in_array( $currentType, [ 'normal', 'test' ] ) ) {

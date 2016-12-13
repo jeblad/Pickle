@@ -50,15 +50,16 @@ class LogEntryFactory extends Strategies {
 			return true;
 		}
 
-		$currentKey = array_key_exists( 'status-current', $states )
-			? $states[ 'status-current' ]
-			: null;
-		$previousKey = array_key_exists( 'status-previous', $states )
-			? $states[ 'status-previous' ]
-			: null;
-		$currentType = array_key_exists( 'page-type', $states )
-			? $states[ 'page-type' ]
-			: false;
+		$mergedStates = array_merge(
+			[
+				'status-current' => null,
+				'page-type' => false
+			],
+			$states );
+
+		$currentKey = $mergedStates[ 'status-current' ];
+		$currentKey = $mergedStates[ 'status-previous' ];
+		$currentType = $mergedStates[ 'page-type' ];
 
 		if ( $currentKey !== null
 				&& $currentKey !== $previousKey

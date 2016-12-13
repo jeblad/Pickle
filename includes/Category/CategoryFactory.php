@@ -50,12 +50,15 @@ class CategoryFactory extends Strategies {
 			return true;
 		}
 
-		$currentKey = array_key_exists( 'status-current', $states )
-			? $states[ 'status-current' ]
-			: null;
-		$currentType = array_key_exists( 'page-type', $states )
-			? $states[ 'page-type' ]
-			: false;
+		$mergedStates = array_merge(
+			[
+				'status-current' => null,
+				'page-type' => false
+			],
+			$states );
+
+		$currentKey = $mergedStates[ 'status-current' ];
+		$currentType = $mergedStates[ 'page-type' ];
 
 		if ( $currentKey !== null
 				&& in_array( $currentType, [ 'normal' ] ) ) {
