@@ -12,16 +12,17 @@ The _head_ of the extension is targeted at the _head_ of [Mediawiki](https://www
 
 A help portal for users are available at [Mediawiki](https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Pickle).
 
-* [Mediawiki](https://phabricator.wikimedia.org/diffusion/MW/)
-  * Wikimedias git repository ```git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git```
-  * GitHubs git repository ```git clone https://github.com/wikimedia/mediawiki.git```
-* [MediaWiki-extensions-Scribunto](https://phabricator.wikimedia.org/tag/mediawiki-extensions-scribunto/) / [extension-Scribunto](https://phabricator.wikimedia.org/diffusion/ELUA/)
-  * Wikimedias own git repository ```git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/Scribunto```
-  * Wikimedias GitHub repository ```git clone https://github.com/wikimedia/mediawiki-extensions-Scribunto.git```
-* [MediaWiki-extensions-Pickle](https://phabricator.wikimedia.org/tag/mediawiki-extensions-pickle/) / [extension-Pickle](https://phabricator.wikimedia.org/diffusion/EPKL/)
-  * Wikimedias own git repository ```git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/Pickle```
-  * Wikimedias GitHubs repository ```git clone https://github.com/wikimedia/mediawiki-extensions-Pickle.git```
-* [Pickle development](https://github.com/jeblad/Pickle)
+* Mediawiki ([issues](https://phabricator.wikimedia.org/tag/mediawiki-general-or-unknown/) | [code](https://phabricator.wikimedia.org/diffusion/MW/))
+  * Gerrit `git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git`
+  * GitHub `git clone https://github.com/wikimedia/mediawiki.git`
+* Scribunto ([issues](https://phabricator.wikimedia.org/tag/mediawiki-extensions-scribunto/) | [code](https://phabricator.wikimedia.org/diffusion/ELUA/))
+  * Gerrit `git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/Scribunto`
+  * GitHub `git clone https://github.com/wikimedia/mediawiki-extensions-Scribunto.git`
+* Pickle [unstable] ([issues](https://phabricator.wikimedia.org/tag/mediawiki-extensions-pickle/) | [code](https://phabricator.wikimedia.org/diffusion/EPKL/))
+  * Gerrit `git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/Pickle`
+  * GitHub `git clone https://github.com/wikimedia/mediawiki-extensions-Pickle.git`
+* Pickle [experimental] ([issues](https://github.com/jeblad/Pickle/issues) | [code](https://github.com/jeblad/Pickle))
+  * GitHub `git clone https://github.com/jeblad/Pickle.git`
 
 ### System overview
 
