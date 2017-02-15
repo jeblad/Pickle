@@ -1,26 +1,26 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\ExtractStatusByPattern;
+use \Pickle\ExtractStatusByPattern;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\ExtractStatusByPattern
+ * @covers \Pickle\ExtractStatusByPattern
  */
 class ExtractStatusByPatternTest extends MediaWikiTestCase {
 
 	protected $conf = [
-		"class" => "Spec\\ExtractStatusByPattern",
+		"class" => "Pickle\\ExtractStatusByPattern",
 		"name" => "good",
 		"pattern" => "/\\bgood\\b/"
 	];
 
 	public function testOnCodeToInterface() {
 		$test = new ExtractStatusByPattern( $this->conf );
-		$this->assertInstanceOf( 'Spec\\AExtractStatus', $test );
+		$this->assertInstanceOf( 'Pickle\\AExtractStatus', $test );
 	}
 
 	public function testOnGetName() {

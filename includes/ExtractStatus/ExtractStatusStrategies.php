@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 use MediaWiki\Logger\LoggerFactory;
 
@@ -47,7 +47,7 @@ class ExtractStatusStrategies extends Strategies {
 		}
 		foreach ( $this->instances as $strategy ) {
 			if ( $strategy->checkState( $str ) ) {
-				LoggerFactory::getInstance( 'Spec' )
+				LoggerFactory::getInstance( 'Pickle' )
 					->debug( 'Found extract status strategy: {name}',
 						array_merge(
 							[ 'method' => __METHOD__ ],

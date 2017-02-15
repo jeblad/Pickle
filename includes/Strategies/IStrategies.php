@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 /**
  * Set of strategies

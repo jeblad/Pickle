@@ -1,23 +1,23 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
-use \Spec\Strategies;
+use \Pickle\Strategies;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\Strategies
+ * @covers \Pickle\Strategies
  */
 class StrategiesTest extends StrategiesTestCase {
 
 	public static function stratClass() {
-		return 'Spec\Strategies';
+		return 'Pickle\Strategies';
 	}
 
 	public function testOnCodeToInterface() {
 		$test = Strategies::getInstance();
-		$this->assertInstanceOf( 'Spec\\IStrategies', $test );
+		$this->assertInstanceOf( 'Pickle\\IStrategies', $test );
 	}
 
 	public function testInit() {

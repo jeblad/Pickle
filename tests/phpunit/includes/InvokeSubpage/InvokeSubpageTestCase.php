@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 class InvokeSubpageTestCase extends \MediaWikiTestCase {
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
-use \Spec\ATAPParser;
+use \Pickle\ATAPParser;
 
 /**
  * Squash a tap into its final form
@@ -20,7 +20,7 @@ class TAP13Parser extends ATAPParser {
 	}
 
 	/**
-	 * @see \Spec\ATAPParser::Parser()
+	 * @see \Pickle\ATAPParser::Parser()
 	 */
 	public function parse( $str ) {
 		$count = self::getCount( $str );
@@ -70,7 +70,7 @@ class TAP13Parser extends ATAPParser {
 	}
 
 	/**
-	 * @see \Spec\ATAPParser::stats()
+	 * @see \Pickle\ATAPParser::stats()
 	 */
 	public function stats( $str ) {
 		$good = [ 0, 0, 0 ];
@@ -105,7 +105,7 @@ class TAP13Parser extends ATAPParser {
 	}
 
 	/**
-	 * @see \Spec\ATAPParser::checkValid()
+	 * @see \Pickle\ATAPParser::checkValid()
 	 */
 	public function checkValid( $str ) {
 		return ( $this->getVersion( $str ) === 13 );

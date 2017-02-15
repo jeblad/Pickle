@@ -1,29 +1,29 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\CategoryFactory;
+use \Pickle\CategoryFactory;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\CategoryFactory
+ * @covers \Pickle\CategoryFactory
  */
 class CategoryFactoryTest extends StrategiesTestCase {
 
 	public static function stratClass() {
-		return 'Spec\CategoryFactory';
+		return 'Pickle\CategoryFactory';
 	}
 
 	public function testOnCodeToInterface() {
 		$test = CategoryFactory::getInstance();
-		$this->assertInstanceOf( 'Spec\\IStrategies', $test );
+		$this->assertInstanceOf( 'Pickle\\IStrategies', $test );
 	}
 
 	public function testWho() {
 		$test = CategoryFactory::who();
-		$this->assertEquals( 'Spec\CategoryFactory', $test );
+		$this->assertEquals( 'Pickle\CategoryFactory', $test );
 	}
 
 	public function testInit() {
@@ -34,7 +34,7 @@ class CategoryFactoryTest extends StrategiesTestCase {
 	}
 
 	public function testRegister() {
-		$struct = [ 'class' => 'Spec\CategoryCommon' ];
+		$struct = [ 'class' => 'Pickle\CategoryCommon' ];
 		$test = CategoryFactory::getInstance();
 		$instance = $test->register( $struct );
 		$this->assertEquals( get_class( $instance ), $struct['class'] );
@@ -42,8 +42,8 @@ class CategoryFactoryTest extends StrategiesTestCase {
 
 	public function provideFind() {
 		return [
-			[ 'Spec\CategoryCommon', 'foo' ],
-			[ 'Spec\CategoryDefault', 'bar' ]
+			[ 'Pickle\CategoryCommon', 'foo' ],
+			[ 'Pickle\CategoryDefault', 'bar' ]
 		];
 	}
 
@@ -58,13 +58,13 @@ class CategoryFactoryTest extends StrategiesTestCase {
 		$test = CategoryFactory::getInstance();
 		$test->register(
 			[
-				'class' => 'Spec\CategoryCommon',
+				'class' => 'Pickle\CategoryCommon',
 				'name' => 'foo'
 			]
 		);
 		$test->register(
 			[
-				'class' => 'Spec\CategoryDefault'
+				'class' => 'Pickle\CategoryDefault'
 			]
 		);
 		$Strategy = $test->find( $name );

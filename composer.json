@@ -1,5 +1,5 @@
 {
-	"name": "jeblad/spec",
+	"name": "jeblad/pickle",
 	"type": "mediawiki-extension",
 	"description": "Provides basic functionality to do testing of modules in Mediawiki.",
 	"keywords": [
@@ -7,9 +7,9 @@
 		"MediaWiki",
 		"extension",
 		"testing",
-		"Spec"
+		"Pickle"
 	],
-	"homepage": "https://www.mediawiki.org/wiki/Extension:Spec",
+	"homepage": "https://www.mediawiki.org/wiki/Extension:Pickle",
 	"license": "GPL-2.0",
 	"authors": [
 		{
@@ -19,8 +19,8 @@
 		}
 	],
 	"support": {
-		"wiki": "https://www.mediawiki.org/wiki/Extension:Spec",
-		"forum": "https://www.mediawiki.org/wiki/Extension_talk:Spec",
+		"wiki": "https://www.mediawiki.org/wiki/Extension:Pickle",
+		"forum": "https://www.mediawiki.org/wiki/Extension_talk:Pickle",
 		"source": "https://git.wikimedia.org/tree/mediawiki%2Fextensions%2FBootstrap",
 		"issues": "https://phabricator.wikimedia.org/project/view/2053/",
 		"irc": "irc://irc.freenode.org/mediawiki"

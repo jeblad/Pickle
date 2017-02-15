@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 /**
  * Invoke subpage interface

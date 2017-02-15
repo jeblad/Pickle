@@ -1,29 +1,29 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\TAPStrategies;
+use \Pickle\TAPStrategies;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\TAPStrategies
+ * @covers \Pickle\TAPStrategies
  */
 class TAPStrategiesTest extends StrategiesTestCase {
 
 	public static function stratClass() {
-		return 'Spec\TAPStrategies';
+		return 'Pickle\TAPStrategies';
 	}
 
 	public function testOnCodeToInterface() {
 		$test = TAPStrategies::getInstance();
-		$this->assertInstanceOf( 'Spec\\IStrategies', $test );
+		$this->assertInstanceOf( 'Pickle\\IStrategies', $test );
 	}
 
 	public function testWho() {
 		$test = TAPStrategies::who();
-		$this->assertEquals( 'Spec\TAPStrategies', $test );
+		$this->assertEquals( 'Pickle\TAPStrategies', $test );
 	}
 
 	public function testInit() {
@@ -34,7 +34,7 @@ class TAPStrategiesTest extends StrategiesTestCase {
 	}
 
 	public function testRegister() {
-		$struct = [ 'class' => 'Spec\TAPCommonParser' ];
+		$struct = [ 'class' => 'Pickle\TAPCommonParser' ];
 		$test = TAPStrategies::getInstance();
 		$instance = $test->register( $struct );
 		$this->assertEquals( get_class( $instance ), $struct['class'] );
@@ -59,13 +59,13 @@ class TAPStrategiesTest extends StrategiesTestCase {
 		$test = TAPStrategies::getInstance();
 		$test->register(
 			[
-				'class' => 'Spec\TAP13Parser',
+				'class' => 'Pickle\TAP13Parser',
 				'name' => 'tap-13'
 			]
 		);
 		$test->register(
 			[
-				'class' => 'Spec\TAPCommonParser',
+				'class' => 'Pickle\TAPCommonParser',
 				'name' => 'tap'
 			]
 		);

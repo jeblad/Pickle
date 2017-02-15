@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 /**
  * Concrete strategy for log entries
@@ -19,7 +19,7 @@ class LogEntryDefault extends ALogEntry {
 	}
 
 	/**
-	 * @see \Spec\ALogEntryStrategy::newLogEntry()
+	 * @see \Pickle\ALogEntryStrategy::newLogEntry()
 	 */
 	public function newLogEntry( \Title $title, \LogEntry $logEntry = null ) {
 
@@ -27,7 +27,7 @@ class LogEntryDefault extends ALogEntry {
 			$logEntry = new \ManualLogEntry( 'track', 'unknown' );
 		}
 
-		$logEntry->setPerformer( \Spec\Observer::getUser() );
+		$logEntry->setPerformer( \Pickle\Observer::getUser() );
 		$logEntry->setTarget( $title );
 		$logEntry->setIsPatrollable( false );
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
-use \Spec\AInvokeSubpage;
+use \Pickle\AInvokeSubpage;
 
 /**
  * Concrete strategy to invoke subpage
@@ -30,59 +30,59 @@ class InvokeSubpageDefault extends AInvokeSubpage {
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::checkType()
+	 * @see \Pickle\AInvokeSubpage::checkType()
 	 */
 	public function checkType( \Title &$title ) {
 		return true;
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::checkSubpageType()
+	 * @see \Pickle\AInvokeSubpage::checkSubpageType()
 	 */
 	public function checkSubpageType( \Title &$title, $type = null ) {
 		return true;
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::getInvoke()
+	 * @see \Pickle\AInvokeSubpage::getInvoke()
 	 */
 	public function getInvoke( \Title &$title ) {
 		$subpage = $this->getSubpageBaseText( $title );
-		return wfMessage( 'spec-default-invoke', $subpage->plain() );
+		return wfMessage( 'pickle-default-invoke', $subpage->plain() );
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::getSubpageText()
+	 * @see \Pickle\AInvokeSubpage::getSubpageText()
 	 */
 	public function getSubpagePrefixedText( \Title &$title ) {
 		$text = $title->getPrefixedText();
-		return wfMessage( 'spec-default-subpage', $text );
+		return wfMessage( 'pickle-default-subpage', $text );
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::getSubpageBaseText()
+	 * @see \Pickle\AInvokeSubpage::getSubpageBaseText()
 	 */
 	public function getSubpageBaseText( \Title &$title ) {
 		$baseText = $title->getBaseText();
-		return wfMessage( 'spec-default-subpage', $baseText );
+		return wfMessage( 'pickle-default-subpage', $baseText );
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::getSubpageTitle()
+	 * @see \Pickle\AInvokeSubpage::getSubpageTitle()
 	 */
 	public function getSubpageTitle( \Title &$title ) {
 		return \Title::newFromText( $this->getSubpagePrefixedText( $title )->plain() );
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::getTesterQuestion()
+	 * @see \Pickle\AInvokeSubpage::getTesterQuestion()
 	 */
 	public function getTesterQuestion( \Title &$title ) {
 		return $this->opts['testerQuestion'];
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::getTesteeQuestion()
+	 * @see \Pickle\AInvokeSubpage::getTesteeQuestion()
 	 */
 	public function getTesteeQuestion( \Title &$title ) {
 		$prefixedText = $this->getSubpagePrefixedText( $title );

@@ -1,19 +1,19 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\LogEntryDefault;
+use \Pickle\LogEntryDefault;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\LogEntryDefault
+ * @covers \Pickle\LogEntryDefault
  */
 class LogEntryDefaultTest extends LogEntryTestCase {
 
 	protected $conf = [
-		"class" => "Spec\\LogEntryDefault",
+		"class" => "Pickle\\LogEntryDefault",
 		"name" => "test"
 	];
 
@@ -26,13 +26,13 @@ class LogEntryDefaultTest extends LogEntryTestCase {
 			[
 				'unknown',
 				[
-					"class" => "Spec\\LogEntryDefault"
+					"class" => "Pickle\\LogEntryDefault"
 				]
 			],
 			[
 				'unknown',
 				[
-					"class" => "Spec\\LogEntryDefault",
+					"class" => "Pickle\\LogEntryDefault",
 					"name" => "foo"
 				]
 			]
@@ -47,7 +47,7 @@ class LogEntryDefaultTest extends LogEntryTestCase {
 					'subtype' => 'unknown'
 				],
 				[
-					"class" => "Spec\\LogEntryDefault",
+					"class" => "Pickle\\LogEntryDefault",
 					"name" => "foo"
 				]
 			],
@@ -57,7 +57,7 @@ class LogEntryDefaultTest extends LogEntryTestCase {
 					'subtype' => 'unknown'
 				],
 				[
-					"class" => "Spec\\LogEntryDefault"
+					"class" => "Pickle\\LogEntryDefault"
 				]
 			]
 		];

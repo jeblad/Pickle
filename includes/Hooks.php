@@ -1,11 +1,11 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 use MediaWiki\Logger\LoggerFactory;
 
 /**
- * Hook handlers for the Spec extension
+ * Hook handlers for the Pickle extension
  *
  * @ingroup Extensions
  */
@@ -19,7 +19,7 @@ class Hooks {
 		AInvokeSubpage $strategy,
 		\Title $title
 	) {
-		$logger = LoggerFactory::getInstance( 'Spec' );
+		$logger = LoggerFactory::getInstance( 'Pickle' );
 
 		// try to squash the text into submission
 		$text = $strategy->getInvoke( $title )->parse();
@@ -53,7 +53,7 @@ class Hooks {
 	}
 
 	/**
-	 * Page indicator for module with spec tests
+	 * Page indicator for module with pickle tests
 	 * @todo design debt
 	 */
 	public static function onContentAlterParserOutput(
@@ -63,7 +63,7 @@ class Hooks {
 	) {
 		global $wgSpecNeglectPages;
 
-		$logger = LoggerFactory::getInstance( 'Spec' );
+		$logger = LoggerFactory::getInstance( 'Pickle' );
 
 		// Try to bail out early
 		if ( $title === null
@@ -136,10 +136,10 @@ class Hooks {
 		}
 
 		// keep the current state as page property for later
-		$pageProps = \PageProps::getInstance()->getProperties( $title, 'spec-status' );
+		$pageProps = \PageProps::getInstance()->getProperties( $title, 'pickle-status' );
 		$previousStatus = unserialize( $pageProps[$title->getArticleId()] );
 		$statusStrategy = self::getFinalStrategy( $invokeStrategy, $title );
-		$parserOutput->setProperty( 'spec-status', serialize( $statusStrategy->getName() ) );
+		$parserOutput->setProperty( 'pickle-status', serialize( $statusStrategy->getName() ) );
 
 		// start collecting args for the hook
 		$args = [

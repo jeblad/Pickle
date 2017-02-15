@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 abstract class IndicatorTestCase extends \MediaWikiTestCase {
 
@@ -30,7 +30,7 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = $this->newInstance( $this->conf );
-		$this->assertInstanceOf( 'Spec\\AIndicator', $test );
+		$this->assertInstanceOf( 'Pickle\\AIndicator', $test );
 	}
 
 	/**

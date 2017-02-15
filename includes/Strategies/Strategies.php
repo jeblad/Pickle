@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 /**
  * Set of strategies
@@ -39,14 +39,14 @@ class Strategies implements IStrategies {
 	}
 
 	/**
-	 * @see \Spec\IStrategy::export()
+	 * @see \Pickle\IStrategy::export()
 	 */
 	public function export() {
 		return $this->instances;
 	}
 
 	/**
-	 * @see \Spec\IStrategy::import()
+	 * @see \Pickle\IStrategy::import()
 	 */
 	public function import( array $arr = null ) {
 		$this->instances = $arr;
@@ -54,14 +54,14 @@ class Strategies implements IStrategies {
 	}
 
 	/**
-	 * @see \Spec\IStrategy::reset()
+	 * @see \Pickle\IStrategy::reset()
 	 */
 	public function reset() {
 		$this->instances = [];
 	}
 
 	/**
-	 * @see \Spec\IStrategy::register()
+	 * @see \Pickle\IStrategy::register()
 	 */
 	public function register( array $struct ) {
 		$instance = new $struct['class']( $struct );
@@ -70,7 +70,7 @@ class Strategies implements IStrategies {
 	}
 
 	/**
-	 * @see \Spec\IStrategy::isEmpty()
+	 * @see \Pickle\IStrategy::isEmpty()
 	 */
 	public function isEmpty() {
 		return ( $this->instances === [] );

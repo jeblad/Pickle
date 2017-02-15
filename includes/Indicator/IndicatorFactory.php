@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 use MediaWiki\Logger\LoggerFactory;
 
@@ -72,7 +72,7 @@ class IndicatorFactory extends Strategies {
 				$title = $subpageMsg->isDisabled() ? null : \Title::newFromText( $subpageMsg->plain() );
 			}
 
-			LoggerFactory::getInstance( 'Spec' )
+			LoggerFactory::getInstance( 'Pickle' )
 				->debug( 'Found concrete indicator: {name}',
 					array_merge(
 						[ 'method' => __METHOD__ ],

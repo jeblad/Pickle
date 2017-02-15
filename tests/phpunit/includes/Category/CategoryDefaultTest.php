@@ -1,19 +1,19 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\CategoryDefault;
+use \Pickle\CategoryDefault;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\CategoryDefault
+ * @covers \Pickle\CategoryDefault
  */
 class CategoryDefaultTest extends CategoryTestCase {
 
 	protected $conf = [
-		"class" => "Spec\\CategoryDefault"
+		"class" => "Pickle\\CategoryDefault"
 	];
 
 	protected function newInstance( $conf ) {
@@ -25,13 +25,13 @@ class CategoryDefaultTest extends CategoryTestCase {
 			[
 				'unknown',
 				[
-					"class" => "Spec\\CategoryDefault"
+					"class" => "Pickle\\CategoryDefault"
 				]
 			],
 			[
 				'unknown',
 				[
-					"class" => "Spec\\CategoryDefault",
+					"class" => "Pickle\\CategoryDefault",
 					"name" => "foo",
 					"key" => "baz"
 				]
@@ -42,17 +42,17 @@ class CategoryDefaultTest extends CategoryTestCase {
 	public function provideGetKey() {
 		return [
 			[
-				'spec-tracking-category-unknown',
+				'pickle-tracking-category-unknown',
 				[
-					"class" => "Spec\\CategoryDefault",
+					"class" => "Pickle\\CategoryDefault",
 					"name" => "foo",
 					"key" => "baz"
 				]
 			],
 			[
-				'spec-tracking-category-unknown',
+				'pickle-tracking-category-unknown',
 				[
-					"class" => "Spec\\CategoryDefault"
+					"class" => "Pickle\\CategoryDefault"
 				]
 			]
 		];

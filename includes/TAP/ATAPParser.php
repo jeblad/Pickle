@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 /**
  * TAP base Parser
@@ -138,7 +138,7 @@ abstract class ATAPParser {
 	}
 
 	 /**
-	 * @see \Spec\ATAPParser::getName()
+	 * @see \Pickle\ATAPParser::getName()
 	 */
 	public function getName() {
 		return $this->opts['name'];

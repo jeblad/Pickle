@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 use MediaWiki\Logger\LoggerFactory;
 
@@ -34,15 +34,15 @@ abstract class AIndicator {
 	public function makeLink( $url, $lang = null ) {
 
 		// Get the message containing the text to use for the link
-		// @message spec-test-text-good
-		// @message spec-test-text-pending
-		// @message spec-test-text-fail
-		// @message spec-test-text-missing
-		// @message spec-test-text-unknown
+		// @message pickle-test-text-good
+		// @message pickle-test-text-pending
+		// @message pickle-test-text-fail
+		// @message pickle-test-text-missing
+		// @message pickle-test-text-unknown
 		$msg = wfMessage( $this->getMessageKey() );
 		$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );
 		if ( $msg->isDisabled() ) {
-			LoggerFactory::getInstance( 'Spec' )->debug( 'Found disabled message: {key}', [
+			LoggerFactory::getInstance( 'Pickle' )->debug( 'Found disabled message: {key}', [
 				'key' => $this->getMessageKey(),
 				'method' => __METHOD__
 			] );
@@ -72,15 +72,15 @@ abstract class AIndicator {
 	public function makeNote( $lang = null ) {
 
 		// Get the message containing the text to use for the link
-		// @message spec-test-text-good
-		// @message spec-test-text-pending
-		// @message spec-test-text-fail
-		// @message spec-test-text-missing
-		// @message spec-test-text-unknown
+		// @message pickle-test-text-good
+		// @message pickle-test-text-pending
+		// @message pickle-test-text-fail
+		// @message pickle-test-text-missing
+		// @message pickle-test-text-unknown
 		$msg = wfMessage( $this->getMessageKey() );
 		$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );
 		if ( $msg->isDisabled() ) {
-			LoggerFactory::getInstance( 'Spec' )->debug( 'Found disabled message: {key}', [
+			LoggerFactory::getInstance( 'Pickle' )->debug( 'Found disabled message: {key}', [
 				'key' => $this->getMessageKey(),
 				'method' => __METHOD__
 			] );
@@ -123,7 +123,7 @@ abstract class AIndicator {
 	 * @return string
 	 */
 	public function getMessageKey() {
-		return 'spec-test-text-' . $this->opts['name'];
+		return 'pickle-test-text-' . $this->opts['name'];
 	}
 
 	/**
@@ -154,7 +154,7 @@ abstract class AIndicator {
 
 		if ( $elem !== null ) {
 			$res = $parserOutput->setIndicator( $this->getClassKey(), $elem );
-			$parserOutput->addModuleStyles( [ 'ext.spec.default', 'ext.spec.indicator.icon' ] );
+			$parserOutput->addModuleStyles( [ 'ext.pickle.default', 'ext.pickle.indicator.icon' ] );
 		}
 
 		return $elem;

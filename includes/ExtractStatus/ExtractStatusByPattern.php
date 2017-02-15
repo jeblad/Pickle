@@ -1,8 +1,8 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
-use \Spec\AExtractStatus;
+use \Pickle\AExtractStatus;
 
 /**
  * Concrete strategy to extract status
@@ -22,7 +22,7 @@ class ExtractStatusByPattern extends AExtractStatus {
 	}
 
 	/**
-	 * @see \Spec\AExtractStatus::checkState()
+	 * @see \Pickle\AExtractStatus::checkState()
 	 */
 	public function checkState( $str ) {
 		return preg_match( $this->opts['pattern'], $str );

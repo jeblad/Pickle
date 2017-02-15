@@ -1,19 +1,19 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\CategoryCommon;
+use \Pickle\CategoryCommon;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\CategoryCommon
+ * @covers \Pickle\CategoryCommon
  */
 class CategoryCommonTest extends CategoryTestCase {
 
 	protected $conf = [
-		"class" => "Spec\\CategoryCommon",
+		"class" => "Pickle\\CategoryCommon",
 		"name" => "test",
 		"key" => "baz"
 	];
@@ -27,7 +27,7 @@ class CategoryCommonTest extends CategoryTestCase {
 			[
 				'foo',
 				[
-					"class" => "Spec\\CategoryCommon",
+					"class" => "Pickle\\CategoryCommon",
 					"name" => "foo",
 					"key" => "baz"
 				]
@@ -35,7 +35,7 @@ class CategoryCommonTest extends CategoryTestCase {
 			[
 				'none',
 				[
-					"class" => "Spec\\CategoryCommon"
+					"class" => "Pickle\\CategoryCommon"
 				]
 			]
 		];
@@ -44,17 +44,17 @@ class CategoryCommonTest extends CategoryTestCase {
 	public function provideGetKey() {
 		return [
 			[
-				'spec-tracking-category-baz',
+				'pickle-tracking-category-baz',
 				[
-					"class" => "Spec\\CategoryCommon",
+					"class" => "Pickle\\CategoryCommon",
 					"name" => "foo",
 					"key" => "baz"
 				]
 			],
 			[
-				'spec-tracking-category-unknown',
+				'pickle-tracking-category-unknown',
 				[
-					"class" => "Spec\\CategoryCommon"
+					"class" => "Pickle\\CategoryCommon"
 				]
 			]
 		];

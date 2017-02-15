@@ -1,29 +1,29 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\InvokeSubpageStrategies;
+use \Pickle\InvokeSubpageStrategies;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\InvokeSubpageStrategies
+ * @covers \Pickle\InvokeSubpageStrategies
  */
 class InvokeSubpageStrategiesTest extends StrategiesTestCase {
 
 	public static function stratClass() {
-		return 'Spec\InvokeSubpageStrategies';
+		return 'Pickle\InvokeSubpageStrategies';
 	}
 
 	public function testOnCodeToInterface() {
 		$test = InvokeSubpageStrategies::getInstance();
-		$this->assertInstanceOf( 'Spec\\IStrategies', $test );
+		$this->assertInstanceOf( 'Pickle\\IStrategies', $test );
 	}
 
 	public function testWho() {
 		$test = InvokeSubpageStrategies::who();
-		$this->assertEquals( 'Spec\InvokeSubpageStrategies', $test );
+		$this->assertEquals( 'Pickle\InvokeSubpageStrategies', $test );
 	}
 
 	public function testInit() {
@@ -34,7 +34,7 @@ class InvokeSubpageStrategiesTest extends StrategiesTestCase {
 	}
 
 	public function testRegister() {
-		$struct = [ 'class' => 'Spec\InvokeSubpageByContentType' ];
+		$struct = [ 'class' => 'Pickle\InvokeSubpageByContentType' ];
 		$test = InvokeSubpageStrategies::getInstance();
 		$instance = $test->register( $struct );
 		$this->assertEquals( get_class( $instance ), $struct['class'] );
@@ -42,14 +42,14 @@ class InvokeSubpageStrategiesTest extends StrategiesTestCase {
 
 	public function provideFind() {
 		return [
-			[ 'spec-default-invoke', false, 'wikitext' ],
-			// [ 'spec-test-invoke', true, 'Scribunto' ],
-			[ 'spec-testspec-invoke', true, 'wikitext' ],
-			// [ 'spec-default-invoke', false, 'Scribunto' ],
-			// [ 'spec-test-invoke', true, 'Scribunto' ],
-			// [ 'spec-testspec-invoke', true, 'Scribunto' ],
-			[ 'spec-default-invoke', false, 'Other' ],
-			[ 'spec-default-invoke', true, 'Other' ]
+			[ 'pickle-default-invoke', false, 'wikitext' ],
+			// [ 'pickle-test-invoke', true, 'Scribunto' ],
+			[ 'pickle-testspec-invoke', true, 'wikitext' ],
+			// [ 'pickle-default-invoke', false, 'Scribunto' ],
+			// [ 'pickle-test-invoke', true, 'Scribunto' ],
+			// [ 'pickle-testspec-invoke', true, 'Scribunto' ],
+			[ 'pickle-default-invoke', false, 'Other' ],
+			[ 'pickle-default-invoke', true, 'Other' ]
 		];
 	}
 
@@ -76,14 +76,14 @@ class InvokeSubpageStrategiesTest extends StrategiesTestCase {
 		$test = InvokeSubpageStrategies::getInstance();
 		$test->register(
 			[
-				'class' => 'Spec\InvokeSubpageByContentType',
+				'class' => 'Pickle\InvokeSubpageByContentType',
 				'name' => 'testspec',
 				'type' => 'Scribunto'
 			]
 		);
 		$test->register(
 			[
-				'class' => 'Spec\InvokeSubpageDefault'
+				'class' => 'Pickle\InvokeSubpageDefault'
 			]
 		);
 		$this->markTestIncomplete( "This test isn't correct in its present form" );

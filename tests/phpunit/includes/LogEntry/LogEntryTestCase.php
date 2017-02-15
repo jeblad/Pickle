@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 abstract class LogEntryTestCase extends \MediaWikiTestCase {
 
@@ -38,7 +38,7 @@ abstract class LogEntryTestCase extends \MediaWikiTestCase {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );
 
-		$this->assertInstanceOf( 'Spec\\ALogEntry', $test );
+		$this->assertInstanceOf( 'Pickle\\ALogEntry', $test );
 	}
 
 	/**

@@ -1,19 +1,19 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\IndicatorDefault;
+use \Pickle\IndicatorDefault;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\IndicatorDefault
+ * @covers \Pickle\IndicatorDefault
  */
 class IndicatorDefaultTest extends IndicatorTestCase {
 
 	protected $conf = [
-		"class" => "Spec\\IndicatorDefault",
+		"class" => "Pickle\\IndicatorDefault",
 		"name" => "test",
 		"icon" => "bar"
 	];
@@ -27,13 +27,13 @@ class IndicatorDefaultTest extends IndicatorTestCase {
 			[
 				'unknown',
 				[
-					"class" => "Spec\\IndicatorDefault"
+					"class" => "Pickle\\IndicatorDefault"
 				]
 			],
 			[
 				'unknown',
 				[
-					"class" => "Spec\\IndicatorDefault",
+					"class" => "Pickle\\IndicatorDefault",
 					"name" => "foo"
 				]
 			]

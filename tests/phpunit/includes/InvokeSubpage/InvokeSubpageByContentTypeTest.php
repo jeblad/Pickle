@@ -1,39 +1,39 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\InvokeSubpageByContentType;
+use \Pickle\InvokeSubpageByContentType;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\InvokeSubpageByContentType
+ * @covers \Pickle\InvokeSubpageByContentType
  */
 class InvokeSubpageByContentTypeTest extends InvokeSubpageTestCase {
 
 	protected $conf = [
-		"class" => "Spec\\InvokeSubpageByContentType",
+		"class" => "Pickle\\InvokeSubpageByContentType",
 		"type" => "Scribunto", // this is CONTENT_MODEL_SCRIBUNTO but as used in extension.json
 		"name" => "testcase"
 	];
 
 	public function testOnCodeToInterface() {
 		$test = new InvokeSubpageByContentType( $this->conf );
-		$this->assertInstanceOf( 'Spec\\AInvokeSubpage', $test );
+		$this->assertInstanceOf( 'Pickle\\AInvokeSubpage', $test );
 	}
 
 	public function testOnGetSubpagePrefixedText() {
 		$test = new InvokeSubpageByContentType( $this->conf );
 		$str = $test->getSubpagePrefixedText( $this->stub )->inLanguage( 'qqx' )->plain();
-		$this->assertContains( 'spec-testcase-subpage', $str );
+		$this->assertContains( 'pickle-testcase-subpage', $str );
 		$this->assertContains( 'Scribunto:baz', $str );
 	}
 
 	public function testOnGetSubpageBaseText() {
 		$test = new InvokeSubpageByContentType( $this->conf );
 		$str = $test->getSubpageBaseText( $this->stub )->inLanguage( 'qqx' )->plain();
-		$this->assertContains( 'spec-testcase-subpage', $str );
+		$this->assertContains( 'pickle-testcase-subpage', $str );
 		$this->assertContains( 'foo', $str );
 	}
 
@@ -47,7 +47,7 @@ class InvokeSubpageByContentTypeTest extends InvokeSubpageTestCase {
 	public function testOnGetInvoke() {
 		$test = new InvokeSubpageByContentType( $this->conf );
 		$str = $test->getInvoke( $this->stub )->inLanguage( 'qqx' )->plain();
-		$this->assertContains( 'spec-testcase-invoke', $str );
+		$this->assertContains( 'pickle-testcase-invoke', $str );
 		$this->assertContains( 'foo/testcase', $str );
 	}
 

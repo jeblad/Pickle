@@ -1,14 +1,14 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\ExtractStatusDefault;
+use \Pickle\ExtractStatusDefault;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\ExtractStatusDefault
+ * @covers \Pickle\ExtractStatusDefault
  */
 class ExtractStatusDefaultTest extends MediaWikiTestCase {
 
@@ -16,7 +16,7 @@ class ExtractStatusDefaultTest extends MediaWikiTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = new ExtractStatusDefault( $this->conf );
-		$this->assertInstanceOf( 'Spec\\AExtractStatus', $test );
+		$this->assertInstanceOf( 'Pickle\\AExtractStatus', $test );
 	}
 
 	public function testOnGetName() {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 abstract class CategoryTestCase extends \MediaWikiTestCase {
 
@@ -49,7 +49,7 @@ abstract class CategoryTestCase extends \MediaWikiTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = $this->newInstance( $this->conf );
-		$this->assertInstanceOf( 'Spec\\ACategory', $test );
+		$this->assertInstanceOf( 'Pickle\\ACategory', $test );
 	}
 
 	public function testOnAddCategory() {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 /**
  * Category base
@@ -29,7 +29,7 @@ abstract class ACategory {
 	 * @return string
 	 */
 	public function getKey() {
-		return 'spec-tracking-category-' . $this->opts['key'];
+		return 'pickle-tracking-category-' . $this->opts['key'];
 	}
 
 	/**

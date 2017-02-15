@@ -1,14 +1,14 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\Observer;
+use \Pickle\Observer;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\Observer
+ * @covers \Pickle\Observer
  */
 class ObserverTest extends \MediaWikiTestCase {
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
-use \Spec\Strategies;
+use \Pickle\Strategies;
 
 class StrategiesTestCase extends \MediaWikiTestCase {
 

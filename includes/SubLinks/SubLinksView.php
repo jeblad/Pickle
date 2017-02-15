@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 /**
  * Test console view
@@ -10,7 +10,7 @@ namespace Spec;
 class SubLinksView implements ISubLinksView {
 
 	/**
-	 * @see \Spec\ISubLinksView::makeLink()
+	 * @see \Pickle\ISubLinksView::makeLink()
 	 */
 	public static function makeLink( $title, $lang = null ) {
 
@@ -41,8 +41,8 @@ class SubLinksView implements ISubLinksView {
 		\ParserOutput $parserOutput
 	) {
 
-		$currentKey = $parserOutput->getExtensionData( 'spec-status-current' );
-		$currentType = $parserOutput->getExtensionData( 'spec-page-type' );
+		$currentKey = $parserOutput->getExtensionData( 'pickle-status-current' );
+		$currentType = $parserOutput->getExtensionData( 'pickle-page-type' );
 
 		if ( $currentKey !== null && in_array( $currentType, [ 'normal' ] ) ) {
 			$link = self::makeLink( $out->getTitle() );

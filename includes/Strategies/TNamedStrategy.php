@@ -1,11 +1,11 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 /**
  *
  * @ingroup Extensions
- * @group Spec
+ * @group Pickle
  */
 trait TNamedStrategy {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 abstract class TAPParserTestCase extends \MediaWikiTestCase {
 
@@ -20,7 +20,7 @@ abstract class TAPParserTestCase extends \MediaWikiTestCase {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );
 
-		$this->assertInstanceOf( 'Spec\\ATAPParser', $test );
+		$this->assertInstanceOf( 'Pickle\\ATAPParser', $test );
 	}
 
 	public function providerForVersionAndCount() {

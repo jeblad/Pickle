@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 /**
  * Test console view
@@ -67,16 +67,16 @@ class ConsoleView {
 		// wrap it up for use in the browser
 		$output->addScript(
 			\ResourceLoader::makeInlineScript(
-				\ResourceLoader::makeMessageSetScript( [ 'spec-console-question' => $question ] )
+				\ResourceLoader::makeMessageSetScript( [ 'pickle-console-question' => $question ] )
 			)
 		);
 
 		// and the stuff to actually do it all
-		$output->addModules( 'ext.spec.console' );
+		$output->addModules( 'ext.pickle.console' );
 
 		// add container for form
 		$editor->editFormTextAfterTools .=
-			'<div id="mw-spec-console"></div>';
+			'<div id="mw-pickle-console"></div>';
 
 		return true;
 	}
@@ -105,7 +105,7 @@ class ConsoleView {
 
 	/**
 	 * @todo This doc section must be wrong
-	 * @see \Spec\IObserver::getName()
+	 * @see \Pickle\IObserver::getName()
 	 */
 	public function makeForm() {
 		$editor->editFormTextAfterTools .= '<div id="mw-scribunto-console"></div>';

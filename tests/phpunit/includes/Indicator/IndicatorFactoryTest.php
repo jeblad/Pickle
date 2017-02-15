@@ -1,29 +1,29 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\IndicatorFactory;
+use \Pickle\IndicatorFactory;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\IndicatorFactory
+ * @covers \Pickle\IndicatorFactory
  */
 class IndicatorFactoryTest extends StrategiesTestCase {
 
 	public static function stratClass() {
-		return 'Spec\IndicatorFactory';
+		return 'Pickle\IndicatorFactory';
 	}
 
 	public function testOnCodeToInterface() {
 		$test = IndicatorFactory::getInstance();
-		$this->assertInstanceOf( 'Spec\\IStrategies', $test );
+		$this->assertInstanceOf( 'Pickle\\IStrategies', $test );
 	}
 
 	public function testWho() {
 		$test = IndicatorFactory::who();
-		$this->assertEquals( 'Spec\IndicatorFactory', $test );
+		$this->assertEquals( 'Pickle\IndicatorFactory', $test );
 	}
 
 	public function testInit() {
@@ -34,7 +34,7 @@ class IndicatorFactoryTest extends StrategiesTestCase {
 	}
 
 	public function testRegister() {
-		$struct = [ 'class' => 'Spec\IndicatorCommon' ];
+		$struct = [ 'class' => 'Pickle\IndicatorCommon' ];
 		$test = IndicatorFactory::getInstance();
 		$instance = $test->register( $struct );
 		$this->assertEquals( get_class( $instance ), $struct['class'] );
@@ -42,8 +42,8 @@ class IndicatorFactoryTest extends StrategiesTestCase {
 
 	public function provideFind() {
 		return [
-			[ 'Spec\IndicatorCommon', 'foo' ],
-			[ 'Spec\IndicatorDefault', 'bar' ]
+			[ 'Pickle\IndicatorCommon', 'foo' ],
+			[ 'Pickle\IndicatorDefault', 'bar' ]
 		];
 	}
 
@@ -58,13 +58,13 @@ class IndicatorFactoryTest extends StrategiesTestCase {
 		$test = IndicatorFactory::getInstance();
 		$test->register(
 			[
-				'class' => 'Spec\IndicatorCommon',
+				'class' => 'Pickle\IndicatorCommon',
 				'name' => 'foo'
 			]
 		);
 		$test->register(
 			[
-				'class' => 'Spec\IndicatorDefault'
+				'class' => 'Pickle\IndicatorDefault'
 			]
 		);
 		$Strategy = $test->find( $name );

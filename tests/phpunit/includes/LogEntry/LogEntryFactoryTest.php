@@ -1,29 +1,29 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\LogEntryFactory;
+use \Pickle\LogEntryFactory;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\LogEntryFactory
+ * @covers \Pickle\LogEntryFactory
  */
 class LogEntryFactoryTest extends StrategiesTestCase {
 
 	public static function stratClass() {
-		return 'Spec\LogEntryFactory';
+		return 'Pickle\LogEntryFactory';
 	}
 
 	public function testOnCodeToInterface() {
 		$test = LogEntryFactory::getInstance();
-		$this->assertInstanceOf( 'Spec\\IStrategies', $test );
+		$this->assertInstanceOf( 'Pickle\\IStrategies', $test );
 	}
 
 	public function testWho() {
 		$test = LogEntryFactory::who();
-		$this->assertEquals( 'Spec\LogEntryFactory', $test );
+		$this->assertEquals( 'Pickle\LogEntryFactory', $test );
 	}
 
 	public function testInit() {
@@ -34,7 +34,7 @@ class LogEntryFactoryTest extends StrategiesTestCase {
 	}
 
 	public function testRegister() {
-		$struct = [ 'class' => 'Spec\LogEntryCommon' ];
+		$struct = [ 'class' => 'Pickle\LogEntryCommon' ];
 		$test = LogEntryFactory::getInstance();
 		$instance = $test->register( $struct );
 		$this->assertEquals( get_class( $instance ), $struct['class'] );
@@ -42,8 +42,8 @@ class LogEntryFactoryTest extends StrategiesTestCase {
 
 	public function provideFind() {
 		return [
-			[ 'Spec\LogEntryCommon', 'foo' ],
-			[ 'Spec\LogEntryDefault', 'bar' ]
+			[ 'Pickle\LogEntryCommon', 'foo' ],
+			[ 'Pickle\LogEntryDefault', 'bar' ]
 		];
 	}
 
@@ -58,13 +58,13 @@ class LogEntryFactoryTest extends StrategiesTestCase {
 		$test = LogEntryFactory::getInstance();
 		$test->register(
 			[
-				'class' => 'Spec\LogEntryCommon',
+				'class' => 'Pickle\LogEntryCommon',
 				'name' => 'foo'
 			]
 		);
 		$test->register(
 			[
-				'class' => 'Spec\LogEntryDefault'
+				'class' => 'Pickle\LogEntryDefault'
 			]
 		);
 		$Strategy = $test->find( $name );

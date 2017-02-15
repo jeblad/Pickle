@@ -1,8 +1,8 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
-use \Spec\AExtractStatus;
+use \Pickle\AExtractStatus;
 
 /**
  * Concrete strategy to extract stratus
@@ -21,7 +21,7 @@ class ExtractStatusDefault extends AExtractStatus {
 	}
 
 	/**
-	 * @see \Spec\AExtractStatus::checkState()
+	 * @see \Pickle\AExtractStatus::checkState()
 	 */
 	public function checkState( $str ) {
 		return 1;

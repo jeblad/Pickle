@@ -1,14 +1,14 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\SubLinksView;
+use \Pickle\SubLinksView;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\SubLinksView
+ * @covers \Pickle\SubLinksView
  */
 class SubLinksViewTest extends \MediaWikiTestCase {
 

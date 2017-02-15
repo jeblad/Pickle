@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 use MediaWiki\Logger\LoggerFactory;
 
@@ -45,7 +45,7 @@ class TAPStrategies extends Strategies {
 		}
 		foreach ( $this->instances as $parser ) {
 			if ( $parser->checkValid( $str ) ) {
-				LoggerFactory::getInstance( 'Spec' )->debug( 'Found parser strategy: {name}',
+				LoggerFactory::getInstance( 'Pickle' )->debug( 'Found parser strategy: {name}',
 					array_merge(
 						[ 'method' => __METHOD__ ],
 						$parser->cloneOpts() ?: [] ) );

@@ -1,14 +1,14 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\InvokeSubpageDefault;
+use \Pickle\InvokeSubpageDefault;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\InvokeSubpageDefault
+ * @covers \Pickle\InvokeSubpageDefault
  */
 class InvokeSubpageDefaultTest extends InvokeSubpageTestCase {
 
@@ -19,20 +19,20 @@ class InvokeSubpageDefaultTest extends InvokeSubpageTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = new InvokeSubpageDefault( $this->conf );
-		$this->assertInstanceOf( 'Spec\\AInvokeSubpage', $test );
+		$this->assertInstanceOf( 'Pickle\\AInvokeSubpage', $test );
 	}
 
 	public function testOnGetSubpagePrefixedText() {
 		$test = new InvokeSubpageDefault( $this->conf );
 		$str = $test->getSubpagePrefixedText( $this->stub )->inLanguage( 'qqx' )->plain();
-		$this->assertContains( 'spec-default-subpage', $str );
+		$this->assertContains( 'pickle-default-subpage', $str );
 		$this->assertContains( 'Scribunto:baz', $str );
 	}
 
 	public function testOnGetSubpageBaseText() {
 		$test = new InvokeSubpageDefault( $this->conf );
 		$str = $test->getSubpageBaseText( $this->stub )->inLanguage( 'qqx' )->plain();
-		$this->assertContains( 'spec-default-subpage', $str );
+		$this->assertContains( 'pickle-default-subpage', $str );
 		$this->assertContains( 'foo', $str );
 	}
 
@@ -40,14 +40,14 @@ class InvokeSubpageDefaultTest extends InvokeSubpageTestCase {
 		$test = new InvokeSubpageDefault( $this->conf );
 		$title = $test->getSubpageTitle( $this->stub );
 		$this->assertEquals( 'Title', get_class( $title ) );
-		$this->assertEquals( 'Scribunto:baz/spec', $title->getText() );
+		$this->assertEquals( 'Scribunto:baz/pickle', $title->getText() );
 	}
 
 	public function testOnGetInvoke() {
 		$test = new InvokeSubpageDefault( $this->conf );
 		$str = $test->getInvoke( $this->stub )->inLanguage( 'qqx' )->plain();
-		$this->assertContains( 'spec-default-invoke', $str );
-		$this->assertContains( 'foo/spec', $str );
+		$this->assertContains( 'pickle-default-invoke', $str );
+		$this->assertContains( 'foo/pickle', $str );
 	}
 
 	public function testOnCheckType() {

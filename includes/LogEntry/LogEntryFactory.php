@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 use MediaWiki\Logger\LoggerFactory;
 
@@ -69,7 +69,7 @@ class LogEntryFactory extends Strategies {
 				return true;
 			}
 
-			LoggerFactory::getInstance( 'Spec' )
+			LoggerFactory::getInstance( 'Pickle' )
 				->debug( 'Found concrete log entry: {name}',
 					array_merge(
 						[ 'method' => __METHOD__ ],

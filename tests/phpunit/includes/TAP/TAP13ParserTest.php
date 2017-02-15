@@ -1,19 +1,19 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\TAP13Parser;
+use \Pickle\TAP13Parser;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\TAP13Parser
+ * @covers \Pickle\TAP13Parser
  */
 class TAP13ParserTest extends TAPParserTestCase {
 
 	protected $conf = [
-		"class" => "Spec\\TAP13Parser",
+		"class" => "Pickle\\TAP13Parser",
 		"name" => "test"
 	];
 
@@ -26,14 +26,14 @@ class TAP13ParserTest extends TAPParserTestCase {
 			[
 				'foo',
 				[
-					"class" => "Spec\\TAP13Parser",
+					"class" => "Pickle\\TAP13Parser",
 					"name" => "foo"
 				]
 			],
 			[
 				'tap-13',
 				[
-					"class" => "Spec\\TAP13Parser"
+					"class" => "Pickle\\TAP13Parser"
 				]
 			]
 		];

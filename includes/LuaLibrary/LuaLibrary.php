@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 use Scribunto_LuaLibraryBase;
 
@@ -24,8 +24,8 @@ class LuaLibrary extends Scribunto_LuaLibraryBase {
 			return true;
 		}
 
-		$extraLibraries['spec'] = [
-			'class' => '\Spec\LuaLibrary',
+		$extraLibraries['pickle'] = [
+			'class' => '\Pickle\LuaLibrary',
 			// @todo this should be deferred until it is used, this is preliminary
 			'deferLoad' => false
 		];
@@ -66,7 +66,7 @@ class LuaLibrary extends Scribunto_LuaLibraryBase {
 		global $wgSpecExtractorStrategy;
 
 		return $this->getEngine()->registerInterface(
-			__DIR__ . '/lua/non-pure/Spec.lua',
+			__DIR__ . '/lua/non-pure/Pickle.lua',
 			[ 'addResourceLoaderModules' => [ $this, 'addResourceLoaderModules' ] ],
 			[
 				'renderStyles' => $wgSpecRenderStyles,
@@ -79,7 +79,7 @@ class LuaLibrary extends Scribunto_LuaLibraryBase {
 	 * Allows Lua to dynamically add the RL modules required for Specs.
 	 */
 	public function addResourceLoaderModules() {
-		$this->getParser()->getOutput()->addModuleStyles( 'ext.spec.report' );
+		$this->getParser()->getOutput()->addModuleStyles( 'ext.pickle.report' );
 	}
 
 }

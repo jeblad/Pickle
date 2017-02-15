@@ -1,8 +1,8 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
-use \Spec\AInvokeSubpage;
+use \Pickle\AInvokeSubpage;
 
 /**
  * Concrete strategy to invoke subpage
@@ -29,14 +29,14 @@ class InvokeSubpageByContentType extends AInvokeSubpage {
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::checkType()
+	 * @see \Pickle\AInvokeSubpage::checkType()
 	 */
 	public function checkType( \Title &$title ) {
 		return $title->exists() && $title->getContentModel() === $this->opts['type'];
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::checkSubpageType()
+	 * @see \Pickle\AInvokeSubpage::checkSubpageType()
 	 */
 	public function checkSubpageType( \Title &$title, $type = null ) {
 		// this will be cached
@@ -47,48 +47,48 @@ class InvokeSubpageByContentType extends AInvokeSubpage {
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::getInvoke()
+	 * @see \Pickle\AInvokeSubpage::getInvoke()
 	 */
 	public function getInvoke( \Title &$title ) {
 		$subpage = $this->getSubpageBaseText( $title );
-		// @message spec-spectype-invoke
-		return wfMessage( 'spec-' . $this->opts['name'] . '-invoke', $subpage->plain() );
+		// @message pickle-spectype-invoke
+		return wfMessage( 'pickle-' . $this->opts['name'] . '-invoke', $subpage->plain() );
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::getSubpagePrefixedText()
+	 * @see \Pickle\AInvokeSubpage::getSubpagePrefixedText()
 	 */
 	public function getSubpagePrefixedText( \Title &$title ) {
 		$text = $title->getPrefixedText();
-		// @message spec-spectype-subpage
-		return wfMessage( 'spec-' . $this->opts['name'] . '-subpage', $text );
+		// @message pickle-spectype-subpage
+		return wfMessage( 'pickle-' . $this->opts['name'] . '-subpage', $text );
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::getSubpageBaseText()
+	 * @see \Pickle\AInvokeSubpage::getSubpageBaseText()
 	 */
 	public function getSubpageBaseText( \Title &$title ) {
 		$baseText = $title->getBaseText();
-		// @message spec-spectype-subpage
-		return wfMessage( 'spec-' . $this->opts['name'] . '-subpage', $baseText );
+		// @message pickle-spectype-subpage
+		return wfMessage( 'pickle-' . $this->opts['name'] . '-subpage', $baseText );
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::getSubpageTitle()
+	 * @see \Pickle\AInvokeSubpage::getSubpageTitle()
 	 */
 	public function getSubpageTitle( \Title &$title ) {
 		return \Title::newFromText( $this->getSubpagePrefixedText( $title )->plain() );
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::getTesterQuestion()
+	 * @see \Pickle\AInvokeSubpage::getTesterQuestion()
 	 */
 	public function getTesterQuestion( \Title &$title ) {
 		return $this->opts['testerQuestion'];
 	}
 
 	/**
-	 * @see \Spec\AInvokeSubpage::getTesteeQuestion()
+	 * @see \Pickle\AInvokeSubpage::getTesteeQuestion()
 	 */
 	public function getTesteeQuestion( \Title &$title ) {
 		$prefixedText = $this->getSubpagePrefixedText( $title );

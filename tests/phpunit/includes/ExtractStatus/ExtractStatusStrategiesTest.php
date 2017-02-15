@@ -1,29 +1,29 @@
 <?php
 
-namespace Spec\Tests;
+namespace Pickle\Tests;
 
 use MediaWikiTestCase;
-use \Spec\ExtractStatusStrategies;
+use \Pickle\ExtractStatusStrategies;
 
 /**
- * @group Spec
+ * @group Pickle
  *
- * @covers \Spec\ExtractStatusStrategies
+ * @covers \Pickle\ExtractStatusStrategies
  */
 class ExtractStatusStrategiesTest extends StrategiesTestCase {
 
 	public static function stratClass() {
-		return 'Spec\ExtractStatusStrategies';
+		return 'Pickle\ExtractStatusStrategies';
 	}
 
 	public function testOnCodeToInterface() {
 		$test = ExtractStatusStrategies::getInstance();
-		$this->assertInstanceOf( 'Spec\\IStrategies', $test );
+		$this->assertInstanceOf( 'Pickle\\IStrategies', $test );
 	}
 
 	public function testWho() {
 		$test = ExtractStatusStrategies::who();
-		$this->assertEquals( 'Spec\ExtractStatusStrategies', $test );
+		$this->assertEquals( 'Pickle\ExtractStatusStrategies', $test );
 	}
 
 	public function testInit() {
@@ -34,7 +34,7 @@ class ExtractStatusStrategiesTest extends StrategiesTestCase {
 	}
 
 	public function testRegister() {
-		$struct = [ 'class' => 'Spec\ExtractStatusByPattern' ];
+		$struct = [ 'class' => 'Pickle\ExtractStatusByPattern' ];
 		$test = ExtractStatusStrategies::getInstance();
 		$instance = $test->register( $struct );
 		$this->assertEquals( get_class( $instance ), $struct['class'] );
@@ -59,14 +59,14 @@ class ExtractStatusStrategiesTest extends StrategiesTestCase {
 		$test = ExtractStatusStrategies::getInstance();
 		$test->register(
 			[
-				'class' => 'Spec\ExtractStatusByPattern',
+				'class' => 'Pickle\ExtractStatusByPattern',
 				'name' => 'ping',
 				'pattern' => '/\bfoo\b/'
 			]
 		);
 		$test->register(
 			[
-				'class' => 'Spec\ExtractStatusByPattern',
+				'class' => 'Pickle\ExtractStatusByPattern',
 				'name' => 'pong',
 				'pattern' => '/\bbar\b/'
 			]

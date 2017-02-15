@@ -1,136 +1,136 @@
 {
-	"name": "Spec",
+	"name": "Pickle",
 	"version": "0.1.0",
 	"author": [
 		"John Erling Blad"
 	],
-	"url": "https://github.com/jeblad/Spec",
-	"descriptionmsg": "spec-desc",
+	"url": "https://github.com/jeblad/Pickle",
+	"descriptionmsg": "pickle-desc",
 	"license-name": "GPL v2",
 	"type": "other",
 	"AutoloadClasses": {
-		"Spec\\Hooks":
+		"Pickle\\Hooks":
 			"includes/Hooks.php",
-		"Spec\\Common":
+		"Pickle\\Common":
 			"includes/Common.php",
 
-		"Spec\\Observer":
+		"Pickle\\Observer":
 			"includes/Observer/Observer.php",
 
-		"Spec\\IStrategies":
+		"Pickle\\IStrategies":
 			"includes/Strategies/IStrategies.php",
-		"Spec\\Strategies":
+		"Pickle\\Strategies":
 			"includes/Strategies/Strategies.php",
 
-		"Spec\\TNamedStrategy":
+		"Pickle\\TNamedStrategy":
 			"includes/Strategies/TNamedStrategy.php",
-		"Spec\\TNamedStrategies":
+		"Pickle\\TNamedStrategies":
 			"includes/Strategies/TNamedStrategies.php",
 
-		"Spec\\ALogEntry":
+		"Pickle\\ALogEntry":
 			"includes/LogEntry/ALogEntry.php",
-		"Spec\\LogEntryDefault":
+		"Pickle\\LogEntryDefault":
 			"includes/LogEntry/LogEntryDefault.php",
-		"Spec\\LogEntryCommon":
+		"Pickle\\LogEntryCommon":
 			"includes/LogEntry/LogEntryCommon.php",
-		"Spec\\LogEntryFactory":
+		"Pickle\\LogEntryFactory":
 			"includes/LogEntry/LogEntryFactory.php",
 
-		"Spec\\ACategory":
+		"Pickle\\ACategory":
 			"includes/Category/ACategory.php",
-		"Spec\\CategoryDefault":
+		"Pickle\\CategoryDefault":
 			"includes/Category/CategoryDefault.php",
-		"Spec\\CategoryCommon":
+		"Pickle\\CategoryCommon":
 			"includes/Category/CategoryCommon.php",
-		"Spec\\CategoryFactory":
+		"Pickle\\CategoryFactory":
 			"includes/Category/CategoryFactory.php",
 
-		"Spec\\AIndicator":
+		"Pickle\\AIndicator":
 			"includes/Indicator/AIndicator.php",
-		"Spec\\IndicatorDefault":
+		"Pickle\\IndicatorDefault":
 			"includes/Indicator/IndicatorDefault.php",
-		"Spec\\IndicatorCommon":
+		"Pickle\\IndicatorCommon":
 			"includes/Indicator/IndicatorCommon.php",
-		"Spec\\IndicatorFactory":
+		"Pickle\\IndicatorFactory":
 			"includes/Indicator/IndicatorFactory.php",
 
-		"Spec\\ATAPParser":
+		"Pickle\\ATAPParser":
 			"includes/TAP/ATAPParser.php",
-		"Spec\\TAPCommonParser":
+		"Pickle\\TAPCommonParser":
 			"includes/TAP/TAPCommonParser.php",
-		"Spec\\TAP13Parser":
+		"Pickle\\TAP13Parser":
 			"includes/TAP/TAP13Parser.php",
-		"Spec\\TAPStrategies":
+		"Pickle\\TAPStrategies":
 			"includes/TAP/TAPStrategies.php",
 
-		"Spec\\AExtractStatus":
+		"Pickle\\AExtractStatus":
 			"includes/ExtractStatus/AExtractStatus.php",
-		"Spec\\ExtractStatusDefault":
+		"Pickle\\ExtractStatusDefault":
 			"includes/ExtractStatus/ExtractStatusDefault.php",
-		"Spec\\ExtractStatusByPattern":
+		"Pickle\\ExtractStatusByPattern":
 			"includes/ExtractStatus/ExtractStatusByPattern.php",
-		"Spec\\ExtractStatusStrategies":
+		"Pickle\\ExtractStatusStrategies":
 			"includes/ExtractStatus/ExtractStatusStrategies.php",
 
-		"Spec\\AInvokeSubpage":
+		"Pickle\\AInvokeSubpage":
 			"includes/InvokeSubpage/AInvokeSubpage.php",
-		"Spec\\InvokeSubpageDefault":
+		"Pickle\\InvokeSubpageDefault":
 			"includes/InvokeSubpage/InvokeSubpageDefault.php",
-		"Spec\\InvokeSubpageByContentType":
+		"Pickle\\InvokeSubpageByContentType":
 			"includes/InvokeSubpage/InvokeSubpageByContentType.php",
-		"Spec\\InvokeSubpageStrategies":
+		"Pickle\\InvokeSubpageStrategies":
 			"includes/InvokeSubpage/InvokeSubpageStrategies.php",
 
-		"Spec\\HelpView":
+		"Pickle\\HelpView":
 			"includes/Help/HelpView.php",
 
-		"Spec\\ConsoleView":
+		"Pickle\\ConsoleView":
 			"includes/Console/ConsoleView.php",
 
-		"Spec\\ISubLinksView":
+		"Pickle\\ISubLinksView":
 			"includes/SubLinks/ISubLinksView.php",
-		"Spec\\SubLinksView":
+		"Pickle\\SubLinksView":
 			"includes/SubLinks/SubLinksView.php",
 
-		"Spec\\LuaLibrary":
+		"Pickle\\LuaLibrary":
 			"includes/LuaLibrary/LuaLibrary.php",
 
-		"Spec\\Tests\\StrategiesTestCase":
+		"Pickle\\Tests\\StrategiesTestCase":
 			"tests/phpunit/includes/Strategies/StrategiesTestCase.php",
 
-		"Spec\\Tests\\LogEntryTestCase":
+		"Pickle\\Tests\\LogEntryTestCase":
 			"tests/phpunit/includes/LogEntry/LogEntryTestCase.php",
 
-		"Spec\\Tests\\CategoryTestCase":
+		"Pickle\\Tests\\CategoryTestCase":
 			"tests/phpunit/includes/Category/CategoryTestCase.php",
 
-		"Spec\\Tests\\TAPParserTestCase":
+		"Pickle\\Tests\\TAPParserTestCase":
 			"tests/phpunit/includes/TAP/TAPParserTestCase.php",
 
-		"Spec\\Tests\\IndicatorTestCase":
+		"Pickle\\Tests\\IndicatorTestCase":
 			"tests/phpunit/includes/Indicator/IndicatorTestCase.php",
 
-		"Spec\\Tests\\InvokeSubpageTestCase":
+		"Pickle\\Tests\\InvokeSubpageTestCase":
 			"tests/phpunit/includes/InvokeSubpage/InvokeSubpageTestCase.php"
 	},
 	"config": {
         "_prefix": "wgSpec",
 		"ObserverID": 3,
 		"RenderStyles": {
-			"compact": "speclib/render/compact",
-			"full": "speclib/render/full",
-			"vivid": "speclib/render/vivid"
+			"compact": "picklelib/render/compact",
+			"full": "picklelib/render/full",
+			"vivid": "picklelib/render/vivid"
 		},
 		"RenderTypes": {
 			"result": "ResultRenderStrategy",
 			"plan": "PlanRenderStrategy"
 		},
 		"ExtractorStrategy": [
-			"speclib/extractor/NilExtractorStrategy",
-			"speclib/extractor/FalseExtractorStrategy",
-			"speclib/extractor/TrueExtractorStrategy",
-			"speclib/extractor/StringExtractorStrategy",
-			"speclib/extractor/NumberExtractorStrategy"
+			"picklelib/extractor/NilExtractorStrategy",
+			"picklelib/extractor/FalseExtractorStrategy",
+			"picklelib/extractor/TrueExtractorStrategy",
+			"picklelib/extractor/StringExtractorStrategy",
+			"picklelib/extractor/NumberExtractorStrategy"
 		],
 		"NeglectPages": [
 			"/doc",
@@ -141,226 +141,226 @@
 		],
 		"Indicator": [
 			{
-				"class": "Spec\\IndicatorCommon",
+				"class": "Pickle\\IndicatorCommon",
 				"name": "fail",
 				"icon": "red-fail"
 			},
 			{
-				"class": "Spec\\IndicatorCommon",
+				"class": "Pickle\\IndicatorCommon",
 				"name": "todo-fail",
 				"icon": "yellow-fail"
 			},
 			{
-				"class": "Spec\\IndicatorCommon",
+				"class": "Pickle\\IndicatorCommon",
 				"name": "todo-good",
 				"icon": "yellow-good"
 			},
 			{
-				"class": "Spec\\IndicatorCommon",
+				"class": "Pickle\\IndicatorCommon",
 				"name": "skip-fail",
 				"icon": "yellow-fail"
 			},
 			{
-				"class": "Spec\\IndicatorCommon",
+				"class": "Pickle\\IndicatorCommon",
 				"name": "skip-good",
 				"icon": "yellow-good"
 			},
 			{
-				"class": "Spec\\IndicatorCommon",
+				"class": "Pickle\\IndicatorCommon",
 				"name": "pending",
 				"icon": "yellow-unknown"
 			},
 			{
-				"class": "Spec\\IndicatorCommon",
+				"class": "Pickle\\IndicatorCommon",
 				"name": "good",
 				"icon": "green-good"
 			},
 			{
-				"class": "Spec\\IndicatorCommon",
+				"class": "Pickle\\IndicatorCommon",
 				"name": "missing",
 				"icon": "yellow-unknown"
 			},
 			{
-				"class": "Spec\\IndicatorDefault",
+				"class": "Pickle\\IndicatorDefault",
 				"icon": "yellow-unknown"
 			}
 		],
 		"Category": [
 			{
-				"class": "Spec\\CategoryCommon",
+				"class": "Pickle\\CategoryCommon",
 				"name": "fail",
 				"key": "fail"
 			},
 			{
-				"class": "Spec\\CategoryCommon",
+				"class": "Pickle\\CategoryCommon",
 				"name": "pending",
 				"key": "pending"
 			},
 			{
-				"class": "Spec\\CategoryCommon",
+				"class": "Pickle\\CategoryCommon",
 				"name": "good",
 				"key": "good"
 			},
 			{
-				"class": "Spec\\CategoryCommon",
+				"class": "Pickle\\CategoryCommon",
 				"name": "todo-fail",
 				"key": "todo"
 			},
 			{
-				"class": "Spec\\CategoryCommon",
+				"class": "Pickle\\CategoryCommon",
 				"name": "todo-good",
 				"key": "todo"
 			},
 			{
-				"class": "Spec\\CategoryCommon",
+				"class": "Pickle\\CategoryCommon",
 				"name": "skip-fail",
 				"key": "skip"
 			},
 			{
-				"class": "Spec\\CategoryCommon",
+				"class": "Pickle\\CategoryCommon",
 				"name": "skip-good",
 				"key": "skip"
 			},
 			{
-				"class": "Spec\\CategoryCommon",
+				"class": "Pickle\\CategoryCommon",
 				"name": "missing",
 				"key": "missing"
 			},
 			{
-				"class": "Spec\\CategoryDefault",
+				"class": "Pickle\\CategoryDefault",
 				"key": "unknown"
 			}
 		],
 		"LogEntry": [
 			{
-				"class": "Spec\\LogEntryCommon",
+				"class": "Pickle\\LogEntryCommon",
 				"name": "fail"
 			},
 			{
-				"class": "Spec\\LogEntryCommon",
+				"class": "Pickle\\LogEntryCommon",
 				"name": "pending"
 			},
 			{
-				"class": "Spec\\LogEntryCommon",
+				"class": "Pickle\\LogEntryCommon",
 				"name": "good"
 			},
 			{
-				"class": "Spec\\LogEntryCommon",
+				"class": "Pickle\\LogEntryCommon",
 				"name": "exists"
 			},
 			{
-				"class": "Spec\\LogEntryCommon",
+				"class": "Pickle\\LogEntryCommon",
 				"name": "missing"
 			},
 			{
-				"class": "Spec\\LogEntryDefault"
+				"class": "Pickle\\LogEntryDefault"
 			}
 		],
 		"InvokeSubpage": [
 			{
-				"class": "Spec\\InvokeSubpageByContentType",
+				"class": "Pickle\\InvokeSubpageByContentType",
 				"type": "Scribunto",
 				"name": "testspec"
 			},
 			{
-				"class": "Spec\\InvokeSubpageByContentType",
+				"class": "Pickle\\InvokeSubpageByContentType",
 				"type": "Scribunto",
 				"name": "testcase"
 			},
 			{
-				"class": "Spec\\InvokeSubpageDefault"
+				"class": "Pickle\\InvokeSubpageDefault"
 			}
 		],
 		"TAP": [
 			{
-				"class": "Spec\\TAP13Parser"
+				"class": "Pickle\\TAP13Parser"
 			},
 			{
-				"class": "Spec\\TAPCommonParser"
+				"class": "Pickle\\TAPCommonParser"
 			}
 		],
 		"ExtractStatus": [
 			{
-				"class": "Spec\\ExtractStatusByPattern",
+				"class": "Pickle\\ExtractStatusByPattern",
 				"name": "fail",
 				"pattern": "/^(fail(ing|ed|)|bad|not\\s+ok|bail(ing|ed|)\\s+out!)$/i"
 			},
 			{
-				"class": "Spec\\ExtractStatusByPattern",
+				"class": "Pickle\\ExtractStatusByPattern",
 				"name": "todo-fail",
 				"pattern": "/^(todo)[-_\\s](fail(ing|ed|)|bad|not\\s+ok)$/i"
 			},
 			{
-				"class": "Spec\\ExtractStatusByPattern",
+				"class": "Pickle\\ExtractStatusByPattern",
 				"name": "todo-good",
 				"pattern": "/^(todo)[-_\\s](good|ok)$/i"
 			},
 			{
-				"class": "Spec\\ExtractStatusByPattern",
+				"class": "Pickle\\ExtractStatusByPattern",
 				"name": "skip-fail",
 				"pattern": "/^(skipp?(ing|ed|))[-_\\s](fail(ing|ed|)|bad|not\\s+ok)$/i"
 			},
 			{
-				"class": "Spec\\ExtractStatusByPattern",
+				"class": "Pickle\\ExtractStatusByPattern",
 				"name": "skip-good",
 				"pattern": "/^(skipp?(ing|ed|))[-_\\s](good|ok)$/i"
 			},
 			{
-				"class": "Spec\\ExtractStatusByPattern",
+				"class": "Pickle\\ExtractStatusByPattern",
 				"name": "pending",
 				"pattern": "/^(pending)$/i"
 			},
 			{
-				"class": "Spec\\ExtractStatusByPattern",
+				"class": "Pickle\\ExtractStatusByPattern",
 				"name": "good",
 				"pattern": "/^(good|ok)$/i"
 			},
 			{
-				"class": "Spec\\ExtractStatusDefault"
+				"class": "Pickle\\ExtractStatusDefault"
 			}
 		]
 	},
-	"callback": "Spec\\Hooks::onExtensionSetup",
+	"callback": "Pickle\\Hooks::onExtensionSetup",
 	"ExtensionMessagesFiles": {
 	},
 	"Hooks": {
 		"SpecTesterGadgets": [
-			"Spec\\IndicatorFactory::addIndicator"
+			"Pickle\\IndicatorFactory::addIndicator"
 		],
 		"SpecTesteeGadgets": [
-			"Spec\\IndicatorFactory::addIndicator",
-			"Spec\\CategoryFactory::addCategorization",
-			"Spec\\LogEntryFactory::addLogEntry"
+			"Pickle\\IndicatorFactory::addIndicator",
+			"Pickle\\CategoryFactory::addCategorization",
+			"Pickle\\LogEntryFactory::addLogEntry"
 		],
 		"ContentAlterParserOutput": [
-			"Spec\\Hooks::onContentAlterParserOutput"
+			"Pickle\\Hooks::onContentAlterParserOutput"
 		],
 		"OutputPageParserOutput": [
-			"Spec\\SubLinksView::onOutputPageParserOutput"
+			"Pickle\\SubLinksView::onOutputPageParserOutput"
 		],
 		"EditPageBeforeEditChecks": [
-			"Spec\\ConsoleView::onEditPageBeforeEditChecks"
+			"Pickle\\ConsoleView::onEditPageBeforeEditChecks"
 		],
 		"EditPage::showReadOnlyForm:initial": [
-			"Spec\\ConsoleView::onShowReadOnlyFormInitial"
+			"Pickle\\ConsoleView::onShowReadOnlyFormInitial"
 		],
 		"ScribuntoExternalLibraries": [
-			"Spec\\LuaLibrary::registerScribuntoLibraries"
+			"Pickle\\LuaLibrary::registerScribuntoLibraries"
 		],
 		"ScribuntoExternalLibraryPaths": [
-			"Spec\\LuaLibrary::registerScribuntoExternalLibraryPaths"
+			"Pickle\\LuaLibrary::registerScribuntoExternalLibraryPaths"
 		],
 		"UnitTestsList": [
-			"Spec\\Hooks::onUnitTestsList"
+			"Pickle\\Hooks::onUnitTestsList"
 		]
 	},
 	"MessagesDirs": {
-		"Spec": [
+		"Pickle": [
 			"i18n"
 		]
 	},
 	"ResourceModules": {
-		"ext.spec.indicator.icon": {
+		"ext.pickle.indicator.icon": {
 			"prefix": "mw-speclink-icon",
 			"position": "bottom",
 			"class": "ResourceLoaderImageModule",
@@ -380,67 +380,67 @@
 			"images": {
 				"good": {
 					"file": {
-						"ltr": "images/ext.spec.indicator.icon/good-ltr.svg",
-						"rtl": "images/ext.spec.indicator.icon/good-rtl.svg"
+						"ltr": "images/ext.pickle.indicator.icon/good-ltr.svg",
+						"rtl": "images/ext.pickle.indicator.icon/good-rtl.svg"
 					},
                     "variants": [ "green", "yellow" ]
 				},
 				"fail": {
 					"file": {
-						"ltr": "images/ext.spec.indicator.icon/fail-ltr.svg",
-						"rtl": "images/ext.spec.indicator.icon/fail-rtl.svg"
+						"ltr": "images/ext.pickle.indicator.icon/fail-ltr.svg",
+						"rtl": "images/ext.pickle.indicator.icon/fail-rtl.svg"
 					},
                     "variants": [ "red", "yellow" ]
 				},
 				"unknown": {
 					"file": {
-						"ltr": "images/ext.spec.indicator.icon/unknown-ltr.svg",
-						"rtl": "images/ext.spec.indicator.icon/unknown-rtl.svg"
+						"ltr": "images/ext.pickle.indicator.icon/unknown-ltr.svg",
+						"rtl": "images/ext.pickle.indicator.icon/unknown-rtl.svg"
 					},
                     "variants": [ "yellow" ]
 				}
 			}
 		}, 
-		"ext.spec.default": {
+		"ext.pickle.default": {
 			"styles": {
-				"0": "ext.spec.default.css"
+				"0": "ext.pickle.default.css"
 			}
 		},
-		"ext.spec.console": {
+		"ext.pickle.console": {
 			"styles": {
-				"0": "ext.spec.console.css"
+				"0": "ext.pickle.console.css"
 			},
 			"scripts": {
-				"0": "ext.spec.console.js"
+				"0": "ext.pickle.console.js"
 			},
 			"dependencies": [
 				"jquery.spinner"
 			],
 			"messages": [
-				"spec-console-title",
-				"spec-console-empty",
-				"spec-console-cleared",
-				"spec-console-run",
-				"spec-console-clear"
+				"pickle-console-title",
+				"pickle-console-empty",
+				"pickle-console-cleared",
+				"pickle-console-run",
+				"pickle-console-clear"
 			]
 		},
-		"ext.spec.report": {
-			"styles": "ext.spec.report.css",
+		"ext.pickle.report": {
+			"styles": "ext.pickle.report.css",
 			"position": "top"
 		}
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
-		"remoteExtPath": "Spec/modules"
+		"remoteExtPath": "Pickle/modules"
 	},
 	"TrackingCategories": [
-		"spec-tracking-category-good",
-		"spec-tracking-category-pending",
-		"spec-tracking-category-todo",
-		"spec-tracking-category-skip",
-		"spec-tracking-category-fail",
-		"spec-tracking-category-missing",
-		"spec-tracking-category-unknown"
+		"pickle-tracking-category-good",
+		"pickle-tracking-category-pending",
+		"pickle-tracking-category-todo",
+		"pickle-tracking-category-skip",
+		"pickle-tracking-category-fail",
+		"pickle-tracking-category-missing",
+		"pickle-tracking-category-unknown"
 	],
 	"SpecialPages": {
 	},
@@ -448,17 +448,17 @@
 		"track"
 	],
 	"LogNames": {
-		"track": "spec-track-log-name"
+		"track": "pickle-track-log-name"
 	},
 	"LogHeaders": {
-		"track": "spec-track-log-header"
+		"track": "pickle-track-log-header"
 	},
 	"LogActions": {
-		"track/good": "spec-track-log-entry-good",
-		"track/pending": "spec-track-log-entry-pending",
-		"track/fail": "spec-track-log-entry-fail",
-		"track/missing": "spec-track-log-entry-missing",
-		"track/unknown": "spec-track-log-entry-unknown"
+		"track/good": "pickle-track-log-entry-good",
+		"track/pending": "pickle-track-log-entry-pending",
+		"track/fail": "pickle-track-log-entry-fail",
+		"track/missing": "pickle-track-log-entry-missing",
+		"track/unknown": "pickle-track-log-entry-unknown"
 	},
 	"manifest_version": 1
 }

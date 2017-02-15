@@ -1,6 +1,6 @@
 <?php
 
-namespace Spec;
+namespace Pickle;
 
 /**
  * Concrete help view
@@ -33,7 +33,7 @@ class HelpView {
 
 		$out = $output ? $output : $wgOut;
 
-		$out->addHelpLink( '//mediawiki.org/wiki/Special:MyLanguage/Help:Spec', true );
+		$out->addHelpLink( '//mediawiki.org/wiki/Special:MyLanguage/Help:Pickle', true );
 
 		return new HelpView( $out );
 	}
