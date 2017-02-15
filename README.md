@@ -16,10 +16,12 @@ A help portal for users are available at [Mediawiki](https://www.mediawiki.org/w
   * Wikimedias git repository ```git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git```
   * GitHubs git repository ```git clone https://github.com/wikimedia/mediawiki.git```
 * [MediaWiki-extensions-Scribunto](https://phabricator.wikimedia.org/tag/mediawiki-extensions-scribunto/) / [extension-Scribunto](https://phabricator.wikimedia.org/diffusion/ELUA/)
-  * Wikimedias git repository ```git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/Scribunto```
-  * GitHubs git repository ```git clone https://github.com/wikimedia/mediawiki-extensions-Scribunto.git```
-* [MediaWiki-extensions-Spec](https://phabricator.wikimedia.org/tag/mediawiki-extensions-pickle/) / [extension-Scribunto](https://phabricator.wikimedia.org/diffusion/) (not available yet)
-  * GitHubs git repository ```git clone https://github.com/wikimedia/mediawiki-extensions-Pickle.git```
+  * Wikimedias own git repository ```git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/Scribunto```
+  * Wikimedias GitHub repository ```git clone https://github.com/wikimedia/mediawiki-extensions-Scribunto.git```
+* [MediaWiki-extensions-Pickle](https://phabricator.wikimedia.org/tag/mediawiki-extensions-pickle/) / [extension-Pickle](https://phabricator.wikimedia.org/diffusion/EPKL/)
+  * Wikimedias own git repository ```git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/Pickle```
+  * Wikimedias GitHubs repository ```git clone https://github.com/wikimedia/mediawiki-extensions-Pickle.git```
+* [Pickle development](https://github.com/jeblad/Pickle)
 
 ### System overview
 
@@ -37,7 +39,7 @@ Core documents
 
 * [MediaWiki: Help:Pickle](https://www.mediawiki.org/wiki/Help:Pickle)
 * [Mediawiki: Extension:Pickle](https://www.mediawiki.org/wiki/Extension:Pickle)
-* [Phabricator: MediaWiki-extensions-Spec](https://phabricator.wikimedia.org/tag/mediawiki-extensions-pickle/)
+* [Phabricator: MediaWiki-extensions-Pickle](https://phabricator.wikimedia.org/tag/mediawiki-extensions-pickle/)
 
 Additional documents
 
