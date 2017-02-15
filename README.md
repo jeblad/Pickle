@@ -18,10 +18,10 @@ A help portal for users are available at [Mediawiki](https://www.mediawiki.org/w
 * Scribunto ([issues](https://phabricator.wikimedia.org/tag/mediawiki-extensions-scribunto/) | [code](https://phabricator.wikimedia.org/diffusion/ELUA/))
   * Gerrit `git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/Scribunto`
   * GitHub `git clone https://github.com/wikimedia/mediawiki-extensions-Scribunto.git`
-* Pickle [unstable] ([issues](https://phabricator.wikimedia.org/tag/mediawiki-extensions-pickle/) | [code](https://phabricator.wikimedia.org/diffusion/EPKL/))
+* Pickle _unstable_ ([issues](https://phabricator.wikimedia.org/tag/mediawiki-extensions-pickle/) | [code](https://phabricator.wikimedia.org/diffusion/EPKL/))
   * Gerrit `git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/Pickle`
   * GitHub `git clone https://github.com/wikimedia/mediawiki-extensions-Pickle.git`
-* Pickle [experimental] ([issues](https://github.com/jeblad/Pickle/issues) | [code](https://github.com/jeblad/Pickle))
+* Pickle _experimental_ ([issues](https://github.com/jeblad/Pickle/issues) | [code](https://github.com/jeblad/Pickle))
   * GitHub `git clone https://github.com/jeblad/Pickle.git`
 
 ### System overview
