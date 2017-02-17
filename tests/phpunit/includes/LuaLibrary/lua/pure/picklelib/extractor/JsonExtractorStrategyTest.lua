@@ -34,60 +34,60 @@ local function testCast( ... )
 end
 
 local tests = {
-  { name = name .. ' exists', func = testExists, type='ToString',
-    expect = { 'table' }
-  },
-  { name = name .. '.create (nil value type)', func = testCreate, type='ToString',
-    args = { nil },
-    expect = { 'table' }
-  },
-  { name = name .. '.create (single value type)', func = testCreate, type='ToString',
-    args = { 'a' },
-    expect = { 'table' }
-  },
-  { name = name .. '.create (multiple value type)', func = testCreate, type='ToString',
-    args = { 'a', 'b', 'c' },
-    expect = { 'table' }
-  },
-  { name = name .. '.type ()', func = testType,
-    expect = { 'json' }
-  },
-  { name = name .. '.find (not matched)', func = testFind,
-    args = { 'foo bar baz' },
-    expect = {}
-  },
-  { name = name .. '.find (matched)', func = testFind,
-    args = { '{}' },
-    expect = { 1, 2 }
-  },
-  { name = name .. '.find (matched)', func = testFind,
-    args = { '[]' },
-    expect = { 1, 2 }
-  },
-  { name = name .. '.find (matched)', func = testFind,
-    args = { '["test"] bar baz' },
-    expect = { 1, 8 }
-  },
-  { name = name .. '.find (matched)', func = testFind,
-    args = { 'foo ["test"] baz' },
-    expect = { 5, 12 }
-  },
-  { name = name .. '.find (matched)', func = testFind,
-    args = { 'foo bar ["test"]' },
-    expect = { 9, 16 }
-  },
-  { name = name .. '.find (matched)', func = testFind,
-    args = { 'foo {"test":["ping","pong"],"test2":42} baz' },
-    expect = { 5, 39 }
-  },
-  { name = name .. '.cast (empty)', func = testCast,
-    args = { 'foo bar ["test"]', 9, 16 },
-    expect = { {"test"} }
-  },
-  { name = name .. '.cast (empty)', func = testCast,
-    args = { 'foo {"test":["ping","pong"],"test2":42} baz', 5, 39 },
-    expect = { { ["test"] = { "ping", "pong" }, ["test2"] = 42 } }
-  },
+	{ name = name .. ' exists', func = testExists, type='ToString',
+		expect = { 'table' }
+	},
+	{ name = name .. '.create (nil value type)', func = testCreate, type='ToString',
+		args = { nil },
+		expect = { 'table' }
+	},
+	{ name = name .. '.create (single value type)', func = testCreate, type='ToString',
+		args = { 'a' },
+		expect = { 'table' }
+	},
+	{ name = name .. '.create (multiple value type)', func = testCreate, type='ToString',
+		args = { 'a', 'b', 'c' },
+		expect = { 'table' }
+	},
+	{ name = name .. '.type ()', func = testType,
+		expect = { 'json' }
+	},
+	{ name = name .. '.find (not matched)', func = testFind,
+		args = { 'foo bar baz' },
+		expect = {}
+	},
+	{ name = name .. '.find (matched)', func = testFind,
+		args = { '{}' },
+		expect = { 1, 2 }
+	},
+	{ name = name .. '.find (matched)', func = testFind,
+		args = { '[]' },
+		expect = { 1, 2 }
+	},
+	{ name = name .. '.find (matched)', func = testFind,
+		args = { '["test"] bar baz' },
+		expect = { 1, 8 }
+	},
+	{ name = name .. '.find (matched)', func = testFind,
+		args = { 'foo ["test"] baz' },
+		expect = { 5, 12 }
+	},
+	{ name = name .. '.find (matched)', func = testFind,
+		args = { 'foo bar ["test"]' },
+		expect = { 9, 16 }
+	},
+	{ name = name .. '.find (matched)', func = testFind,
+		args = { 'foo {"test":["ping","pong"],"test2":42} baz' },
+		expect = { 5, 39 }
+	},
+	{ name = name .. '.cast (empty)', func = testCast,
+		args = { 'foo bar ["test"]', 9, 16 },
+		expect = { {"test"} }
+	},
+	{ name = name .. '.cast (empty)', func = testCast,
+		args = { 'foo {"test":["ping","pong"],"test2":42} baz', 5, 39 },
+		expect = { { ["test"] = { "ping", "pong" }, ["test2"] = 42 } }
+	},
 }
 
 return testframework.getTestProvider( tests )

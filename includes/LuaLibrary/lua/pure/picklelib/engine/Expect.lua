@@ -7,27 +7,27 @@ local Stack = require 'picklelib/Stack'
 -- non-pure libs
 local Adapt
 if mw.pickle then
-    -- structure exist, make access simpler
-    Adapt = mw.pickle.adapt
+	-- structure exist, make access simpler
+	Adapt = mw.pickle.adapt
 else
-    -- structure does not exist, require the libs
-    Adapt = require 'picklelib/engine/Adapt'
+	-- structure does not exist, require the libs
+	Adapt = require 'picklelib/engine/Adapt'
 end
 
 -- @var class var for lib
 local Expect = {}
-function Expect:__index( key )
-    return Expect[key]
+function Expect:__index( key ) -- luacheck: ignore self
+	return Expect[key]
 end
 
 -- @var metatable for the class
 local mt = { __index = Adapt }
 
 --- Get a clone or create a new instance
-function mt:__call( ... )
-    local t = { ... }
-    Expect.stack:push( #t == 0 and Expect.stack:top() or Expect.create( ... ) )
-    return Expect.stack:top()
+function mt:__call( ... ) -- luacheck: ignore self
+	local t = { ... }
+	Expect.stack:push( #t == 0 and Expect.stack:top() or Expect.create( ... ) )
+	return Expect.stack:top()
 end
 
 setmetatable( Expect, mt )
@@ -40,18 +40,18 @@ Expect.other = nil
 
 --- Create a new instance
 function Expect.create( ... )
-    local self = setmetatable( {}, Expect )
-    self:_init( ... )
-    return self
+	local self = setmetatable( {}, Expect )
+	self:_init( ... )
+	return self
 end
 
 --- Initialize a new instance
 function Expect:_init( ... )
-    Adapt._init( self, ... )
-    if Expect.other ~= nil then
-        self._other = Expect.other
-    end
-    return self
+	Adapt._init( self, ... )
+	if Expect.other ~= nil then
+		self._other = Expect.other
+	end
+	return self
 end
 
 -- Return the final class

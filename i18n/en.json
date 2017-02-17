@@ -53,7 +53,7 @@
 	"pickle-console-clear": "Clear",
 	"pickle-report-skip-no-message": "The message key \"$1\" does not exist",
 	"pickle-frame-compact-header-all-good": "ok &mdash; $1",
-	"pickle-frame-compact-header-some failed": "not ok &mdash; $1",
+	"pickle-frame-compact-header-some-failed": "not ok &mdash; $1",
 	"pickle-frame-full-header": "# $1",
 	"pickle-frame-vivid-header": "$1",
 	"pickle-report-result-compact-is-ok": "ok",

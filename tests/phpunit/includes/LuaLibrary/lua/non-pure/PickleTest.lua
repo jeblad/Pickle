@@ -20,25 +20,25 @@ local function testExpectExists()
 	return type( pickles.expect )
 end
 
-local function testCall( ... )
-    pickles()
-	return type( subject ), type( expect )
+local function testCall( ... ) -- luacheck: ignore
+	pickles()
+	return type( subject ), type( expect ) -- luacheck: globals subject expect
 end
 
 local tests = {
-  { name = 'pickles exists', func = testExists, type='ToString',
-    expect = { 'table' }
-  },
-  { name = 'subject exists', func = testSubjectExists, type='ToString',
-    expect = { 'table' }
-  },
-  { name = 'expect exists', func = testExpectExists, type='ToString',
-    expect = { 'table' }
-  },
-  { name = 'pickles.call', func = testCall,
-    args = {  },
-    expect = { 'table', 'table' }
-  },
+	{ name = 'pickles exists', func = testExists, type='ToString',
+		expect = { 'table' }
+	},
+	{ name = 'subject exists', func = testSubjectExists, type='ToString',
+		expect = { 'table' }
+	},
+	{ name = 'expect exists', func = testExpectExists, type='ToString',
+		expect = { 'table' }
+	},
+	{ name = 'pickles.call', func = testCall,
+		args = { },
+		expect = { 'table', 'table' }
+	},
 }
 
 return testframework.getTestProvider( tests )

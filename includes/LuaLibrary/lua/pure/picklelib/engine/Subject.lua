@@ -7,29 +7,29 @@ local Stack = require 'picklelib/Stack'
 -- non-pure libs
 local Adapt
 if mw.pickle then
-    -- structure exist, make access simpler
-    Adapt = mw.pickle.adapt
+	-- structure exist, make access simpler
+	Adapt = mw.pickle.adapt
 else
-    -- structure does not exist, require the libs
-    Adapt = require 'picklelib/engine/Adapt'
+	-- structure does not exist, require the libs
+	Adapt = require 'picklelib/engine/Adapt'
 end
 
 -- @var class var for lib
 local Subject = {}
 
 --- Lookup of missing class members
-function Subject:__index( key )
-    return Subject[key]
+function Subject:__index( key ) -- luacheck: ignore self
+	return Subject[key]
 end
 
 -- @var metatable for the class
 local mt = { __index = Adapt }
 
 --- Get a clone or create a new instance
-function mt:__call( ... )
-    local t = { ... }
-    Subject.stack:push( #t == 0 and Subject.stack:top() or Subject.create( t ) )
-    return Subject.stack:top()
+function mt:__call( ... ) -- luacheck: ignore self
+	local t = { ... }
+	Subject.stack:push( #t == 0 and Subject.stack:top() or Subject.create( t ) )
+	return Subject.stack:top()
 end
 
 setmetatable( Subject, mt )
@@ -42,19 +42,19 @@ Subject.other = nil
 
 --- Create a new instance
 function Subject.create( ... )
-    local self = setmetatable( {}, Subject )
-    self:_init( ... )
-    return self
+	local self = setmetatable( {}, Subject )
+	self:_init( ... )
+	return self
 end
 
 --- Initialize a new instance
 function Subject:_init( ... )
-    Adapt._init( self, ... )
-    if Subject.other ~= nil then
-        self._other = Subject.other
-    end
-    self._reorder = function( a, b ) return b, a end
-    return self
+	Adapt._init( self, ... )
+	if Subject.other ~= nil then
+		self._other = Subject.other
+	end
+	self._reorder = function( a, b ) return b, a end
+	return self
 end
 
 -- Return the final class

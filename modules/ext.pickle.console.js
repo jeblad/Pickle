@@ -1,10 +1,8 @@
 ( function ( $, mw ) {
 
-    var pending = false;
-
-    var $output = null;
-
-	var $spinner = $.createSpinner( { size: 'small', type: 'block' } );
+	var pending = false,
+		$output = null,
+		$spinner = $.createSpinner( { size: 'small', type: 'block' } );
 
 	function setPending() {
 		pending = true;
@@ -17,17 +15,18 @@
 	}
 
 	function printLn( str, type ) {
-        $( '<div>' )
-            .text( str )
-            .addClass( type )
-            .appendTo( $output );
+		$( '<div>' )
+			.text( str )
+			.addClass( type )
+			.appendTo( $output );
 	}
 
-    function printError( er ) {
+	function printError( er ) {
 		var lineNumberString;
 
 		// for debugging the shell
-		lastError = er;
+		// @todo fix use of lastError - is it a secondary effect?
+		// lastError = er;
 		if ( er.name ) {
 			// lineNumberString should not be '', to avoid a very wacky bug in IE 6.
 			lineNumberString = ( er.lineNumber !== undefined ) ? ( ' on line ' + er.lineNumber + ': ' ) : ': ';
@@ -50,12 +49,12 @@
 		}
 	}
 
-    function go( question ) {
-		var params, api, content, sentContent;
+	function go( question ) {
+		var params, api;
 
 		if ( question === '' ) {
-            // There can be a race condition where the question isn't avalable,
-            // but it should be quite rare if it happen at all.
+			// There can be a race condition where the question isn't avalable,
+			// but it should be quite rare if it happen at all.
 			return;
 		}
 
@@ -65,12 +64,12 @@
 			return;
 		}
 
-		var params = {
+		params = {
 			action: 'scribunto-console',
 			title: mw.config.get( 'wgPageName' ),
 			clear: true,
 			question: question,
-            content: getContent()
+			content: getContent()
 		};
 
 		api = new mw.Api();
@@ -80,9 +79,9 @@
 			.done( function ( result ) {
 				if ( result.type === 'error' ) {
 					$( '<div>' )
-                        .addClass( 'mw-pickle-console-error' )
-                        .html( result.html )
-                        .appendTo( $output );
+						.addClass( 'mw-pickle-console-error' )
+						.html( result.html )
+						.appendTo( $output );
 				} else {
 					if ( result.print !== '' ) {
 						printLn( result.print, 'mw-pickle-console-neutral' );
@@ -92,7 +91,7 @@
 					}
 				}
 				clearPending();
-            } )
+			} )
 			.fail( function ( code, result ) {
 				if ( result.error && result.error.info ) {
 					printError( result.error.info );
@@ -104,42 +103,43 @@
 				}
 				clearPending();
 			} );
-    }
+	}
 
-    function onRunClick() {
-        var $output = $( '#mw-pickle-console-output' );
-        $output.children( '.mw-pickle-console-transient' )
-            .slideUp()
-            .queue( function() {
-                $( this ).remove();
-                $( this ).dequeue();
-            } );
+	function onRunClick() {
+		var $output = $( '#mw-pickle-console-output' );
+		$output.children( '.mw-pickle-console-transient' )
+			.slideUp()
+			.queue( function () {
+				$( this ).remove();
+				$( this ).dequeue();
+			} );
 
-        go( mw.msg( 'pickle-console-question' ) );
-    }
+		go( mw.msg( 'pickle-console-question' ) );
+	}
 
-    function onClearClick() {
-        var $output = $( '#mw-pickle-console-output' );
-        $output.children()
-            .slideUp()
-            .queue( function() {
-                $( this ).remove();
-                $( this ).dequeue();
-            } );
-        $( '<div>' )
-            .addClass( 'mw-pickle-console-neutral' )
-            .addClass( 'mw-pickle-console-transient' )
-            .css( { 'display': 'none' } )
-            .text( mw.msg( 'pickle-console-cleared' ) )
-            .appendTo( $output )
-            .slideDown();
-    }
+	function onClearClick() {
+		var $output = $( '#mw-pickle-console-output' );
+		$output.children()
+			.slideUp()
+			.queue( function () {
+				$( this ).remove();
+				$( this ).dequeue();
+			} );
+		$( '<div>' )
+			.addClass( 'mw-pickle-console-neutral' )
+			.addClass( 'mw-pickle-console-transient' )
+			.css( { display: 'none' } )
+			.text( mw.msg( 'pickle-console-cleared' ) )
+			.appendTo( $output )
+			.slideDown();
+	}
 
 	/**
 	 * Test console
 	 */
 	function initEditPage() {
 		var $wpTextbox1,
+			$debugConsole,
 			$console = $( '#mw-pickle-console' );
 		if ( !$console.length ) {
 			// There is no console in the DOM; on read-only (protected) pages,
@@ -150,52 +150,52 @@
 				return;
 			}
 
-            $console = $( '<div>' ).attr( { id: 'mw-pickle-console' } );
+			$console = $( '<div>' ).attr( { id: 'mw-pickle-console' } );
 
-            // This can in some cases insert the test console before the debug
-            // console, that is we have a race condition. 
-            $debugConsole = $( '#mw-scribunto-console' );
-            if ( $debugConsole.length ) {
-                $debugConsole.after( $console );
-            } else {
-                $wpTextbox1.after( $console );
-            }
+			// This can in some cases insert the test console before the debug
+			// console, that is we have a race condition.
+			$debugConsole = $( '#mw-scribunto-console' );
+			if ( $debugConsole.length ) {
+				$debugConsole.after( $console );
+			} else {
+				$wpTextbox1.after( $console );
+			}
 		}
 
 		$( '<fieldset>' )
 			.attr( 'class', 'mw-pickle-console-fieldset' )
 			.append(
-                $( '<legend>' ).text( mw.msg( 'pickle-console-title' ) ) )
+				$( '<legend>' ).text( mw.msg( 'pickle-console-title' ) ) )
 			.append(
-                $( '<div id="mw-pickle-console-output">' )
-                    .append(
-                        $( '<div>' )
-                            .addClass( 'mw-pickle-console-neutral' )
-                            .addClass( 'mw-pickle-console-transient' )
-                            .text( mw.msg( 'pickle-console-empty' ) )
-                ) )
+				$( '<div id="mw-pickle-console-output">' )
+					.append(
+						$( '<div>' )
+							.addClass( 'mw-pickle-console-neutral' )
+							.addClass( 'mw-pickle-console-transient' )
+							.text( mw.msg( 'pickle-console-empty' ) )
+				) )
 			.append(
 				$( '<div>' )
-                    .append(
-                        $( '<input>' )
-                            .attr( {
-                                type: 'button',
-                                value: mw.msg( 'pickle-console-run' )
-                            } )
-                            .bind( 'click', onRunClick )
-			    	)
-                    .append(
-                        $( '<input>' )
-                            .attr( {
-                                type: 'button',
-                                value: mw.msg( 'pickle-console-clear' )
-                            } )
-                            .bind( 'click', onClearClick )
-				    ) )
+					.append(
+						$( '<input>' )
+							.attr( {
+								type: 'button',
+								value: mw.msg( 'pickle-console-run' )
+							} )
+							.bind( 'click', onRunClick )
+					)
+					.append(
+						$( '<input>' )
+							.attr( {
+								type: 'button',
+								value: mw.msg( 'pickle-console-clear' )
+							} )
+							.bind( 'click', onClearClick )
+					) )
 			.wrap( '<form>' )
 			.appendTo( $console );
 
-        $output = $( '#mw-pickle-console-output' );
+		$output = $( '#mw-pickle-console-output' );
 	}
 
 	$( function () {

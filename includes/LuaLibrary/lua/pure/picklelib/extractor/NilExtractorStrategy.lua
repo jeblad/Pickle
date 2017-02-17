@@ -6,8 +6,8 @@ local Base = require 'picklelib/extractor/ExtractorStrategyBase'
 
 -- @var class var for lib
 local Extractor = {}
-function Extractor:__index( key )
-    return Extractor[key]
+function Extractor:__index( key ) -- luacheck: ignore self
+	return Extractor[key]
 end
 
 -- @var metatable for the class
@@ -15,26 +15,26 @@ setmetatable( Extractor, { __index = Base } )
 
 --- Create a new instance
 function Extractor.create()
-    local self = setmetatable( {}, Extractor )
-    self:_init()
-    return self
+	local self = setmetatable( {}, Extractor )
+	self:_init()
+	return self
 end
 
 --- Initialize a new instance
 function Extractor:_init()
-    Base._init( self,
-        { '^nil$', 0, 0 },
-        { '^nil[%s%p]', 0, -1 },
-        { '[%s%p]nil$', 1, 0 },
-        { '[%s%p]nil[%s%p]', 1, -1 } )
-    self._type = 'nil'
-    return self
+	Base._init( self,
+		{ '^nil$', 0, 0 },
+		{ '^nil[%s%p]', 0, -1 },
+		{ '[%s%p]nil$', 1, 0 },
+		{ '[%s%p]nil[%s%p]', 1, -1 } )
+	self._type = 'nil'
+	return self
 end
 
 --- Cast the string into the correct type for this strategy
 -- There are no safeguards for erroneous casts
-function Extractor:cast( str, start, finish )
-    return nil
+function Extractor:cast( str, start, finish ) -- luacheck: ignore
+	return nil
 end
 
 -- Return the final class

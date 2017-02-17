@@ -16,18 +16,19 @@ There should be a template `pickle-gloss` reading (with additional markup)
 
 There should be a template `pickle-indicator-desc` reading
 
-> This is the text for the link to the pickle page, given that the test result is "{{{1}}}". Should be
-> a very minimalistic text that can be used as link in the page indicators.
+> This is the text for the link to the pickle page, given that the test result
+> is "{{{1}}}". Should be a very minimalistic text that can be used as link in
+> the page indicators.
 
 There should be a template `pickle-invoke-desc` reading
 
-> This is the message used to get the result for a specific page in the module space. The message is
-> chosen depending on som hauristics.
+> This is the message used to get the result for a specific page in the module
+> space. The message is chosen depending on som hauristics.
 
 There should be a template `pickle-subpage-desc` reading
 
-> This is the message used to build the link to a specific page in the module space. The message is
-> chosen depending on som hauristics.
+> This is the message used to build the link to a specific page in the module
+> space. The message is chosen depending on som hauristics.
 
 There should be a template `pickle-report-vivid` reading
 

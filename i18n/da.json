@@ -43,7 +43,7 @@
 	"pickle-console-clear": "Tøm",
 	"pickle-report-skip-no-message": "Meldingnøglen \"$1\" findes ikke",
 	"pickle-frame-compact-header-all-good": "ok (alle gode) &mdash; $1",
-	"pickle-frame-compact-header-some failed": "not ok (noen fejlet) &mdash; $1",
+	"pickle-frame-compact-header-some-failed": "not ok (noen fejlet) &mdash; $1",
 	"pickle-frame-full-header": "# $1",
 	"pickle-frame-vivid-header": "$1",
 	"pickle-report-result-compact-is-ok": "ok (god)",

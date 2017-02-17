@@ -22,51 +22,53 @@ local function testCreate( ... )
 	return type( makeTest( ... ) )
 end
 
+--[[
 local function testRender( ... )
 	return makeTest( ... ):render()
 end
+--]]
 
 local function testType( ... )
 	return makeTest( ... ):type()
 end
 
 local function testConstituents( ... )
-    local p = makeTest()
-    local t = { ... }
-    for _,v in ipairs( t ) do
-        p:addConstituent( v )
-    end
+	local p = makeTest()
+	local t = { ... }
+	for _,v in ipairs( t ) do
+		p:addConstituent( v )
+	end
 	return { p:constituents() }
 end
 
 local tests = {
 	{ name = name .. ' exists', func = testExists, type='ToString',
-	  expect = { 'table' }
+		expect = { 'table' }
 	},
 	{ name = name .. '.create (nil value type)', func = testCreate, type='ToString',
-	  args = { nil },
-	  expect = { 'table' }
+		args = { nil },
+		expect = { 'table' }
 	},
 	{ name = name .. '.create (single value type)', func = testCreate, type='ToString',
-	  args = { 'a' },
-	  expect = { 'table' }
+		args = { 'a' },
+		expect = { 'table' }
 	},
 	{ name = name .. '.create (multiple value type)', func = testCreate, type='ToString',
-	  args = { 'a', 'b', 'c' },
-	  expect = { 'table' }
+		args = { 'a', 'b', 'c' },
+		expect = { 'table' }
 	},
-    --[[
+	--[[
 	{ name = name .. '.render (nil)', func = testRender,
-	  args = { nil },
-	  expect = { '' }
+		args = { nil },
+		expect = { '' }
 	},
-    --]]
+	--]]
 	{ name = name .. '.type ()', func = testType,
-	  expect = { class }
+		expect = { class }
 	},
 	{ name = name .. ':addConstituent (multiple value type)', func = testConstituents,
-	  args = { 'foo', 'bar', 'baz' },
-	  expect = { { 'foo', 'bar', 'baz' } }
+		args = { 'foo', 'bar', 'baz' },
+		expect = { { 'foo', 'bar', 'baz' } }
 	},
 }
 

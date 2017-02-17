@@ -9,7 +9,7 @@ local util = {}
 -- @param string in camel case
 -- @return hyphenated string
 function util.buildName( str )
-	return str:gsub("([A-Z])", function(str) return '-'..string.lower(str) end )
+	return str:gsub("([A-Z])", function(s) return '-'..string.lower(s) end )
 end
 
 -- raw count of all the items in the provided table
@@ -18,7 +18,7 @@ end
 -- @return count of raw entries
 function util.count( t )
 	local i = 0
-	for k,v in pairs( t ) do
+	for _,_ in pairs( t ) do
 		i = i + 1
 	end
 	return i
@@ -76,10 +76,10 @@ function util.deepEqual( objA, objB, useMt )
 		end
 	end
 
-	for i,v1 in pairs( objB ) do
-		local v2 = objA[i]
+	for i,_ in pairs( objB ) do
+		local v = objA[i]
 		-- test is inlined, differs from Moses
-		if v2 == nil then
+		if v == nil then
 			return false
 		end
 	end

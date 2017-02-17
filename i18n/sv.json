@@ -47,7 +47,7 @@
 	"pickle-console-clear": "Tøm",
 	"pickle-report-skip-no-message": "Beskednyckeln \"$1\" finst inte",
 	"pickle-frame-compact-header-all-good": "ok (alla goda) &mdash; $1",
-	"pickle-frame-compact-header-some failed": "not ok (något feila) &mdash; $1",
+	"pickle-frame-compact-header-some-failed": "not ok (något feila) &mdash; $1",
 	"pickle-frame-full-header": "# $1",
 	"pickle-frame-vivid-header": "$1",
 	"pickle-report-result-compact-is-ok": "ok (god)",

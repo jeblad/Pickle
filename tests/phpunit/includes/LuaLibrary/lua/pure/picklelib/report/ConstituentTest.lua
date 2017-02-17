@@ -32,26 +32,26 @@ end
 
 local tests = {
 	{ name = name .. ' exists', func = testExists, type='ToString',
-	  expect = { 'table' }
+		expect = { 'table' }
 	},
 	{ name = name .. '.create (nil value type)', func = testCreate, type='ToString',
-	  args = { nil },
-	  expect = { 'table' }
+		args = { nil },
+		expect = { 'table' }
 	},
 	{ name = name .. '.create (single value type)', func = testCreate, type='ToString',
-	  args = { 'a' },
-	  expect = { 'table' }
+		args = { 'a' },
+		expect = { 'table' }
 	},
 	{ name = name .. '.create (multiple value type)', func = testCreate, type='ToString',
-	  args = { 'a', 'b', 'c' },
-	  expect = { 'table' }
+		args = { 'a', 'b', 'c' },
+		expect = { 'table' }
 	},
 	{ name = name .. '.realize (nil)', func = testRealize,
-	  args = { nil },
-	  expect = { '' }
+		args = { nil },
+		expect = { '' }
 	},
 	{ name = name .. '.type ()', func = testType,
-	  expect = { class }
+		expect = { class }
 	},
 }
 
