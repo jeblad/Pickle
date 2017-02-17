@@ -11,7 +11,6 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-phpcs' );
 	grunt.loadNpmTasks( 'grunt-contrib-lualint' );
 	grunt.loadNpmTasks( 'grunt-markdownlint' );
-	grunt.loadNpmTasks( 'grunt-gulp' );
 	grunt.loadNpmTasks( 'grunt-env' );
 
 	grunt.initConfig( {
@@ -99,22 +98,31 @@ module.exports = function ( grunt ) {
 				'!node_modules/**',
 				'!vendor/**'
 			]
-		},
-		gulp: {
-			options: {
-				tasks: function ( stream ) {
-					return stream.pipe( require( 'gulp-coffee' )() );
-				}
-			},
-			'dist/bundle.js': [
-				'lib/*.coffee'
-			]
 		}
 	} );
 
-	grunt.registerTask( 'lint', [ 'env:lint', 'csslint', 'stylelint', 'eslint', 'jshint', 'jsonlint', 'banana', 'phplint', 'markdownlint' ] );
-	grunt.registerTask( 'smell', [ 'env:smell', 'jscs', 'phpcs', 'lualint' ] );
-	// grunt.registerTask( 'lint', [ 'csslint', 'stylelint', 'eslint', 'jshint', 'jsonlint', 'banana', 'phplint', 'markdownlint' ] );
-	// grunt.registerTask( 'smell', [ 'jscs', 'phpcs', 'lualint' ] );
-	grunt.registerTask( 'default', [ 'lint', 'smell' ] );
+	grunt.registerTask( 'lint',
+		[
+			'env:lint',
+			'csslint',
+			'stylelint',
+			'eslint',
+			'jshint',
+			'jsonlint',
+			'banana',
+			'phplint',
+			'markdownlint'
+		] );
+	grunt.registerTask( 'smell',
+		[
+			'env:smell',
+			'jscs',
+			'phpcs',
+			'lualint'
+		] );
+	grunt.registerTask( 'default',
+		[
+			'lint',
+			'smell'
+		] );
 };
