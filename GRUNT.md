@@ -8,9 +8,9 @@ comes from the `lualint` and is probably not necessary anymore.
 A quick fix to make grunt work until all is properly packaged is to comment out all
 use of `grunt-contrib-lualint` and `grunt-env`.
 
-If running [MediaWiki-Vagrant](https://www.mediawiki.org/wiki/MediaWiki-Vagrant) in
-the usual setup, with Ubuntu 12.04 (Precice), there are no deb pakage available in
-any repository for `luacjheck`. It does although seem like the pakage from Ubuntu
+If running [MediaWiki-Vagrant](https://www.mediawiki.org/wiki/MediaWiki-Vagrant)
+in the usual setup, with Ubuntu 12.04 (Precice), there are no deb pakage available
+in any repository for `luacjheck`. It does although seem like the pakage from Ubuntu
 17.04 (Zesty) work in Precise, so download the deb-pakage from
 [lua-check 0.17.1-1 (s390x binary) in ubuntu zesty](https://launchpad.net/ubuntu/zesty/s390x/lua-check/0.17.1-1)
 to your vagrant-box and install with `sudo dpkg -i /path/to/file.deb`.
