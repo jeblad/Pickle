@@ -53,6 +53,7 @@ class LogEntryFactory extends Strategies {
 		$mergedStates = array_merge(
 			[
 				'status-current' => null,
+				'status-previous' => null,
 				'page-type' => false
 			],
 			$states );

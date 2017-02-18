@@ -137,7 +137,10 @@ class Hooks {
 
 		// keep the current state as page property for later
 		$pageProps = \PageProps::getInstance()->getProperties( $title, 'pickle-status' );
-		$previousStatus = unserialize( $pageProps[$title->getArticleId()] );
+		// @todo missing test, previous is not necessarilly defined
+		$previousStatus = array_key_exists( $title->getArticleId(), $pageProps )
+			? unserialize( $pageProps[$title->getArticleId()] )
+			: null;
 		$statusStrategy = self::getFinalStrategy( $invokeStrategy, $title );
 		$parserOutput->setProperty( 'pickle-status', serialize( $statusStrategy->getName() ) );
 
