@@ -2,11 +2,12 @@
 
 -- pure libs
 local Stack = require 'picklelib/Stack'
-local util = require 'picklelib/util'
+-- local util = require 'picklelib/util'
 
 -- non-pure libs
-local Plan
+local Plan -- luacheck: ignore
 local Subject
+-- Setup for prod or test
 if mw.pickle then
 	-- structure exist, make access simpler
 	Plan = mw.pickle.stack

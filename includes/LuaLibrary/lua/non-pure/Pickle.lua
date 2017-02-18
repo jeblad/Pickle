@@ -1,6 +1,6 @@
 -- accesspoints for the bilerplate
-local php
-local options
+local php		-- luacheck: ignore
+local options	-- luacheck: ignore
 
 -- @var structure for storage of the lib
 local pickle = {}
@@ -31,8 +31,12 @@ local export = {
 }
 
 -- create the access to other parties
-function pickle.expect.other() return Subject end
-function pickle.subject.other() return Expect end
+function pickle.expect.other()
+	return Subject -- luacheck: globals Subject
+end
+function pickle.subject.other()
+	return Expect -- luacheck: globals Expect
+end
 
 function pickle.report( frame )
 	local style = frame.args[1]
@@ -45,8 +49,8 @@ function pickle.setupInterface( opts )
 
 	-- boilerplate
 	pickle.setupInterface = nil
-	php = mw_interface
-	mw_interface = nil
+	php = mw_interface -- luacheck: globals mw_interface
+	mw_interface = nil -- luacheck: globals mw_interface
 	options = opts
 
 	-- register main lib
