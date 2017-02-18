@@ -1,20 +1,20 @@
-#mw-pickle-console-output div {
+.mw-pickle-console-output div {
 	border-radius: 0.3em;
 	padding: 0.4em 0.8em;
 	margin-bottom: 0.8em;
 }
 
-#mw-pickle-console-output .mw-pickle-console-neutral {
+.mw-pickle-console-output .mw-pickle-console-neutral {
 	background-color: #f0f0f0;
 	border: 1px solid #c0c0c0;
 }
 
-#mw-pickle-console-output .mw-pickle-console-bad {
+.mw-pickle-console-output .mw-pickle-console-bad {
 	background-color: #fff0f0;
 	border: 1px solid #ffc0c0;
 }
 
-#mw-pickle-console-output .mw-pickle-console-good {
+.mw-pickle-console-output .mw-pickle-console-good {
 	background-color: #f0fff0;
 	border: 1px solid #c0ffc0;
 }

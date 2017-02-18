@@ -168,6 +168,7 @@
 				$( '<legend>' ).text( mw.msg( 'pickle-console-title' ) ) )
 			.append(
 				$( '<div id="mw-pickle-console-output">' )
+					.addClass( 'mw-pickle-console-output' )
 					.append(
 						$( '<div>' )
 							.addClass( 'mw-pickle-console-neutral' )
