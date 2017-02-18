@@ -1,9 +1,9 @@
 #mw-indicator-mw-speclink a,
 #mw-indicator-mw-speclink span {
+	background-position: left bottom;
 	background-repeat: no-repeat;
-	background-position: left bottom; 
-	padding-left: 28px;
 	display: inline-block;
 	height: 24px;
 	line-height: 24px;
+	padding-left: 28px;
 }
