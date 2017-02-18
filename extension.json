@@ -114,7 +114,7 @@
 			"tests/phpunit/includes/InvokeSubpage/InvokeSubpageTestCase.php"
 	},
 	"config": {
-        "_prefix": "wgSpec",
+		"_prefix": "wgSpec",
 		"ObserverID": 3,
 		"RenderStyles": {
 			"compact": "picklelib/render/compact",
@@ -383,21 +383,21 @@
 						"ltr": "images/ext.pickle.indicator.icon/good-ltr.svg",
 						"rtl": "images/ext.pickle.indicator.icon/good-rtl.svg"
 					},
-                    "variants": [ "green", "yellow" ]
+					"variants": [ "green", "yellow" ]
 				},
 				"fail": {
 					"file": {
 						"ltr": "images/ext.pickle.indicator.icon/fail-ltr.svg",
 						"rtl": "images/ext.pickle.indicator.icon/fail-rtl.svg"
 					},
-                    "variants": [ "red", "yellow" ]
+					"variants": [ "red", "yellow" ]
 				},
 				"unknown": {
 					"file": {
 						"ltr": "images/ext.pickle.indicator.icon/unknown-ltr.svg",
 						"rtl": "images/ext.pickle.indicator.icon/unknown-rtl.svg"
 					},
-                    "variants": [ "yellow" ]
+					"variants": [ "yellow" ]
 				}
 			}
 		}, 
