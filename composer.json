@@ -42,8 +42,8 @@
 			"find modules/images -type d -path minified  -prune -o -type d -execdir svgo --pretty --indent=2 -i . -o ./minified \\;"
 		],
 		"test": [
-			"parallel-lint . --exclude vendor",
-			"phpcs -p -s"
+			"parallel-lint . --exclude vendor --exclude node_modueles",
+			"phpcs -p -s --ignore=vendor,node_modules"
 		]
 	},
 	"require": {
