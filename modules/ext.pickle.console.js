@@ -1,4 +1,4 @@
-( function ( $, mw ) {
+$( function () {
 
 	var pending = false,
 		$output = null,
@@ -206,4 +206,4 @@
 		}
 	} );
 
-}( jQuery, mediaWiki ) );
+} );
