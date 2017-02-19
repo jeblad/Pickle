@@ -11,8 +11,58 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-phpcs' );
 	grunt.loadNpmTasks( 'grunt-contrib-lualint' );
 	grunt.loadNpmTasks( 'grunt-markdownlint' );
+	grunt.loadNpmTasks( 'grunt-lintspaces' );
 
 	grunt.initConfig( {
+		lintspaces: {
+			all: {
+				src: [
+					'*.js',
+					'**/*.js',
+					'**/*.css',
+					'**/*.php',
+					'!node_modules/**',
+					'!vendor/**'
+				],
+				options: {
+					newline: true,
+					newlineMaximum: 2,
+					trailingspaces: true,
+					indentation: 'tabs',
+					ignores: [ 'js-comments' ]
+				}
+			},
+			json: {
+				src: [
+					'.eslintrc',
+					'.jscsrc',
+					'.jshintrc',
+					'*.json',
+					'!node_modules/**',
+					'!vendor/**'
+				],
+				options: {
+					newlineMaximum: 2,
+					trailingspaces: true,
+					indentation: 'tabs',
+					ignores: [ 'js-comments' ]
+				}
+			},
+			lua: {
+				src: [
+					'**/*.lua',
+					'!node_modules/**',
+					'!vendor/**'
+				],
+				options: {
+					newline: true,
+					newlineMaximum: 2,
+					trailingspaces: true,
+					indentation: 'tabs',
+					ignores: [ /^\t*--/g ]
+				}
+			}
+		},
 		csslint: {
 			all: [
 				'modules/**/*.css'
@@ -96,6 +146,7 @@ module.exports = function ( grunt ) {
 
 	grunt.registerTask( 'lint',
 		[
+			'lintspaces',
 			'csslint',
 			'stylelint',
 			'eslint',

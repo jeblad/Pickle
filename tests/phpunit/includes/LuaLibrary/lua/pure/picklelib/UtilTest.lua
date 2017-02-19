@@ -30,55 +30,55 @@ end
 
 local tests = {
 	{ name = 'util exists', func = testExists, type='ToString',
-	  expect = { 'table' }
+		expect = { 'table' }
 	},
 	{ name = 'util.count (nil value type)', func = testCount,
-	  args = { {} },
-	  expect = { 0 }
+		args = { {} },
+		expect = { 0 }
 	},
 	{ name = 'util.count (single value type)', func = testCount,
-	  args = { { 'a' } },
-	  expect = { 1 }
+		args = { { 'a' } },
+		expect = { 1 }
 	},
 	{ name = 'util.count (multiple value type)', func = testCount,
-	  args = { { 'a', { 'b', 'c' } } },
-	  expect = { 2 }
+		args = { { 'a', { 'b', 'c' } } },
+		expect = { 2 }
 	},
 	{ name = 'util.count (multiple value type)', func = testCount,
-	  args = { { 'a', 'b', 'c' } },
-	  expect = { 3 }
+		args = { { 'a', 'b', 'c' } },
+		expect = { 3 }
 	},
 	{ name = 'util.size (nil value type)', func = testSize,
-	  args = { nil },
-	  expect = { 0 }
+		args = { nil },
+		expect = { 0 }
 	},
 	{ name = 'util.size (single value type)', func = testSize,
-	  args = { { 'a' } },
-	  expect = { 1 }
+		args = { { 'a' } },
+		expect = { 1 }
 	},
 	{ name = 'util.size (single table value type 1)', func = testSize,
-	  args = { { 'a', 'b', 'c' } },
-	  expect = { 3 }
+		args = { { 'a', 'b', 'c' } },
+		expect = { 3 }
 	},
 	{ name = 'util.deepEqual (double set of table values)', func = testDeepEqual,
-	  args = { { 'a', { 'b' }, 'c' }, { 'a', 'b', 'c' } },
-	  expect = { false }
+		args = { { 'a', { 'b' }, 'c' }, { 'a', 'b', 'c' } },
+		expect = { false }
 	},
 	{ name = 'util.deepEqual (double set of table values)', func = testDeepEqual,
-	  args = { { 'a', { 'b' }, 'c' }, { 'a', { 'b' }, 'c' } },
-	  expect = { true }
+		args = { { 'a', { 'b' }, 'c' }, { 'a', { 'b' }, 'c' } },
+		expect = { true }
 	},
 	{ name = 'util.contains (double set of table values)', func = testContains,
-	  args = { { 'a', { 'b' }, 'c' }, { 'a' } },
-	  expect = { false }
+		args = { { 'a', { 'b' }, 'c' }, { 'a' } },
+		expect = { false }
 	},
 	{ name = 'util.contains (double set of table values)', func = testContains,
-	  args = { { 'a', { 'b' }, 'c' }, 'c' },
-	  expect = { 3 }
+		args = { { 'a', { 'b' }, 'c' }, 'c' },
+		expect = { 3 }
 	},
 	{ name = 'util.contains (double set of table values)', func = testContains,
-	  args = { { 'a', { 'b' }, 'c' }, { 'b' } },
-	  expect = { 2 }
+		args = { { 'a', { 'b' }, 'c' }, { 'b' } },
+		expect = { 2 }
 	},
 }
 

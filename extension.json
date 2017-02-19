@@ -400,7 +400,7 @@
 					"variants": [ "yellow" ]
 				}
 			}
-		}, 
+		},
 		"ext.pickle.default": {
 			"styles": {
 				"0": "ext.pickle.default.css"

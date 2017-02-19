@@ -137,7 +137,7 @@ abstract class ATAPParser {
 		return false;
 	}
 
-	 /**
+	/**
 	 * @see \Pickle\ATAPParser::getName()
 	 */
 	public function getName() {
