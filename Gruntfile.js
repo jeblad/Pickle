@@ -11,15 +11,8 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-phpcs' );
 	grunt.loadNpmTasks( 'grunt-contrib-lualint' );
 	grunt.loadNpmTasks( 'grunt-markdownlint' );
-	grunt.loadNpmTasks( 'grunt-env' );
 
 	grunt.initConfig( {
-		env: {
-			lint: {},
-			smell: {
-				LUA_PATH: '/vagrant/mediawiki/extensions/Pickle/includes/LuaLibrary/lua/pure/\?.lua'
-			}
-		},
 		csslint: {
 			all: [
 				'modules/**/*.css'
@@ -103,7 +96,6 @@ module.exports = function ( grunt ) {
 
 	grunt.registerTask( 'lint',
 		[
-			'env:lint',
 			'csslint',
 			'stylelint',
 			'eslint',
@@ -115,7 +107,6 @@ module.exports = function ( grunt ) {
 		] );
 	grunt.registerTask( 'smell',
 		[
-			'env:smell',
 			'jscs',
 			'phpcs',
 			'lualint'
