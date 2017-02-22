@@ -4,7 +4,7 @@
 			"jeblad"
 		]
 	},
-	"pickle-desc": "{{pickle-gloss}} {{desc|name=Pickle|url=https://github.com/jeblad/Pickle }}",
+	"pickle-desc": "{{pickle-gloss}} {{desc|name=Pickle|url=https://www.mediawiki.org/wiki/Extension:Pickle }}",
 	"pickle-testspec-subpage": "{{pickle-gloss}} {{pickle-subpage-desc}} Used while creating a link to the subpage holding the test code. This is the version used for pickle-style tests.",
 	"pickle-testspec-invoke": "{{pickle-gloss}} {{pickle-invoke-desc}} Used while invoking the module on the subpage holding the test code. This is the version used for pickle-style tests.",
 	"pickle-testcase-subpage": "{{pickle-gloss}} {{pickle-subpage-desc}} Used while creating a link to the subpage holding the test code. This is the version used for testcase-style tests.",
