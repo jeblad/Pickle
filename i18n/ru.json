@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Redredsonia"
+		]
+	},
+	"pickle-test-text-pending": "Ожидание",
+	"pickle-test-text-missing": "Отсутствует",
+	"pickle-test-text-unknown": "Неизвестно",
+	"pickle-console-empty": "Нет отчетов",
+	"pickle-console-clear": "Очистить",
+	"pickle-report-result-compact-is-not-ok": "Не в порядке",
+	"pickle-report-result-compact-wrap-skip": "пропустить $1",
+	"pickle-report-result-full-wrap-skip": "пропустить $1",
+	"pickle-report-result-full-wrap-todo": "список задач $1",
+	"pickle-report-result-vivid-is-not-ok": "Не в порядке",
+	"pickle-report-result-vivid-wrap-skip": "пропустить $1",
+	"pickle-report-result-vivid-wrap-todo": "список задач $1",
+	"pickle-adapt-process-first": "Выбрать первый элемент",
+	"pickle-adapt-process-third": "Выбрать третий элемент",
+	"pickle-adapt-process-fourth": "Выбрать четвертый элемент",
+	"pickle-adapt-process-fifth": "Выбрать пятый элемент",
+	"pickle-adapt-process-sixth": "Выбрать шестой элемент",
+	"pickle-adapt-process-eight": "Выбрать восьмой элемент",
+	"pickle-adapt-process-ninth": "Выбрать девятый элемент",
+	"pickle-adapt-process-eleventh": "Выбрать одиннадцатый элемент",
+	"pickle-adapt-process-twelfth": "Выбрать двенадцатый элемент",
+	"pickle-adapt-process-as-integer": "Найти целую часть"
+}
