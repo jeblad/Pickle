@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fulup"
+		]
+	},
+	"pickle-test-text-good": "Mat",
+	"pickle-test-text-pending": "O c'hortoz",
+	"pickle-test-text-fail": "O c'hwitañ",
+	"pickle-test-text-missing": "A vank",
+	"pickle-test-text-unknown": "Dianav",
+	"pickle-test-text-todo-good": "Mat (da ober)",
+	"pickle-test-text-todo-fail": "O c'hwitañ (da ober)",
+	"pickle-test-text-skip-good": "Mat (lammat)",
+	"pickle-console-run": "Seveniñ",
+	"pickle-console-clear": "Riñsañ",
+	"pickle-frame-compact-header-all-good": "mat eo &mdash; $1",
+	"pickle-frame-compact-header-some-failed": "n'eo ket mat &mdash; $1",
+	"pickle-report-result-compact-is-ok": "mat eo",
+	"pickle-report-result-compact-is-not-ok": "N'eo ket mat",
+	"pickle-report-result-compact-wrap-skip": "lammat $1",
+	"pickle-report-result-compact-wrap-todo": "da ober $1",
+	"pickle-report-result-full-is-ok": "mat eo",
+	"pickle-report-result-full-is-not-ok": "N'eo ket mat",
+	"pickle-report-result-full-wrap-skip": "lammat $1",
+	"pickle-report-result-full-wrap-todo": "da ober $1",
+	"pickle-report-result-vivid-is-ok": "mat eo",
+	"pickle-report-result-vivid-is-not-ok": "N'eo ket mat",
+	"pickle-report-result-vivid-wrap-skip": "lammat $1",
+	"pickle-report-result-vivid-wrap-todo": "da ober $1"
+}
