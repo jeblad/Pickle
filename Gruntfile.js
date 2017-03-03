@@ -44,7 +44,7 @@ module.exports = function ( grunt ) {
 				options: {
 					newlineMaximum: 2,
 					trailingspaces: true,
-					indentation: 'tabs',
+					indentationGuess: true,
 					ignores: [ 'js-comments' ]
 				}
 			},
