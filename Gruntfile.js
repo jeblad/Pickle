@@ -162,9 +162,13 @@ module.exports = function ( grunt ) {
 			'phpcs',
 			'lualint'
 		] );
-	grunt.registerTask( 'default',
+	grunt.registerTask( 'test',
 		[
 			'lint',
 			'smell'
+		] );
+	grunt.registerTask( 'default',
+		[
+			'test'
 		] );
 };
