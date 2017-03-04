@@ -35,7 +35,8 @@ function Extractors:register( strategy )
 end
 
 function Extractors:find( str, pos )
-	--assert( str, 'Failed to provide a string' )
+	-- @todo figure out if it should be valid to not provide a string
+	assert( str, 'Failed to provide a string' )
 	local first = mw.ustring.len( str ) + 1
 	local last
 	local strategy = nil
