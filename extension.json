@@ -130,7 +130,8 @@
 			"picklelib/extractor/FalseExtractorStrategy",
 			"picklelib/extractor/TrueExtractorStrategy",
 			"picklelib/extractor/StringExtractorStrategy",
-			"picklelib/extractor/NumberExtractorStrategy"
+			"picklelib/extractor/NumberExtractorStrategy",
+			"picklelib/extractor/JsonExtractorStrategy"
 		],
 		"NeglectPages": [
 			"/doc",
