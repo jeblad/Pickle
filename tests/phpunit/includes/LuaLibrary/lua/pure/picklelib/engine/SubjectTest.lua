@@ -36,34 +36,54 @@ local function testDoubleCall( ... )
 end
 
 local tests = {
-	{ name = 'subject exists', func = testExists, type='ToString',
+	{
+		name = 'subject exists',
+		func = testExists,
+		type = 'ToString',
 		expect = { 'table' }
 	},
-	{ name = 'subject.create (nil value type)', func = testCreate, type='ToString',
+	{
+		name = 'subject.create (nil value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{ name = 'subject.create (single value type)', func = testCreate, type='ToString',
+	{
+		name = 'subject.create (single value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{ name = 'subject.create (multiple value type)', func = testCreate, type='ToString',
+	{
+		name = 'subject.create (multiple value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{ name = 'subject.stack (multiple value)', func = testStack,
+	{
+		name = 'subject.stack (multiple value)',
+		func = testStack,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' } }
 	},
-	{ name = 'subject.call (nil value)', func = testDoubleCall,
+	{
+		name = 'subject.call (nil value)',
+		func = testDoubleCall,
 		args = {},
 		expect = { { 'foo' } }
 	},
-	{ name = 'subject.call (single value)', func = testDoubleCall,
+	{
+		name = 'subject.call (single value)',
+		func = testDoubleCall,
 		args = { 'a' },
 		expect = { { 'a' } }
 	},
-	{ name = 'subject.call (multiple value)', func = testDoubleCall,
+	{
+		name = 'subject.call (multiple value)',
+		func = testDoubleCall,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' } }
 	},

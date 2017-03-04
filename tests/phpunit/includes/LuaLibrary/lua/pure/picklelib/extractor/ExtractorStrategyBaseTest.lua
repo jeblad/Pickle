@@ -30,37 +30,59 @@ local function testFind( str, ... )
 end
 
 local tests = {
-	{ name = name .. ' exists', func = testExists, type='ToString',
+	{
+		name = name .. ' exists',
+		func = testExists,
+		type = 'ToString',
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (nil value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (nil value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (single value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (single value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (multiple value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (multiple value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{ name = name .. '.type ()', func = testType,
+	{
+		name = name .. '.type ()',
+		func = testType,
 		expect = { 'base' }
 	},
-	{ name = name .. '.find (not matched)', func = testFind,
+	{
+		name = name .. '.find (not matched)',
+		func = testFind,
 		args = { 'foo bar baz', { 'test', 0, 0 } },
 		expect = {}
 	},
-	{ name = name .. '.find (matched)', func = testFind,
+	{
+		name = name .. '.find (matched)',
+		func = testFind,
 		args = { 'foo bar baz', { '^foo', 0, 0 } },
 		expect = { 1, 3 }
 	},
-	{ name = name .. '.find (matched)', func = testFind,
+	{
+		name = name .. '.find (matched)',
+		func = testFind,
 		args = { 'foo bar baz', { 'bar', 0, 0 } },
 		expect = { 5, 7 }
 	},
-	{ name = name .. '.find (matched)', func = testFind,
+	{
+		name = name .. '.find (matched)',
+		func = testFind,
 		args = { 'foo bar baz', { 'baz$', 0, 0 } },
 		expect = { 9, 11 }
 	},

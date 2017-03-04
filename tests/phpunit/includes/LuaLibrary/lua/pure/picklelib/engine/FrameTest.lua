@@ -56,56 +56,88 @@ local function testFunctionType( ... )
 	return obj:hasFixtures()
 end
 local tests = {
-	{ name = name .. ' exists', func = testExists, type='ToString',
+	{
+		name = name .. ' exists',
+		func = testExists,
+		type = 'ToString',
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (nil value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (nil value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (single value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (single value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (multiple value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (multiple value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{ name = class .. '.call (single value type)', func = testClassCall,
+	{
+		name = class .. '.call (single value type)',
+		func = testClassCall,
 		args = { 'a' },
 		expect = { 'a' }
 	},
-	{ name = class .. '.call (multiple value type)', func = testClassCall,
+	{
+		name = class .. '.call (multiple value type)',
+		func = testClassCall,
 		args = { 'a', 'b', 'c' },
 		expect = { 'a', 'b', 'c' }
 	},
-	{ name = class .. '.call (multiple strings)', func = testClassCallStrings,
+	{
+		name = class .. '.call (multiple strings)',
+		func = testClassCallStrings,
 		expect = { 'foo', 'bar', 'baz' }
 	},
-	{ name = name .. '.call (single value type)', func = testInstanceCall,
+	{
+		name = name .. '.call (single value type)',
+		func = testInstanceCall,
 		args = { 'a' },
 		expect = { 'a' }
 	},
-	{ name = name .. '.call (multiple value type)', func = testInstanceCall,
+	{
+		name = name .. '.call (multiple value type)',
+		func = testInstanceCall,
 		args = { 'a', 'b', 'c' },
 		expect = { 'a', 'b', 'c' }
 	},
-	{ name = name .. '.call (multiple strings)', func = testInstanceCallStrings,
+	{
+		name = name .. '.call (multiple strings)',
+		func = testInstanceCallStrings,
 		expect = { 'foo', 'bar', 'baz' }
 	},
-	{ name = name .. '.stringType (single string)', func = testStringType,
+	{
+		name = name .. '.stringType (single string)',
+		func = testStringType,
 		args = { 'foo' },
 		expect = { 'foo' }
 	},
-	{ name = name .. '.stringType (multiple string)', func = testStringType,
+	{
+		name = name .. '.stringType (multiple string)',
+		func = testStringType,
 		args = { 'foo', 'bar', 'baz' },
 		expect = { 'foo', 'bar', 'baz' }
 	},
-	{ name = name .. '.functionType (single function)', func = testFunctionType,
+	{
+		name = name .. '.functionType (single function)',
+		func = testFunctionType,
 		args = { function() return 'foo' end },
 		expect = { true }
 	},
-	{ name = name .. '.functionType (no function)', func = testFunctionType,
+	{
+		name = name .. '.functionType (no function)',
+		func = testFunctionType,
 		args = {},
 		expect = { false }
 	},

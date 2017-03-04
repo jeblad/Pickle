@@ -75,26 +75,42 @@ local function makeConditionTest( name, src, otr, res )
 end
 
 local tests = {
-	{ name = 'adapt exists', func = testExists, type='ToString',
+	{
+		name = 'adapt exists',
+		func = testExists,
+		type = 'ToString',
 		expect = { 'table' }
 	},
-	{ name = 'adapt.create (nil value type)', func = testCreate, type='ToString',
+	{
+		name = 'adapt.create (nil value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{ name = 'adapt.create (single value type)', func = testCreate, type='ToString',
+	{
+		name = 'adapt.create (single value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{ name = 'adapt.create (multiple value type)', func = testCreate, type='ToString',
+	{
+		name = 'adapt.create (multiple value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{ name = 'adapt.eval (single string)', func = testEval,
+	{
+		name = 'adapt.eval (single string)',
+		func = testEval,
 		args = { 'a' },
 		expect = { 'a' }
 	},
-	{ name = 'adapt.eval (single table)', func = testEval,
+	{
+		name = 'adapt.eval (single table)',
+		func = testEval,
 		args = { { 'a' } },
 		expect = { { 'a' } }
 	},

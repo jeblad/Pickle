@@ -38,29 +38,47 @@ local function testBodyNotOk( ... ) -- luacheck: ignore
 end
 
 local tests = {
-	{ name = name .. ' exists', func = testExists, type='ToString',
+	{
+		name = name .. ' exists',
+		func = testExists,
+		type = 'ToString',
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (nil value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (nil value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (single value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (single value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (multiple value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (multiple value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{ name = name .. '.key ()', func = testKey,
+	{
+		name = name .. '.key ()',
+		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-result-compact-foo' }
 	},
-	{ name = name .. '.body ok ()', func = testBodyOk,
+	{
+		name = name .. '.body ok ()',
+		func = testBodyOk,
 		expect = { '' }
 	},
-	{ name = name .. '.body not ok ()', func = testBodyNotOk,
+	{
+		name = name .. '.body not ok ()',
+		func = testBodyNotOk,
 		expect = { "\n"
 			.. '(pickle-report-result-compact-wrap-line: (foo))' .. "\n"
 			.. '(pickle-report-result-compact-wrap-line: (bar))' .. "\n"

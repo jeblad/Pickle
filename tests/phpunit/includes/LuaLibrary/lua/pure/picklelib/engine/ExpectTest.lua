@@ -35,34 +35,54 @@ local function testDoubleCall( ... )
 end
 
 local tests = {
-	{ name = 'expect exists', func = testExists, type='ToString',
+	{
+		name = 'expect exists',
+		func = testExists,
+		type = 'ToString',
 		expect = { 'table' }
 	},
-	{ name = 'expect.create (nil value type)', func = testCreate, type='ToString',
+	{
+		name = 'expect.create (nil value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{ name = 'expect.create (single value type)', func = testCreate, type='ToString',
+	{
+		name = 'expect.create (single value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{ name = 'expect.create (multiple value type)', func = testCreate, type='ToString',
+	{
+		name = 'expect.create (multiple value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{ name = 'expect.stack (multiple value)', func = testStack,
+	{
+		name = 'expect.stack (multiple value)',
+		func = testStack,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' } }
 	},
-	{ name = 'expect.call (nil value)', func = testDoubleCall,
+	{
+		name = 'expect.call (nil value)',
+		func = testDoubleCall,
 		args = {},
 		expect = { 'foo' }
 	},
-	{ name = 'expect.call (single value)', func = testDoubleCall,
+	{
+		name = 'expect.call (single value)',
+		func = testDoubleCall,
 		args = { 'a' },
 		expect = { 'a' }
 	},
-	{ name = 'expect.call (multiple value)', func = testDoubleCall,
+	{
+		name = 'expect.call (multiple value)',
+		func = testDoubleCall,
 		args = { 'a', 'b', 'c' },
 		expect = { 'a', 'b', 'c' }
 	},

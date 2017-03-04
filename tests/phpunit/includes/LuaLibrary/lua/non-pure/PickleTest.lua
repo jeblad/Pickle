@@ -26,16 +26,27 @@ local function testCall( ... ) -- luacheck: ignore
 end
 
 local tests = {
-	{ name = 'pickles exists', func = testExists, type='ToString',
+	{
+		name = 'pickles exists',
+		func = testExists,
+		type = 'ToString',
 		expect = { 'table' }
 	},
-	{ name = 'subject exists', func = testSubjectExists, type='ToString',
+	{
+		name = 'subject exists',
+		func = testSubjectExists,
+		type = 'ToString',
 		expect = { 'table' }
 	},
-	{ name = 'expect exists', func = testExpectExists, type='ToString',
+	{
+		name = 'expect exists',
+		func = testExpectExists,
+		type = 'ToString',
 		expect = { 'table' }
 	},
-	{ name = 'pickles.call', func = testCall,
+	{
+		name = 'pickles.call',
+		func = testCall,
 		args = { },
 		expect = { 'table', 'table' }
 	},

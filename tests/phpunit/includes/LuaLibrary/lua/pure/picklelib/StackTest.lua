@@ -60,106 +60,162 @@ local function testFlush( ... )
 end
 
 local tests = {
-	{ name = 'stack exists', func = testExists, type='ToString',
+	{
+		name = 'stack exists',
+		func = testExists,
+		type = 'ToString',
 		expect = { 'table' }
 	},
-	{ name = 'stack.create (nil value type)', func = testCreate, type='ToString',
+	{
+		name = 'stack.create (nil value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{ name = 'stack.create (single value type)', func = testCreate, type='ToString',
+	{
+		name = 'stack.create (single value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{ name = 'stack.create (multiple value type)', func = testCreate, type='ToString',
+	{
+		name = 'stack.create (multiple value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{ name = 'stack.isEmpty (nil value)', func = testIsEmpty,
+	{
+		name = 'stack.isEmpty (nil value)',
+		func = testIsEmpty,
 		args = { nil },
 		expect = { true }
 	},
-	{ name = 'stack.isEmpty (string value)', func = testIsEmpty,
+	{
+		name = 'stack.isEmpty (string value)',
+		func = testIsEmpty,
 		args = { '' },
 		expect = { false }
 	},
-	{ name = 'stack.depth (nil value)', func = testDepth,
+	{
+		name = 'stack.depth (nil value)',
+		func = testDepth,
 		args = { nil },
 		expect = { 0 }
 	},
-	{ name = 'stack.depth (string value)', func = testDepth,
+	{
+		name = 'stack.depth (string value)',
+		func = testDepth,
 		args = { '' },
 		expect = { 1 }
 	},
-	{ name = 'stack.depth (3x string values)', func = testDepth,
+	{
+		name = 'stack.depth (3x string values)',
+		func = testDepth,
 		args = { 'foo', 'bar', 'baz' },
 		expect = { 3 }
 	},
-	{ name = 'stack.layout (various values)', func = testLayout,
+	{
+		name = 'stack.layout (various values)',
+		func = testLayout,
 		args = { 'foo', {'bar'}, 'baz', 42 },
 		expect = { { 'string', 'table', 'string', 'number' } }
 	},
-	{ name = 'stack.bottom (3x string values)', func = testBottom,
+	{
+		name = 'stack.bottom (3x string values)',
+		func = testBottom,
 		args = { 'foo', 'bar', 'baz' },
 		expect = { 'foo' }
 	},
-	{ name = 'stack.top (nil value)', func = testTop,
+	{
+		name = 'stack.top (nil value)',
+		func = testTop,
 		args = { nil },
 		expect = {}
 	},
-	{ name = 'stack.top (single value)', func = testTop,
+	{
+		name = 'stack.top (single value)',
+		func = testTop,
 		args = { 'a' },
 		expect = { 'a' }
 	},
-	{ name = 'stack.top (multiple value)', func = testTop,
+	{
+		name = 'stack.top (multiple value)',
+		func = testTop,
 		args = { 'a', 'b', 'c' },
 		expect = { 'c' }
 	},
-	{ name = 'stack.push (nil value)', func = testPush,
+	{
+		name = 'stack.push (nil value)',
+		func = testPush,
 		args = { nil },
 		expect = { nil }
 	},
-	{ name = 'stack.push (single value)', func = testPush,
+	{
+		name = 'stack.push (single value)',
+		func = testPush,
 		args = { 'a' },
 		expect = { 'a' }
 	},
-	{ name = 'stack.push (multiple value)', func = testPush,
+	{
+		name = 'stack.push (multiple value)',
+		func = testPush,
 		args = { 'a', 'b', 'c' },
 		expect = { 'c' }
 	},
-	{ name = 'stack.pop (nil value)', func = testPop,
+	{
+		name = 'stack.pop (nil value)',
+		func = testPop,
 		args = { nil, 'extra' },
 		expect = { nil }
 	},
-	{ name = 'stack.pop (single value)', func = testPop,
+	{
+		name = 'stack.pop (single value)',
+		func = testPop,
 		args = { 'a', 'extra' },
 		expect = { 'a' }
 	},
-	{ name = 'stack.pop (multiple value)', func = testPop,
+	{
+		name = 'stack.pop (multiple value)',
+		func = testPop,
 		args = { 'a', 'b', 'c', 'extra' },
 		expect = { 'c' }
 	},
-	{ name = 'stack.export (nil value)', func = testExport,
+	{
+		name = 'stack.export (nil value)',
+		func = testExport,
 		args = { nil },
 		expect = { {}, nil }
 	},
-	{ name = 'stack.export (single value)', func = testExport,
+	{
+		name = 'stack.export (single value)',
+		func = testExport,
 		args = { 'a' },
 		expect = { { 'a' }, 'a' }
 	},
-	{ name = 'stack.export (multiple value)', func = testExport,
+	{
+		name = 'stack.export (multiple value)',
+		func = testExport,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' }, 'c' }
 	},
-	{ name = 'stack.flush (nil value)', func = testFlush,
+	{
+		name = 'stack.flush (nil value)',
+		func = testFlush,
 		args = { nil },
 		expect = { {}, nil }
 	},
-	{ name = 'stack.flush (single value)', func = testFlush,
+	{
+		name = 'stack.flush (single value)',
+		func = testFlush,
 		args = { 'a' },
 		expect = { { 'a' }, nil }
 	},
-	{ name = 'stack.flush (multiple value)', func = testFlush,
+	{
+		name = 'stack.flush (multiple value)',
+		func = testFlush,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' }, nil }
 	},

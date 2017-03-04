@@ -64,54 +64,82 @@ local function testBody( ... ) -- luacheck: ignore
 end
 
 local tests = {
-	{ name = name .. ' exists', func = testExists, type='ToString',
+	{
+		name = name .. ' exists',
+		func = testExists,
+		type = 'ToString',
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (nil value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (nil value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (single value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (single value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (multiple value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (multiple value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{ name = name .. '.state ()', func = testState,
+	{
+		name = name .. '.state ()',
+		func = testState,
 		args = { false },
 		expect = { '(pickle-report-result-full-is-not-ok)' }
 	},
-	{ name = name .. '.state ()', func = testState,
+	{
+		name = name .. '.state ()',
+		func = testState,
 		args = { true },
 		expect = { '(pickle-report-result-full-is-ok)' }
 	},
-	{ name = name .. '.skip ()', func = testSkip,
+	{
+		name = name .. '.skip ()',
+		func = testSkip,
 		args = { 'foo' },
 		expect = { '(pickle-report-result-full-wrap-skip: (foo))' }
 	},
-	{ name = name .. '.todo ()', func = testTodo,
+	{
+		name = name .. '.todo ()',
+		func = testTodo,
 		args = { 'bar' },
 		expect = { '(pickle-report-result-full-wrap-todo: bar)' }
 	},
-	{ name = name .. '.description ()', func = testDescription,
+	{
+		name = name .. '.description ()',
+		func = testDescription,
 		args = { 'baz' },
 		expect = { '(pickle-report-result-full-wrap-description: baz)' }
 	},
-	{ name = name .. '.header ()', func = testHeaderSkip,
+	{
+		name = name .. '.header ()',
+		func = testHeaderSkip,
 		args = { 'baz' },
 		expect = { '(pickle-report-result-full-is-not-ok)'
 			.. '(pickle-report-result-full-wrap-description: testing)'
 			.. '# (pickle-report-result-full-wrap-skip: (baz))' }
 	},
-	{ name = name .. '.header ()', func = testHeaderTodo,
+	{
+		name = name .. '.header ()',
+		func = testHeaderTodo,
 		args = { 'baz' },
 		expect = { '(pickle-report-result-full-is-ok)'
 			.. '(pickle-report-result-full-wrap-description: testing)'
 			.. '# (pickle-report-result-full-wrap-todo: baz)' }
 	},
-	{ name = name .. '.body ()', func = testBody,
+	{
+		name = name .. '.body ()',
+		func = testBody,
 		expect = { "\n"
 			.. '(pickle-report-result-full-wrap-line: (foo))' .. "\n"
 			.. '(pickle-report-result-full-wrap-line: (bar))' .. "\n"

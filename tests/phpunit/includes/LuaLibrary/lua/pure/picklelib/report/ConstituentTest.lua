@@ -7,7 +7,8 @@
 local testframework = require 'Module:TestFramework'
 
 local lib = require 'picklelib/report/Constituent'
-local name = 'constituent'
+local
+name = 'constituent'
 local class = 'constituent'
 
 local function makeTest( ... )
@@ -31,26 +32,42 @@ local function testType( ... )
 end
 
 local tests = {
-	{ name = name .. ' exists', func = testExists, type='ToString',
+	{
+		name = name .. ' exists',
+		func = testExists,
+		type = 'ToString',
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (nil value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (nil value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (single value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (single value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (multiple value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (multiple value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{ name = name .. '.realize (nil)', func = testRealize,
+	{
+		name = name .. '.realize (nil)',
+		func = testRealize,
 		args = { nil },
 		expect = { '' }
 	},
-	{ name = name .. '.type ()', func = testType,
+	{
+		name = name .. '.type ()',
+		func = testType,
 		expect = { class }
 	},
 }

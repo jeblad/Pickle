@@ -42,31 +42,49 @@ local function testConstituents( ... )
 end
 
 local tests = {
-	{ name = name .. ' exists', func = testExists, type='ToString',
+	{
+		name = name .. ' exists',
+		func = testExists,
+		type = 'ToString',
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (nil value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (nil value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (single value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (single value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{ name = name .. '.create (multiple value type)', func = testCreate, type='ToString',
+	{
+		name = name .. '.create (multiple value type)',
+		func = testCreate,
+		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
 	--[[
-	{ name = name .. '.render (nil)', func = testRender,
+	{
+		name = name .. '.render (nil)',
+		func = testRender,
 		args = { nil },
 		expect = { '' }
 	},
 	--]]
-	{ name = name .. '.type ()', func = testType,
+	{
+		name = name .. '.type ()',
+		func = testType,
 		expect = { class }
 	},
-	{ name = name .. ':addConstituent (multiple value type)', func = testConstituents,
+	{
+		name = name .. ':addConstituent (multiple value type)',
+		func = testConstituents,
 		args = { 'foo', 'bar', 'baz' },
 		expect = { { 'foo', 'bar', 'baz' } }
 	},
