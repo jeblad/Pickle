@@ -4,12 +4,19 @@
 			"Robby"
 		]
 	},
+	"pickle-test-text-good": "Gutt",
 	"pickle-test-text-missing": "Feelt",
 	"pickle-test-text-unknown": "Onbekannt",
+	"pickle-console-clear": "Eidel maachen",
 	"pickle-frame-compact-header-all-good": "ok &mdash; $1",
+	"pickle-frame-compact-header-some-failed": "net ok &mdash; $1",
 	"pickle-report-result-compact-is-ok": "ok",
+	"pickle-report-result-compact-is-not-ok": "net ok",
 	"pickle-report-result-compact-wrap-skip": "$1 iwwersprangen",
 	"pickle-report-result-full-is-ok": "ok",
+	"pickle-report-result-full-is-not-ok": "net ok",
+	"pickle-report-result-full-wrap-skip": "$1 iwwersprangen",
 	"pickle-report-result-vivid-is-ok": "ok",
+	"pickle-report-result-vivid-is-not-ok": "net ok",
 	"pickle-report-result-vivid-wrap-skip": "$1 iwwersprangen"
 }

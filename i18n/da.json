@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"jeblad"
+			"jeblad",
+			"Jhertel"
 		]
 	},
 	"pickle-desc": "Dende udvidelse lægger til grundlæggende Pickle testing for Lua moduler.",
@@ -14,21 +15,21 @@
 	"pickle-test-text-todo-fail": "Fejler (ufærdig)",
 	"pickle-test-text-skip-good": "God (udelat)",
 	"pickle-test-text-skip-fail": "Fejler (udelat)",
-	"pickle-tracking-category-good": "Moduler med gode tester",
+	"pickle-tracking-category-good": "Moduler med gode tests",
 	"pickle-tracking-category-good-desc": "Resultaterne indikerer en »god« tilstand efter evaluering af testerne.",
 	"pickle-tracking-category-pending": "Moduler med udsatte/uklare tester",
 	"pickle-tracking-category-pending-desc": "Resultaterne indikerer en »udsat« eller »uklar« tilstand efter evaluering af testerne.",
 	"pickle-tracking-category-todo": "Moduler med uferdige tester",
 	"pickle-tracking-category-todo-desc": "Resultaterne indikerer at en eller flere »ufærdig« (»todo«) markør(er) er funden efter evaluering af testerne.",
 	"pickle-tracking-category-skip": "Moduler med udelatte tester",
-	"pickle-tracking-category-skip-desc": "Resultaterne indikerer at en eller flere »udelat« (»skip«) markør(er) er funden efter evaluering af testerne.",
+	"pickle-tracking-category-skip-desc": "Resultaterne indikerer at en eller flere »udelad«-markør(er) (»skip« markers) er fundet efter evaluering af testene.",
 	"pickle-tracking-category-fail": "Moduler med fejlende tester",
 	"pickle-tracking-category-fail-desc": "Resultaterne indikerer en »fejlende« tilstand efter evaluereing af testerne.",
 	"pickle-tracking-category-missing": "Moduler med manglende tester",
 	"pickle-tracking-category-missing-desc": "Resultaterne indikerer en »manglende« tilstand efter evaluereing af testerne.",
-	"pickle-tracking-category-unknown": "Moduler med ukendte tester",
+	"pickle-tracking-category-unknown": "Moduler med ukendte tests",
 	"pickle-tracking-category-unknown-desc": "Resultaterne indikerer en »ukendt« tilstand efter evaluereing af testerne.",
-	"pickle-track-log-name": "Modul sporingslogg",
+	"pickle-track-log-name": "Modulsporingslog",
 	"pickle-track-log-header": "Dende loggen viser et sammendrag af ændringsresultater fra testede moduler.",
 	"pickle-track-log-entry-good": "{{GENDER:$2|utledt automatisk}} at siden $1 har gode tester",
 	"pickle-track-log-entry-pending": "{{GENDER:$2|utledt automatisk}} at siden $1 har udsadte tester",
@@ -47,7 +48,7 @@
 	"pickle-report-result-compact-is-ok": "ok (god)",
 	"pickle-report-result-compact-is-not-ok": "not ok (fejler)",
 	"pickle-report-result-compact-wrap-skip": "skip (afbrudt) $1",
-	"pickle-report-result-compact-wrap-todo": "todo (uferdig) $1",
+	"pickle-report-result-compact-wrap-todo": "todo (ufærdig) $1",
 	"pickle-report-result-full-is-ok": "ok (god)",
 	"pickle-report-result-full-is-not-ok": "not ok (fejler)",
 	"pickle-report-result-full-wrap-skip": "skip (afbrudt) $1",
@@ -74,7 +75,7 @@
 	"pickle-adapt-process-as-upper-first": "Skift første tegn i strengen til stort tegn",
 	"pickle-adapt-process-as-lower-first": "Skift første tegn i strengen til lite tegn",
 	"pickle-adapt-process-as-reverse": "Reverser strengen",
-	"pickle-adapt-process-as-u-upper": "Skift alle tegn i Unicode-strengen til store tegn",
+	"pickle-adapt-process-as-u-upper": "Gør alle bogstaver i Unicode-strengen til store bogstaver",
 	"pickle-adapt-process-as-u-lower": "Skift alle tegn i Unicode-strengen til små tegn",
 	"pickle-adapt-process-as-u-upper-first": "Skift første tegn i Unicode-strengen til stort tegn",
 	"pickle-adapt-process-as-u-lower-first": "Skift første tegn i Unicode-strengen til lite tegn",
@@ -98,5 +99,5 @@
 	"pickle-adapt-condition-to-be-lesser-or-equal": "Skal være mindre end eller lig målet",
 	"pickle-adapt-condition-to-be-greater-or-equal": "Skal være større end eller lig målet",
 	"pickle-adapt-condition-to-be-match": "Skal gjenfindes i målet",
-	"pickle-adapt-condition-to-be-u-match": "Skal gjenfindes i Unicode-målet"
+	"pickle-adapt-condition-to-be-u-match": "Skal matches i Unicode-destinationen"
 }
