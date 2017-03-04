@@ -15,7 +15,7 @@ Renders._styles = {}
 -- This will try to create the style if it isn't created yet.'
 function Renders:__call( name ) -- luacheck: ignore self
 	assert( name, 'Failed to provide a name' )
-	assert( Renders._styles[name] 'Failed to provide a previously registered style' )
+	assert( Renders._styles[name], 'Failed to provide a previously registered style' )
 	return Renders._styles[name]
 end
 
@@ -55,7 +55,7 @@ end
 -- This will typically be "Result" or "Plan".
 function Renders:find( name )
 	assert( name, 'Failed to provide a name' )
-	assert( self._types[type] 'Failed to provide a previously registered type' )
+	assert( self._types[type], 'Failed to provide a previously registered type' )
 	return self._types[type]
 end
 
