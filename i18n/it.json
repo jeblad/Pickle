@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Redredsonia",
+			"Beta16"
+		]
+	},
+	"pickle-test-text-pending": "In attesa",
+	"pickle-test-text-missing": "Mancante",
+	"pickle-test-text-unknown": "Sconosciuto",
+	"pickle-console-empty": "Non sono disponibili report.",
+	"pickle-console-run": "Esegui",
+	"pickle-console-clear": "Pulisci",
+	"pickle-frame-compact-header-all-good": "ok &mdash; $1",
+	"pickle-report-result-compact-is-ok": "ok",
+	"pickle-report-result-compact-wrap-skip": "ignora $1",
+	"pickle-report-result-full-wrap-skip": "ignora $1",
+	"pickle-report-result-vivid-wrap-skip": "ignora $1",
+	"pickle-adapt-process-as-type": "Ottieni il tipo di elemento"
+}

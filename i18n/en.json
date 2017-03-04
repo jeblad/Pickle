@@ -4,7 +4,7 @@
 			"jeblad"
 		]
 	},
-	"pickle-desc": "This extension adds basic Pickle testing to Lua modules.",
+	"pickle-desc": "Adds basic Pickle testing to Lua modules",
 	"pickle-testspec-subpage": "$1/pickle",
 	"pickle-testspec-invoke": "{{#invoke:$1|tap}}",
 	"pickle-testcase-subpage": "$1/testcase",

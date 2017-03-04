@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"烈羽"
+		]
+	},
+	"pickle-test-text-good": "良好",
+	"pickle-test-text-unknown": "不明",
+	"pickle-console-run": "執行",
+	"pickle-console-clear": "清除"
+}
