@@ -12,7 +12,15 @@ If you need a glossary, a lot of the terms are tecnical jargon, one is defined a
 
 There should be a template `pickle-gloss` reading (with additional markup)
 
+> Please check out the
 > [//mediawiki.org/wiki/Special:MyLanguage/Help:Pickle/Glossary glossary]
+> and try to be consistent.
+
+There should be a template `pickle-category-desc` reading
+
+> This is the category or the pickle page, given that the test result
+> is "{{{1}}}". Should be a very minimalistic text that can be used as link in
+> the page indicators.
 
 There should be a template `pickle-indicator-desc` reading
 
