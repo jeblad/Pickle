@@ -4,22 +4,40 @@
 local Stack = require 'picklelib/Stack'
 -- local util = require 'picklelib/util'
 
+-- @var class var for lib
+local Frame = {}
+
 -- non-pure libs
 local Plan -- luacheck: ignore
 local Subject
+local Extractors
 -- Setup for prod or test
 if mw.pickle then
-	-- structure exist, make access simpler
+	-- production, structure exist, make access simpler
 	Plan = mw.pickle.stack
 	Subject = mw.pickle.subject
+	Extractors = mw.pickle.extractors
 else
-	-- structure does not exist, require the libs
+	-- test, structure does not exist, require the libs
 	Plan = require 'picklelib/report/Plan'
 	Subject = require 'picklelib/engine/Subject'
-end
+	Extractors = require('picklelib/extractor/ExtractorStrategies').create()
 
--- @var class var for lib
-local Frame = {}
+	--- Expose plan
+	function Frame:plan() -- luacheck: ignore self
+		return Plan
+	end
+
+	--- Expose subject
+	function Frame:subject() -- luacheck: ignore self
+		return Subject
+	end
+
+	--- Expose extractors
+	function Frame:extractors() -- luacheck: ignore self
+		return Extractors
+	end
+end
 
 --- Lookup of missing class members
 function Frame:__index( key ) -- luacheck: ignore self
@@ -94,9 +112,24 @@ function Frame:tableType( ... ) -- luacheck: ignore
 	Subject.stack:push( ... )
 end
 
+--- Check if the frame has descriptions
+function Frame:hasDescriptions()
+	return not self._descriptions:isEmpty()
+end
+
+--- Check number of descriptions
+function Frame:numDescriptions()
+	return self._descriptions:depth()
+end
+
 --- Check if the frame has fixtures
 function Frame:hasFixtures()
 	return not self._fixtures:isEmpty()
+end
+
+--- Check number of fixtures
+function Frame:numFixtures()
+	return self._fixtures:depth()
 end
 
 --- Check if the instance is evaluated
@@ -109,13 +142,41 @@ function Frame:descriptions()
 	return self._descriptions:export()
 end
 
+--- Get number of additional subjects
+function Frame:numSubjects()
+	return Subject.stack:depth() - self._depth
+end
+
 --- Eval the fixtures
-function Frame:eval( ... ) -- luacheck: ignore
-	for _,v in ipairs( { self._descriptions:export() } ) do
+function Frame:eval() -- luacheck: ignore
+	if not self:hasFixtures() then
+		-- @todo should create a descriptive skip message
+		--Plan.create(  )
+		self._eval = true
+		return self
+	end
+
+	for _,v in ipairs( self:hasDescriptions()
+			and { self._descriptions:export() }
+			or { 'has no description' } ) do
+		local pos = 1
+		local args = {}
+
+		repeat
+			local strategy, first, last = Extractors:find( v, pos )
+			if strategy then
+				table.insert( args, strategy:cast( v, first, last ) )
+				pos = 1 + last
+			end
+		until( not strategy )
+
 		for _,w in ipairs( { self._fixtures:export() } ) do
-			-- @todo following should use xpcall
-			w( v )
-			-- @todo following should capture content on stack
+			local res, data = pcall( w( unpack{ args } ) )
+			if res then
+				-- @todo should capture content on stack
+			else
+				-- @todo should create a descriptive error message
+			end
 			--Plan.create(  )
 		end
 	end
