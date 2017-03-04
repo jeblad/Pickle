@@ -30,7 +30,7 @@ end
 local mt = {}
 
 --- Get arguments for a class call
-function mt:__call( ... ) -- luacheck: ignore self
+function mt:__call( ... ) -- luacheck: ignore
 	local obj = Frame.create()
 	obj:dispatch( ... )
 	assert( not obj:isDone(), 'Failed, got a done instance' )
@@ -90,7 +90,7 @@ function Frame:functionType( ... )
 end
 
 --- Push a table
-function Frame:tableType( ... ) -- luacheck: ignore self
+function Frame:tableType( ... ) -- luacheck: ignore
 	Subject.stack:push( ... )
 end
 

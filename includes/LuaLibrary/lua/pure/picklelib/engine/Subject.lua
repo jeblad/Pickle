@@ -26,7 +26,7 @@ end
 local mt = { __index = Adapt }
 
 --- Get a clone or create a new instance
-function mt:__call( ... ) -- luacheck: ignore self
+function mt:__call( ... ) -- luacheck: ignore
 	local t = { ... }
 	Subject.stack:push( #t == 0 and Subject.stack:top() or Subject.create( t ) )
 	return Subject.stack:top()

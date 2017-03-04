@@ -239,7 +239,7 @@ end
 
 --- Reorder the pair of parties involved in the condition
 -- This can be overridden in subclasses
-function Adapt:reorder( ... ) -- luacheck: ignore self
+function Adapt:reorder( ... ) -- luacheck: ignore
 	return ...
 end
 

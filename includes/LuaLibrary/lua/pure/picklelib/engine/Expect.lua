@@ -24,7 +24,7 @@ end
 local mt = { __index = Adapt }
 
 --- Get a clone or create a new instance
-function mt:__call( ... ) -- luacheck: ignore self
+function mt:__call( ... ) -- luacheck: ignore
 	local t = { ... }
 	Expect.stack:push( #t == 0 and Expect.stack:top() or Expect.create( ... ) )
 	return Expect.stack:top()
