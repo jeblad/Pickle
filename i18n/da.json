@@ -19,7 +19,7 @@
 	"pickle-tracking-category-good-desc": "Resultaterne indikerer en »god« tilstand efter evaluering af testene.",
 	"pickle-tracking-category-pending": "Moduler med udsatte/uklare tests",
 	"pickle-tracking-category-pending-desc": "Resultaterne indikerer en »udsat« eller »uklar« tilstand efter evaluering af testene.",
-	"pickle-tracking-category-todo": "Moduler med uferdige tests",
+	"pickle-tracking-category-todo": "Moduler med ufærdige tests",
 	"pickle-tracking-category-todo-desc": "Resultaterne indikerer at en eller flere »ufærdig«-markør(er) (»todo« markers) er fundet efter evaluering af testene.",
 	"pickle-tracking-category-skip": "Moduler med udelatte tests",
 	"pickle-tracking-category-skip-desc": "Resultaterne indikerer at en eller flere »udelad«-markør(er) (»skip« markers) er fundet efter evaluering af testene.",
