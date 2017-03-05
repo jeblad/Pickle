@@ -7,6 +7,7 @@
 	"pickle-test-text-good": "Gutt",
 	"pickle-test-text-missing": "Feelt",
 	"pickle-test-text-unknown": "Onbekannt",
+	"pickle-console-run": "Lass",
 	"pickle-console-clear": "Eidel maachen",
 	"pickle-frame-compact-header-all-good": "ok &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "net ok &mdash; $1",
@@ -18,5 +19,17 @@
 	"pickle-report-result-full-wrap-skip": "$1 iwwersprangen",
 	"pickle-report-result-vivid-is-ok": "ok",
 	"pickle-report-result-vivid-is-not-ok": "net ok",
-	"pickle-report-result-vivid-wrap-skip": "$1 iwwersprangen"
+	"pickle-report-result-vivid-wrap-skip": "$1 iwwersprangen",
+	"pickle-adapt-process-first": "Éischt Element eraussichen",
+	"pickle-adapt-process-second": "Zweet Element eraussichen",
+	"pickle-adapt-process-third": "Drëtt Element eraussichen",
+	"pickle-adapt-process-fourth": "Véiert Element eraussichen",
+	"pickle-adapt-process-fifth": "Fënneft Element eraussichen",
+	"pickle-adapt-process-sixth": "Sechst Element eraussichen",
+	"pickle-adapt-process-seventh": "Siwent Element eraussichen",
+	"pickle-adapt-process-eighth": "Aacht Element eraussichen",
+	"pickle-adapt-process-ninth": "Néngt Element eraussichen",
+	"pickle-adapt-process-tenth": "Zéngt Element eraussichen",
+	"pickle-adapt-process-eleventh": "Eeleft Element eraussichen",
+	"pickle-adapt-process-twelfth": "Zwieleft Element eraussichen"
 }

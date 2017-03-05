@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"jeblad"
+			"jeblad",
+			"Jeblad"
 		]
 	},
-	"pickle-desc": "Denne utvidinga legg til grunnleggjande Pickle testing for Lua modular.",
+	"pickle-desc": "Legg til grunnleggjande Pickle testing for Lua modular.",
 	"pickle-test-text-good": "God",
 	"pickle-test-text-pending": "Utsett",
 	"pickle-test-text-fail": "Feilar",
