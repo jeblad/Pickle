@@ -96,7 +96,7 @@
 	"pickle-adapt-process-as-u-upper": "{{pickle-gloss}} {{pickle-preprocess}} {{pickle-ustring-format|upper}}",
 	"pickle-adapt-process-as-u-lower": "{{pickle-gloss}} {{pickle-preprocess}} {{pickle-ustring-format|lower}}",
 	"pickle-adapt-process-as-u-upper-first": "{{pickle-gloss}} {{pickle-preprocess}} {{pickle-ustring-format|upper}}",
-	"pickle-adapt-process-as-u-lower-first": "{{pickle-gloss}} {{pickle-preprocess}} {{pickle-ustring-format|upper}}",
+	"pickle-adapt-process-as-u-lower-first": "{{pickle-gloss}} {{pickle-preprocess}} {{pickle-ustring-format|lower}}",
 	"pickle-adapt-process-as-u-n-f-c": "{{pickle-gloss}} {{pickle-preprocess}}",
 	"pickle-adapt-process-as-u-n-f-d": "{{pickle-gloss}} {{pickle-preprocess}}",
 	"pickle-adapt-process-as-number": "{{pickle-gloss}} {{pickle-preprocess}}",
