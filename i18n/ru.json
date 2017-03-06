@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Redredsonia"
+			"Redredsonia",
+			"Kareyac"
 		]
 	},
+	"pickle-test-text-good": "Хорошо",
 	"pickle-test-text-pending": "Ожидание",
 	"pickle-test-text-missing": "Отсутствует",
 	"pickle-test-text-unknown": "Неизвестно",

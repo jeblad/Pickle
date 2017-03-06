@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"烈羽"
+			"烈羽",
+			"和平奮鬥救地球"
 		]
 	},
 	"pickle-test-text-good": "良好",
 	"pickle-test-text-unknown": "不明",
 	"pickle-console-run": "執行",
-	"pickle-console-clear": "清除"
+	"pickle-console-clear": "清除",
+	"pickle-adapt-process-as-u-upper-first": "大寫Unicode字串中的首個碼位",
+	"pickle-adapt-process-as-u-lower-first": "小寫Unicode字串中的首個碼位"
 }
