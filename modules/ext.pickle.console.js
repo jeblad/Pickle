@@ -60,7 +60,7 @@ $( function () {
 
 		if ( pending ) {
 			// If there is an XHR request pending, don't send another one
-			// We set a spinner in the output are as a feed back.
+			// We set a spinner in the output as a feed back.
 			return;
 		}
 
