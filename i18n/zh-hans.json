@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Tonylianlong"
 		]
 	},
 	"pickle-desc": "添加基本Pickle测试至Lua模块",
@@ -93,7 +94,7 @@
 	"pickle-adapt-process-as-fraction": "查找分数部分",
 	"pickle-adapt-condition-to-be-equal": "应等于目标（相等）",
 	"pickle-adapt-condition-to-be-boolean-equal": "布尔值应等于目标（计算为相同布尔值）",
-	"pickle-adapt-condition-to-be-strict-equal": "应精确等于目标（完全相等并具有相等类型）",
+	"pickle-adapt-condition-to-be-strict-equal": "应精确等于目标（完全相等并具有相同类型）",
 	"pickle-adapt-condition-to-be-same": "应与目标相同（在类型约制后相等）",
 	"pickle-adapt-condition-to-be-deep-equal": "深度应等于目标（深入表格）",
 	"pickle-adapt-condition-to-be-contained": "应包含在目标中",
