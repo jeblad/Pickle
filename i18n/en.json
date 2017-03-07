@@ -48,7 +48,7 @@
 	"pickle-track-log-entry-unknown": "{{GENDER:$2|inferred automatically}} that $1 has unknown tests",
 	"pickle-console-title": "Test console",
 	"pickle-console-empty": "No reports available.",
-	"pickle-console-cleared": "Clearded console.",
+	"pickle-console-cleared": "Cleared console.",
 	"pickle-console-run": "Run",
 	"pickle-console-clear": "Clear",
 	"pickle-report-skip-no-message": "The message key \"$1\" does not exist",
