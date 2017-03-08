@@ -17,6 +17,7 @@ end
 
 --- Initialize a new instance
 function Constituent:_init( ... ) -- luacheck: ignore
+	self._lang = false
 	self._type = 'constituent'
 	return self
 end

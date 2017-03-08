@@ -36,29 +36,33 @@ local function testState( bool )
 	end
 	return tostring( makeTest():realizeState( p, 'qqx' ) )
 end
-
+--[[
 local function testSkip( ... )
 	local p = fix.create():setSkip( ... )
 	return tostring( makeTest():realizeSkip( p, 'qqx' ) )
 end
-
+]]
+--[[
 local function testTodo( ... )
 	local p = fix.create():setTodo( ... )
 	return tostring( makeTest():realizeTodo( p, 'qqx' ) )
 end
-
+]]
+--[[
 local function testDescription( ... )
 	local p = fix.create():setDescription( ... )
 	return tostring( makeTest():realizeDescription( p, 'qqx' ) )
 end
-
+]]
 local function testHeaderSkip( ... )
-	local p = fix.create():setDescription( 'testing' ):setSkip( ... ):notOk()
+	--local p = fix.create():setDescription( 'testing' ):setSkip( ... ):notOk()
+	local p = fix.create():notOk()
 	return tostring( makeTest():realizeHeader( p, 'qqx' ) )
 end
 
 local function testHeaderTodo( ... )
-	local p = fix.create():setDescription( 'testing' ):setTodo( ... ):ok()
+	--local p = fix.create():setDescription( 'testing' ):setTodo( ... ):ok()
+	local p = fix.create():ok()
 	return tostring( makeTest():realizeHeader( p, 'qqx' ) )
 end
 
@@ -122,6 +126,7 @@ local tests = {
 			.. '(pickle-report-result-vivid-is-ok)'
 			.. '</span>' }
 	},
+--[[
 	{
 		name = name .. '.skip ()',
 		func = testSkip,
@@ -130,6 +135,8 @@ local tests = {
 			.. '(pickle-report-result-vivid-wrap-skip: (foo))'
 			.. '</span>' }
 	},
+]]
+--[[
 	{
 		name = name .. '.todo ()',
 		func = testTodo,
@@ -138,6 +145,8 @@ local tests = {
 			.. '(pickle-report-result-vivid-wrap-todo: bar)'
 			.. '</span>' }
 	},
+]]
+--[[
 	{
 		name = name .. '.description ()',
 		func = testDescription,
@@ -146,6 +155,8 @@ local tests = {
 			.. '(pickle-report-result-vivid-wrap-description: baz)'
 			.. '</span>' }
 	},
+]]
+--[[
 	{
 		name = name .. '.header ()',
 		func = testHeaderSkip,
@@ -165,6 +176,8 @@ local tests = {
 			.. '</span>'
 			.. '</div>' }
 	},
+	]]
+	--[[
 	{
 		name = name .. '.header ()',
 		func = testHeaderTodo,
@@ -184,6 +197,7 @@ local tests = {
 			.. '</span>'
 			.. '</div>' }
 	},
+	]]
 	{
 		name = name .. '.body ()',
 		func = testBodyOk,

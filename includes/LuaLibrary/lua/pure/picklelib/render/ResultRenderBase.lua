@@ -27,85 +27,6 @@ function ResultRender:key( str ) -- luacheck: ignore
 	return nil
 end
 
---- Realize reported data for skip
--- The "skip" is a message identified by a key.
-function ResultRender:realizeSkip( src, lang )
-	assert( src, 'Failed to provide a source' )
-
-	if not src:hasSkip() then
-		return ''
-	end
-
-	local realization = ''
-	local inner = mw.message.new( src:getSkip() )
-
-	if lang then
-		inner:inLanguage( lang )
-	end
-
-	if not inner:isDisabled() then
-		realization = inner:plain()
-	end
-
-	local outer = mw.message.new( self:key( 'wrap-skip' ), realization )
-
-	if lang then
-		outer:inLanguage( lang )
-	end
-
-	if outer:isDisabled() then
-		return realization
-	end
-
-	return outer:plain()
-end
-
---- Realize reported data for todo
--- The "todo" is a text string.
-function ResultRender:realizeTodo( src, lang )
-	assert( src, 'Failed to provide a source' )
-
-	if not src:hasTodo() then
-		return ''
-	end
-
-	local realization = mw.text.encode( src:getTodo() )
-	local outer = mw.message.new( self:key( 'wrap-todo' ), realization )
-
-	if lang then
-		outer:inLanguage( lang )
-	end
-
-	if outer:isDisabled() then
-		return realization
-	end
-
-	return outer:plain()
-end
-
---- Realize reported data for description
--- The "description" is a text string.
-function ResultRender:realizeDescription( src, lang )
-	assert( src, 'Failed to provide a source' )
-
-	if not src:hasDescription() then
-		return ''
-	end
-
-	local realization = mw.text.encode( src:getDescription() )
-	local outer = mw.message.new( self:key( 'wrap-description' ), realization )
-
-	if lang then
-		outer:inLanguage( lang )
-	end
-
-	if outer:isDisabled() then
-		return realization
-	end
-
-	return outer:plain()
-end
-
 --- Realize reported data for state
 function ResultRender:realizeState( src, lang )
 	assert( src, 'Failed to provide a source' )
@@ -129,17 +50,18 @@ function ResultRender:realizeHeader( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local t = { self:realizeState( src, lang ) }
-
+--[[
 	if src:hasDescription() then
 		table.insert( t, self:realizeDescription( src, lang ) )
 	end
-
+]]
+--[[
 	if src:hasSkip() or src:hasTodo() then
 		table.insert( t, '# ' )
 		table.insert( t, self:realizeSkip( src, lang ) )
 		table.insert( t, self:realizeTodo( src, lang ) )
 	end
-
+]]
 	return table.concat( t, '' )
 end
 

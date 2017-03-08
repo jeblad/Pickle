@@ -32,22 +32,24 @@ local function testState( bool )
 	end
 	return makeTest():realizeState( p, 'qqx' )
 end
-
+--[[
 local function testSkip( ... )
 	local p = fix.create():setSkip( ... )
 	return makeTest():realizeSkip( p, 'qqx' )
 end
-
+]]
+--[[
 local function testTodo( ... )
 	local p = fix.create():setTodo( ... )
 	return makeTest():realizeTodo( p, 'qqx' )
 end
-
+]]
+--[[
 local function testDescription( ... )
 	local p = fix.create():setDescription( ... )
 	return makeTest():realizeDescription( p, 'qqx' )
 end
-
+]]
 local function testHeaderSkip( ... )
 	local p = fix.create():setDescription( 'testing' ):setSkip( ... ):notOk()
 	return makeTest():realizeHeader( p, 'qqx' )
@@ -103,24 +105,30 @@ local tests = {
 		args = { true },
 		expect = { '(pickle-report-result-full-is-ok)' }
 	},
+	--[[
 	{
 		name = name .. '.skip ()',
 		func = testSkip,
 		args = { 'foo' },
 		expect = { '(pickle-report-result-full-wrap-skip: (foo))' }
 	},
+	]]
+	--[[
 	{
 		name = name .. '.todo ()',
 		func = testTodo,
 		args = { 'bar' },
 		expect = { '(pickle-report-result-full-wrap-todo: bar)' }
 	},
+	]]
+	--[[
 	{
 		name = name .. '.description ()',
 		func = testDescription,
 		args = { 'baz' },
 		expect = { '(pickle-report-result-full-wrap-description: baz)' }
 	},
+	]]
 	{
 		name = name .. '.header ()',
 		func = testHeaderSkip,

@@ -8,18 +8,20 @@ local Stack = require 'picklelib/Stack'
 local Frame = {}
 
 -- non-pure libs
-local Plan -- luacheck: ignore
+local Plan
 local Subject
 local Extractors
+local Reports
 -- Setup for prod or test
 if mw.pickle then
 	-- production, structure exist, make access simpler
-	Plan = mw.pickle.stack
+	Plan = mw.pickle.plan
 	Subject = mw.pickle.subject
 	Extractors = mw.pickle.extractors
+	Reports = mw.pickle.reports
 else
 	-- test, structure does not exist, require the libs
-	Plan = require 'picklelib/report/Plan'
+	Plan = require 'picklelib/report/Plan'()
 	Subject = require 'picklelib/engine/Subject'
 	Extractors = require('picklelib/extractor/ExtractorStrategies').create()
 
@@ -149,16 +151,23 @@ end
 
 --- Eval the fixtures
 function Frame:eval() -- luacheck: ignore
-	if not self:hasFixtures() then
-		-- @todo should create a descriptive skip message
-		--Plan.create(  )
-		self._eval = true
-		return self
-	end
+
+--	local numSubjects = Subject.stack:depth()
 
 	for _,v in ipairs( self:hasDescriptions()
 			and { self._descriptions:export() }
 			or { 'has no description' } ) do
+
+		local plan = Plan.create()
+		plan:setDescription( v )
+		Reports:addConstituent( plan )
+
+		if not self:hasFixtures() then
+			plan:addLine( 'pickle-frame-no-fixture' )
+			self._eval = true
+			return self
+		end
+
 		local pos = 1
 		local args = {}
 
@@ -168,18 +177,20 @@ function Frame:eval() -- luacheck: ignore
 				table.insert( args, strategy:cast( v, first, last ) )
 				pos = 1 + last
 			end
-		until( not strategy )
+		until not strategy
 
 		for _,w in ipairs( { self._fixtures:export() } ) do
 			local res, data = pcall( w( unpack{ args } ) )
 			if res then
-				-- @todo should capture content on stack
+				plan:addLine( 'pickle-frame-exception-then', data )
 			else
-				-- @todo should create a descriptive error message
+				plan:addLine( 'pickle-frame-exception-else', data )
 			end
-			--Plan.create(  )
 		end
 	end
+
+--	Subject.stack:depth() - numSubjects
+
 	self._eval = true
 	return self
 end
