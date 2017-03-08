@@ -8,15 +8,15 @@ local util = require 'picklelib/util'
 local Adapt = {}
 
 -- non-pure libs
-local Result
+local AdaptPlan
 local Reports
 if mw.pickle then
 	-- structure exist, make access simpler
-	Result = mw.pickle.result
+	AdaptPlan = mw.pickle.plan.adapt
 	Reports = mw.pickle.reports
 else
 	-- structure does not exist, require the libs
-	Result = require 'picklelib/report/Result'
+	AdaptPlan = require 'picklelib/report/AdaptPlan'
 	Reports = require('picklelib/report/FramePlan').create()
 	function Adapt:reports()
 		return self.Reports
@@ -61,7 +61,7 @@ end
 
 function Adapt:report()
 	if not self._report then
-		self._report = Result.create()
+		self._report = AdaptPlan.create()
 	end
 	return self._report
 end
