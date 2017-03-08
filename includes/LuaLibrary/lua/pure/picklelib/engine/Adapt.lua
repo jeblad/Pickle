@@ -4,18 +4,26 @@
 local Stack = require 'picklelib/Stack'
 local util = require 'picklelib/util'
 
--- non-pure libs
-local Report
-if mw.pickle then
-	-- structure exist, make access simpler
-	Report = mw.pickle.stack
-else
-	-- structure does not exist, require the libs
-	Report = require 'picklelib/report/Result'
-end
-
 -- @var class var for lib
 local Adapt = {}
+
+-- non-pure libs
+local Plan
+local Result
+local Reports
+if mw.pickle then
+	-- structure exist, make access simpler
+	Result = mw.pickle.result
+	Reports = mw.pickle.reports
+else
+	-- structure does not exist, require the libs
+	Plan = require 'picklelib/report/Plan'
+	Result = require 'picklelib/report/Result'
+	Reports = Plan.create()
+	function Adapt:reports()
+		return self.Reports
+	end
+end
 
 --- Lookup of missing class members
 function Adapt:__index( key ) -- luacheck: ignore self
@@ -55,7 +63,7 @@ end
 
 function Adapt:report()
 	if not self._report then
-		self._report = Report.create()
+		self._report = Result.create()
 	end
 	return self._report
 end
@@ -256,6 +264,7 @@ local function makeConditionProcess( name, func, other )
 			report:ok()
 		end
 		-- @todo add handover
+		Reports:addConstituent( report )
 		return report
 	end
 	return f

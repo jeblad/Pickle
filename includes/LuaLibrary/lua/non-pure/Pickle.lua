@@ -11,9 +11,10 @@ pickle.adapt = require 'picklelib/engine/Adapt'
 pickle.expect = require 'picklelib/engine/Expect'
 pickle.subject = require 'picklelib/engine/Subject'
 pickle.constituent = require 'picklelib/report/Constituent'
+pickle.result = require 'picklelib/report/Result'
+pickle.plan = require 'picklelib/report/Plan'
 pickle.renders = require 'picklelib/render/Renders'
 pickle.frame = require 'picklelib/engine/Frame'
---local Plan = require 'picklelib/report/Plan'
 --[[
 	for k,v in pairs( util ) do
 	if not pickle[k] then
@@ -24,6 +25,7 @@ end
 
 -- require libs and create an instance
 pickle.extractors = require( 'picklelib/extractor/ExtractorStrategies' ).create()
+pickle.plan.reports = pickle.plan.create()
 
 local export = {
 	subject = pickle.subject,
