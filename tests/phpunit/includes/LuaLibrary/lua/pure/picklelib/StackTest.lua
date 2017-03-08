@@ -45,7 +45,16 @@ local function testPush( ... )
 end
 
 local function testPop( ... )
-	local test = makeStack( ... ):pop()
+	return makeStack( ... ):pop()
+end
+
+local function testDrop( ... )
+	local test = makeStack( ... ):drop()
+	return test:top()
+end
+
+local function testDrop2( ... )
+	local test = makeStack( ... ):drop(2)
 	return test:top()
 end
 
@@ -182,6 +191,42 @@ local tests = {
 		func = testPop,
 		args = { 'a', 'b', 'c', 'extra' },
 		expect = { 'c' }
+	},
+	{
+		name = 'stack.drop (nil value)',
+		func = testDrop,
+		args = { nil, 'extra' },
+		expect = { nil }
+	},
+	{
+		name = 'stack.drop (single value)',
+		func = testDrop,
+		args = { 'a', 'extra' },
+		expect = { 'a' }
+	},
+	{
+		name = 'stack.drop (multiple value)',
+		func = testDrop,
+		args = { 'a', 'b', 'c', 'extra' },
+		expect = { 'c' }
+	},
+	{
+		name = 'stack.drop2 (nil value)',
+		func = testDrop2,
+		args = { nil, 'extra' },
+		expect = { nil }
+	},
+	{
+		name = 'stack.drop2 (single value)',
+		func = testDrop2,
+		args = { 'a', 'extra' },
+		expect = { nil }
+	},
+	{
+		name = 'stack.drop2 (multiple value)',
+		func = testDrop2,
+		args = { 'a', 'b', 'c', 'extra' },
+		expect = { 'b' }
 	},
 	{
 		name = 'stack.export (nil value)',

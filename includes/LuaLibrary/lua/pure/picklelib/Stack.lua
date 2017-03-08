@@ -78,9 +78,16 @@ end
 
 --- Pop the last value of the stack
 -- Note that this will remove the last (topmost) value.
--- @return single value
+-- @return any item that can be put on the stack
 function Stack:pop()
-	table.remove( self._stack )
+	return table.remove( self._stack )
+end
+
+--- Drop the last n values of the stack
+-- Note that this will remove the last (topmost) values.
+-- @return self so chaing is unbroken
+function Stack:drop( n )
+	for _=1,(n or 1) do self:pop() end
 	return self
 end
 
