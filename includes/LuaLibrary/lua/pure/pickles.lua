@@ -1,7 +1,7 @@
 local Expect = require 'picklelib/engine/Expect'
 local Subject = require 'picklelib/engine/Subject'
 -- local Renders = require 'picklelib/render/Renders'
--- local Plan = require 'picklelib/report/Plan'
+-- local FramePlan = require 'picklelib/report/FramePlan'
 
 Expect.other = Subject
 Subject.other = Expect
@@ -14,7 +14,7 @@ local specs = {
 function specs.report( frame )
 	local style = frame.args[1]
 	return style
-	--return Plan():realize( Renders( style ) )
+	--return FramePlan():realize( Renders( style ) )
 end
 
 --- metatable for the export

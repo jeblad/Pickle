@@ -8,24 +8,24 @@ local Stack = require 'picklelib/Stack'
 local Frame = {}
 
 -- non-pure libs
-local Plan -- luacheck: ignore
+local FramePlan -- luacheck: ignore
 local Subject
 local Extractors
 -- Setup for prod or test
 if mw.pickle then
 	-- production, structure exist, make access simpler
-	Plan = mw.pickle.stack
+	FramePlan = mw.pickle.plan.frame
 	Subject = mw.pickle.subject
 	Extractors = mw.pickle.extractors
 else
 	-- test, structure does not exist, require the libs
-	Plan = require 'picklelib/report/Plan'
+	FRamePlan = require 'picklelib/report/FramePlan'
 	Subject = require 'picklelib/engine/Subject'
 	Extractors = require('picklelib/extractor/ExtractorStrategies').create()
 
 	--- Expose plan
 	function Frame:plan() -- luacheck: ignore self
-		return Plan
+		return FramePlan
 	end
 
 	--- Expose subject

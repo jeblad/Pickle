@@ -1,4 +1,4 @@
---- Baseclass for plan renderer
+--- Baseclass for frame plan renderer
 
 --[[
 -- Wrong place, should be in Frame
@@ -14,34 +14,34 @@ end
 --]]
 
 -- @var class var for lib
-local PlanRender = {}
+local FramePlanRender = {}
 
 --- Lookup of missing class members
-function PlanRender:__index( key ) -- luacheck: ignore self
-	return PlanRender[key]
+function FramePlanRender:__index( key ) -- luacheck: ignore self
+	return FramePlanRender[key]
 end
 
 --- Create a new instance
-function PlanRender.create( ... )
-	local self = setmetatable( {}, PlanRender )
+function FramePlanRender.create( ... )
+	local self = setmetatable( {}, FramePlanRender )
 	self:_init( ... )
 	return self
 end
 
 --- Initialize a new instance
-function PlanRender:_init( ... ) -- luacheck: ignore
+function FramePlanRender:_init( ... ) -- luacheck: ignore
 	return self
 end
 
 --- Override key construction
-function PlanRender:key( str ) -- luacheck: ignore
+function FramePlanRender:key( str ) -- luacheck: ignore
 	error('Method should be overridden')
 	return nil
 end
 
 --- Realize reported data for header
 -- The "header" is a composite.
-function PlanRender:realizeHeader( src, lang ) -- luacheck: ignore self lang
+function FramePlanRender:realizeHeader( src, lang ) -- luacheck: ignore self lang
 	assert( src, 'Failed to provide a source' )
 
 	--local t = { self:realizeState( src, lang ) }
@@ -61,4 +61,4 @@ function PlanRender:realizeHeader( src, lang ) -- luacheck: ignore self lang
 end
 
 -- Return the final class
-return PlanRender
+return FramePlanRender

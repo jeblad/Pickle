@@ -4,6 +4,7 @@ local options	-- luacheck: ignore
 
 -- @var structure for storage of the lib
 local pickle = {}
+pickle.plan = {}
 
 -- pickle.util = require 'picklelib/util'
 -- pickle.stack = require 'picklelib/Stack'
@@ -12,7 +13,7 @@ pickle.expect = require 'picklelib/engine/Expect'
 pickle.subject = require 'picklelib/engine/Subject'
 pickle.constituent = require 'picklelib/report/Constituent'
 pickle.result = require 'picklelib/report/Result'
-pickle.plan = require 'picklelib/report/Plan'
+pickle.plan.frame = require 'picklelib/report/FramePlan'
 pickle.renders = require 'picklelib/render/Renders'
 pickle.frame = require 'picklelib/engine/Frame'
 --[[
@@ -25,7 +26,7 @@ end
 
 -- require libs and create an instance
 pickle.extractors = require( 'picklelib/extractor/ExtractorStrategies' ).create()
-pickle.reports = pickle.plan.create()
+pickle.reports = pickle.plan.frame.create()
 
 local export = {
 	subject = pickle.subject,

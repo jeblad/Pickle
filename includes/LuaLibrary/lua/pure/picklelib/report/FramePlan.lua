@@ -14,43 +14,43 @@ else
 end
 
 -- @var class var for lib
-local Plan = {}
+local FramePlan = {}
 
 --- Lookup of missing class members
-function Plan:__index( key ) -- luacheck: ignore self
-	return Plan[key]
+function FramePlan:__index( key ) -- luacheck: ignore self
+	return FramePlan[key]
 end
 
 -- @todo not sure about this
-Plan._plans = nil
+FramePlan._plans = nil
 
-function Plan:__call()
+function FramePlan:__call()
 	if not self._plans:empty() then
-		self._plans:push( Plan.create() )
+		self._plans:push( FramePlan.create() )
 	end
 	return self._plans:top()
 end
 
 -- @var metatable for the class
-setmetatable( Plan, { __index = Constituent } )
+setmetatable( FramePlan, { __index = Constituent } )
 
 --- Create a new instance
-function Plan.create( ... )
-	local self = setmetatable( {}, Plan )
+function FramePlan.create( ... )
+	local self = setmetatable( {}, FramePlan )
 	self:_init( ... )
 	return self
 end
 
 --- Initialize a new instance
-function Plan:_init( ... )
+function FramePlan:_init( ... )
 	Constituent._init( self, ... )
 	self._constituents = Stack.create()
-	self._type = 'plan'
+	self._type = 'frame-plan'
 	return self
 end
 
 --- Add a constituent
-function Plan:addConstituent( part )
+function FramePlan:addConstituent( part )
 	assert( part, 'Failed to provide a constituent' )
 	self._constituents:push( part )
 	return self
@@ -58,12 +58,12 @@ end
 
 --- Export the constituents as an multivalue return
 -- Note that each constituent is not unwrapped.
-function Plan:constituents()
+function FramePlan:constituents()
 	return self._constituents:export()
 end
 
 --- Realize the data by applying a render
-function Plan:realize( renders, lang )
+function FramePlan:realize( renders, lang )
 	assert( renders, 'Failed to provide renders' )
 	local out = renders:find( self:type() ):realizeHeader( self, lang )
 	for _,v in ipairs( self:constituents() ) do
@@ -73,4 +73,4 @@ function Plan:realize( renders, lang )
 end
 
 -- Return the final class
-return Plan
+return FramePlan

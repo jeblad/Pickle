@@ -8,7 +8,6 @@ local util = require 'picklelib/util'
 local Adapt = {}
 
 -- non-pure libs
-local Plan
 local Result
 local Reports
 if mw.pickle then
@@ -17,9 +16,8 @@ if mw.pickle then
 	Reports = mw.pickle.reports
 else
 	-- structure does not exist, require the libs
-	Plan = require 'picklelib/report/Plan'
 	Result = require 'picklelib/report/Result'
-	Reports = Plan.create()
+	Reports = require('picklelib/report/FramePlan').create()
 	function Adapt:reports()
 		return self.Reports
 	end

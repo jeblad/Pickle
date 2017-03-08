@@ -6,9 +6,9 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/report/Plan'
+local lib = require 'picklelib/report/FramePlan'
 local name = 'plan'
-local class = 'plan'
+local class = 'frame-plan'
 
 local function makeTest( ... )
 	return lib.create( ... )
