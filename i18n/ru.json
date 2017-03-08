@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Redredsonia",
-			"Kareyac"
+			"Kareyac",
+			"Nitch"
 		]
 	},
 	"pickle-test-text-good": "Хорошо",
@@ -17,6 +18,7 @@
 	"pickle-tracking-category-unknown": "Модули с неизвестными тестами",
 	"pickle-console-title": "Тестовая консоль",
 	"pickle-console-empty": "Нет отчетов",
+	"pickle-console-cleared": "Консоль очищена",
 	"pickle-console-run": "Запустить",
 	"pickle-console-clear": "Очистить",
 	"pickle-report-skip-no-message": "Ключ сообщения $1 не существует",
@@ -48,5 +50,6 @@
 	"pickle-adapt-process-as-upper-first": "Первую букву в строке преобразовать в заглавную",
 	"pickle-adapt-process-as-lower-first": "Первую букву в строке преобразовать в строчную",
 	"pickle-adapt-process-as-reverse": "Перевернуть строку",
-	"pickle-adapt-process-as-integer": "Найти целую часть"
+	"pickle-adapt-process-as-integer": "Найти целую часть",
+	"pickle-adapt-process-as-fraction": "Поиск дробной части"
 }
