@@ -78,16 +78,27 @@ end
 
 --- Pop the last value of the stack
 -- Note that this will remove the last (topmost) value.
+-- @param n number of items to drop
 -- @return any item that can be put on the stack
-function Stack:pop()
-	return table.remove( self._stack )
+function Stack:pop( n )
+	local a = {}
+
+	for i=1,(n or 1) do
+		a[(n or 1) - i + 1] = table.remove( self._stack )
+	end
+
+	return unpack( a )
 end
 
 --- Drop the last n values of the stack
 -- Note that this will remove the last (topmost) values.
+-- @param n number of items to drop
 -- @return self so chaing is unbroken
 function Stack:drop( n )
-	for _=1,(n or 1) do self:pop() end
+	for _=1,(n or 1) do
+		table.remove( self._stack )
+	end
+
 	return self
 end
 

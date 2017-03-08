@@ -48,14 +48,16 @@ local function testPop( ... )
 	return makeStack( ... ):pop()
 end
 
+local function testPop2( ... )
+	return makeStack( ... ):pop(2)
+end
+
 local function testDrop( ... )
-	local test = makeStack( ... ):drop()
-	return test:top()
+	return makeStack( ... ):drop():export()
 end
 
 local function testDrop2( ... )
-	local test = makeStack( ... ):drop(2)
-	return test:top()
+	return makeStack( ... ):drop(2):export()
 end
 
 local function testExport( ... )
@@ -177,56 +179,80 @@ local tests = {
 	{
 		name = 'stack.pop (nil value)',
 		func = testPop,
-		args = { nil, 'extra' },
+		args = { nil },
 		expect = { nil }
 	},
 	{
 		name = 'stack.pop (single value)',
 		func = testPop,
-		args = { 'a', 'extra' },
+		args = { 'a' },
 		expect = { 'a' }
 	},
 	{
 		name = 'stack.pop (multiple value)',
 		func = testPop,
-		args = { 'a', 'b', 'c', 'extra' },
+		args = { 'a', 'b', 'c' },
 		expect = { 'c' }
+	},
+	{
+		name = 'stack.pop2 (nil value)',
+		func = testPop2,
+		args = { nil },
+		expect = { nil }
+	},
+	{
+		name = 'stack.pop2 (single value)',
+		func = testPop2,
+		args = { 'a' },
+		expect = { nil, 'a' }
+	},
+	{
+		name = 'stack.pop2 (dual value)',
+		func = testPop2,
+		args = { 'a', 'b' },
+		expect = { 'a', 'b' }
+	},
+	{
+		name = 'stack.pop2 (multiple value)',
+		func = testPop2,
+		args = { 'a', 'b', 'c' },
+		expect = { 'b', 'c' }
 	},
 	{
 		name = 'stack.drop (nil value)',
 		func = testDrop,
-		args = { nil, 'extra' },
+		args = { nil },
 		expect = { nil }
 	},
 	{
 		name = 'stack.drop (single value)',
 		func = testDrop,
-		args = { 'a', 'extra' },
-		expect = { 'a' }
+		args = { 'a' },
+		expect = { nil }
 	},
 	{
 		name = 'stack.drop (multiple value)',
 		func = testDrop,
-		args = { 'a', 'b', 'c', 'extra' },
-		expect = { 'c' }
+		args = { 'a', 'b', 'c' },
+		expect = { 'a', 'b' }
 	},
 	{
 		name = 'stack.drop2 (nil value)',
 		func = testDrop2,
-		args = { nil, 'extra' },
+		args = { nil },
 		expect = { nil }
 	},
 	{
 		name = 'stack.drop2 (single value)',
 		func = testDrop2,
-		args = { 'a', 'extra' },
+		args = { 'a' },
 		expect = { nil }
 	},
 	{
 		name = 'stack.drop2 (multiple value)',
 		func = testDrop2,
-		args = { 'a', 'b', 'c', 'extra' },
-		expect = { 'b' }
+		args = { 'a', 'b', 'c' },
+		expect = { 'a' }
 	},
 	{
 		name = 'stack.export (nil value)',
