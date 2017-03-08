@@ -19,7 +19,7 @@
 	"pickle-tracking-category-good": "Moduler med bra test",
 	"pickle-tracking-category-good-desc": "Resultaten tyder på en \"bra\" situation efter utvärdering av testerna.",
 	"pickle-tracking-category-pending": "Moduler med väntade/ofärdiga test",
-	"pickle-tracking-category-pending-desc": "Resultaten tyder på en \"utsätt\" eller \"uklär\" situation efter utvärdering av testarna.",
+	"pickle-tracking-category-pending-desc": "Resultaten tyder på en \"utsätt\" eller \"oklar\" situation efter utvärdering av testarna.",
 	"pickle-tracking-category-todo": "Moduler med oavslutade test",
 	"pickle-tracking-category-todo-desc": "Resultaten tyder på att en eller flera \"oavslutade\" (\"todo\") markör(er) erhölls efter utvärdering av testerna.",
 	"pickle-tracking-category-skip": "Moduler med utelämnade test",
