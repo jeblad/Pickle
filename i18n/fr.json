@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Wladek92"
 		]
 	},
 	"pickle-desc": "Ajoute les tests basiques Pickle aux modules Lua",
@@ -42,7 +43,7 @@
 	"pickle-track-log-entry-unknown": "{{GENDER:$2|a déduit automatiquement}} que $1 a des tests inconnus",
 	"pickle-console-title": "Console de test",
 	"pickle-console-empty": "Aucun rapport disponible.",
-	"pickle-console-cleared": "Console nettoyée.",
+	"pickle-console-cleared": "Console effacée.",
 	"pickle-console-run": "Lancer",
 	"pickle-console-clear": "Effacer",
 	"pickle-report-skip-no-message": "La clé de message « $1 » n’existe pas",
