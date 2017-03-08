@@ -2,34 +2,34 @@
 -- luacheck: globals mw
 
 -- @var class var for lib
-local AdaptPlanRender = {}
+local AdaptReportRender = {}
 
 --- Lookup of missing class members
-function AdaptPlanRender:__index( key ) -- luacheck: ignore self
-	return AdaptPlanRender[key]
+function AdaptReportRender:__index( key ) -- luacheck: ignore self
+	return AdaptReportRender[key]
 end
 
 --- Create a new instance
-function AdaptPlanRender.create( ... )
-	local self = setmetatable( {}, AdaptPlanRender )
+function AdaptReportRender.create( ... )
+	local self = setmetatable( {}, AdaptReportRender )
 	self:_init( ... )
 	return self
 end
 
 --- Initialize a new instance
-function AdaptPlanRender:_init( ... ) -- luacheck: ignore
+function AdaptReportRender:_init( ... ) -- luacheck: ignore
 	return self
 end
 
 --- Override key construction
-function AdaptPlanRender:key( str ) -- luacheck: ignore
+function AdaptReportRender:key( str ) -- luacheck: ignore
 	error('Method should be overridden')
 	return nil
 end
 
 --- Realize reported data for skip
 -- The "skip" is a message identified by a key.
-function AdaptPlanRender:realizeSkip( src, lang )
+function AdaptReportRender:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	if not src:hasSkip() then
@@ -62,7 +62,7 @@ end
 
 --- Realize reported data for todo
 -- The "todo" is a text string.
-function AdaptPlanRender:realizeTodo( src, lang )
+function AdaptReportRender:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	if not src:hasTodo() then
@@ -85,7 +85,7 @@ end
 
 --- Realize reported data for description
 -- The "description" is a text string.
-function AdaptPlanRender:realizeDescription( src, lang )
+function AdaptReportRender:realizeDescription( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	if not src:hasDescription() then
@@ -107,7 +107,7 @@ function AdaptPlanRender:realizeDescription( src, lang )
 end
 
 --- Realize reported data for state
-function AdaptPlanRender:realizeState( src, lang )
+function AdaptReportRender:realizeState( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local msg = mw.message.new( src:isOk() and self:key( 'is-ok' ) or self:key( 'is-not-ok' ) )
@@ -125,7 +125,7 @@ end
 
 --- Realize reported data for header
 -- The "header" is a composite.
-function AdaptPlanRender:realizeHeader( src, lang )
+function AdaptReportRender:realizeHeader( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local t = { self:realizeState( src, lang ) }
@@ -144,7 +144,7 @@ function AdaptPlanRender:realizeHeader( src, lang )
 end
 
 --- Realize reported data for a line
-function AdaptPlanRender:realizeLine( param, lang )
+function AdaptReportRender:realizeLine( param, lang )
 	assert( param, 'Failed to provide a parameter' )
 
 	local realization = ''
@@ -175,7 +175,7 @@ end
 
 --- Realize reported data for body
 -- The "body" is a composite.
-function AdaptPlanRender:realizeBody( src, lang )
+function AdaptReportRender:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local t = {}
@@ -188,4 +188,4 @@ function AdaptPlanRender:realizeBody( src, lang )
 end
 
 -- Return the final class
-return AdaptPlanRender
+return AdaptReportRender

@@ -4,16 +4,16 @@ local options	-- luacheck: ignore
 
 -- @var structure for storage of the lib
 local pickle = {}
-pickle.plan = {}
+pickle.report = {}
 
 -- pickle.util = require 'picklelib/util'
 -- pickle.stack = require 'picklelib/Stack'
 pickle.adapt = require 'picklelib/engine/Adapt'
 pickle.expect = require 'picklelib/engine/Expect'
 pickle.subject = require 'picklelib/engine/Subject'
-pickle.plan.base = require 'picklelib/report/BasePlan'
-pickle.plan.adapt = require 'picklelib/report/AdaptPlan'
-pickle.plan.frame = require 'picklelib/report/FramePlan'
+pickle.report.base = require 'picklelib/report/BaseReport'
+pickle.report.adapt = require 'picklelib/report/AdaptReport'
+pickle.report.frame = require 'picklelib/report/FrameReport'
 pickle.renders = require 'picklelib/render/Renders'
 pickle.frame = require 'picklelib/engine/Frame'
 --[[
@@ -26,7 +26,7 @@ end
 
 -- require libs and create an instance
 pickle.extractors = require( 'picklelib/extractor/ExtractorStrategies' ).create()
-pickle.reports = pickle.plan.frame.create()
+pickle.reports = pickle.report.frame.create()
 
 local export = {
 	subject = pickle.subject,
@@ -44,7 +44,7 @@ end
 function pickle.report( frame )
 	local style = frame.args[1]
 	return 'ping! '..style
-	--return Plan():realize( Renders( style ) )
+	--return Report():realize( Renders( style ) )
 end
 
 --- install the module in the global space

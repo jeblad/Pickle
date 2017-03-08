@@ -1,4 +1,4 @@
---- Tests for the base plan module
+--- Tests for the base report module
 -- This is a preliminary solution
 -- @license GNU GPL v2+
 -- @author John Erling Blad < jeblad@gmail.com >
@@ -6,9 +6,9 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/report/BasePlan'
+local lib = require 'picklelib/report/BaseReport'
 local name = 'base'
-local class = 'base-plan'
+local class = 'base-report'
 
 local function makeTest( ... )
 	return lib.create( ... )

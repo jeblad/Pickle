@@ -1,39 +1,39 @@
 --- Subclass for report renderer
 
 -- pure libs
-local Base = require 'picklelib/render/AdaptPlanRenderBase'
+local Base = require 'picklelib/render/AdaptReportRenderBase'
 
 -- @var class var for lib
-local AdaptPlanRender = {}
+local AdaptReportRender = {}
 
 --- Lookup of missing class members
-function AdaptPlanRender:__index( key ) -- luacheck: ignore self
-	return AdaptPlanRender[key]
+function AdaptReportRender:__index( key ) -- luacheck: ignore self
+	return AdaptReportRender[key]
 end
 
 -- @var metatable for the class
-setmetatable( AdaptPlanRender, { __index = Base } )
+setmetatable( AdaptReportRender, { __index = Base } )
 
 --- Create a new instance
-function AdaptPlanRender.create( ... )
-	local self = setmetatable( {}, AdaptPlanRender )
+function AdaptReportRender.create( ... )
+	local self = setmetatable( {}, AdaptReportRender )
 	self:_init( ... )
 	return self
 end
 
 --- Initialize a new instance
-function AdaptPlanRender:_init( ... ) -- luacheck: ignore
+function AdaptReportRender:_init( ... ) -- luacheck: ignore
 	return self
 end
 
 --- Override key construction
-function AdaptPlanRender:key( str ) -- luacheck: ignore self
+function AdaptReportRender:key( str ) -- luacheck: ignore self
 	assert( str, 'Failed to provide a string' )
 	return 'pickle-report-result-compact-' .. str
 end
 
 --- Override realization of reported data for body
-function AdaptPlanRender:realizeBody( src, lang )
+function AdaptReportRender:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	if src:isOk() then
@@ -52,4 +52,4 @@ function AdaptPlanRender:realizeBody( src, lang )
 end
 
 -- Return the final class
-return AdaptPlanRender
+return AdaptReportRender

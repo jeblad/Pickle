@@ -6,10 +6,10 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/full/AdaptPlanRenderStrategy'
+local lib = require 'picklelib/render/compact/AdaptReportRenderStrategy'
 local name = 'resultRender'
 
-local fix = require 'picklelib/report/AdaptPlan'
+local fix = require 'picklelib/report/AdaptReport'
 
 local function makeTest( ... )
 	return lib.create( ... )
@@ -69,23 +69,20 @@ local tests = {
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
-		expect = { 'pickle-report-result-full-foo' }
+		expect = { 'pickle-report-result-compact-foo' }
 	},
 	{
-		name = name .. '.body ()',
+		name = name .. '.body ok ()',
 		func = testBodyOk,
-		expect = { "\n"
-			.. '(pickle-report-result-full-wrap-line: (foo))' .. "\n"
-			.. '(pickle-report-result-full-wrap-line: (bar))' .. "\n"
-			.. '(pickle-report-result-full-wrap-line: (baz))' }
+		expect = { '' }
 	},
 	{
-		name = name .. '.body ()',
+		name = name .. '.body not ok ()',
 		func = testBodyNotOk,
 		expect = { "\n"
-			.. '(pickle-report-result-full-wrap-line: (foo))' .. "\n"
-			.. '(pickle-report-result-full-wrap-line: (bar))' .. "\n"
-			.. '(pickle-report-result-full-wrap-line: (baz))' }
+			.. '(pickle-report-result-compact-wrap-line: (foo))' .. "\n"
+			.. '(pickle-report-result-compact-wrap-line: (bar))' .. "\n"
+			.. '(pickle-report-result-compact-wrap-line: (baz))' }
 	},
 }
 

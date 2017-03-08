@@ -6,10 +6,10 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/vivid/AdaptPlanRenderStrategy'
+local lib = require 'picklelib/render/vivid/AdaptReportRenderStrategy'
 local name = 'resultRender'
 
-local fix = require 'picklelib/report/AdaptPlan'
+local fix = require 'picklelib/report/AdaptReport'
 
 local function makeTest( ... )
 	return lib.create( ... )

@@ -9,7 +9,7 @@ local testframework = require 'Module:TestFramework'
 local lib = require 'picklelib/render/ReportRenderBase'
 local name = 'reportRender'
 
-local fix = require 'picklelib/report/AdaptPlan'
+local fix = require 'picklelib/report/AdaptReport'
 
 local function makeTest( ... )
 	return lib.create( ... )

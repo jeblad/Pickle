@@ -44,7 +44,7 @@ function Renders:_init( name )
 end
 
 --- Register a render of given named type
--- This will typically be "Result" or "Plan".
+-- This will typically be "Result" or "Report".
 function Renders:registerType( name, lib )
 	assert( name, 'Failed to provide a name' )
 	self._types[name] = lib
@@ -52,7 +52,7 @@ function Renders:registerType( name, lib )
 end
 
 --- Find render of the correct named type
--- This will typically be "Result" or "Plan".
+-- This will typically be "Result" or "Report".
 function Renders:find( name )
 	assert( name, 'Failed to provide a name' )
 	assert( self._types[type], 'Failed to provide a previously registered type' )

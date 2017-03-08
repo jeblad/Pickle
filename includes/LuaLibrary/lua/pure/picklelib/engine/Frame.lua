@@ -8,24 +8,24 @@ local Stack = require 'picklelib/Stack'
 local Frame = {}
 
 -- non-pure libs
-local FramePlan -- luacheck: ignore
+local FrameReport -- luacheck: ignore
 local Subject
 local Extractors
 -- Setup for prod or test
 if mw.pickle then
 	-- production, structure exist, make access simpler
-	FramePlan = mw.pickle.plan.frame
+	FrameReport = mw.pickle.report.frame
 	Subject = mw.pickle.subject
 	Extractors = mw.pickle.extractors
 else
 	-- test, structure does not exist, require the libs
-	FRamePlan = require 'picklelib/report/FramePlan'
+	FRameReport = require 'picklelib/report/FrameReport'
 	Subject = require 'picklelib/engine/Subject'
 	Extractors = require('picklelib/extractor/ExtractorStrategies').create()
 
-	--- Expose plan
-	function Frame:plan() -- luacheck: ignore self
-		return FramePlan
+	--- Expose report
+	function Frame:report() -- luacheck: ignore self
+		return FrameReport
 	end
 
 	--- Expose subject
@@ -151,7 +151,7 @@ end
 function Frame:eval() -- luacheck: ignore
 	if not self:hasFixtures() then
 		-- @todo should create a descriptive skip message
-		--Plan.create(  )
+		--Report.create(  )
 		self._eval = true
 		return self
 	end
@@ -177,7 +177,7 @@ function Frame:eval() -- luacheck: ignore
 			else
 				-- @todo should create a descriptive error message
 			end
-			--Plan.create(  )
+			--Report.create(  )
 		end
 	end
 	self._eval = true
