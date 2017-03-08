@@ -4,13 +4,13 @@
 local Stack = require 'picklelib/Stack'
 
 -- non-pure libs
-local Constituent
+local BasePlan
 if mw.pickle then
 	-- structure exist, make access simpler
-	Constituent = mw.pickle.constituent
+	BasePlan = mw.pickle.plan.base
 else
 	-- structure does not exist, require the libs
-	Constituent = require 'picklelib/report/Constituent'
+	BasePlan = require 'picklelib/report/BasePlan'
 end
 
 -- @var class var for lib
@@ -32,7 +32,7 @@ function FramePlan:__call()
 end
 
 -- @var metatable for the class
-setmetatable( FramePlan, { __index = Constituent } )
+setmetatable( FramePlan, { __index = BasePlan } )
 
 --- Create a new instance
 function FramePlan.create( ... )
@@ -43,7 +43,7 @@ end
 
 --- Initialize a new instance
 function FramePlan:_init( ... )
-	Constituent._init( self, ... )
+	BasePlan._init( self, ... )
 	self._constituents = Stack.create()
 	self._type = 'frame-plan'
 	return self

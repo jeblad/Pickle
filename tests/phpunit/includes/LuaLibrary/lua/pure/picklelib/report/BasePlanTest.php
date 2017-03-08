@@ -11,13 +11,13 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class ConstituentTest extends Scribunto_LuaEngineTestBase {
+class BasePlanTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'ConstituentTest';
+	protected static $moduleName = 'BasePlanTest';
 
 	function getTestModules() {
 		return parent::getTestModules() + [
-			'ConstituentTest' => __DIR__ . '/ConstituentTest.lua'
+			'BasePlanTest' => __DIR__ . '/BasePlanTest.lua'
 		];
 	}
 }

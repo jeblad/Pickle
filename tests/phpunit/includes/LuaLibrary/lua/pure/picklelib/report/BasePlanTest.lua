@@ -1,4 +1,4 @@
---- Tests for the constituent module
+--- Tests for the base plan module
 -- This is a preliminary solution
 -- @license GNU GPL v2+
 -- @author John Erling Blad < jeblad@gmail.com >
@@ -6,10 +6,9 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/report/Constituent'
-local
-name = 'constituent'
-local class = 'constituent'
+local lib = require 'picklelib/report/BasePlan'
+local name = 'base'
+local class = 'base-plan'
 
 local function makeTest( ... )
 	return lib.create( ... )

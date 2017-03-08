@@ -4,13 +4,13 @@
 local Stack = require 'picklelib/Stack'
 
 -- non-pure libs
-local Constituent
+local BasePlan
 if mw.pickle then
 	-- structure exist, make access simpler
-	Constituent = mw.pickle.constituent
+	BasePlan = mw.pickle.plan.base
 else
 	-- structure does not exist, require the libs
-	Constituent = require 'picklelib/report/Constituent'
+	BasePlan = require 'picklelib/report/BasePlan'
 end
 
 -- @var class var for lib
@@ -22,7 +22,7 @@ function AdaptPlan:__index( key ) -- luacheck: ignore self
 end
 
 -- @var metatable for the class
-setmetatable( AdaptPlan, { __index = Constituent } )
+setmetatable( AdaptPlan, { __index = BasePlan } )
 
 --- Create a new instance
 function AdaptPlan.create( ... )
@@ -33,7 +33,7 @@ end
 
 --- Initialize a new instance
 function AdaptPlan:_init( ... )
-	Constituent._init( self )
+	BasePlan._init( self )
 	self._description = false
 	self._lines = Stack.create()
 	self._state = false
