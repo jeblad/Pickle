@@ -9,7 +9,7 @@ local testframework = require 'Module:TestFramework'
 local lib = require 'picklelib/render/ReportRenderBase'
 local name = 'reportRender'
 
-local fix = require 'picklelib/report/AdaptReport'
+local fix = require 'picklelib/report/FrameReport'
 
 local function makeTest( ... )
 	return lib.create( ... )
@@ -33,16 +33,36 @@ local function testState( bool )
 	return makeTest():realizeState( p, 'qqx' )
 end
 
-local function testHeader( ... ) -- luacheck: ignore
-	local p = fix.create():ok()
+local function testSkip( ... )
+	local p = fix.create():setSkip( ... )
+	return makeTest():realizeSkip( p, 'qqx' )
+end
+
+local function testTodo( ... )
+	local p = fix.create():setTodo( ... )
+	return makeTest():realizeTodo( p, 'qqx' )
+end
+
+local function testDescription( ... )
+	local p = fix.create():setDescription( ... )
+	return makeTest():realizeDescription( p, 'qqx' )
+end
+
+local function testHeaderSkip( ... )
+	local p = fix.create():setDescription( 'testing' ):setSkip( ... ):notOk()
 	return makeTest():realizeHeader( p, 'qqx' )
 end
 
+local function testHeaderTodo( ... )
+	local p = fix.create():setDescription( 'testing' ):setTodo( ... ):ok()
+	return makeTest():realizeHeader( p, 'qqx' )
+end
+--[[
 local function testBody( ... ) -- luacheck: ignore
 	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' )
 	return makeTest():realizeBody( p, 'qqx' )
 end
-
+]]
 local tests = {
 	{
 		name = name .. ' exists',
@@ -84,13 +104,40 @@ local tests = {
 		expect = { '(pickle-report-result-full-is-ok)' }
 	},
 	{
+		name = name .. '.skip ()',
+		func = testSkip,
+		args = { 'foo' },
+		expect = { '(pickle-report-result-full-wrap-skip: (foo))' }
+	},
+	{
+		name = name .. '.todo ()',
+		func = testTodo,
+		args = { 'bar' },
+		expect = { '(pickle-report-result-full-wrap-todo: bar)' }
+	},
+	{
+		name = name .. '.description ()',
+		func = testDescription,
+		args = { 'baz' },
+		expect = { '(pickle-report-result-full-wrap-description: baz)' }
+	},
+	{
 		name = name .. '.header ()',
-		func = testHeader,
+		func = testHeaderSkip,
+		args = { 'baz' },
+		expect = { '(pickle-report-result-full-is-not-ok)'
+			.. '(pickle-report-result-full-wrap-description: testing)'
+			.. '# (pickle-report-result-full-wrap-skip: (baz))' }
+	},
+	{
+		name = name .. '.header ()',
+		func = testHeaderTodo,
 		args = { 'baz' },
 		expect = { '(pickle-report-result-full-is-ok)'
 			.. '(pickle-report-result-full-wrap-description: testing)'
 			.. '# (pickle-report-result-full-wrap-todo: baz)' }
 	},
+	--[[
 	{
 		name = name .. '.body ()',
 		func = testBody,
@@ -99,6 +146,7 @@ local tests = {
 			.. '(pickle-report-result-full-wrap-line: (bar))' .. "\n"
 			.. '(pickle-report-result-full-wrap-line: (baz))' }
 	},
+	]]
 }
 
 return testframework.getTestProvider( tests )

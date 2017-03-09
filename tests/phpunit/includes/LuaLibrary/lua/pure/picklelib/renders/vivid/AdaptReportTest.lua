@@ -27,41 +27,6 @@ local function testKey( ... )
 	return makeTest():key( ... )
 end
 
-local function testState( bool )
-	local p = fix.create()
-	if bool then
-		p:ok()
-	else
-		p:notOk()
-	end
-	return tostring( makeTest():realizeState( p, 'qqx' ) )
-end
-
-local function testSkip( ... )
-	local p = fix.create():setSkip( ... )
-	return tostring( makeTest():realizeSkip( p, 'qqx' ) )
-end
-
-local function testTodo( ... )
-	local p = fix.create():setTodo( ... )
-	return tostring( makeTest():realizeTodo( p, 'qqx' ) )
-end
-
-local function testDescription( ... )
-	local p = fix.create():setDescription( ... )
-	return tostring( makeTest():realizeDescription( p, 'qqx' ) )
-end
-
-local function testHeaderSkip( ... )
-	local p = fix.create():setDescription( 'testing' ):setSkip( ... ):notOk()
-	return tostring( makeTest():realizeHeader( p, 'qqx' ) )
-end
-
-local function testHeaderTodo( ... )
-	local p = fix.create():setDescription( 'testing' ):setTodo( ... ):ok()
-	return tostring( makeTest():realizeHeader( p, 'qqx' ) )
-end
-
 local function testBodyOk( ... ) -- luacheck: ignore
 	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):ok()
 	return tostring( makeTest():realizeBody( p, 'qqx' ) )
@@ -105,84 +70,6 @@ local tests = {
 		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-result-vivid-foo' }
-	},
-	{
-		name = name .. '.state ()',
-		func = testState,
-		args = { false },
-		expect = { '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-result-vivid-is-not-ok)'
-			.. '</span>' }
-	},
-	{
-		name = name .. '.state ()',
-		func = testState,
-		args = { true },
-		expect = { '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-result-vivid-is-ok)'
-			.. '</span>' }
-	},
-	{
-		name = name .. '.skip ()',
-		func = testSkip,
-		args = { 'foo' },
-		expect = { '<span class="mw-pickle-skip" lang="qqx">'
-			.. '(pickle-report-result-vivid-wrap-skip: (foo))'
-			.. '</span>' }
-	},
-	{
-		name = name .. '.todo ()',
-		func = testTodo,
-		args = { 'bar' },
-		expect = { '<span class="mw-pickle-todo" lang="qqx">'
-			.. '(pickle-report-result-vivid-wrap-todo: bar)'
-			.. '</span>' }
-	},
-	{
-		name = name .. '.description ()',
-		func = testDescription,
-		args = { 'baz' },
-		expect = { '<span class="mw-pickle-description" lang="qqx">'
-			.. '(pickle-report-result-vivid-wrap-description: baz)'
-			.. '</span>' }
-	},
-	{
-		name = name .. '.header ()',
-		func = testHeaderSkip,
-		args = { 'baz' },
-		expect = { '<div class="mw-pickle-header">'
-			.. '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-result-vivid-is-not-ok)'
-			.. '</span>'
-			.. '<span class="mw-pickle-description" lang="qqx">'
-			.. '(pickle-report-result-vivid-wrap-description: testing)'
-			.. '</span>'
-			.. '<span class="mw-pickle-comment">'
-			.. '# '
-			.. '<span class="mw-pickle-skip" lang="qqx">'
-			.. '(pickle-report-result-vivid-wrap-skip: (baz))'
-			.. '</span>'
-			.. '</span>'
-			.. '</div>' }
-	},
-	{
-		name = name .. '.header ()',
-		func = testHeaderTodo,
-		args = { 'baz' },
-		expect = { '<div class="mw-pickle-header">'
-			.. '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-result-vivid-is-ok)'
-			.. '</span>'
-			.. '<span class="mw-pickle-description" lang="qqx">'
-			.. '(pickle-report-result-vivid-wrap-description: testing)'
-			.. '</span>'
-			.. '<span class="mw-pickle-comment">'
-			.. '# '
-			.. '<span class="mw-pickle-todo" lang="qqx">'
-			.. '(pickle-report-result-vivid-wrap-todo: baz)'
-			.. '</span>'
-			.. '</span>'
-			.. '</div>' }
 	},
 	{
 		name = name .. '.body ()',

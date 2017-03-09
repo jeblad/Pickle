@@ -29,7 +29,101 @@ end
 --- Override key construction
 function FrameReportRender:key( str ) -- luacheck: ignore self
 	assert( str, 'Failed to provide a string' )
-	return 'pickle-report-plan-vivid-' .. str
+	return 'pickle-report-frame-vivid-' .. str
+end
+
+--- Override realization of reported data for state
+function FrameReportRender:realizeState( src, lang )
+	assert( src, 'Failed to provide a source' )
+
+	local html = mw.html.create( 'span' )
+		:addClass( 'mw-pickle-state' )
+
+	if lang then
+		html:attr( 'lang', lang )
+	end
+
+	html:wikitext( Base.realizeState( self, src, lang ) )
+
+	return html
+end
+
+--- Override realization of reported data for skip
+function FrameReportRender:realizeSkip( src, lang )
+	assert( src, 'Failed to provide a source' )
+
+	local html = mw.html.create( 'span' )
+		:addClass( 'mw-pickle-skip' )
+
+	if lang then
+		html:attr( 'lang', lang )
+	end
+
+	html:wikitext( Base.realizeSkip( self, src, lang ) )
+
+	return html
+end
+
+--- Override realization of reported data for todo
+function FrameReportRender:realizeTodo( src, lang )
+	assert( src, 'Failed to provide a source' )
+
+	local html = mw.html.create( 'span' )
+		:addClass( 'mw-pickle-todo' )
+
+	if lang then
+		html:attr( 'lang', lang )
+	end
+
+	html:wikitext( Base.realizeTodo( self, src, lang ) )
+
+	return html
+end
+
+--- Override realization of reported data for description
+function FrameReportRender:realizeDescription( src, lang )
+	assert( src, 'Failed to provide a source' )
+
+	local html = mw.html.create( 'span' )
+		:addClass( 'mw-pickle-description' )
+
+	if lang then
+		html:attr( 'lang', lang )
+	end
+
+	html:wikitext( Base.realizeDescription( self, src, lang ) )
+
+	return html
+end
+
+--- Realize reported data for header
+-- The "header" is a composite.
+function FrameReportRender:realizeHeader( src, lang ) -- luacheck: ignore self lang
+	assert( src, 'Failed to provide a source' )
+
+	local html = mw.html.create( 'div' )
+		:addClass( 'mw-pickle-header' )
+
+	html:node( self:realizeState( src, lang ) )
+
+	if src:hasDescription() then
+		html:node( self:realizeDescription( src, lang ) )
+	end
+
+	if src:hasSkip() or src:hasTodo() then
+		local comment = mw.html.create( 'span' )
+			:addClass( 'mw-pickle-comment' )
+			:wikitext( '# ' )
+		if src:hasSkip() then
+			comment:node( self:realizeSkip( src, lang ) )
+		end
+		if src:hasTodo() then
+			comment:node( self:realizeTodo( src, lang ) )
+		end
+		html:node( comment )
+	end
+
+	return html
 end
 
 -- Return the final class

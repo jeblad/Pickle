@@ -29,7 +29,7 @@ end
 --- Override key construction
 function FrameReportRender:key( str ) -- luacheck: ignore self
 	assert( str, 'Failed to provide a string' )
-	return 'pickle-report-plan-compact-' .. str
+	return 'pickle-report-frame-compact-' .. str
 end
 
 -- Return the final class

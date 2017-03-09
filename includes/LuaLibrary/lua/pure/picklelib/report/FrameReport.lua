@@ -24,6 +24,7 @@ end
 -- @todo not sure about this
 FrameReport._reports = nil
 
+-- @todo verify if this is actually used
 function FrameReport:__call()
 	if not self._reports:empty() then
 		self._reports:push( FrameReport.create() )
@@ -45,6 +46,8 @@ end
 function FrameReport:_init( ... )
 	BaseReport._init( self, ... )
 	self._constituents = Stack.create()
+	self._skip = false
+	self._todo = false
 	self._type = 'frame-report'
 	return self
 end
@@ -60,6 +63,78 @@ end
 -- Note that each constituent is not unwrapped.
 function FrameReport:constituents()
 	return self._constituents:export()
+end
+
+--- Check if the instance state is ok
+-- Note that initial state is not ok.
+function FrameReport:isOk()
+	local state = true
+	for _,v in ipairs( { self._constituents:export() } ) do
+		state = state and v:isOk()
+	end
+	return state
+end
+
+--- Set the skip
+-- This is an accessor to set the member.
+-- Note that all arguments will be wrapped up in a table before saving.
+function FrameReport:setSkip( ... )
+	local t = { ... }
+	assert( #t >= 1, 'Failed to provide a skip' )
+	self._skip = t
+	return self
+end
+
+--- Get the skip
+-- This is an accessor to get the member.
+-- Note that the saved structure will be unpacked before being returned.
+function FrameReport:getSkip()
+	return unpack( self._skip )
+end
+
+--- Check if the instance has any skip member
+function FrameReport:hasSkip()
+	return not not self._skip
+end
+
+--- Set the todo
+-- This is an accessor to set the member.
+function FrameReport:setTodo( str )
+	assert( str, 'Failed to provide a todo' )
+	self._todo = str
+	return self
+end
+
+--- Get the todo
+-- This is an accessor to get the member.
+function FrameReport:getTodo()
+	return self._todo
+end
+
+--- Check if the instance has any todo member
+function FrameReport:hasTodo()
+	return not not self._todo
+end
+
+--- Set the description
+-- This is an accessor to set the member.
+-- Note that all arguments will be wrapped up in a table before saving.
+function FrameReport:setDescription( str )
+	assert( str, 'Failed to provide a description' )
+	self._description = str
+	return self
+end
+
+--- Get the description
+-- This is an accessor to get the member.
+-- Note that the saved structure will be unpacked before being returned.
+function FrameReport:getDescription()
+	return self._description
+end
+
+--- Check if the instance has any description member
+function FrameReport:hasDescription()
+	return not not self._description
 end
 
 --- Realize the data by applying a render

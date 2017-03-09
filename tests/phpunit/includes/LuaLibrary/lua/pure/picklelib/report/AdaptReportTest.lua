@@ -41,40 +41,9 @@ local function testState( state )
 	return test:isOk()
 end
 
-local function testSkip( bool )
-	local test = makeTest()
-	if bool then
-		test:setSkip('foo-bar')
-	end
-	return test:hasSkip()
-end
-
-local function testTodo( bool )
-	local test = makeTest()
-	if bool then
-		test:setTodo('baz')
-	end
-	return test:hasTodo()
-end
-
 local function testAddLine( ... )
 	local test = makeTest():addLine( ... )
 	return test:lines()
-end
-
-local function testGetSetDescription( ... )
-	local test = makeTest():setDescription( ... )
-	return test:getDescription()
-end
-
-local function testGetSetSkip( ... )
-	local test = makeTest():setSkip( ... )
-	return test:getSkip()
-end
-
-local function testGetSetTodo( ... )
-	local test = makeTest():setTodo( ... )
-	return test:getTodo()
 end
 
 local tests = {
@@ -157,48 +126,6 @@ local tests = {
 		func = testState,
 		args = { true },
 		expect = { true }
-	},
-	{
-		name = name .. '.skip ()',
-		func = testSkip,
-		args = { false },
-		expect = { false }
-	},
-	{
-		name = name .. '.skip ()',
-		func = testSkip,
-		args = { true },
-		expect = { true }
-	},
-	{
-		name = name .. '.todo ()',
-		func = testTodo,
-		args = { false },
-		expect = { false }
-	},
-	{
-		name = name .. '.todo ()',
-		func = testTodo,
-		args = { true },
-		expect = { true }
-	},
-	{
-		name = name .. '.skip ()',
-		func = testGetSetSkip,
-		args = { 'foo' },
-		expect = { 'foo' }
-	},
-	{
-		name = name .. '.todo ()',
-		func = testGetSetTodo,
-		args = { 'bar' },
-		expect = { 'bar' }
-	},
-	{
-		name = name .. '.description ()',
-		func = testGetSetDescription,
-		args = { 'baz' },
-		expect = { 'baz' }
 	},
 }
 

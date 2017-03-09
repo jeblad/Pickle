@@ -32,54 +32,6 @@ function AdaptReportRender:key( str ) -- luacheck: ignore self
 	return 'pickle-report-result-vivid-' .. str
 end
 
---- Override realization of reported data for skip
-function AdaptReportRender:realizeSkip( src, lang )
-	assert( src, 'Failed to provide a source' )
-
-	local html = mw.html.create( 'span' )
-		:addClass( 'mw-pickle-skip' )
-
-	if lang then
-		html:attr( 'lang', lang )
-	end
-
-	html:wikitext( Base.realizeSkip( self, src, lang ) )
-
-	return html
-end
-
---- Override realization of reported data for todo
-function AdaptReportRender:realizeTodo( src, lang )
-	assert( src, 'Failed to provide a source' )
-
-	local html = mw.html.create( 'span' )
-		:addClass( 'mw-pickle-todo' )
-
-	if lang then
-		html:attr( 'lang', lang )
-	end
-
-	html:wikitext( Base.realizeTodo( self, src, lang ) )
-
-	return html
-end
-
---- Override realization of reported data for description
-function AdaptReportRender:realizeDescription( src, lang )
-	assert( src, 'Failed to provide a source' )
-
-	local html = mw.html.create( 'span' )
-		:addClass( 'mw-pickle-description' )
-
-	if lang then
-		html:attr( 'lang', lang )
-	end
-
-	html:wikitext( Base.realizeDescription( self, src, lang ) )
-
-	return html
-end
-
 --- Override realization of reported data for state
 function AdaptReportRender:realizeState( src, lang )
 	assert( src, 'Failed to provide a source' )
