@@ -19,7 +19,7 @@ if mw.pickle then
 	Extractors = mw.pickle.extractors
 else
 	-- test, structure does not exist, require the libs
-	FRameReport = require 'picklelib/report/FrameReport'
+	FrameReport = require 'picklelib/report/FrameReport'
 	Subject = require 'picklelib/engine/Subject'
 	Extractors = require('picklelib/extractor/ExtractorStrategies').create()
 
@@ -171,11 +171,12 @@ function Frame:eval() -- luacheck: ignore
 		until( not strategy )
 
 		for _,w in ipairs( { self._fixtures:export() } ) do
-			local res, data = pcall( w( unpack{ args } ) )
+			local res, excpt = pcall( w( unpack{ args } ) )
 			if res then
-				-- @todo should capture content on stack
-			else
-				-- @todo should create a descriptive error message
+				Subject.stack:push( res )
+			end
+			if excpt then
+				Subject.stack:push( res )
 			end
 			--Report.create(  )
 		end
