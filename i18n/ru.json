@@ -11,6 +11,7 @@
 	"pickle-test-text-missing": "Отсутствует",
 	"pickle-test-text-unknown": "Неизвестно",
 	"pickle-tracking-category-pending": "Модули с ожидающими тестами",
+	"pickle-tracking-category-pending-desc": "Результат указывает на состояние \"ожидания\" после оценки тестов.",
 	"pickle-tracking-category-todo": "Модули с незавершенными тестами",
 	"pickle-tracking-category-skip": "Модули с пропущенными тестами",
 	"pickle-tracking-category-fail": "Модули с не прошедшими тестами",
