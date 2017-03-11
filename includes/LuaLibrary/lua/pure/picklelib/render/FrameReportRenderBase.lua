@@ -61,7 +61,7 @@ end
 function FrameReportRender:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
 
-	if not src:hasSkip() then
+	if not ( src:isSkip() or src:hasSkip() ) then
 		return ''
 	end
 
@@ -94,7 +94,7 @@ end
 function FrameReportRender:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
 
-	if not src:hasTodo() then
+	if not ( src:isTodo() or src:hasTodo() ) then
 		return ''
 	end
 
@@ -147,10 +147,14 @@ function FrameReportRender:realizeHeader( src, lang ) -- luacheck: ignore self l
 		table.insert( t, self:realizeDescription( src, lang ) )
 	end
 
-	if src:hasSkip() or src:hasTodo() then
+	if src:isSkip() or src:hasSkip() or src:isTodo() or src:hasTodo() then
 		table.insert( t, '# ' )
-		table.insert( t, self:realizeSkip( src, lang ) )
-		table.insert( t, self:realizeTodo( src, lang ) )
+		if src:isSkip() or src:hasSkip() then
+			table.insert( t, self:realizeSkip( src, lang ) )
+		end
+		if src:isTodo() or src:hasTodo() then
+			table.insert( t, self:realizeTodo( src, lang ) )
+		end
 	end
 
 	return table.concat( t, '' )

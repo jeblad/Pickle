@@ -78,10 +78,9 @@ end
 --- Set the skip
 -- This is an accessor to set the member.
 -- Note that all arguments will be wrapped up in a table before saving.
-function FrameReport:setSkip( ... )
-	local t = { ... }
-	assert( #t >= 1, 'Failed to provide a skip' )
-	self._skip = t
+function FrameReport:setSkip( str )
+	assert( str, 'Failed to provide a skip' )
+	self._skip = str
 	return self
 end
 
@@ -89,12 +88,24 @@ end
 -- This is an accessor to get the member.
 -- Note that the saved structure will be unpacked before being returned.
 function FrameReport:getSkip()
-	return unpack( self._skip )
+	return self._skip
 end
 
---- Check if the instance has any skip member
-function FrameReport:hasSkip()
+--- Check if the instance is itself in a skip state
+function FrameReport:isSkip()
 	return not not self._skip
+end
+
+--- Check if the instance has any member in skip state
+-- This will reject all frame constituents from the analysis.
+function FrameReport:hasSkip()
+	local tmp = false
+	for _,v in ipairs( { self._constituents:export() } ) do
+		if self:type() ~= v:type() then
+			tmp = tmp or v:isSkip()
+		end
+	end
+	return tmp
 end
 
 --- Set the todo
@@ -111,9 +122,21 @@ function FrameReport:getTodo()
 	return self._todo
 end
 
---- Check if the instance has any todo member
-function FrameReport:hasTodo()
+--- Check if the instance is itself in a todo state
+function FrameReport:isTodo()
 	return not not self._todo
+end
+
+--- Check if the instance has any member in todo state
+-- This will reject all frame constituents from the analysis.
+function FrameReport:hasTodo()
+	local tmp = false
+	for _,v in ipairs( { self._constituents:export() } ) do
+		if self:type() ~= v:type() then
+			tmp = tmp or v:isTodo()
+		end
+	end
+	return tmp
 end
 
 --- Set the description

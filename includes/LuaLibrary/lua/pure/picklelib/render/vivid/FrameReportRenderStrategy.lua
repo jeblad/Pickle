@@ -110,14 +110,14 @@ function FrameReportRender:realizeHeader( src, lang ) -- luacheck: ignore self l
 		html:node( self:realizeDescription( src, lang ) )
 	end
 
-	if src:hasSkip() or src:hasTodo() then
+	if src:isSkip() or src:hasSkip() or src:isTodo() or src:hasTodo() then
 		local comment = mw.html.create( 'span' )
 			:addClass( 'mw-pickle-comment' )
 			:wikitext( '# ' )
-		if src:hasSkip() then
+		if src:isSkip() or src:hasSkip() then
 			comment:node( self:realizeSkip( src, lang ) )
 		end
-		if src:hasTodo() then
+		if src:isTodo() or src:hasTodo() then
 			comment:node( self:realizeTodo( src, lang ) )
 		end
 		html:node( comment )

@@ -39,6 +39,8 @@ function AdaptReport:_init( ... )
 	self._state = false
 	self._lang = false
 	self._lines:push( ... )
+	self._skip = false
+	self._todo = false
 	self._type = 'adapt-report'
 	return self
 end
@@ -80,6 +82,48 @@ end
 -- Note that initial state is not ok.
 function AdaptReport:isOk()
 	return self._state
+end
+
+--- Set the skip
+-- This is an accessor to set the member.
+-- Note that all arguments will be wrapped up in a table before saving.
+function AdaptReport:setSkip( str )
+	--local t = { str }
+	assert( str, 'Failed to provide a skip' )
+	self._skip = str
+	--self._skip = str
+	return self
+end
+
+--- Get the skip
+-- This is an accessor to get the member.
+-- Note that the saved structure will be unpacked before being returned.
+function AdaptReport:getSkip()
+	return self._skip
+end
+
+--- Check if the instance is itself in a skip state
+function AdaptReport:isSkip()
+	return not not self._skip
+end
+
+--- Set the todo
+-- This is an accessor to set the member.
+function AdaptReport:setTodo( str )
+	assert( str, 'Failed to provide a todo' )
+	self._todo = str
+	return self
+end
+
+--- Get the todo
+-- This is an accessor to get the member.
+function AdaptReport:getTodo()
+	return self._todo
+end
+
+--- Check if the instance is itself in a todo state
+function AdaptReport:isTodo()
+	return not not self._todo
 end
 
 --- Realize the data by applying a render

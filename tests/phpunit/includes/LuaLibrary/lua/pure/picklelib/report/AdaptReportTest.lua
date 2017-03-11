@@ -41,6 +41,38 @@ local function testState( state )
 	return test:isOk()
 end
 
+local function testIsSkip( str )
+	local test = makeTest()
+	if str then
+		test:setSkip( str )
+	end
+	return test:isSkip()
+end
+
+local function testIsTodo( str )
+	local test = makeTest()
+	if str then
+		test:setTodo( str )
+	end
+	return test:isTodo()
+end
+
+local function testGetSetSkip( str )
+	local test = makeTest()
+	if str then
+		test:setSkip( str )
+	end
+	return test:getSkip()
+end
+
+local function testGetSetTodo( str )
+	local test = makeTest()
+	if str then
+		test:setTodo( str )
+	end
+	return test:getTodo()
+end
+
 local function testAddLine( ... )
 	local test = makeTest():addLine( ... )
 	return test:lines()
@@ -126,6 +158,54 @@ local tests = {
 		func = testState,
 		args = { true },
 		expect = { true }
+	},
+	{
+		name = name .. '.isSkip ()',
+		func = testIsSkip,
+		args = {},
+		expect = { false }
+	},
+	{
+		name = name .. '.isSkip ()',
+		func = testIsSkip,
+		args = { 'ping' },
+		expect = { true }
+	},
+	{
+		name = name .. '.isTodo ()',
+		func = testIsTodo,
+		args = {},
+		expect = { false }
+	},
+	{
+		name = name .. '.isTodo ()',
+		func = testIsTodo,
+		args = { 'pong' },
+		expect = { true }
+	},
+	{
+		name = name .. '.skip ()',
+		func = testGetSetSkip,
+		args = {},
+		expect = { false }
+	},
+	{
+		name = name .. '.skip ()',
+		func = testGetSetSkip,
+		args = { 'foo' },
+		expect = { 'foo' }
+	},
+	{
+		name = name .. '.todo ()',
+		func = testGetSetTodo,
+		args = {},
+		expect = { false }
+	},
+	{
+		name = name .. '.todo ()',
+		func = testGetSetTodo,
+		args = { 'bar' },
+		expect = { 'bar' }
 	},
 }
 

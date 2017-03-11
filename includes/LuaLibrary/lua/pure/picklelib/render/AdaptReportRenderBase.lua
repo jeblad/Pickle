@@ -55,7 +55,7 @@ function AdaptReportRender:realizeHeader( src, lang )
 		table.insert( t, self:realizeDescription( src, lang ) )
 	end
 
-	if src:hasSkip() or src:hasTodo() then
+	if src:isSkip() or src:isTodo() then
 		table.insert( t, '# ' )
 		table.insert( t, self:realizeSkip( src, lang ) )
 		table.insert( t, self:realizeTodo( src, lang ) )
