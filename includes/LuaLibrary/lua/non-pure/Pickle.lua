@@ -27,7 +27,7 @@ end
 
 -- require libs and create an instance
 pickle.extractors = require( 'picklelib/extractor/ExtractorStrategies' ).create()
-pickle.reports = pickle.report.frame.create()
+pickle.reports = require( 'picklelib/Stack' ).create()
 
 local export = {
 	subject = pickle.subject,

@@ -17,9 +17,9 @@ if mw.pickle then
 else
 	-- structure does not exist, require the libs
 	AdaptReport = require 'picklelib/report/AdaptReport'
-	Reports = require('picklelib/report/FrameReport').create()
-	function Adapt:reports()
-		return self.Reports
+	Reports = require('picklelib/Stack').create()
+	function Adapt:reports() -- luacheck: ignore self
+		return Reports
 	end
 end
 
@@ -262,7 +262,7 @@ local function makeConditionProcess( name, func, other )
 			report:ok()
 		end
 		-- @todo add handover
-		Reports:addConstituent( report )
+		Reports:push( report )
 		return report
 	end
 	return f
