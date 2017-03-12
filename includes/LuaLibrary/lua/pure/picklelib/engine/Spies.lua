@@ -29,14 +29,14 @@ end
 -- Print a message without exiting, with caller's name and arguments.
 function Spies.carp( str )
 	local report = AdaptReport.create()
-	report:setTodo( str or mw.message.new( 'pickle-carp-todo' ):plain() )
+	report:setTodo( str or mw.message.new( 'pickle-spies-carp-todo' ):plain() )
 	Reports:push( report )
 end
 
 -- Print a message without exiting, with caller's name and arguments, and a stack trace.
 function Spies.cluck( str )
 	local report = AdaptReport.create()
-	report:setTodo( str or mw.message.new( 'pickle-cluck-todo' ):plain() )
+	report:setTodo( str or mw.message.new( 'pickle-spies-cluck-todo' ):plain() )
 	local _,rest = Spies.traceback()
 	-- report:addLine( first )
 	for _,v in ipairs( rest ) do
@@ -48,22 +48,22 @@ end
 -- Print a message then exits, with caller's name and arguments.
 function Spies.confess( str )
 	local report = AdaptReport.create()
-	report:setSkip( str or mw.message.new( 'pickle-confess-skip' ):plain() )
+	report:setSkip( str or mw.message.new( 'pickle-spies-confess-skip' ):plain() )
 	Reports:push( report )
-	error( mw.message.new( 'pickle-confess-exits' ) )
+	error( mw.message.new( 'pickle-spies-confess-exits' ) )
 end
 
 -- Print a message then exits, with caller's name and arguments, and a stack trace.
 function Spies.croak( str )
 	local report = AdaptReport.create()
-	report:setSkip( str or mw.message.new( 'pickle-croak-skip' ):plain() )
+	report:setSkip( str or mw.message.new( 'pickle-spies-croak-skip' ):plain() )
 	local _,rest = Spies.traceback()
 	-- report:addLine( first )
 	for _,v in ipairs( rest ) do
 		report:addLine( v )
 	end
 	Reports:push( report )
-	error( mw.message.new( 'pickle-croak-exits' ) )
+	error( mw.message.new( 'pickle-spies-croak-exits' ) )
 end
 
 -- Return the final lib

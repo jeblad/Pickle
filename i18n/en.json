@@ -116,5 +116,11 @@
 	"pickle-adapt-condition-to-be-lesser-or-equal": "Shall be lesser or equal than the target",
 	"pickle-adapt-condition-to-be-greater-or-equal": "Shall be greater or equal than the target",
 	"pickle-adapt-condition-to-be-match": "Shall be matched in the target",
-	"pickle-adapt-condition-to-be-u-match": "Shall be matched in the Unicode target"
+	"pickle-adapt-condition-to-be-u-match": "Shall be matched in the Unicode target",
+	"pickle-spies-carp-todo": "Carp called",
+	"pickle-spies-cluck-todo": "Cluck called",
+	"pickle-spies-confess-skip": "Confess called",
+	"pickle-spies-croak-skip": "Croak called",
+	"pickle-spies-confess-exits": "Confess exits",
+	"pickle-spies-croak-exits": "Croak exits"
 }

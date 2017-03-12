@@ -118,5 +118,11 @@
 	"pickle-adapt-condition-to-be-lesser-or-equal": "{{pickle-gloss}} {{pickle-condition}}",
 	"pickle-adapt-condition-to-be-greater-or-equal": "{{pickle-gloss}} {{pickle-condition}}",
 	"pickle-adapt-condition-to-be-match": "{{pickle-gloss}} {{pickle-condition}}",
-	"pickle-adapt-condition-to-be-u-match": "{{pickle-gloss}} {{pickle-condition}}"
+	"pickle-adapt-condition-to-be-u-match": "{{pickle-gloss}} {{pickle-condition}}",
+	"pickle-spies-carp-todo": "{{pickle-gloss}} {{pickle-spies-called|carp}}",
+	"pickle-spies-cluck-todo": "{{pickle-gloss}} {{pickle-spies-called|cluck}}",
+	"pickle-spies-confess-skip": "{{pickle-gloss}} {{pickle-spies-called|confess}}",
+	"pickle-spies-croak-skip": "{{pickle-gloss}} {{pickle-spies-called|croak}}",
+	"pickle-spies-confess-exits": "{{pickle-gloss}} {{pickle-spies-exits|confess}}",
+	"pickle-spies-croak-exits": "{{pickle-gloss}} {{pickle-spies-exits|croak}}"
 }
