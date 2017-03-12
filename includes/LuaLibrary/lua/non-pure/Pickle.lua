@@ -16,6 +16,7 @@ pickle.report.adapt = require 'picklelib/report/AdaptReport'
 pickle.report.frame = require 'picklelib/report/FrameReport'
 pickle.renders = require 'picklelib/render/Renders'
 pickle.frame = require 'picklelib/engine/Frame'
+pickle.spies = require 'picklelib/engine/Spies'
 --[[
 	for k,v in pairs( util ) do
 	if not pickle[k] then
@@ -30,7 +31,11 @@ pickle.reports = pickle.report.frame.create()
 
 local export = {
 	subject = pickle.subject,
-	expect = pickle.expect
+	expect = pickle.expect,
+	carp = pickle.spies.carp,
+	cluck = pickle.spies.cluck,
+	confess = pickle.spies.confess,
+	croak = pickle.spies.croak
 }
 
 -- create the access to other parties
