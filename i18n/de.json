@@ -102,5 +102,11 @@
 	"pickle-adapt-condition-to-be-lesser-or-equal": "Soll weniger als das Ziel oder gleich sein",
 	"pickle-adapt-condition-to-be-greater-or-equal": "Soll größer als das Ziel oder gleich sein",
 	"pickle-adapt-condition-to-be-match": "Soll dem Ziel entsprechen",
-	"pickle-adapt-condition-to-be-u-match": "Soll dem Unicode-Ziel entsprechen"
+	"pickle-adapt-condition-to-be-u-match": "Soll dem Unicode-Ziel entsprechen",
+	"pickle-spies-carp-todo": "Aufgerufener Karpfen",
+	"pickle-spies-cluck-todo": "Aufgerufener Dummkopf",
+	"pickle-spies-confess-skip": "Aufgerufenes Geständnis",
+	"pickle-spies-croak-skip": "Aufgerufenes Quaken",
+	"pickle-spies-confess-exits": "Geständnis ist vorhanden",
+	"pickle-spies-croak-exits": "Quaken ist vorhanden"
 }

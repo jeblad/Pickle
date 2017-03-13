@@ -102,5 +102,11 @@
 	"pickle-adapt-condition-to-be-lesser-or-equal": "Має бути менше або дорівнювати цілі",
 	"pickle-adapt-condition-to-be-greater-or-equal": "Має бути більше або дорівнювати цілі",
 	"pickle-adapt-condition-to-be-match": "Має бути узгоджене в цілі",
-	"pickle-adapt-condition-to-be-u-match": "Має бути узгоджене в цілі Unicode"
+	"pickle-adapt-condition-to-be-u-match": "Має бути узгоджене в цілі Unicode",
+	"pickle-spies-carp-todo": "Carp викликано",
+	"pickle-spies-cluck-todo": "Cluck викликано",
+	"pickle-spies-confess-skip": "Confess викликано",
+	"pickle-spies-croak-skip": "Croak викликано",
+	"pickle-spies-confess-exits": "Confess виходить",
+	"pickle-spies-croak-exits": "Croak виходить"
 }
