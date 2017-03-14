@@ -81,8 +81,8 @@
 	"pickle-adapt-process-as-reverse": "Reverser strengen",
 	"pickle-adapt-process-as-u-upper": "Skift alle tegn i Unicode-strengen til store tegn",
 	"pickle-adapt-process-as-u-lower": "Skift alle tegn i Unicode-strengen til små tegn",
-	"pickle-adapt-process-as-u-upper-first": "Skift første tegn i Unicode-strengen til stort tegn",
-	"pickle-adapt-process-as-u-lower-first": "Skift første tegn i Unicode-strengen til lite tegn",
+	"pickle-adapt-process-as-u-upper-first": "Skift første kodepunkt i Unicode-strengen til stor bokstav",
+	"pickle-adapt-process-as-u-lower-first": "Skift første kodepunkt i Unicode-strengen til liten bokstav",
 	"pickle-adapt-process-as-u-n-f-c": "Endre Unicode-strengen til Normalized Form C (NFC)",
 	"pickle-adapt-process-as-u-n-f-d": "Endre Unicode-strengen til Normalized Form D (NFD)",
 	"pickle-adapt-process-as-number": "Endre strengen til nummer",
@@ -103,5 +103,11 @@
 	"pickle-adapt-condition-to-be-lesser-or-equal": "Skal være mindre enn eller lik målet",
 	"pickle-adapt-condition-to-be-greater-or-equal": "Skal være større enn eller lik målet",
 	"pickle-adapt-condition-to-be-match": "Skal gjenfinnes i målet",
-	"pickle-adapt-condition-to-be-u-match": "Skal gjenfinnes i Unicode-målet"
+	"pickle-adapt-condition-to-be-u-match": "Skal gjenfinnes i Unicode-målet",
+	"pickle-spies-carp-todo": "Carp ble kalt",
+	"pickle-spies-cluck-todo": "Cluck ble kalt",
+	"pickle-spies-confess-skip": "Confess ble kalt",
+	"pickle-spies-croak-skip": "Croak ble kalt",
+	"pickle-spies-confess-exits": "Confess avslutter",
+	"pickle-spies-croak-exits": "Croak avslutter"
 }

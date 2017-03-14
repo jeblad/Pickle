@@ -103,5 +103,11 @@
 	"pickle-adapt-condition-to-be-lesser-or-equal": "应小于等于目标",
 	"pickle-adapt-condition-to-be-greater-or-equal": "应大于等于目标",
 	"pickle-adapt-condition-to-be-match": "应与目标匹配",
-	"pickle-adapt-condition-to-be-u-match": "应与Unicode目标匹配"
+	"pickle-adapt-condition-to-be-u-match": "应与Unicode目标匹配",
+	"pickle-spies-carp-todo": "Carp被取消",
+	"pickle-spies-cluck-todo": "Cluck被取消",
+	"pickle-spies-confess-skip": "Confess被取消",
+	"pickle-spies-croak-skip": "Croak被取消",
+	"pickle-spies-confess-exits": "Confess已存在",
+	"pickle-spies-croak-exits": "Croak已存在"
 }

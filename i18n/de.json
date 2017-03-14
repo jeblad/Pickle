@@ -103,10 +103,10 @@
 	"pickle-adapt-condition-to-be-greater-or-equal": "Soll größer als das Ziel oder gleich sein",
 	"pickle-adapt-condition-to-be-match": "Soll dem Ziel entsprechen",
 	"pickle-adapt-condition-to-be-u-match": "Soll dem Unicode-Ziel entsprechen",
-	"pickle-spies-carp-todo": "Aufgerufener Karpfen",
-	"pickle-spies-cluck-todo": "Aufgerufener Dummkopf",
-	"pickle-spies-confess-skip": "Aufgerufenes Geständnis",
-	"pickle-spies-croak-skip": "Aufgerufenes Quaken",
-	"pickle-spies-confess-exits": "Geständnis ist vorhanden",
-	"pickle-spies-croak-exits": "Quaken ist vorhanden"
+	"pickle-spies-carp-todo": "Carp aufgerufen",
+	"pickle-spies-cluck-todo": "Cluck aufgerufen",
+	"pickle-spies-confess-skip": "Confess aufgerufen",
+	"pickle-spies-croak-skip": "Croak aufgerufen",
+	"pickle-spies-confess-exits": "Confess beendet",
+	"pickle-spies-croak-exits": "Croak beendet"
 }
