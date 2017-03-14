@@ -103,5 +103,11 @@
 	"pickle-adapt-condition-to-be-lesser-or-equal": "Devrait être inférieur ou égal à la cible",
 	"pickle-adapt-condition-to-be-greater-or-equal": "Devrait être supérieur ou égal à la cible",
 	"pickle-adapt-condition-to-be-match": "Devrait correspondre à la cible",
-	"pickle-adapt-condition-to-be-u-match": "Devrait correspondre à la cible en Unicode"
+	"pickle-adapt-condition-to-be-u-match": "Devrait correspondre à la cible en Unicode",
+	"pickle-spies-carp-todo": "Critique appelée",
+	"pickle-spies-cluck-todo": "Gloussement appelé",
+	"pickle-spies-confess-skip": "Confession appelée",
+	"pickle-spies-croak-skip": "Croassement appelé",
+	"pickle-spies-confess-exits": "Sortie de confession",
+	"pickle-spies-croak-exits": "Sortie de croassement"
 }
