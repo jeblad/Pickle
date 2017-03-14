@@ -46,24 +46,24 @@ function Spies.cluck( str )
 end
 
 -- Print a message then exits, with caller's name and arguments.
-function Spies.confess( str )
-	local report = AdaptReport.create()
-	report:setSkip( str or mw.message.new( 'pickle-spies-confess-skip' ):plain() )
-	Reports:push( report )
-	error( mw.message.new( 'pickle-spies-confess-exits' ) )
-end
-
--- Print a message then exits, with caller's name and arguments, and a stack trace.
 function Spies.croak( str )
 	local report = AdaptReport.create()
 	report:setSkip( str or mw.message.new( 'pickle-spies-croak-skip' ):plain() )
+	Reports:push( report )
+	error( mw.message.new( 'pickle-spies-croak-exits' ) )
+end
+
+-- Print a message then exits, with caller's name and arguments, and a stack trace.
+function Spies.confess( str )
+	local report = AdaptReport.create()
+	report:setSkip( str or mw.message.new( 'pickle-spies-confess-skip' ):plain() )
 	local _,rest = Spies.traceback()
 	-- report:addLine( first )
 	for _,v in ipairs( rest ) do
 		report:addLine( v )
 	end
 	Reports:push( report )
-	error( mw.message.new( 'pickle-spies-croak-exits' ) )
+	error( mw.message.new( 'pickle-spies-confess-exits' ) )
 end
 
 -- Return the final lib
