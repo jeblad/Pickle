@@ -33,15 +33,15 @@ local function testCluckTodo( ... )
 	return Spies.reports():top():getTodo()
 end
 
+local function testConfessLines( pattern, idx, ... )
+	pcall( Spies.confess, ... )
+	local lines = Spies.reports():top():lines() -- @note this is unpacked, but ends up as a table
+	return string.match( lines[ idx ], pattern )
+end
+
 local function testConfessTodo( ... )
 	pcall( Spies.confess, ... )
 	return Spies.reports():top():getSkip()
-end
-
-local function testCroakLines( pattern, idx, ... )
-	pcall( Spies.croak, ... )
-	local lines = Spies.reports():top():lines() -- @note this is unpacked, but ends up as a table
-	return string.match( lines[ idx ], pattern )
 end
 
 local function testCroakTodo( ... )
@@ -117,16 +117,16 @@ local tests = {
 		expect = { 'foo bar baz' }
 	},
 	{
+		name = 'confess lines ()',
+		func = testConfessLines,
+		args = { "/(%a+).lua.*'(.-)'", 1 },
+		expect = { 'Spies', 'traceback' }
+	},
+	{
 		name = 'confess todo ()',
 		func = testConfessTodo,
 		args = { 'foo bar baz' },
 		expect = { 'foo bar baz' }
-	},
-	{
-		name = 'croak lines ()',
-		func = testCroakLines,
-		args = { "/(%a+).lua.*'(.-)'", 1 },
-		expect = { 'Spies', 'traceback' }
 	},
 	{
 		name = 'croak todo ()',
