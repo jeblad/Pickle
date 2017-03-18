@@ -19,7 +19,7 @@ if mw.pickle then
 	Extractors = mw.pickle.extractors
 else
 	-- test, structure does not exist, require the libs
-	FRameReport = require 'picklelib/report/FrameReport'
+	FrameReport = require 'picklelib/report/FrameReport'
 	Subject = require 'picklelib/engine/Subject'
 	Extractors = require('picklelib/extractor/ExtractorStrategies').create()
 
