@@ -10,8 +10,11 @@
 	"pickle-frame-compact-header-some-failed": "nie ok &mdash; $1",
 	"pickle-report-result-compact-is-ok": "ok",
 	"pickle-report-result-compact-is-not-ok": "nie ok",
+	"pickle-report-result-compact-wrap-skip": "pomiń $1",
 	"pickle-report-result-full-is-ok": "ok",
 	"pickle-report-result-full-is-not-ok": "nie ok",
+	"pickle-report-result-full-wrap-skip": "pomiń $1",
 	"pickle-report-result-vivid-is-ok": "ok",
-	"pickle-report-result-vivid-is-not-ok": "nie ok"
+	"pickle-report-result-vivid-is-not-ok": "nie ok",
+	"pickle-report-result-vivid-wrap-skip": "pomiń $1"
 }

@@ -81,8 +81,8 @@
 	"pickle-adapt-process-as-reverse": "Обратна низа",
 	"pickle-adapt-process-as-u-upper": "Цела уникодна низа со големи букви",
 	"pickle-adapt-process-as-u-lower": "Цела уникодна низа со мали букви",
-	"pickle-adapt-process-as-u-upper-first": "Првиот знак во уникодната низа голема буква",
-	"pickle-adapt-process-as-u-lower-first": "Првиот знак во уникодната низа мала буква",
+	"pickle-adapt-process-as-u-upper-first": "Првата кодна точка во уникодната низа голема буква",
+	"pickle-adapt-process-as-u-lower-first": "Првата кодна точка во уникодната низа мала буква",
 	"pickle-adapt-process-as-u-n-f-c": "Прекодирај ја уникодната низа како нормализиран облик C (NFC)",
 	"pickle-adapt-process-as-u-n-f-d": "Прекодирај ја уникодната низа како нормализиран облик D (NFD)",
 	"pickle-adapt-process-as-number": "Претвори ја низата во број",
@@ -103,5 +103,11 @@
 	"pickle-adapt-condition-to-be-lesser-or-equal": "Да биде помало или еднакво на целта",
 	"pickle-adapt-condition-to-be-greater-or-equal": "Да биде поголемо или еднакво на целта",
 	"pickle-adapt-condition-to-be-match": "Да се совпаѓа во целта",
-	"pickle-adapt-condition-to-be-u-match": "Да се совпаѓа во уникодната цел"
+	"pickle-adapt-condition-to-be-u-match": "Да се совпаѓа во уникодната цел",
+	"pickle-spies-carp-todo": "Се јави Крап",
+	"pickle-spies-cluck-todo": "Се јави Ќутук",
+	"pickle-spies-confess-skip": "Се јави Исповед",
+	"pickle-spies-croak-skip": "Се јави Грак",
+	"pickle-spies-confess-exits": "Исповед изглегува",
+	"pickle-spies-croak-exits": "Грак излегува"
 }
