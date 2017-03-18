@@ -30,6 +30,9 @@ pickle.extractors = require( 'picklelib/extractor/ExtractorStrategies' ).create(
 pickle.reports = require( 'picklelib/Stack' ).create()
 
 local export = {
+	describe = pickle.frame,
+	context = pickle.frame,
+	it = pickle.frame,
 	subject = pickle.subject,
 	expect = pickle.expect,
 	carp = pickle.spies.carp,
