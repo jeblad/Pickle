@@ -45,7 +45,7 @@ function Frame:__index( key ) -- luacheck: ignore self
 end
 
 -- @var metatable for the class
-local mt = {}
+local mt = { types = {} }
 
 --- Get arguments for a class call
 function mt:__call( ... ) -- luacheck: ignore
@@ -90,25 +90,25 @@ end
 --- Dispach on type
 function Frame:dispatch( ... )
 	for _,v in ipairs( { ... } ) do
-		local tname = type( v )..'Type'
-		assert( self[tname], 'Failed to find a type handler' )
-		self[tname]( self, v )
+		local tname = type( v )
+		assert( mt.types[tname], 'Failed to find a type handler' )
+		mt.types[tname]( self, v )
 	end
 	return self
 end
 
 --- Push a string
-function Frame:stringType( ... )
-	self._descriptions:push( ... )
+mt.types[ 'string' ] = function( this, ... )
+	this._descriptions:push( ... )
 end
 
 --- Push a function
-function Frame:functionType( ... )
-	self._fixtures:push( ... )
+mt.types[ 'function' ] = function( this, ... )
+	this._fixtures:push( ... )
 end
 
 --- Push a table
-function Frame:tableType( ... ) -- luacheck: ignore
+mt.types[ 'table' ] = function( this, ... ) -- luacheck: ignore
 	Subject.stack:push( ... )
 end
 

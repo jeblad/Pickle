@@ -44,21 +44,21 @@ local function testInstanceCallStrings()
 	return t:descriptions()
 end
 
-local function testStringType( ... )
+local function testStringDispatch( ... )
 	local obj = makeTest()
-	obj:stringType( ... )
+	obj:dispatch( ... )
 	return obj:hasDescriptions(), obj:numDescriptions(), obj:descriptions()
 end
 
-local function testFunctionType( ... )
+local function testFunctionDispatch( ... )
 	local obj = makeTest()
-	obj:functionType( ... )
+	obj:dispatch( ... )
 	return obj:hasFixtures(), obj:numFixtures()
 end
 
-local function testTableType( ... )
+local function testTableDispatch( ... )
 	local obj = makeTest()
-	obj:tableType( ... )
+	obj:dispatch( ... )
 	return obj:numSubjects()
 end
 
@@ -133,38 +133,38 @@ local tests = {
 		expect = { 'foo', 'bar', 'baz' }
 	},
 	{
-		name = name .. '.stringType (no string)',
-		func = testStringType,
+		name = name .. '.stringDispatch (no string)',
+		func = testStringDispatch,
 		args = { },
 		expect = { false, 0 }
 	},
 	{
-		name = name .. '.stringType (single string)',
-		func = testStringType,
+		name = name .. '.stringDispatch (single string)',
+		func = testStringDispatch,
 		args = { 'foo' },
 		expect = { true, 1, 'foo' }
 	},
 	{
-		name = name .. '.stringType (multiple string)',
-		func = testStringType,
+		name = name .. '.stringDispatch (multiple string)',
+		func = testStringDispatch,
 		args = { 'foo', 'bar', 'baz' },
 		expect = { true, 3, 'foo', 'bar', 'baz' }
 	},
 	{
-		name = name .. '.functionType (no function)',
-		func = testFunctionType,
+		name = name .. '.functionDispatch (no function)',
+		func = testFunctionDispatch,
 		args = {},
 		expect = { false, 0 }
 	},
 	{
-		name = name .. '.functionType (single function)',
-		func = testFunctionType,
+		name = name .. '.functionDispatch (single function)',
+		func = testFunctionDispatch,
 		args = { function() return 'foo' end },
 		expect = { true, 1 }
 	},
 	{
-		name = name .. '.functionType (multiple functions)',
-		func = testFunctionType,
+		name = name .. '.functionDispatch (multiple functions)',
+		func = testFunctionDispatch,
 		args = {
 			function() return 'foo' end,
 			function() return 'bar' end,
@@ -173,20 +173,20 @@ local tests = {
 		expect = { true, 3 }
 	},
 	{
-		name = name .. '.tableType (no table)',
-		func = testTableType,
+		name = name .. '.tableDispatch (no table)',
+		func = testTableDispatch,
 		args = {},
 		expect = { 0 }
 	},
 	{
-		name = name .. '.tableType (single table)',
-		func = testTableType,
+		name = name .. '.tableDispatch (single table)',
+		func = testTableDispatch,
 		args = { { 'foo' } },
 		expect = { 1 }
 	},
 	{
-		name = name .. '.tableType (multiple tables)',
-		func = testTableType,
+		name = name .. '.tableDispatch (multiple tables)',
+		func = testTableDispatch,
 		args = {
 			{ 'foo' },
 			{ 'bar' },
