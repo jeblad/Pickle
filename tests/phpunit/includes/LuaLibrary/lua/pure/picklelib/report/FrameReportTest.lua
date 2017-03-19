@@ -32,12 +32,13 @@ local function testType( ... )
 	return makeTest( ... ):type()
 end
 
+local function testConstituent( con )
+	local p = makeTest():addConstituent( con )
+	return { p:constituents() }
+end
+
 local function testConstituents( ... )
-	local p = makeTest()
-	local t = { ... }
-	for _,v in ipairs( t ) do
-		p:addConstituent( v )
-	end
+	local p = makeTest():addConstituents( ... )
 	return { p:constituents() }
 end
 
@@ -135,7 +136,13 @@ local tests = {
 		expect = { class }
 	},
 	{
-		name = name .. ':addConstituent (multiple value type)',
+		name = name .. ':addConstituent (single value type)',
+		func = testConstituent,
+		args = { 'foo' },
+		expect = { { 'foo' } }
+	},
+	{
+		name = name .. ':addConstituents (multiple value type)',
 		func = testConstituents,
 		args = { 'foo', 'bar', 'baz' },
 		expect = { { 'foo', 'bar', 'baz' } }

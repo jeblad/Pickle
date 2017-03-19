@@ -59,6 +59,12 @@ function FrameReport:addConstituent( part )
 	return self
 end
 
+--- Add several constituents
+function FrameReport:addConstituents( ... )
+	self._constituents:push( ... )
+	return self
+end
+
 --- Export the constituents as an multivalue return
 -- Note that each constituent is not unwrapped.
 function FrameReport:constituents()
