@@ -21,6 +21,14 @@ local function testCreate( ... )
 	return type( makeTest( ... ) )
 end
 
+local function testNumFlush( ... )
+	local obj = makeTest( ... )
+	local t = { obj:num() }
+	obj:flush()
+	table.insert( t, obj:num() )
+	return unpack( t )
+end
+
 local function testFind( str, ... )
 	local t = { makeTest( ... ):find( str, 1 ) }
 	local obj = table.remove( t, 1 )
@@ -76,6 +84,24 @@ local tests = {
 		type = 'ToString',
 		args = { require 'picklelib/extractor/NumberExtractorStrategy' },
 		expect = { 'table' }
+	},
+	{
+		name = name .. '.num-flush (no value)',
+		func = testNumFlush,
+		args = {},
+		expect = { 0, 0 }
+	},
+	{
+		name = name .. '.num-flush (single value)',
+		func = testNumFlush,
+		args = { 'foo' },
+		expect = { 1, 0 }
+	},
+	{
+		name = name .. '.num-flush (multiple value)',
+		func = testNumFlush,
+		args = { 'foo', 'bar', 'baz' },
+		expect = { 3, 0 }
 	},
 	{
 		name = name .. '.find (nil extract)',

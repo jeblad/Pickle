@@ -34,6 +34,17 @@ function Extractors:register( strategy )
 	return self
 end
 
+--- Removes all registered extractors
+function Extractors:flush()
+	self._strategies:flush()
+	return self
+end
+
+--- The number of registered extractors
+function Extractors:num()
+	return self._strategies:depth()
+end
+
 function Extractors:find( str, pos )
 	-- @todo figure out if it should be valid to not provide a string
 	assert( str, 'Failed to provide a string' )
