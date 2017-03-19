@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"jeblad"
+			"Jeblad"
 		]
 	},
 	"pickle-desc": "Adds basic Pickle testing to Lua modules",
