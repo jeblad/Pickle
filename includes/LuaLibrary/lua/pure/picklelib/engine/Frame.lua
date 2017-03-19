@@ -98,18 +98,18 @@ function Frame:dispatch( ... )
 end
 
 --- Push a string
-mt.types[ 'string' ] = function( this, ... )
-	this._descriptions:push( ... )
+mt.types[ 'string' ] = function( this, str )
+	this._descriptions:push( str )
 end
 
 --- Push a function
-mt.types[ 'function' ] = function( this, ... )
-	this._fixtures:push( ... )
+mt.types[ 'function' ] = function( this, func )
+	this._fixtures:push( func )
 end
 
 --- Push a table
-mt.types[ 'table' ] = function( this, ... ) -- luacheck: ignore
-	Subject.stack:push( ... )
+mt.types[ 'table' ] = function( _, tbl )
+	Subject.stack:push( tbl )
 end
 
 --- Check if the frame has descriptions
