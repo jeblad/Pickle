@@ -67,7 +67,9 @@ local function testEval( libs, ... )
 	for _,v in ipairs( libs ) do
 		obj:extractors():register( require( v ).create() )
 	end
-	return obj:eval()
+	local report = obj:eval():reports():top()
+	obj:extractors():flush()
+	return report:getSkip() or report:getTodo() or report:getDescription()
 end
 
 local tests = {
@@ -194,56 +196,120 @@ local tests = {
 		},
 		expect = { 3 }
 	},
-	--[[
 	{
-		name = name .. '.eval ("foo bar baz")',
+		name = name .. '.eval (no string)',
+		func = testEval,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			}
+		},
+		expect = { "No fixtures" }
+	},
+	{
+		name = name .. '.eval (single string)',
 		func = testEval,
 		args = {
 			{
 				"picklelib/extractor/StringExtractorStrategy",
 				"picklelib/extractor/NumberExtractorStrategy"
 			},
-			"foo bar baz"
+			'foo "bar" baz'
 		},
-		expect = { 3 }
+		expect = { "No fixtures" }
 	},
 	{
-		name = name .. '.eval ("foo \\\"test\\\" baz")',
+		name = name .. '.eval (multiple string)',
 		func = testEval,
 		args = {
 			{
 				"picklelib/extractor/StringExtractorStrategy",
 				"picklelib/extractor/NumberExtractorStrategy"
 			},
-			"foo \"test\" baz"
+			'foo "bar" baz',
+			'ping 42 pong'
 		},
-		expect = { 3 }
+		expect = { "No fixtures" }
 	},
 	{
-		name = name .. '.eval ("foo 42 baz")',
+		name = name .. '.eval (no string)',
 		func = testEval,
 		args = {
 			{
 				"picklelib/extractor/StringExtractorStrategy",
 				"picklelib/extractor/NumberExtractorStrategy"
 			},
-			"foo 42 baz"
+			function() end
 		},
-		expect = { 3 }
+		expect = { 'No tests' }
 	},
 	{
-		name = name .. '.eval ("foo \\\"test\\\" bar 42 baz")',
+		name = name .. '.eval (single string)',
 		func = testEval,
 		args = {
 			{
 				"picklelib/extractor/StringExtractorStrategy",
 				"picklelib/extractor/NumberExtractorStrategy"
 			},
-			"foo \"test\" bar 42 baz"
+			'foo "bar" baz',
+			function() end
 		},
-		expect = { 3 }
+		expect = { 'No tests' }
 	},
-	]]
+	{
+		name = name .. '.eval (multiple string")',
+		func = testEval,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			'foo "bar" baz',
+			'ping 42 pong',
+			function() end
+		},
+		expect = { 'No tests' }
+	},
+	{
+		name = name .. '.eval (no string)',
+		func = testEval,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			function() error( 'this is borken' ) end
+		},
+		expect = { 'has no description' }
+	},
+	{
+		name = name .. '.eval (single string)',
+		func = testEval,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			'foo "bar" baz',
+			function() error( 'this is borken' ) end
+		},
+		expect = { "foo \"bar\" baz" }
+	},
+	{
+		name = name .. '.eval (multiple string)',
+		func = testEval,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			"foo \"bar\" baz",
+			'ping 42 pong',
+			function() error( 'this is borken' ) end
+		},
+		expect = { 'ping 42 pong' } -- only last reported
+	},
 }
 
 return testframework.getTestProvider( tests )

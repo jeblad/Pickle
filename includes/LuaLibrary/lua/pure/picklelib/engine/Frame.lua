@@ -8,20 +8,26 @@ local Stack = require 'picklelib/Stack'
 local Frame = {}
 
 -- non-pure libs
+local AdaptReport -- luacheck: ignore
 local FrameReport -- luacheck: ignore
 local Subject
 local Extractors
+local Reports
 -- Setup for prod or test
 if mw.pickle then
 	-- production, structure exist, make access simpler
+	AdaptReport = mw.pickle.report.adapt
 	FrameReport = mw.pickle.report.frame
 	Subject = mw.pickle.subject
 	Extractors = mw.pickle.extractors
+	Reports = mw.pickle.reports
 else
 	-- test, structure does not exist, require the libs
+	AdaptReport = require 'picklelib/report/AdaptReport'
 	FrameReport = require 'picklelib/report/FrameReport'
 	Subject = require 'picklelib/engine/Subject'
 	Extractors = require('picklelib/extractor/ExtractorStrategies').create()
+	Reports = require('picklelib/Stack').create()
 
 	--- Expose report
 	function Frame:report() -- luacheck: ignore self
@@ -36,6 +42,11 @@ else
 	--- Expose extractors
 	function Frame:extractors() -- luacheck: ignore self
 		return Extractors
+	end
+
+	--- Expose reports
+	function Frame:reports() -- luacheck: ignore self
+		return Reports
 	end
 end
 
@@ -150,8 +161,7 @@ end
 --- Eval the fixtures
 function Frame:eval() -- luacheck: ignore
 	if not self:hasFixtures() then
-		-- @todo should create a descriptive skip message
-		--Report.create(  )
+		Reports:push( FrameReport.create():setSkip( 'No fixtures' ) )
 		self._eval = true
 		return self
 	end
@@ -171,13 +181,22 @@ function Frame:eval() -- luacheck: ignore
 		until( not strategy )
 
 		for _,w in ipairs( { self._fixtures:export() } ) do
-			local res, data = pcall( w( unpack{ args } ) )
-			if res then
-				-- @todo should capture content on stack
-			else
-				-- @todo should create a descriptive error message
+			local depth = Reports:depth()
+			local t = { pcall( w, unpack{ args } ) }
+			if ( not t[1] ) and (not not t[2]) then
+				Reports:push( AdaptReport.create():setSkip( 'bailed out' ) )
 			end
-			--Report.create(  )
+			local report = FrameReport.create():setDescription( v )
+			local added = Reports:depth() - depth
+			if added == 0 then
+				report:setSkip( 'No tests' )
+			else
+				report:addConstituents( Reports:pop( added ) )
+			end
+			Reports:push( report )
+			if not not t[1] then
+				Subject.stack:push( unpack( t ) )
+			end
 		end
 	end
 	self._eval = true
