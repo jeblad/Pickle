@@ -6,13 +6,11 @@
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:Pickle",
 	"descriptionmsg": "pickle-desc",
-	"license-name": "GPL v2",
+	"license-name": "GPL-2.0",
 	"type": "other",
 	"AutoloadClasses": {
 		"Pickle\\Hooks":
 			"includes/Hooks.php",
-		"Pickle\\Common":
-			"includes/Common.php",
 
 		"Pickle\\Observer":
 			"includes/Observer/Observer.php",
@@ -408,12 +406,12 @@
 			}
 		},
 		"ext.pickle.console": {
-			"styles": {
-				"0": "ext.pickle.console.css"
-			},
-			"scripts": {
-				"0": "ext.pickle.console.js"
-			},
+			"styles": [
+				"ext.pickle.console.css"
+			],
+			"scripts": [
+				"ext.pickle.console.js"
+			],
 			"dependencies": [
 				"jquery.spinner"
 			],
