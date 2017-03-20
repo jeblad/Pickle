@@ -67,9 +67,18 @@ local function testEval( libs, ... )
 	for _,v in ipairs( libs ) do
 		obj:extractors():register( require( v ).create() )
 	end
-	local report = obj:eval():reports():top()
+	local result = {}
+	for _,v in ipairs( { obj:eval():reports():export() } ) do
+		table.insert( result, v:getSkip() or v:getTodo() or v:getDescription() )
+		if not not v['constituents'] then
+			for _,w in ipairs( { v:constituents() } ) do
+				table.insert( result, w:getSkip() or w:getTodo() or 'empty' )
+				table.insert( result, { w:lines() } )
+			end
+		end
+	end
 	obj:extractors():flush()
-	return report:getSkip() or report:getTodo() or report:getDescription()
+	return unpack( result )
 end
 
 local tests = {
@@ -205,7 +214,9 @@ local tests = {
 				"picklelib/extractor/NumberExtractorStrategy"
 			}
 		},
-		expect = { "No fixtures" }
+		expect = {
+			'No fixtures'
+		}
 	},
 	{
 		name = name .. '.eval (single string)',
@@ -217,7 +228,9 @@ local tests = {
 			},
 			'foo "bar" baz'
 		},
-		expect = { "No fixtures" }
+		expect = {
+			'No fixtures'
+		}
 	},
 	{
 		name = name .. '.eval (multiple string)',
@@ -230,7 +243,9 @@ local tests = {
 			'foo "bar" baz',
 			'ping 42 pong'
 		},
-		expect = { "No fixtures" }
+		expect = {
+			'No fixtures'
+		}
 	},
 	{
 		name = name .. '.eval (no string)',
@@ -242,7 +257,9 @@ local tests = {
 			},
 			function() end
 		},
-		expect = { 'No tests' }
+		expect = {
+			'No tests'
+		}
 	},
 	{
 		name = name .. '.eval (single string)',
@@ -255,7 +272,9 @@ local tests = {
 			'foo "bar" baz',
 			function() end
 		},
-		expect = { 'No tests' }
+		expect = {
+			'No tests'
+		}
 	},
 	{
 		name = name .. '.eval (multiple string")',
@@ -269,7 +288,10 @@ local tests = {
 			'ping 42 pong',
 			function() end
 		},
-		expect = { 'No tests' }
+		expect = {
+			'No tests',
+			'No tests'
+		}
 	},
 	{
 		name = name .. '.eval (no string)',
@@ -281,7 +303,9 @@ local tests = {
 			},
 			function() error( 'this is borken' ) end
 		},
-		expect = { 'has no description' }
+		expect = {
+			'has no description', 'Catched exception', {}
+		}
 	},
 	{
 		name = name .. '.eval (single string)',
@@ -294,7 +318,9 @@ local tests = {
 			'foo "bar" baz',
 			function() error( 'this is borken' ) end
 		},
-		expect = { "foo \"bar\" baz" }
+		expect = {
+			'foo "bar" baz', 'Catched exception', {}
+		}
 	},
 	{
 		name = name .. '.eval (multiple string)',
@@ -308,7 +334,10 @@ local tests = {
 			'ping 42 pong',
 			function() error( 'this is borken' ) end
 		},
-		expect = { 'ping 42 pong' } -- only last reported
+		expect = {
+			'foo "bar" baz', 'Catched exception', {},
+			'ping 42 pong', 'Catched exception', {}
+		}
 	},
 }
 

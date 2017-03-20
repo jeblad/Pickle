@@ -184,7 +184,7 @@ function Frame:eval() -- luacheck: ignore
 			local depth = Reports:depth()
 			local t = { pcall( w, unpack{ args } ) }
 			if ( not t[1] ) and (not not t[2]) then
-				Reports:push( AdaptReport.create():setSkip( 'bailed out' ) )
+				Reports:push( AdaptReport.create():setSkip( 'Catched exception' ) )
 			end
 			local report = FrameReport.create():setDescription( v )
 			local added = Reports:depth() - depth
