@@ -206,7 +206,7 @@ local tests = {
 		expect = { 3 }
 	},
 	{
-		name = name .. '.eval (no string)',
+		name = name .. '.eval (no string, no fixtures)',
 		func = testEval,
 		args = {
 			{
@@ -219,7 +219,7 @@ local tests = {
 		}
 	},
 	{
-		name = name .. '.eval (single string)',
+		name = name .. '.eval (single string, no fixtures)',
 		func = testEval,
 		args = {
 			{
@@ -233,7 +233,7 @@ local tests = {
 		}
 	},
 	{
-		name = name .. '.eval (multiple string)',
+		name = name .. '.eval (multiple string, no fixtures)',
 		func = testEval,
 		args = {
 			{
@@ -248,7 +248,53 @@ local tests = {
 		}
 	},
 	{
-		name = name .. '.eval (no string)',
+		name = name .. '.eval (no string, fixture with assertion)',
+		func = testEval,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			function() assert( false, 'go zip' ) end
+		},
+		expect = {
+			'has no description', 'Catched exception', {}
+		}
+	},
+	{
+		name = name .. '.eval (single string, fixture with assertion)',
+		func = testEval,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			function() assert( false, 'go zip' ) end
+		},
+		'foo "bar" baz',
+		expect = {
+			'has no description', 'Catched exception', {}
+		}
+	},
+	{
+		name = name .. '.eval (multiple string, fixture with assertion)',
+		func = testEval,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			'foo "bar" baz',
+			'ping 42 pong',
+			function() assert( false, 'go zip' ) end
+		},
+		expect = {
+			'foo "bar" baz', 'Catched exception', {},
+			'ping 42 pong', 'Catched exception', {}
+		}
+	},
+	{
+		name = name .. '.eval (no string, empty fixture)',
 		func = testEval,
 		args = {
 			{
@@ -262,7 +308,7 @@ local tests = {
 		}
 	},
 	{
-		name = name .. '.eval (single string)',
+		name = name .. '.eval (single string, empty fixture)',
 		func = testEval,
 		args = {
 			{
@@ -277,7 +323,7 @@ local tests = {
 		}
 	},
 	{
-		name = name .. '.eval (multiple string")',
+		name = name .. '.eval (multiple string, empty fixture)',
 		func = testEval,
 		args = {
 			{
@@ -294,7 +340,7 @@ local tests = {
 		}
 	},
 	{
-		name = name .. '.eval (no string)',
+		name = name .. '.eval (no string, fixture with error)',
 		func = testEval,
 		args = {
 			{
@@ -308,7 +354,7 @@ local tests = {
 		}
 	},
 	{
-		name = name .. '.eval (single string)',
+		name = name .. '.eval (single string, fixture with error)',
 		func = testEval,
 		args = {
 			{
@@ -323,7 +369,7 @@ local tests = {
 		}
 	},
 	{
-		name = name .. '.eval (multiple string)',
+		name = name .. '.eval (multiple string, fixture with error)',
 		func = testEval,
 		args = {
 			{
