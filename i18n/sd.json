@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Indus Asia"
+		]
+	},
+	"pickle-test-text-good": "سٺو",
+	"pickle-test-text-pending": "ويچار هيٺ",
+	"pickle-test-text-missing": "کُٽل",
+	"pickle-test-text-unknown": "اڻڄاتل",
+	"pickle-console-run": "هلايو",
+	"pickle-report-result-compact-is-ok": "ٺيڪ (او ڪي)",
+	"pickle-report-result-compact-is-not-ok": "ٺيڪ ناهي",
+	"pickle-report-result-full-is-ok": "ٺيڪ (او ڪي)",
+	"pickle-report-result-full-is-not-ok": "ٺيڪ (او ڪي) ناهي",
+	"pickle-report-result-vivid-is-ok": "ٺيڪ (او ڪي)",
+	"pickle-report-result-vivid-is-not-ok": "ٺيڪ ناهي",
+	"pickle-adapt-process-first": "پهريون عنصر کڻو",
+	"pickle-adapt-process-second": "ٻيون عنصر کڻو",
+	"pickle-adapt-process-sixth": "ڇهون عنصر کڻو",
+	"pickle-adapt-process-eighth": "اَٺون عنصر کڻو",
+	"pickle-adapt-process-ninth": "نائون عنصر کڻو",
+	"pickle-adapt-process-tenth": "ڏهون عنصر کڻو",
+	"pickle-adapt-process-as-round": "ويجهي کان ويجهو صحيح عدد ڳوليو"
+}

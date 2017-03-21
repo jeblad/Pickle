@@ -1,9 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"YaronSh"
+			"YaronSh",
+			"Uziel302"
 		]
 	},
+	"pickle-test-text-pending": "ממתין",
+	"pickle-test-text-unknown": "לא ידוע",
+	"pickle-tracking-category-good": "מודולים עם תוצאות מבחן טובות",
 	"pickle-console-empty": "אין דוחות זמינים.",
-	"pickle-console-cleared": "תוכן המסוף נמחק."
+	"pickle-console-cleared": "תוכן המסוף נמחק.",
+	"pickle-console-run": "הרצה",
+	"pickle-adapt-process-as-type": "מצא מאיזה סוג הרכיב",
+	"pickle-adapt-process-as-round": "מצא את המספר השלם הקרוב ביותר"
 }
