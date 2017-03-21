@@ -68,8 +68,14 @@ local function testEval( libs, ... )
 		obj:extractors():register( require( v ).create() )
 	end
 	local result = {}
-	for _,v in ipairs( { obj:eval():reports():export() } ) do
-		table.insert( result, v:getSkip() or v:getTodo() or v:getDescription() )
+	obj:eval()
+	for _,v in ipairs( { obj:reports():export() } ) do
+		if v:hasDescription() then
+			table.insert( result, v:getDescription() )
+		end
+		if v:isSkip() or v:isTodo() then
+			table.insert( result, v:getSkip() or v:getTodo() )
+		end
 		if not not v['constituents'] then
 			for _,w in ipairs( { v:constituents() } ) do
 				table.insert( result, w:getSkip() or w:getTodo() or 'empty' )
@@ -258,7 +264,9 @@ local tests = {
 			function() assert( false, 'go zip' ) end
 		},
 		expect = {
-			'has no description', 'Catched exception', {}
+			'has no description',
+			'Catched exception',
+			{}
 		}
 	},
 	{
@@ -273,7 +281,9 @@ local tests = {
 		},
 		'foo "bar" baz',
 		expect = {
-			'has no description', 'Catched exception', {}
+			'has no description',
+			'Catched exception',
+			{}
 		}
 	},
 	{
@@ -289,8 +299,12 @@ local tests = {
 			function() assert( false, 'go zip' ) end
 		},
 		expect = {
-			'foo "bar" baz', 'Catched exception', {},
-			'ping 42 pong', 'Catched exception', {}
+			'foo "bar" baz',
+			'Catched exception',
+			{},
+			'ping 42 pong',
+			'Catched exception',
+			{}
 		}
 	},
 	{
@@ -304,6 +318,7 @@ local tests = {
 			function() end
 		},
 		expect = {
+			'has no description',
 			'No tests'
 		}
 	},
@@ -319,6 +334,7 @@ local tests = {
 			function() end
 		},
 		expect = {
+			'foo "bar" baz',
 			'No tests'
 		}
 	},
@@ -335,7 +351,9 @@ local tests = {
 			function() end
 		},
 		expect = {
+			'foo "bar" baz',
 			'No tests',
+			'ping 42 pong',
 			'No tests'
 		}
 	},
@@ -350,7 +368,9 @@ local tests = {
 			function() error( 'this is borken' ) end
 		},
 		expect = {
-			'has no description', 'Catched exception', {}
+			'has no description',
+			'Catched exception',
+			{}
 		}
 	},
 	{
@@ -365,7 +385,9 @@ local tests = {
 			function() error( 'this is borken' ) end
 		},
 		expect = {
-			'foo "bar" baz', 'Catched exception', {}
+			'foo "bar" baz',
+			'Catched exception',
+			{}
 		}
 	},
 	{
@@ -381,8 +403,76 @@ local tests = {
 			function() error( 'this is borken' ) end
 		},
 		expect = {
-			'foo "bar" baz', 'Catched exception', {},
-			'ping 42 pong', 'Catched exception', {}
+			'foo "bar" baz',
+			'Catched exception',
+			{},
+			'ping 42 pong',
+			'Catched exception',
+			{}
+		}
+	},
+	{
+		name = name .. '.evalSubject (no string, fixture push subject)',
+		func = testEval,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			-- pass as subject
+			-- function(...) for _,v in ipairs( {...} ) do lib.subject()( v ):first():eval() end end
+			function(...) return ... end
+		},
+		expect = {
+			'has no description',
+			'No tests',
+			'Catched return',
+			{}
+		}
+	},
+	{
+		name = name .. '.evalSubject (single string, fixture push subject)',
+		func = testEval,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			'foo "bar" baz',
+			-- pass as subject
+			-- function(...) for _,v in ipairs( {...} ) do lib.subject()( v ):first():eval() end end
+			function(...) return ... end
+		},
+		expect = {
+			'foo "bar" baz',
+			'No tests',
+			'Catched return',
+			{ { '"bar"' } }
+		}
+	},
+	{
+		name = name .. '.evalSubject (multiple string, fixture push subject)',
+		func = testEval,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			'foo "bar" baz',
+			'ping 42 pong',
+			-- pass as subject
+			-- function(...) for _,v in ipairs( {...} ) do lib.subject()( v ):first():eval() end end
+			function(...) return ... end
+		},
+		expect = {
+			'foo "bar" baz',
+			'No tests',
+			'Catched return',
+			{ { '"bar"' } },
+			'ping 42 pong',
+			'No tests',
+			'Catched return',
+			{ { '42' } },
 		}
 	},
 }

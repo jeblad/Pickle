@@ -190,13 +190,16 @@ function Frame:eval() -- luacheck: ignore
 			local added = Reports:depth() - depth
 			if added == 0 then
 				report:setSkip( 'No tests' )
-			else
-				report:addConstituents( Reports:pop( added ) )
+			end
+			report:addConstituents( Reports:pop( added ) )
+			if t[1] and type( t[2] ) == 'table' then
+				local tmp = AdaptReport.create():setTodo( 'Catched return' )
+				for _,u in ipairs( t[2] or {} ) do
+					tmp:addLine( mw.dumpObject( u ) )
+				end
+				report:addConstituent( tmp )
 			end
 			Reports:push( report )
-			if not not t[1] then
-				Subject.stack:push( unpack( t ) )
-			end
 		end
 	end
 	self._eval = true
