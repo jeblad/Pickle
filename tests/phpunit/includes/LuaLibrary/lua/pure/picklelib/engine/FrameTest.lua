@@ -221,7 +221,7 @@ local tests = {
 			}
 		},
 		expect = {
-			'No fixtures'
+			'pickle-frame-no-fixtures'
 		}
 	},
 	{
@@ -235,7 +235,7 @@ local tests = {
 			'foo "bar" baz'
 		},
 		expect = {
-			'No fixtures'
+			'pickle-frame-no-fixtures'
 		}
 	},
 	{
@@ -250,7 +250,7 @@ local tests = {
 			'ping 42 pong'
 		},
 		expect = {
-			'No fixtures'
+			'pickle-frame-no-fixtures'
 		}
 	},
 	{
@@ -264,8 +264,8 @@ local tests = {
 			function() assert( false, 'go zip' ) end
 		},
 		expect = {
-			'has no description',
-			'Catched exception',
+			'pickle-frame-no-description',
+			'pickle-adapt-catched-exception',
 			{}
 		}
 	},
@@ -281,8 +281,8 @@ local tests = {
 		},
 		'foo "bar" baz',
 		expect = {
-			'has no description',
-			'Catched exception',
+			'pickle-frame-no-description',
+			'pickle-adapt-catched-exception',
 			{}
 		}
 	},
@@ -300,10 +300,10 @@ local tests = {
 		},
 		expect = {
 			'foo "bar" baz',
-			'Catched exception',
+			'pickle-adapt-catched-exception',
 			{},
 			'ping 42 pong',
-			'Catched exception',
+			'pickle-adapt-catched-exception',
 			{}
 		}
 	},
@@ -318,8 +318,8 @@ local tests = {
 			function() end
 		},
 		expect = {
-			'has no description',
-			'No tests'
+			'pickle-frame-no-description',
+			'pickle-frame-no-tests'
 		}
 	},
 	{
@@ -335,7 +335,7 @@ local tests = {
 		},
 		expect = {
 			'foo "bar" baz',
-			'No tests'
+			'pickle-frame-no-tests'
 		}
 	},
 	{
@@ -352,9 +352,9 @@ local tests = {
 		},
 		expect = {
 			'foo "bar" baz',
-			'No tests',
+			'pickle-frame-no-tests',
 			'ping 42 pong',
-			'No tests'
+			'pickle-frame-no-tests'
 		}
 	},
 	{
@@ -368,8 +368,8 @@ local tests = {
 			function() error( 'this is borken' ) end
 		},
 		expect = {
-			'has no description',
-			'Catched exception',
+			'pickle-frame-no-description',
+			'pickle-adapt-catched-exception',
 			{}
 		}
 	},
@@ -386,7 +386,7 @@ local tests = {
 		},
 		expect = {
 			'foo "bar" baz',
-			'Catched exception',
+			'pickle-adapt-catched-exception',
 			{}
 		}
 	},
@@ -404,10 +404,10 @@ local tests = {
 		},
 		expect = {
 			'foo "bar" baz',
-			'Catched exception',
+			'pickle-adapt-catched-exception',
 			{},
 			'ping 42 pong',
-			'Catched exception',
+			'pickle-adapt-catched-exception',
 			{}
 		}
 	},
@@ -424,9 +424,9 @@ local tests = {
 			function(...) return ... end
 		},
 		expect = {
-			'has no description',
-			'No tests',
-			'Catched return',
+			'pickle-frame-no-description',
+			'pickle-frame-no-tests',
+			'pickle-adapt-catched-return',
 			{}
 		}
 	},
@@ -445,8 +445,8 @@ local tests = {
 		},
 		expect = {
 			'foo "bar" baz',
-			'No tests',
-			'Catched return',
+			'pickle-frame-no-tests',
+			'pickle-adapt-catched-return',
 			{ { '"bar"' } }
 		}
 	},
@@ -466,12 +466,12 @@ local tests = {
 		},
 		expect = {
 			'foo "bar" baz',
-			'No tests',
-			'Catched return',
+			'pickle-frame-no-tests',
+			'pickle-adapt-catched-return',
 			{ { '"bar"' } },
 			'ping 42 pong',
-			'No tests',
-			'Catched return',
+			'pickle-frame-no-tests',
+			'pickle-adapt-catched-return',
 			{ { '42' } },
 		}
 	},

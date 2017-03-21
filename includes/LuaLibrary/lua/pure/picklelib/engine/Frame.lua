@@ -161,14 +161,14 @@ end
 --- Eval the fixtures
 function Frame:eval() -- luacheck: ignore
 	if not self:hasFixtures() then
-		Reports:push( FrameReport.create():setSkip( 'No fixtures' ) )
+		Reports:push( FrameReport.create():setSkip( 'pickle-frame-no-fixtures' ) )
 		self._eval = true
 		return self
 	end
 
 	for _,v in ipairs( self:hasDescriptions()
 			and { self._descriptions:export() }
-			or { 'has no description' } ) do
+			or { 'pickle-frame-no-description' } ) do
 		local pos = 1
 		local args = {}
 
@@ -184,16 +184,16 @@ function Frame:eval() -- luacheck: ignore
 			local depth = Reports:depth()
 			local t = { pcall( w, unpack{ args } ) }
 			if ( not t[1] ) and (not not t[2]) then
-				Reports:push( AdaptReport.create():setSkip( 'Catched exception' ) )
+				Reports:push( AdaptReport.create():setSkip( 'pickle-adapt-catched-exception' ) )
 			end
 			local report = FrameReport.create():setDescription( v )
 			local added = Reports:depth() - depth
 			if added == 0 then
-				report:setSkip( 'No tests' )
+				report:setSkip( 'pickle-frame-no-tests' )
 			end
 			report:addConstituents( Reports:pop( added ) )
 			if t[1] and type( t[2] ) == 'table' then
-				local tmp = AdaptReport.create():setTodo( 'Catched return' )
+				local tmp = AdaptReport.create():setTodo( 'pickle-adapt-catched-return' )
 				for _,u in ipairs( t[2] or {} ) do
 					tmp:addLine( mw.dumpObject( u ) )
 				end

@@ -119,6 +119,8 @@
 	"pickle-adapt-condition-to-be-greater-or-equal": "{{pickle-gloss}} {{pickle-condition}}",
 	"pickle-adapt-condition-to-be-match": "{{pickle-gloss}} {{pickle-condition}}",
 	"pickle-adapt-condition-to-be-u-match": "{{pickle-gloss}} {{pickle-condition}}",
+	"pickle-adapt-catched-exception": "{{pickle-gloss}} An exception has been catched during evaluation of a fixture. This can be due to assertions and spies, but can also be because of errors and other abrubt terminations.",
+	"pickle-adapt-catched-return": "{{pickle-gloss}} A return value has beed been catched from evaluation of a fixture. This is a planned early return, and will often carry a result.",
 	"pickle-spies-carp-todo": "{{pickle-gloss}} {{pickle-spies-called|carp}}",
 	"pickle-spies-cluck-todo": "{{pickle-gloss}} {{pickle-spies-called|cluck}}",
 	"pickle-spies-confess-skip": "{{pickle-gloss}} {{pickle-spies-called|confess}}",
