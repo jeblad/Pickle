@@ -17,7 +17,7 @@ end
 local FrameReportRender = {}
 
 --- Lookup of missing class members
-function FrameReportRender:__index( key ) -- luacheck: ignore self
+function FrameReportRender:__index( key ) -- luacheck: no self
 	return FrameReportRender[key]
 end
 
@@ -29,12 +29,12 @@ function FrameReportRender.create( ... )
 end
 
 --- Initialize a new instance
-function FrameReportRender:_init( ... ) -- luacheck: ignore
+function FrameReportRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
 --- Override key construction
-function FrameReportRender:key( str ) -- luacheck: ignore
+function FrameReportRender:key( str ) -- luacheck: no self
 	assert( str, 'Failed to provide a string' )
 	local keep = string.match( str, '^[-%a]+$' )
 	assert( keep, 'Failed to find a valid string' )
@@ -139,7 +139,7 @@ end
 
 --- Realize reported data for header
 -- The "header" is a composite.
-function FrameReportRender:realizeHeader( src, lang ) -- luacheck: ignore self lang
+function FrameReportRender:realizeHeader( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local t = { self:realizeState( src, lang ) }

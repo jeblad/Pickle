@@ -4,7 +4,7 @@
 local Renders = {}
 
 --- Lookup of missing class members
-function Renders:__index( key ) -- luacheck: ignore self
+function Renders:__index( key ) -- luacheck: no self
 	return Renders[key]
 end
 
@@ -13,7 +13,7 @@ Renders._styles = {}
 
 --- Convenience function to access a specific named style
 -- This will try to create the style if it isn't created yet.'
-function Renders:__call( name ) -- luacheck: ignore self
+function Renders:__call( name ) -- luacheck: no self
 	assert( name, 'Failed to provide a name' )
 	assert( Renders._styles[name], 'Failed to provide a previously registered style' )
 	return Renders._styles[name]

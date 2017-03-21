@@ -18,13 +18,13 @@ else
 	-- structure does not exist, require the libs
 	AdaptReport = require 'picklelib/report/AdaptReport'
 	Reports = require('picklelib/Stack').create()
-	function Adapt:reports() -- luacheck: ignore self
+	function Adapt:reports() -- luacheck: no self
 		return Reports
 	end
 end
 
 --- Lookup of missing class members
-function Adapt:__index( key ) -- luacheck: ignore self
+function Adapt:__index( key ) -- luacheck: no self
 	return Adapt[key]
 end
 
@@ -245,7 +245,7 @@ end
 
 --- Reorder the pair of parties involved in the condition
 -- This can be overridden in subclasses
-function Adapt:reorder( ... ) -- luacheck: ignore
+function Adapt:reorder( ... ) -- luacheck: no self
 	return ...
 end
 

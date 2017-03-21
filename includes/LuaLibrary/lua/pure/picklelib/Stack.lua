@@ -3,7 +3,7 @@
 local Stack = {}
 
 --- Lookup of missing class members
-function Stack:__index( key ) -- luacheck: ignore self
+function Stack:__index( key ) -- luacheck: no self
 	return Stack[key]
 end
 

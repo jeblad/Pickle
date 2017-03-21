@@ -16,7 +16,7 @@ end
 
 -- @var class var for lib
 local Expect = {}
-function Expect:__index( key ) -- luacheck: ignore self
+function Expect:__index( key ) -- luacheck: no self
 	return Expect[key]
 end
 

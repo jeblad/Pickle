@@ -4,7 +4,7 @@
 local Report = {}
 
 --- Lookup of missing class members
-function Report:__index( key ) -- luacheck: ignore self
+function Report:__index( key ) -- luacheck: no self
 	return Report[key]
 end
 
@@ -16,7 +16,7 @@ function Report.create( ... )
 end
 
 --- Initialize a new instance
-function Report:_init( ... ) -- luacheck: ignore
+function Report:_init( ... ) -- luacheck: no unused args
 	self._type = 'base-report'
 	return self
 end

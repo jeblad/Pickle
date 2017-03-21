@@ -5,7 +5,7 @@
 local AdaptReportRender = {}
 
 --- Lookup of missing class members
-function AdaptReportRender:__index( key ) -- luacheck: ignore self
+function AdaptReportRender:__index( key ) -- luacheck: no self
 	return AdaptReportRender[key]
 end
 
@@ -17,12 +17,12 @@ function AdaptReportRender.create( ... )
 end
 
 --- Initialize a new instance
-function AdaptReportRender:_init( ... ) -- luacheck: ignore
+function AdaptReportRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
 --- Override key construction
-function AdaptReportRender:key( str ) -- luacheck: ignore self
+function AdaptReportRender:key( str ) -- luacheck: no self
 	assert( str, 'Failed to provide a string' )
 	local keep = string.match( str, '^[-%a]+$' )
 	assert( keep, 'Failed to find a valid string' )

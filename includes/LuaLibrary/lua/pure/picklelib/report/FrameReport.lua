@@ -17,7 +17,7 @@ end
 local FrameReport = {}
 
 --- Lookup of missing class members
-function FrameReport:__index( key ) -- luacheck: ignore self
+function FrameReport:__index( key ) -- luacheck: no self
 	return FrameReport[key]
 end
 

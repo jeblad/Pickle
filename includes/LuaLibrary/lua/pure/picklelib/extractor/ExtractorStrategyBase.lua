@@ -8,7 +8,7 @@ local Stack = require 'picklelib/Stack'
 local Extractor = {}
 
 --- Lookup of missing class members
-function Extractor:__index( key ) -- luacheck: ignore self
+function Extractor:__index( key ) -- luacheck: no self
 	return Extractor[key]
 end
 

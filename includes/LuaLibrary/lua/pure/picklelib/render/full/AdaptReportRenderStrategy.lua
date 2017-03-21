@@ -7,7 +7,7 @@ local Base = require 'picklelib/render/AdaptReportRenderBase'
 local AdaptReportRender = {}
 
 --- Lookup of missing class members
-function AdaptReportRender:__index( key ) -- luacheck: ignore self
+function AdaptReportRender:__index( key ) -- luacheck: no self
 	return AdaptReportRender[key]
 end
 
@@ -22,7 +22,7 @@ function AdaptReportRender.create( ... )
 end
 
 --- Initialize a new instance
-function AdaptReportRender:_init( ... ) -- luacheck: ignore
+function AdaptReportRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 

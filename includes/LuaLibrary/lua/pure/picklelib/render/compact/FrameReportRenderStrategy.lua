@@ -7,7 +7,7 @@ local Base = require 'picklelib/render/FrameReportRenderBase'
 local FrameReportRender = {}
 
 --- Lookup of missing class members
-function FrameReportRender:__index( key ) -- luacheck: ignore self
+function FrameReportRender:__index( key ) -- luacheck: no self
 	return FrameReportRender[key]
 end
 
@@ -22,7 +22,7 @@ function FrameReportRender.create( ... )
 end
 
 --- Initialize a new instance
-function FrameReportRender:_init( ... ) -- luacheck: ignore
+function FrameReportRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 

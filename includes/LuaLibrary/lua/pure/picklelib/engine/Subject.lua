@@ -18,7 +18,7 @@ end
 local Subject = {}
 
 --- Lookup of missing class members
-function Subject:__index( key ) -- luacheck: ignore self
+function Subject:__index( key ) -- luacheck: no self
 	return Subject[key]
 end
 
@@ -26,7 +26,7 @@ end
 local mt = { __index = Adapt }
 
 --- Get a clone or create a new instance
-function mt:__call( ... ) -- luacheck: ignore
+function mt:__call( ... ) -- luacheck: no self
 	local t = { ... }
 	Subject.stack:push( #t == 0 and Subject.stack:top() or Subject.create( t ) )
 	return Subject.stack:top()

@@ -17,7 +17,7 @@ end
 local AdaptReport = {}
 
 --- Lookup of missing class members
-function AdaptReport:__index( key ) -- luacheck: ignore self
+function AdaptReport:__index( key ) -- luacheck: no self
 	return AdaptReport[key]
 end
 

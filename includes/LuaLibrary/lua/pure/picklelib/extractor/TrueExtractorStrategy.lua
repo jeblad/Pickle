@@ -6,7 +6,7 @@ local Base = require 'picklelib/extractor/ExtractorStrategyBase'
 
 -- @var class var for lib
 local Extractor = {}
-function Extractor:__index( key ) -- luacheck: ignore self
+function Extractor:__index( key ) -- luacheck: no self
 	return Extractor[key]
 end
 

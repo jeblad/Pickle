@@ -5,7 +5,7 @@
 local Stack = require 'picklelib/Stack'
 
 local Extractors = {}
-function Extractors:__index( key ) -- luacheck: ignore self
+function Extractors:__index( key ) -- luacheck: no self
 	return Extractors[key]
 end
 

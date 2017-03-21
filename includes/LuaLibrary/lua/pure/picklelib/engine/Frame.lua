@@ -30,28 +30,28 @@ else
 	Reports = require('picklelib/Stack').create()
 
 	--- Expose report
-	function Frame:report() -- luacheck: ignore self
+	function Frame:report() -- luacheck: no self
 		return FrameReport
 	end
 
 	--- Expose subject
-	function Frame:subject() -- luacheck: ignore self
+	function Frame:subject() -- luacheck: no self
 		return Subject
 	end
 
 	--- Expose extractors
-	function Frame:extractors() -- luacheck: ignore self
+	function Frame:extractors() -- luacheck: no self
 		return Extractors
 	end
 
 	--- Expose reports
-	function Frame:reports() -- luacheck: ignore self
+	function Frame:reports() -- luacheck: no self
 		return Reports
 	end
 end
 
 --- Lookup of missing class members
-function Frame:__index( key ) -- luacheck: ignore self
+function Frame:__index( key ) -- luacheck: no self
 	return Frame[key]
 end
 
@@ -59,7 +59,7 @@ end
 local mt = { types = {} }
 
 --- Get arguments for a class call
-function mt:__call( ... ) -- luacheck: ignore
+function mt:__call( ... ) -- luacheck: no self
 	local obj = Frame.create()
 	obj:dispatch( ... )
 	assert( not obj:isDone(), 'Failed, got a done instance' )
