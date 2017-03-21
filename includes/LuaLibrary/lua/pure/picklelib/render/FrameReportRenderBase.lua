@@ -164,7 +164,7 @@ end
 
 --- Realize reported data for body
 -- The "body" is a composite.
-function FrameReportRender:realizeBody( src, lang )
+function FrameReportRender:realizeBody( src, lang ) -- luacheck: ignore self lang
 	assert( src, 'Failed to provide a source' )
 
 	local t = {}
