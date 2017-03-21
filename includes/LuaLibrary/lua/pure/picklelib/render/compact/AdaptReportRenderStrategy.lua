@@ -28,7 +28,7 @@ end
 
 --- Override key construction
 function AdaptReportRender:key( str )
-	return 'pickle-report-result-compact-' ..  Base.key( self, str )
+	return 'pickle-report-adapt-compact-' ..  Base.key( self, str )
 end
 
 --- Override realization of reported data for body

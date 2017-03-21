@@ -69,24 +69,24 @@ local tests = {
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
-		expect = { 'pickle-report-result-vivid-foo' }
+		expect = { 'pickle-report-adapt-vivid-foo' }
 	},
 	{
 		name = name .. '.body ()',
 		func = testBodyOk,
 		expect = { '<dl class="mw-pickle-body">'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-result-vivid-wrap-line: (foo))</dd>'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-result-vivid-wrap-line: (bar))</dd>'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-result-vivid-wrap-line: (baz))</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-vivid-wrap-line: (foo))</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-vivid-wrap-line: (bar))</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-vivid-wrap-line: (baz))</dd>'
 			.. '</dl>' }
 	},
 	{
 		name = name .. '.body ()',
 		func = testBodyNotOk,
 		expect = { '<dl class="mw-pickle-body" style="display:none">'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-result-vivid-wrap-line: (foo))</dd>'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-result-vivid-wrap-line: (bar))</dd>'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-result-vivid-wrap-line: (baz))</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-vivid-wrap-line: (foo))</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-vivid-wrap-line: (bar))</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-vivid-wrap-line: (baz))</dd>'
 			.. '</dl>' }
 	},
 }

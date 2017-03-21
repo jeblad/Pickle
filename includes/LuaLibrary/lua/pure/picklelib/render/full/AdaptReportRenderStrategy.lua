@@ -28,7 +28,7 @@ end
 
 --- Override key construction
 function AdaptReportRender:key( str )
-	return 'pickle-report-result-full-' ..  Base.key( self, str )
+	return 'pickle-report-adapt-full-' ..  Base.key( self, str )
 end
 
 -- Return the final class

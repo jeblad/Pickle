@@ -69,7 +69,7 @@ local tests = {
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
-		expect = { 'pickle-report-result-compact-foo' }
+		expect = { 'pickle-report-adapt-compact-foo' }
 	},
 	{
 		name = name .. '.body ok ()',
@@ -80,9 +80,9 @@ local tests = {
 		name = name .. '.body not ok ()',
 		func = testBodyNotOk,
 		expect = { "\n"
-			.. '(pickle-report-result-compact-wrap-line: (foo))' .. "\n"
-			.. '(pickle-report-result-compact-wrap-line: (bar))' .. "\n"
-			.. '(pickle-report-result-compact-wrap-line: (baz))' }
+			.. '(pickle-report-adapt-compact-wrap-line: (foo))' .. "\n"
+			.. '(pickle-report-adapt-compact-wrap-line: (bar))' .. "\n"
+			.. '(pickle-report-adapt-compact-wrap-line: (baz))' }
 	},
 }
 

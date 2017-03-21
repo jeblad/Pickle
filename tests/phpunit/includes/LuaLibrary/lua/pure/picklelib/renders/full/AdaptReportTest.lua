@@ -69,23 +69,23 @@ local tests = {
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
-		expect = { 'pickle-report-result-full-foo' }
+		expect = { 'pickle-report-adapt-full-foo' }
 	},
 	{
 		name = name .. '.body ()',
 		func = testBodyOk,
 		expect = { "\n"
-			.. '(pickle-report-result-full-wrap-line: (foo))' .. "\n"
-			.. '(pickle-report-result-full-wrap-line: (bar))' .. "\n"
-			.. '(pickle-report-result-full-wrap-line: (baz))' }
+			.. '(pickle-report-adapt-full-wrap-line: (foo))' .. "\n"
+			.. '(pickle-report-adapt-full-wrap-line: (bar))' .. "\n"
+			.. '(pickle-report-adapt-full-wrap-line: (baz))' }
 	},
 	{
 		name = name .. '.body ()',
 		func = testBodyNotOk,
 		expect = { "\n"
-			.. '(pickle-report-result-full-wrap-line: (foo))' .. "\n"
-			.. '(pickle-report-result-full-wrap-line: (bar))' .. "\n"
-			.. '(pickle-report-result-full-wrap-line: (baz))' }
+			.. '(pickle-report-adapt-full-wrap-line: (foo))' .. "\n"
+			.. '(pickle-report-adapt-full-wrap-line: (bar))' .. "\n"
+			.. '(pickle-report-adapt-full-wrap-line: (baz))' }
 	},
 }
 

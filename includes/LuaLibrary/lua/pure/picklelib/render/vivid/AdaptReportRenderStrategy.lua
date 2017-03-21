@@ -28,7 +28,7 @@ end
 
 --- Override key construction
 function AdaptReportRender:key( str )
-	return 'pickle-report-result-vivid-' ..  Base.key( self, str )
+	return 'pickle-report-adapt-vivid-' ..  Base.key( self, str )
 end
 
 --- Override realization of reported data for state
