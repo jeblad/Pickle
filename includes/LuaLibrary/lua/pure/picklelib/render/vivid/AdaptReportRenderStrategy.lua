@@ -27,9 +27,8 @@ function AdaptReportRender:_init( ... ) -- luacheck: ignore
 end
 
 --- Override key construction
-function AdaptReportRender:key( str ) -- luacheck: ignore self
-	assert( str, 'Failed to provide a string' )
-	return 'pickle-report-result-vivid-' .. str
+function AdaptReportRender:key( str )
+	return 'pickle-report-result-vivid-' ..  Base.key( self, str )
 end
 
 --- Override realization of reported data for state

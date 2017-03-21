@@ -22,9 +22,11 @@ function AdaptReportRender:_init( ... ) -- luacheck: ignore
 end
 
 --- Override key construction
-function AdaptReportRender:key( str ) -- luacheck: ignore
-	error('Method should be overridden')
-	return nil
+function AdaptReportRender:key( str ) -- luacheck: ignore self
+	assert( str, 'Failed to provide a string' )
+	local keep = string.match( str, '^[-%a]+$' )
+	assert( keep, 'Failed to find a valid string' )
+	return keep
 end
 
 --- Realize reported data for state
