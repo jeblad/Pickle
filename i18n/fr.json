@@ -96,7 +96,7 @@
 	"pickle-adapt-condition-to-be-boolean-equal": "Devrait être égal à la cible de façon booléenne (évalué à la même valeur booléenne)",
 	"pickle-adapt-condition-to-be-strict-equal": "Devrait être strictement égal à la cible (égalité exacte et de type)",
 	"pickle-adapt-condition-to-be-same": "Devrait être semblable à la cible (égal après forçage de type)",
-	"pickle-adapt-condition-to-be-deep-equal": "Devrait être de même profondeur que la cible (plonge dans les tables)",
+	"pickle-adapt-condition-to-be-deep-equal": "Devrait être de même profondeur que la cible (niveau dans les tables)",
 	"pickle-adapt-condition-to-be-contained": "Devrait être contenu dans la cible",
 	"pickle-adapt-condition-to-be-lesser-than": "Devrait être inférieur à la cible",
 	"pickle-adapt-condition-to-be-greater-than": "Devrait être supérieur à la cible",
