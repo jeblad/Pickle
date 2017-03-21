@@ -27,9 +27,8 @@ function FrameReportRender:_init( ... ) -- luacheck: ignore
 end
 
 --- Override key construction
-function FrameReportRender:key( str ) -- luacheck: ignore self
-	assert( str, 'Failed to provide a string' )
-	return 'pickle-report-frame-vivid-' .. str
+function FrameReportRender:key( str )
+	return 'pickle-report-frame-vivid-' ..  Base.key( self, str )
 end
 
 --- Override realization of reported data for state
