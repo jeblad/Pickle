@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"BanKris"
+			"BanKris",
+			"Notramo"
 		]
 	},
+	"pickle-frame-no-description": "névtelen",
 	"pickle-report-adapt-compact-is-ok": "ok"
 }
