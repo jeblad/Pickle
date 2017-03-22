@@ -6,6 +6,10 @@ local Base = require 'picklelib/extractor/ExtractorStrategyBase'
 
 -- @var class var for lib
 local Extractor = {}
+
+--- Lookup of missing class members
+-- @param string used for lookup of member
+-- @return any
 function Extractor:__index( key ) -- luacheck: no self
 	return Extractor[key]
 end
@@ -14,6 +18,7 @@ end
 setmetatable( Extractor, { __index = Base } )
 
 --- Create a new instance
+-- @return self
 function Extractor.create()
 	local self = setmetatable( {}, Extractor )
 	self:_init()
@@ -21,6 +26,8 @@ function Extractor.create()
 end
 
 --- Initialize a new instance
+-- @private
+-- @return self
 function Extractor:_init()
 	Base._init( self,
 		{ '^nil$', 0, 0 },
@@ -33,6 +40,10 @@ end
 
 --- Cast the string into the correct type for this strategy
 -- There are no safeguards for erroneous casts
+-- @param string used as the extraction source
+-- @param number for an inclusive index where extraction starts
+-- @param number for an inclusive index where extraction finishes
+-- @return nil
 function Extractor:cast( str, start, finish ) -- luacheck: ignore
 	return nil
 end
