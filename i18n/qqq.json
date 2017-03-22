@@ -3,7 +3,8 @@
 		"authors": [
 			"Jeblad",
 			"Liuxinyu970226",
-			"Jhertel"
+			"Jhertel",
+			"Raymond"
 		]
 	},
 	"pickle-desc": "{{pickle-gloss}} {{desc|name=Pickle|url=https://www.mediawiki.org/wiki/Extension:Pickle }}",
@@ -64,19 +65,19 @@
 	"pickle-report-adapt-compact-is-ok": "{{pickle-gloss}} Initial keyword \"ok\" used for each good test in a TAP-report. It can be adapted by a following localization \"ok (something)\", but keep the \"ok\". {{pickle-report-compact}}}\n{{Identical|OK}}",
 	"pickle-report-adapt-compact-is-not-ok": "{{pickle-gloss}} Initial keyword \"not ok\" used for each good test in a TAP-report. It can be adapted by a following localization \"not ok (something)\", but keep the \"not ok\". {{pickle-report-compact}}}",
 	"pickle-report-adapt-compact-wrap-skip": "{{pickle-gloss}} An outher wrapper for the \"skip\" keyword and the optional string. It can be adapted by a following localization \"skip (something)\". {{pickle-report-compact}}\n{{Identical|Skip}}",
-	"pickle-report-adapt-compact-wrap-todo": "{{pickle-gloss}} An outer wrapper for the \"todo\" keyword and the optional string. It can be freely adapted, but should not contain a hash mark. {{pickle-report-compact}}",
+	"pickle-report-adapt-compact-wrap-todo": "{{pickle-gloss}} An outer wrapper for the \"todo\" keyword and the optional string. It can be freely adapted, but should not contain a hash mark. {{pickle-report-compact}}\n{{Identical|Todo}}",
 	"pickle-report-adapt-compact-wrap-description": "{{pickle-gloss}} An outher wrapper for the description optional string. {{pickle-report-compact}}}",
 	"pickle-report-adapt-compact-wrap-line": "{{pickle-gloss}} An outher wrapper for the collected lines. {{pickle-report-compact}}}",
 	"pickle-report-adapt-full-is-ok": "{{pickle-gloss}} Initial keyword \"ok\" used for each good test in a TAP-report. It can be adapted by a following localization \"ok (something)\", but keep the \"ok\". {{pickle-report-full}}}\n{{Identical|OK}}",
 	"pickle-report-adapt-full-is-not-ok": "{{pickle-gloss}} Initial keyword \"not ok\" used for each good test in a TAP-report. It can be adapted by a following localization \"not ok (something)\", but keep the \"not ok\". {{pickle-report-full}}}",
 	"pickle-report-adapt-full-wrap-skip": "{{pickle-gloss}} An outher wrapper for the \"skip\" keyword and the optional string. It can be adapted by a following localization \"skip (something)\". {{pickle-report-full}}}\n{{Identical|Skip}}",
-	"pickle-report-adapt-full-wrap-todo": "{{pickle-gloss}} An outher wrapper for the \"todo\" keyword and the optional string. It can be freely adapted, but should not contain a hash mark. {{pickle-report-full}}}",
+	"pickle-report-adapt-full-wrap-todo": "{{pickle-gloss}} An outher wrapper for the \"todo\" keyword and the optional string. It can be freely adapted, but should not contain a hash mark. {{pickle-report-full}}}\n{{Identical|Todo}}",
 	"pickle-report-adapt-full-wrap-description": "{{pickle-gloss}} An outher wrapper for the description optional string. {{pickle-report-full}}}",
 	"pickle-report-adapt-full-wrap-line": "{{pickle-gloss}} An outher wrapper for the collected lines. {{pickle-report-full}}}",
 	"pickle-report-adapt-vivid-is-ok": "{{pickle-gloss}} Initial keyword \"ok\" used for each good test in a TAP-report. It can be adapted by a following localization \"ok (something)\", but keep the \"ok\". {{pickle-report-vivid}}\n{{Identical|OK}}",
 	"pickle-report-adapt-vivid-is-not-ok": "{{pickle-gloss}} Initial keyword \"not ok\" used for each good test in a TAP-report. It can be adapted by a following localization \"not ok (something)\", but keep the \"not ok\". {{pickle-report-vivid}}",
 	"pickle-report-adapt-vivid-wrap-skip": "{{pickle-gloss}} An outher wrapper for the \"skip\" keyword and the optional string. It can be adapted by a following localization \"skip (something)\". {{pickle-report-vivid}}\n{{Identical|Skip}}",
-	"pickle-report-adapt-vivid-wrap-todo": "{{pickle-gloss}} An outher wrapper for the \"todo\" keyword and the optional string. It can be freely adapted, but should not contain a hash mark. {{pickle-report-vivid}}",
+	"pickle-report-adapt-vivid-wrap-todo": "{{pickle-gloss}} An outher wrapper for the \"todo\" keyword and the optional string. It can be freely adapted, but should not contain a hash mark. {{pickle-report-vivid}}\n{{Identical|Todo}}",
 	"pickle-report-adapt-vivid-wrap-description": "{{pickle-gloss}} An outher wrapper for the description optional string. {{pickle-report-vivid}}",
 	"pickle-report-adapt-vivid-wrap-line": "{{pickle-gloss}} An outher wrapper for the collected lines. {{pickle-report-vivid}}",
 	"pickle-adapt-process-first": "{{pickle-gloss}} {{pickle-preprocess}} {{pickle-pick-element|1|first}}",
