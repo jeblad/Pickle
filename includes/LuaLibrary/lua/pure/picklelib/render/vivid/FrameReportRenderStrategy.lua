@@ -7,6 +7,8 @@ local Base = require 'picklelib/render/FrameReportRenderBase'
 local FrameReportRender = {}
 
 --- Lookup of missing class members
+-- @param string used for lookup of member
+-- @return any
 function FrameReportRender:__index( key ) -- luacheck: no self
 	return FrameReportRender[key]
 end
@@ -15,6 +17,8 @@ end
 setmetatable( FrameReportRender, { __index = Base } )
 
 --- Create a new instance
+-- @param vararg unused
+-- @return FrameReportRender
 function FrameReportRender.create( ... )
 	local self = setmetatable( {}, FrameReportRender )
 	self:_init( ... )
@@ -22,16 +26,24 @@ function FrameReportRender.create( ... )
 end
 
 --- Initialize a new instance
+-- @private
+-- @param vararg unused
+-- @return FrameReportRender
 function FrameReportRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
 --- Override key construction
+-- @param string to be appended to a base string
+-- @return string
 function FrameReportRender:key( str )
 	return 'pickle-report-frame-vivid-' ..  Base.key( self, str )
 end
 
 --- Override realization of reported data for state
+-- @param Report that shall be realized
+-- @param string language code used for realization
+-- @return html
 function FrameReportRender:realizeState( src, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -48,6 +60,9 @@ function FrameReportRender:realizeState( src, lang )
 end
 
 --- Override realization of reported data for skip
+-- @param Report that shall be realized
+-- @param string language code used for realization
+-- @return html
 function FrameReportRender:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -64,6 +79,9 @@ function FrameReportRender:realizeSkip( src, lang )
 end
 
 --- Override realization of reported data for todo
+-- @param Report that shall be realized
+-- @param string language code used for realization
+-- @return html
 function FrameReportRender:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -80,6 +98,9 @@ function FrameReportRender:realizeTodo( src, lang )
 end
 
 --- Override realization of reported data for description
+-- @param Report that shall be realized
+-- @param string language code used for realization
+-- @return html
 function FrameReportRender:realizeDescription( src, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -97,6 +118,9 @@ end
 
 --- Realize reported data for header
 -- The "header" is a composite.
+-- @param Report that shall be realized
+-- @param string language code used for realization
+-- @return html
 function FrameReportRender:realizeHeader( src, lang )
 	assert( src, 'Failed to provide a source' )
 

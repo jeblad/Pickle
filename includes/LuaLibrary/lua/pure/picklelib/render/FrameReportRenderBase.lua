@@ -17,11 +17,15 @@ end
 local FrameReportRender = {}
 
 --- Lookup of missing class members
+-- @param string used for lookup of member
+-- @return any
 function FrameReportRender:__index( key ) -- luacheck: no self
 	return FrameReportRender[key]
 end
 
 --- Create a new instance
+-- @param vararg unused
+-- @return FrameReportRender
 function FrameReportRender.create( ... )
 	local self = setmetatable( {}, FrameReportRender )
 	self:_init( ... )
@@ -29,11 +33,16 @@ function FrameReportRender.create( ... )
 end
 
 --- Initialize a new instance
+-- @private
+-- @param vararg unused
+-- @return FrameReportRender
 function FrameReportRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
 --- Override key construction
+-- @param string to be appended to a base string
+-- @return string
 function FrameReportRender:key( str ) -- luacheck: no self
 	assert( str, 'Failed to provide a string' )
 	local keep = string.match( str, '^[-%a]+$' )
@@ -42,6 +51,9 @@ function FrameReportRender:key( str ) -- luacheck: no self
 end
 
 --- Realize reported data for state
+-- @param Report that shall be realized
+-- @param string language code used for realization
+-- @return string
 function FrameReportRender:realizeState( src, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -60,6 +72,9 @@ end
 
 --- Realize reported data for skip
 -- The "skip" is a message identified by a key.
+-- @param Report that shall be realized
+-- @param string language code used for realization
+-- @return string
 function FrameReportRender:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -93,6 +108,9 @@ end
 
 --- Realize reported data for todo
 -- The "todo" is a text string.
+-- @param Report that shall be realized
+-- @param string language code used for realization
+-- @return string
 function FrameReportRender:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -116,6 +134,9 @@ end
 
 --- Realize reported data for description
 -- The "description" is a text string.
+-- @param Report that shall be realized
+-- @param string language code used for realization
+-- @return string
 function FrameReportRender:realizeDescription( src, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -139,6 +160,9 @@ end
 
 --- Realize reported data for header
 -- The "header" is a composite.
+-- @param Report that shall be realized
+-- @param string language code used for realization
+-- @return string
 function FrameReportRender:realizeHeader( src, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -164,6 +188,9 @@ end
 
 --- Realize reported data for body
 -- The "body" is a composite.
+-- @param Report that shall be realized
+-- @param string language code used for realization
+-- @return string
 function FrameReportRender:realizeBody( src, lang ) -- luacheck: ignore self lang
 	assert( src, 'Failed to provide a source' )
 
