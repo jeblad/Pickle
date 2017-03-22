@@ -4,6 +4,9 @@
 -- pure libs
 local Stack = require 'picklelib/Stack'
 
+-- @var class var for lib
+local Subject = {}
+
 -- non-pure libs
 local Adapt
 if mw.pickle then
@@ -14,10 +17,9 @@ else
 	Adapt = require 'picklelib/engine/Adapt'
 end
 
--- @var class var for lib
-local Subject = {}
-
 --- Lookup of missing class members
+-- @param string used for lookup of member
+-- @return any
 function Subject:__index( key ) -- luacheck: no self
 	return Subject[key]
 end
@@ -26,6 +28,8 @@ end
 local mt = { __index = Adapt }
 
 --- Get a clone or create a new instance
+-- @param vararg conditionally passed to create
+-- @return self
 function mt:__call( ... ) -- luacheck: no self
 	local t = { ... }
 	Subject.stack:push( #t == 0 and Subject.stack:top() or Subject.create( t ) )
@@ -41,6 +45,8 @@ Subject.stack = Stack.create()
 Subject.other = nil
 
 --- Create a new instance
+-- @param vararg set to temporal
+-- @return self
 function Subject.create( ... )
 	local self = setmetatable( {}, Subject )
 	self:_init( ... )
@@ -48,6 +54,9 @@ function Subject.create( ... )
 end
 
 --- Initialize a new instance
+-- @private
+-- @param vararg set to temporal
+-- @return self
 function Subject:_init( ... )
 	Adapt._init( self, ... )
 	if Subject.other ~= nil then

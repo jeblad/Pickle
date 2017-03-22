@@ -4,6 +4,9 @@
 -- pure libs
 local Stack = require 'picklelib/Stack'
 
+-- @var class var for lib
+local Expect = {}
+
 -- non-pure libs
 local Adapt
 if mw.pickle then
@@ -14,8 +17,9 @@ else
 	Adapt = require 'picklelib/engine/Adapt'
 end
 
--- @var class var for lib
-local Expect = {}
+--- Lookup of missing class members
+-- @param string used for lookup of member
+-- @return any
 function Expect:__index( key ) -- luacheck: no self
 	return Expect[key]
 end
@@ -24,6 +28,8 @@ end
 local mt = { __index = Adapt }
 
 --- Get a clone or create a new instance
+-- @param vararg conditionally passed to create
+-- @return self
 function mt:__call( ... ) -- luacheck: ignore
 	local t = { ... }
 	Expect.stack:push( #t == 0 and Expect.stack:top() or Expect.create( ... ) )
@@ -39,6 +45,8 @@ Expect.stack = Stack.create()
 Expect.other = nil
 
 --- Create a new instance
+-- @param vararg set to temporal
+-- @return self
 function Expect.create( ... )
 	local self = setmetatable( {}, Expect )
 	self:_init( ... )
@@ -46,6 +54,9 @@ function Expect.create( ... )
 end
 
 --- Initialize a new instance
+-- @private
+-- @param vararg set to temporal
+-- @return self
 function Expect:_init( ... )
 	Adapt._init( self, ... )
 	if Expect.other ~= nil then
