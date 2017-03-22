@@ -51,6 +51,8 @@ else
 end
 
 --- Lookup of missing class members
+-- @param string used for lookup of member
+-- @return any
 function Frame:__index( key ) -- luacheck: no self
 	return Frame[key]
 end
@@ -59,6 +61,8 @@ end
 local mt = { types = {} }
 
 --- Get arguments for a class call
+-- @param vararg pass on to dispatch
+-- @return self -ish
 function mt:__call( ... ) -- luacheck: no self
 	local obj = Frame.create()
 	obj:dispatch( ... )
@@ -70,6 +74,8 @@ function mt:__call( ... ) -- luacheck: no self
 end
 
 --- Get arguments for a instance call
+-- @param vararg pass on to dispatch
+-- @return self
 function Frame:__call( ... )
 	self:dispatch( ... )
 	assert( not self:isDone(), 'Failed, got a done instance' )
@@ -82,6 +88,8 @@ end
 setmetatable( Frame, mt )
 
 --- Create a new instance
+-- @param vararg list to be dispatched
+-- @return Frame
 function Frame.create( ... )
 	local self = setmetatable( {}, Frame )
 	self:_init( ... )
@@ -89,6 +97,9 @@ function Frame.create( ... )
 end
 
 --- Initialize a new instance
+-- @private
+-- @param vararg list to be dispatched
+-- @return Frame
 function Frame:_init( ... )
 	self._descriptions = Stack.create()
 	self._fixtures = Stack.create()
@@ -99,6 +110,8 @@ function Frame:_init( ... )
 end
 
 --- Dispach on type
+-- @param vararg list to dispatch
+-- @return self
 function Frame:dispatch( ... )
 	for _,v in ipairs( { ... } ) do
 		local tname = type( v )
@@ -109,56 +122,71 @@ function Frame:dispatch( ... )
 end
 
 --- Push a string
+-- @param this place to store value
+-- @param string value that should be stored
 mt.types[ 'string' ] = function( this, str )
 	this._descriptions:push( str )
 end
 
 --- Push a function
+-- @param this place to store value
+-- @param function value that should be stored
 mt.types[ 'function' ] = function( this, func )
 	this._fixtures:push( func )
 end
 
 --- Push a table
+-- @param this place to store value
+-- @param table value that should be stored
 mt.types[ 'table' ] = function( _, tbl )
 	Subject.stack:push( tbl )
 end
 
 --- Check if the frame has descriptions
+-- @return boolean
 function Frame:hasDescriptions()
 	return not self._descriptions:isEmpty()
 end
 
 --- Check number of descriptions
+-- @return number
 function Frame:numDescriptions()
 	return self._descriptions:depth()
 end
 
 --- Check if the frame has fixtures
+-- @return boolean
 function Frame:hasFixtures()
 	return not self._fixtures:isEmpty()
 end
 
 --- Check number of fixtures
+-- @return number
 function Frame:numFixtures()
 	return self._fixtures:depth()
 end
 
 --- Check if the instance is evaluated
+-- @return boolean
 function Frame:isDone()
 	return self._done
 end
 
 --- Get descriptions
+-- @return list of descriptions
 function Frame:descriptions()
 	return self._descriptions:export()
 end
 
 --- Get number of additional subjects
+-- This is the difference in depth given a previous set value.
+-- @return number
 function Frame:numSubjects()
 	return Subject.stack:depth() - self._depth
 end
 
---- Eval the fixtures
+--- Eval the fixtures over previos dispatched strings
+-- @return self
 function Frame:eval() -- luacheck: ignore
 	if not self:hasFixtures() then
 		Reports:push( FrameReport.create():setSkip( 'pickle-frame-no-fixtures' ) )
