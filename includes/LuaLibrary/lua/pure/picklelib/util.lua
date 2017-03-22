@@ -13,7 +13,7 @@ function util.buildName( str )
 end
 
 -- raw count of all the items in the provided table
--- @provenance reformatted exported version of 'local function count(t)' in Moses
+-- @provenance variant of 'local function count(t)' from "Moses"
 -- @param t table that has its entries counted
 -- @return count of raw entries
 function util.count( t )
@@ -25,7 +25,7 @@ function util.count( t )
 end
 
 -- size based on the raw count
--- @provenance reformatted exported version of 'function _.size(...)' in Moses
+-- @provenance variant of 'function _.size(...)' from "Moses"
 -- @param optional [table|any] count entries if table, count all args otherwise
 -- @return count of entries
 function util.size( ... )
@@ -39,8 +39,8 @@ function util.size( ... )
 end
 
 -- deep equal of two objects
--- @provenance changed exported version of 'function UnitTester:equals_deep(name, actual, expected, options)' in [[w:no:Module:UnitTests]]
--- @provenance reformatted exported version of 'function _.isEqual(objA, objB, useMt)' in Moses
+-- @provenance variant of 'UnitTester:equals_deep(name, actual, expected, options)' from [[w:no:Module:UnitTests]]
+-- @provenance variant of 'function _.isEqual(objA, objB, useMt)' from "Moses"
 -- @param objA any type of object
 -- @param objB any type of object
 -- @param useMt boolean optional indicator for whether to include the meta table
@@ -70,7 +70,7 @@ function util.deepEqual( objA, objB, useMt )
 
 	for i,v1 in pairs( objA ) do
 		local v2 = objB[i]
-		-- test is partly inlined, differs from Moses
+		-- test is partly inlined, differs from "Moses"
 		if v2 == nil or not util.deepEqual( v1, v2, useMt ) then
 			return false
 		end
@@ -78,7 +78,7 @@ function util.deepEqual( objA, objB, useMt )
 
 	for i,_ in pairs( objB ) do
 		local v = objA[i]
-		-- test is inlined, differs from Moses
+		-- test is inlined, differs from "Moses"
 		if v == nil then
 			return false
 		end
@@ -88,12 +88,12 @@ function util.deepEqual( objA, objB, useMt )
 end
 
 -- checks if a table contains the arg
--- @provenance reformatted exported version of 'function _.contains(t, value)' in Moses
+-- @provenance variant of 'function _.contains(t, value)' from "Moses"
 -- @param t table that is searched for the arg
 -- @param arg any item to be searched for
 -- @return boolean result of the operation
 function util.contains( t, arg )
-	-- inlined code from '_.toBoolean' and '_.detect' from Moses
+	-- inlined code from '_.toBoolean' and '_.detect' from "Moses"
 	local cmp = ( type( arg ) == 'function' ) and arg or util.deepEqual
 	for k,v in pairs( t ) do
 		if cmp( v, arg ) then
