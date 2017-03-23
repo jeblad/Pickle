@@ -30,22 +30,22 @@ else
 	Reports = require('picklelib/Stack').create()
 
 	--- Expose report
-	function Frame:report() -- luacheck: no self
+	function Frame.report()
 		return FrameReport
 	end
 
 	--- Expose subject
-	function Frame:subject() -- luacheck: no self
+	function Frame.subject()
 		return Subject
 	end
 
 	--- Expose extractors
-	function Frame:extractors() -- luacheck: no self
+	function Frame.extractors()
 		return Extractors
 	end
 
 	--- Expose reports
-	function Frame:reports() -- luacheck: no self
+	function Frame.reports()
 		return Reports
 	end
 end

@@ -20,7 +20,7 @@ else
 	Reports = require('picklelib/Stack').create()
 
 	--- Expose reports
-	function Adapt:reports() -- luacheck: no self
+	function Adapt.reports()
 		return Reports
 	end
 end

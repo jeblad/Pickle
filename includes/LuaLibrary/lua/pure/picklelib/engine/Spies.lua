@@ -14,7 +14,7 @@ else
 	Reports = require('picklelib/Stack').create()
 
 	--- Expose reports
-	function Spies:reports() -- luacheck: no self
+	function Spies.reports()
 		return Reports
 	end
 end
