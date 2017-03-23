@@ -93,7 +93,7 @@ end
 
 --- Check if the instance state is "ok""
 -- Note that initial state is not ok.
- --@return boolean that is set if state is "ok"
+-- @return boolean that is set if state is "ok"
 function AdaptReport:isOk()
 	return self._state
 end
@@ -102,7 +102,7 @@ end
 -- This is an accessor to set the member.
 -- Note that all arguments will be wrapped up in a table before saving.
 -- @param string that will be used as the skip note
- --@return self
+-- @return self
 function AdaptReport:setSkip( str )
 	--local t = { str }
 	assert( str, 'Failed to provide a skip' )
@@ -114,13 +114,13 @@ end
 --- Get the skip
 -- This is an accessor to get the member.
 -- Note that the saved structure will be unpacked before being returned.
- --@return string used as the skip note
+-- @return string used as the skip note
 function AdaptReport:getSkip()
 	return self._skip
 end
 
 --- Check if the instance is itself in a skip state
- --@return boolean that is set if a skip note exist
+-- @return boolean that is set if a skip note exist
 function AdaptReport:isSkip()
 	return not not self._skip
 end
@@ -128,7 +128,7 @@ end
 --- Set the todo
 -- This is an accessor to set the member.
 -- @param string that will be used as the todo note
- --@return self
+-- @return self
 function AdaptReport:setTodo( str )
 	assert( str, 'Failed to provide a todo' )
 	self._todo = str
@@ -137,13 +137,13 @@ end
 
 --- Get the todo
 -- This is an accessor to get the member.
- --@return string used as the todo note
+-- @return string used as the todo note
 function AdaptReport:getTodo()
 	return self._todo
 end
 
 --- Check if the instance is itself in a todo state
- --@return boolean that is set if a skip note exist
+-- @return boolean that is set if a skip note exist
 function AdaptReport:isTodo()
 	return not not self._todo
 end
