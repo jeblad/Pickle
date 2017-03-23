@@ -7,8 +7,6 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-jscs' );
 	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-stylelint' );
-	grunt.loadNpmTasks( 'grunt-phplint' );
-	grunt.loadNpmTasks( 'grunt-phpcs' );
 	grunt.loadNpmTasks( 'grunt-contrib-lualint' );
 	grunt.loadNpmTasks( 'grunt-markdownlint' );
 	grunt.loadNpmTasks( 'grunt-lintspaces' );
@@ -20,7 +18,6 @@ module.exports = function ( grunt ) {
 					'*.js',
 					'**/*.js',
 					'**/*.css',
-					'**/*.php',
 					'!node_modules/**',
 					'!vendor/**'
 				],
@@ -106,29 +103,6 @@ module.exports = function ( grunt ) {
 				'!vendor/**'
 			]
 		},
-		phplint: {
-			options: {
-				swapPath: '/tmp'
-			},
-			all: [
-				'**/*.php',
-				'!node_modules/**',
-				'!vendor/**'
-			]
-		},
-		phpcs: {
-			all: [
-				'*.php',
-				'includes/**/*.php',
-				'tests/**/*.php',
-				'modules/**/*.js',
-				'!node_modules/**',
-				'!vendor/**'
-			],
-			options: {
-				extensions: [ 'php' ]
-			}
-		},
 		lualint: {
 			src: [
 				'includes/LuaLibrary/**/*.lua',
@@ -153,13 +127,11 @@ module.exports = function ( grunt ) {
 			'jshint',
 			'jsonlint',
 			'banana',
-			'phplint',
 			'markdownlint'
 		] );
 	grunt.registerTask( 'smell',
 		[
 			'jscs',
-			'phpcs',
 			'lualint'
 		] );
 	grunt.registerTask( 'test',

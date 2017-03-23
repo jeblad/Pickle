@@ -20,10 +20,8 @@
     "grunt-jsonlint": "1.1.0",
     "grunt-lintspaces": "^0.8.1",
     "grunt-markdownlint": "^1.0.24",
-    "grunt-phpcs": "^0.4.0",
-    "grunt-phplint": "^0.1.0",
-    "grunt-stylelint": "0.6.0",
+    "grunt-stylelint": "0.7.0",
     "markdownlint": "^0.3.1",
-    "stylelint-config-wikimedia": "0.3.0"
+    "stylelint-config-wikimedia": "0.4.1"
   }
 }
