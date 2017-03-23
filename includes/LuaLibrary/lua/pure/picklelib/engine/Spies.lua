@@ -12,6 +12,8 @@ else
 	-- structure does not exist, require the libs
 	AdaptReport = require 'picklelib/report/AdaptReport'
 	Reports = require('picklelib/Stack').create()
+
+	--- Expose reports
 	function Spies:reports() -- luacheck: no self
 		return Reports
 	end
