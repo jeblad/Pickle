@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jeblad"
+			"Jeblad",
+			"Robby"
 		]
 	},
 	"pickle-desc": "Adds basic Pickle testing to Lua modules",
@@ -120,7 +121,7 @@
 	"pickle-adapt-condition-to-be-greater-or-equal": "Shall be greater or equal than the target",
 	"pickle-adapt-condition-to-be-match": "Shall be matched in the target",
 	"pickle-adapt-condition-to-be-u-match": "Shall be matched in the Unicode target",
-	"pickle-adapt-catched-exception": "Catched excption",
+	"pickle-adapt-catched-exception": "Catched exception",
 	"pickle-adapt-catched-return": "Catched return",
 	"pickle-spies-carp-todo": "Carp called",
 	"pickle-spies-cluck-todo": "Cluck called",
