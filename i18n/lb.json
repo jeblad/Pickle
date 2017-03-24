@@ -16,6 +16,7 @@
 	"pickle-report-skip-no-message": "Den Noriichteschlëssel \"$1\" gëtt et net",
 	"pickle-frame-compact-header-all-good": "ok &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "net ok &mdash; $1",
+	"pickle-frame-no-description": "anonym",
 	"pickle-report-adapt-compact-is-ok": "ok",
 	"pickle-report-adapt-compact-is-not-ok": "net ok",
 	"pickle-report-adapt-compact-wrap-skip": "$1 iwwersprangen",
