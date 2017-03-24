@@ -17,6 +17,7 @@
 	"pickle-frame-compact-header-all-good": "ok &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "net ok &mdash; $1",
 	"pickle-frame-no-description": "anonym",
+	"pickle-frame-no-tests": "Keng Tester registréiert",
 	"pickle-report-adapt-compact-is-ok": "ok",
 	"pickle-report-adapt-compact-is-not-ok": "net ok",
 	"pickle-report-adapt-compact-wrap-skip": "$1 iwwersprangen",
