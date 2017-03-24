@@ -229,8 +229,7 @@ class Hooks {
 		}
 
 		$extraLibraries['pickle'] = [
-			'class' => '\Pickle\LuaLibrary',
-			// @todo this should be deferred until it is used, this is preliminary
+			'class' => '\Pickle\LuaLibDeferred',
 			'deferLoad' => false
 		];
 
