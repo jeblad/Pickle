@@ -349,7 +349,7 @@
 			"Pickle\\LuaLibrary::registerScribuntoLibraries"
 		],
 		"ScribuntoExternalLibraryPaths": [
-			"Pickle\\LuaLibrary::registerScribuntoExternalLibraryPaths"
+			"Pickle\\Hooks::onRegisterScribuntoExternalLibraryPaths"
 		],
 		"UnitTestsList": [
 			"Pickle\\Hooks::onUnitTestsList"
