@@ -26,10 +26,10 @@ class LogEntryFactory extends Strategies {
 	 * Configure the strategies
 	 */
 	public static function init() {
-		global $wgSpecLogEntry;
+		global $wgPickleLogEntry;
 
 		$results = LogEntryFactory::getInstance();
-		foreach ( $wgSpecLogEntry as $struct ) {
+		foreach ( $wgPickleLogEntry as $struct ) {
 			$results->register( $struct );
 		}
 

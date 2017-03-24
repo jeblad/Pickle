@@ -26,10 +26,10 @@ class IndicatorFactory extends Strategies {
 	 * Configure the strategies
 	 */
 	public static function init() {
-		global $wgSpecIndicator;
+		global $wgPickleIndicator;
 
 		$results = IndicatorFactory::getInstance();
-		foreach ( $wgSpecIndicator as $struct ) {
+		foreach ( $wgPickleIndicator as $struct ) {
 			$results->register( $struct );
 		}
 

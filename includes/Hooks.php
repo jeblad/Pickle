@@ -61,7 +61,7 @@ class Hooks {
 		\Title $title,
 		\ParserOutput $parserOutput
 	) {
-		global $wgSpecNeglectPages;
+		global $wgPickleNeglectPages;
 
 		$logger = LoggerFactory::getInstance( 'Pickle' );
 
@@ -74,7 +74,7 @@ class Hooks {
 
 		// @todo refactor, this is a quick fix
 		$text = $title->getText();
-		foreach ( $wgSpecNeglectPages as $pattern ) {
+		foreach ( $wgPickleNeglectPages as $pattern ) {
 			if ( strpos( $text, $pattern ) !== false ) {
 				return true;
 			}

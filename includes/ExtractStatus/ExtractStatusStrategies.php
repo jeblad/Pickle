@@ -24,10 +24,10 @@ class ExtractStatusStrategies extends Strategies {
 	 * Configure the strategies
 	 */
 	public static function init() {
-		global $wgSpecExtractStatus;
+		global $wgPickleExtractStatus;
 
 		$results = ExtractStatusStrategies::getInstance();
-		foreach ( $wgSpecExtractStatus as $struct ) {
+		foreach ( $wgPickleExtractStatus as $struct ) {
 			$results->register( $struct );
 		}
 

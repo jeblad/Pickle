@@ -114,7 +114,7 @@
 			"tests/phpunit/includes/InvokeSubpage/InvokeSubpageTestCase.php"
 	},
 	"config": {
-		"_prefix": "wgSpec",
+		"_prefix": "wgPickle",
 		"ObserverID": 3,
 		"RenderStyles": {
 			"compact": "picklelib/render/compact",

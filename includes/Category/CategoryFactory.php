@@ -26,10 +26,10 @@ class CategoryFactory extends Strategies {
 	 * Configure the strategies
 	 */
 	public static function init() {
-		global $wgSpecCategory;
+		global $wgPickleCategory;
 
 		$results = CategoryFactory::getInstance();
-		foreach ( $wgSpecCategory as $struct ) {
+		foreach ( $wgPickleCategory as $struct ) {
 			$results->register( $struct );
 		}
 

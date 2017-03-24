@@ -22,10 +22,10 @@ class TAPStrategies extends Strategies {
 	 * Configure the strategies
 	 */
 	public static function init() {
-		global $wgSpecTAP;
+		global $wgPickleTAP;
 
 		$results = TAPStrategies::getInstance();
-		foreach ( $wgSpecTAP as $struct ) {
+		foreach ( $wgPickleTAP as $struct ) {
 			$results->register( $struct );
 		}
 

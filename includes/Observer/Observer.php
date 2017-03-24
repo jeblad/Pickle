@@ -17,10 +17,10 @@ class Observer {
 	 * @return string
 	 */
 	public static function getUser() {
-		global $wgSpecObserverID;
+		global $wgPickleObserverID;
 
 		if ( self::$instance === null ) {
-			self::$instance = \User::newFromID( $wgSpecObserverID );
+			self::$instance = \User::newFromID( $wgPickleObserverID );
 		}
 		return self::$instance;
 	}

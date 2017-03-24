@@ -24,10 +24,10 @@ class InvokeSubpageStrategies extends Strategies {
 	 * Configure the strategies
 	 */
 	public static function init() {
-		global $wgSpecInvokeSubpage;
+		global $wgPickleInvokeSubpage;
 
 		$results = InvokeSubpageStrategies::getInstance();
-		foreach ( $wgSpecInvokeSubpage as $struct ) {
+		foreach ( $wgPickleInvokeSubpage as $struct ) {
 			$results->register( $struct );
 		}
 

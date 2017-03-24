@@ -13,12 +13,12 @@ use \Pickle\Observer;
 class ObserverTest extends \MediaWikiTestCase {
 
 	public function testGetUser() {
-		global $wgSpecObserverID;
+		global $wgPickleObserverID;
 
 		$user = Observer::getUser();
 		$this->assertNotNull( $user );
 		$this->assertInstanceOf( '\User', $user );
-		$this->assertEquals( $wgSpecObserverID, $user->getID() );
+		$this->assertEquals( $wgPickleObserverID, $user->getID() );
 	}
 
 }

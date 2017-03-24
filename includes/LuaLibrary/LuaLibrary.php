@@ -61,22 +61,22 @@ class LuaLibrary extends Scribunto_LuaLibraryBase {
 	 * @return array
 	 */
 	public function register() {
-		global $wgSpecRenderStyles;
-		global $wgSpecRenderTypes;
-		global $wgSpecExtractorStrategy;
+		global $wgPickleRenderStyles;
+		global $wgPickleRenderTypes;
+		global $wgPickleExtractorStrategy;
 
 		return $this->getEngine()->registerInterface(
 			__DIR__ . '/lua/non-pure/Pickle.lua',
 			[ 'addResourceLoaderModules' => [ $this, 'addResourceLoaderModules' ] ],
 			[
-				'renderStyles' => $wgSpecRenderStyles,
-				'renderTypes' => $wgSpecRenderTypes,
-				'extractorStrategies' => $wgSpecExtractorStrategy ]
+				'renderStyles' => $wgPickleRenderStyles,
+				'renderTypes' => $wgPickleRenderTypes,
+				'extractorStrategies' => $wgPickleExtractorStrategy ]
 		);
 	}
 
 	/**
-	 * Allows Lua to dynamically add the RL modules required for Specs.
+	 * Allows Lua to dynamically add the RL modules required for Pickle.
 	 */
 	public function addResourceLoaderModules() {
 		$this->getParser()->getOutput()->addModuleStyles( 'ext.pickle.report' );
