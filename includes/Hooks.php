@@ -193,4 +193,26 @@ class Hooks {
 		$files[] = __DIR__ . '/../tests/phpunit/';
 	}
 
+	/**
+	 * External Lua library paths for Scribunto
+	 *
+	 * @param string $engine
+	 * @param array $extraLibraryPaths
+	 * @return bool
+	 */
+	public static function onRegisterScribuntoExternalLibraryPaths(
+		$engine,
+		array &$extraLibraryPaths
+	) {
+
+		if ( $engine !== 'lua' ) {
+			return true;
+		}
+
+		// Path containing pure Lua libraries that don't need to interact with PHP
+		$extraLibraryPaths[] = __DIR__ . '/lua/pure';
+
+		return true;
+	}
+
 }

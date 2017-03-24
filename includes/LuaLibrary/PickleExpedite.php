@@ -24,33 +24,9 @@ class LuaLibrary extends Scribunto_LuaLibraryBase {
 			return true;
 		}
 
-		$extraLibraries['pickle'] = [
-			'class' => '\Pickle\LuaLibrary',
-			// @todo this should be deferred until it is used, this is preliminary
-			'deferLoad' => false
+		$extraLibraries['pickle-expedite'] = [
+			'class' => '\Pickle\PickleExpedite', 'deferLoad' => false,
 		];
-
-		return true;
-	}
-
-	/**
-	 * External Lua library paths for Scribunto
-	 *
-	 * @param string $engine
-	 * @param array $extraLibraryPaths
-	 * @return bool
-	 */
-	public static function registerScribuntoExternalLibraryPaths(
-		$engine,
-		array &$extraLibraryPaths
-	) {
-
-		if ( $engine !== 'lua' ) {
-			return true;
-		}
-
-		// Path containing pure Lua libraries that don't need to interact with PHP
-		$extraLibraryPaths[] = __DIR__ . '/lua/pure';
 
 		return true;
 	}
@@ -66,7 +42,7 @@ class LuaLibrary extends Scribunto_LuaLibraryBase {
 		global $wgSpecExtractorStrategy;
 
 		return $this->getEngine()->registerInterface(
-			__DIR__ . '/lua/non-pure/Pickle.lua',
+			__DIR__ . '/lua/non-pure/PickleDeferred.lua',
 			[ 'addResourceLoaderModules' => [ $this, 'addResourceLoaderModules' ] ],
 			[
 				'renderStyles' => $wgSpecRenderStyles,
@@ -76,7 +52,7 @@ class LuaLibrary extends Scribunto_LuaLibraryBase {
 	}
 
 	/**
-	 * Allows Lua to dynamically add the RL modules required for Specs.
+	 * Allows Lua to dynamically add the RL modules required for Pickle.
 	 */
 	public function addResourceLoaderModules() {
 		$this->getParser()->getOutput()->addModuleStyles( 'ext.pickle.report' );

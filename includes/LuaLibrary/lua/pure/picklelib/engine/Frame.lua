@@ -57,6 +57,13 @@ function Frame:__index( key ) -- luacheck: no self
 	return Frame[key]
 end
 
+--- Cast to string by realizing
+function Frame:__tostring() -- luacheck: no self
+	-- @todo this is wrong
+	-- return self:eval():reports():realize( renders, lang )
+	return '[replace by realized frame]'
+end
+
 -- @var metatable for the class
 local mt = { types = {} }
 
