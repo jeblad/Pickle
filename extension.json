@@ -346,7 +346,7 @@
 			"Pickle\\ConsoleView::onShowReadOnlyFormInitial"
 		],
 		"ScribuntoExternalLibraries": [
-			"Pickle\\LuaLibrary::registerScribuntoLibraries"
+			"Pickle\\Hooks::onRegisterScribuntoLibraries"
 		],
 		"ScribuntoExternalLibraryPaths": [
 			"Pickle\\Hooks::onRegisterScribuntoExternalLibraryPaths"

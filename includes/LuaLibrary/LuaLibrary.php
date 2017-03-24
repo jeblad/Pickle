@@ -13,27 +13,6 @@ use Scribunto_LuaLibraryBase;
 class LuaLibrary extends Scribunto_LuaLibraryBase {
 
 	/**
-	 * External Lua library for Scribunto
-	 *
-	 * @param string $engine
-	 * @param array $extraLibraries
-	 * @return bool
-	 */
-	public static function registerScribuntoLibraries( $engine, array &$extraLibraries ) {
-		if ( $engine !== 'lua' ) {
-			return true;
-		}
-
-		$extraLibraries['pickle'] = [
-			'class' => '\Pickle\LuaLibrary',
-			// @todo this should be deferred until it is used, this is preliminary
-			'deferLoad' => false
-		];
-
-		return true;
-	}
-
-	/**
 	 * Register the library
 	 *
 	 * @return array

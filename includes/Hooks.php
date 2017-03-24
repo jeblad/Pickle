@@ -214,4 +214,26 @@ class Hooks {
 
 		return true;
 	}
+
+	/**
+	 * Extra Lua libraries for Scribunto
+	 *
+	 * @param string $engine
+	 * @param array $extraLibraries
+	 * @return bool
+	 */
+	public static function onRegisterScribuntoLibraries( $engine, array &$extraLibraries ) {
+
+		if ( $engine !== 'lua' ) {
+			return true;
+		}
+
+		$extraLibraries['pickle'] = [
+			'class' => '\Pickle\LuaLibrary',
+			// @todo this should be deferred until it is used, this is preliminary
+			'deferLoad' => false
+		];
+
+		return true;
+	}
 }
