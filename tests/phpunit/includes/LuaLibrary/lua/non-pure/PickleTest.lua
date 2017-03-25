@@ -3,7 +3,6 @@
 -- @license GNU GPL v2+
 -- @author John Erling Blad < jeblad@gmail.com >
 
-
 local testframework = require 'Module:TestFramework'
 
 local pickles = require 'pickles'
@@ -54,6 +53,7 @@ local tests = {
 		args = { },
 		expect = { 'table', 'table' }
 	},
+	--[[
 	{
 		name = 'table mw.describe',
 		func = testMWFunc,
@@ -108,6 +108,7 @@ local tests = {
 		args = { 'croak' },
 		expect = { 'function' }
 	},
+	]]
 }
 
 return testframework.getTestProvider( tests )

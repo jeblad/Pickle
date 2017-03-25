@@ -3,11 +3,8 @@ local php		-- luacheck: ignore
 local options	-- luacheck: ignore
 
 -- @var structure for storage of the lib
-local pickle = {}
+local pickle = {} or mw.pickle
 pickle.report = {}
-
--- pickle.util = require 'picklelib/util'
--- pickle.stack = require 'picklelib/Stack'
 pickle.adapt = require 'picklelib/engine/Adapt'
 pickle.expect = require 'picklelib/engine/Expect'
 pickle.subject = require 'picklelib/engine/Subject'
@@ -17,13 +14,6 @@ pickle.report.frame = require 'picklelib/report/FrameReport'
 pickle.renders = require 'picklelib/render/Renders'
 pickle.frame = require 'picklelib/engine/Frame'
 pickle.spies = require 'picklelib/engine/Spies'
---[[
-	for k,v in pairs( util ) do
-	if not pickle[k] then
-		pickle[k] = v
-	end
-end
---]]
 
 -- require libs and create an instance
 pickle.extractors = require( 'picklelib/extractor/ExtractorStrategies' ).create()
@@ -49,11 +39,13 @@ function pickle.subject.other()
 	return Expect -- luacheck: globals Expect
 end
 
+--[[
 function pickle.report( frame )
 	local style = frame.args[1]
 	return 'ping! '..style
 	--return Report():realize( Renders( style ) )
 end
+]]
 
 --- install the module in the global space
 function pickle.setupInterface( opts )
@@ -67,7 +59,7 @@ function pickle.setupInterface( opts )
 	-- register main lib
 	mw = mw or {}
 	mw.pickle = pickle
-	package.loaded['mw.pickle'] = pickle
+	package.loaded['pickle'] = pickle
 
 	-- register render styles
 	for k,v in pairs( opts.renderStyles ) do
@@ -82,7 +74,6 @@ function pickle.setupInterface( opts )
 		pickle.extractors:register( require( v ).create() )
 	end
 
-
 	-- set up additional access points
 	for k,v in pairs( export ) do
 		if not mw[k] then
@@ -90,6 +81,7 @@ function pickle.setupInterface( opts )
 			--package.loaded['mw.'..k] = v
 		end
 	end
+
 end
 
 -- Return the final library

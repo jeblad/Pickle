@@ -228,11 +228,16 @@ class Hooks {
 			return true;
 		}
 
-		$extraLibraries['pickle'] = [
-			'class' => '\Pickle\LuaLibDeferred',
+		$extraLibraries['bootstrap'] = [
+			'class' => '\Pickle\LuaLibBootstrap',
 			'deferLoad' => false
 		];
-
+/*
+		$extraLibraries['pickle'] = [
+			'class' => '\Pickle\LuaLibPickle',
+			'deferLoad' => true
+		];
+*/
 		return true;
 	}
 }

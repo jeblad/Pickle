@@ -1,3 +1,5 @@
+require 'pickle'
+
 local Expect = require 'picklelib/engine/Expect'
 local Subject = require 'picklelib/engine/Subject'
 -- local Renders = require 'picklelib/render/Renders'

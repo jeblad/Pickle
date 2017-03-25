@@ -10,7 +10,7 @@ use Scribunto_LuaLibraryBase;
  * @ingroup Extensions
  */
 
-class LuaLibDeferred extends Scribunto_LuaLibraryBase {
+class LuaLibPickle extends Scribunto_LuaLibraryBase {
 
 	/**
 	 * Register the library
@@ -23,7 +23,7 @@ class LuaLibDeferred extends Scribunto_LuaLibraryBase {
 		global $wgPickleExtractorStrategy;
 
 		return $this->getEngine()->registerInterface(
-			__DIR__ . '/lua/non-pure/PickleDeferred.lua',
+			__DIR__ . '/lua/non-pure/pickle.lua',
 			[ 'addResourceLoaderModules' => [ $this, 'addResourceLoaderModules' ] ],
 			[
 				'renderStyles' => $wgPickleRenderStyles,
