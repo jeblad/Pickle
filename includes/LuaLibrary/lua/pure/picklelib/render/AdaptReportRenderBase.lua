@@ -124,7 +124,7 @@ function AdaptReportRender:realizeBody( src, lang )
 
 	local t = {}
 
-	for _,v in ipairs( { src:lines() } ) do
+	for _,v in ipairs( { src:lines():export() } ) do
 		table.insert( t, self:realizeLine( v, lang ) )
 	end
 

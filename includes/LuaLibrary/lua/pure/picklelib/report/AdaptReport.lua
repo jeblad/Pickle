@@ -4,14 +4,7 @@
 local Stack = require 'picklelib/Stack'
 
 -- non-pure libs
-local BaseReport
-if mw.pickle then
-	-- structure exist, make access simpler
-	BaseReport = mw.pickle.report.base
-else
-	-- structure does not exist, require the libs
-	BaseReport = require 'picklelib/report/BaseReport'
-end
+local BaseReport = require 'picklelib/report/BaseReport'
 
 -- @var class var for lib
 local AdaptReport = {}
@@ -42,13 +35,14 @@ end
 function AdaptReport:_init( ... )
 	BaseReport._init( self )
 	self._description = false
-	self._lines = Stack.create()
 	self._state = false
 	self._lang = false
-	self._lines:push( ... )
 	self._skip = false
 	self._todo = false
 	self._type = 'adapt-report'
+	if select('#',...) then
+		self:lines():push( ... )
+	end
 	return self
 end
 
@@ -56,7 +50,10 @@ end
 -- Note that each line is not unwrapped.
 -- @return list of lines
 function AdaptReport:lines()
-	return self._lines:export()
+	if not self._lines then
+		self._lines = Stack.create()
+	end
+	return self._lines
 end
 
 --- Get the number of lines
@@ -71,7 +68,7 @@ end
 -- @param vararg that can be a line
 -- @return self
 function AdaptReport:addLine( ... )
-	self._lines:push( { ... } )
+	self:lines():push( { ... } )
 	return self
 end
 
@@ -104,10 +101,8 @@ end
 -- @param string that will be used as the skip note
 -- @return self
 function AdaptReport:setSkip( str )
-	--local t = { str }
 	assert( str, 'Failed to provide a skip' )
 	self._skip = str
-	--self._skip = str
 	return self
 end
 

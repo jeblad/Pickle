@@ -28,7 +28,7 @@ end
 
 local function testLines( ... )
 	local test = makeTest( ... )
-	return {test:lines()}, test:numLines()
+	return { test:lines():export() }, test:numLines()
 end
 
 local function testState( state )
@@ -75,7 +75,7 @@ end
 
 local function testAddLine( ... )
 	local test = makeTest():addLine( ... )
-	return test:lines()
+	return test:lines():export()
 end
 
 local tests = {

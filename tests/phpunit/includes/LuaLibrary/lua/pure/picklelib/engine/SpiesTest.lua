@@ -24,7 +24,7 @@ end
 
 local function testCluckLines( pattern, idx, ... )
 	Spies.cluck( ... )
-	local lines = Spies.reports():top():lines() -- @note this is unpacked, but ends up as a table
+	local lines = Spies.reports():top():lines():export() -- @note this is unpacked, but ends up as a table
 	return string.match( lines[ idx ], pattern )
 end
 
@@ -35,7 +35,7 @@ end
 
 local function testConfessLines( pattern, idx, ... )
 	pcall( Spies.confess, ... )
-	local lines = Spies.reports():top():lines() -- @note this is unpacked, but ends up as a table
+	local lines = Spies.reports():top():lines():export() -- @note this is unpacked, but ends up as a table
 	return string.match( lines[ idx ], pattern )
 end
 
