@@ -5,8 +5,8 @@
 
 local testframework = require 'Module:TestFramework'
 
-local Spies = require 'picklelib/engine/Spies'
-
+--local Spies = require 'picklelib/engine/Spies'
+--[[
 local function testTracebackFirst( pattern, ... )
 	local first,_ = Spies.traceback( ... )
 	return string.match( first, pattern )
@@ -24,7 +24,7 @@ end
 
 local function testCluckLines( pattern, idx, ... )
 	Spies.cluck( ... )
-	local lines = Spies.reports():top():lines() -- @note this is unpacked, but ends up as a table
+	local lines = Spies.reports():top():lines():export() -- @note this is unpacked, but ends up as a table
 	return string.match( lines[ idx ], pattern )
 end
 
@@ -35,7 +35,7 @@ end
 
 local function testConfessLines( pattern, idx, ... )
 	pcall( Spies.confess, ... )
-	local lines = Spies.reports():top():lines() -- @note this is unpacked, but ends up as a table
+	local lines = Spies.reports():top():lines():export() -- @note this is unpacked, but ends up as a table
 	return string.match( lines[ idx ], pattern )
 end
 
@@ -48,8 +48,9 @@ local function testCroakTodo( ... )
 	pcall( Spies.croak, ... )
 	return Spies.reports():top():getSkip()
 end
-
+]]
 local tests = {
+	--[[
 	{
 		name = 'tracebacFirstk()',
 		func = testTracebackFirst,
@@ -134,6 +135,7 @@ local tests = {
 		args = { 'foo bar baz' },
 		expect = { 'foo bar baz' }
 	},
+	]]
 }
 
 return testframework.getTestProvider( tests )

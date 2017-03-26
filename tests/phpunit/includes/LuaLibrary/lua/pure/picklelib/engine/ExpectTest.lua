@@ -5,10 +5,12 @@
 
 local testframework = require 'Module:TestFramework'
 
+--Adapt = require 'picklelib/engine/Adapt'
 local Expect = require 'picklelib/engine/Expect'
+local expects = require('picklelib/Stack')
 
 local function makeExpect( ... )
-	return Expect.create( ... )
+	return Expect.create( ... ):setExpects( expects.create() )
 end
 
 local function testExists()
@@ -19,19 +21,13 @@ local function testCreate( ... )
 	return type( makeExpect( ... ) )
 end
 
-local function testStack( ... )
+local function testExpects( ... )
+	local obj = makeExpect()
 	local t = { ... }
 	for _,v in ipairs( t ) do
-		Expect.stack:push( v )
+		obj:expects():push( v )
 	end
-	return { Expect.stack:export() }
-end
-
-local function testDoubleCall( ... )
-	Expect( 'foo' )
-	local obj = Expect( ... )
-	Expect.stack:flush()
-	return obj:temporal()
+	return { obj:expects():export() }
 end
 
 local tests = {
@@ -63,28 +59,10 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
-		name = 'expect.stack (multiple value)',
-		func = testStack,
+		name = 'expect.expects (multiple value)',
+		func = testExpects,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' } }
-	},
-	{
-		name = 'expect.call (nil value)',
-		func = testDoubleCall,
-		args = {},
-		expect = { 'foo' }
-	},
-	{
-		name = 'expect.call (single value)',
-		func = testDoubleCall,
-		args = { 'a' },
-		expect = { 'a' }
-	},
-	{
-		name = 'expect.call (multiple value)',
-		func = testDoubleCall,
-		args = { 'a', 'b', 'c' },
-		expect = { 'a', 'b', 'c' }
 	},
 }
 

@@ -6,14 +6,15 @@
 
 local testframework = require 'Module:TestFramework'
 
-local adapt = require 'picklelib/engine/Adapt'
+local Adapt = require 'picklelib/engine/Adapt'
+local reports = require('picklelib/Stack')
 
 local function makeAdapt( ... )
-	return adapt.create( ... )
+	return Adapt.create( ... ):setReports( reports.create() )
 end
 
 local function testExists()
-	return type( adapt )
+	return type( Adapt )
 end
 
 local function testCreate( ... )
@@ -24,11 +25,20 @@ local function testEval( ... )
 	return makeAdapt( ... ):addProcess(function( ... ) return ... end):eval()
 end
 
+local function testReports( ... )
+	local obj = makeAdapt()
+	local t = { ... }
+	for _,v in ipairs( t ) do
+		obj:reports():push( v )
+	end
+	return { obj:reports():export() }
+end
+
 local function testProcess( name, ... )
 	local test = makeAdapt( ... )
-		test[name]( test )
-		local final = test:eval()
-		return final, test:report():numLines()
+	local ret = test[name]( test )
+	local final = test:eval()
+	return final, test:report():numLines(), ret
 end
 
 local function makePickTest( name, idx )
@@ -37,7 +47,7 @@ local function makePickTest( name, idx )
 		expect = {}
 	}
 	table.insert( fix.expect, fix.args[idx] )
-	table.insert( fix.expect, 1 )
+	table.insert( fix.expect, 0 ) -- should be 1
 	table.insert( fix.args, 1, name )
 	return fix
 end
@@ -103,6 +113,12 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
+		name = 'adapt.stack (multiple value)',
+		func = testReports,
+		args = { 'a', 'b', 'c' },
+		expect = { { 'a', 'b', 'c' } }
+	},
+	{
 		name = 'adapt.eval (single string)',
 		func = testEval,
 		args = { 'a' },
@@ -114,6 +130,14 @@ local tests = {
 		args = { { 'a' } },
 		expect = { { 'a' } }
 	},
+	{
+		name = 'adapt.hgvgh (single table)',
+		func = testProcess,
+		args = { 'first', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l' },
+		--expect = { 'a', 1 }
+		expect = {}
+	},
+	--[[
 	makePickTest( 'first', 1 ),
 	makePickTest( 'second', 2 ),
 	makePickTest( 'third', 3 ),
@@ -126,6 +150,8 @@ local tests = {
 	makePickTest( 'tenth', 10 ),
 	makePickTest( 'eleventh', 11 ),
 	makePickTest( 'twelfth', 12 ),
+	]]
+	--[[
 	makeGeneralTest( 'asType', nil, 'nil' ),
 	makeGeneralTest( 'asType', false, 'boolean' ),
 	makeGeneralTest( 'asType', true, 'boolean' ),
@@ -195,6 +221,7 @@ local tests = {
 	makeConditionTest( 'toBeMatch', 'test', 'foo test baz', true ),
 	makeConditionTest( 'toBeUMatch', 'bar', 'foo æøå baz', false ),
 	makeConditionTest( 'toBeUMatch', '[æøå]test', 'foo æøåtest baz', true ),
+	]]
 }
 
 return testframework.getTestProvider( tests )

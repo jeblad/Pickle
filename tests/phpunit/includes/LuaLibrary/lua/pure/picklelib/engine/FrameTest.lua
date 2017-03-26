@@ -6,67 +6,97 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/engine/Frame'
+local Frame = require 'picklelib/engine/Frame'
+local subjects = require 'picklelib/Stack'
+local reports = require('picklelib/Stack')
+local extractors = require 'picklelib/extractor/ExtractorStrategies'
 local name = 'frame'
 local class = 'Frame'
 
-local function makeTest( ... )
-	return lib.create( ... )
+local function makeFrame( ... )
+	return Frame.create( ... )
+		:setSubjects( subjects.create() )
+		:setReports( reports.create() )
 end
 
 local function testExists()
-	return type( lib )
+	return type( Frame )
 end
 
 local function testCreate( ... )
-	return type( makeTest( ... ) )
+	return type( makeFrame( ... ) )
 end
 
 local function testClassCall( ... )
-	local t = lib( ... )
+	local t = Frame( ... )
 	return t:descriptions()
 end
 
 local function testClassCallStrings()
-	local t = lib 'foo' 'bar' 'baz'
+	local t = Frame 'foo' 'bar' 'baz'
 	return t:descriptions()
 end
 
 local function testInstanceCall( ... )
-	local obj = makeTest()
+	local obj = makeFrame()
 	local t = obj( ... )
 	return t:descriptions()
 end
 
 local function testInstanceCallStrings()
-	local obj = makeTest()
+	local obj = makeFrame()
 	local t = obj 'foo' 'bar' 'baz'
 	return t:descriptions()
 end
 
-local function testStringDispatch( ... )
-	local obj = makeTest()
+local function testDispatch( ... )
+	local obj = makeFrame()
 	obj:dispatch( ... )
-	return obj:hasDescriptions(), obj:numDescriptions(), obj:descriptions()
+	return obj:numDescriptions(), obj:numFixtures(), obj:subjects():depth()
 end
 
-local function testFunctionDispatch( ... )
-	local obj = makeTest()
-	obj:dispatch( ... )
-	return obj:hasFixtures(), obj:numFixtures()
-end
-
-local function testTableDispatch( ... )
-	local obj = makeTest()
-	obj:dispatch( ... )
-	return obj:numSubjects()
-end
-
-local function testEval( libs, ... )
-	local obj = makeTest( ... )
+local function testExtractAndDispatch( libs, ... )
+	local obj = makeFrame()
+	obj:setExtractors( extractors.create() )
 	for _,v in ipairs( libs ) do
 		obj:extractors():register( require( v ).create() )
 	end
+	obj:dispatch( ... )
+	local result = {}
+	obj:eval()
+	for i,v in ipairs( { obj:reports():export() } ) do
+		table.insert( result, i )
+		if v:hasDescription() then
+			table.insert( result, v:getDescription() )
+		end
+		if v:isSkip() then
+			table.insert( result, v:getSkip() )
+		end
+		if v:isTodo() then
+			table.insert( result, v:getTodo() )
+		end
+		if not not v['constituents'] then
+			--table.insert( result, v and 'found result' or 'nil result' )
+			--table.insert( result, (v and v:constituents()) and 'non-nil' or 'nil')
+			--[[
+			if v:hasConstituents() then
+			for _,w in ipairs( { v:constituents():export() } ) do
+				table.insert( result, true )
+			end
+			end
+			]]
+		end
+	end
+	return { obj:numDescriptions(), obj:numFixtures(), obj:subjects():depth(), result }
+end
+
+local function testEval( libs, ... )
+	local obj = makeFrame()
+	obj:setExtractors( extractors.create() )
+	for _,v in ipairs( libs ) do
+		obj:extractors():register( require( v ).create() )
+	end
+	obj:dispatch( ... )
 	local result = {}
 	obj:eval()
 	for _,v in ipairs( { obj:reports():export() } ) do
@@ -77,9 +107,15 @@ local function testEval( libs, ... )
 			table.insert( result, v:getSkip() or v:getTodo() )
 		end
 		if not not v['constituents'] then
-			for _,w in ipairs( { v:constituents() } ) do
-				table.insert( result, w:getSkip() or w:getTodo() or 'empty' )
-				table.insert( result, { w:lines() } )
+			if v:hasConstituents() then
+			for _,w in ipairs( { v:constituents():export() } ) do
+				if w then
+					table.insert( result, w:getSkip() or w:getTodo() or 'empty' )
+					table.insert( result, { w:lines():export() } )
+				else
+					table.insert( result, 'nil' )
+				end
+			end
 			end
 		end
 	end
@@ -150,66 +186,151 @@ local tests = {
 		expect = { 'foo', 'bar', 'baz' }
 	},
 	{
-		name = name .. '.stringDispatch (no string)',
-		func = testStringDispatch,
+		name = name .. '.dispatch (no value)',
+		func = testDispatch,
 		args = { },
-		expect = { false, 0 }
+		expect = { 0, 0, 0 }
 	},
 	{
-		name = name .. '.stringDispatch (single string)',
-		func = testStringDispatch,
+		name = name .. '.dispatch (single string)',
+		func = testDispatch,
 		args = { 'foo' },
-		expect = { true, 1, 'foo' }
+		expect = { 1, 0, 0 }
 	},
 	{
-		name = name .. '.stringDispatch (multiple string)',
-		func = testStringDispatch,
+		name = name .. '.dispatch (multiple string)',
+		func = testDispatch,
 		args = { 'foo', 'bar', 'baz' },
-		expect = { true, 3, 'foo', 'bar', 'baz' }
+		expect = { 3, 0, 0 }
 	},
 	{
-		name = name .. '.functionDispatch (no function)',
-		func = testFunctionDispatch,
-		args = {},
-		expect = { false, 0 }
-	},
-	{
-		name = name .. '.functionDispatch (single function)',
-		func = testFunctionDispatch,
+		name = name .. '.dispatch (single function)',
+		func = testDispatch,
 		args = { function() return 'foo' end },
-		expect = { true, 1 }
+		expect = { 0, 1, 0 }
 	},
 	{
-		name = name .. '.functionDispatch (multiple functions)',
-		func = testFunctionDispatch,
+		name = name .. '.dispatch (multiple functions)',
+		func = testDispatch,
 		args = {
 			function() return 'foo' end,
 			function() return 'bar' end,
 			function() return 'baz' end
 		},
-		expect = { true, 3 }
+		expect = { 0, 3, 0 }
 	},
 	{
-		name = name .. '.tableDispatch (no table)',
-		func = testTableDispatch,
-		args = {},
-		expect = { 0 }
-	},
-	{
-		name = name .. '.tableDispatch (single table)',
-		func = testTableDispatch,
+		name = name .. '.dispatch (single table)',
+		func = testDispatch,
 		args = { { 'foo' } },
-		expect = { 1 }
+		expect = { 0, 0, 1 }
 	},
 	{
-		name = name .. '.tableDispatch (multiple tables)',
-		func = testTableDispatch,
+		name = name .. '.dispatch (multiple tables)',
+		func = testDispatch,
 		args = {
 			{ 'foo' },
 			{ 'bar' },
 			{ 'baz' }
 		},
-		expect = { 3 }
+		expect = { 0, 0, 3 }
+	},
+	{
+		name = name .. '.dispatch (string, function, table)',
+		func = testDispatch,
+		args = {
+			'foo',
+			function() return 'bar' end,
+			{ 'baz' }
+		},
+		expect = { 1, 1, 1 }
+	},
+	{
+		name = name .. '.extractAndDispatch ( no value )',
+		func = testExtractAndDispatch,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			}
+		},
+		expect = {
+			{ 0, 0, 0, { 1, 'pickle-frame-no-fixtures' } }
+		}
+	},
+	{
+		name = name .. '.extractAndDispatch ( single string )',
+		func = testExtractAndDispatch,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			'foo "bar" baz'
+		},
+		expect = {
+			{ 1, 0, 0, { 1, 'pickle-frame-no-fixtures' } }
+		}
+	},
+	{
+		name = name .. '.extractAndDispatch (dual string )',
+		func = testExtractAndDispatch,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			'foo "bar" baz',
+			'ping 42 pong'
+		},
+		expect = {
+			{ 2, 0, 0, { 1, 'pickle-frame-no-fixtures' } }
+		}
+	},
+	{
+		name = name .. '.extractAndDispatch ( no value )',
+		func = testExtractAndDispatch,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			function() end
+		},
+		expect = {
+			{ 0, 1, 0, { 1, 'pickle-frame-no-description',  'pickle-frame-no-tests' } }
+		}
+	},
+	{
+		name = name .. '.extractAndDispatch ( single string )',
+		func = testExtractAndDispatch,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			'foo "bar" baz',
+			function() end
+		},
+		expect = {
+			{ 1, 0, 0, { 1, 'pickle-frame-no-fixtures' } }
+		}
+	},
+	{
+		name = name .. '.extractAndDispatch (dual string )',
+		func = testExtractAndDispatch,
+		args = {
+			{
+				"picklelib/extractor/StringExtractorStrategy",
+				"picklelib/extractor/NumberExtractorStrategy"
+			},
+			'foo "bar" baz',
+			'ping 42 pong',
+			function() end
+		},
+		expect = {
+			{ 2, 0, 0, { 1, 'pickle-frame-no-fixtures' } }
+		}
 	},
 	{
 		name = name .. '.eval (no string, no fixtures)',

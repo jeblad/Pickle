@@ -7,9 +7,10 @@
 local testframework = require 'Module:TestFramework'
 
 local Subject = require 'picklelib/engine/Subject'
+local subjects = require('picklelib/Stack')
 
 local function makeSubject( ... )
-	return Subject.create( ... )
+	return Subject.create( ... ):setSubjects( subjects.create() )
 end
 
 local function testExists()
@@ -20,19 +21,13 @@ local function testCreate( ... )
 	return type( makeSubject( ... ) )
 end
 
-local function testStack( ... )
+local function testSubjects( ... )
+	local obj = makeSubject()
 	local t = { ... }
 	for _,v in ipairs( t ) do
-		Subject.stack:push( v )
+		obj:subjects():push( v )
 	end
-	return { Subject.stack:export() }
-end
-
-local function testDoubleCall( ... )
-	Subject( 'foo' )
-	local subj = Subject( ... )
-	Subject.stack:flush()
-	return subj:temporal()
+	return { obj:subjects():export() }
 end
 
 local tests = {
@@ -64,26 +59,8 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
-		name = 'subject.stack (multiple value)',
-		func = testStack,
-		args = { 'a', 'b', 'c' },
-		expect = { { 'a', 'b', 'c' } }
-	},
-	{
-		name = 'subject.call (nil value)',
-		func = testDoubleCall,
-		args = {},
-		expect = { { 'foo' } }
-	},
-	{
-		name = 'subject.call (single value)',
-		func = testDoubleCall,
-		args = { 'a' },
-		expect = { { 'a' } }
-	},
-	{
-		name = 'subject.call (multiple value)',
-		func = testDoubleCall,
+		name = 'subject.subjects (multiple value)',
+		func = testSubjects,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' } }
 	},

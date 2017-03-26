@@ -197,7 +197,7 @@ function FrameReportRender:realizeBody( src, lang ) -- luacheck: ignore self lan
 	local t = {}
 
 --[[
-	for _,v in ipairs( { src:constituents() } ) do
+	for _,v in ipairs( { src:constituents():export() } ) do
 		table.insert( t, self:realize( v, lang ) )
 	end
 ]]

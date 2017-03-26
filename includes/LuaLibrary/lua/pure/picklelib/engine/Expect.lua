@@ -8,14 +8,7 @@ local Stack = require 'picklelib/Stack'
 local Expect = {}
 
 -- non-pure libs
-local Adapt
-if mw.pickle then
-	-- structure exist, make access simpler
-	Adapt = mw.pickle.adapt
-else
-	-- structure does not exist, require the libs
-	Adapt = require 'picklelib/engine/Adapt'
-end
+local Adapt = require 'picklelib/engine/Adapt'
 
 --- Lookup of missing class members
 -- @param string used for lookup of member
@@ -30,10 +23,10 @@ local mt = { __index = Adapt }
 --- Get a clone or create a new instance
 -- @param vararg conditionally passed to create
 -- @return self
-function mt:__call( ... ) -- luacheck: ignore
+function Expect:__call( ... ) -- luacheck: ignore
 	local t = { ... }
-	Expect.stack:push( #t == 0 and Expect.stack:top() or Expect.create( ... ) )
-	return Expect.stack:top()
+	self:expects():push( #t == 0 and self:expects():top() or Expect.create( ... ) )
+	return self:expects():top()
 end
 
 setmetatable( Expect, mt )
@@ -63,6 +56,20 @@ function Expect:_init( ... )
 		self._other = Expect.other
 	end
 	return self
+end
+
+--- Set the reference to the expects collection
+-- This keeps a reference, the object is not cloned.
+-- @param table that somehow maintain a collection
+function Expect:setExpects( obj )
+	assert( type( obj ) == 'table' )
+	self._expects = obj
+	return self
+end
+
+--- Expose reference to expects
+function Expect:expects()
+	return self._expects
 end
 
 -- Return the final class

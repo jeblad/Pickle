@@ -23,63 +23,33 @@ end
 -- This is a reformatted version.
 -- @param vararg passed to debug.traceback
 -- @return string, table
-function Spies.traceback( ... )
-	local t = {}
+function Spies.traceback( report, ... )
+
 	local first, rest = string.match( debug.traceback( ... ), "^([^\n]+)\n(.*)$" )
+
+	report:addLine( first )
+
 	for v in string.gmatch( rest, "([^\n]+)" ) do
-		table.insert( t, string.match( v, "^\t*([^\n]+)" ) )
+		report:addLine( string.match( v, "^\t*([^\n]+)" ) )
 	end
-	return first, t
+
+	return report
 end
 
---- Carp, warn called due to a possible error condition
--- Print a message without exiting, with caller's name and arguments.
--- @param string message to be passed on
-function Spies.carp( str )
-	local report = AdaptReport.create()
-	report:setTodo( str or mw.message.new( 'pickle-spies-carp-todo' ):plain() )
-	Reports:push( report )
+--- Short report
+-- @param string key used to identify a message
+-- @param string alternate free form
+-- @return Report
+function Spies.todo( key, str )
+	return AdaptReport.create():setTodo( str or mw.message.new( key ):plain() )
 end
 
---- Cluck, warn called due to a possible error condition, with a stack backtrace
--- Print a message without exiting, with caller's name and arguments, and a stack trace.
--- @param string message to be passed on
-function Spies.cluck( str )
-	local report = AdaptReport.create()
-	report:setTodo( str or mw.message.new( 'pickle-spies-cluck-todo' ):plain() )
-	local _,rest = Spies.traceback()
-	-- report:addLine( first )
-	for _,v in ipairs( rest ) do
-		report:addLine( v )
-	end
-	Reports:push( report )
-end
-
---- Croak, die called due to a possible error condition
--- Print a message then exits, with caller's name and arguments.
--- @exception error called unconditionally
--- @param string message to be passed on
-function Spies.croak( str )
-	local report = AdaptReport.create()
-	report:setSkip( str or mw.message.new( 'pickle-spies-croak-skip' ):plain() )
-	Reports:push( report )
-	error( mw.message.new( 'pickle-spies-croak-exits' ) )
-end
-
---- Confess, die called due to a possible error condition, with astack backtrace
--- Print a message then exits, with caller's name and arguments, and a stack trace.
--- @exception error called unconditionally
--- @param string message to be passed on
-function Spies.confess( str )
-	local report = AdaptReport.create()
-	report:setSkip( str or mw.message.new( 'pickle-spies-confess-skip' ):plain() )
-	local _,rest = Spies.traceback()
-	-- report:addLine( first )
-	for _,v in ipairs( rest ) do
-		report:addLine( v )
-	end
-	Reports:push( report )
-	error( mw.message.new( 'pickle-spies-confess-exits' ) )
+--- Long report
+-- @param string key used to identify a message
+-- @param string alternate free form
+-- @return Report
+function Spies.skip( key, str )
+	return AdaptReport.create():setSkikp( str or mw.message.new( key ):plain() )
 end
 
 -- Return the final lib

@@ -8,14 +8,7 @@ local Stack = require 'picklelib/Stack'
 local Subject = {}
 
 -- non-pure libs
-local Adapt
-if mw.pickle then
-	-- structure exist, make access simpler
-	Adapt = mw.pickle.adapt
-else
-	-- structure does not exist, require the libs
-	Adapt = require 'picklelib/engine/Adapt'
-end
+local Adapt = require 'picklelib/engine/Adapt'
 
 --- Lookup of missing class members
 -- @param string used for lookup of member
@@ -30,10 +23,10 @@ local mt = { __index = Adapt }
 --- Get a clone or create a new instance
 -- @param vararg conditionally passed to create
 -- @return self
-function mt:__call( ... ) -- luacheck: no self
+function Subject:__call( ... ) -- luacheck: no self
 	local t = { ... }
-	Subject.stack:push( #t == 0 and Subject.stack:top() or Subject.create( t ) )
-	return Subject.stack:top()
+	self:subjects():push( #t == 0 and self:subjects():top() or Subject.create( ... ) )
+	return self:subjects():top()
 end
 
 setmetatable( Subject, mt )
@@ -64,6 +57,20 @@ function Subject:_init( ... )
 	end
 	self._reorder = function( a, b ) return b, a end
 	return self
+end
+
+--- Set the reference to the subjects collection
+-- This keeps a reference, the object is not cloned.
+-- @param table that somehow maintain a collection
+function Subject:setSubjects( obj )
+	assert( type( obj ) == 'table' )
+	self._subjects = obj
+	return self
+end
+
+--- Expose reference to subjects
+function Subject:subjects()
+	return self._subjects
 end
 
 -- Return the final class

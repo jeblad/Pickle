@@ -8,47 +8,8 @@ local Stack = require 'picklelib/Stack'
 local Frame = {}
 
 -- non-pure libs
-local AdaptReport -- luacheck: ignore
-local FrameReport -- luacheck: ignore
-local Subject
-local Extractors
-local Reports
--- Setup for prod or test
-if mw.pickle then
-	-- production, structure exist, make access simpler
-	AdaptReport = mw.pickle.report.adapt
-	FrameReport = mw.pickle.report.frame
-	Subject = mw.pickle.subject
-	Extractors = mw.pickle.extractors
-	Reports = mw.pickle.reports
-else
-	-- test, structure does not exist, require the libs
-	AdaptReport = require 'picklelib/report/AdaptReport'
-	FrameReport = require 'picklelib/report/FrameReport'
-	Subject = require 'picklelib/engine/Subject'
-	Extractors = require('picklelib/extractor/ExtractorStrategies').create()
-	Reports = require('picklelib/Stack').create()
-
-	--- Expose report
-	function Frame.report()
-		return FrameReport
-	end
-
-	--- Expose subject
-	function Frame.subject()
-		return Subject
-	end
-
-	--- Expose extractors
-	function Frame.extractors()
-		return Extractors
-	end
-
-	--- Expose reports
-	function Frame.reports()
-		return Reports
-	end
-end
+local AdaptReport = require 'picklelib/report/AdaptReport' -- luacheck: ignore
+local FrameReport = require 'picklelib/report/FrameReport' -- luacheck: ignore
 
 --- Lookup of missing class members
 -- @param string used for lookup of member
@@ -103,9 +64,8 @@ end
 function Frame:_init( ... )
 	self._descriptions = Stack.create()
 	self._fixtures = Stack.create()
-	self._depth = Subject.stack:depth()
 	self._done = false
-	self:dispatch( ... )
+	--self:dispatch( ... )
 	return self
 end
 
@@ -124,22 +84,22 @@ end
 --- Push a string
 -- @param this place to store value
 -- @param string value that should be stored
-mt.types[ 'string' ] = function( this, str )
-	this._descriptions:push( str )
+mt.types[ 'string' ] = function( this, val )
+	this._descriptions:push( val )
 end
 
 --- Push a function
 -- @param this place to store value
 -- @param function value that should be stored
-mt.types[ 'function' ] = function( this, func )
-	this._fixtures:push( func )
+mt.types[ 'function' ] = function( this, val )
+	this._fixtures:push( val )
 end
 
 --- Push a table
 -- @param this place to store value
 -- @param table value that should be stored
-mt.types[ 'table' ] = function( _, tbl )
-	Subject.stack:push( tbl )
+mt.types[ 'table' ] = function( this, val )
+	this._subjects:push( val )
 end
 
 --- Check if the frame has descriptions
@@ -178,30 +138,65 @@ function Frame:descriptions()
 	return self._descriptions:export()
 end
 
---- Get number of additional subjects
--- This is the difference in depth given a previous set value.
--- @return number
-function Frame:numSubjects()
-	return Subject.stack:depth() - self._depth
+--- Set the reference to the subjects collection
+-- This keeps a reference, the object is not cloned.
+-- @param table that somehow maintain a collection
+function Frame:setSubjects( obj )
+	assert( type( obj ) == 'table' )
+	self._subjects = obj
+	return self
+end
+
+--- Expose reference to subjects
+function Frame:subjects()
+	return self._subjects
+end
+
+--- Set the reference to the reports collection
+-- This keeps a reference, the object is not cloned.
+-- @param table that somehow maintain a collection
+function Frame:setReports( obj )
+	assert( type( obj ) == 'table' )
+	self._reports = obj
+	return self
+end
+
+--- Expose reference to reports
+function Frame:reports()
+	return self._reports
+end
+
+--- Set the reference to the extractors
+-- This keeps a reference, the object is not cloned.
+-- @param table that somehow maintain a collection
+function Frame:setExtractors( obj )
+	assert( type( obj ) == 'table' )
+	self._extractors = obj
+	return self
+end
+
+--- Expose reference to extractors
+function Frame:extractors()
+	return self._extractors
 end
 
 --- Eval the fixtures over previos dispatched strings
 -- @return self
 function Frame:eval() -- luacheck: ignore
 	if not self:hasFixtures() then
-		Reports:push( FrameReport.create():setSkip( 'pickle-frame-no-fixtures' ) )
+		self:reports():push( FrameReport.create():setSkip( 'pickle-frame-no-fixtures' ) )
 		self._eval = true
 		return self
 	end
 
 	for _,v in ipairs( self:hasDescriptions()
-			and { self._descriptions:export() }
+			and { self.descriptions() }
 			or { 'pickle-frame-no-description' } ) do
 		local pos = 1
 		local args = {}
 
 		repeat
-			local strategy, first, last = Extractors:find( v, pos )
+			local strategy, first, last = self:extractors():find( v, pos )
 			if strategy then
 				table.insert( args, strategy:cast( v, first, last ) )
 				pos = 1 + last
@@ -209,17 +204,18 @@ function Frame:eval() -- luacheck: ignore
 		until( not strategy )
 
 		for _,w in ipairs( { self._fixtures:export() } ) do
-			local depth = Reports:depth()
+			local depth = self:reports():export():depth()
 			local t = { pcall( w, unpack{ args } ) }
 			if ( not t[1] ) and (not not t[2]) then
-				Reports:push( AdaptReport.create():setSkip( 'pickle-adapt-catched-exception' ) )
+				self:reports():push( AdaptReport.create():setSkip( 'pickle-adapt-catched-exception' ) )
 			end
 			local report = FrameReport.create():setDescription( v )
-			local added = Reports:depth() - depth
+			local added = self:reports():export():depth() - depth
+			local added = 0
 			if added == 0 then
 				report:setSkip( 'pickle-frame-no-tests' )
 			end
-			report:addConstituents( Reports:pop( added ) )
+			report:addConstituents( self:reports():pop( added ) )
 			if t[1] and type( t[2] ) == 'table' then
 				local tmp = AdaptReport.create():setTodo( 'pickle-adapt-catched-return' )
 				for _,u in ipairs( t[2] or {} ) do
@@ -227,7 +223,7 @@ function Frame:eval() -- luacheck: ignore
 				end
 				report:addConstituent( tmp )
 			end
-			Reports:push( report )
+			self:reports():push( report )
 		end
 	end
 	self._eval = true

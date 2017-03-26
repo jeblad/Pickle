@@ -127,7 +127,7 @@ function AdaptReportRender:realizeBody( src, lang )
 			html:css( 'display', 'none')
 		end
 
-		for _,v in ipairs( { src:lines() } ) do
+		for _,v in ipairs( { src:lines():export() } ) do
 			html:node( self:realizeLine( v, lang ) )
 		end
 
