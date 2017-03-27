@@ -59,8 +59,7 @@ end
 --- Get the number of lines
 -- @return number of lines
 function AdaptReport:numLines()
-	local t = { self._lines:export() }
-	return #t
+	return self._lines and self._lines:depth() or 0
 end
 
 --- Add a line

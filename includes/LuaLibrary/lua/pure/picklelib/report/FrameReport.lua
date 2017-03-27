@@ -67,8 +67,7 @@ end
 --- Get the number of constituents
 -- @return number of constituents
 function FrameReport:numConstituents()
-	local t = { self:constituents():export() }
-	return #t
+	return self._constituents and self._constituents:depth() or 0
 end
 
 --- Add a constituent
@@ -89,7 +88,7 @@ function FrameReport:addConstituents( ... )
 end
 
 function FrameReport:hasConstituents()
-	return not ( self._constituents and true or self:constituents():isEmpty() )
+	return not ( self._constituents and self:constituents():isEmpty() or true )
 end
 
 --- Check if the instance state is ok
