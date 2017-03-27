@@ -88,15 +88,23 @@ function FrameReport:addConstituents( ... )
 	return self
 end
 
+function FrameReport:hasConstituents()
+	return not ( self._constituents and true or self:constituents():isEmpty() )
+end
+
 --- Check if the instance state is ok
 -- Note that initial state is "not ok".
 -- @todo the initial state is not correct
 -- @return boolean state
 function FrameReport:isOk()
 	local state = true
-	for _,v in ipairs( { self:constituents():export() } ) do
-		state = state and v:isOk()
+
+	if self._constituents then
+		for _,v in ipairs( { self:constituents():export() } ) do
+			state = state and v:isOk()
+		end
 	end
+
 	return state
 end
 
@@ -130,11 +138,15 @@ end
 -- @return boolean that is set if any constituent has a skip note
 function FrameReport:hasSkip()
 	local tmp = false
-	for _,v in ipairs( { self:constituents():export() } ) do
-		if self:type() ~= v:type() then
-			tmp = tmp or v:isSkip()
+
+	if self._constituents then
+		for _,v in ipairs( { self:constituents():export() } ) do
+			if self:type() ~= v:type() then
+				tmp = tmp or v:isSkip()
+			end
 		end
 	end
+
 	return tmp
 end
 
@@ -166,11 +178,15 @@ end
 -- @return boolean that is set if any constituent has a skip note
 function FrameReport:hasTodo()
 	local tmp = false
-	for _,v in ipairs( { self:constituents():export() } ) do
-		if self:type() ~= v:type() then
-			tmp = tmp or v:isTodo()
+
+	if self._constituents then
+		for _,v in ipairs( { self:constituents():export() } ) do
+			if self:type() ~= v:type() then
+				tmp = tmp or v:isTodo()
+			end
 		end
 	end
+
 	return tmp
 end
 
@@ -204,10 +220,15 @@ end
 -- @param string holding the language code
 function FrameReport:realize( renders, lang )
 	assert( renders, 'Failed to provide renders' )
+
 	local out = renders:find( self:type() ):realizeHeader( self, lang )
-	for _,v in ipairs( { self:constituents():export() } ) do
-		out = out .. v:realize( renders, lang )
+
+	if self._constituents then
+		for _,v in ipairs( { self:constituents():export() } ) do
+			out = out .. v:realize( renders, lang )
+		end
 	end
+
 	return out
 end
 
