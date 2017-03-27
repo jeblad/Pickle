@@ -3,19 +3,10 @@
 
 -- pure libs
 local Stack = require 'picklelib/Stack'
+local Adapt = require 'picklelib/engine/Adapt'
 
 -- @var class var for lib
 local Expect = {}
-
--- non-pure libs
-local Adapt
-if mw.pickle then
-	-- structure exist, make access simpler
-	Adapt = mw.pickle.adapt
-else
-	-- structure does not exist, require the libs
-	Adapt = require 'picklelib/engine/Adapt'
-end
 
 --- Lookup of missing class members
 -- @param string used for lookup of member
@@ -63,6 +54,23 @@ function Expect:_init( ... )
 		self._other = Expect.other
 	end
 	return self
+end
+
+--- Set the reference to the expects collection
+-- This keeps a reference, the object is not cloned.
+-- @param table that somehow maintain a collection
+function Expect:setExpects( obj )
+	assert( type( obj ) == 'table' )
+	self._expects = obj
+	return self
+end
+
+--- Expose reference to expects
+function Expect:expects()
+	if not self._expects then
+		self._expects = Stack.create()
+	end
+	return self._expects
 end
 
 -- Return the final class

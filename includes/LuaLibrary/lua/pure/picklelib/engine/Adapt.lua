@@ -3,27 +3,10 @@
 -- pure libs
 local Stack = require 'picklelib/Stack'
 local util = require 'picklelib/util'
+local AdaptReport = require 'picklelib/report/AdaptReport' -- @todo might be skipped
 
 -- @var class var for lib
 local Adapt = {}
-
--- non-pure libs
-local AdaptReport
-local Reports
-if mw.pickle then
-	-- structure exist, make access simpler
-	AdaptReport = mw.pickle.report.adapt
-	Reports = mw.pickle.reports
-else
-	-- structure does not exist, require the libs
-	AdaptReport = require 'picklelib/report/AdaptReport'
-	Reports = require('picklelib/Stack').create()
-
-	--- Expose reports
-	function Adapt.reports()
-		return Reports
-	end
-end
 
 --- Lookup of missing class members
 -- @param string used for lookup of member
@@ -59,6 +42,23 @@ function Adapt:addProcess( func )
 	assert( type( func ) == 'function' )
 	self._processes:push( func )
 	return self
+end
+
+--- Set the reference to the reports collection
+-- This keeps a reference, the object is not cloned.
+-- @param table that somehow maintain a collection
+function Adapt:setReports( obj )
+	assert( type( obj ) == 'table' )
+	self._reports = obj
+	return self
+end
+
+--- Expose reference to reports
+function Adapt:reports()
+	if not self._reports then
+		self._reports = Stack.create()
+	end
+	return self._reports
 end
 
 --- Get the temporal
@@ -366,7 +366,7 @@ local function _makeConditionProcess( name, func, other )
 			report:ok()
 		end
 		-- @todo add handover
-		Reports:push( report )
+		self:reports():push( report )
 		return report
 	end
 	return f

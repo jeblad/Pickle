@@ -3,19 +3,10 @@
 
 -- pure libs
 local Stack = require 'picklelib/Stack'
+local Adapt = require 'picklelib/engine/Adapt'
 
 -- @var class var for lib
 local Subject = {}
-
--- non-pure libs
-local Adapt
-if mw.pickle then
-	-- structure exist, make access simpler
-	Adapt = mw.pickle.adapt
-else
-	-- structure does not exist, require the libs
-	Adapt = require 'picklelib/engine/Adapt'
-end
 
 --- Lookup of missing class members
 -- @param string used for lookup of member
@@ -66,5 +57,21 @@ function Subject:_init( ... )
 	return self
 end
 
--- Return the final class
+--- Set the reference to the subjects collection
+-- This keeps a reference, the object is not cloned.
+-- @param table that somehow maintain a collection
+function Subject:setSubjects( obj )
+	assert( type( obj ) == 'table' )
+	self._subjects = obj
+	return self
+end
+
+--- Expose reference to subjects
+function Subject:subjects()
+	if not self._subjects then
+		self._subjects = Stack.create()
+	end
+	return self._subjects
+end-- Return the final class
+
 return Subject
