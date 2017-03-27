@@ -8,6 +8,7 @@
 	"pickle-test-text-pending": "Am Suspens",
 	"pickle-test-text-missing": "Feelt",
 	"pickle-test-text-unknown": "Onbekannt",
+	"pickle-test-text-skip-good": "Gutt (iwwersprangen)",
 	"pickle-tracking-category-missing": "Moduler ouni Testsäit",
 	"pickle-tracking-category-unknown": "Moduler mat onbekannten Tester",
 	"pickle-console-empty": "Keng Rapporten disponibel.",
@@ -40,5 +41,10 @@
 	"pickle-adapt-process-eleventh": "Eeleft Element eraussichen",
 	"pickle-adapt-process-twelfth": "Zwieleft Element eraussichen",
 	"pickle-adapt-process-as-ceil": "Méi grouss ganz Zuel fannen",
+	"pickle-adapt-condition-to-be-contained": "Soll am Zil dra sinn",
+	"pickle-adapt-condition-to-be-lesser-than": "Soll manner si wéi d'Zil",
+	"pickle-adapt-condition-to-be-greater-than": "Soll méi grouss si wéi d'Zil",
+	"pickle-adapt-condition-to-be-lesser-or-equal": "Soll manner oder d'selwecht si wéi d'Zil",
+	"pickle-adapt-condition-to-be-greater-or-equal": "Soll méi grouss oder d'selwecht si wéi d'Zil",
 	"pickle-adapt-catched-exception": "Opgefaangen Ausnam"
 }
