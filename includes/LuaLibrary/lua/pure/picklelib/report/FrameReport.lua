@@ -4,14 +4,7 @@
 local Stack = require 'picklelib/Stack'
 
 -- non-pure libs
-local BaseReport
-if mw.pickle then
-	-- structure exist, make access simpler
-	BaseReport = mw.pickle.report.base
-else
-	-- structure does not exist, require the libs
-	BaseReport = require 'picklelib/report/BaseReport'
-end
+local BaseReport = require 'picklelib/report/BaseReport'
 
 -- @var class var for lib
 local FrameReport = {}
@@ -52,27 +45,12 @@ end
 -- @return FrameReport
 function FrameReport:_init( ... )
 	BaseReport._init( self, ... )
-	self._constituents = Stack.create()
 	self._skip = false
 	self._todo = false
 	self._type = 'frame-report'
-	return self
-end
-
---- Add a constituent
--- @param any part that can be a constituent
--- @return self
-function FrameReport:addConstituent( part )
-	assert( part, 'Failed to provide a constituent' )
-	self._constituents:push( part )
-	return self
-end
-
---- Add several constituents
--- @param vararg list of parts that can be constituents
--- @return self
-function FrameReport:addConstituents( ... )
-	self._constituents:push( ... )
+	if select('#',...) then
+		self:constituents():push( ... )
+	end
 	return self
 end
 
@@ -80,7 +58,34 @@ end
 -- Note that each constituent is not unwrapped.
 -- @return list of constituents
 function FrameReport:constituents()
-	return self._constituents:export()
+	if not self._constituents then
+		self._constituents = Stack.create()
+	end
+	return self._constituents
+end
+
+--- Get the number of constituents
+-- @return number of constituents
+function FrameReport:numConstituents()
+	local t = { self:constituents():export() }
+	return #t
+end
+
+--- Add a constituent
+-- @param any part that can be a constituent
+-- @return self
+function FrameReport:addConstituent( part )
+	assert( part, 'Failed to provide a constituent' )
+	self:constituents():push( part )
+	return self
+end
+
+--- Add several constituents
+-- @param vararg list of parts that can be constituents
+-- @return self
+function FrameReport:addConstituents( ... )
+	self:constituents():push( ... )
+	return self
 end
 
 --- Check if the instance state is ok
@@ -89,7 +94,7 @@ end
 -- @return boolean state
 function FrameReport:isOk()
 	local state = true
-	for _,v in ipairs( { self._constituents:export() } ) do
+	for _,v in ipairs( { self:constituents():export() } ) do
 		state = state and v:isOk()
 	end
 	return state
@@ -125,7 +130,7 @@ end
 -- @return boolean that is set if any constituent has a skip note
 function FrameReport:hasSkip()
 	local tmp = false
-	for _,v in ipairs( { self._constituents:export() } ) do
+	for _,v in ipairs( { self:constituents():export() } ) do
 		if self:type() ~= v:type() then
 			tmp = tmp or v:isSkip()
 		end
@@ -161,7 +166,7 @@ end
 -- @return boolean that is set if any constituent has a skip note
 function FrameReport:hasTodo()
 	local tmp = false
-	for _,v in ipairs( { self._constituents:export() } ) do
+	for _,v in ipairs( { self:constituents():export() } ) do
 		if self:type() ~= v:type() then
 			tmp = tmp or v:isTodo()
 		end
@@ -200,7 +205,7 @@ end
 function FrameReport:realize( renders, lang )
 	assert( renders, 'Failed to provide renders' )
 	local out = renders:find( self:type() ):realizeHeader( self, lang )
-	for _,v in ipairs( self:constituents() ) do
+	for _,v in ipairs( { self:constituents():export() } ) do
 		out = out .. v:realize( renders, lang )
 	end
 	return out

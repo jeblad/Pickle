@@ -34,12 +34,12 @@ end
 
 local function testConstituent( con )
 	local p = makeTest():addConstituent( con )
-	return { p:constituents() }
+	return { p:constituents():export() }
 end
 
 local function testConstituents( ... )
 	local p = makeTest():addConstituents( ... )
-	return { p:constituents() }
+	return { p:constituents():export() }
 end
 
 local function testIsSkip( bool )

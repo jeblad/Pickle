@@ -77,7 +77,7 @@ local function testEval( libs, ... )
 			table.insert( result, v:getSkip() or v:getTodo() )
 		end
 		if not not v['constituents'] then
-			for _,w in ipairs( { v:constituents() } ) do
+			for _,w in ipairs( { v:constituents():export() } ) do
 				table.insert( result, w:getSkip() or w:getTodo() or 'empty' )
 				table.insert( result, { w:lines():export() } )
 			end
