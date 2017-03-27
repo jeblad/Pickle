@@ -3,17 +3,17 @@
 -- @license GNU GPL v2+
 -- @author John Erling Blad < jeblad@gmail.com >
 
-
 local testframework = require 'Module:TestFramework'
 
-local adapt = require 'picklelib/engine/Adapt'
+local Adapt = require 'picklelib/engine/Adapt'
+local reports = require 'picklelib/Stack'
 
 local function makeAdapt( ... )
-	return adapt.create( ... )
+	return Adapt.create( ... ):setReports( reports.create() )
 end
 
 local function testExists()
-	return type( adapt )
+	return type( Adapt )
 end
 
 local function testCreate( ... )
@@ -22,6 +22,15 @@ end
 
 local function testEval( ... )
 	return makeAdapt( ... ):addProcess(function( ... ) return ... end):eval()
+end
+
+local function testReports( ... )
+	local obj = makeAdapt()
+	local t = { ... }
+	for _,v in ipairs( t ) do
+		obj:reports():push( v )
+	end
+	return { obj:reports():export() }
 end
 
 local function testProcess( name, ... )

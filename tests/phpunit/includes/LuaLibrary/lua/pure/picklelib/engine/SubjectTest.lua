@@ -3,13 +3,13 @@
 -- @license GNU GPL v2+
 -- @author John Erling Blad < jeblad@gmail.com >
 
-
 local testframework = require 'Module:TestFramework'
 
 local Subject = require 'picklelib/engine/Subject'
+local subjects = require 'picklelib/Stack'
 
 local function makeSubject( ... )
-	return Subject.create( ... )
+	return Subject.create( ... ):setSubjects( subjects.create() )
 end
 
 local function testExists()
@@ -20,12 +20,13 @@ local function testCreate( ... )
 	return type( makeSubject( ... ) )
 end
 
-local function testStack( ... )
+local function testSubjects( ... )
+	local obj = makeSubject()
 	local t = { ... }
 	for _,v in ipairs( t ) do
-		Subject.stack:push( v )
+		obj:subjects():push( v )
 	end
-	return { Subject.stack:export() }
+	return { obj:subjects():export() }
 end
 
 local function testDoubleCall( ... )
@@ -64,8 +65,8 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
-		name = 'subject.stack (multiple value)',
-		func = testStack,
+		name = 'subject.subjects (multiple value)',
+		func = testSubjects,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' } }
 	},

@@ -6,9 +6,10 @@
 local testframework = require 'Module:TestFramework'
 
 local Expect = require 'picklelib/engine/Expect'
+local expects = require('picklelib/Stack')
 
 local function makeExpect( ... )
-	return Expect.create( ... )
+	return Expect.create( ... ):setExpects( expects.create() )
 end
 
 local function testExists()
@@ -19,12 +20,13 @@ local function testCreate( ... )
 	return type( makeExpect( ... ) )
 end
 
-local function testStack( ... )
+local function testExpects( ... )
+	local obj = makeExpect()
 	local t = { ... }
 	for _,v in ipairs( t ) do
-		Expect.stack:push( v )
+		obj:expects():push( v )
 	end
-	return { Expect.stack:export() }
+	return { obj:expects():export() }
 end
 
 local function testDoubleCall( ... )
@@ -63,8 +65,8 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
-		name = 'expect.stack (multiple value)',
-		func = testStack,
+		name = 'expect.expects (multiple value)',
+		func = testExpects,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' } }
 	},
