@@ -6,70 +6,79 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/engine/Frame'
+local extractors = require 'picklelib/extractor/ExtractorStrategies'
+local Frame = require 'picklelib/engine/Frame'
+local subjects = require 'picklelib/Stack'
+local reports = require 'picklelib/Stack'
 local name = 'frame'
 local class = 'Frame'
 
-local function makeTest( ... )
-	return lib.create( ... )
+local function makeFrame( ... )
+	return Frame.create( ... )
+		:setSubjects( subjects.create() )
+		:setReports( reports.create() )
+		:setExtractors( extractors.create() )
 end
 
 local function testExists()
-	return type( lib )
+	return type( Frame )
 end
 
 local function testCreate( ... )
-	return type( makeTest( ... ) )
+	return type( makeFrame( ... ) )
 end
 
 local function testClassCall( ... )
-	local t = lib( ... )
+	local t = Frame( ... )
 	return t:descriptions()
 end
 
 local function testClassCallStrings()
-	local t = lib 'foo' 'bar' 'baz'
+	local t = Frame 'foo' 'bar' 'baz'
 	return t:descriptions()
 end
 
 local function testInstanceCall( ... )
-	local obj = makeTest()
+	local obj = makeFrame()
 	local t = obj( ... )
 	return t:descriptions()
 end
 
 local function testInstanceCallStrings()
-	local obj = makeTest()
+	local obj = makeFrame()
 	local t = obj 'foo' 'bar' 'baz'
 	return t:descriptions()
 end
 
 local function testStringDispatch( ... )
-	local obj = makeTest()
+	local obj = makeFrame()
 	obj:dispatch( ... )
 	return obj:hasDescriptions(), obj:numDescriptions(), obj:descriptions()
 end
 
 local function testFunctionDispatch( ... )
-	local obj = makeTest()
+	local obj = makeFrame()
 	obj:dispatch( ... )
 	return obj:hasFixtures(), obj:numFixtures()
 end
 
 local function testTableDispatch( ... )
-	local obj = makeTest()
+	local obj = makeFrame()
 	obj:dispatch( ... )
-	return obj:numSubjects()
+	return obj:subjects():depth()
 end
 
 local function testEval( libs, ... )
-	local obj = makeTest( ... )
+	local obj = makeFrame( ... )
 	for _,v in ipairs( libs ) do
+--		assert( v )
 		obj:extractors():register( require( v ).create() )
 	end
 	local result = {}
+	obj:dispatch( ... )
 	obj:eval()
 	for _,v in ipairs( { obj:reports():export() } ) do
+		assert( v )
 		if v:hasDescription() then
 			table.insert( result, v:getDescription() )
 		end
@@ -419,8 +428,7 @@ local tests = {
 				"picklelib/extractor/StringExtractorStrategy",
 				"picklelib/extractor/NumberExtractorStrategy"
 			},
-			-- pass as subject
-			-- function(...) for _,v in ipairs( {...} ) do lib.subject()( v ):first():eval() end end
+			-- pass as subject through return value
 			function(...) return ... end
 		},
 		expect = {
@@ -439,8 +447,7 @@ local tests = {
 				"picklelib/extractor/NumberExtractorStrategy"
 			},
 			'foo "bar" baz',
-			-- pass as subject
-			-- function(...) for _,v in ipairs( {...} ) do lib.subject()( v ):first():eval() end end
+			-- pass as subject through return value
 			function(...) return ... end
 		},
 		expect = {
@@ -460,8 +467,7 @@ local tests = {
 			},
 			'foo "bar" baz',
 			'ping 42 pong',
-			-- pass as subject
-			-- function(...) for _,v in ipairs( {...} ) do lib.subject()( v ):first():eval() end end
+			-- pass as subject through return value
 			function(...) return ... end
 		},
 		expect = {
