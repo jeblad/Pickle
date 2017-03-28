@@ -50,22 +50,10 @@ local function testInstanceCallStrings()
 	return t:descriptions()
 end
 
-local function testStringDispatch( ... )
+local function testDispatch( ... )
 	local obj = makeFrame()
 	obj:dispatch( ... )
-	return obj:hasDescriptions(), obj:numDescriptions(), obj:descriptions()
-end
-
-local function testFunctionDispatch( ... )
-	local obj = makeFrame()
-	obj:dispatch( ... )
-	return obj:hasFixtures(), obj:numFixtures()
-end
-
-local function testTableDispatch( ... )
-	local obj = makeFrame()
-	obj:dispatch( ... )
-	return obj:subjects():depth()
+	return obj:numDescriptions(), obj:numFixtures(), obj:subjects():depth()
 end
 
 local function testEval( libs, ... )
@@ -159,66 +147,64 @@ local tests = {
 		expect = { 'foo', 'bar', 'baz' }
 	},
 	{
-		name = name .. '.stringDispatch (no string)',
-		func = testStringDispatch,
+		name = name .. '.dispatch (no value)',
+		func = testDispatch,
 		args = { },
-		expect = { false, 0 }
+		expect = { 0, 0, 0 }
 	},
 	{
-		name = name .. '.stringDispatch (single string)',
-		func = testStringDispatch,
+		name = name .. '.dispatch (single string)',
+		func = testDispatch,
 		args = { 'foo' },
-		expect = { true, 1, 'foo' }
+		expect = { 1, 0, 0 }
 	},
 	{
-		name = name .. '.stringDispatch (multiple string)',
-		func = testStringDispatch,
+		name = name .. '.dispatch (multiple string)',
+		func = testDispatch,
 		args = { 'foo', 'bar', 'baz' },
-		expect = { true, 3, 'foo', 'bar', 'baz' }
+		expect = { 3, 0, 0 }
 	},
 	{
-		name = name .. '.functionDispatch (no function)',
-		func = testFunctionDispatch,
-		args = {},
-		expect = { false, 0 }
-	},
-	{
-		name = name .. '.functionDispatch (single function)',
-		func = testFunctionDispatch,
+		name = name .. '.dispatch (single function)',
+		func = testDispatch,
 		args = { function() return 'foo' end },
-		expect = { true, 1 }
+		expect = { 0, 1, 0 }
 	},
 	{
-		name = name .. '.functionDispatch (multiple functions)',
-		func = testFunctionDispatch,
+		name = name .. '.dispatch (multiple functions)',
+		func = testDispatch,
 		args = {
 			function() return 'foo' end,
 			function() return 'bar' end,
 			function() return 'baz' end
 		},
-		expect = { true, 3 }
+		expect = { 0, 3, 0 }
 	},
 	{
-		name = name .. '.tableDispatch (no table)',
-		func = testTableDispatch,
-		args = {},
-		expect = { 0 }
-	},
-	{
-		name = name .. '.tableDispatch (single table)',
-		func = testTableDispatch,
+		name = name .. '.dispatch (single table)',
+		func = testDispatch,
 		args = { { 'foo' } },
-		expect = { 1 }
+		expect = { 0, 0, 1 }
 	},
 	{
-		name = name .. '.tableDispatch (multiple tables)',
-		func = testTableDispatch,
+		name = name .. '.dispatch (multiple tables)',
+		func = testDispatch,
 		args = {
 			{ 'foo' },
 			{ 'bar' },
 			{ 'baz' }
 		},
-		expect = { 3 }
+		expect = { 0, 0, 3 }
+	},
+	{
+		name = name .. '.dispatch (string, function, table)',
+		func = testDispatch,
+		args = {
+			'foo',
+			function() return 'bar' end,
+			{ 'baz' }
+		},
+		expect = { 1, 1, 1 }
 	},
 	{
 		name = name .. '.eval (no string, no fixtures)',
