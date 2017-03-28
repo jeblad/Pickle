@@ -74,19 +74,19 @@ local tests = {
 		name = 'subject.call (nil value)',
 		func = testDoubleCall,
 		args = {},
-		expect = { { 'foo' } }
+		expect = { 'foo' }
 	},
 	{
 		name = 'subject.call (single value)',
 		func = testDoubleCall,
 		args = { 'a' },
-		expect = { { 'a' } }
+		expect = { 'a' }
 	},
 	{
 		name = 'subject.call (multiple value)',
 		func = testDoubleCall,
 		args = { 'a', 'b', 'c' },
-		expect = { { 'a', 'b', 'c' } }
+		expect = { 'a', 'b', 'c' }
 	},
 }
 

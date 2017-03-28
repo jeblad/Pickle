@@ -22,9 +22,8 @@ local mt = { __index = Adapt }
 -- @param vararg conditionally passed to create
 -- @return self
 function mt:__call( ... ) -- luacheck: ignore
-	local t = { ... }
-	Expect.stack:push( #t == 0 and Expect.stack:top() or Expect.create( ... ) )
-	return Expect.stack:top()
+	self:expects():push( select( '#', ... ) == 0 and self:expects():top() or Expect.create( ... ) )
+	return self:expects():top()
 end
 
 setmetatable( Expect, mt )

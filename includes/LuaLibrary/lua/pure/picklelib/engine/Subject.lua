@@ -22,9 +22,8 @@ local mt = { __index = Adapt }
 -- @param vararg conditionally passed to create
 -- @return self
 function mt:__call( ... ) -- luacheck: no self
-	local t = { ... }
-	Subject.stack:push( #t == 0 and Subject.stack:top() or Subject.create( t ) )
-	return Subject.stack:top()
+	self:subjects():push( select( '#', ... ) == 0 and self:subjects():top() or Subject.create( ... ) )
+	return self:subjects():top()
 end
 
 setmetatable( Subject, mt )
