@@ -113,6 +113,12 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
+		name = 'adapt.stack (multiple value)',
+		func = testReports,
+		args = { 'a', 'b', 'c' },
+		expect = { { 'a', 'b', 'c' } }
+	},
+	{
 		name = 'adapt.eval (single string)',
 		func = testEval,
 		args = { 'a' },
