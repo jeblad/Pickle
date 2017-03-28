@@ -71,6 +71,7 @@ function Subject:subjects()
 		self._subjects = Stack.create()
 	end
 	return self._subjects
-end-- Return the final class
+end
 
+-- Return the final class
 return Subject
