@@ -24,6 +24,7 @@ local function testEval( ... )
 	return makeAdapt( ... ):addProcess(function( ... ) return ... end):eval()
 end
 
+-- @todo this is not in use
 local function testReports( ... )
 	local obj = makeAdapt()
 	local t = { ... }
