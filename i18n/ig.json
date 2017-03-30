@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ebubeagu"
+		]
+	},
+	"pickle-test-text-good": "Nma",
+	"pickle-test-text-fail": " Ọ naghị aga",
+	"pickle-track-log-entry-good": "{{GENDER:$2|gosiri na-egbughị oge}} na $1 nwere ezi ule",
+	"pickle-console-empty": "O nweghị akụkọ dị ugbu a.",
+	"pickle-adapt-process-third": "Họrọ \"element\" nke atọ",
+	"pickle-adapt-process-fourth": "Họrọ \"element\" nke anọ",
+	"pickle-adapt-process-tenth": "Họrọ \"element\" nke iri",
+	"pickle-adapt-process-as-u-n-f-d": "Degharịa code Unicode string ka Normalized Form D (NFD)",
+	"pickle-adapt-process-as-floor": "Chọọ obere \"integer\"",
+	"pickle-adapt-process-as-integer": "Chọọ akụkụ \"integer\"",
+	"pickle-adapt-condition-to-be-lesser-than": "Ga-epekarị ihe a chọrọ",
+	"pickle-adapt-condition-to-be-greater-or-equal": "Ga-aka ihe a chọrọ ma ọ bụ ya na ihe a chọrọ a hara"
+}
