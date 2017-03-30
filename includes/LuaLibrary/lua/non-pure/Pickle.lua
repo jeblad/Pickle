@@ -17,7 +17,7 @@ pickle._extractors = {}
 function pickle.describe( ... )
 	-- require libs and create an instance
 	--local reports = require( 'picklelib/Stack' ).create()
-	--getfenv( 2 )._reports = reports
+	--env._reports = reports
 	local expects = require( 'picklelib/Stack' ).create()
 	local subjects = require( 'picklelib/Stack' ).create()
 	local extractors = require( 'picklelib/extractor/ExtractorStrategies' ).create()
@@ -32,9 +32,15 @@ function pickle.describe( ... )
 	-- @todo this should probably be reimplemented, it missuses weird behavior in Lua
 	local renders = require 'picklelib/render/Renders'
 
+	--Get the environment for installation of our access points
+	local ret,env = pcall( function() return getfenv( 4 ) end )
+	if not ret then
+		env = _G
+	end
+
 	-- this is mainly needed for testing purposes
 	local reports = require( 'picklelib/Stack' ).create()
-	getfenv( 2 )._reports = reports
+	env._reports = reports
 
 	-- register render styles
 	for k,v in pairs( mw.pickle._styles ) do
@@ -64,7 +70,7 @@ function pickle.describe( ... )
 	-- assumed outcome.
 	-- @param vararg passed on to expect.create
 	-- @return self newly created object
-	getfenv( 2 ).expect = function( ... )
+	env.expect = function( ... )
 		local obj = Expect.create( ... )
 			:setReports( reports )
 			:setExpects( expects )
@@ -76,7 +82,7 @@ function pickle.describe( ... )
 	-- usually the returned table for a module.
 	-- @param vararg passed on to expect.create
 	-- @return self newly created object
-	getfenv( 2 ).subject = function( ... )
+	env.subject = function( ... )
 		local obj = Subject.create( ... )
 			:setReports( reports )
 			:setSubjects( subjects )
@@ -89,7 +95,7 @@ function pickle.describe( ... )
 	-- 'before' and 'after' functions.
 	-- @param vararg passed on to expect.create
 	-- @return self newly created object
-	getfenv( 2 ).context = function( ... )
+	env.context = function( ... )
 		local obj = Frame.create( ... )
 			:setExtractors( extractors )
 			:setReports( reports )
@@ -101,12 +107,12 @@ function pickle.describe( ... )
 	--- It is the actual test for each metod
 	-- @param vararg passed on to expect.create
 	-- @return self newly created object
-	getfenv( 2 ).it = getfenv( 2 ).context
+	env.it = env.context
 
 	--- Carp, warn called due to a possible error condition
 	-- Print a message without exiting, with caller's name and arguments.
 	-- @param string message to be passed on
-	getfenv( 2 ).carp = function( str )
+	env.carp = function( str )
 		local obj = Spy.create():setReports( reports )
 		obj:todo( 'todo', 'pickle-spies-carp-todo', str ) -- @todo not sure why this must use 'obj'
 		obj:reports():push( obj:report() )
@@ -116,7 +122,7 @@ function pickle.describe( ... )
 	--- Cluck, warn called due to a possible error condition, with a stack backtrace
 	-- Print a message without exiting, with caller's name and arguments, and a stack trace.
 	-- @param string message to be passed on
-	getfenv( 2 ).cluck = function( str )
+	env.cluck = function( str )
 		local obj = Spy.create():setReports( reports )
 		obj:todo( 'pickle-spies-cluck-todo', str )
 		obj:traceback()
@@ -128,7 +134,7 @@ function pickle.describe( ... )
 	-- Print a message then exits, with caller's name and arguments.
 	-- @exception error called unconditionally
 	-- @param string message to be passed on
-	getfenv( 2 ).croak = function( str )
+	env.croak = function( str )
 		local obj = Spy.create():setReports( reports )
 		obj:skip( 'pickle-spies-croak-skip', str )
 		obj:reports():push( obj:report() )
@@ -140,7 +146,7 @@ function pickle.describe( ... )
 	-- Print a message then exits, with caller's name and arguments, and a stack trace.
 	-- @exception error called unconditionally
 	-- @param string message to be passed on
-	getfenv( 2 ).confess = function( str )
+	env.confess = function( str )
 		local obj = Spy.create():setReports( reports )
 		obj:skip( 'pickle-spies-confess-skip', str )
 		obj:traceback()
