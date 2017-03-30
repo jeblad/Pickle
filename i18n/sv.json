@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Johan",
-			"Jeblad"
+			"Jeblad",
+			"WikiPhoenix"
 		]
 	},
 	"pickle-desc": "Tillfogar grundläggande Pickle-typetestning för Luamoduler.",
@@ -43,12 +44,13 @@
 	"pickle-track-log-entry-unknown": "{{GENDER:$2|härledd automatiskt}} att sidan $1 har ukjende testar",
 	"pickle-console-title": "Testkonsol",
 	"pickle-console-empty": "Ingen rapportar tilgjengeleg.",
-	"pickle-console-cleared": "Städa konsollet.",
+	"pickle-console-cleared": "Rensade konsol.",
 	"pickle-console-run": "Kör",
 	"pickle-console-clear": "Tøm",
 	"pickle-report-skip-no-message": "Beskednyckeln \"$1\" finst inte",
 	"pickle-frame-compact-header-all-good": "ok (alla goda) &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "not ok (något feila) &mdash; $1",
+	"pickle-frame-no-description": "anonym",
 	"pickle-report-adapt-compact-is-ok": "ok (god)",
 	"pickle-report-adapt-compact-is-not-ok": "not ok (fel)",
 	"pickle-report-adapt-compact-wrap-skip": "skip (avbrutit) $1",
