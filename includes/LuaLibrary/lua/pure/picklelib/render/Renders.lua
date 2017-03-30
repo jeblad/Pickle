@@ -17,7 +17,7 @@ Renders._styles = {}
 -- This will try to create the style if it isn't created yet.'
 -- @return Render
 function Renders:__call( name ) -- luacheck: no self
-	assert( name, 'Failed to provide a name' )
+	assert( name, 'Renders: __call: Failed to provide a name' )
 	assert( Renders._styles[name], 'Failed to provide a previously registered style' )
 	return Renders._styles[name]
 end
@@ -47,7 +47,7 @@ end
 -- @private
 -- @param string name of a style of rendering
 function Renders:_init( name )
-	assert( name, 'Failed to provide a name' )
+	assert( name, 'Renderes: _init: Failed to provide a name' )
 	self._style = name
 	self._types = {}
 end
@@ -58,7 +58,7 @@ end
 -- @param Render lib for the specific kind of rendering
 -- @return Render
 function Renders:registerType( name, lib )
-	assert( name, 'Failed to provide a name' )
+	assert( name, 'Renderes: registerType: Failed to provide a name' )
 	self._types[name] = lib
 	return self._types[name]
 end
@@ -69,8 +69,8 @@ end
 -- @param string name of a style of rendering
 -- @return Render
 function Renders:find( name )
-	assert( name, 'Failed to provide a name' )
-	assert( self._types[name], 'Failed to provide a previously registered type' )
+	assert( name, 'Renderes: find: Failed to provide a name' )
+	assert( self._types[name], 'Renderes: find: Failed to provide a previously registered type' )
 	return self._types[name]
 end
 

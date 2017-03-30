@@ -11,13 +11,13 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class SpiesTest extends Scribunto_LuaEngineTestBase {
+class SpyTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'SpiesTest';
+	protected static $moduleName = 'SpyTest';
 
 	function getTestModules() {
 		return parent::getTestModules() + [
-			'SpiesTest' => __DIR__ . '/SpiesTest.lua'
+			'SpyTest' => __DIR__ . '/SpyTest.lua'
 		];
 	}
 }

@@ -92,8 +92,8 @@
 		"Pickle\\SubLinksView":
 			"includes/SubLinks/SubLinksView.php",
 
-		"Pickle\\LuaLibDeferred":
-			"includes/LuaLibrary/LuaLibDeferred.php",
+		"Pickle\\LuaLibPickle":
+			"includes/LuaLibrary/LuaLibPickle.php",
 
 		"Pickle\\Tests\\StrategiesTestCase":
 			"tests/phpunit/includes/Strategies/StrategiesTestCase.php",

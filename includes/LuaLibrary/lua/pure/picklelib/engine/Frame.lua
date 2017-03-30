@@ -176,6 +176,20 @@ function Frame:extractors()
 	return self._extractors
 end
 
+--- Set the reference to the renders
+-- This keeps a reference, the object is not cloned.
+-- @param table that somehow maintain a collection
+function Frame:setRenders( obj )
+	assert( type( obj ) == 'table' )
+	self._renders = obj
+	return self
+end
+
+--- Expose reference to renders
+function Frame:renders()
+	return self._renders
+end
+
 --- Eval the fixtures over previous dispatched strings
 -- @return self
 function Frame:eval() -- luacheck: ignore

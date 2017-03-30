@@ -229,7 +229,7 @@ class Hooks {
 		}
 
 		$extraLibraries['pickle'] = [
-			'class' => '\Pickle\LuaLibDeferred',
+			'class' => '\Pickle\LuaLibPickle',
 			'deferLoad' => false
 		];
 

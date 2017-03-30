@@ -63,6 +63,7 @@ function AdaptReport:numLines()
 end
 
 --- Add a line
+-- @todo sometimes a block of lines must be added
 -- Note that all arguments will be wrapped up in a table before saving.
 -- @param vararg that can be a line
 -- @return self
