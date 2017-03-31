@@ -16,8 +16,6 @@ pickle._extractors = {}
 -- @return self newly created object
 function pickle.describe( ... )
 	-- require libs and create an instance
-	--local reports = require( 'picklelib/Stack' ).create()
-	--env._reports = reports
 	local expects = require( 'picklelib/Stack' ).create()
 	local subjects = require( 'picklelib/Stack' ).create()
 	local extractors = require( 'picklelib/extractor/ExtractorStrategies' ).create()
@@ -103,7 +101,6 @@ function pickle.describe( ... )
 			:dispatch( ... )
 		return obj
 	end
-	--foo = 'bar'
 
 	--- It is the actual test for each metod
 	-- @param vararg passed on to expect.create

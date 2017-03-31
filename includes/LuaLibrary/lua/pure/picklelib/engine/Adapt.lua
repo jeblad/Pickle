@@ -54,6 +54,8 @@ function Adapt:setReports( obj )
 end
 
 --- Expose reference to reports
+-- If no report is set, then a new one is created.
+-- @return list of reports
 function Adapt:reports()
 	if not self._reports then
 		self._reports = Stack.create()

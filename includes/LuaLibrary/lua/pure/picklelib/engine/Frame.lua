@@ -144,6 +144,7 @@ function Frame:setSubjects( obj )
 end
 
 --- Expose reference to subjects
+-- @return list of subjects
 function Frame:subjects()
 	return self._subjects
 end
@@ -158,6 +159,7 @@ function Frame:setReports( obj )
 end
 
 --- Expose reference to reports
+-- @return list of reports
 function Frame:reports()
 	return self._reports
 end
@@ -172,6 +174,7 @@ function Frame:setExtractors( obj )
 end
 
 --- Expose reference to extractors
+-- @return list of extractors
 function Frame:extractors()
 	return self._extractors
 end
@@ -186,6 +189,7 @@ function Frame:setRenders( obj )
 end
 
 --- Expose reference to renders
+-- @return list of renders
 function Frame:renders()
 	return self._renders
 end

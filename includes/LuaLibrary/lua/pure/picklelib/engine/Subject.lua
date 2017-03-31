@@ -65,7 +65,9 @@ function Subject:setSubjects( obj )
 	return self
 end
 
---- Expose reference to subjects
+--- Expose reference to subjectsexpects
+-- If no report is set, then a new one is created.
+-- @return list of subjects
 function Subject:subjects()
 	if not self._subjects then
 		self._subjects = Stack.create()

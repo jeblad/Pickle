@@ -65,6 +65,8 @@ function Expect:setExpects( obj )
 end
 
 --- Expose reference to expects
+-- If no report is set, then a new one is created.
+-- @return list of expectations
 function Expect:expects()
 	if not self._expects then
 		self._expects = Stack.create()
