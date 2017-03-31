@@ -120,8 +120,8 @@
 			"vivid": "picklelib/render/vivid"
 		},
 		"RenderTypes": {
-			"adapt": "AdaptReportRenderStrategy",
-			"frame": "FrameReportRenderStrategy"
+			"adapt-report": "AdaptReportRenderStrategy",
+			"frame-report": "FrameReportRenderStrategy"
 		},
 		"ExtractorStrategy": [
 			"picklelib/extractor/NilExtractorStrategy",
