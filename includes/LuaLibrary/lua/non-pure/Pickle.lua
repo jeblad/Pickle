@@ -96,10 +96,11 @@ function pickle.describe( ... )
 	-- @param vararg passed on to expect.create
 	-- @return self newly created object
 	env.context = function( ... )
-		local obj = Frame.create( ... )
+		local obj = Frame.create()
 			:setExtractors( extractors )
 			:setReports( reports )
 			:setSubjects( subjects )
+			:dispatch( ... )
 		return obj
 	end
 	--foo = 'bar'
@@ -156,10 +157,12 @@ function pickle.describe( ... )
 	end
 
 	-- then do what we should do
-	local obj = Frame.create( ... )
+	local obj = Frame.create()
 		:setRenders( renders )
 		:setReports( reports )
 		:setSubjects( subjects )
+		:setExtractors( extractors )
+		:dispatch( ... )
 
 	return obj
 end
