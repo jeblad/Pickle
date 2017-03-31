@@ -14,10 +14,19 @@ end
 Renders._styles = {}
 
 --- Convenience function to access a specific named style
--- This will try to create the style if it isn't created yet.'
+-- This will try to create the style if it isn't created yet.
 -- @return Render
 function Renders:__call( name ) -- luacheck: no self
 	assert( name, 'Renders: __call: Failed to provide a name' )
+	assert( Renders._styles[name], 'Failed to provide a previously registered style' )
+	return Renders._styles[name]
+end
+
+--- Convenience function to access a specific named style
+-- This will try to create the style if it isn't created yet.
+-- @return Render
+function Renders.style( name ) -- luacheck: no self
+	assert( name, 'Renders: style: Failed to provide a name' )
 	assert( Renders._styles[name], 'Failed to provide a previously registered style' )
 	return Renders._styles[name]
 end
