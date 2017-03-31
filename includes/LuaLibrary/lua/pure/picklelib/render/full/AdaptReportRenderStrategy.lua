@@ -33,12 +33,5 @@ function AdaptReportRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
---- Override key construction
--- @param string to be appended to a base string
--- @return string
-function AdaptReportRender:key( str )
-	return 'pickle-report-adapt-full-' ..  Base.key( self, str )
-end
-
 -- Return the final class
 return AdaptReportRender

@@ -47,7 +47,7 @@ function FrameReportRender:key( str ) -- luacheck: no self
 	assert( str, 'Failed to provide a string' )
 	local keep = string.match( str, '^[-%a]+$' )
 	assert( keep, 'Failed to find a valid string' )
-	return keep
+	return 'pickle-report-frame-' ..  keep
 end
 
 --- Realize reported data for state

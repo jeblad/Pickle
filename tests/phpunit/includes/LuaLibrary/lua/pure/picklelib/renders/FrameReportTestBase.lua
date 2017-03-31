@@ -95,56 +95,56 @@ local tests = {
 		name = name .. '.state ()',
 		func = testState,
 		args = { false },
-		expect = { '(pickle-report-adapt-full-is-not-ok)' }
+		expect = { '(pickle-report-adapt-is-not-ok)' }
 	},
 	{
 		name = name .. '.state ()',
 		func = testState,
 		args = { true },
-		expect = { '(pickle-report-adapt-full-is-ok)' }
+		expect = { '(pickle-report-adapt-is-ok)' }
 	},
 	{
 		name = name .. '.skip ()',
 		func = testSkip,
 		args = { 'foo' },
-		expect = { '(pickle-report-adapt-full-wrap-skip: (foo))' }
+		expect = { '(pickle-report-adapt-wrap-skip: (foo))' }
 	},
 	{
 		name = name .. '.todo ()',
 		func = testTodo,
 		args = { 'bar' },
-		expect = { '(pickle-report-adapt-full-wrap-todo: bar)' }
+		expect = { '(pickle-report-adapt-wrap-todo: bar)' }
 	},
 	{
 		name = name .. '.description ()',
 		func = testDescription,
 		args = { 'baz' },
-		expect = { '(pickle-report-adapt-full-wrap-description: baz)' }
+		expect = { '(pickle-report-adapt-wrap-description: baz)' }
 	},
 	{
 		name = name .. '.header ()',
 		func = testHeaderSkip,
 		args = { 'baz' },
-		expect = { '(pickle-report-adapt-full-is-not-ok)'
-			.. '(pickle-report-adapt-full-wrap-description: testing)'
-			.. '# (pickle-report-adapt-full-wrap-skip: (baz))' }
+		expect = { '(pickle-report-adapt-is-not-ok)'
+			.. '(pickle-report-adapt-wrap-description: testing)'
+			.. '# (pickle-report-adapt-wrap-skip: (baz))' }
 	},
 	{
 		name = name .. '.header ()',
 		func = testHeaderTodo,
 		args = { 'baz' },
-		expect = { '(pickle-report-adapt-full-is-ok)'
-			.. '(pickle-report-adapt-full-wrap-description: testing)'
-			.. '# (pickle-report-adapt-full-wrap-todo: baz)' }
+		expect = { '(pickle-report-adapt-is-ok)'
+			.. '(pickle-report-adapt-wrap-description: testing)'
+			.. '# (pickle-report-adapt-wrap-todo: baz)' }
 	},
 	--[[
 	{
 		name = name .. '.body ()',
 		func = testBody,
 		expect = { "\n"
-			.. '(pickle-report-adapt-full-wrap-line: (foo))' .. "\n"
-			.. '(pickle-report-adapt-full-wrap-line: (bar))' .. "\n"
-			.. '(pickle-report-adapt-full-wrap-line: (baz))' }
+			.. '(pickle-report-adapt-wrap-line: (foo))' .. "\n"
+			.. '(pickle-report-adapt-wrap-line: (bar))' .. "\n"
+			.. '(pickle-report-adapt-wrap-line: (baz))' }
 	},
 	]]
 }

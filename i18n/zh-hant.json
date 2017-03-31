@@ -11,15 +11,9 @@
 	"pickle-console-run": "執行",
 	"pickle-console-clear": "清除",
 	"pickle-frame-compact-header-all-good": "確定 &mdash; $1",
-	"pickle-report-adapt-compact-is-ok": "確定 (ok)",
-	"pickle-report-adapt-compact-wrap-skip": "跳過 $1",
-	"pickle-report-adapt-compact-wrap-todo": "待辦 $1",
-	"pickle-report-adapt-full-is-ok": "確定 (ok)",
-	"pickle-report-adapt-full-wrap-skip": "跳過 $1",
-	"pickle-report-adapt-full-wrap-todo": "待辦 $1",
-	"pickle-report-adapt-vivid-is-ok": "確定 (ok)",
-	"pickle-report-adapt-vivid-wrap-skip": "跳過 $1",
-	"pickle-report-adapt-vivid-wrap-todo": "待辦 $1",
+	"pickle-report-adapt-is-ok": "確定 (ok)",
+	"pickle-report-adapt-wrap-skip": "跳過 $1",
+	"pickle-report-adapt-wrap-todo": "待辦 $1",
 	"pickle-adapt-process-as-u-upper-first": "大寫Unicode字串中的首個碼位",
 	"pickle-adapt-process-as-u-lower-first": "小寫Unicode字串中的首個碼位"
 }

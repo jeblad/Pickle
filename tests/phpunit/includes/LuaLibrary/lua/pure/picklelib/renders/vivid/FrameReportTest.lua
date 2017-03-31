@@ -106,7 +106,7 @@ local tests = {
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
-		expect = { 'pickle-report-frame-vivid-foo' }
+		expect = { 'pickle-report-frame-foo' }
 	},
 	--[[
 	{
@@ -114,7 +114,7 @@ local tests = {
 		func = testState,
 		args = { false },
 		expect = { '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-frame-vivid-is-not-ok)'
+			.. '(pickle-report-frame-is-not-ok)'
 			.. '</span>' }
 	},
 	{
@@ -122,7 +122,7 @@ local tests = {
 		func = testState,
 		args = { true },
 		expect = { '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-frame-vivid-is-ok)'
+			.. '(pickle-report-frame-is-ok)'
 			.. '</span>' }
 	},
 	]]
@@ -131,7 +131,7 @@ local tests = {
 		func = testSkip,
 		args = { 'foo' },
 		expect = { '<span class="mw-pickle-skip" lang="qqx">'
-			.. '(pickle-report-frame-vivid-wrap-skip: (foo))'
+			.. '(pickle-report-frame-wrap-skip: (foo))'
 			.. '</span>' }
 	},
 	{
@@ -139,7 +139,7 @@ local tests = {
 		func = testTodo,
 		args = { 'bar' },
 		expect = { '<span class="mw-pickle-todo" lang="qqx">'
-			.. '(pickle-report-frame-vivid-wrap-todo: bar)'
+			.. '(pickle-report-frame-wrap-todo: bar)'
 			.. '</span>' }
 	},
 	{
@@ -147,7 +147,7 @@ local tests = {
 		func = testDescription,
 		args = { 'baz' },
 		expect = { '<span class="mw-pickle-description" lang="qqx">'
-			.. '(pickle-report-frame-vivid-wrap-description: baz)'
+			.. '(pickle-report-frame-wrap-description: baz)'
 			.. '</span>' }
 	},
 	{
@@ -156,15 +156,15 @@ local tests = {
 		args = { 'baz' },
 		expect = { '<div class="mw-pickle-header">'
 			.. '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-frame-vivid-is-ok)'
+			.. '(pickle-report-frame-is-ok)'
 			.. '</span>'
 			.. '<span class="mw-pickle-description" lang="qqx">'
-			.. '(pickle-report-frame-vivid-wrap-description: testing)'
+			.. '(pickle-report-frame-wrap-description: testing)'
 			.. '</span>'
 			.. '<span class="mw-pickle-comment">'
 			.. '# '
 			.. '<span class="mw-pickle-skip" lang="qqx">'
-			.. '(pickle-report-frame-vivid-wrap-skip: (baz))'
+			.. '(pickle-report-frame-wrap-skip: (baz))'
 			.. '</span>'
 			.. '</span>'
 			.. '</div>' }
@@ -175,15 +175,15 @@ local tests = {
 		args = { 'baz' },
 		expect = { '<div class="mw-pickle-header">'
 			.. '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-frame-vivid-is-ok)'
+			.. '(pickle-report-frame-is-ok)'
 			.. '</span>'
 			.. '<span class="mw-pickle-description" lang="qqx">'
-			.. '(pickle-report-frame-vivid-wrap-description: testing)'
+			.. '(pickle-report-frame-wrap-description: testing)'
 			.. '</span>'
 			.. '<span class="mw-pickle-comment">'
 			.. '# '
 			.. '<span class="mw-pickle-todo" lang="qqx">'
-			.. '(pickle-report-frame-vivid-wrap-todo: baz)'
+			.. '(pickle-report-frame-wrap-todo: baz)'
 			.. '</span>'
 			.. '</span>'
 			.. '</div>' }
@@ -193,7 +193,7 @@ local tests = {
 		func = testHeaderOk,
 		expect = { '<div class=\"mw-pickle-header\">'
 			.. '<span class=\"mw-pickle-state\" lang=\"qqx\">'
-			.. '(pickle-report-frame-vivid-is-ok)'
+			.. '(pickle-report-frame-is-ok)'
 			.. '</span>'
 			.. '</div>' }
 	},
@@ -202,7 +202,7 @@ local tests = {
 		func = testHeaderNotOk,
 		expect = { '<div class=\"mw-pickle-header\">'
 			.. '<span class=\"mw-pickle-state\" lang=\"qqx\">'
-			.. '(pickle-report-frame-vivid-is-not-ok)'
+			.. '(pickle-report-frame-is-not-ok)'
 			.. '</span>'
 			.. '</div>' }
 	},

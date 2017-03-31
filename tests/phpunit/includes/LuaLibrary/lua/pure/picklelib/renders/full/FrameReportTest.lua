@@ -71,17 +71,17 @@ local tests = {
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
-		expect = { 'pickle-report-frame-full-foo' }
+		expect = { 'pickle-report-frame-foo' }
 	},
 	{
 		name = name .. '.header ok ()',
 		func = testHeaderOk,
-		expect = { '(pickle-report-frame-full-is-ok)' }
+		expect = { '(pickle-report-frame-is-ok)' }
 	},
 	{
 		name = name .. '.header not ok ()',
 		func = testHeaderNotOk,
-		expect = { '(pickle-report-frame-full-is-not-ok)' }
+		expect = { '(pickle-report-frame-is-not-ok)' }
 	},
 }
 

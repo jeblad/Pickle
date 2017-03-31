@@ -33,13 +33,6 @@ function AdaptReportRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
---- Override key construction
--- @param string to be appended to a base string
--- @return string
-function AdaptReportRender:key( str )
-	return 'pickle-report-adapt-compact-' ..  Base.key( self, str )
-end
-
 --- Override realization of reported data for body
 -- @todo is this correct?
 -- @param Report that shall be realized

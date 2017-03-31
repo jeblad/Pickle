@@ -33,12 +33,5 @@ function FrameReportRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
---- Override key construction
--- @param string to be appended to a base string
--- @return string
-function FrameReportRender:key( str )
-	return 'pickle-report-frame-compact-' ..  Base.key( self, str )
-end
-
 -- Return the final class
 return FrameReportRender
