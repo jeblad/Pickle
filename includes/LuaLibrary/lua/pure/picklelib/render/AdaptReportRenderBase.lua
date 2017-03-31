@@ -35,7 +35,7 @@ function AdaptReportRender:key( str ) -- luacheck: no self
 	assert( str, 'Failed to provide a string' )
 	local keep = string.match( str, '^[-%a]+$' )
 	assert( keep, 'Failed to find a valid string' )
-	return 'pickle-report-adapt-' ..  keep
+	return 'pickle-report-adapt-' .. keep
 end
 
 --- Realize reported data for state
