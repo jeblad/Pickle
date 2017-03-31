@@ -84,10 +84,18 @@ $( function () {
 						.appendTo( $output );
 				} else {
 					if ( result.print !== '' ) {
-						printLn( result.print, 'mw-pickle-console-neutral' );
+						$( '<div>' )
+							.addClass( 'mw-pickle-console-neutral' )
+							.html( result.print )
+							.appendTo( $output );
+						// printLn( result.print, 'mw-pickle-console-neutral' );
 					}
 					if ( result[ 'return' ] !== '' ) {
-						printLn( result[ 'return' ], 'mw-pickle-console-neutral' );
+						$( '<div>' )
+							.addClass( 'mw-pickle-console-neutral' )
+							.html( result[ 'return' ] )
+							.appendTo( $output );
+						// printLn( result[ 'return' ], 'mw-pickle-console-neutral' );
 					}
 				}
 				clearPending();
