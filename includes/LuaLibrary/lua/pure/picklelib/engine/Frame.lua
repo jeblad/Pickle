@@ -235,7 +235,7 @@ function Frame:eval() -- luacheck: ignore
 			self:reports():push( report )
 		end
 	end
-	self._eval = true
+	self._done = true
 	return self
 end
 
