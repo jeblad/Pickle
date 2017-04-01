@@ -9,6 +9,7 @@
 	"pickle-test-text-missing": "აკლია",
 	"pickle-test-text-unknown": "უცნობი",
 	"pickle-console-clear": "გასუფთავება",
+	"pickle-report-frame-is-ok": "ok",
 	"pickle-report-adapt-is-ok": "ok",
 	"pickle-report-adapt-wrap-skip": "გამოტოვება $1"
 }

@@ -12,6 +12,7 @@
 	"pickle-console-run": "Esegui",
 	"pickle-console-clear": "Pulisci",
 	"pickle-frame-compact-header-all-good": "ok &mdash; $1",
+	"pickle-report-frame-is-ok": "ok",
 	"pickle-report-adapt-is-ok": "ok",
 	"pickle-report-adapt-wrap-skip": "ignora $1",
 	"pickle-adapt-process-as-type": "Ottieni il tipo di elemento"
