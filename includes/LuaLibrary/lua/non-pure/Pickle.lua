@@ -42,7 +42,7 @@ function pickle.describe( ... )
 
 	-- register render styles
 	for k,v in pairs( mw.pickle._styles ) do
-		local style = renders:registerStyle( k )
+		local style = renders.registerStyle( k )
 		for l,w in pairs( mw.pickle._types ) do
 			style:registerType( l, require( v .. '/' .. w ) )
 		end
