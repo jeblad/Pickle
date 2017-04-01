@@ -93,7 +93,9 @@ function FrameReportRender:realizeSkip( src, lang )
 	end
 
 	local realization = ''
-	local inner = mw.message.new( src:getSkip() )
+	local inner = src:getSkip()
+		and mw.message.newRawMessage( src:getSkip() )
+		or mw.message.new( 'pickle-test-text-skip-no-description' )
 
 	if lang then
 		inner:inLanguage( lang )
@@ -128,7 +130,19 @@ function FrameReportRender:realizeTodo( src, lang )
 		return ''
 	end
 
-	local realization = mw.text.encode( src:getTodo() )
+	local realization = ''
+	local inner = src:getTodo()
+		and mw.message.newRawMessage( src:getTodo() )
+		or mw.message.new( 'pickle-test-text-todo-no-description' )
+
+	if lang then
+		inner:inLanguage( lang )
+	end
+
+	if not inner:isDisabled() then
+		realization = inner:plain()
+	end
+
 	local outer = mw.message.new( self:key( 'wrap-todo' ), realization )
 
 	if lang then
@@ -184,7 +198,6 @@ function FrameReportRender:realizeHeader( src, lang )
 	end
 
 	if src:isSkip() or src:hasSkip() or src:isTodo() or src:hasTodo() then
-		table.insert( t, '# ' )
 		if src:isSkip() or src:hasSkip() then
 			table.insert( t, self:realizeSkip( src, lang ) )
 		end
@@ -193,7 +206,7 @@ function FrameReportRender:realizeHeader( src, lang )
 		end
 	end
 
-	return table.concat( t, '' )
+	return table.concat( t, ' ' )
 end
 
 --- Realize reported data for body

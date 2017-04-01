@@ -139,11 +139,10 @@ function FrameReportRender:realizeHeader( src, lang )
 	if src:isSkip() or src:hasSkip() or src:isTodo() or src:hasTodo() then
 		local comment = mw.html.create( 'span' )
 			:addClass( 'mw-pickle-comment' )
-			:wikitext( '# ' )
+			:wikitext( ' ' )
 		if src:isSkip() or src:hasSkip() then
 			comment:node( self:realizeSkip( src, lang ) )
-		end
-		if src:isTodo() or src:hasTodo() then
+		elseif src:isTodo() or src:hasTodo() then
 			comment:node( self:realizeTodo( src, lang ) )
 		end
 		html:node( comment )
