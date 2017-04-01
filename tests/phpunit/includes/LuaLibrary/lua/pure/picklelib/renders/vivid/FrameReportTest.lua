@@ -131,7 +131,7 @@ local tests = {
 		func = testSkip,
 		args = { 'foo' },
 		expect = { '<span class="mw-pickle-skip" lang="qqx">'
-			.. '(pickle-report-frame-wrap-skip: (foo))'
+			.. '(pickle-report-frame-wrap-skip: foo)'
 			.. '</span>' }
 	},
 	{
@@ -162,9 +162,9 @@ local tests = {
 			.. '(pickle-report-frame-wrap-description: testing)'
 			.. '</span>'
 			.. '<span class="mw-pickle-comment">'
-			.. '# '
+			.. ' '
 			.. '<span class="mw-pickle-skip" lang="qqx">'
-			.. '(pickle-report-frame-wrap-skip: (baz))'
+			.. '(pickle-report-frame-wrap-skip: baz)'
 			.. '</span>'
 			.. '</span>'
 			.. '</div>' }
@@ -181,7 +181,7 @@ local tests = {
 			.. '(pickle-report-frame-wrap-description: testing)'
 			.. '</span>'
 			.. '<span class="mw-pickle-comment">'
-			.. '# '
+			.. ' '
 			.. '<span class="mw-pickle-todo" lang="qqx">'
 			.. '(pickle-report-frame-wrap-todo: baz)'
 			.. '</span>'
