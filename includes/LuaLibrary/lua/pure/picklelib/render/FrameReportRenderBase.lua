@@ -50,6 +50,16 @@ function FrameReportRender:key( str ) -- luacheck: no self
 	return 'pickle-report-frame-' ..  keep
 end
 
+--- Append same type to first
+-- @param any to act as the head
+-- @param any to act as the tail
+-- @return self
+function FrameReportRender:append( head, tail ) -- luacheck: no self
+	assert( head )
+	assert( tail )
+	return head .. ' ' .. tail
+end
+
 --- Realize reported data for state
 -- @param Report that shall be realized
 -- @param string language code used for realization

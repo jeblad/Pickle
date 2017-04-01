@@ -220,11 +220,13 @@ end
 function FrameReport:realize( renders, lang )
 	assert( renders, 'Failed to provide renders' )
 
-	local out = renders:find( self:type() ):realizeHeader( self, lang )
+
+	local styles = renders:find( self:type() )
+	local out = styles:realizeHeader( self, lang )
 
 	if self._constituents then
 		for _,v in ipairs( { self:constituents():export() } ) do
-			out = out .. v:realize( renders, lang )
+			out = styles:append( out, v:realize( renders, lang ) )
 		end
 	end
 
