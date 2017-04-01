@@ -33,6 +33,16 @@ function FrameReportRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
+--- Append same type to first
+-- @param any to act as the head
+-- @param any to act as the tail
+-- @return self
+function FrameReportRender:append( head, tail ) -- luacheck: no self
+	assert( head )
+	assert( tail )
+	return head:node( tail )
+end
+
 --- Override realization of reported data for state
 -- @param Report that shall be realized
 -- @param string language code used for realization
