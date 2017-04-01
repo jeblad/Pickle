@@ -149,8 +149,8 @@ end
 function AdaptReport:realize( renders, lang )
 	assert( renders, 'Failed to provide renders' )
 	return ''
-		.. renders:realizeHeader( self, lang )
-		.. renders:realizeBody( self, lang )
+		.. (renders.realizeHeader and renders:realizeHeader( self, lang ) or '')
+		.. (renders.realizeBody and renders:realizeBody( self, lang ) or '')
 end
 
 -- Return the final class
