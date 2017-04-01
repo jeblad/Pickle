@@ -15,6 +15,19 @@ function Adapt:__index( key ) -- luacheck: no self
 	return Adapt[key]
 end
 
+-- @var metatable for the class
+local mt = {}
+
+--- Get a clone or create a new instance
+-- @param vararg conditionally passed to create
+-- @return self
+function mt:__call( ... ) -- luacheck: ignore
+	self:adaptations():push( select( '#', ... ) == 0 and self:adaptations():top() or Adapt.create( ... ) )
+	return self:adaptations():top()
+end
+
+setmetatable( Adapt, mt )
+
 --- Create a new instance
 -- @param vararg set to temporal
 -- @return self
@@ -42,6 +55,25 @@ function Adapt:addProcess( func )
 	assert( type( func ) == 'function' )
 	self._processes:push( func )
 	return self
+end
+
+--- Set the reference to the adaptations collection
+-- This keeps a reference, the object is not cloned.
+-- @param table that somehow maintain a collection
+function Adapt:setAdaptations( obj )
+	assert( type( obj ) == 'table' )
+	self._adaptations = obj
+	return self
+end
+
+--- Expose reference to adaptations
+-- If no report is set, then a new one is created.
+-- @return list of adaptations
+function Adapt:adaptations()
+	if not self._adaptations then
+		self._adaptations = Stack.create()
+	end
+	return self._adaptations
 end
 
 --- Set the reference to the reports collection

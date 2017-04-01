@@ -7,9 +7,10 @@ local testframework = require 'Module:TestFramework'
 
 local Adapt = require 'picklelib/engine/Adapt'
 local reports = require 'picklelib/Stack'
+local adaptations = require('picklelib/Stack')
 
 local function makeAdapt( ... )
-	return Adapt.create( ... ):setReports( reports.create() )
+	return Adapt.create( ... ):setReports( reports.create() ):setAdaptations( adaptations.create() )
 end
 
 local function testExists()
@@ -38,6 +39,22 @@ local function testProcess( name, ... )
 		test[name]( test )
 		local final = test:eval()
 		return final, test:report():numLines()
+end
+
+local function testAdaptations( ... )
+	local obj = makeAdapt()
+	local t = { ... }
+	for _,v in ipairs( t ) do
+		obj:adaptations():push( v )
+	end
+	return { obj:adaptations():export() }
+end
+
+local function testDoubleCall( ... )
+	Adapt( 'foo' )
+	local obj = Adapt( ... )
+	obj:adaptations():flush()
+	return obj:temporal()
 end
 
 local function makePickTest( name, idx )
@@ -110,6 +127,30 @@ local tests = {
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
+	},
+	{
+		name = 'adapt.adaptations (multiple value)',
+		func = testAdaptations,
+		args = { 'a', 'b', 'c' },
+		expect = { { 'a', 'b', 'c' } }
+	},
+	{
+		name = 'adapt.call (nil value)',
+		func = testDoubleCall,
+		args = {},
+		expect = { 'foo' }
+	},
+	{
+		name = 'adapt.call (single value)',
+		func = testDoubleCall,
+		args = { 'a' },
+		expect = { 'a' }
+	},
+	{
+		name = 'adapt.call (multiple value)',
+		func = testDoubleCall,
+		args = { 'a', 'b', 'c' },
+		expect = { 'a', 'b', 'c' }
 	},
 	{
 		name = 'adapt.stack (multiple value)',

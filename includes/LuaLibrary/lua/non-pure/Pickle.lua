@@ -12,7 +12,7 @@ pickle._extractors = {}
 -- This act as an alias for the normal describe,
 -- which is not available.
 -- This does implicitt setup.
--- @param vararg passed on to expect.create
+-- @param vararg passed on to Adapt.create
 -- @return self newly created object
 function pickle.describe( ... )
 	-- require libs and create an instance
@@ -22,8 +22,7 @@ function pickle.describe( ... )
 
 	-- only require libs
 	local Spy = require( 'picklelib/engine/Spy' )
-	local Expect = require 'picklelib/engine/Expect'
-	local Subject = require 'picklelib/engine/Subject'
+	local Adapt = require 'picklelib/engine/Adapt'
 	local Frame = require 'picklelib/engine/Frame'
 
 	-- not a real instance of a class
@@ -53,45 +52,46 @@ function pickle.describe( ... )
 		extractors:register( require( v ).create() )
 	end
 
-	-- create the access to other parties
-	-- @todo should probably be replaced
-	function Expect.other()
-		return Subject -- luacheck: globals Subject
-	end
-	function Subject.other()
-		return Expect -- luacheck: globals Expect
-	end
-
 	--- Expect whatever to be compared to the subject
 	-- The expected value is the assumed outcome,
 	-- or something that can be transformed into the
 	-- assumed outcome.
-	-- @param vararg passed on to expect.create
+	-- @param vararg passed on to Adapt.create
 	-- @return self newly created object
 	env.expect = function( ... )
-		local obj = Expect.create( ... )
+		local obj = Adapt.create( ... )
 			:setReports( reports )
-			:setExpects( expects )
+			:setAdaptations( expects )
 		return obj
 	end
 
 	--- Subject of whatever to be compared to the expected
 	-- The subject is whatever object we want to test,
 	-- usually the returned table for a module.
-	-- @param vararg passed on to expect.create
+	-- @param vararg passed on to Adapt.create
 	-- @return self newly created object
 	env.subject = function( ... )
-		local obj = Subject.create( ... )
+		local obj = Adapt.create( ... )
 			:setReports( reports )
 			:setSubjects( subjects )
 		return obj
 	end
 
+	-- create the access to other parties
+	-- @todo should probably be replaced
+	--[[
+	function env.expect.other()
+		return env.subject -- luacheck: globals Subject
+	end
+	function env.subject.other()
+		return env.expect -- luacheck: globals Expect
+	end
+]]
 	--- Context for the test
 	-- This is usually used for creating some additional context
 	-- before the actual testing. An alternate would be to use
 	-- 'before' and 'after' functions.
-	-- @param vararg passed on to expect.create
+	-- @param vararg passed on to Adapt.create
 	-- @return self newly created object
 	env.context = function( ... )
 		local obj = Frame.create()
@@ -103,7 +103,7 @@ function pickle.describe( ... )
 	end
 
 	--- It is the actual test for each metod
-	-- @param vararg passed on to expect.create
+	-- @param vararg passed on to Adapt.create
 	-- @return self newly created object
 	env.it = env.context
 
