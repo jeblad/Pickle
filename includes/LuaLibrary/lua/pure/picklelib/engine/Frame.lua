@@ -205,7 +205,7 @@ function Frame:eval() -- luacheck: ignore
 
 	for _,v in ipairs( self:hasDescriptions()
 			and { self:descriptions() }
-			or { 'pickle-frame-no-description' } ) do
+			or { '' } ) do
 		local pos = 1
 		local args = {}
 

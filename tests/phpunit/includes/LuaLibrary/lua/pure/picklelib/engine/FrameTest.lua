@@ -260,7 +260,7 @@ local tests = {
 			function() assert( false, 'go zip' ) end
 		},
 		expect = {
-			'pickle-frame-no-description',
+			'',
 			'pickle-adapt-catched-exception',
 			{}
 		}
@@ -277,7 +277,7 @@ local tests = {
 		},
 		'foo "bar" baz',
 		expect = {
-			'pickle-frame-no-description',
+			'',
 			'pickle-adapt-catched-exception',
 			{}
 		}
@@ -314,7 +314,7 @@ local tests = {
 			function() end
 		},
 		expect = {
-			'pickle-frame-no-description',
+			'',
 			'pickle-frame-no-tests'
 		}
 	},
@@ -364,7 +364,7 @@ local tests = {
 			function() error( 'this is borken' ) end
 		},
 		expect = {
-			'pickle-frame-no-description',
+			'',
 			'pickle-adapt-catched-exception',
 			{}
 		}
@@ -419,7 +419,7 @@ local tests = {
 			function(...) return ... end
 		},
 		expect = {
-			'pickle-frame-no-description',
+			'',
 			'pickle-frame-no-tests',
 			'pickle-adapt-catched-return',
 			{}
