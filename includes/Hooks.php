@@ -106,7 +106,7 @@ class Hooks {
 
 							// if invocation is disabled, then the state will be set to "exists" or "missing"
 							if ( $baseInvokeStrategy->getInvoke( $baseTitle )->isDisabled() ) {
-								$args[ 'status-current' ] = 'unknown';
+								$args[ 'status-current' ] = 'unknown'; // @todo either this or the comment above is wrong
 							} else {
 								// if status isn't found, then the state will be set to "unknown"
 								$statusStrategy = self::getFinalStrategy( $baseInvokeStrategy, $baseTitle );
