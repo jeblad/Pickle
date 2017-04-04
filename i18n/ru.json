@@ -28,7 +28,7 @@
 	"pickle-report-adapt-is-ok": "ок",
 	"pickle-report-adapt-is-not-ok": "Не в порядке",
 	"pickle-report-adapt-wrap-skip": "пропустить $1",
-	"pickle-report-adapt-wrap-todo": "список задач $1",
+	"pickle-report-adapt-wrap-todo": "# список задач $1",
 	"pickle-adapt-process-first": "Выбрать первый элемент",
 	"pickle-adapt-process-second": "Выбрать второй элемент",
 	"pickle-adapt-process-third": "Выбрать третий элемент",

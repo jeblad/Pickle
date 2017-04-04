@@ -27,7 +27,7 @@
 	"pickle-console-empty": "কোন প্রতিবেদন উপলব্ধ নয়।",
 	"pickle-console-cleared": "কনসোল পরিষ্কার হয়েছে।",
 	"pickle-console-run": "চালান",
-	"pickle-console-clear": "পরিস্কার",
+	"pickle-console-clear": "পরিষ্কার",
 	"pickle-report-skip-no-message": "বার্তা চাবি  \"$1\"-এর অস্তিত্ব নেই",
 	"pickle-frame-compact-header-all-good": "ঠিক আছে &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "ঠিক নেই &mdash; $1",

@@ -58,7 +58,6 @@
 	"pickle-report-adapt-is-not-ok": "не е во ред",
 	"pickle-report-adapt-wrap-skip": "# прескокни го $1",
 	"pickle-report-adapt-wrap-todo": "# задачи $1",
-	"pickle-report-adapt-wrap-description": "$1",
 	"pickle-adapt-process-first": "Изберете прв елемент",
 	"pickle-adapt-process-second": "Изберете втор елемент",
 	"pickle-adapt-process-third": "Изберете трет елемент",
