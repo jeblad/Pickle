@@ -33,6 +33,10 @@ local function testCast( ... )
 	return makeTest():cast( ... )
 end
 
+local function testPlaceholder( str, ... )
+	return makeTest( ... ):placeholder()
+end
+
 local tests = {
 	{
 		name = name .. ' exists',
@@ -100,6 +104,12 @@ local tests = {
 		name = name .. '.cast (empty)',
 		func = testCast,
 		expect = { true }
+	},
+	{
+		name = name .. '.placeholder ()',
+		func = testPlaceholder,
+		args = {},
+		expect = { 'bool' }
 	},
 }
 

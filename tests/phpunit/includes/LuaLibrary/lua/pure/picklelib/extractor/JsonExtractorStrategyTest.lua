@@ -33,6 +33,10 @@ local function testCast( ... )
 	return makeTest():cast( ... )
 end
 
+local function testPlaceholder( str, ... )
+	return makeTest( ... ):placeholder()
+end
+
 local tests = {
 	{
 		name = name .. ' exists',
@@ -119,6 +123,12 @@ local tests = {
 		func = testCast,
 		args = { 'foo {"test":["ping","pong"],"test2":42} baz', 5, 39 },
 		expect = { { ["test"] = { "ping", "pong" }, ["test2"] = 42 } }
+	},
+	{
+		name = name .. '.placeholder ()',
+		func = testPlaceholder,
+		args = {},
+		expect = { 'json' }
 	},
 }
 

@@ -29,6 +29,10 @@ local function testFind( str, ... )
 	return makeTest( ... ):find( str, 1 )
 end
 
+local function testPlaceholder( str, ... )
+	return makeTest( ... ):placeholder()
+end
+
 local tests = {
 	{
 		name = name .. ' exists',
@@ -85,6 +89,12 @@ local tests = {
 		func = testFind,
 		args = { 'foo bar baz', { 'baz$', 0, 0 } },
 		expect = { 9, 11 }
+	},
+	{
+		name = name .. '.placeholder ()',
+		func = testPlaceholder,
+		args = {},
+		expect = {}
 	},
 }
 

@@ -48,5 +48,12 @@ function Extractor:cast( str, start, finish ) -- luacheck: ignore
 	return true
 end
 
+--- Get the placeholder for this strategy
+-- @exception Unconditional unless overridden
+-- @return string
+function Extractor:placeholder() -- luacheck: ignore
+	return 'bool'
+end
+
 -- Return the final class
 return Extractor

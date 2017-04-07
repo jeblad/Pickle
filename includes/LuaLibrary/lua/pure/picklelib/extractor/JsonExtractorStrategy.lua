@@ -56,5 +56,12 @@ function Extractor:cast( str, start, finish )
 	return json
 end
 
+--- Get the placeholder for this strategy
+-- @exception Unconditional unless overridden
+-- @return string
+function Extractor:placeholder( str, start, finish ) -- luacheck: ignore
+	return 'json'
+end
+
 -- Return the final class
 return Extractor

@@ -73,5 +73,12 @@ function Extractor:cast( str, start, finish ) -- luacheck: ignore
 	return nil
 end
 
+--- Get the placeholder for this strategy
+-- @exception Unconditional unless overridden
+-- @return string
+function Extractor:placeholder() -- luacheck: ignore
+	return nil
+end
+
 -- Return the final class
 return Extractor

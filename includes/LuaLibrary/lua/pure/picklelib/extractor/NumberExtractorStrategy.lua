@@ -55,5 +55,12 @@ function Extractor:cast( str, start, finish )
 	return tonumber( mw.ustring.sub( str, start, finish ) )
 end
 
+--- Get the placeholder for this strategy
+-- @exception Unconditional unless overridden
+-- @return string
+function Extractor:placeholder( str, start, finish ) -- luacheck: ignore
+	return 'numb'
+end
+
 -- Return the final class
 return Extractor
