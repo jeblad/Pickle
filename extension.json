@@ -114,6 +114,7 @@
 	"config": {
 		"_prefix": "wgPickle",
 		"ObserverID": 3,
+		"TranslationSubpage": "/i18n",
 		"RenderStyles": {
 			"compact": "picklelib/render/compact",
 			"full": "picklelib/render/full",

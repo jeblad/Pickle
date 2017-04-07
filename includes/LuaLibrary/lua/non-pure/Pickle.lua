@@ -19,6 +19,7 @@ function pickle.describe( ... )
 	local expects = require( 'picklelib/Stack' ).create()
 	local subjects = require( 'picklelib/Stack' ).create()
 	local extractors = require( 'picklelib/extractor/ExtractorStrategies' ).create()
+	local translators = require( 'picklelib/translator/TranslatorStrategies' ).create()
 
 	-- only require libs
 	local Spy = require( 'picklelib/engine/Spy' )
@@ -50,6 +51,18 @@ function pickle.describe( ... )
 	-- register extractor types
 	for _,v in ipairs( mw.pickle._extractors ) do
 		extractors:register( require( v ).create() )
+	end
+
+	-- register extractor types
+	local translationData = false
+	local prefixedText = mw.getCurrentFrame():getTitle()
+	if prefixedText then
+		pcall( function()
+			translationData = mw.loadData( prefixedText .. mw.pickle._translationSubpage )
+		end )
+	end
+	for k,v in pairs( translationData or {} ) do
+		translators:register( k, v )
 	end
 
 	--- Expect whatever to be compared to the subject
@@ -171,7 +184,7 @@ function pickle.setupInterface( opts )
 	pickle.setupInterface = nil
 	php = mw_interface -- luacheck: globals mw_interface
 	mw_interface = nil -- luacheck: globals mw_interface
-	options = opts
+	options = opts -- @todo move data from this more methodically
 
 	-- register main lib
 	mw = mw or {}
@@ -180,6 +193,9 @@ function pickle.setupInterface( opts )
 
 	-- create access point
 	describe = pickle.describe -- luacheck: globals describe
+
+	-- keep subpage name for later, newer mind requiring anything now
+	pickle._translationSubpage = opts.translationSubpage
 
 	-- keep render styles for later, newer mind requiring them now
 	for k,v in pairs( opts.renderStyles ) do

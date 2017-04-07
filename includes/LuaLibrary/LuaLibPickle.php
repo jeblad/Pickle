@@ -21,11 +21,13 @@ class LuaLibPickle extends Scribunto_LuaLibraryBase {
 		global $wgPickleRenderStyles;
 		global $wgPickleRenderTypes;
 		global $wgPickleExtractorStrategy;
+		global $wgPickleTranslationSubpage;
 
 		return $this->getEngine()->registerInterface(
 			__DIR__ . '/lua/non-pure/Pickle.lua',
 			[ 'addResourceLoaderModules' => [ $this, 'addResourceLoaderModules' ] ],
 			[
+				'translationSubpage' => $wgPickleTranslationSubpage,
 				'renderStyles' => $wgPickleRenderStyles,
 				'renderTypes' => $wgPickleRenderTypes,
 				'extractorStrategies' => $wgPickleExtractorStrategy ]
