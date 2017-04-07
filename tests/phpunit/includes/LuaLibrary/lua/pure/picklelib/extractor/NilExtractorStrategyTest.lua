@@ -33,8 +33,8 @@ local function testCast( ... )
 	return makeTest():cast( ... )
 end
 
-local function testPlaceholder( str, ... )
-	return makeTest( ... ):placeholder()
+local function testPlaceholder()
+	return makeTest():placeholder()
 end
 
 local tests = {

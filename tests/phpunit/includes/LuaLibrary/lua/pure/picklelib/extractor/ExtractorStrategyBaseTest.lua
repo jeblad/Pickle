@@ -29,8 +29,8 @@ local function testFind( str, ... )
 	return makeTest( ... ):find( str, 1 )
 end
 
-local function testPlaceholder( str, ... )
-	return makeTest( ... ):placeholder()
+local function testPlaceholder()
+	return makeTest():placeholder()
 end
 
 local tests = {

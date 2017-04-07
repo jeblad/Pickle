@@ -33,8 +33,8 @@ local function testCast( ... )
 	return makeTest():cast( ... )
 end
 
-local function testPlaceholder( str, ... )
-	return makeTest( ... ):placeholder()
+local function testPlaceholder()
+	return makeTest():placeholder()
 end
 
 local tests = {
@@ -134,7 +134,7 @@ local tests = {
 		name = name .. '.placeholder ()',
 		func = testPlaceholder,
 		args = {},
-		expect = { 'numb' }
+		expect = { 'number' }
 	},
 }
 

@@ -53,7 +53,7 @@ end
 -- @exception Unconditional unless overridden
 -- @return string
 function Extractor:placeholder( str, start, finish ) -- luacheck: ignore
-	return 'strg'
+	return 'string'
 end
 
 -- Return the final class

@@ -59,7 +59,7 @@ end
 -- @exception Unconditional unless overridden
 -- @return string
 function Extractor:placeholder( str, start, finish ) -- luacheck: ignore
-	return 'numb'
+	return 'number'
 end
 
 -- Return the final class
