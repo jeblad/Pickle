@@ -51,6 +51,8 @@
 	"pickle-frame-compact-header-all-good": "ok (alla goda) &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "not ok (något feila) &mdash; $1",
 	"pickle-frame-no-description": "anonym",
+	"pickle-report-frame-is-ok": "ok (god)",
+	"pickle-report-frame-is-not-ok": "not ok (fel)",
 	"pickle-report-adapt-is-ok": "ok (god)",
 	"pickle-report-adapt-is-not-ok": "not ok (fel)",
 	"pickle-report-adapt-wrap-skip": "skip (avbrutit) $1",
@@ -75,8 +77,8 @@
 	"pickle-adapt-process-as-reverse": "Reverser strängen",
 	"pickle-adapt-process-as-u-upper": "Skift alla tecken i Unicode-strängen til stora tecken",
 	"pickle-adapt-process-as-u-lower": "Skift alla tecken i Unicode-strängen til små tecken",
-	"pickle-adapt-process-as-u-upper-first": "Skift første tecken i Unicode-strängen til stort tecken",
-	"pickle-adapt-process-as-u-lower-first": "Skift første tecken i Unicode-strängen til lite tecken",
+	"pickle-adapt-process-as-u-upper-first": "Gör första kodpunkten i Unicode-strängen till versal",
+	"pickle-adapt-process-as-u-lower-first": "Gör första kodpunkten i Unicode-strängen till gemen",
 	"pickle-adapt-process-as-u-n-f-c": "Ändra Unicode-strängen til Normalized form C (NFC)",
 	"pickle-adapt-process-as-u-n-f-d": "Ändra Unicode-strängen til Normalized form D (NFD)",
 	"pickle-adapt-process-as-number": "Ändra strängen til nummer",
@@ -97,5 +99,6 @@
 	"pickle-adapt-condition-to-be-lesser-or-equal": "Ska vara mindre än eller lik målet",
 	"pickle-adapt-condition-to-be-greater-or-equal": "Ska vara større än eller lik målet",
 	"pickle-adapt-condition-to-be-match": "Ska återfinnas i målet",
-	"pickle-adapt-condition-to-be-u-match": "Ska återfinnas i Unicode-målet"
+	"pickle-adapt-condition-to-be-u-match": "Ska återfinnas i Unicode-målet",
+	"pickle-adapt-catched-exception": "Fångat undantag"
 }
