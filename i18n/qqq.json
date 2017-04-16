@@ -4,7 +4,8 @@
 			"Jeblad",
 			"Liuxinyu970226",
 			"Jhertel",
-			"Raymond"
+			"Raymond",
+			"Umherirrender"
 		]
 	},
 	"pickle-desc": "{{pickle-gloss}} {{desc|name=Pickle|url=https://www.mediawiki.org/wiki/Extension:Pickle }}",
@@ -64,6 +65,9 @@
 	"pickle-frame-no-tests": "{{pickle-gloss}} The tests has run no tests, that is the functions for the fixtures has none.",
 	"pickle-report-frame-is-ok": "{{pickle-gloss}} Initial keyword \"ok\" used for each good test in a TAP-report. It can be adapted by a following localization \"ok (something)\", but keep the \"ok\". {{pickle-report-compact}}}\n{{Identical|OK}}",
 	"pickle-report-frame-is-not-ok": "{{pickle-gloss}} Initial keyword \"not ok\" used for each good test in a TAP-report. It can be adapted by a following localization \"not ok (something)\", but keep the \"not ok\". {{pickle-report-compact}}}",
+	"pickle-report-frame-wrap-description": "{{ignored}}",
+	"pickle-report-adapt-todo-no-description": "{{ignored}}",
+	"pickle-report-adapt-skip-no-description": "{{ignored}}",
 	"pickle-report-adapt-is-ok": "{{pickle-gloss}} Initial keyword \"ok\" used for each good test in a TAP-report. It can be adapted by a following localization \"ok (something)\", but keep the \"ok\". {{pickle-report-vivid}}\n{{Identical|OK}}",
 	"pickle-report-adapt-is-not-ok": "{{pickle-gloss}} Initial keyword \"not ok\" used for each good test in a TAP-report. It can be adapted by a following localization \"not ok (something)\", but keep the \"not ok\". {{pickle-report-vivid}}",
 	"pickle-report-adapt-wrap-skip": "{{pickle-gloss}} An outher wrapper for the \"skip\" keyword and the optional string. It can be adapted by a following localization \"skip (something)\". {{pickle-report-vivid}}\n{{Identical|Skip}}",
