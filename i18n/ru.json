@@ -3,7 +3,8 @@
 		"authors": [
 			"Redredsonia",
 			"Kareyac",
-			"Nitch"
+			"Nitch",
+			"Alexey zakharenkov"
 		]
 	},
 	"pickle-test-text-good": "Хорошо",
@@ -48,5 +49,6 @@
 	"pickle-adapt-process-as-lower-first": "Первую букву в строке преобразовать в строчную",
 	"pickle-adapt-process-as-reverse": "Перевернуть строку",
 	"pickle-adapt-process-as-integer": "Найти целую часть",
-	"pickle-adapt-process-as-fraction": "Поиск дробной части"
+	"pickle-adapt-process-as-fraction": "Поиск дробной части",
+	"pickle-adapt-catched-exception": "Перехваченное исключение"
 }
