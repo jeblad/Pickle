@@ -4,7 +4,8 @@
 			"Redredsonia",
 			"Kareyac",
 			"Nitch",
-			"Alexey zakharenkov"
+			"Alexey zakharenkov",
+			"Okras"
 		]
 	},
 	"pickle-test-text-good": "Хорошо",
@@ -25,7 +26,7 @@
 	"pickle-console-clear": "Очистить",
 	"pickle-report-skip-no-message": "Ключ сообщения $1 не существует",
 	"pickle-report-frame-is-ok": "ок",
-	"pickle-report-frame-is-not-ok": "Не в порядке",
+	"pickle-report-frame-is-not-ok": "не в порядке",
 	"pickle-report-adapt-is-ok": "ок",
 	"pickle-report-adapt-is-not-ok": "Не в порядке",
 	"pickle-report-adapt-wrap-skip": "пропустить $1",
