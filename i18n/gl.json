@@ -68,5 +68,8 @@
 	"pickle-adapt-process-eleventh": "Coller o undécimo elemento",
 	"pickle-adapt-process-twelfth": "Coller o duodécimo elemento",
 	"pickle-adapt-process-as-type": "Obter o tipo de elemento",
-	"pickle-adapt-process-as-reverse": "Inverter a cadea"
+	"pickle-adapt-process-as-reverse": "Inverter a cadea",
+	"pickle-adapt-process-as-round": "Atopar o enteiro máis achegado",
+	"pickle-adapt-process-as-integer": "Atopar a parte enteira",
+	"pickle-adapt-process-as-fraction": "Atopar a parte decimal"
 }

@@ -18,6 +18,7 @@
 	"pickle-console-clear": "지우기",
 	"pickle-report-skip-no-message": "\"$1\" 메시지 키가 존재하지 않습니다",
 	"pickle-frame-no-description": "익명",
+	"pickle-frame-no-tests": "등록된 테스트가 없습니다",
 	"pickle-adapt-process-first": "1번째 요소 가져오기",
 	"pickle-adapt-process-second": "2번째 요소 가져오기",
 	"pickle-adapt-process-third": "3번째 요소 가져오기",
