@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Obsuser"
+		]
+	},
+	"pickle-frame-no-description": "анонимно",
+	"pickle-frame-no-fixtures": "Нема регистрованих фикстура",
+	"pickle-frame-no-tests": "Нема регистрованих тестова",
+	"pickle-report-adapt-wrap-skip": "# skip $1",
+	"pickle-report-adapt-wrap-todo": "# todo $1",
+	"pickle-adapt-catched-exception": "Детектовани изузетак",
+	"pickle-adapt-catched-return": "Детектовано враћање"
+}
