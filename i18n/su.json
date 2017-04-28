@@ -4,6 +4,15 @@
 			"Uchup19"
 		]
 	},
+	"pickle-test-text-good": "Alus",
+	"pickle-test-text-pending": "Tunda",
+	"pickle-test-text-fail": "Gagal",
+	"pickle-test-text-missing": "Leungit",
+	"pickle-test-text-unknown": "Teu dipikanyaho",
+	"pickle-test-text-skip-good": "Alus (liwat)",
+	"pickle-test-text-skip-fail": "Gagal (liwat)",
+	"pickle-console-run": "Jalankeun",
+	"pickle-console-clear": "Bersihan",
 	"pickle-report-frame-is-ok": "heug",
 	"pickle-report-adapt-wrap-skip": "# liwat $1"
 }
