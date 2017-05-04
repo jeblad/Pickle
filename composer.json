@@ -47,8 +47,8 @@
 			"php ../../tests/phpunit/phpunit.php --wiki wiki --group Pickle"
 		],
 		"test": [
-			"parallel-lint . --exclude vendor --exclude node_modueles",
-			"phpcs -p -s --ignore=vendor,node_modules"
+			"parallel-lint . --exclude vendor --exclude node_modules",
+			"phpcs -p -s"
 		]
 	},
 	"require": {
