@@ -34,7 +34,8 @@
 		"mediawiki/mediawiki-codesniffer": ">=0.7.2",
 		"phpunit/phpunit": "4.8.*",
 		"phpspec/prophecy": "~1.0",
-		"liuggio/fastest": "~1.4"
+		"liuggio/fastest": "~1.4",
+		"jakub-onderka/php-console-highlighter": "0.3.2"
 	},
 	"scripts": {
 		"fix": [
