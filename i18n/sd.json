@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Indus Asia"
+			"Indus Asia",
+			"Mehtab ahmed"
 		]
 	},
 	"pickle-test-text-good": "سٺو",
@@ -9,9 +10,9 @@
 	"pickle-test-text-missing": "کُٽل",
 	"pickle-test-text-unknown": "اڻڄاتل",
 	"pickle-console-run": "هلايو",
-	"pickle-report-frame-is-ok": "ٺيڪ (او ڪي)",
+	"pickle-report-frame-is-ok": "ٺيڪ",
 	"pickle-report-frame-is-not-ok": "ٺيڪ ناهي",
-	"pickle-report-adapt-is-ok": "ٺيڪ (او ڪي)",
+	"pickle-report-adapt-is-ok": "ٺيڪ",
 	"pickle-report-adapt-is-not-ok": "ٺيڪ ناهي",
 	"pickle-adapt-process-first": "پهريون عنصر کڻو",
 	"pickle-adapt-process-second": "ٻيون عنصر کڻو",
