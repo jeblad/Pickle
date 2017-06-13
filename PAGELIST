@@ -1,0 +1,28 @@
+Template:Main Page
+Category:Modules with failing tests
+Category:Modules with good tests
+Category:Modules with incomplete tests
+Category:Modules with pending tests
+Category:Modules with skipped tests
+Category:Modules with unknown tests
+Category:Modules without test page
+Module:Missing
+Module:Missing/doc
+Module:Unknown
+Module:Unknown/pickle
+Module:Hard fail
+Module:Hard fail/doc
+Module:Hard fail/pickle
+Module:Hard fail/pickle/doc
+Module:Hard good
+Module:Hard good/doc
+Module:Hard good/pickle
+Module:Hard good/pickle/doc
+Module:Hard incomplete fail
+Module:Hard incomplete fail/pickle
+Module:Hard incomplete good
+Module:Hard incomplete good/pickle
+Module:Hard skipped fail
+Module:Hard skipped fail/pickle
+Module:Hard skipped good
+Module:Hard skipped good/pickle
