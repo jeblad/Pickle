@@ -50,6 +50,12 @@
 		"test": [
 			"parallel-lint . --exclude vendor --exclude node_modules",
 			"phpcs -p -s"
+		],
+		"export": [
+			"php ../../maintenance/dumpBackup.php --current --pagelist=PAGELIST --output=file:pages.xml"
+		],
+		"import": [
+			"php ../../maintenance/importDump.php pages.xml"
 		]
 	},
 	"require": {

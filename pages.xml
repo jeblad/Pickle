@@ -125,6 +125,43 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
     </revision>
   </page>
   <page>
+    <title>MediaWiki:Common.css</title>
+    <ns>8</ns>
+    <id>33</id>
+    <revision>
+      <id>70</id>
+      <parentid>69</parentid>
+      <timestamp>2017-06-12T21:25:27Z</timestamp>
+      <contributor>
+        <username>Admin</username>
+        <id>1</id>
+      </contributor>
+      <model>css</model>
+      <format>text/css</format>
+      <text xml:space="preserve" bytes="779">/* CSS placed here will be applied to all skins */
+
+/* This styling is just for testing purposes */
+.indicator-fail-ltr { background-image: url(&quot;/w/extensions/Pickle/modules/images/ext.pickle.indicator.icon/minified/fail-ltr.svg&quot;); }
+.indicator-good-ltr { background-image: url(&quot;/w/extensions/Pickle/modules/images/ext.pickle.indicator.icon/minified/good-ltr.svg&quot;); }
+.indicator-unknown-ltr { background-image: url(&quot;/w/extensions/Pickle/modules/images/ext.pickle.indicator.icon/minified/unknown-ltr.svg&quot;); }
+.indicator-fake {
+	background-position: left bottom;
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 24px;
+	line-height: 24px;
+	padding-left: 28px;
+}
+.indicator-small {
+	transform: scale(0.75);
+}
+#bodyContent .table-data-center td {
+	text-align: center;
+}</text>
+      <sha1>8qo4hgcld173irfe2y7x4sy0xbjldxu</sha1>
+    </revision>
+  </page>
+  <page>
     <title>Category:Modules with failing tests</title>
     <ns>14</ns>
     <id>21</id>
