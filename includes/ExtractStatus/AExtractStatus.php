@@ -27,8 +27,8 @@ abstract class AExtractStatus {
 	/**
 	 * Checks if the string has the strategys stored pattern
 	 *
-	 * @param string $str
-	 * @return boolean
+	 * @param string $str heystack
+	 * @return number
 	 */
 	abstract public function checkState( $str );
 

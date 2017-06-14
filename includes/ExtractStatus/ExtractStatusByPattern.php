@@ -15,7 +15,7 @@ use \Pickle\AExtractStatus;
 class ExtractStatusByPattern extends AExtractStatus {
 
 	/**
-	 * @param array structure from extension setup
+	 * @param array $opts structure from extension setup
 	 */
 	public function __construct( array $opts ) {
 		$this->opts = array_merge( [ 'name' => 'none', 'pattern' => '/^$/' ], $opts );
@@ -23,6 +23,8 @@ class ExtractStatusByPattern extends AExtractStatus {
 
 	/**
 	 * @see \Pickle\AExtractStatus::checkState()
+	 * @param string $str heystack
+	 * @return number
 	 */
 	public function checkState( $str ) {
 		return preg_match( $this->opts['pattern'], $str );

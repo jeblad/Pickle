@@ -14,7 +14,7 @@ use \Pickle\AExtractStatus;
 class ExtractStatusDefault extends AExtractStatus {
 
 	/**
-	 * @param array structure from extension setup
+	 * @param array $opts structure from extension setup
 	 */
 	public function __construct( array $opts ) {
 		$this->opts = array_merge( [ 'name' => 'unknown' ], $opts );
@@ -22,6 +22,8 @@ class ExtractStatusDefault extends AExtractStatus {
 
 	/**
 	 * @see \Pickle\AExtractStatus::checkState()
+	 * @param string $str heystack
+	 * @return number
 	 */
 	public function checkState( $str ) {
 		return 1;
