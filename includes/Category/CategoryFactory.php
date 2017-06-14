@@ -43,7 +43,7 @@ class CategoryFactory extends Strategies {
 	 * This is a callback for a hook registered in extensions.json
 	 * @param \Title $title target of the categorization
 	 * @param \ParserOutput $parserOutput parser result from the parsing process
-	 * @param array $states additional states to be merged
+	 * @param array $states additional states to be merged (optional)
 	 * @return true
 	 */
 	public static function addCategorization(
