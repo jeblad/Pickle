@@ -376,7 +376,7 @@ This subsystem is central to proper operation of the extension.
 
 If `pickle-status-current` is set, then a link will be created as a _subtitle_
 that points to _Special:Log_ and the proper log entries created for `track/good`,
-`track/pending`, `track/failing`, `track/missing`, `track/unknown`, and any
+`track/fail`, `track/skip`, `track/todo`, `track/missing`, `track/unknown`, and any
 additional entries that might exist. In the current development version the
 link is set up to filter on the page only and not anything further. It might
 be wise to filter on the _module track log_.

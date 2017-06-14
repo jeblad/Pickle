@@ -41,7 +41,6 @@
 	"pickle-track-log-name": "{{pickle-gloss}} {{doc-logpage}}",
 	"pickle-track-log-header": "{{pickle-gloss}} Description used on top of Special:log when filtered on this specific log.",
 	"pickle-track-log-entry-good": "{{pickle-gloss}} This is used when the subpage exists, and the result is found to be good according to the TAP-format.\n\n{{logentry}}",
-	"pickle-track-log-entry-pending": "{{pickle-gloss}} This is used when the subpage exists, and the result is found to be pending.\n\n{{logentry}}",
 	"pickle-track-log-entry-todo-good": "{{pickle-gloss}} This is used when the subpage exists, and the result is found to be good according to the TAP-format, but the result is also marked as \"todo\".\n\n{{logentry}}",
 	"pickle-track-log-entry-todo-fail": "{{pickle-gloss}} This is used when the subpage exists, and the result is found to be failing according to the TAP-format, but the result is also marked as \"todo\".\n\n{{logentry}}",
 	"pickle-track-log-entry-skip-good": "{{pickle-gloss}} This is used when the subpage exists, and the result is found to be good according to the TAP-format, but the result is also marked as \"skip\".\n\n{{logentry}}",

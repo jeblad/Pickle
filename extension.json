@@ -234,11 +234,23 @@
 		"LogEntry": [
 			{
 				"class": "Pickle\\LogEntryCommon",
-				"name": "fail"
+				"name": "skip-fail"
 			},
 			{
 				"class": "Pickle\\LogEntryCommon",
-				"name": "pending"
+				"name": "skip-good"
+			},
+			{
+				"class": "Pickle\\LogEntryCommon",
+				"name": "todo-fail"
+			},
+			{
+				"class": "Pickle\\LogEntryCommon",
+				"name": "todo-good"
+			},
+			{
+				"class": "Pickle\\LogEntryCommon",
+				"name": "fail"
 			},
 			{
 				"class": "Pickle\\LogEntryCommon",
@@ -455,8 +467,11 @@
 	},
 	"LogActions": {
 		"track/good": "pickle-track-log-entry-good",
-		"track/pending": "pickle-track-log-entry-pending",
 		"track/fail": "pickle-track-log-entry-fail",
+		"track/skip-good": "pickle-track-log-entry-skip-good",
+		"track/skip-fail": "pickle-track-log-entry-skip-fail",
+		"track/todo-good": "pickle-track-log-entry-todo-good",
+		"track/todo-fail": "pickle-track-log-entry-todo-fail",
 		"track/missing": "pickle-track-log-entry-missing",
 		"track/unknown": "pickle-track-log-entry-unknown"
 	},

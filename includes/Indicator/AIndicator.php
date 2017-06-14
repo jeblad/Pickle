@@ -35,8 +35,11 @@ abstract class AIndicator {
 
 		// Get the message containing the text to use for the link
 		// @message pickle-test-text-good
-		// @message pickle-test-text-pending
 		// @message pickle-test-text-fail
+		// @message pickle-test-text-skip-good
+		// @message pickle-test-text-skip-fail
+		// @message pickle-test-text-todo-good
+		// @message pickle-test-text-todo-fail
 		// @message pickle-test-text-missing
 		// @message pickle-test-text-unknown
 		$msg = wfMessage( $this->getMessageKey() );
@@ -73,8 +76,11 @@ abstract class AIndicator {
 
 		// Get the message containing the text to use for the link
 		// @message pickle-test-text-good
-		// @message pickle-test-text-pending
 		// @message pickle-test-text-fail
+		// @message pickle-test-text-skip-good
+		// @message pickle-test-text-skip-fail
+		// @message pickle-test-text-todo-good
+		// @message pickle-test-text-todo-fail
 		// @message pickle-test-text-missing
 		// @message pickle-test-text-unknown
 		$msg = wfMessage( $this->getMessageKey() );
