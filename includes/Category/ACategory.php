@@ -35,8 +35,8 @@ abstract class ACategory {
 	/**
 	 * Add a new track category
 	 *
-	 * @param \Title target of the categorization
-	 * @param \ParserOutput parser resoult from the parsing process
+	 * @param \Title $title target of the categorization
+	 * @param \ParserOutput $parserOutput parser resoult from the parsing process
 	 *
 	 * @return Message
 	 */

@@ -16,7 +16,8 @@ class CategoryFactory extends Strategies {
 	use TNamedStrategies;
 
 	/**
-	 * Who am I
+	 * Who (am I)
+	 * @return class name
 	 */
 	public static function who() {
 		return __CLASS__;
@@ -24,6 +25,7 @@ class CategoryFactory extends Strategies {
 
 	/**
 	 * Configure the strategies
+	 * @return true
 	 */
 	public static function init() {
 		global $wgPickleCategory;
@@ -39,13 +41,16 @@ class CategoryFactory extends Strategies {
 	/**
 	 * Add track category for tested module
 	 * This is a callback for a hook registered in extensions.json
+	 * @param \Title $title target of the categorization
+	 * @param \ParserOutput $parserOutput parser result from the parsing process
+	 * @param array $states additional states to be merged
+	 * @return true
 	 */
 	public static function addCategorization(
 		\Title $title,
 		\ParserOutput $parserOutput,
 		array $states = null
 	) {
-
 		if ( $states == null ) {
 			return true;
 		}
