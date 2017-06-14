@@ -15,7 +15,7 @@ use \Pickle\AInvokeSubpage;
 class InvokeSubpageByContentType extends AInvokeSubpage {
 
 	/**
-	 * @param array structure from extension setup
+	 * @param array $opts structure from extension setup
 	 */
 	public function __construct( array $opts ) {
 		$this->opts = array_merge(
@@ -30,6 +30,8 @@ class InvokeSubpageByContentType extends AInvokeSubpage {
 
 	/**
 	 * @see \Pickle\AInvokeSubpage::checkType()
+	 * @param \Title &$title to be used as source
+	 * @return boolean
 	 */
 	public function checkType( \Title &$title ) {
 		return $title->exists() && $title->getContentModel() === $this->opts['type'];
@@ -37,6 +39,9 @@ class InvokeSubpageByContentType extends AInvokeSubpage {
 
 	/**
 	 * @see \Pickle\AInvokeSubpage::checkSubpageType()
+	 * @param \Title &$title to be used as source
+	 * @param boolean $type of content model (optional)
+	 * @return boolean
 	 */
 	public function checkSubpageType( \Title &$title, $type = null ) {
 		// this will be cached
@@ -48,6 +53,8 @@ class InvokeSubpageByContentType extends AInvokeSubpage {
 
 	/**
 	 * @see \Pickle\AInvokeSubpage::getInvoke()
+	 * @param \Title &$title to be used as source
+	 * @return \Message
 	 */
 	public function getInvoke( \Title &$title ) {
 		$subpage = $this->getSubpageBaseText( $title );
@@ -57,6 +64,8 @@ class InvokeSubpageByContentType extends AInvokeSubpage {
 
 	/**
 	 * @see \Pickle\AInvokeSubpage::getSubpagePrefixedText()
+	 * @param \Title &$title to be used as source
+	 * @return \Message
 	 */
 	public function getSubpagePrefixedText( \Title &$title ) {
 		$text = $title->getPrefixedText();
@@ -66,6 +75,8 @@ class InvokeSubpageByContentType extends AInvokeSubpage {
 
 	/**
 	 * @see \Pickle\AInvokeSubpage::getSubpageBaseText()
+	 * @param \Title &$title to be used as source
+	 * @return \Message
 	 */
 	public function getSubpageBaseText( \Title &$title ) {
 		$baseText = $title->getBaseText();
@@ -75,6 +86,8 @@ class InvokeSubpageByContentType extends AInvokeSubpage {
 
 	/**
 	 * @see \Pickle\AInvokeSubpage::getSubpageTitle()
+	 * @param \Title &$title to be used as source
+	 * @return \Title
 	 */
 	public function getSubpageTitle( \Title &$title ) {
 		return \Title::newFromText( $this->getSubpagePrefixedText( $title )->plain() );
@@ -82,6 +95,8 @@ class InvokeSubpageByContentType extends AInvokeSubpage {
 
 	/**
 	 * @see \Pickle\AInvokeSubpage::getTesterQuestion()
+	 * @param \Title &$title to be used as source
+	 * @return simplexml_load_string
 	 */
 	public function getTesterQuestion( \Title &$title ) {
 		return $this->opts['testerQuestion'];
@@ -89,6 +104,8 @@ class InvokeSubpageByContentType extends AInvokeSubpage {
 
 	/**
 	 * @see \Pickle\AInvokeSubpage::getTesteeQuestion()
+	 * @param \Title &$title to be used as source
+	 * @return simplexml_load_string
 	 */
 	public function getTesteeQuestion( \Title &$title ) {
 		$prefixedText = $this->getSubpagePrefixedText( $title );

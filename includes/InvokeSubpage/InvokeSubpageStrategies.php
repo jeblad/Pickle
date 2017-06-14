@@ -14,7 +14,9 @@ use MediaWiki\Logger\LoggerFactory;
 class InvokeSubpageStrategies extends Strategies {
 
 	/**
-	 * Who am I
+	 * Who (am I)
+	 *
+	 * @return class
 	 */
 	public static function who() {
 		return __CLASS__;
@@ -22,6 +24,8 @@ class InvokeSubpageStrategies extends Strategies {
 
 	/**
 	 * Configure the strategies
+	 *
+	 * @return true
 	 */
 	public static function init() {
 		global $wgPickleInvokeSubpage;
@@ -37,8 +41,7 @@ class InvokeSubpageStrategies extends Strategies {
 	/**
 	 * Checks if the string has any of the strategies stored patterns
 	 *
-	 * @param Title $title
-	 *
+	 * @param Title $title used as key
 	 * @return string
 	 */
 	public function find( \Title $title ) {
