@@ -11,9 +11,11 @@ class ConsoleView {
 
 	/**
 	 * Get Lua question
+	 *
+	 * @param \Title $title source key
+	 * @return simplexml_load_string
 	 */
 	public static function getQuestion( \Title $title ) {
-
 		// check if there is a subpage to invoke
 		$invokeStrategy = InvokeSubpageStrategies::getInstance()->find( $title );
 		if ( $invokeStrategy === null ) {
@@ -43,13 +45,11 @@ class ConsoleView {
 	 * Build the view
 	 * This isn't really part of a normal MVC design pattern, it will only build a minimal view.
 	 *
-	 * @param EditPage $editor
-	 * @param OutputPage $output
-	 *
+	 * @param \EditPage &$editor the edit page access
+	 * @param \OutputPage $output the output page
 	 * @return boolean outcome of the call
 	 */
 	public static function build( \EditPage &$editor, \OutputPage $output ) {
-
 		// get the title of current page
 		$title = $editor->getTitle();
 
@@ -84,9 +84,10 @@ class ConsoleView {
 	/**
 	 * Add a view for test console
 	 *
-	 * @param EditPage $editor
-	 * @param any $checkboxes is neglected
-	 * @param any $tabindex is neglected
+	 * @param \EditPage &$editor the edit page access
+	 * @param any &$checkboxes is neglected
+	 * @param any &$tabindex is neglected
+	 * @return boolean outcome of the call
 	 */
 	public static function onEditPageBeforeEditChecks( \EditPage &$editor, &$checkboxes, &$tabindex ) {
 		$output = \RequestContext::getMain()->getOutput();
@@ -96,8 +97,9 @@ class ConsoleView {
 	/**
 	 * Add a view for test console
 	 *
-	 * @param EditPage $editor
-	 * @param OutputPage $output
+	 * @param \EditPage $editor the edit page access
+	 * @param \OutputPage $output the output page
+	 * @return boolean outcome of the call
 	 */
 	public static function onShowReadOnlyFormInitial( \EditPage $editor, \OutputPage $output ) {
 		return self::build( $editor, $output );
@@ -106,6 +108,7 @@ class ConsoleView {
 	/**
 	 * @todo This doc section must be wrong
 	 * @see \Pickle\IObserver::getName()
+	 * @return any
 	 */
 	public function makeForm() {
 		$editor->editFormTextAfterTools .= '<div id="mw-scribunto-console"></div>';
