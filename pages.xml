@@ -51,16 +51,16 @@
     <ns>0</ns>
     <id>35</id>
     <revision>
-      <id>98</id>
-      <timestamp>2017-06-13T01:53:41Z</timestamp>
+      <id>120</id>
+      <parentid>119</parentid>
+      <timestamp>2017-06-14T02:09:25Z</timestamp>
       <contributor>
-        <username>Admin</username>
-        <id>1</id>
+        <ip>10.0.2.2</ip>
       </contributor>
-      <comment>Created page with &quot;A few testcases are provided for manual testing. These test cases are for manual testing of the overall integration. Usually the unit tests should be sufficient, so these test...&quot;</comment>
+      <comment>/* Simple test cases */</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="4232">A few testcases are provided for manual testing. These test cases are for manual testing of the overall integration. Usually the unit tests should be sufficient, so these tests are only for final verification.
+      <text xml:space="preserve" bytes="4248">A few testcases are provided for manual testing. These test cases are for manual testing of the overall integration. Usually the unit tests should be sufficient, so these tests are only for final verification.
 
 == Exceptional test cases ==
 These are the exceptional cases where most of the framework does not apply. The &quot;missing&quot; case is where there are no test module. The &quot;unknown&quot; case is where there are some kind of test module, but the framework can't recognize the output. Both &quot;missing&quot; and &quot;unknown&quot; are conceptually pending, but whether such a category should be created is up to the community using the extension. 
@@ -89,23 +89,23 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
 |-
 ! rowspan=2 |Good
 |[[Module:Hard good|Hard good]]&lt;br&gt;&lt;span class=&quot;indicator-good-ltr indicator-fake indicator-small&quot;&gt;Good&lt;/span&gt;
-|[[Module:Hard incomplete good|Hard incomplete good]]&lt;br&gt;&lt;span class=&quot;indicator-unknown-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-good}}&lt;/span&gt;
-|[[Module:Hard skipped good|Hard skipped good]]&lt;br&gt;&lt;span class=&quot;indicator-unknown-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-good}}&lt;/span&gt;
+|[[Module:Hard incomplete good|Hard incomplete good]]&lt;br&gt;&lt;span class=&quot;indicator-good-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-todo-good}}&lt;/span&gt;
+|[[Module:Hard skipped good|Hard skipped good]]&lt;br&gt;&lt;span class=&quot;indicator-good-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-skip-good}}&lt;/span&gt;
 | rowspan=2 |''[[:Category:{{Mediawiki:pickle-tracking-category-good}}‎|{{Mediawiki:pickle-tracking-category-good}}‎]]''
 |-
 |[[Module:Soft good|Soft good]]&lt;br&gt;&lt;span class=&quot;indicator-good-ltr indicator-fake indicator-small&quot;&gt;Good&lt;/span&gt;
-|[[Module:Soft incomplete good|Soft incomplete good]]&lt;br&gt;&lt;span class=&quot;indicator-unknown-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-good}}&lt;/span&gt;
-|[[Module:Soft skipped good|Soft skipped good]]&lt;br&gt;&lt;span class=&quot;indicator-unknown-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-good}}&lt;/span&gt;
+|[[Module:Soft incomplete good|Soft incomplete good]]&lt;br&gt;&lt;span class=&quot;indicator-good-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-todo-good}}&lt;/span&gt;
+|[[Module:Soft skipped good|Soft skipped good]]&lt;br&gt;&lt;span class=&quot;indicator-good-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-skip-good}}&lt;/span&gt;
 |-
 ! rowspan=2 |Fail
 |[[Module:Hard fail|Hard fail]]&lt;br&gt;&lt;span class=&quot;indicator-fail-ltr indicator-fake indicator-small&quot;&gt;Failing&lt;/span&gt;
-|[[Module:Hard incomplete fail|Hard incomplete fail]]&lt;br&gt;&lt;span class=&quot;indicator-unknown-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-fail}}&lt;/span&gt;
-|[[Module:Hard skipped fail|Hard skipped fail]]&lt;br&gt;&lt;span class=&quot;indicator-unknown-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-fail}}&lt;/span&gt;
+|[[Module:Hard incomplete fail|Hard incomplete fail]]&lt;br&gt;&lt;span class=&quot;indicator-fail-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-todo-fail}}&lt;/span&gt;
+|[[Module:Hard skipped fail|Hard skipped fail]]&lt;br&gt;&lt;span class=&quot;indicator-fail-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-skip-fail}}&lt;/span&gt;
 | rowspan=2 |''[[:Category:{{Mediawiki:pickle-tracking-category-fail}}‎|{{Mediawiki:pickle-tracking-category-fail}}‎]]''
 |-
 |[[Module:Soft fail|Soft fail]]&lt;br&gt;&lt;span class=&quot;indicator-fail-ltr indicator-fake indicator-small&quot;&gt;Failing&lt;/span&gt;
-|[[Module:Soft incomplete fail|Soft incomplete fail]]&lt;br&gt;&lt;span class=&quot;indicator-unknown-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-fail}}&lt;/span&gt;
-|[[Module:Soft skipped fail|Soft skipped fail]]&lt;br&gt;&lt;span class=&quot;indicator-unknown-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-fail}}&lt;/span&gt;
+|[[Module:Soft incomplete fail|Soft incomplete fail]]&lt;br&gt;&lt;span class=&quot;indicator-fail-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-todo-fail}}&lt;/span&gt;
+|[[Module:Soft skipped fail|Soft skipped fail]]&lt;br&gt;&lt;span class=&quot;indicator-fail-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-skip-fail}}&lt;/span&gt;
 |-
 ! rowspan=2 |''Categories''
 | rowspan=2 |
@@ -115,7 +115,7 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
 |-
 | colspan=2 |''[[:Category:{{Mediawiki:pickle-tracking-category-pending}}‎|{{Mediawiki:pickle-tracking-category-pending}}‎]]''
 |}</text>
-      <sha1>3santtpr1dbixd3xg36s85cvoaaaerq</sha1>
+      <sha1>0w1n708r8xxig2skobberojurrm8wxf</sha1>
     </revision>
   </page>
   <page>
@@ -625,17 +625,16 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
     <ns>828</ns>
     <id>26</id>
     <revision>
-      <id>43</id>
-      <timestamp>2017-06-12T13:07:03Z</timestamp>
+      <id>113</id>
+      <parentid>43</parentid>
+      <timestamp>2017-06-14T01:47:02Z</timestamp>
       <contributor>
-        <username>Admin</username>
-        <id>1</id>
+        <ip>10.0.2.2</ip>
       </contributor>
-      <comment>Created page with &quot;return { tap = function() return &quot;1..1\nnot ok #todo&quot; end }&quot;</comment>
       <model>Scribunto</model>
       <format>text/plain</format>
-      <text xml:space="preserve" bytes="59">return { tap = function() return &quot;1..1\nnot ok #todo&quot; end }</text>
-      <sha1>ovrxc2zxr6z7dr91vt6eqt41oje7ge1</sha1>
+      <text xml:space="preserve" bytes="61">return { tap = function() return &quot;1..1\nnot ok 1 #todo&quot; end }</text>
+      <sha1>5eudllglj4s1p07p1zlp5b3sj8kn8ex</sha1>
     </revision>
   </page>
   <page>
@@ -695,17 +694,16 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
     <ns>828</ns>
     <id>27</id>
     <revision>
-      <id>44</id>
-      <timestamp>2017-06-12T13:09:27Z</timestamp>
+      <id>112</id>
+      <parentid>44</parentid>
+      <timestamp>2017-06-14T01:45:46Z</timestamp>
       <contributor>
-        <username>Admin</username>
-        <id>1</id>
+        <ip>10.0.2.2</ip>
       </contributor>
-      <comment>Created page with &quot;return { tap = function() return &quot;1..1\nok #todo&quot; end }&quot;</comment>
       <model>Scribunto</model>
       <format>text/plain</format>
-      <text xml:space="preserve" bytes="55">return { tap = function() return &quot;1..1\nok #todo&quot; end }</text>
-      <sha1>qxmxqb9iwsntpjoowbx4g9b72mzadd8</sha1>
+      <text xml:space="preserve" bytes="57">return { tap = function() return &quot;1..1\nok 1 #todo&quot; end }</text>
+      <sha1>lg4c2pxnffmh8s3t4xhgu03esnudxt9</sha1>
     </revision>
   </page>
   <page>
@@ -765,17 +763,16 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
     <ns>828</ns>
     <id>32</id>
     <revision>
-      <id>49</id>
-      <timestamp>2017-06-12T13:14:54Z</timestamp>
+      <id>115</id>
+      <parentid>49</parentid>
+      <timestamp>2017-06-14T01:48:43Z</timestamp>
       <contributor>
-        <username>Admin</username>
-        <id>1</id>
+        <ip>10.0.2.2</ip>
       </contributor>
-      <comment>Created page with &quot;return { tap = function() return &quot;1..1\nnot ok #skip&quot; end }&quot;</comment>
       <model>Scribunto</model>
       <format>text/plain</format>
-      <text xml:space="preserve" bytes="59">return { tap = function() return &quot;1..1\nnot ok #skip&quot; end }</text>
-      <sha1>9tekde5eb0ly4379wbfcsli41ha2emh</sha1>
+      <text xml:space="preserve" bytes="61">return { tap = function() return &quot;1..1\nnot ok 1 #skip&quot; end }</text>
+      <sha1>5yjf9qvep0haaumqz44vin3s1c0ifb9</sha1>
     </revision>
   </page>
   <page>
@@ -835,17 +832,16 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
     <ns>828</ns>
     <id>31</id>
     <revision>
-      <id>48</id>
-      <timestamp>2017-06-12T13:14:10Z</timestamp>
+      <id>114</id>
+      <parentid>48</parentid>
+      <timestamp>2017-06-14T01:47:50Z</timestamp>
       <contributor>
-        <username>Admin</username>
-        <id>1</id>
+        <ip>10.0.2.2</ip>
       </contributor>
-      <comment>Created page with &quot;return { tap = function() return &quot;1..1\nok #skip&quot; end }&quot;</comment>
       <model>Scribunto</model>
       <format>text/plain</format>
-      <text xml:space="preserve" bytes="55">return { tap = function() return &quot;1..1\nok #skip&quot; end }</text>
-      <sha1>re75w5egqsho23do557b24e36d28n9q</sha1>
+      <text xml:space="preserve" bytes="57">return { tap = function() return &quot;1..1\nok 1 #skip&quot; end }</text>
+      <sha1>eehtxdtiigrziv48l7bjmbsp5xpt7do</sha1>
     </revision>
   </page>
   <page>
