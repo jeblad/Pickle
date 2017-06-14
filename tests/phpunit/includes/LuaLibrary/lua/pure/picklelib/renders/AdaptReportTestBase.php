@@ -17,6 +17,7 @@ class AdaptReportTestBase extends Scribunto_LuaEngineTestBase {
 
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
+	 * @return configuration data
 	 */
 	function getTestModules() {
 		return parent::getTestModules() + [
