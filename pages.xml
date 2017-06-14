@@ -339,17 +339,16 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
     <ns>828</ns>
     <id>14</id>
     <revision>
-      <id>30</id>
-      <timestamp>2017-06-12T12:34:07Z</timestamp>
+      <id>101</id>
+      <parentid>30</parentid>
+      <timestamp>2017-06-14T00:38:34Z</timestamp>
       <contributor>
-        <username>Admin</username>
-        <id>1</id>
+        <ip>10.0.2.2</ip>
       </contributor>
-      <comment>Created page with &quot;This module has no tests.&quot;</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="25">This module has no tests.</text>
-      <sha1>tlwyscw29sdmzd1waxiu6vrf7lstzm3</sha1>
+      <text xml:space="preserve" bytes="91">This module has no tests, thus triggering a page indicator for a module with missing tests.</text>
+      <sha1>eddvtkmq4dreaft76jnoomo4i8bcad9</sha1>
     </revision>
   </page>
   <page>
@@ -373,6 +372,23 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
     </revision>
   </page>
   <page>
+    <title>Module:Unknown/doc</title>
+    <ns>828</ns>
+    <id>37</id>
+    <revision>
+      <id>102</id>
+      <timestamp>2017-06-14T00:40:54Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with &quot;This module has a test wit weird outcome, thus triggering a page indicator for a module with unknown tests.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="107">This module has a test wit weird outcome, thus triggering a page indicator for a module with unknown tests.</text>
+      <sha1>i8t9c4jh0ks4nfor607ankwedw75iuc</sha1>
+    </revision>
+  </page>
+  <page>
     <title>Module:Unknown/pickle</title>
     <ns>828</ns>
     <id>16</id>
@@ -390,6 +406,23 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
       <format>text/plain</format>
       <text xml:space="preserve" bytes="46">return { tap = function() return &quot;weird&quot; end }</text>
       <sha1>hk1d5rszhqpwg9hobg41msnjr0xdmfc</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Unknown/pickle/doc</title>
+    <ns>828</ns>
+    <id>38</id>
+    <revision>
+      <id>103</id>
+      <timestamp>2017-06-14T00:43:48Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with &quot;This test has a hard coded &quot;weird&quot; return value. It does not test the module, it will just return a sufficient tap-string for the enforced result.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="146">This test has a hard coded &quot;weird&quot; return value. It does not test the module, it will just return a sufficient tap-string for the enforced result.</text>
+      <sha1>55pnb6p9k2l02kaq0usa5dmvrdxeqmq</sha1>
     </revision>
   </page>
   <page>
@@ -571,6 +604,23 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
     </revision>
   </page>
   <page>
+    <title>Module:Hard incomplete fail/doc</title>
+    <ns>828</ns>
+    <id>40</id>
+    <revision>
+      <id>105</id>
+      <timestamp>2017-06-14T00:48:27Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with &quot;This module has a test with a hard incomplete &quot;fail&quot; test.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="58">This module has a test with a hard incomplete &quot;fail&quot; test.</text>
+      <sha1>p4z384rpvc6cjd7khzi0cw49x9fuoep</sha1>
+    </revision>
+  </page>
+  <page>
     <title>Module:Hard incomplete fail/pickle</title>
     <ns>828</ns>
     <id>26</id>
@@ -586,6 +636,23 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
       <format>text/plain</format>
       <text xml:space="preserve" bytes="59">return { tap = function() return &quot;1..1\nnot ok #todo&quot; end }</text>
       <sha1>ovrxc2zxr6z7dr91vt6eqt41oje7ge1</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Hard incomplete fail/pickle/doc</title>
+    <ns>828</ns>
+    <id>41</id>
+    <revision>
+      <id>106</id>
+      <timestamp>2017-06-14T00:50:17Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with &quot;This test has a hard coded &quot;fail&quot; return value with a &quot;todo&quot;. It does not test the module, it will just return a sufficient tap-string for the enforced result.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="159">This test has a hard coded &quot;fail&quot; return value with a &quot;todo&quot;. It does not test the module, it will just return a sufficient tap-string for the enforced result.</text>
+      <sha1>28wezrfp3gjiusqitbyzw7b18dsvjsc</sha1>
     </revision>
   </page>
   <page>
@@ -607,6 +674,23 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
     </revision>
   </page>
   <page>
+    <title>Module:Hard incomplete good/doc</title>
+    <ns>828</ns>
+    <id>39</id>
+    <revision>
+      <id>104</id>
+      <timestamp>2017-06-14T00:47:34Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with &quot;This module has a test with a hard incomplete &quot;good&quot; test.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="58">This module has a test with a hard incomplete &quot;good&quot; test.</text>
+      <sha1>03jr856jmez5hqqdjtq9lrzygz6vmhc</sha1>
+    </revision>
+  </page>
+  <page>
     <title>Module:Hard incomplete good/pickle</title>
     <ns>828</ns>
     <id>27</id>
@@ -622,6 +706,23 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
       <format>text/plain</format>
       <text xml:space="preserve" bytes="55">return { tap = function() return &quot;1..1\nok #todo&quot; end }</text>
       <sha1>qxmxqb9iwsntpjoowbx4g9b72mzadd8</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Hard incomplete good/pickle/doc</title>
+    <ns>828</ns>
+    <id>42</id>
+    <revision>
+      <id>107</id>
+      <timestamp>2017-06-14T00:50:20Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with &quot;This test has a hard coded &quot;good&quot; return value with a &quot;todo&quot;. It does not test the module, it will just return a sufficient tap-string for the enforced result.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="159">This test has a hard coded &quot;good&quot; return value with a &quot;todo&quot;. It does not test the module, it will just return a sufficient tap-string for the enforced result.</text>
+      <sha1>8l8skc4gvzt2xzs93l0ysi8yocjgyvy</sha1>
     </revision>
   </page>
   <page>
@@ -643,6 +744,23 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
     </revision>
   </page>
   <page>
+    <title>Module:Hard skipped fail/doc</title>
+    <ns>828</ns>
+    <id>44</id>
+    <revision>
+      <id>109</id>
+      <timestamp>2017-06-14T00:53:40Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with &quot;This module has a test with a hard skipped &quot;fail&quot; test.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="55">This module has a test with a hard skipped &quot;fail&quot; test.</text>
+      <sha1>3kaebehn6wprvgb21udagzmgl3kt42m</sha1>
+    </revision>
+  </page>
+  <page>
     <title>Module:Hard skipped fail/pickle</title>
     <ns>828</ns>
     <id>32</id>
@@ -658,6 +776,23 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
       <format>text/plain</format>
       <text xml:space="preserve" bytes="59">return { tap = function() return &quot;1..1\nnot ok #skip&quot; end }</text>
       <sha1>9tekde5eb0ly4379wbfcsli41ha2emh</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Hard skipped fail/pickle/doc</title>
+    <ns>828</ns>
+    <id>45</id>
+    <revision>
+      <id>110</id>
+      <timestamp>2017-06-14T00:54:47Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with &quot;This test has a hard coded &quot;fail&quot; return value with a &quot;skip&quot;. It does not test the module, it will just return a sufficient tap-string for the enforced result.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="159">This test has a hard coded &quot;fail&quot; return value with a &quot;skip&quot;. It does not test the module, it will just return a sufficient tap-string for the enforced result.</text>
+      <sha1>sxva3swjmwyz8r5f44njjdi4pfhyrzr</sha1>
     </revision>
   </page>
   <page>
@@ -679,6 +814,23 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
     </revision>
   </page>
   <page>
+    <title>Module:Hard skipped good/doc</title>
+    <ns>828</ns>
+    <id>43</id>
+    <revision>
+      <id>108</id>
+      <timestamp>2017-06-14T00:52:58Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with &quot;This module has a test with a hard skipped &quot;good&quot; test.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="55">This module has a test with a hard skipped &quot;good&quot; test.</text>
+      <sha1>n4mbgii2km0xum7q08tzt4jtxrh0fhk</sha1>
+    </revision>
+  </page>
+  <page>
     <title>Module:Hard skipped good/pickle</title>
     <ns>828</ns>
     <id>31</id>
@@ -694,6 +846,23 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
       <format>text/plain</format>
       <text xml:space="preserve" bytes="55">return { tap = function() return &quot;1..1\nok #skip&quot; end }</text>
       <sha1>re75w5egqsho23do557b24e36d28n9q</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Hard skipped good/pickle/doc</title>
+    <ns>828</ns>
+    <id>46</id>
+    <revision>
+      <id>111</id>
+      <timestamp>2017-06-14T00:55:14Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with &quot;This test has a hard coded &quot;good&quot; return value with a &quot;skip&quot;. It does not test the module, it will just return a sufficient tap-string for the enforced result.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="159">This test has a hard coded &quot;good&quot; return value with a &quot;skip&quot;. It does not test the module, it will just return a sufficient tap-string for the enforced result.</text>
+      <sha1>5df0muv6j01hypjtie0ztpe1ls5y4cq</sha1>
     </revision>
   </page>
 </mediawiki>

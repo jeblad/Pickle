@@ -12,7 +12,9 @@ Category:Modules without test page
 Module:Missing
 Module:Missing/doc
 Module:Unknown
+Module:Unknown/doc
 Module:Unknown/pickle
+Module:Unknown/pickle/doc
 Module:Hard fail
 Module:Hard fail/doc
 Module:Hard fail/pickle
@@ -22,10 +24,18 @@ Module:Hard good/doc
 Module:Hard good/pickle
 Module:Hard good/pickle/doc
 Module:Hard incomplete fail
+Module:Hard incomplete fail/doc
 Module:Hard incomplete fail/pickle
+Module:Hard incomplete fail/pickle/doc
 Module:Hard incomplete good
+Module:Hard incomplete good/doc
 Module:Hard incomplete good/pickle
+Module:Hard incomplete good/pickle/doc
 Module:Hard skipped fail
+Module:Hard skipped fail/doc
 Module:Hard skipped fail/pickle
+Module:Hard skipped fail/pickle/doc
 Module:Hard skipped good
+Module:Hard skipped good/doc
 Module:Hard skipped good/pickle
+Module:Hard skipped good/pickle/doc
