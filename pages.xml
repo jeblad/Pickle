@@ -51,9 +51,9 @@
     <ns>0</ns>
     <id>35</id>
     <revision>
-      <id>120</id>
-      <parentid>119</parentid>
-      <timestamp>2017-06-14T02:09:25Z</timestamp>
+      <id>121</id>
+      <parentid>120</parentid>
+      <timestamp>2017-06-14T06:42:38Z</timestamp>
       <contributor>
         <ip>10.0.2.2</ip>
       </contributor>
@@ -109,13 +109,13 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
 |-
 ! rowspan=2 |''Categories''
 | rowspan=2 |
-|''[[:Category:{{Mediawiki:pickle-tracking-category-skip}}‎|{{Mediawiki:pickle-tracking-category-skip}}‎]]''
 |''[[:Category:{{Mediawiki:pickle-tracking-category-todo}}‎|{{Mediawiki:pickle-tracking-category-todo}}‎]]''
+|''[[:Category:{{Mediawiki:pickle-tracking-category-skip}}‎|{{Mediawiki:pickle-tracking-category-skip}}‎]]''
 | rowspan=2 |
 |-
 | colspan=2 |''[[:Category:{{Mediawiki:pickle-tracking-category-pending}}‎|{{Mediawiki:pickle-tracking-category-pending}}‎]]''
 |}</text>
-      <sha1>0w1n708r8xxig2skobberojurrm8wxf</sha1>
+      <sha1>9ogy1tzuihaw8tem2atvzzue7dfoyqp</sha1>
     </revision>
   </page>
   <page>
