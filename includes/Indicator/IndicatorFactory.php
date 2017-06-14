@@ -16,7 +16,9 @@ class IndicatorFactory extends Strategies {
 	use TNamedStrategies;
 
 	/**
-	 * Who am I
+	 * Who (am I)
+	 *
+	 * @return class
 	 */
 	public static function who() {
 		return __CLASS__;
@@ -24,6 +26,8 @@ class IndicatorFactory extends Strategies {
 
 	/**
 	 * Configure the strategies
+	 *
+	 * @return true
 	 */
 	public static function init() {
 		global $wgPickleIndicator;
@@ -39,13 +43,17 @@ class IndicatorFactory extends Strategies {
 	/**
 	 * Add track indicator for tested module
 	 * This is a replacement for a hook registered in extensions.json
+	 *
+	 * @param \Title $title target of the categorization
+	 * @param \ParserOutput $parserOutput parser result from the parsing process
+	 * @param array $states additional states to be merged (optional)
+	 * @return true
 	 */
 	public static function addIndicator(
 		\Title $title,
 		\ParserOutput $parserOutput,
 		array $states = null
 	) {
-
 		if ( $states == null ) {
 			return true;
 		}

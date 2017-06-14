@@ -29,10 +29,10 @@ abstract class AIndicator {
 	 * Make a page status indicator link given status and url
 	 *
 	 * @param string $url to the internal or external page
+	 * @param string $lang representing the language (optional)
 	 * @return Html|null
 	 */
 	public function makeLink( $url, $lang = null ) {
-
 		// Get the message containing the text to use for the link
 		// @message pickle-test-text-good
 		// @message pickle-test-text-fail
@@ -69,11 +69,10 @@ abstract class AIndicator {
 	/**
 	 * Make a page status indicator note given status
 	 *
-	 * @param string $status representing the state
+	 * @param string $lang representing the language (optional)
 	 * @return Html|null
 	 */
 	public function makeNote( $lang = null ) {
-
 		// Get the message containing the text to use for the link
 		// @message pickle-test-text-good
 		// @message pickle-test-text-fail
@@ -144,9 +143,8 @@ abstract class AIndicator {
 	/**
 	 * Add a new track indicator
 	 *
-	 * @param \Title target for the indicator
-	 * @param \ParserOutput where the indicator should be added
-	 *
+	 * @param \Title $title target for the indicator
+	 * @param \ParserOutput &$parserOutput where the indicator should be added
 	 * @return Message
 	 */
 	public function addIndicator( \Title $title = null, \ParserOutput &$parserOutput ) {
