@@ -15,6 +15,9 @@ class JsonExtractorStrategyTest extends Scribunto_LuaEngineTestBase {
 
 	protected static $moduleName = 'JsonExtractorStrategyTest';
 
+	/**
+	 * @see Scribunto_LuaEngineTestBase::getTestModules()
+	 */
 	function getTestModules() {
 		return parent::getTestModules() + [
 			'JsonExtractorStrategyTest' => __DIR__ . '/JsonExtractorStrategyTest.lua'

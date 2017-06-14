@@ -15,6 +15,9 @@ class SpyTest extends Scribunto_LuaEngineTestBase {
 
 	protected static $moduleName = 'SpyTest';
 
+	/**
+	 * @see Scribunto_LuaEngineTestBase::getTestModules()
+	 */
 	function getTestModules() {
 		return parent::getTestModules() + [
 			'SpyTest' => __DIR__ . '/SpyTest.lua'

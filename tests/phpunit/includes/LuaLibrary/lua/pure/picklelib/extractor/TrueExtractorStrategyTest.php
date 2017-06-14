@@ -15,6 +15,9 @@ class TrueExtractorStrategyTest extends Scribunto_LuaEngineTestBase {
 
 	protected static $moduleName = 'TrueExtractorStrategyTest';
 
+	/**
+	 * @see Scribunto_LuaEngineTestBase::getTestModules()
+	 */
 	function getTestModules() {
 		return parent::getTestModules() + [
 			'TrueExtractorStrategyTest' => __DIR__ . '/TrueExtractorStrategyTest.lua'

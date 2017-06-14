@@ -15,6 +15,9 @@ class NilExtractorStrategyTest extends Scribunto_LuaEngineTestBase {
 
 	protected static $moduleName = 'NilExtractorStrategyTest';
 
+	/**
+	 * @see Scribunto_LuaEngineTestBase::getTestModules()
+	 */
 	function getTestModules() {
 		return parent::getTestModules() + [
 			'NilExtractorStrategyTest' => __DIR__ . '/NilExtractorStrategyTest.lua'

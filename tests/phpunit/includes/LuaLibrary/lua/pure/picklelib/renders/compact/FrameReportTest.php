@@ -15,6 +15,9 @@ class FrameReportTest extends Scribunto_LuaEngineTestBase {
 
 	protected static $moduleName = 'FrameReportTest';
 
+	/**
+	 * @see Scribunto_LuaEngineTestBase::getTestModules()
+	 */
 	function getTestModules() {
 		return parent::getTestModules() + [
 			'FrameReportTest' => __DIR__ . '/FrameReportTest.lua'

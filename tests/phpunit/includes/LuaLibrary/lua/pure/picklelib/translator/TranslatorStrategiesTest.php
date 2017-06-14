@@ -15,6 +15,9 @@ class TranslatorStrategiesTest extends Scribunto_LuaEngineTestBase {
 
 	protected static $moduleName = 'TranslatorStrategiesTest';
 
+	/**
+	 * @see Scribunto_LuaEngineTestBase::getTestModules()
+	 */
 	function getTestModules() {
 		return parent::getTestModules() + [
 			'TranslatorStrategiesTest' => __DIR__ . '/TranslatorStrategiesTest.lua'

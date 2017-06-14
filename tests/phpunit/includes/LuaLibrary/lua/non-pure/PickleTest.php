@@ -15,6 +15,9 @@ class PickleTest extends Scribunto_LuaEngineTestBase {
 
 	protected static $moduleName = 'PickleTest';
 
+	/**
+	 * @see Scribunto_LuaEngineTestBase::getTestModules()
+	 */
 	function getTestModules() {
 		return parent::getTestModules() + [
 			'PickleTest' => __DIR__ . '/PickleTest.lua'
