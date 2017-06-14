@@ -6,6 +6,8 @@ class InvokeSubpageTestCase extends \MediaWikiTestCase {
 
 	protected $stub;
 
+	/**
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->stub = $this->getMockBuilder( '\Title' )
@@ -29,6 +31,8 @@ class InvokeSubpageTestCase extends \MediaWikiTestCase {
 			->will( $this->returnValue( CONTENT_MODEL_SCRIBUNTO ) );
 	}
 
+	/**
+	 */
 	public function tearDown() {
 		unset( $this->stub );
 		parent::tearDown();

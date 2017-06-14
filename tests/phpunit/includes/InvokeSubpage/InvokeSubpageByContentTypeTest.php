@@ -14,7 +14,8 @@ class InvokeSubpageByContentTypeTest extends InvokeSubpageTestCase {
 
 	protected $conf = [
 		"class" => "Pickle\\InvokeSubpageByContentType",
-		"type" => "Scribunto", // this is CONTENT_MODEL_SCRIBUNTO but as used in extension.json
+		// this is CONTENT_MODEL_SCRIBUNTO but as used in extension.json
+		"type" => "Scribunto",
 		"name" => "testcase"
 	];
 

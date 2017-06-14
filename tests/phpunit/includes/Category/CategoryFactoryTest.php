@@ -51,7 +51,6 @@ class CategoryFactoryTest extends StrategiesTestCase {
 	 * @dataProvider provideFind
 	 */
 	public function testFind( $expect, $name ) {
-
 		$title = $this->getMockBuilder( '\Title' )
 			->getMock();
 

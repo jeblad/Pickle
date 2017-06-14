@@ -7,6 +7,8 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 	protected $stubTitle;
 	protected $stubPOut;
 
+	/**
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->stubTitle = $this->getMockBuilder( '\Title' )
@@ -21,13 +23,20 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 			->will( $this->returnValue( true ) );
 	}
 
+	/**
+	 */
 	public function tearDown() {
 		unset( $this->stub );
 		parent::tearDown();
 	}
 
+	/**
+	 * @param any $conf for general configuration
+	 */
 	abstract protected function newInstance( $conf );
 
+	/**
+	 */
 	public function testOnCodeToInterface() {
 		$test = $this->newInstance( $this->conf );
 		$this->assertInstanceOf( 'Pickle\\AIndicator', $test );
@@ -35,6 +44,8 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 
 	/**
 	 * @dataProvider provideGetName
+	 * @param any $expect to get this
+	 * @param any $conf for this
 	 */
 	public function testOnGetName( $expect, $conf ) {
 		$test = $this->newInstance( $conf );
@@ -43,6 +54,8 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 		$this->assertEquals( $expect, $test->getName() );
 	}
 
+	/**
+	 */
 	public function testOnGetKey() {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );
@@ -51,6 +64,8 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 		$this->assertContains( $test->getName(), $test->getKey() );
 	}
 
+	/**
+	 */
 	public function testOnGetIcon() {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );
@@ -59,6 +74,8 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 		$this->assertContains( 'bar', $test->getIcon() );
 	}
 
+	/**
+	 */
 	public function testOnGetMessageKey() {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );
@@ -67,6 +84,8 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 		$this->assertContains( $test->getName(), $test->getMessageKey() );
 	}
 
+	/**
+	 */
 	public function testOnGetClassKey() {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );
@@ -74,6 +93,8 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 		$this->assertRegExp( '/^[-\w]+$/', $test->getClassKey() );
 	}
 
+	/**
+	 */
 	public function testOnAddIndicator() {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );
@@ -82,6 +103,8 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 		$this->assertNotNull( $result );
 	}
 
+	/**
+	 */
 	public function testOnMakeLink() {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );
@@ -93,6 +116,8 @@ abstract class IndicatorTestCase extends \MediaWikiTestCase {
 		$this->assertContains( $test->getMessageKey(), $elem );
 	}
 
+	/**
+	 */
 	public function testOnMakeNote() {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );

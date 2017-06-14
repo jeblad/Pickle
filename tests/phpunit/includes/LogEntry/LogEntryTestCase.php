@@ -6,6 +6,8 @@ abstract class LogEntryTestCase extends \MediaWikiTestCase {
 
 	protected $stubTitle;
 
+	/**
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->stubTitle = $this->getMockBuilder( '\Title' )
@@ -17,15 +19,22 @@ abstract class LogEntryTestCase extends \MediaWikiTestCase {
 			->will( $this->returnValue( 123 ) );
 	}
 
+	/**
+	 */
 	public function tearDown() {
 		unset( $this->stub );
 		parent::tearDown();
 	}
 
+	/**
+	 * @param any $conf for general configuration
+	 */
 	abstract protected function newInstance( $conf );
 
 	/**
 	 * @dataProvider provideGetName
+	 * @param any $expect to get this
+	 * @param any $conf for this
 	 */
 	public function testOnGetName( $expect, $conf ) {
 		$test = $this->newInstance( $conf );
@@ -34,6 +43,8 @@ abstract class LogEntryTestCase extends \MediaWikiTestCase {
 		$this->assertEquals( $expect, $test->getName() );
 	}
 
+	/**
+	 */
 	public function testOnCodeToInterface() {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );
@@ -43,6 +54,8 @@ abstract class LogEntryTestCase extends \MediaWikiTestCase {
 
 	/**
 	 * @dataProvider provideNewLogEntry
+	 * @param any $expect to get this
+	 * @param any $conf for this
 	 */
 	public function testOnNewLogEntry( $expect, $conf ) {
 		$test = $this->newInstance( $conf );

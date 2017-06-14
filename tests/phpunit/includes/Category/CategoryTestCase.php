@@ -7,6 +7,8 @@ abstract class CategoryTestCase extends \MediaWikiTestCase {
 	protected $stubTitle;
 	protected $stubPOut;
 
+	/**
+	 */
 	public function setUp() {
 		parent::setUp();
 		$this->stubTitle = $this->getMockBuilder( '\Title' )
@@ -20,15 +22,22 @@ abstract class CategoryTestCase extends \MediaWikiTestCase {
 			->will( $this->returnValue( true ) );
 	}
 
+	/**
+	 */
 	public function tearDown() {
 		unset( $this->stub );
 		parent::tearDown();
 	}
 
+	/**
+	 * @param any $conf for general configuration
+	 */
 	abstract protected function newInstance( $conf );
 
 	/**
 	 * @dataProvider provideGetName
+	 * @param any $expect to get this
+	 * @param any $conf for this
 	 */
 	public function testOnGetName( $expect, $conf ) {
 		$test = $this->newInstance( $conf );
@@ -39,6 +48,8 @@ abstract class CategoryTestCase extends \MediaWikiTestCase {
 
 	/**
 	 * @dataProvider provideGetKey
+	 * @param any $expect to get this
+	 * @param any $conf for this
 	 */
 	public function testOnGetKey( $expect, $conf ) {
 		$test = $this->newInstance( $conf );
@@ -47,11 +58,15 @@ abstract class CategoryTestCase extends \MediaWikiTestCase {
 		$this->assertEquals( $expect, $test->getKey() );
 	}
 
+	/**
+	 */
 	public function testOnCodeToInterface() {
 		$test = $this->newInstance( $this->conf );
 		$this->assertInstanceOf( 'Pickle\\ACategory', $test );
 	}
 
+	/**
+	 */
 	public function testOnAddCategory() {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );

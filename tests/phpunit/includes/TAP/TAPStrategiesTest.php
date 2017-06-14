@@ -55,7 +55,6 @@ class TAPStrategiesTest extends StrategiesTestCase {
 	 * @dataProvider provideFind
 	 */
 	public function testFind( $expect, $name, $str ) {
-
 		$test = TAPStrategies::getInstance();
 		$test->register(
 			[

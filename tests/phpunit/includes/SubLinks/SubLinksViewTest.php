@@ -13,7 +13,6 @@ use \Pickle\SubLinksView;
 class SubLinksViewTest extends \MediaWikiTestCase {
 
 	public function testOnMakeLink() {
-
 		$title = $this->getMockBuilder( '\Title' )
 			->setMethods( [ 'getPrefixedText' ] )
 			->getMock();
