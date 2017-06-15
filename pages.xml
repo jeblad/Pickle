@@ -51,16 +51,16 @@
     <ns>0</ns>
     <id>35</id>
     <revision>
-      <id>121</id>
-      <parentid>120</parentid>
-      <timestamp>2017-06-14T06:42:38Z</timestamp>
+      <id>122</id>
+      <parentid>121</parentid>
+      <timestamp>2017-06-15T12:56:17Z</timestamp>
       <contributor>
         <ip>10.0.2.2</ip>
       </contributor>
       <comment>/* Simple test cases */</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="4248">A few testcases are provided for manual testing. These test cases are for manual testing of the overall integration. Usually the unit tests should be sufficient, so these tests are only for final verification.
+      <text xml:space="preserve" bytes="4078">A few testcases are provided for manual testing. These test cases are for manual testing of the overall integration. Usually the unit tests should be sufficient, so these tests are only for final verification.
 
 == Exceptional test cases ==
 These are the exceptional cases where most of the framework does not apply. The &quot;missing&quot; case is where there are no test module. The &quot;unknown&quot; case is where there are some kind of test module, but the framework can't recognize the output. Both &quot;missing&quot; and &quot;unknown&quot; are conceptually pending, but whether such a category should be created is up to the community using the extension. 
@@ -107,15 +107,13 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
 |[[Module:Soft incomplete fail|Soft incomplete fail]]&lt;br&gt;&lt;span class=&quot;indicator-fail-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-todo-fail}}&lt;/span&gt;
 |[[Module:Soft skipped fail|Soft skipped fail]]&lt;br&gt;&lt;span class=&quot;indicator-fail-ltr indicator-fake indicator-small&quot;&gt;{{Mediawiki:pickle-test-text-skip-fail}}&lt;/span&gt;
 |-
-! rowspan=2 |''Categories''
-| rowspan=2 |
+!''Categories''
+|
 |''[[:Category:{{Mediawiki:pickle-tracking-category-todo}}‎|{{Mediawiki:pickle-tracking-category-todo}}‎]]''
 |''[[:Category:{{Mediawiki:pickle-tracking-category-skip}}‎|{{Mediawiki:pickle-tracking-category-skip}}‎]]''
-| rowspan=2 |
-|-
-| colspan=2 |''[[:Category:{{Mediawiki:pickle-tracking-category-pending}}‎|{{Mediawiki:pickle-tracking-category-pending}}‎]]''
+|
 |}</text>
-      <sha1>9ogy1tzuihaw8tem2atvzzue7dfoyqp</sha1>
+      <sha1>q8guc4roqixd3v955jem81yschtg1ll</sha1>
     </revision>
   </page>
   <page>
