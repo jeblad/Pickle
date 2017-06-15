@@ -14,6 +14,10 @@ class Hooks {
 
 	/**
 	 * Get final strategy
+	 *
+	 * @param \Pickle\AInvokeSubpage $strategy to act upon
+	 * @param \Title $title header information
+	 * @return any|null
 	 */
 	public static function getFinalStrategy(
 		AInvokeSubpage $strategy,
@@ -55,6 +59,10 @@ class Hooks {
 	/**
 	 * Page indicator for module with pickle tests
 	 * @todo design debt
+	 * @param \Content $content destination for changes
+	 * @param \Title $title header information
+	 * @param \ParserOutput $parserOutput to be passed on
+	 * @return boolean
 	 */
 	public static function onContentAlterParserOutput(
 		\Content $content,
@@ -97,7 +105,6 @@ class Hooks {
 					if ( ! $maybePageMsg->isDisabled() ) {
 						$maybePage = $maybePageMsg->plain();
 						if ( $maybePage == $title->getPrefixedText() ) {
-
 							// start collecting args for the hook
 							$args = [
 								// at this point the page type is test"
@@ -106,7 +113,8 @@ class Hooks {
 
 							// if invocation is disabled, then the state will be set to "exists" or "missing"
 							if ( $baseInvokeStrategy->getInvoke( $baseTitle )->isDisabled() ) {
-								$args[ 'status-current' ] = 'unknown'; // @todo either this or the comment above is wrong
+								// @todo either this or the comment above is wrong
+								$args[ 'status-current' ] = 'unknown';
 							} else {
 								// if status isn't found, then the state will be set to "unknown"
 								$statusStrategy = self::getFinalStrategy( $baseInvokeStrategy, $baseTitle );
@@ -187,7 +195,7 @@ class Hooks {
 	}
 
 	/**
-	 * @param string[] $files
+	 * @param string[] &$files to be tested
 	 */
 	public static function onUnitTestsList( array &$files ) {
 		$files[] = __DIR__ . '/../tests/phpunit/';
@@ -196,15 +204,14 @@ class Hooks {
 	/**
 	 * External Lua library paths for Scribunto
 	 *
-	 * @param string $engine
-	 * @param array $extraLibraryPaths
-	 * @return bool
+	 * @param string $engine to be used for the call
+	 * @param array &$extraLibraryPaths additional libs
+	 * @return boolean
 	 */
 	public static function onRegisterScribuntoExternalLibraryPaths(
-		$engine,
+		string $engine,
 		array &$extraLibraryPaths
 	) {
-
 		if ( $engine !== 'lua' ) {
 			return true;
 		}
@@ -218,12 +225,11 @@ class Hooks {
 	/**
 	 * Extra Lua libraries for Scribunto
 	 *
-	 * @param string $engine
-	 * @param array $extraLibraries
+	 * @param string $engine to be used for the call
+	 * @param array &$extraLibraries additional libs
 	 * @return bool
 	 */
-	public static function onRegisterScribuntoLibraries( $engine, array &$extraLibraries ) {
-
+	public static function onRegisterScribuntoLibraries( string $engine, array &$extraLibraries ) {
 		if ( $engine !== 'lua' ) {
 			return true;
 		}
