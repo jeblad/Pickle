@@ -11,9 +11,11 @@ class SubLinksView implements ISubLinksView {
 
 	/**
 	 * @see \Pickle\ISubLinksView::makeLink()
+	 * @param \Title $title link destination
+	 * @param string $lang representing the language
+	 * @return Html|null
 	 */
-	public static function makeLink( $title, $lang = null ) {
-
+	public static function makeLink( \Title $title, string $lang = null ) {
 		// Get the message containing the text to use for the link
 		$msg = wfMessage( 'viewpagelogs' );
 		$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );
@@ -35,12 +37,15 @@ class SubLinksView implements ISubLinksView {
 	/**
 	 * Add change log for tested module
 	 * This is a callback for a hook registered in extensions.json
+	 *
+	 * @param \OutputPage &$out target page
+	 * @param \ParserOutput $parserOutput source
+	 * @return Html|null
 	 */
 	public static function onOutputPageParserOutput(
 		\OutputPage &$out,
 		\ParserOutput $parserOutput
 	) {
-
 		$currentKey = $parserOutput->getExtensionData( 'pickle-status-current' );
 		$currentType = $parserOutput->getExtensionData( 'pickle-page-type' );
 
