@@ -12,10 +12,10 @@ class SubLinksView implements ISubLinksView {
 	/**
 	 * @see \Pickle\ISubLinksView::makeLink()
 	 * @param \Title $title link destination
-	 * @param string $lang representing the language
+	 * @param any $lang representing the language
 	 * @return Html|null
 	 */
-	public static function makeLink( \Title $title, string $lang = null ) {
+	public static function makeLink( \Title $title, $lang = null ) {
 		// Get the message containing the text to use for the link
 		$msg = wfMessage( 'viewpagelogs' );
 		$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );

@@ -13,8 +13,8 @@ interface ISubLinksView {
 	 * Make a link to the special log page
 	 *
 	 * @param \Title $title link destination
-	 * @param string $lang representing the language
+	 * @param any $lang representing the language
 	 * @return Html|null
 	 */
-	public static function makeLink( \Title $title, string $lang = null );
+	public static function makeLink( \Title $title, $lang = null );
 }
