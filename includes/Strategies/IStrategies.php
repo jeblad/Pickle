@@ -23,7 +23,7 @@ interface IStrategies {
 	 * The imported structure should be treated as oblique.
 	 * Should only be used during test!
 	 *
-	 * @param array holding the new strategies
+	 * @param array $arr holding the new strategies (optional)
 	 */
 	public function import( array $arr = null );
 
@@ -36,7 +36,7 @@ interface IStrategies {
 	/**
 	 * Register a class
 	 *
-	 * @param array describing the result
+	 * @param array $struct describing the result
 	 * @return Object
 	 */
 	public function register( array $struct );

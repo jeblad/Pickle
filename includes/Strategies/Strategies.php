@@ -18,7 +18,9 @@ class Strategies implements IStrategies {
 	}
 
 	/**
-	 * Who am I
+	 * Who (am I)
+	 *
+	 * @return class
 	 */
 	public static function who() {
 		return __CLASS__;
@@ -27,8 +29,11 @@ class Strategies implements IStrategies {
 	/**
 	 * Get the instance and if necessary initialize the strategy
 	 * This does an injection of the class name to make it possible to instantiate a subclass.
+	 *
+	 * @param string $className holding the name of the class (optional)
+	 * @return any|null
 	 */
-	public static function getInstance( $className = null ) {
+	public static function getInstance( string $className = null ) {
 		if ( $className === null ) {
 			$className = static::who();
 		}
@@ -40,6 +45,7 @@ class Strategies implements IStrategies {
 
 	/**
 	 * @see \Pickle\IStrategy::export()
+	 * @return array
 	 */
 	public function export() {
 		return $this->instances;
@@ -47,6 +53,8 @@ class Strategies implements IStrategies {
 
 	/**
 	 * @see \Pickle\IStrategy::import()
+	 * @param array $arr holding the new strategies (optional)
+	 * @return array
 	 */
 	public function import( array $arr = null ) {
 		$this->instances = $arr;
@@ -62,6 +70,8 @@ class Strategies implements IStrategies {
 
 	/**
 	 * @see \Pickle\IStrategy::register()
+	 * @param array $struct for a new singleton
+	 * @return any
 	 */
 	public function register( array $struct ) {
 		$instance = new $struct['class']( $struct );
@@ -71,6 +81,7 @@ class Strategies implements IStrategies {
 
 	/**
 	 * @see \Pickle\IStrategy::isEmpty()
+	 * @return boolean
 	 */
 	public function isEmpty() {
 		return ( $this->instances === [] );
