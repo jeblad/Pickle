@@ -27,7 +27,7 @@ trait TNamedStrategies {
 	/**
 	 * Checks if there is any strategy with this name
 	 *
-	 * @param string $name of the instance
+	 * @param any $name of the instance
 	 * @return any|null depending on the type of found instance
 	 */
 	public function find( $name ) {

@@ -30,10 +30,10 @@ class Strategies implements IStrategies {
 	 * Get the instance and if necessary initialize the strategy
 	 * This does an injection of the class name to make it possible to instantiate a subclass.
 	 *
-	 * @param string $className holding the name of the class (optional)
+	 * @param any $className holding the name of the class (optional)
 	 * @return any|null
 	 */
-	public static function getInstance( string $className = null ) {
+	public static function getInstance( $className = null ) {
 		if ( $className === null ) {
 			$className = static::who();
 		}
