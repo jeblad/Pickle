@@ -27,8 +27,8 @@ abstract class ALogEntry {
 	 * Create a new track log entry
 	 * This will not insert and publish the entry.
 	 *
-	 * @param \Title target of the logged action
-	 * @param \LogEntry|null predefined log entry for testing purposes
+	 * @param \Title $title target of the logged action
+	 * @param \LogEntry|null $logEntry predefined log entry for testing purposes (optional)
 	 *
 	 * @return LogEntry|null
 	 */
@@ -38,13 +38,12 @@ abstract class ALogEntry {
 	 * Add a log entry
 	 * This will create a log entry, insert it in the log and publish it.
 	 *
-	 * @param \Title target of the logged action
-	 * @param \LogEntry|null predefined log entry for testing purposes
+	 * @param \Title $title target of the logged action
+	 * @param \LogEntry|null $logEntry predefined log entry for testing purposes (optional)
 	 *
 	 * @return LogEntry|null
 	 */
 	public function addLogEntry( \Title $title, \LogEntry $logEntry = null ) {
-
 		$logEntry = $this->newLogEntry( $title );
 
 		$logid = $logEntry->insert();

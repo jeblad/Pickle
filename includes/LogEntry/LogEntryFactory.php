@@ -16,7 +16,9 @@ class LogEntryFactory extends Strategies {
 	use TNamedStrategies;
 
 	/**
-	 * Who am I
+	 * Who (am I)
+	 *
+	 * @return class
 	 */
 	public static function who() {
 		return __CLASS__;
@@ -24,6 +26,7 @@ class LogEntryFactory extends Strategies {
 
 	/**
 	 * Configure the strategies
+	 * @return boolean
 	 */
 	public static function init() {
 		global $wgPickleLogEntry;
@@ -39,13 +42,17 @@ class LogEntryFactory extends Strategies {
 	/**
 	 * Add track log for tested module
 	 * This is a callback for a hook registered in extensions.json
+	 *
+	 * @param \Title $title header information
+	 * @param \ParserOutput $parserOutput parser
+	 * @param array $states previous identified states (optional)
+	 * @return boolean
 	 */
 	public static function addLogEntry(
 		\Title $title,
 		\ParserOutput $parserOutput,
 		array $states = null
 	) {
-
 		if ( $states == null ) {
 			return true;
 		}
