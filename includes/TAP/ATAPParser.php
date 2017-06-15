@@ -26,11 +26,10 @@ abstract class ATAPParser {
 	/**
 	 * Try to get the version of the test result
 	 *
-	 * @param string result from the evaluation
+	 * @param string $str result from the evaluation
 	 * @return int|null
 	 */
 	public static function getVersion( $str ) {
-
 		if ( preg_match( '/^TAP version (\d+)/i', $str, $matches ) === 1 ) {
 			$version = intval( $matches[1] );
 			return intval( $version );
@@ -43,11 +42,10 @@ abstract class ATAPParser {
 	 * Try to get the number of test results
 	 * This can be used as a kind of weak indication of type of tap.
 	 *
-	 * @param string result from the evaluation
+	 * @param string $str result from the evaluation
 	 * @return int|null
 	 */
 	public static function getCount( $str ) {
-
 		if ( preg_match( '/^1..(\d+)\s*$/m', $str, $matches ) === 1 ) {
 			return intval( $matches[1] );
 		}
@@ -58,7 +56,7 @@ abstract class ATAPParser {
 	/**
 	 * Check if the line represent a good test
 	 *
-	 * @param string result to inspect
+	 * @param string $line result to inspect
 	 * @return boolean
 	 */
 	public static function isOk( $line ) {
@@ -68,7 +66,7 @@ abstract class ATAPParser {
 	/**
 	 * Check if the line represent a bad test
 	 *
-	 * @param string result to inspect
+	 * @param string $line result to inspect
 	 * @return boolean
 	 */
 	public static function isNotOk( $line ) {
@@ -80,7 +78,7 @@ abstract class ATAPParser {
 	 * A test could be skipped due to missing dependencies.
 	 * Skipped tests imply that the test set isn't complete.
 	 *
-	 * @param string result to inspect
+	 * @param string $line result to inspect
 	 * @return boolean
 	 */
 	public static function isSkip( $line ) {
@@ -90,7 +88,7 @@ abstract class ATAPParser {
 	/**
 	 * Check if the line represent a test that is marked as todo
 	 *
-	 * @param string result to inspect
+	 * @param string $line result to inspect
 	 * @return boolean
 	 */
 	public static function isTodo( $line ) {
@@ -101,7 +99,7 @@ abstract class ATAPParser {
 	 * Check if the line represent a test that is indexed
 	 * Note that not all TAP-format uses indexes.
 	 *
-	 * @param string result to inspect
+	 * @param string $line result to inspect
 	 * @return boolean
 	 */
 	public static function isIndex( $line ) {
@@ -114,7 +112,7 @@ abstract class ATAPParser {
 	/**
 	 * Check if the line represent a comment
 	 *
-	 * @param string result to inspect
+	 * @param string $line result to inspect
 	 * @return boolean
 	 */
 	public static function isComment( $line ) {
@@ -127,7 +125,7 @@ abstract class ATAPParser {
 	/**
 	 * Check if the line represent a text
 	 *
-	 * @param string result to inspect
+	 * @param string $line result to inspect
 	 * @return boolean
 	 */
 	public static function isText( $line ) {
@@ -139,6 +137,7 @@ abstract class ATAPParser {
 
 	/**
 	 * @see \Pickle\ATAPParser::getName()
+	 * @return string
 	 */
 	public function getName() {
 		return $this->opts['name'];
@@ -147,7 +146,7 @@ abstract class ATAPParser {
 	/**
 	 * Checks if the text is accoring to a given version
 	 *
-	 * @param string result from the evaluation
+	 * @param string $str result from the evaluation
 	 * @return boolean
 	 */
 	abstract public function checkValid( $str );
@@ -156,8 +155,16 @@ abstract class ATAPParser {
 	 * Get the parsed form
 	 * This isn't really a parser, it just squashes the string into submission.
 	 *
-	 * @param string result from the evaluation
+	 * @param string $str result from the evaluation
 	 * @return string
 	 */
 	abstract public function parse( $str );
+
+	/**
+	 * @see \Pickle\ATAPParser::stats()
+	 * @param string $str result to be analyzed
+	 * @return array
+	 */
+	abstract public function stats( $str );
+
 }

@@ -12,7 +12,9 @@ use MediaWiki\Logger\LoggerFactory;
 class TAPStrategies extends Strategies {
 
 	/**
-	 * Who am I
+	 * Who (am I)
+	 *
+	 * @return class
 	 */
 	public static function who() {
 		return __CLASS__;
@@ -20,6 +22,8 @@ class TAPStrategies extends Strategies {
 
 	/**
 	 * Configure the strategies
+	 *
+	 * @return true
 	 */
 	public static function init() {
 		global $wgPickleTAP;
@@ -35,8 +39,8 @@ class TAPStrategies extends Strategies {
 	/**
 	 * Checks if the string has any of the strategies stored patterns
 	 *
-	 * @param String $str
 	 *
+	 * @param string $str used as key
 	 * @return string
 	 */
 	public function find( $str ) {

@@ -13,7 +13,7 @@ use \Pickle\ATAPParser;
 class TAP13Parser extends ATAPParser {
 
 	/**
-	 * @param array structure from extension setup
+	 * @param array $opts structure from extension setup
 	 */
 	public function __construct( array $opts ) {
 		$this->opts = array_merge( [ 'name' => 'tap-13' ], $opts );
@@ -21,6 +21,8 @@ class TAP13Parser extends ATAPParser {
 
 	/**
 	 * @see \Pickle\ATAPParser::Parser()
+	 * @param string $str result from the evaluation
+	 * @return string
 	 */
 	public function parse( $str ) {
 		$count = self::getCount( $str );
@@ -71,6 +73,8 @@ class TAP13Parser extends ATAPParser {
 
 	/**
 	 * @see \Pickle\ATAPParser::stats()
+	 * @param string $str result to be analyzed
+	 * @return array
 	 */
 	public function stats( $str ) {
 		$good = [ 0, 0, 0 ];
@@ -106,6 +110,8 @@ class TAP13Parser extends ATAPParser {
 
 	/**
 	 * @see \Pickle\ATAPParser::checkValid()
+	 * @param string $str result from the evaluation
+	 * @return boolean
 	 */
 	public function checkValid( $str ) {
 		return ( $this->getVersion( $str ) === 13 );
