@@ -204,12 +204,12 @@ class Hooks {
 	/**
 	 * External Lua library paths for Scribunto
 	 *
-	 * @param string $engine to be used for the call
+	 * @param any $engine to be used for the call
 	 * @param array &$extraLibraryPaths additional libs
 	 * @return boolean
 	 */
 	public static function onRegisterScribuntoExternalLibraryPaths(
-		string $engine,
+		$engine,
 		array &$extraLibraryPaths
 	) {
 		if ( $engine !== 'lua' ) {
@@ -225,11 +225,11 @@ class Hooks {
 	/**
 	 * Extra Lua libraries for Scribunto
 	 *
-	 * @param string $engine to be used for the call
+	 * @param any $engine to be used for the call
 	 * @param array &$extraLibraries additional libs
 	 * @return bool
 	 */
-	public static function onRegisterScribuntoLibraries( string $engine, array &$extraLibraries ) {
+	public static function onRegisterScribuntoLibraries( $engine, array &$extraLibraries ) {
 		if ( $engine !== 'lua' ) {
 			return true;
 		}
