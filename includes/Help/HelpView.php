@@ -14,7 +14,7 @@ class HelpView {
 	protected $out;
 
 	/**
-	 * @param \OutputPage
+	 * @param \OutputPage $out target
 	 */
 	public function __construct( \OutputPage $out ) {
 		$this->out = $out;
@@ -24,9 +24,8 @@ class HelpView {
 	 * Build the help view
 	 * This isn't really part of a normal MVC design pattern, it will only build a minimal view.
 	 *
-	 * @param OutputPage $out
-	 *
-	 * @return \OutputPage outcome of the call
+	 * @param \OutputPage $output target (optional)
+	 * @return \Pickle\HelpView
 	 */
 	public static function build( \OutputPage $output = null ) {
 		global $wgOut;
