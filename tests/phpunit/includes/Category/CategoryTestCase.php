@@ -62,7 +62,7 @@ abstract class CategoryTestCase extends \MediaWikiTestCase {
 	 */
 	public function testOnCodeToInterface() {
 		$test = $this->newInstance( $this->conf );
-		$this->assertInstanceOf( 'Pickle\\ACategory', $test );
+		$this->assertInstanceOf( 'Pickle\\Category', $test );
 	}
 
 	/**

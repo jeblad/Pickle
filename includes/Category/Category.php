@@ -8,7 +8,7 @@ namespace Pickle;
  *
  * @ingroup Extensions
  */
-abstract class ACategory {
+class Category {
 
 	use TNamedStrategy;
 
