@@ -34,8 +34,8 @@
 		"Pickle\\LogEntryFactory":
 			"includes/LogEntry/LogEntryFactory.php",
 
-		"Pickle\\ACategory":
-			"includes/Category/ACategory.php",
+		"Pickle\\Category":
+			"includes/Category/Category.php",
 		"Pickle\\CategoryDefault":
 			"includes/Category/CategoryDefault.php",
 		"Pickle\\CategoryCommon":

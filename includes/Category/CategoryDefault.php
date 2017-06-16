@@ -9,7 +9,7 @@ namespace Pickle;
  *
  * @ingroup Extensions
  */
-class CategoryDefault extends ACategory {
+class CategoryDefault extends Category {
 
 	/**
 	 * @param array $opts structure from extension setup
