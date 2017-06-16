@@ -49,7 +49,7 @@ abstract class LogEntryTestCase extends \MediaWikiTestCase {
 		$test = $this->newInstance( $this->conf );
 		$this->assertNotNull( $test );
 
-		$this->assertInstanceOf( 'Pickle\\ALogEntry', $test );
+		$this->assertInstanceOf( 'Pickle\\LogEntry', $test );
 	}
 
 	/**

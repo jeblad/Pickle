@@ -4,11 +4,11 @@ namespace Pickle;
 
 /**
  * Log entry base
- * Encapsulates the abstract base class log entry as an adapter.
+ * Encapsulates the base class log entry as an adapter.
  *
  * @ingroup Extensions
  */
-abstract class ALogEntry {
+class LogEntry {
 
 	use TNamedStrategy;
 
@@ -32,7 +32,16 @@ abstract class ALogEntry {
 	 *
 	 * @return LogEntry|null
 	 */
-	abstract function newLogEntry( \Title $title, \LogEntry $logEntry = null );
+	public function newLogEntry( \Title $title, \LogEntry $logEntry = null ) {
+		// the log entry is not optional for the base class
+		assert( $logEntry );
+
+		$logEntry->setPerformer( \Pickle\Observer::getUser() );
+		$logEntry->setTarget( $title );
+		$logEntry->setIsPatrollable( false );
+
+		return $logEntry;
+	}
 
 	/**
 	 * Add a log entry
@@ -44,7 +53,9 @@ abstract class ALogEntry {
 	 * @return LogEntry|null
 	 */
 	public function addLogEntry( \Title $title, \LogEntry $logEntry = null ) {
-		$logEntry = $this->newLogEntry( $title );
+		if ( is_null( $logEntry ) ) {
+			$logEntry = $this->newLogEntry( $title );
+		}
 
 		$logid = $logEntry->insert();
 		$logEntry->publish( $logid );

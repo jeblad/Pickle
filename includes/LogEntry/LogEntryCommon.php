@@ -9,7 +9,7 @@ namespace Pickle;
  *
  * @ingroup Extensions
  */
-class LogEntryCommon extends ALogEntry {
+class LogEntryCommon extends LogEntry {
 
 	/**
 	 * @param array $opts structure from extension setup
@@ -19,20 +19,15 @@ class LogEntryCommon extends ALogEntry {
 	}
 
 	/**
-	 * @see \Pickle\ALogEntryStrategy::newLogEntry()
+	 * @see \Pickle\LogEntryStrategy::newLogEntry()
 	 * @param \Title $title header information
 	 * @param \LogEntry $logEntry preexisting log entry (optional)
 	 * @return \LogEntry
 	 */
 	public function newLogEntry( \Title $title, \LogEntry $logEntry = null ) {
-		if ( $logEntry === null ) {
+		if ( is_null( $logEntry ) ) {
 			$logEntry = new \ManualLogEntry( 'track', $this->opts['name'] );
 		}
-
-		$logEntry->setPerformer( \Pickle\Observer::getUser() );
-		$logEntry->setTarget( $title );
-		$logEntry->setIsPatrollable( false );
-
-		return $logEntry;
+		return parent::newLogEntry( $title, $logEntry );
 	}
 }
