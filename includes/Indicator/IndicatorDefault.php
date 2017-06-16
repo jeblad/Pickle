@@ -9,7 +9,7 @@ namespace Pickle;
  *
  * @ingroup Extensions
  */
-class IndicatorDefault extends AIndicator {
+class IndicatorDefault extends Indicator {
 
 	/**
 	 * @param array $opts structure from extension setup

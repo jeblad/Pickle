@@ -43,8 +43,8 @@
 		"Pickle\\CategoryFactory":
 			"includes/Category/CategoryFactory.php",
 
-		"Pickle\\AIndicator":
-			"includes/Indicator/AIndicator.php",
+		"Pickle\\Indicator":
+			"includes/Indicator/Indicator.php",
 		"Pickle\\IndicatorDefault":
 			"includes/Indicator/IndicatorDefault.php",
 		"Pickle\\IndicatorCommon":
