@@ -9,7 +9,7 @@ namespace Pickle;
  *
  * @ingroup Extensions
  */
-abstract class AExtractStatus {
+class ExtractStatus {
 
 	use TNamedStrategy;
 
@@ -28,8 +28,10 @@ abstract class AExtractStatus {
 	 * Checks if the string has the strategys stored pattern
 	 *
 	 * @param string $str heystack
-	 * @return number
+	 * @return number|boolean
 	 */
-	abstract public function checkState( $str );
+	public function checkState( $str ) {
+		return false;
+	}
 
 }

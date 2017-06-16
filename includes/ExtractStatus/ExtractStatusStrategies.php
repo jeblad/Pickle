@@ -49,7 +49,8 @@ class ExtractStatusStrategies extends Strategies {
 			ExtractStatusStrategies::init();
 		}
 		foreach ( $this->instances as $strategy ) {
-			if ( $strategy->checkState( $str ) ) {
+			$state = $strategy->checkState( $str );
+			if ( is_bool( $state ) ? $state : true ) {
 				LoggerFactory::getInstance( 'Pickle' )
 					->debug( 'Found extract status strategy: {name}',
 						array_merge(

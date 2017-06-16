@@ -20,7 +20,7 @@ class ExtractStatusByPatternTest extends MediaWikiTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = new ExtractStatusByPattern( $this->conf );
-		$this->assertInstanceOf( 'Pickle\\AExtractStatus', $test );
+		$this->assertInstanceOf( 'Pickle\\ExtractStatus', $test );
 	}
 
 	public function testOnGetName() {
@@ -31,10 +31,10 @@ class ExtractStatusByPatternTest extends MediaWikiTestCase {
 	public function provideCheckState() {
 		// Note that cases are limited to whats interesting
 		return [
-			[ 1, 'foo bar good baz' ],
-			[ 1, 'good' ],
-			[ 0, 'foo bar baz' ],
-			[ 0, '' ]
+			[ true, 'foo bar good baz' ],
+			[ true, 'good' ],
+			[ false, 'foo bar baz' ],
+			[ false, '' ]
 		];
 	}
 
@@ -43,6 +43,6 @@ class ExtractStatusByPatternTest extends MediaWikiTestCase {
 	 */
 	public function testCheckState( $expect, $str ) {
 		$test = new ExtractStatusByPattern( $this->conf );
-		$this->assertEquals( $expect, $test->checkState( $str ) );
+		$this->assertSame( $expect, $test->checkState( $str ) );
 	}
 }
