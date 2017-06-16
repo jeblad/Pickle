@@ -10,7 +10,7 @@ use MediaWiki\Logger\LoggerFactory;
  *
  * @ingroup Extensions
  */
-abstract class AIndicator {
+abstract class Indicator {
 
 	use TNamedStrategy;
 

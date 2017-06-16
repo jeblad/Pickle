@@ -10,7 +10,7 @@ namespace Pickle;
  * file
  * @ingroup Extensions
  */
-class IndicatorCommon extends AIndicator {
+class IndicatorCommon extends Indicator {
 
 	/**
 	 * @param array $opts structure from extension setup
