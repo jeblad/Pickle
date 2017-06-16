@@ -19,7 +19,7 @@ class InvokeSubpageDefaultTest extends InvokeSubpageTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = new InvokeSubpageDefault( $this->conf );
-		$this->assertInstanceOf( 'Pickle\\AInvokeSubpage', $test );
+		$this->assertInstanceOf( 'Pickle\\InvokeSubpage', $test );
 	}
 
 	public function testOnGetSubpagePrefixedText() {

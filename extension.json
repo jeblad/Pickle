@@ -70,8 +70,8 @@
 		"Pickle\\ExtractStatusStrategies":
 			"includes/ExtractStatus/ExtractStatusStrategies.php",
 
-		"Pickle\\AInvokeSubpage":
-			"includes/InvokeSubpage/AInvokeSubpage.php",
+		"Pickle\\InvokeSubpage":
+			"includes/InvokeSubpage/InvokeSubpage.php",
 		"Pickle\\InvokeSubpageDefault":
 			"includes/InvokeSubpage/InvokeSubpageDefault.php",
 		"Pickle\\InvokeSubpageByContentType":

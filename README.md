@@ -259,7 +259,7 @@ It is possible to adapt this section to additional entries, typically new ways
 to invoke the subpage.
 
 The strategy classes are divided into a common
-[interface](https://github.com/jeblad/pickle/blob/master/includes/InvokeSubpage/AInvokeSubpageStrategy.php)
+[interface](https://github.com/jeblad/pickle/blob/master/includes/InvokeSubpage/InvokeSubpageStrategy.php)
 and a [singleton](https://github.com/jeblad/pickle/blob/master/includes/InvokeSubpage/InvokeSubpageStrategies.php),
 where the singleton is the access point for higher level code. All PHP classes
 that implements the strategy are implementations of the interface.

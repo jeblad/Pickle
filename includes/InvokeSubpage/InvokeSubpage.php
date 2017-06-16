@@ -9,7 +9,7 @@ namespace Pickle;
  *
  * @ingroup Extensions
  */
-abstract class AInvokeSubpage {
+abstract class InvokeSubpage {
 
 	use TNamedStrategy;
 
@@ -30,7 +30,9 @@ abstract class AInvokeSubpage {
 	 * @param \Title &$title to be used as source
 	 * @return boolean
 	 */
-	abstract public function checkType( \Title &$title );
+	public function checkType( \Title &$title ) {
+		return false;
+	}
 
 	/**
 	 * Checks if the subpage title has the strategys stored type
@@ -39,7 +41,9 @@ abstract class AInvokeSubpage {
 	 * @param boolean $type of content model (optional)
 	 * @return boolean
 	 */
-	abstract public function checkSubpageType( \Title &$title, $type = null );
+	public function checkSubpageType( \Title &$title, $type = null ) {
+		return false;
+	}
 
 	/**
 	 * Get the invoke
@@ -48,7 +52,9 @@ abstract class AInvokeSubpage {
 	 * @param \Title &$title to be used as source
 	 * @return \Message
 	 */
-	abstract public function getInvoke( \Title &$title );
+	public function getInvoke( \Title &$title ) {
+		return null;
+	}
 
 	/**
 	 * Get the SubpagePrefixedText
@@ -57,7 +63,9 @@ abstract class AInvokeSubpage {
 	 * @param \Title &$title to be used as source
 	 * @return \Message
 	 */
-	abstract public function getSubpagePrefixedText( \Title &$title );
+	public function getSubpagePrefixedText( \Title &$title ) {
+		return null;
+	}
 
 	/**
 	 * Get the SubpageBaseText
@@ -66,7 +74,9 @@ abstract class AInvokeSubpage {
 	 * @param \Title &$title to be used as source
 	 * @return \Message
 	 */
-	abstract public function getSubpageBaseText( \Title &$title );
+	public function getSubpageBaseText( \Title &$title ) {
+		return null;
+	}
 
 	/**
 	 * Get the SubpageTitle
@@ -75,7 +85,9 @@ abstract class AInvokeSubpage {
 	 * @param \Title &$title to be used as source
 	 * @return \Title
 	 */
-	abstract public function getSubpageTitle( \Title &$title );
+	public function getSubpageTitle( \Title &$title ) {
+		return \Title::newFromText( $this->getSubpagePrefixedText( $title )->plain() );
+	}
 
 	/**
 	 * Get the question part of the console call for the tester
@@ -83,7 +95,9 @@ abstract class AInvokeSubpage {
 	 * @param \Title &$title to used as source (not in use)
 	 * @return simplexml_load_string
 	 */
-	abstract public function getTesterQuestion( \Title &$title );
+	public function getTesterQuestion( \Title &$title ) {
+		return $this->opts['testerQuestion'];
+	}
 
 	/**
 	 * Get the question part of the console call for the testee
@@ -91,5 +105,8 @@ abstract class AInvokeSubpage {
 	 * @param \Title &$title to used as source (not in use)
 	 * @return simplexml_load_string
 	 */
-	abstract public function getTesteeQuestion( \Title &$title );
+	public function getTesteeQuestion( \Title &$title ) {
+		$prefixedText = $this->getSubpagePrefixedText( $title );
+		return sprintf( $this->opts['testeeQuestion'], $prefixedText->plain() );
+	}
 }

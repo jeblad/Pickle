@@ -15,12 +15,12 @@ class Hooks {
 	/**
 	 * Get final strategy
 	 *
-	 * @param \Pickle\AInvokeSubpage $strategy to act upon
+	 * @param \Pickle\InvokeSubpage $strategy to act upon
 	 * @param \Title $title header information
 	 * @return any|null
 	 */
 	public static function getFinalStrategy(
-		AInvokeSubpage $strategy,
+		InvokeSubpage $strategy,
 		\Title $title
 	) {
 		$logger = LoggerFactory::getInstance( 'Pickle' );
