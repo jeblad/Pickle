@@ -279,7 +279,7 @@ own [extension.json](https://github.com/jeblad/pickle/blob/master/extension.json
 It is possible to adapt this section to additional entries, typically new states.
 
 The strategy classes are divided into a common
-[interface](https://github.com/jeblad/pickle/blob/master/includes/ExtractStatus/AExtractStatus.php)
+[interface](https://github.com/jeblad/pickle/blob/master/includes/ExtractStatus/ExtractStatus.php)
 and a [singleton](https://github.com/jeblad/pickle/blob/master/includes/ExtractStatus/ExtractStatusStrategies.php),
 where the singleton is the accesspoint for higher level code. All PHP classes
 that implements the strategy are implementations of the interface.

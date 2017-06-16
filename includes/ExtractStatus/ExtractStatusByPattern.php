@@ -2,7 +2,7 @@
 
 namespace Pickle;
 
-use \Pickle\AExtractStatus;
+use \Pickle\ExtractStatus;
 
 /**
  * Concrete strategy to extract status
@@ -12,7 +12,7 @@ use \Pickle\AExtractStatus;
  *
  * @ingroup Extensions
  */
-class ExtractStatusByPattern extends AExtractStatus {
+class ExtractStatusByPattern extends ExtractStatus {
 
 	/**
 	 * @param array $opts structure from extension setup
@@ -22,12 +22,13 @@ class ExtractStatusByPattern extends AExtractStatus {
 	}
 
 	/**
-	 * @see \Pickle\AExtractStatus::checkState()
+	 * @see \Pickle\ExtractStatus::checkState()
 	 * @param string $str heystack
-	 * @return number
+	 * @return number|boolean
 	 */
 	public function checkState( $str ) {
-		return preg_match( $this->opts['pattern'], $str );
+		$match = preg_match( $this->opts['pattern'], $str );
+		return is_numeric( $match ) ? ( $match > 0 ) : $match;
 	}
 
 }

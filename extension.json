@@ -61,8 +61,8 @@
 		"Pickle\\TAPStrategies":
 			"includes/TAP/TAPStrategies.php",
 
-		"Pickle\\AExtractStatus":
-			"includes/ExtractStatus/AExtractStatus.php",
+		"Pickle\\ExtractStatus":
+			"includes/ExtractStatus/ExtractStatus.php",
 		"Pickle\\ExtractStatusDefault":
 			"includes/ExtractStatus/ExtractStatusDefault.php",
 		"Pickle\\ExtractStatusByPattern":

@@ -16,7 +16,7 @@ class ExtractStatusDefaultTest extends MediaWikiTestCase {
 
 	public function testOnCodeToInterface() {
 		$test = new ExtractStatusDefault( $this->conf );
-		$this->assertInstanceOf( 'Pickle\\AExtractStatus', $test );
+		$this->assertInstanceOf( 'Pickle\\ExtractStatus', $test );
 	}
 
 	public function testOnGetName() {
@@ -27,8 +27,8 @@ class ExtractStatusDefaultTest extends MediaWikiTestCase {
 	public function provideCheckState() {
 		// Note that cases are limited to whats interesting
 		return [
-			[ 1, 'foo bar baz' ],
-			[ 1, '' ],
+			[ true, 'foo bar baz' ],
+			[ true, '' ],
 		];
 	}
 
@@ -37,6 +37,6 @@ class ExtractStatusDefaultTest extends MediaWikiTestCase {
 	 */
 	public function testCheckState( $expect, $str ) {
 		$test = new ExtractStatusDefault( $this->conf );
-		$this->assertEquals( 1, $test->checkState( $str ) );
+		$this->assertSame( $expect, $test->checkState( $str ) );
 	}
 }

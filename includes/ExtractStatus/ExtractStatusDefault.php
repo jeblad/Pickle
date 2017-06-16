@@ -2,7 +2,7 @@
 
 namespace Pickle;
 
-use \Pickle\AExtractStatus;
+use \Pickle\ExtractStatus;
 
 /**
  * Concrete strategy to extract stratus
@@ -11,7 +11,7 @@ use \Pickle\AExtractStatus;
  *
  * @ingroup Extensions
  */
-class ExtractStatusDefault extends AExtractStatus {
+class ExtractStatusDefault extends ExtractStatus {
 
 	/**
 	 * @param array $opts structure from extension setup
@@ -21,12 +21,12 @@ class ExtractStatusDefault extends AExtractStatus {
 	}
 
 	/**
-	 * @see \Pickle\AExtractStatus::checkState()
+	 * @see \Pickle\ExtractStatus::checkState()
 	 * @param string $str heystack
-	 * @return number
+	 * @return number|booleanS
 	 */
 	public function checkState( $str ) {
-		return 1;
+		return true;
 	}
 
 }
