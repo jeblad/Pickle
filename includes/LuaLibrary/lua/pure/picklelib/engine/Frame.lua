@@ -243,18 +243,5 @@ function Frame:eval() -- luacheck: ignore
 	return self
 end
 
---- Eval the fixtures over previous dispatched strings
--- @return string
-function Frame:tap( name )
-	self:eval()
-	assert(self, 'Frame: tap: self')
-	assert(self:reports(), 'Frame: tap: reports')
-	assert(self:reports():top(), 'Frame: tap: top')
-	assert(self:renders(), 'Frame: tap: renders')
-
-	return self:reports():top():realize( self:renders().style( name ), 'en' )
-	--return self:reports():depth()
-end
-
 -- Return the final class
 return Frame

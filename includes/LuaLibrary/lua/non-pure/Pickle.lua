@@ -174,6 +174,41 @@ function pickle.describe( ... )
 		:setExtractors( extractors )
 		:dispatch( ... )
 
+		--- Eval the fixtures over previous dispatched strings
+		-- @return string
+		--function obj.tap( name )
+		function obj.tap( frame )
+			obj:eval()
+			assert(obj, 'Frame: tap: self')
+			assert(obj:reports(), 'Frame: tap: reports')
+			assert(obj:reports():top(), 'Frame: tap: top')
+			assert(obj:renders(), 'Frame: tap: renders')
+
+			local styleName = frame and frame.args['style'] or nil
+			if frame and not styleName then
+				for _,v in ipairs( frame.args ) do
+					if pickle._styles[v] then
+						styleName = pickle._styles[v]
+						break
+					end
+				end
+			end
+
+			local langCode = frame and frame.args['lang'] or nil
+			if frame and not langCode then
+				for _,v in ipairs( frame.args ) do
+					if mw.language.isValidCode( v ) then
+						langCode = v
+						break
+					end
+				end
+			end
+
+			return obj:reports():top():realize(
+				obj:renders().style( styleName or 'full' ),
+				langCode or mw.language.getContentLanguage():getCode() )
+		end
+
 	return obj
 end
 
