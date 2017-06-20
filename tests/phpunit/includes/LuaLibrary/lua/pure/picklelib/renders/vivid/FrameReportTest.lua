@@ -114,7 +114,7 @@ local tests = {
 		func = testState,
 		args = { false },
 		expect = { '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-frame-is-not-ok)'
+			.. '(pickle-report-frame-wrap-translated: not ok, (pickle-report-frame-is-not-ok-translated))'
 			.. '</span>' }
 	},
 	{
@@ -122,7 +122,7 @@ local tests = {
 		func = testState,
 		args = { true },
 		expect = { '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-frame-is-ok)'
+			.. '(pickle-report-frame-wrap-translated: ok, (pickle-report-frame-is-ok-translated))'
 			.. '</span>' }
 	},
 	]]
@@ -156,7 +156,7 @@ local tests = {
 		args = { 'baz' },
 		expect = { '<div class="mw-pickle-header">'
 			.. '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-frame-is-ok)'
+			.. '(pickle-report-frame-wrap-translated: ok, (pickle-report-frame-is-ok-translated))'
 			.. '</span>'
 			.. '<span class="mw-pickle-description" lang="qqx">'
 			.. '(pickle-report-frame-wrap-description: testing)'
@@ -175,7 +175,7 @@ local tests = {
 		args = { 'baz' },
 		expect = { '<div class="mw-pickle-header">'
 			.. '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-frame-is-ok)'
+			.. '(pickle-report-frame-wrap-translated: ok, (pickle-report-frame-is-ok-translated))'
 			.. '</span>'
 			.. '<span class="mw-pickle-description" lang="qqx">'
 			.. '(pickle-report-frame-wrap-description: testing)'
@@ -193,7 +193,7 @@ local tests = {
 		func = testHeaderOk,
 		expect = { '<div class=\"mw-pickle-header\">'
 			.. '<span class=\"mw-pickle-state\" lang=\"qqx\">'
-			.. '(pickle-report-frame-is-ok)'
+			.. '(pickle-report-frame-wrap-translated: ok, (pickle-report-frame-is-ok-translated))'
 			.. '</span>'
 			.. '</div>' }
 	},
@@ -202,7 +202,7 @@ local tests = {
 		func = testHeaderNotOk,
 		expect = { '<div class=\"mw-pickle-header\">'
 			.. '<span class=\"mw-pickle-state\" lang=\"qqx\">'
-			.. '(pickle-report-frame-is-not-ok)'
+			.. '(pickle-report-frame-wrap-translated: not ok, (pickle-report-frame-is-not-ok-translated))'
 			.. '</span>'
 			.. '</div>' }
 	},

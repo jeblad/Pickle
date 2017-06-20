@@ -76,12 +76,12 @@ local tests = {
 	{
 		name = name .. '.header ok ()',
 		func = testHeaderOk,
-		expect = { '(pickle-report-frame-is-ok)' }
+		expect = { '(pickle-report-frame-wrap-translated: ok, (pickle-report-frame-is-ok-translated))' }
 	},
 	{
 		name = name .. '.header not ok ()',
 		func = testHeaderNotOk,
-		expect = { '(pickle-report-frame-is-not-ok)' }
+		expect = { '(pickle-report-frame-wrap-translated: not ok, (pickle-report-frame-is-not-ok-translated))' }
 	},
 }
 
