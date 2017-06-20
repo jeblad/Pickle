@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Macofe",
-			"Fitoschido"
+			"Fitoschido",
+			"Jeblad"
 		]
 	},
 	"pickle-desc": "Proporciona un marco de pruebas Pickle básico para módulos escritos en Lua",
@@ -48,10 +49,10 @@
 	"pickle-frame-compact-header-all-good": "correcto &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "no correcto &mdash; $1",
 	"pickle-frame-no-description": "anónimo",
-	"pickle-report-frame-is-ok": "correcto",
-	"pickle-report-frame-is-not-ok": "no correcto",
-	"pickle-report-adapt-is-ok": "correcto",
-	"pickle-report-adapt-is-not-ok": "no correcto",
+	"pickle-report-frame-is-ok-translated": "correcto",
+	"pickle-report-frame-is-not-ok-translated": "no correcto",
+	"pickle-report-adapt-is-ok-translated": "correcto",
+	"pickle-report-adapt-is-not-ok-translated": "no correcto",
 	"pickle-report-adapt-wrap-skip": "omitir $1",
 	"pickle-report-adapt-wrap-todo": "# pendiente $1",
 	"pickle-adapt-process-first": "Elegir el primer elemento",

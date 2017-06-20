@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Jeblad"
 		]
 	},
 	"pickle-desc": "Додава основно испробување со Pickle во Lua-модули",
@@ -52,10 +53,10 @@
 	"pickle-frame-no-description": "анонимно",
 	"pickle-frame-no-fixtures": "Нема регистрирано приврзоци",
 	"pickle-frame-no-tests": "Нема регистрирано проби",
-	"pickle-report-frame-is-ok": "во ред",
-	"pickle-report-frame-is-not-ok": "не е во ред",
-	"pickle-report-adapt-is-ok": "во ред",
-	"pickle-report-adapt-is-not-ok": "не е во ред",
+	"pickle-report-frame-is-ok-translated": "во ред",
+	"pickle-report-frame-is-not-ok-translated": "не е во ред",
+	"pickle-report-adapt-is-ok-translated": "во ред",
+	"pickle-report-adapt-is-not-ok-translated": "не е во ред",
 	"pickle-report-adapt-wrap-skip": "# прескокни го $1",
 	"pickle-report-adapt-wrap-todo": "# задачи $1",
 	"pickle-adapt-process-first": "Изберете прв елемент",

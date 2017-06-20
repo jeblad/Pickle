@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Piramidion"
+			"Piramidion",
+			"Jeblad"
 		]
 	},
 	"pickle-desc": "Додає базове Pickle-тестування до модулів Lua",
@@ -51,10 +52,10 @@
 	"pickle-frame-no-description": "анонім",
 	"pickle-frame-no-fixtures": "Не зареєстровано жодних прикріплень",
 	"pickle-frame-no-tests": "Не зареєстровано жодних тестів",
-	"pickle-report-frame-is-ok": "гаразд",
-	"pickle-report-frame-is-not-ok": "не гаразд",
-	"pickle-report-adapt-is-ok": "гаразд",
-	"pickle-report-adapt-is-not-ok": "не гаразд",
+	"pickle-report-frame-is-ok-translated": "гаразд",
+	"pickle-report-frame-is-not-ok-translated": "не гаразд",
+	"pickle-report-adapt-is-ok-translated": "гаразд",
+	"pickle-report-adapt-is-not-ok-translated": "не гаразд",
 	"pickle-report-adapt-wrap-skip": "# пропустити $1",
 	"pickle-report-adapt-wrap-todo": "# todo $1",
 	"pickle-adapt-process-first": "Вибрати перший елемент",

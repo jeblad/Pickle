@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Banjo",
-			"Elisardojm"
+			"Elisardojm",
+			"Jeblad"
 		]
 	},
 	"pickle-desc": "Engade os test básicos Pickle ós módulos Lúa",
@@ -49,10 +50,10 @@
 	"pickle-frame-compact-header-some-failed": "non correcto &mdash; $1",
 	"pickle-frame-no-description": "anónimo",
 	"pickle-frame-no-tests": "Non hai tests rexistrados",
-	"pickle-report-frame-is-ok": "ok",
-	"pickle-report-frame-is-not-ok": "non ok",
-	"pickle-report-adapt-is-ok": "ok",
-	"pickle-report-adapt-is-not-ok": "non ok",
+	"pickle-report-frame-is-ok-translated": "ok",
+	"pickle-report-frame-is-not-ok-translated": "non ok",
+	"pickle-report-adapt-is-ok-translated": "ok",
+	"pickle-report-adapt-is-not-ok-translated": "non ok",
 	"pickle-report-adapt-wrap-skip": "# omitir $1",
 	"pickle-report-adapt-wrap-todo": "# pendente $1",
 	"pickle-adapt-process-first": "Coller o primeiro elemento",

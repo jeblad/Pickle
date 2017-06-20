@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"BHARATHESHA ALASANDEMAJALU"
+			"BHARATHESHA ALASANDEMAJALU",
+			"Jeblad"
 		]
 	},
-	"pickle-report-frame-is-ok": "ಸರಿ",
-	"pickle-report-adapt-is-ok": "ಸರಿ"
+	"pickle-report-frame-is-ok-translated": "ಸರಿ",
+	"pickle-report-adapt-is-ok-translated": "ಸರಿ"
 }

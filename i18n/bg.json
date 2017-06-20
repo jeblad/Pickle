@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"StanProg",
-			"Vodnokon4e"
+			"Vodnokon4e",
+			"Jeblad"
 		]
 	},
 	"pickle-desc": "Добавя основно тестване чрез Pickle при модули за Lua",
@@ -52,10 +53,10 @@
 	"pickle-frame-no-description": "анонимно",
 	"pickle-frame-no-fixtures": "Не са регистрирани инициализации",
 	"pickle-frame-no-tests": "Не са регистрирани тестове",
-	"pickle-report-frame-is-ok": "ок",
-	"pickle-report-frame-is-not-ok": "не е наред",
-	"pickle-report-adapt-is-ok": "ок",
-	"pickle-report-adapt-is-not-ok": "не е наред",
+	"pickle-report-frame-is-ok-translated": "ок",
+	"pickle-report-frame-is-not-ok-translated": "не е наред",
+	"pickle-report-adapt-is-ok-translated": "ок",
+	"pickle-report-adapt-is-not-ok-translated": "не е наред",
 	"pickle-report-adapt-wrap-skip": "# пропускане на $1",
 	"pickle-report-adapt-wrap-todo": "# задачи $1",
 	"pickle-adapt-process-first": "Изберете първи елемент",

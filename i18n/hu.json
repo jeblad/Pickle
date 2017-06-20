@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"BanKris",
-			"Notramo"
+			"Notramo",
+			"Jeblad"
 		]
 	},
 	"pickle-frame-no-description": "névtelen",
-	"pickle-report-frame-is-ok": "ok",
-	"pickle-report-adapt-is-ok": "ok"
+	"pickle-report-frame-is-ok-translated": "ok",
+	"pickle-report-adapt-is-ok-translated": "ok"
 }

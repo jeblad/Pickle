@@ -48,11 +48,17 @@
 	"pickle-report-skip-no-message": "Meldingsnøkkelen \"$1\" finnes ikke",
 	"pickle-frame-compact-header-all-good": "ok (alle gode) &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "not ok (noen feilet) &mdash; $1",
+
+	"pickle-report-frame-is-ok-translated": "god",
+	"pickle-report-frame-is-not-ok-translated": "feil",
+
 	"pickle-frame-no-description": "anonym",
 	"pickle-frame-no-fixtures": "Ingen installasjoner registrert",
 	"pickle-frame-no-tests": "Ingen tester registrert",
-	"pickle-report-adapt-is-ok": "ok (god)",
-	"pickle-report-adapt-is-not-ok": "not ok (feiler)",
+
+	"pickle-report-adapt-is-ok-translated": "god",
+	"pickle-report-adapt-is-not-ok-translated": "feil",
+
 	"pickle-report-adapt-wrap-skip": "skip (avbrutt) $1",
 	"pickle-report-adapt-wrap-todo": "todo (uferdig) $1",
 	"pickle-adapt-process-first": "Plukk første element",

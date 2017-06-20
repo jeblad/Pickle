@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Uchup19"
+			"Uchup19",
+			"Jeblad"
 		]
 	},
 	"pickle-test-text-good": "Alus",
@@ -13,6 +14,7 @@
 	"pickle-test-text-skip-fail": "Gagal (liwat)",
 	"pickle-console-run": "Jalankeun",
 	"pickle-console-clear": "Bersihan",
-	"pickle-report-frame-is-ok": "heug",
+	"pickle-report-adapt-is-ok-translated": "heug",
+	"pickle-report-frame-is-ok-translated": "heug",
 	"pickle-report-adapt-wrap-skip": "# liwat $1"
 }

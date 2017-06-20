@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lexected"
+			"Lexected",
+			"Jeblad"
 		]
 	},
 	"pickle-desc": "Pridá základné testovanie rozšírenia Pickle do modulov jazyka Lua",
@@ -48,8 +49,10 @@
 	"pickle-report-skip-no-message": "Správový kľúč \"$1$ neexistuje",
 	"pickle-frame-compact-header-all-good": "ok &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "nie je ok &mdash; $1",
-	"pickle-report-adapt-is-ok": "ok",
-	"pickle-report-adapt-is-not-ok": "nie je ok",
+	"pickle-report-frame-is-ok-translated": "je ok",
+	"pickle-report-frame-is-not-ok-translated": "nie je ok",
+	"pickle-report-adapt-is-ok-translated": "je ok",
+	"pickle-report-adapt-is-not-ok-translated": "nie je ok",
 	"pickle-report-adapt-wrap-skip": "preskočiť $1",
 	"pickle-report-adapt-wrap-todo": "todo $1",
 	"pickle-adapt-process-first": "Vybrať prvý prvok",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"MIKHEIL"
+			"MIKHEIL",
+			"Jeblad"
 		]
 	},
 	"pickle-test-text-good": "კარგი",
@@ -9,7 +10,7 @@
 	"pickle-test-text-missing": "აკლია",
 	"pickle-test-text-unknown": "უცნობი",
 	"pickle-console-clear": "გასუფთავება",
-	"pickle-report-frame-is-ok": "ok",
-	"pickle-report-adapt-is-ok": "ok",
+	"pickle-report-frame-is-ok-translated": "ok",
+	"pickle-report-adapt-is-ok-translated": "ok",
 	"pickle-report-adapt-wrap-skip": "გამოტოვება $1"
 }

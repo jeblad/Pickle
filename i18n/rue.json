@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"KHMELNYTSKYIA"
+			"KHMELNYTSKYIA",
+			"Jeblad"
 		]
 	},
 	"pickle-test-text-good": "Добре",
-	"pickle-report-adapt-is-ok": "ОК"
+	"pickle-report-frame-is-ok-translated": "ОК",
+	"pickle-report-adapt-is-ok-translated": "ОК"
 }

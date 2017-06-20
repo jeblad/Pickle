@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Jeblad"
 		]
 	},
 	"pickle-test-text-good": "Gutt",
@@ -19,10 +20,10 @@
 	"pickle-frame-compact-header-some-failed": "net ok &mdash; $1",
 	"pickle-frame-no-description": "anonym",
 	"pickle-frame-no-tests": "Keng Tester registréiert",
-	"pickle-report-frame-is-ok": "ok",
-	"pickle-report-frame-is-not-ok": "net ok",
-	"pickle-report-adapt-is-ok": "ok",
-	"pickle-report-adapt-is-not-ok": "net ok",
+	"pickle-report-frame-is-ok-translated": "ok",
+	"pickle-report-frame-is-not-ok-translated": "net ok",
+	"pickle-report-adapt-is-ok-translated": "ok",
+	"pickle-report-adapt-is-not-ok-translated": "net ok",
 	"pickle-report-adapt-wrap-skip": "# $1 iwwersprangen",
 	"pickle-adapt-process-first": "Éischt Element eraussichen",
 	"pickle-adapt-process-second": "Zweet Element eraussichen",
