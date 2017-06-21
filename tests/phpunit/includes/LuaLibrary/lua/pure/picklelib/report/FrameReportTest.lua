@@ -63,7 +63,7 @@ end
 local function testIsTodo( bool )
 	local test = makeTest()
 	if bool then
-		test:setTodo( 'baz' )
+		test:addTodo( 'baz' )
 	end
 	return test:isTodo()
 end
@@ -78,7 +78,7 @@ local function testHasTodo( ... )
 	return test:hasTodo()
 end
 
-local function testGetSetSkip( str )
+local function testSetGetSkip( str )
 	local test = makeTest()
 	if str then
 		test:setSkip( str )
@@ -86,12 +86,12 @@ local function testGetSetSkip( str )
 	return test:getSkip()
 end
 
-local function testGetSetTodo( str )
+local function testAddGetTodo( str )
 	local test = makeTest()
 	if str then
-		test:setTodo( str )
+		test:addTodo( str )
 	end
-	return test:getTodo()
+	return test:todos()
 end
 
 local tests = {
@@ -197,27 +197,27 @@ local tests = {
 	},
 	{
 		name = name .. '.skip ()',
-		func = testGetSetSkip,
+		func = testSetGetSkip,
 		args = {},
 		expect = { false }
 	},
 	{
 		name = name .. '.skip ()',
-		func = testGetSetSkip,
+		func = testSetGetSkip,
 		args = { 'foo' },
 		expect = { 'foo' }
 	},
 	{
 		name = name .. '.todo ()',
-		func = testGetSetTodo,
+		func = testAddGetTodo,
 		args = { },
-		expect = { false }
+		expect = { { false } }
 	},
 	{
 		name = name .. '.todo ()',
-		func = testGetSetTodo,
+		func = testAddGetTodo,
 		args = { 'bar' },
-		expect = { 'bar' }
+		expect = { { 'bar' } }
 	},
 }
 

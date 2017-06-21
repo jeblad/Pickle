@@ -39,7 +39,7 @@ local function testSkip( ... )
 end
 
 local function testTodo( ... )
-	local p = fix.create():setTodo( ... )
+	local p = fix.create():addTodo( ... )
 	return makeTest():realizeTodo( p, 'qqx' )
 end
 
@@ -54,7 +54,7 @@ local function testHeaderSkip( ... )
 end
 
 local function testHeaderTodo( ... )
-	local p = fix.create():setDescription( 'testing' ):setTodo( ... ):ok()
+	local p = fix.create():setDescription( 'testing' ):addTodo( ... ):ok()
 	return makeTest():realizeHeader( p, 'qqx' )
 end
 --[[

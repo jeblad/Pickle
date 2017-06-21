@@ -46,7 +46,7 @@ end
 function FrameReport:_init( ... )
 	BaseReport._init( self, ... )
 	self._skip = false
-	self._todo = false
+	self._todos = {}
 	self._type = 'frame-report'
 	if select('#',...) then
 		self:constituents():push( ... )
@@ -149,27 +149,28 @@ function FrameReport:hasSkip()
 	return tmp
 end
 
---- Set the todo
+--- Add a todo
 -- This is an accessor to set the member.
 -- @param string that will be used as the todo note
 -- @return self
-function FrameReport:setTodo( str )
-	assert( str, 'Failed to provide a todo' )
-	self._todo = str
+function FrameReport:addTodo( ... )
+	for _,v in ipairs( { ... } ) do
+		table.insert( self._todos, v )
+	end
 	return self
 end
 
---- Get the todo
+--- Get the todos
 -- This is an accessor to get the member.
--- @return string used as the todo note
-function FrameReport:getTodo()
-	return self._todo
+-- @return table with all the todo notes
+function FrameReport:todos()
+	return self._todos
 end
 
 --- Check if the instance is itself in a todo state
 -- @return boolean that is set if a skip note exist
 function FrameReport:isTodo()
-	return not not self._todo
+	return self._todos ~= {}
 end
 
 --- Check if the instance has any member in todo state

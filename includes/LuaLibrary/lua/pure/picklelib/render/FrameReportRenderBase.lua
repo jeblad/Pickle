@@ -146,8 +146,8 @@ function FrameReportRender:realizeTodo( src, lang )
 	end
 
 	local realization = ''
-	local inner = src:getTodo()
-		and mw.message.newRawMessage( src:getTodo() )
+	local inner = src:isTodo()
+		and mw.message.newRawMessage( table.concat( src:todos(), ';' ) )
 		or mw.message.new( 'pickle-test-text-todo-no-description' )
 
 	if lang then

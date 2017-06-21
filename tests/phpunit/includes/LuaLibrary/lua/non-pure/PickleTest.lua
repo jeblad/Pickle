@@ -19,7 +19,7 @@ end
 
 local function testSpy( name, ... )
 	local res,_ = pcall( _G[ name ], ... )
-	return res, _G._reports:top():getTodo(), _G._reports:top():getSkip()
+	return res, _G._reports:top():todos(), _G._reports:top():getSkip()
 end
 
 local function testSpyLines( name, idx, pattern, ... )
