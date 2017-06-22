@@ -20,6 +20,7 @@
 	"pickle-test-text-fail": "{{pickle-gloss}} {{pickle-indicator-desc|failed}} A failed result is one where one or more reported tests were not ok.\n{{Identical|Failing}}",
 	"pickle-test-text-missing": "{{pickle-gloss}} {{pickle-indicator-desc|missing}} A missing result is one where the test page could not be found.\n{{Identical|Missing}}",
 	"pickle-test-text-unknown": "{{pickle-gloss}} {{pickle-indicator-desc|unknown}} An unknown result is one where the reported tests could not be parsed.\n{{Identical|Unknown}}",
+	"pickle-test-text-invalid": "{{pickle-gloss}} {{pickle-indicator-desc|invalid}} An invalid result is one where the provided configuration or reported tests could not be parsed. This is only used for the parser function.\n{{Identical|Invalid}}",
 	"pickle-test-text-todo-good": "{{pickle-gloss}} {{pickle-indicator-desc|good}} A good (but still pending) result is one where all reported tests marked \"todo\" were ok.",
 	"pickle-test-text-todo-fail": "{{pickle-gloss}} {{pickle-indicator-desc|failed}} A failed (but still pending) result is one where one or more reported tests marked \"todo\" were not ok.",
 	"pickle-test-text-skip-good": "{{pickle-gloss}} {{pickle-indicator-desc|good}} A good (but still pending) result is one where all reported tests marked \"skip\" were ok.",

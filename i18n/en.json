@@ -17,6 +17,7 @@
 	"pickle-test-text-fail": "Failing",
 	"pickle-test-text-missing": "Missing",
 	"pickle-test-text-unknown": "Unknown",
+	"pickle-test-text-invalid": "Invalid",
 	"pickle-test-text-todo-good": "Good (todo)",
 	"pickle-test-text-todo-fail": "Failing (todo)",
 	"pickle-test-text-skip-good": "Good (skip)",

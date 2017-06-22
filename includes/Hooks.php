@@ -57,6 +57,43 @@ class Hooks {
 	}
 
 	/**
+	 * Is Scribunto
+	 *
+	 * @param \Title|null $title header information
+	 * @return boolean
+	 */
+	 protected static function isScribunto( \Title $title = null ) {
+		return ( $title !== null
+			&& $title->getArticleID() !== 0
+			&& $title->getContentModel() === CONTENT_MODEL_SCRIBUNTO );
+	 }
+
+	/**
+	 * Is neglected
+	 * This only scans for similar text fragments, and can fail badly.
+	 *
+	 * @param \Title $title header information
+	 * @return boolean
+	 */
+	 protected static function isNeglected( \Title $title = null ) {
+		global $wgPickleNeglectSubpages;
+
+		// just to handle null without croaking
+		if ( $title === null ) {
+			return true;
+		}
+
+		$text = $title->getSubpageText();
+		foreach ( $wgPickleNeglectSubpages as $pattern ) {
+			if ( preg_match( $pattern, $text ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	 }
+
+	/**
 	 * Page indicator for module with pickle tests
 	 * @todo design debt
 	 * @param \Content $content destination for changes
@@ -69,23 +106,9 @@ class Hooks {
 		\Title $title,
 		\ParserOutput $parserOutput
 	) {
-		global $wgPickleNeglectPages;
-
-		$logger = LoggerFactory::getInstance( 'Pickle' );
-
 		// Try to bail out early
-		if ( $title === null
-			|| $title->getArticleID() === 0
-			|| $title->getContentModel() !== CONTENT_MODEL_SCRIBUNTO ) {
+		if ( !self::isScribunto( $title ) || self::isNeglected( $title ) ) {
 			return true;
-		}
-
-		// @todo refactor, this is a quick fix
-		$text = $title->getText();
-		foreach ( $wgPickleNeglectPages as $pattern ) {
-			if ( strpos( $text, $pattern ) !== false ) {
-				return true;
-			}
 		}
 
 		// try to find a subpage to invoke
@@ -93,6 +116,9 @@ class Hooks {
 		if ( $invokeStrategy === null ) {
 			return true;
 		}
+
+		// It is probably safe to assume this will be used
+		$logger = LoggerFactory::getInstance( 'Pickle' );
 
 		// subpages need special handling
 		if ( $title->isSubpage() ) {
@@ -182,6 +208,91 @@ class Hooks {
 		// run registered callbacks to create testee gadgets
 		\Hooks::run( 'SpecTesteeGadgets', [ $title, $parserOutput, $args ] );
 		return true;
+	}
+
+	/**
+	 * Render the pickle
+	 * This is the function evaluate {{#pickle:}} and stringifies the result.
+	 *
+	 * @param any $parser the object that triggered the call
+	 * @param string $text for page name
+	 * @return string
+	 */
+	public static function renderPickle( $parser, $text ) {
+		global $wgPickleDefaultNamespace;
+
+		// Get the assumed title object
+		$title = \Title::newFromText( $text, $wgPickleDefaultNamespace );
+
+		// Try to bail out early
+		if ( !self::isScribunto( $title ) ) {
+			$msg = wfMessage( 'pickle-test-text-invalid' );
+			$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );
+			return $msg->plain();
+		} elseif ( self::isNeglected( $title ) ) {
+			$msg = wfMessage( 'pickle-test-text-missing' );
+			$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );
+			return $msg->plain();
+		}
+
+		// try to find a subpage to invoke
+		$invokeStrategy = InvokeSubpageStrategies::getInstance()->find( $title );
+		if ( $invokeStrategy === null ) {
+			$msg = wfMessage( 'pickle-test-text-invalid' );
+			$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );
+			return $msg->plain();
+		}
+
+		// subpages need special handling
+		if ( $title->isSubpage() ) {
+			// check if this page is a valid subpage itself
+			$baseTitle = $title->getBaseTitle();
+			if ( $baseTitle !== null ) {
+				$baseInvokeStrategy = InvokeSubpageStrategies::getInstance()->find( $baseTitle );
+				if ( $baseInvokeStrategy !== null ) {
+					$maybePageMsg = $baseInvokeStrategy->getSubpagePrefixedText( $baseTitle );
+					if ( ! $maybePageMsg->isDisabled() ) {
+						$maybePage = $maybePageMsg->plain();
+						if ( $maybePage == $title->getPrefixedText() ) {
+							// start collecting args for the hook
+							$args = [
+								// at this point the page type is test"
+								'page-type' => 'normal',
+							];
+
+							// if invocation is disabled, then the state will be set to "exists" or "missing"
+							if ( $baseInvokeStrategy->getInvoke( $baseTitle )->isDisabled() ) {
+								// @todo either this or the comment above is wrong
+								$args[ 'status-current' ] = 'unknown';
+							} else {
+								// if status isn't found, then the state will be set to "unknown"
+								$statusStrategy = self::getFinalStrategy( $baseInvokeStrategy, $baseTitle );
+								if ( $statusStrategy === null ) {
+									$args[ 'status-current' ] = 'unknown';
+								} else {
+									$args[ 'status-current' ] = $statusStrategy->getName();
+								}
+							}
+
+							$msg = wfMessage( 'pickle-test-text-subpage' );
+							$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );
+							return $msg->plain();
+						}
+					}
+				}
+			}
+		}
+
+		$statusStrategy = self::getFinalStrategy( $invokeStrategy, $title );
+		return $title->getPrefixedText();
+	}
+
+	/**
+	 * Setup for the parser
+	 * @param any &$parser the place to inject the new function
+	 */
+	public static function onParserSetup( &$parser ) {
+		$parser->setFunctionHook( 'pickle', [ __CLASS__, 'Pickle\\Hooks::renderPickle' ] );
 	}
 
 	/**

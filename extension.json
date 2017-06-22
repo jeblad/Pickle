@@ -115,6 +115,7 @@
 		"_prefix": "wgPickle",
 		"ObserverID": 3,
 		"TranslationSubpage": "/i18n",
+		"DefaultNamespace": 828,
 		"RenderStyles": {
 			"compact": "picklelib/render/compact",
 			"full": "picklelib/render/full",
@@ -132,12 +133,12 @@
 			"picklelib/extractor/NumberExtractorStrategy",
 			"picklelib/extractor/JsonExtractorStrategy"
 		],
-		"NeglectPages": [
-			"/doc",
-			"/conf",
-			"/data",
-			"/i18n",
-			"/l10n"
+		"NeglectSubpages": [
+			"doc",
+			"conf",
+			"data",
+			"i18n",
+			"l10n"
 		],
 		"Indicator": [
 			{
@@ -334,6 +335,7 @@
 	},
 	"callback": "Pickle\\Hooks::onExtensionSetup",
 	"ExtensionMessagesFiles": {
+		"RelatedArticlesMagic": "Pickle.i18n.magic.php"
 	},
 	"Hooks": {
 		"SpecTesterGadgets": [
@@ -343,6 +345,9 @@
 			"Pickle\\IndicatorFactory::addIndicator",
 			"Pickle\\CategoryFactory::addCategorization",
 			"Pickle\\LogEntryFactory::addLogEntry"
+		],
+		"ParserFirstCallInit": [
+			"Pickle\\Hooks::onParserSetup"
 		],
 		"ContentAlterParserOutput": [
 			"Pickle\\Hooks::onContentAlterParserOutput"
