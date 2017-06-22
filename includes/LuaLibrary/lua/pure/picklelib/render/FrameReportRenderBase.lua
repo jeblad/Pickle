@@ -107,30 +107,25 @@ function FrameReportRender:realizeSkip( src, lang )
 		return ''
 	end
 
-	local realization = ''
-	local inner = src:getSkip()
+	local desc = src:getSkip()
 		and mw.message.newRawMessage( src:getSkip() )
-		or mw.message.new( 'pickle-test-text-skip-no-description' )
+		or mw.message.new( 'pickle-report-frame-skip-no-description' )
 
 	if lang then
-		inner:inLanguage( lang )
+		desc:inLanguage( lang )
 	end
 
-	if not inner:isDisabled() then
-		realization = inner:plain()
-	end
+	local skip = self:realizeClarification( 'is-skip', lang )
 
-	local outer = mw.message.new( self:key( 'wrap-skip' ), realization )
+	local msg = desc:isDisabled()
+		and mw.message.new( self:key( 'wrap-no-description' ), skip )
+		or mw.message.new( self:key( 'wrap-description' ), skip, desc:plain() )
 
 	if lang then
-		outer:inLanguage( lang )
+		msg:inLanguage( lang )
 	end
 
-	if outer:isDisabled() then
-		return realization
-	end
-
-	return outer:plain()
+	return msg:plain()
 end
 
 --- Realize reported data for todo
@@ -148,7 +143,7 @@ function FrameReportRender:realizeTodo( src, lang )
 	local realization = ''
 	local inner = src:getTodo()
 		and mw.message.newRawMessage( src:getTodo() )
-		or mw.message.new( 'pickle-test-text-todo-no-description' )
+		or mw.message.new( 'pickle-report-frame-todo-no-description' )
 
 	if lang then
 		inner:inLanguage( lang )
