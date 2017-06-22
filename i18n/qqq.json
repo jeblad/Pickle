@@ -72,7 +72,7 @@
 	"pickle-report-frame-todo-no-description": "{{pickle-gloss}} The default message when the optional description string is missing for the todo at frame level.\n{{optional}}",
 	"pickle-report-frame-skip-no-description": "{{pickle-gloss}} The default message when the optional description string is missing for the skip at frame level.\n{{optional}}",
 	"pickle-report-frame-is-skip-original": "{{pickle-gloss}} Keyword \"skip\" used for each incomplete test at frame level in a TAP-report. This keyword should not be changed as it will make the parsing fail\n{{Notranslate}}",
-	"pickle-report-frame-is-skip-translated": "-",
+	"pickle-report-frame-is-skip-translated": "{{pickle-gloss}} Translation of the keyword \"skip\" used for each incomplete test at frame level in a TAP-report. This goes in the parenthesis like \"skip (something)\".\n{{Optional}}{{Identical|OK}}",
 	"pickle-report-frame-wrap-description": "{{pickle-gloss}} An outher wrapper for the keyword and the optional description string. This is a message where special markers can be added.\n{{Optional}}",
 	"pickle-report-frame-wrap-no-description": "{{pickle-gloss}} An outher wrapper for the keyword when tere are no optional description string. This is a message where special markers can be added.\n{{Optional}}",
 	"pickle-report-adapt-wrap-translated": "{{pickle-gloss}} An adapt level outher wrapper for the initial keyword and its translation. This is a message where localized parenthesis can be added, other than that it should probably not be changed.\n{{Optional}}",
