@@ -33,7 +33,6 @@
 	"pickle-track-log-name": "Дневник за следење на модули",
 	"pickle-track-log-header": "Овој дневник прикажува краток опис на исходните промени од испробаните модули.",
 	"pickle-track-log-entry-good": "{{GENDER:$2|автоматски изведе}} дека $1 има добри проби",
-	"pickle-track-log-entry-pending": "{{GENDER:$2|автоматски изведе}} дека $1 има проби во исчекување",
 	"pickle-track-log-entry-todo-good": "{{GENDER:$2|автоматски изведе}} дека $1 има добри, но непотполни проби",
 	"pickle-track-log-entry-todo-fail": "{{GENDER:$2|автоматски изведе}} дека $1 има неуспешни, но непотполни проби",
 	"pickle-track-log-entry-skip-good": "{{GENDER:$2|автоматски изведе}} дека $1 има добри, но прескокнати проби",

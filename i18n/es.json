@@ -31,7 +31,6 @@
 	"pickle-track-log-name": "Registro de seguimiento de módulo",
 	"pickle-track-log-header": "Este registro muestra un resumen de resultados de pruebas de los módulos.",
 	"pickle-track-log-entry-good": "{{GENDER:$2|infirió automáticamente}} que $1 tiene pruebas buenas",
-	"pickle-track-log-entry-pending": "{{GENDER:$2|infirió automáticamente}} que $1 tiene pruebas pendientes",
 	"pickle-track-log-entry-todo-good": "{{GENDER:$2|infirió automáticamente}} que $1 tiene pruebas buenas, pero incompletas",
 	"pickle-track-log-entry-todo-fail": "{{GENDER:$2|infirió automáticamente}} que $1 tiene pruebas incorrectas, pero incompletas",
 	"pickle-track-log-entry-skip-good": "{{GENDER:$2|infirió automáticamente}} que $1 tiene pruebas buenas, pero omitidas",

@@ -32,7 +32,6 @@
 	"pickle-track-log-name": "Denník o zázname modulu",
 	"pickle-track-log-header": "Tento denník zobrazuje zhrnutie výsledkov zmeny z testovaných modulov.",
 	"pickle-track-log-entry-good": "{{GENDER:$2|Bolo automaticky vyvodené}}, že $1 má dobré testy",
-	"pickle-track-log-entry-pending": "{{GENDER:$2|Bolo automaticky vyvodené}}, že $1 má testy čakajúce na vyhodnotenie",
 	"pickle-track-log-entry-todo-good": "{{GENDER:$2|Bolo automaticky vyvodené}}, že $1 má dobré, no nedokončené testy",
 	"pickle-track-log-entry-todo-fail": "{{GENDER:$2|Bolo automaticky vyvodené}}, že $1 má zlyhávajúce, no nedokončené testy",
 	"pickle-track-log-entry-skip-good": "{{GENDER:$2|Bolo automaticky vyvodené}}, že $1 má dobré, no aj preskočené testy",
