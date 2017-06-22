@@ -33,7 +33,6 @@
 	"pickle-track-log-name": "模块追踪日志",
 	"pickle-track-log-header": "此日志显示来自已测试模块的更改结果摘要。",
 	"pickle-track-log-entry-good": "{{GENDER:$2|自动推测}}$1具有良好的测试",
-	"pickle-track-log-entry-pending": "{{GENDER:$2|自动推测}}$1具有待定的测试",
 	"pickle-track-log-entry-todo-good": "{{GENDER:$2|自动推测}}$1具有良好但不完整的测试",
 	"pickle-track-log-entry-todo-fail": "{{GENDER:$2|自动推测}}$1具有失败但不完整的测试",
 	"pickle-track-log-entry-skip-good": "{{GENDER:$2|自动推测}}$1具有良好但被跳过的测试",

@@ -33,7 +33,6 @@
 	"pickle-track-log-name": "Journal de suivi du module",
 	"pickle-track-log-header": "Ce journal affiche un résumé des résultats de modification pour les modules testés.",
 	"pickle-track-log-entry-good": "{{GENDER:$2|a déduit automatiquement}} que $1 a de bons tests",
-	"pickle-track-log-entry-pending": "{{GENDER:$2|a déduit automatiquement}} que $1 a des tests en attente",
 	"pickle-track-log-entry-todo-good": "{{GENDER:$2|a déduit automatiquement}} que $1 a des tests bons, mais incomplets",
 	"pickle-track-log-entry-todo-fail": "{{GENDER:$2|a déduit automatiquement}} que $1 a des tests en échec, mais incomplets",
 	"pickle-track-log-entry-skip-good": "{{GENDER:$2|a déduit automatiquement}} que $1 a des tests bons, mais sautés",
