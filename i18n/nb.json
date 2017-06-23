@@ -48,6 +48,7 @@
 	"pickle-frame-compact-header-all-good": "ok (alle gode) &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "not ok (noen feilet) &mdash; $1",
 	"pickle-report-frame-is-skip-translated": "utelatt",
+	"pickle-report-frame-is-todo-translated": "uferdig",
 	"pickle-frame-no-description": "anonym",
 	"pickle-frame-no-fixtures": "Ingen installasjoner registrert",
 	"pickle-frame-no-tests": "Ingen tester registrert",

@@ -141,7 +141,9 @@ local tests = {
 		func = testTodo,
 		args = { 'bar' },
 		expect = { '<span class="mw-pickle-todo" lang="qqx">'
-			.. '(pickle-report-frame-wrap-todo: bar)'
+			.. '(pickle-report-frame-wrap-description:'
+			.. ' (pickle-report-frame-wrap-translated:'
+			.. ' todo, (pickle-report-frame-is-todo-translated)), bar)'
 			.. '</span>' }
 	},
 	{
@@ -187,7 +189,9 @@ local tests = {
 			.. '<span class="mw-pickle-comment">'
 			.. ' '
 			.. '<span class="mw-pickle-todo" lang="qqx">'
-			.. '(pickle-report-frame-wrap-todo: baz)'
+			.. '(pickle-report-frame-wrap-description:'
+			.. ' (pickle-report-frame-wrap-translated:'
+			.. ' todo, (pickle-report-frame-is-todo-translated)), baz)'
 			.. '</span>'
 			.. '</span>'
 			.. '</div>' }
