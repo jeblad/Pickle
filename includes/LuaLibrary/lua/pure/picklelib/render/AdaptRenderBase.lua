@@ -2,20 +2,20 @@
 -- luacheck: globals mw
 
 -- @var class var for lib
-local AdaptReportRender = {}
+local AdaptRender = {}
 
 --- Lookup of missing class members
 -- @param string used for lookup of member
 -- @return any
-function AdaptReportRender:__index( key ) -- luacheck: no self
-	return AdaptReportRender[key]
+function AdaptRender:__index( key ) -- luacheck: no self
+	return AdaptRender[key]
 end
 
 --- Create a new instance
 -- @param vararg unused
--- @return AdaptReportRender
-function AdaptReportRender.create( ... )
-	local self = setmetatable( {}, AdaptReportRender )
+-- @return AdaptRender
+function AdaptRender.create( ... )
+	local self = setmetatable( {}, AdaptRender )
 	self:_init( ... )
 	return self
 end
@@ -23,15 +23,15 @@ end
 --- Initialize a new instance
 -- @private
 -- @param vararg unused
--- @return AdaptReportRender
-function AdaptReportRender:_init( ... ) -- luacheck: no unused args
+-- @return AdaptRender
+function AdaptRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
 --- Override key construction
 -- @param string to be appended to a base string
 -- @return string
-function AdaptReportRender:key( str ) -- luacheck: no self
+function AdaptRender:key( str ) -- luacheck: no self
 	assert( str, 'Failed to provide a string' )
 	local keep = string.match( str, '^[-%a]+$' )
 	assert( keep, 'Failed to find a valid string' )
@@ -42,7 +42,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return string
-function AdaptReportRender:realizeState( src, lang )
+function AdaptRender:realizeState( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local orig = mw.message.new(
@@ -78,7 +78,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return string
-function AdaptReportRender:realizeHeader( src, lang )
+function AdaptRender:realizeHeader( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local t = { self:realizeState( src, lang ) }
@@ -100,7 +100,7 @@ end
 -- @param any that shall be realized
 -- @param string language code used for realization
 -- @return string
-function AdaptReportRender:realizeLine( param, lang )
+function AdaptRender:realizeLine( param, lang )
 	assert( param, 'Failed to provide a parameter' )
 
 	local realization = ''
@@ -134,7 +134,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return string
-function AdaptReportRender:realizeBody( src, lang )
+function AdaptRender:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local t = {}
@@ -147,4 +147,4 @@ function AdaptReportRender:realizeBody( src, lang )
 end
 
 -- Return the final class
-return AdaptReportRender
+return AdaptRender

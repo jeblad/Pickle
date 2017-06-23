@@ -14,20 +14,20 @@ end
 --]]
 
 -- @var class var for lib
-local FrameReportRender = {}
+local FrameRender = {}
 
 --- Lookup of missing class members
 -- @param string used for lookup of member
 -- @return any
-function FrameReportRender:__index( key ) -- luacheck: no self
-	return FrameReportRender[key]
+function FrameRender:__index( key ) -- luacheck: no self
+	return FrameRender[key]
 end
 
 --- Create a new instance
 -- @param vararg unused
--- @return FrameReportRender
-function FrameReportRender.create( ... )
-	local self = setmetatable( {}, FrameReportRender )
+-- @return FrameRender
+function FrameRender.create( ... )
+	local self = setmetatable( {}, FrameRender )
 	self:_init( ... )
 	return self
 end
@@ -35,15 +35,15 @@ end
 --- Initialize a new instance
 -- @private
 -- @param vararg unused
--- @return FrameReportRender
-function FrameReportRender:_init( ... ) -- luacheck: no unused args
+-- @return FrameRender
+function FrameRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
 --- Override key construction
 -- @param string to be appended to a base string
 -- @return string
-function FrameReportRender:key( str ) -- luacheck: no self
+function FrameRender:key( str ) -- luacheck: no self
 	assert( str, 'Failed to provide a string' )
 	local keep = string.match( str, '^[-%a]+$' )
 	assert( keep, 'Failed to find a valid string' )
@@ -54,7 +54,7 @@ end
 -- @param any to act as the head
 -- @param any to act as the tail
 -- @return self
-function FrameReportRender:append( head, tail ) -- luacheck: no self
+function FrameRender:append( head, tail ) -- luacheck: no self
 	assert( head )
 	assert( tail )
 	return head .. ' ' .. tail
@@ -64,7 +64,7 @@ end
 -- @param string part of a message key
 -- @param string optional language code
 -- @return string
-function FrameReportRender:realizeClarification( keyPart, lang )
+function FrameRender:realizeClarification( keyPart, lang )
 	assert( keyPart, 'Failed to provide a key part' )
 
 	local orig = mw.message.new( self:key( keyPart .. '-original' ) )
@@ -90,7 +90,7 @@ end
 -- @param string part of a message key
 -- @param string optional language code
 -- @return string
-function FrameReportRender:realizeComment( src, keyPart, lang )
+function FrameRender:realizeComment( src, keyPart, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local ucfKeyPart = string.upper( string.sub( keyPart, 1, 1 ) )..string.sub( keyPart, 2 )
@@ -124,7 +124,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return string
-function FrameReportRender:realizeState( src, lang )
+function FrameRender:realizeState( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	return self:realizeClarification( src:isOk() and 'is-ok' or 'is-not-ok', lang )
@@ -135,7 +135,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return string
-function FrameReportRender:realizeSkip( src, lang )
+function FrameRender:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	return self:realizeComment( src, 'skip', lang )
@@ -146,7 +146,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return string
-function FrameReportRender:realizeTodo( src, lang )
+function FrameRender:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	return self:realizeComment( src, 'todo', lang )
@@ -157,7 +157,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return string
-function FrameReportRender:realizeDescription( src, lang )
+function FrameRender:realizeDescription( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	if not src:hasDescription() then
@@ -183,7 +183,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return string
-function FrameReportRender:realizeHeader( src, lang )
+function FrameRender:realizeHeader( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local t = { self:realizeState( src, lang ) }
@@ -210,7 +210,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return string
-function FrameReportRender:realizeBody( src, lang ) -- luacheck: ignore self lang
+function FrameRender:realizeBody( src, lang ) -- luacheck: ignore self lang
 	assert( src, 'Failed to provide a source' )
 
 	local t = {}
@@ -224,4 +224,4 @@ function FrameReportRender:realizeBody( src, lang ) -- luacheck: ignore self lan
 end
 
 -- Return the final class
-return FrameReportRender
+return FrameRender

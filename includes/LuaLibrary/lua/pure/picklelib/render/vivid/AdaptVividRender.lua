@@ -4,23 +4,23 @@
 local Base = require 'picklelib/render/AdaptRenderBase'
 
 -- @var class var for lib
-local AdaptReportRender = {}
+local AdaptRender = {}
 
 --- Lookup of missing class members
 -- @param string used for lookup of member
 -- @return any
-function AdaptReportRender:__index( key ) -- luacheck: no self
-	return AdaptReportRender[key]
+function AdaptRender:__index( key ) -- luacheck: no self
+	return AdaptRender[key]
 end
 
 -- @var metatable for the class
-setmetatable( AdaptReportRender, { __index = Base } )
+setmetatable( AdaptRender, { __index = Base } )
 
 --- Create a new instance
 -- @param vararg unused
--- @return AdaptReportRender
-function AdaptReportRender.create( ... )
-	local self = setmetatable( {}, AdaptReportRender )
+-- @return AdaptRender
+function AdaptRender.create( ... )
+	local self = setmetatable( {}, AdaptRender )
 	self:_init( ... )
 	return self
 end
@@ -28,8 +28,8 @@ end
 --- Initialize a new instance
 -- @private
 -- @param vararg unused
--- @return AdaptReportRender
-function AdaptReportRender:_init( ... ) -- luacheck: no unused args
+-- @return AdaptRender
+function AdaptRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
@@ -37,7 +37,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return html
-function AdaptReportRender:realizeState( src, lang )
+function AdaptRender:realizeState( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -56,7 +56,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return html
-function AdaptReportRender:realizeHeader( src, lang )
+function AdaptRender:realizeHeader( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'div' )
@@ -87,7 +87,7 @@ end
 -- @param any that shall be realized
 -- @param string language code used for realization
 -- @return html
-function AdaptReportRender:realizeLine( param, lang )
+function AdaptRender:realizeLine( param, lang )
 	assert( param, 'Failed to provide a parameter' )
 
 	local html = mw.html.create( 'dd' )
@@ -109,7 +109,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return html
-function AdaptReportRender:realizeBody( src, lang )
+function AdaptRender:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	if src:numLines() > 0 then
@@ -131,4 +131,4 @@ function AdaptReportRender:realizeBody( src, lang )
 end
 
 -- Return the final class
-return AdaptReportRender
+return AdaptRender

@@ -4,23 +4,23 @@
 local Base = require 'picklelib/render/FrameRenderBase'
 
 -- @var class var for lib
-local FrameReportRender = {}
+local FrameRender = {}
 
 --- Lookup of missing class members
 -- @param string used for lookup of member
 -- @return any
-function FrameReportRender:__index( key ) -- luacheck: no self
-	return FrameReportRender[key]
+function FrameRender:__index( key ) -- luacheck: no self
+	return FrameRender[key]
 end
 
 -- @var metatable for the class
-setmetatable( FrameReportRender, { __index = Base } )
+setmetatable( FrameRender, { __index = Base } )
 
 --- Create a new instance
 -- @param vararg unused
--- @return FrameReportRender
-function FrameReportRender.create( ... )
-	local self = setmetatable( {}, FrameReportRender )
+-- @return FrameRender
+function FrameRender.create( ... )
+	local self = setmetatable( {}, FrameRender )
 	self:_init( ... )
 	return self
 end
@@ -28,10 +28,10 @@ end
 --- Initialize a new instance
 -- @private
 -- @param vararg unused
--- @return FrameReportRender
-function FrameReportRender:_init( ... ) -- luacheck: no unused args
+-- @return FrameRender
+function FrameRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
 -- Return the final class
-return FrameReportRender
+return FrameRender

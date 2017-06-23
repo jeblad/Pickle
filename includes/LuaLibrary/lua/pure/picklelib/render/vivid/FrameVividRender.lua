@@ -4,23 +4,23 @@
 local Base = require 'picklelib/render/FrameRenderBase'
 
 -- @var class var for lib
-local FrameReportRender = {}
+local FrameRender = {}
 
 --- Lookup of missing class members
 -- @param string used for lookup of member
 -- @return any
-function FrameReportRender:__index( key ) -- luacheck: no self
-	return FrameReportRender[key]
+function FrameRender:__index( key ) -- luacheck: no self
+	return FrameRender[key]
 end
 
 -- @var metatable for the class
-setmetatable( FrameReportRender, { __index = Base } )
+setmetatable( FrameRender, { __index = Base } )
 
 --- Create a new instance
 -- @param vararg unused
--- @return FrameReportRender
-function FrameReportRender.create( ... )
-	local self = setmetatable( {}, FrameReportRender )
+-- @return FrameRender
+function FrameRender.create( ... )
+	local self = setmetatable( {}, FrameRender )
 	self:_init( ... )
 	return self
 end
@@ -28,8 +28,8 @@ end
 --- Initialize a new instance
 -- @private
 -- @param vararg unused
--- @return FrameReportRender
-function FrameReportRender:_init( ... ) -- luacheck: no unused args
+-- @return FrameRender
+function FrameRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
@@ -37,7 +37,7 @@ end
 -- @param any to act as the head
 -- @param any to act as the tail
 -- @return self
-function FrameReportRender:append( head, tail ) -- luacheck: no self
+function FrameRender:append( head, tail ) -- luacheck: no self
 	assert( head )
 	assert( tail )
 	return head:node( tail )
@@ -47,7 +47,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return html
-function FrameReportRender:realizeState( src, lang )
+function FrameRender:realizeState( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -66,7 +66,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return html
-function FrameReportRender:realizeSkip( src, lang )
+function FrameRender:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -85,7 +85,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return html
-function FrameReportRender:realizeTodo( src, lang )
+function FrameRender:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -104,7 +104,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return html
-function FrameReportRender:realizeDescription( src, lang )
+function FrameRender:realizeDescription( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -124,7 +124,7 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return html
-function FrameReportRender:realizeHeader( src, lang )
+function FrameRender:realizeHeader( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'div' )
@@ -152,4 +152,4 @@ function FrameReportRender:realizeHeader( src, lang )
 end
 
 -- Return the final class
-return FrameReportRender
+return FrameRender
