@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/compact/AdaptReportRenderStrategy'
+local lib = require 'picklelib/render/full/AdaptFullRender'
 local name = 'resultRender'
 
 local fix = require 'picklelib/report/AdaptReport'
@@ -72,12 +72,15 @@ local tests = {
 		expect = { 'pickle-report-adapt-foo' }
 	},
 	{
-		name = name .. '.body ok ()',
+		name = name .. '.body ()',
 		func = testBodyOk,
-		expect = { '' }
+		expect = { "\n"
+			.. '(pickle-report-adapt-wrap-line: (foo))' .. "\n"
+			.. '(pickle-report-adapt-wrap-line: (bar))' .. "\n"
+			.. '(pickle-report-adapt-wrap-line: (baz))' }
 	},
 	{
-		name = name .. '.body not ok ()',
+		name = name .. '.body ()',
 		func = testBodyNotOk,
 		expect = { "\n"
 			.. '(pickle-report-adapt-wrap-line: (foo))' .. "\n"

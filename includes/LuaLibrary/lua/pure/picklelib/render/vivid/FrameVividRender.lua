@@ -1,7 +1,7 @@
 --- Subclass for frame report renderer
 
 -- pure libs
-local Base = require 'picklelib/render/FrameReportRenderBase'
+local Base = require 'picklelib/render/FrameRenderBase'
 
 -- @var class var for lib
 local FrameReportRender = {}

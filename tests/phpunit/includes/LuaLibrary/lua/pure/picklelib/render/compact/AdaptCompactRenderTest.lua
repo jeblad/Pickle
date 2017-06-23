@@ -6,10 +6,10 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/compact/FrameReportRenderStrategy'
+local lib = require 'picklelib/render/compact/AdaptCompactRender'
 local name = 'resultRender'
 
-local fix = require 'picklelib/report/FrameReport'
+local fix = require 'picklelib/report/AdaptReport'
 
 local function makeTest( ... )
 	return lib.create( ... )
@@ -27,16 +27,14 @@ local function testKey( ... )
 	return makeTest():key( ... )
 end
 
-local function testHeaderOk( ... ) -- luacheck: ignore
-	local adapt = require 'picklelib/report/AdaptReport'.create():ok()
-	local p = fix.create():addConstituent( adapt )
-	return makeTest():realizeHeader( p, 'qqx' )
+local function testBodyOk( ... ) -- luacheck: ignore
+	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):ok()
+	return makeTest():realizeBody( p, 'qqx' )
 end
 
-local function testHeaderNotOk( ... ) -- luacheck: ignore
-	local adapt = require 'picklelib/report/AdaptReport'.create():notOk()
-	local p = fix.create():addConstituent( adapt )
-	return makeTest():realizeHeader( p, 'qqx' )
+local function testBodyNotOk( ... ) -- luacheck: ignore
+	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):notOk()
+	return makeTest():realizeBody( p, 'qqx' )
 end
 
 local tests = {
@@ -71,17 +69,20 @@ local tests = {
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
-		expect = { 'pickle-report-frame-foo' }
+		expect = { 'pickle-report-adapt-foo' }
 	},
 	{
-		name = name .. '.header ok ()',
-		func = testHeaderOk,
-		expect = { '(pickle-report-frame-wrap-translated: ok, (pickle-report-frame-is-ok-translated))' }
+		name = name .. '.body ok ()',
+		func = testBodyOk,
+		expect = { '' }
 	},
 	{
-		name = name .. '.header not ok ()',
-		func = testHeaderNotOk,
-		expect = { '(pickle-report-frame-wrap-translated: not ok, (pickle-report-frame-is-not-ok-translated))' }
+		name = name .. '.body not ok ()',
+		func = testBodyNotOk,
+		expect = { "\n"
+			.. '(pickle-report-adapt-wrap-line: (foo))' .. "\n"
+			.. '(pickle-report-adapt-wrap-line: (bar))' .. "\n"
+			.. '(pickle-report-adapt-wrap-line: (baz))' }
 	},
 }
 

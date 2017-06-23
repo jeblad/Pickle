@@ -6,10 +6,10 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/full/AdaptReportRenderStrategy'
+local lib = require 'picklelib/render/compact/FrameCompactRender'
 local name = 'resultRender'
 
-local fix = require 'picklelib/report/AdaptReport'
+local fix = require 'picklelib/report/FrameReport'
 
 local function makeTest( ... )
 	return lib.create( ... )
@@ -27,14 +27,16 @@ local function testKey( ... )
 	return makeTest():key( ... )
 end
 
-local function testBodyOk( ... ) -- luacheck: ignore
-	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):ok()
-	return makeTest():realizeBody( p, 'qqx' )
+local function testHeaderOk( ... ) -- luacheck: ignore
+	local adapt = require 'picklelib/report/AdaptReport'.create():ok()
+	local p = fix.create():addConstituent( adapt )
+	return makeTest():realizeHeader( p, 'qqx' )
 end
 
-local function testBodyNotOk( ... ) -- luacheck: ignore
-	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):notOk()
-	return makeTest():realizeBody( p, 'qqx' )
+local function testHeaderNotOk( ... ) -- luacheck: ignore
+	local adapt = require 'picklelib/report/AdaptReport'.create():notOk()
+	local p = fix.create():addConstituent( adapt )
+	return makeTest():realizeHeader( p, 'qqx' )
 end
 
 local tests = {
@@ -69,23 +71,17 @@ local tests = {
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
-		expect = { 'pickle-report-adapt-foo' }
+		expect = { 'pickle-report-frame-foo' }
 	},
 	{
-		name = name .. '.body ()',
-		func = testBodyOk,
-		expect = { "\n"
-			.. '(pickle-report-adapt-wrap-line: (foo))' .. "\n"
-			.. '(pickle-report-adapt-wrap-line: (bar))' .. "\n"
-			.. '(pickle-report-adapt-wrap-line: (baz))' }
+		name = name .. '.header ok ()',
+		func = testHeaderOk,
+		expect = { '(pickle-report-frame-wrap-translated: ok, (pickle-report-frame-is-ok-translated))' }
 	},
 	{
-		name = name .. '.body ()',
-		func = testBodyNotOk,
-		expect = { "\n"
-			.. '(pickle-report-adapt-wrap-line: (foo))' .. "\n"
-			.. '(pickle-report-adapt-wrap-line: (bar))' .. "\n"
-			.. '(pickle-report-adapt-wrap-line: (baz))' }
+		name = name .. '.header not ok ()',
+		func = testHeaderNotOk,
+		expect = { '(pickle-report-frame-wrap-translated: not ok, (pickle-report-frame-is-not-ok-translated))' }
 	},
 }
 

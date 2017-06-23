@@ -11,16 +11,16 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class AdaptReportTest extends Scribunto_LuaEngineTestBase {
+class AdaptCompactRenderTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'AdaptReportTest';
+	protected static $moduleName = 'AdaptCompactRenderTest';
 
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	function getTestModules() {
 		return parent::getTestModules() + [
-			'AdaptReportTest' => __DIR__ . '/AdaptReportTest.lua'
+			'AdaptCompactRenderTest' => __DIR__ . '/AdaptCompactRenderTest.lua'
 		];
 	}
 }

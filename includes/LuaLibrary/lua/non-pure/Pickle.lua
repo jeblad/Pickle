@@ -44,7 +44,11 @@ function pickle.describe( ... )
 	for k,v in pairs( mw.pickle._styles ) do
 		local style = renders.registerStyle( k )
 		for l,w in pairs( mw.pickle._types ) do
-			style:registerType( l, require( v .. '/' .. w ) )
+			local lib = mw.pickle._renderPrefix
+				.. k .. mw.pickle._renderInfix
+				.. w .. v .. mw.pickle._renderPostfix
+			style:registerType( l, require( lib ) )
+-- assert(false, '['..lib..']')
 		end
 	end
 
@@ -231,6 +235,11 @@ function pickle.setupInterface( opts )
 
 	-- keep subpage name for later, newer mind requiring anything now
 	pickle._translationSubpage = opts.translationSubpage
+
+	-- keep affix for later
+	pickle._renderPrefix = opts.renderPrefix
+	pickle._renderInfix = opts.renderInfix
+	pickle._renderPostfix = opts.renderPostfix;
 
 	-- keep render styles for later, newer mind requiring them now
 	for k,v in pairs( opts.renderStyles ) do

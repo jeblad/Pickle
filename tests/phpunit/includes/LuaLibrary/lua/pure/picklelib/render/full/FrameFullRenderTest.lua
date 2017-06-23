@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/full/FrameReportRenderStrategy'
+local lib = require 'picklelib/render/full/FrameFullRender'
 local name = 'resultRender'
 
 local fix = require 'picklelib/report/FrameReport'

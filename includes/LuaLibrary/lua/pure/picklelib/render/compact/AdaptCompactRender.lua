@@ -1,7 +1,7 @@
 --- Subclass for report renderer
 
 -- pure libs
-local Base = require 'picklelib/render/AdaptReportRenderBase'
+local Base = require 'picklelib/render/AdaptRenderBase'
 
 -- @var class var for lib
 local AdaptReportRender = {}
@@ -31,6 +31,29 @@ end
 -- @return AdaptReportRender
 function AdaptReportRender:_init( ... ) -- luacheck: no unused args
 	return self
+end
+
+--- Override realization of reported data for body
+-- @todo is this correct?
+-- @param Report that shall be realized
+-- @param string language code used for realization
+-- @return string
+function AdaptReportRender:realizeBody( src, lang )
+	assert( src, 'Failed to provide a source' )
+
+	if src:isOk() then
+		return ''
+	end
+
+	local t = {}
+
+	if not src:isOk() then
+		for _,v in ipairs( { src:lines():export() } ) do
+			table.insert( t, self:realizeLine( v, lang ) )
+		end
+	end
+
+	return #t == 0 and '' or ( "\n"  .. table.concat( t, "\n" ) )
 end
 
 -- Return the final class

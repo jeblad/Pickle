@@ -116,15 +116,18 @@
 		"ObserverID": 3,
 		"TranslationSubpage": "/i18n",
 		"DefaultNamespace": 828,
+		"RenderPrefix": "picklelib/render/",
+		"RenderInfix": "/",
+		"RenderPostfix": "Render",
 		"RenderStyles": {
-			"compact": "picklelib/render/compact",
-			"full": "picklelib/render/full",
-			"vivid": "picklelib/render/vivid"
+			"compact": "Compact",
+			"full": "Full",
+			"vivid": "Vivid"
 		},
-		"RenderTypes": {
-			"adapt-report": "AdaptReportRenderStrategy",
-			"frame-report": "FrameReportRenderStrategy"
-		},
+		"RenderTypes": [
+			"Adapt",
+			"Frame"
+		],
 		"ExtractorStrategy": [
 			"picklelib/extractor/NilExtractorStrategy",
 			"picklelib/extractor/FalseExtractorStrategy",
