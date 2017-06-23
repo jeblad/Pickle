@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/report/BaseReport'
+local lib = require 'picklelib/report/ReportBase'
 local name = 'base'
 local class = 'base-report'
 

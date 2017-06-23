@@ -4,7 +4,7 @@
 local Stack = require 'picklelib/Stack'
 
 -- non-pure libs
-local BaseReport = require 'picklelib/report/BaseReport'
+local Base = require 'picklelib/report/ReportBase'
 
 -- @var class var for lib
 local AdaptReport = {}
@@ -17,7 +17,7 @@ function AdaptReport:__index( key ) -- luacheck: no self
 end
 
 -- @var metatable for the class
-setmetatable( AdaptReport, { __index = BaseReport } )
+setmetatable( AdaptReport, { __index = Base } )
 
 --- Create a new instance
 -- @param vararg pushed to lines
@@ -33,7 +33,7 @@ end
 -- @param vararg pushed to lines
 -- @return AdaptReport
 function AdaptReport:_init( ... )
-	BaseReport._init( self )
+	Base._init( self )
 	self._description = false
 	self._state = false
 	self._lang = false

@@ -4,7 +4,7 @@
 local Stack = require 'picklelib/Stack'
 
 -- non-pure libs
-local BaseReport = require 'picklelib/report/BaseReport'
+local Base = require 'picklelib/report/ReportBase'
 
 -- @var class var for lib
 local FrameReport = {}
@@ -28,7 +28,7 @@ function FrameReport:__call()
 end
 
 -- @var metatable for the class
-setmetatable( FrameReport, { __index = BaseReport } )
+setmetatable( FrameReport, { __index = Base } )
 
 --- Create a new instance
 -- @param vararg unused
@@ -44,7 +44,7 @@ end
 -- @param vararg unused
 -- @return FrameReport
 function FrameReport:_init( ... )
-	BaseReport._init( self, ... )
+	Base._init( self, ... )
 	self._skip = false
 	self._todo = false
 	self._type = 'frame-report'
