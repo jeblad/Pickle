@@ -7,6 +7,8 @@
 local testframework = require 'Module:TestFramework'
 
 local lib = require 'picklelib/report/ReportBase'
+assert( lib )
+
 local name = 'base'
 local class = 'base-report'
 

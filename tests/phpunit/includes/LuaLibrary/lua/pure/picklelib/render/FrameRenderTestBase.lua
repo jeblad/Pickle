@@ -7,9 +7,12 @@
 local testframework = require 'Module:TestFramework'
 
 local lib = require 'picklelib/render/RenderBase'
+assert( lib )
+
 local name = 'reportRender'
 
 local fix = require 'picklelib/report/FrameReport'
+assert( fix )
 
 local function makeTest( ... )
 	return lib.create( ... )

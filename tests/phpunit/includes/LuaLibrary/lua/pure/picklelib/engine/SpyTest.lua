@@ -7,6 +7,7 @@ local testframework = require 'Module:TestFramework'
 
 --_G.describe()
 local Spy = require 'picklelib/engine/Spy'
+assert( Spy )
 
 local function testTracebackFirst( pattern, ... )
 	local first,_ = Spy:traceback( ... )

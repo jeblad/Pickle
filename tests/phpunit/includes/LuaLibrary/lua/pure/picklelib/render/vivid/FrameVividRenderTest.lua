@@ -7,9 +7,11 @@
 local testframework = require 'Module:TestFramework'
 
 local lib = require 'picklelib/render/vivid/FrameVividRender'
+assert( lib )
 local name = 'resultRender'
 
 local fix = require 'picklelib/report/FrameReport'
+assert( fix )
 
 local function makeTest( ... )
 	return lib.create( ... )

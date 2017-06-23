@@ -7,6 +7,7 @@
 local testframework = require 'Module:TestFramework'
 
 local util = require 'picklelib/util'
+assert( util )
 
 local function testExists()
 	return type( util )

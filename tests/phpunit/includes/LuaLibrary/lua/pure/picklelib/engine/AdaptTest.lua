@@ -6,8 +6,11 @@
 local testframework = require 'Module:TestFramework'
 
 local Adapt = require 'picklelib/engine/Adapt'
+assert( Adapt )
 local reports = require 'picklelib/Stack'
-local adaptations = require('picklelib/Stack')
+assert( reports )
+local adaptations = require 'picklelib/Stack'
+assert( adaptations )
 
 local function makeAdapt( ... )
 	return Adapt.create( ... ):setReports( reports.create() ):setAdaptations( adaptations.create() )

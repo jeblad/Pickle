@@ -7,6 +7,7 @@
 local testframework = require 'Module:TestFramework'
 
 local lib = require 'picklelib/extractor/TrueExtractorStrategy'
+assert( lib )
 local name = 'extractor'
 
 local function makeTest( ... )

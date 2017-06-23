@@ -6,6 +6,7 @@
 local testframework = require 'Module:TestFramework'
 
 local stack = require 'picklelib/Stack'
+assert( stack )
 
 local function makeStack( ... )
 	return stack.create( ... )

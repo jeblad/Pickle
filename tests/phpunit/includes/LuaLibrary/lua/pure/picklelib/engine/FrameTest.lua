@@ -7,10 +7,14 @@
 local testframework = require 'Module:TestFramework'
 
 local extractors = require 'picklelib/extractor/ExtractorStrategies'
+assert( extractors )
 local Frame = require 'picklelib/engine/Frame'
+assert( Frame )
 local subjects = require 'picklelib/Stack'
+assert( subjects )
 local reports = require 'picklelib/Stack'
--- local reports = require 'picklelib/Stack'
+assert( reports )
+
 local name = 'frame'
 local class = 'Frame'
 
