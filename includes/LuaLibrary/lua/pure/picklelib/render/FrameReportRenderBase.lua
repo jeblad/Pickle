@@ -85,6 +85,41 @@ function FrameReportRender:realizeClarification( keyPart, lang )
 	return msg:plain()
 end
 
+--- Realize comment
+-- @param Report that shall be realized
+-- @param string part of a message key
+-- @param string optional language code
+-- @return string
+function FrameReportRender:realizeComment( src, keyPart, lang )
+	assert( src, 'Failed to provide a source' )
+
+	local ucfKeyPart = string.upper( string.sub( keyPart, 1, 1 ) )..string.sub( keyPart, 2 )
+	if not ( src['is'..ucfKeyPart]( src ) or src['has'..ucfKeyPart]( src ) ) then
+		return ''
+	end
+
+	local get = src['get'..ucfKeyPart]
+	local desc = get( src )
+		and mw.message.newRawMessage( get( src ) )
+		or mw.message.new( 'pickle-report-frame-' .. keyPart .. '-no-description' )
+
+	if lang then
+		desc:inLanguage( lang )
+	end
+
+	local clar = self:realizeClarification( 'is-' .. keyPart, lang )
+
+	local msg = desc:isDisabled()
+		and mw.message.new( self:key( 'wrap-no-description' ), clar )
+		or mw.message.new( self:key( 'wrap-description' ), clar, desc:plain() )
+
+	if lang then
+		msg:inLanguage( lang )
+	end
+
+	return msg:plain()
+end
+
 --- Realize reported data for state
 -- @param Report that shall be realized
 -- @param string language code used for realization
@@ -103,29 +138,7 @@ end
 function FrameReportRender:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
 
-	if not ( src:isSkip() or src:hasSkip() ) then
-		return ''
-	end
-
-	local desc = src:getSkip()
-		and mw.message.newRawMessage( src:getSkip() )
-		or mw.message.new( 'pickle-report-frame-skip-no-description' )
-
-	if lang then
-		desc:inLanguage( lang )
-	end
-
-	local skip = self:realizeClarification( 'is-skip', lang )
-
-	local msg = desc:isDisabled()
-		and mw.message.new( self:key( 'wrap-no-description' ), skip )
-		or mw.message.new( self:key( 'wrap-description' ), skip, desc:plain() )
-
-	if lang then
-		msg:inLanguage( lang )
-	end
-
-	return msg:plain()
+	return self:realizeComment( src, 'skip', lang )
 end
 
 --- Realize reported data for todo
@@ -136,29 +149,7 @@ end
 function FrameReportRender:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
 
-	if not ( src:isTodo() or src:hasTodo() ) then
-		return ''
-	end
-
-	local desc = src:getTodo()
-		and mw.message.newRawMessage( src:getTodo() )
-		or mw.message.new( 'pickle-report-frame-todo-no-description' )
-
-	if lang then
-		desc:inLanguage( lang )
-	end
-
-	local todo = self:realizeClarification( 'is-todo', lang )
-
-	local msg = desc:isDisabled()
-		and mw.message.new( self:key( 'wrap-no-description' ), todo )
-		or mw.message.new( self:key( 'wrap-description' ), todo, desc:plain() )
-
-	if lang then
-		msg:inLanguage( lang )
-	end
-
-	return msg:plain()
+	return self:realizeComment( src, 'todo', lang )
 end
 
 --- Realize reported data for description
