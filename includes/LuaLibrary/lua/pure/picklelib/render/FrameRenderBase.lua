@@ -1,18 +1,5 @@
 --- Baseclass for frame report renderer
 
---[[
--- Wrong place, should be in Frame
--- non-pure libs
-local Extractors
-if mw.pickle then
-	-- structure exist, make access simpler
-	Extractors = mw.pickle.extractors
-else
-	-- structure does not exist, require the libs
-	Extractors = require 'picklelib/engine/ExtractorStrategies'
-end
---]]
-
 -- @var class var for lib
 local FrameRender = {}
 

@@ -1,5 +1,4 @@
 --- Baseclass for report renderer
--- luacheck: globals mw
 
 -- @var class var for lib
 local AdaptRender = {}
