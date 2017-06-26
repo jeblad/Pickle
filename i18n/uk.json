@@ -55,8 +55,6 @@
 	"pickle-report-frame-is-not-ok-translated": "не гаразд",
 	"pickle-report-adapt-is-ok-translated": "гаразд",
 	"pickle-report-adapt-is-not-ok-translated": "не гаразд",
-	"pickle-report-adapt-wrap-skip": "# пропустити $1",
-	"pickle-report-adapt-wrap-todo": "# todo $1",
 	"pickle-adapt-process-first": "Вибрати перший елемент",
 	"pickle-adapt-process-second": "Вибрати другий елемент",
 	"pickle-adapt-process-third": "Вибрати третій елемент",

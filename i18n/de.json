@@ -58,8 +58,6 @@
 	"pickle-report-frame-is-todo-translated": "zu tun",
 	"pickle-report-adapt-is-ok-translated": "ok",
 	"pickle-report-adapt-is-not-ok-translated": "nicht ok",
-	"pickle-report-adapt-wrap-skip": "# skip (überspringen) $1",
-	"pickle-report-adapt-wrap-todo": "# todo (zu tun) $1",
 	"pickle-adapt-process-first": "Erstes Element auswählen",
 	"pickle-adapt-process-second": "Zweites Element auswählen",
 	"pickle-adapt-process-third": "Drittes Element auswählen",

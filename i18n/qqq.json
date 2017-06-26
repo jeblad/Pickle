@@ -85,8 +85,6 @@
 	"pickle-report-adapt-is-not-ok-translated": "{{Optional}}\n{{pickle-gloss}} Transkation of the initial keyword \"not ok\" used for each good test at adapt level in a TAP-report. This goes in the parenthesis like \"not ok (something)\".",
 	"pickle-report-adapt-todo-no-description": "{{Optional}}\n{{pickle-gloss}} The default message when the optional description string is missing for the todo at adapt level.",
 	"pickle-report-adapt-skip-no-description": "{{Optional}}\n{{pickle-gloss}} The default message when the optional description string is missing for the skip at adapt level.",
-	"pickle-report-adapt-wrap-skip": "{{pickle-gloss}} An outher wrapper for the \"skip\" keyword and the optional string. It can be adapted by a following localization \"skip (something)\", but keep the keyword \"skip\". There should be a single hash mark in the message, right before the keyword. Removing the initial keyword will make the parsing fail.\n{{Identical|Skip}}",
-	"pickle-report-adapt-wrap-todo": "{{pickle-gloss}} An outher wrapper for the \"todo\" keyword and the optional string. It can be adapted by a following localization \"todo (something)\", but keep the keyword \"todo\". There should be a single hash mark in the message, right before the keyword. Removing the initial keyword will make the parsing fail.\n{{Identical|Todo}}",
 	"pickle-report-adapt-wrap-description": "{{pickle-gloss}} An outher wrapper for the optional description string. This is a message where special markers can be added.",
 	"pickle-report-adapt-wrap-line": "{{pickle-gloss}} An outher wrapper for the collected lines.",
 	"pickle-adapt-process-first": "{{pickle-gloss}} {{pickle-preprocess}} {{pickle-pick-element|1|first}}",

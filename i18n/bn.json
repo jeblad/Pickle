@@ -39,8 +39,6 @@
 	"pickle-report-frame-is-todo-translated": "করণীয়",
 	"pickle-report-adapt-is-ok-translated": "ঠিক আছে",
 	"pickle-report-adapt-is-not-ok-translated": "ঠিক নেই",
-	"pickle-report-adapt-wrap-skip": "# $1 এড়ান",
-	"pickle-report-adapt-wrap-todo": "# করণীয় $1",
 	"pickle-adapt-process-first": "প্রথম উপাদান চয়ন করুন",
 	"pickle-adapt-process-second": "দ্বিতীয় উপাদান চয়ন করুন",
 	"pickle-adapt-process-third": "তৃতীয় উপাদান চয়ন করুন",

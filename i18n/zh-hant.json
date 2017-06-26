@@ -14,8 +14,6 @@
 	"pickle-frame-compact-header-all-good": "確定 (ok) &mdash; $1",
 	"pickle-report-frame-is-ok-translated": "確定",
 	"pickle-report-adapt-is-ok-translated": "確定",
-	"pickle-report-adapt-wrap-skip": "跳過 $1",
-	"pickle-report-adapt-wrap-todo": "待辦 $1",
 	"pickle-adapt-process-as-u-upper-first": "大寫Unicode字串中的首個碼位",
 	"pickle-adapt-process-as-u-lower-first": "小寫Unicode字串中的首個碼位"
 }

@@ -82,8 +82,6 @@
 	"pickle-report-adapt-is-not-ok-translated": "-",
 	"pickle-report-adapt-todo-no-description": "-",
 	"pickle-report-adapt-skip-no-description": "-",
-	"pickle-report-adapt-wrap-skip": "# skip $1",
-	"pickle-report-adapt-wrap-todo": "# todo $1",
 	"pickle-report-adapt-wrap-description": "$1",
 	"pickle-report-adapt-wrap-line": "$1",
 	"pickle-adapt-process-first": "Pick first element",

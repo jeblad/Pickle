@@ -54,8 +54,6 @@
 	"pickle-report-frame-is-not-ok-translated": "non ok",
 	"pickle-report-adapt-is-ok-translated": "ok",
 	"pickle-report-adapt-is-not-ok-translated": "non ok",
-	"pickle-report-adapt-wrap-skip": "# omitir $1",
-	"pickle-report-adapt-wrap-todo": "# pendente $1",
 	"pickle-adapt-process-first": "Coller o primeiro elemento",
 	"pickle-adapt-process-second": "Coller o segundo elemento",
 	"pickle-adapt-process-third": "Coller o terceiro elemento",

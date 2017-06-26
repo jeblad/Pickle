@@ -18,7 +18,5 @@
 	"pickle-frame-compact-header-all-good": "mat eo &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "n'eo ket mat &mdash; $1",
 	"pickle-report-adapt-is-ok-translated": "mat eo",
-	"pickle-report-adapt-is-not-ok-translated": "N'eo ket mat",
-	"pickle-report-adapt-wrap-skip": "lammat $1",
-	"pickle-report-adapt-wrap-todo": "da ober $1"
+	"pickle-report-adapt-is-not-ok-translated": "N'eo ket mat"
 }

@@ -57,8 +57,6 @@
 	"pickle-report-frame-is-todo-translated": "oavslutad",
 	"pickle-report-adapt-is-ok-translated": "god",
 	"pickle-report-adapt-is-not-ok-translated": "fel",
-	"pickle-report-adapt-wrap-skip": "# skip (avbrutit) $1",
-	"pickle-report-adapt-wrap-todo": "# todo (oavslutad) $1",
 	"pickle-adapt-process-first": "Plocka färsta elementet",
 	"pickle-adapt-process-second": "Plocka andra elementet",
 	"pickle-adapt-process-third": "Plocka tredje elementet",

@@ -59,8 +59,6 @@
 	"pickle-report-frame-is-todo-translated": "à faire",
 	"pickle-report-adapt-is-ok-translated": "ok",
 	"pickle-report-adapt-is-not-ok-translated": "non ok",
-	"pickle-report-adapt-wrap-skip": "# sauter $1",
-	"pickle-report-adapt-wrap-todo": "# à faire $1",
 	"pickle-adapt-process-first": "Choisir le premier élément",
 	"pickle-adapt-process-second": "Choisir le deuxième élément",
 	"pickle-adapt-process-third": "Choisir le troisième élément",
