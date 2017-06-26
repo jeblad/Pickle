@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/RenderBase'
+local lib = require 'picklelib/render/AdaptRender'
 assert( lib )
 
 local name = 'reportRender'
@@ -78,21 +78,27 @@ local tests = {
 		name = name .. '.state ()',
 		func = testState,
 		args = { false },
-		expect = { '(pickle-report-adapt-is-not-ok)' }
+		expect = { '(pickle-report-adapt-wrap-translated:'
+		.. ' not ok, (pickle-report-adapt-is-not-ok-translated))' }
 	},
 	{
 		name = name .. '.state ()',
 		func = testState,
 		args = { true },
-		expect = { '(pickle-report-adapt-is-ok)' }
+		expect = { '(pickle-report-adapt-wrap-translated:'
+		.. ' ok, (pickle-report-adapt-is-ok-translated))' }
 	},
 	{
 		name = name .. '.header ()',
 		func = testHeader,
 		args = { 'baz' },
+		--[[
 		expect = { '(pickle-report-adapt-is-ok)'
 			.. '(pickle-report-adapt-wrap-description: testing)'
 			.. '# (pickle-report-adapt-wrap-todo: baz)' }
+		]]
+		expect = { '(pickle-report-adapt-wrap-translated:'
+		.. ' ok, (pickle-report-adapt-is-ok-translated))' }
 	},
 	{
 		name = name .. '.body ()',

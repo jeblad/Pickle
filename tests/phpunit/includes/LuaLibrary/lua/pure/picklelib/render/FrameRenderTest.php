@@ -11,9 +11,9 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class FrameRenderTestBase extends Scribunto_LuaEngineTestBase {
+class FrameRenderTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'FrameRenderTestBase';
+	protected static $moduleName = 'FrameRenderTest';
 
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
@@ -21,7 +21,7 @@ class FrameRenderTestBase extends Scribunto_LuaEngineTestBase {
 	 */
 	function getTestModules() {
 		return parent::getTestModules() + [
-			'FrameRenderTestBase' => __DIR__ . '/FrameRenderTestBase.lua'
+			'FrameRenderTest' => __DIR__ . '/FrameRenderTest.lua'
 		];
 	}
 }

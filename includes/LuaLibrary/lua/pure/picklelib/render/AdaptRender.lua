@@ -1,5 +1,8 @@
 --- Baseclass for report renderer
 
+-- non-pure libs
+local Base = require 'picklelib/render/RenderBase'
+
 -- @var class var for lib
 local AdaptRender = {}
 
@@ -9,6 +12,9 @@ local AdaptRender = {}
 function AdaptRender:__index( key ) -- luacheck: no self
 	return AdaptRender[key]
 end
+
+-- @var metatable for the class
+setmetatable( AdaptRender, { __index = Base } )
 
 --- Create a new instance
 -- @param vararg unused
@@ -24,6 +30,7 @@ end
 -- @param vararg unused
 -- @return AdaptRender
 function AdaptRender:_init( ... ) -- luacheck: no unused args
+	Base._init( self, ... )
 	return self
 end
 
@@ -69,7 +76,7 @@ function AdaptRender:realizeState( src, lang )
 		return ''
 	end
 
-	return 'foo' -- trans:plain()
+	return msg:plain()
 end
 
 --- Realize reported data for header
@@ -81,11 +88,11 @@ function AdaptRender:realizeHeader( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local t = { self:realizeState( src, lang ) }
-
+--[[
 	if src:hasDescription() then
 		table.insert( t, self:realizeDescription( src, lang ) )
 	end
-
+]]
 	if src:isSkip() or src:isTodo() then
 		table.insert( t, '# ' )
 		table.insert( t, self:realizeSkip( src, lang ) )

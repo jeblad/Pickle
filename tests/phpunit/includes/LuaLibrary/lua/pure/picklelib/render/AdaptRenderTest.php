@@ -11,9 +11,9 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class AdaptRenderTestBase extends Scribunto_LuaEngineTestBase {
+class AdaptRenderTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'AdaptRenderTestBase';
+	protected static $moduleName = 'AdaptRenderTest';
 
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
@@ -21,7 +21,7 @@ class AdaptRenderTestBase extends Scribunto_LuaEngineTestBase {
 	 */
 	function getTestModules() {
 		return parent::getTestModules() + [
-			'AdaptRenderTestBase' => __DIR__ . '/AdaptRenderTestBase.lua'
+			'AdaptRenderTest' => __DIR__ . '/AdaptRenderTest.lua'
 		];
 	}
 }

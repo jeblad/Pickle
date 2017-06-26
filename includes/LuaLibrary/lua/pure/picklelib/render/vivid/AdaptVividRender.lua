@@ -1,7 +1,7 @@
 --- Subclass for report renderer
 
 -- pure libs
-local Base = require 'picklelib/render/AdaptRenderBase'
+local Base = require 'picklelib/render/AdaptRender'
 
 -- @var class var for lib
 local AdaptRender = {}

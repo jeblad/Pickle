@@ -56,7 +56,7 @@ end
 -- @private
 -- @param string name of a style of rendering
 function Renders:_init( name )
-	assert( name, 'Renderes: _init: Failed to provide a name' )
+	assert( name, 'Renders: _init: Failed to provide a name' )
 	self._style = name
 	self._types = {}
 end
@@ -67,7 +67,7 @@ end
 -- @param Render lib for the specific kind of rendering
 -- @return Render
 function Renders:registerType( name, lib )
-	assert( name, 'Renderes: registerType: Failed to provide a name' )
+	assert( name, 'Renders: registerType: Failed to provide a name' )
 	self._types[name] = lib
 	return self._types[name]
 end
@@ -78,8 +78,8 @@ end
 -- @param string name of a style of rendering
 -- @return Render
 function Renders:find( name )
-	assert( name, 'Renderes: find: Failed to provide a name' )
-	assert( self._types[name], 'Renderes: find: Failed to provide a previously registered type' )
+	assert( name, 'Renders: find: Failed to provide a name' )
+	assert( self._types[name], 'Renderers: find: Failed to provide a previously registered type for "' .. name .. '"')
 	return self._types[name]
 end
 

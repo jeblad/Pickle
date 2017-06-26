@@ -1,5 +1,8 @@
 --- Baseclass for frame report renderer
 
+-- non-pure libs
+local Base = require 'picklelib/render/RenderBase'
+
 -- @var class var for lib
 local FrameRender = {}
 
@@ -9,6 +12,9 @@ local FrameRender = {}
 function FrameRender:__index( key ) -- luacheck: no self
 	return FrameRender[key]
 end
+
+-- @var metatable for the class
+setmetatable( FrameRender, { __index = Base } )
 
 --- Create a new instance
 -- @param vararg unused
@@ -24,6 +30,7 @@ end
 -- @param vararg unused
 -- @return FrameRender
 function FrameRender:_init( ... ) -- luacheck: no unused args
+	Base._init( self, ... )
 	return self
 end
 
@@ -174,7 +181,6 @@ function FrameRender:realizeHeader( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local t = { self:realizeState( src, lang ) }
-	--local t = {  }
 
 	if src:hasDescription() then
 		table.insert( t, self:realizeDescription( src, lang ) )

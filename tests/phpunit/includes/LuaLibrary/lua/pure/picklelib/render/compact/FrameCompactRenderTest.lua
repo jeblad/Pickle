@@ -31,13 +31,13 @@ local function testKey( ... )
 end
 
 local function testHeaderOk( ... ) -- luacheck: ignore
-	local adapt = require 'picklelib/report/AdaptReport'.create():ok()
+	local adapt = require('picklelib/report/AdaptReport').create():ok()
 	local p = fix.create():addConstituent( adapt )
 	return makeTest():realizeHeader( p, 'qqx' )
 end
 
 local function testHeaderNotOk( ... ) -- luacheck: ignore
-	local adapt = require 'picklelib/report/AdaptReport'.create():notOk()
+	local adapt = require('picklelib/report/AdaptReport').create():notOk()
 	local p = fix.create():addConstituent( adapt )
 	return makeTest():realizeHeader( p, 'qqx' )
 end

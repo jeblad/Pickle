@@ -47,6 +47,7 @@ function FrameReport:_init( ... )
 	Base._init( self, ... )
 	self._skip = false
 	self._todo = false
+	self._state = true
 	self._type = 'frame-report'
 	if select('#',...) then
 		self:constituents():push( ... )
@@ -91,12 +92,28 @@ function FrameReport:hasConstituents()
 	return not ( self._constituents and self:constituents():isEmpty() or true )
 end
 
+--- Set the state unconditionally as "not ok""
+-- Note that initial state is not ok.
+-- @return self
+function FrameReport:notOk()
+	self._state = false
+	return self
+end
+
+--- Set the state unconditionally as "ok""
+-- Note that initial state is not ok.
+-- @return self
+function FrameReport:ok()
+	self._state = true
+	return self
+end
+
 --- Check if the instance state is ok
 -- Note that initial state is "not ok".
 -- @todo the initial state is not correct
 -- @return boolean state
 function FrameReport:isOk()
-	local state = true
+	local state = self._state
 
 	if self._constituents then
 		for _,v in ipairs( { self:constituents():export() } ) do

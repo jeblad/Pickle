@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/RenderBase'
+local lib = require 'picklelib/render/FrameRender'
 assert( lib )
 
 local name = 'reportRender'
@@ -51,12 +51,12 @@ local function testDescription( ... )
 	return makeTest():realizeDescription( p, 'qqx' )
 end
 
-local function testHeaderSkip( ... )
+local function testHeaderSkip( ... ) -- luacheck: ignore
 	local p = fix.create():setDescription( 'testing' ):setSkip( ... ):notOk()
 	return makeTest():realizeHeader( p, 'qqx' )
 end
 
-local function testHeaderTodo( ... )
+local function testHeaderTodo( ... ) -- luacheck: ignore
 	local p = fix.create():setDescription( 'testing' ):setTodo( ... ):ok()
 	return makeTest():realizeHeader( p, 'qqx' )
 end
@@ -98,56 +98,68 @@ local tests = {
 		name = name .. '.state ()',
 		func = testState,
 		args = { false },
-		expect = { '(pickle-report-adapt-is-not-ok)' }
+		expect = { '(pickle-report-frame-wrap-translated:'
+		.. ' not ok, (pickle-report-frame-is-not-ok-translated))' }
 	},
 	{
 		name = name .. '.state ()',
 		func = testState,
 		args = { true },
-		expect = { '(pickle-report-adapt-is-ok)' }
+		expect = { '(pickle-report-frame-wrap-translated:'
+		.. ' ok, (pickle-report-frame-is-ok-translated))' }
 	},
 	{
 		name = name .. '.skip ()',
 		func = testSkip,
 		args = { 'foo' },
-		expect = { '(pickle-report-adapt-wrap-skip: (foo))' }
+		expect = { '(pickle-report-frame-wrap-description:'
+		.. ' (pickle-report-frame-wrap-translated:'
+		.. ' skip, (pickle-report-frame-is-skip-translated)), foo)' }
 	},
 	{
 		name = name .. '.todo ()',
 		func = testTodo,
 		args = { 'bar' },
-		expect = { '(pickle-report-adapt-wrap-todo: bar)' }
+		expect = { '(pickle-report-frame-wrap-description:'
+		.. ' (pickle-report-frame-wrap-translated:'
+		.. ' todo, (pickle-report-frame-is-todo-translated)), bar)' }
 	},
 	{
 		name = name .. '.description ()',
 		func = testDescription,
 		args = { 'baz' },
-		expect = { '(pickle-report-adapt-wrap-description: baz)' }
+		expect = { '(pickle-report-frame-wrap-description: baz)' }
 	},
 	{
 		name = name .. '.header ()',
 		func = testHeaderSkip,
 		args = { 'baz' },
-		expect = { '(pickle-report-adapt-is-not-ok)'
-			.. '(pickle-report-adapt-wrap-description: testing)'
-			.. '# (pickle-report-adapt-wrap-skip: (baz))' }
+		expect = { '(pickle-report-frame-wrap-translated:'
+		.. ' not ok, (pickle-report-frame-is-not-ok-translated))'
+		.. ' (pickle-report-frame-wrap-description: testing)'
+		.. ' (pickle-report-frame-wrap-description:'
+		.. ' (pickle-report-frame-wrap-translated:'
+		.. ' skip, (pickle-report-frame-is-skip-translated)), baz)' }
 	},
 	{
 		name = name .. '.header ()',
 		func = testHeaderTodo,
 		args = { 'baz' },
-		expect = { '(pickle-report-adapt-is-ok)'
-			.. '(pickle-report-adapt-wrap-description: testing)'
-			.. '# (pickle-report-adapt-wrap-todo: baz)' }
+		expect = { '(pickle-report-frame-wrap-translated:'
+		.. ' ok, (pickle-report-frame-is-ok-translated))'
+		.. ' (pickle-report-frame-wrap-description: testing)'
+		.. ' (pickle-report-frame-wrap-description:'
+		.. ' (pickle-report-frame-wrap-translated:'
+		.. ' todo, (pickle-report-frame-is-todo-translated)), baz)' }
 	},
 	--[[
 	{
 		name = name .. '.body ()',
 		func = testBody,
 		expect = { "\n"
-			.. '(pickle-report-adapt-wrap-line: (foo))' .. "\n"
-			.. '(pickle-report-adapt-wrap-line: (bar))' .. "\n"
-			.. '(pickle-report-adapt-wrap-line: (baz))' }
+			.. '(pickle-report-frame-wrap-line: (foo))' .. "\n"
+			.. '(pickle-report-frame-wrap-line: (bar))' .. "\n"
+			.. '(pickle-report-frame-wrap-line: (baz))' }
 	},
 	]]
 }
