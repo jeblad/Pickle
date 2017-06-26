@@ -36,9 +36,7 @@ function AdaptReport:_init( ... )
 	Base._init( self )
 	self._description = false
 	self._state = false
-	self._lang = false
-	self._skip = false
-	self._todo = false
+	self._lang = false -- @todo is this correct?
 	self._type = 'adapt-report'
 	if select('#',...) then
 		self:lines():push( ... )
