@@ -28,5 +28,16 @@ function Render:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
+--- Override key construction
+-- Sole purpose of this is to do assertions, and that the provided key should never be used.
+-- @param string to be appended to a base string
+-- @return string
+function Render:key( str ) -- luacheck: no self
+	assert( str, 'Failed to provide a string' )
+	local keep = string.match( str, '^[-%a]+$' )
+	assert( keep, 'Failed to find a valid string' )
+	return 'pickle-report-base-' .. keep
+end
+
 -- Return the final class
 return Render

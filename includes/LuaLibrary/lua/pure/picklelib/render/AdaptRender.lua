@@ -37,11 +37,9 @@ end
 --- Override key construction
 -- @param string to be appended to a base string
 -- @return string
-function AdaptRender:key( str ) -- luacheck: no self
-	assert( str, 'Failed to provide a string' )
-	local keep = string.match( str, '^[-%a]+$' )
-	assert( keep, 'Failed to find a valid string' )
-	return 'pickle-report-adapt-' .. keep
+function AdaptRender:key( str )
+	Base._init( self, str )
+	return 'pickle-report-adapt-' .. str
 end
 
 --- Realize reported data for state
