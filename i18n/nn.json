@@ -10,6 +10,7 @@
 	"pickle-test-text-fail": "Feilar",
 	"pickle-test-text-missing": "Manglar",
 	"pickle-test-text-unknown": "Ukjend",
+	"pickle-test-text-invalid": "Ugyldig",
 	"pickle-test-text-todo-good": "God (uferdig)",
 	"pickle-test-text-todo-fail": "Feilar (uferdig)",
 	"pickle-test-text-skip-good": "God (utelate)",

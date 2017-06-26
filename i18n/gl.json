@@ -12,6 +12,7 @@
 	"pickle-test-text-fail": "Incorrecto",
 	"pickle-test-text-missing": "Faltante",
 	"pickle-test-text-unknown": "Descoñecido",
+	"pickle-test-text-invalid": "Non válido",
 	"pickle-test-text-todo-good": "Bo (pendente)",
 	"pickle-test-text-todo-fail": "Incorrecto (pendente)",
 	"pickle-test-text-skip-good": "Bo (omitir)",
