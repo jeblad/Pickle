@@ -39,5 +39,50 @@ function Render:key( str ) -- luacheck: no self
 	return 'pickle-report-base-' .. keep
 end
 
+--- Get the type of report
+-- All reports has an explicit type name.
+-- @return string
+function Render:type()
+	return self._type
+end
+
+--- Append same type to first
+-- This should probably always be string types. The base version only concatenates strinsg.
+-- @param any to act as the head
+-- @param any to act as the tail
+-- @return any
+function Render:append( head, tail ) -- luacheck: no self
+	assert( head )
+	assert( tail )
+	return head .. ' ' .. tail
+end
+
+--- Realize clarification
+-- @param string part of a message key
+-- @param string optional language code
+-- @return string
+function Render:realizeClarification( keyPart, lang )
+	assert( keyPart, 'Failed to provide a key part' )
+
+	local orig = mw.message.new( self:key( keyPart .. '-original' ) )
+	local trans = mw.message.new( self:key( keyPart .. '-translated' ) )
+
+	orig:inLanguage( 'en' )
+
+	if lang then
+		trans:inLanguage( lang )
+	end
+
+	local msg = trans:isDisabled()
+		and mw.message.new( self:key( 'wrap-untranslated' ), orig:plain() )
+		or mw.message.new( self:key( 'wrap-translated' ), orig:plain(), trans:plain() )
+
+	if lang then
+		msg:inLanguage( lang )
+	end
+
+	return msg:plain()
+end
+
 -- Return the final class
 return Render

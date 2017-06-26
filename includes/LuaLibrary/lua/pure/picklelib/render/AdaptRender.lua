@@ -49,32 +49,7 @@ end
 function AdaptRender:realizeState( src, lang )
 	assert( src, 'Failed to provide a source' )
 
-	local orig = mw.message.new(
-		src:isOk() and self:key( 'is-ok-original' ) or self:key( 'is-not-ok-original' ) )
-
-	-- previous is always in English, so no lang statement here
-	-- it should neither be disabled, so don't bother testing for that
-
-	local trans = mw.message.new(
-		src:isOk() and self:key( 'is-ok-translated' ) or self:key( 'is-not-ok-translated' ) )
-
-	if lang then
-		trans:inLanguage( lang )
-	end
-
-	local msg = trans:isDisabled()
-		and mw.message.new( self:key( 'wrap-untranslated' ), orig:plain() )
-		or mw.message.new( self:key( 'wrap-translated' ), orig:plain(), trans:plain() )
-
-	if lang then
-		msg:inLanguage( lang )
-	end
-
-	if msg:isDisabled() then
-		return ''
-	end
-
-	return msg:plain()
+	return self:realizeClarification( src:isOk() and 'is-ok' or 'is-not-ok', lang )
 end
 
 --- Realize reported data for header

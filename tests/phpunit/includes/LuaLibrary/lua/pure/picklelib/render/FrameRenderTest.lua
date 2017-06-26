@@ -26,6 +26,14 @@ local function testCreate( ... )
 	return type( makeTest( ... ) )
 end
 
+local function testClarification( keyPart, lang )
+	local str = makeTest():realizeClarification( keyPart, lang )
+	if lang ~= 'qqx' then
+		str = mw.ustring.gsub( str, '%(.-%)', '(<replacement>)' )
+	end
+	return str
+end
+
 local function testState( bool )
 	local p = fix.create()
 	if bool then
@@ -93,6 +101,34 @@ local tests = {
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
+	},
+	{
+		name = name .. '.clarification ("skip", "qqx")',
+		func = testClarification,
+		args = { "is-skip", 'qqx' },
+		expect = { '(pickle-report-frame-wrap-translated:'
+		.. ' skip, (pickle-report-frame-is-skip-translated))' }
+	},
+	{
+		name = name .. '.clarification ("skip", "nb")',
+		func = testClarification,
+		-- scary, it uses a language code, but only the clarification should be translated
+		args = { "is-skip", 'nb' },
+		expect = { "skip (<replacement>)" }
+	},
+	{
+		name = name .. '.clarification ("todo", "qqx")',
+		func = testClarification,
+		args = { "is-todo", 'qqx' },
+		expect = { '(pickle-report-frame-wrap-translated:'
+		.. ' todo, (pickle-report-frame-is-todo-translated))' }
+	},
+	{
+		name = name .. '.clarification ("todo", "nb")',
+		func = testClarification,
+		-- scary, it uses a language code, but only the clarification should be translated
+		args = { "is-todo", 'nb' },
+		expect = { "todo (<replacement>)" }
 	},
 	{
 		name = name .. '.state ()',
