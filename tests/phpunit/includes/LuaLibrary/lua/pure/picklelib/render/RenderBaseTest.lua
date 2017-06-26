@@ -36,6 +36,11 @@ local function testClarification( keyPart )
 	return makeTest():realizeClarification( keyPart )
 end
 
+local function testComment( keyPart )
+	local p = require('picklelib/report/ReportBase').create()
+	return makeTest():realizeComment( p, keyPart )
+end
+
 local tests = {
 	{
 		name = name .. ' exists',
@@ -87,6 +92,14 @@ local tests = {
 		args = { "todo" },
 		expect = { "⧼pickle-report-base-wrap-untranslated⧽" }
 	},
+	--[[
+	{
+		name = name .. '.comment ("foobar")',
+		func = testComment,
+		args = { "foobar" },
+		expect = { "⧼pickle-report-base-wrap-untranslated⧽" }
+	},
+	]]
 }
 
 return testframework.getTestProvider( tests )

@@ -84,5 +84,40 @@ function Render:realizeClarification( keyPart, lang )
 	return msg:plain()
 end
 
+--- Realize comment
+-- @param Report that shall be realized
+-- @param string part of a message key
+-- @param string optional language code
+-- @return string
+function Render:realizeComment( src, keyPart, lang )
+	assert( src, 'Failed to provide a source' )
+
+	local ucfKeyPart = string.upper( string.sub( keyPart, 1, 1 ) )..string.sub( keyPart, 2 )
+	if not ( src['is'..ucfKeyPart]( src ) or src['has'..ucfKeyPart]( src ) ) then
+		return ''
+	end
+
+	local get = src['get'..ucfKeyPart]
+	local desc = get( src )
+		and mw.message.newRawMessage( get( src ) )
+		or mw.message.new( 'pickle-report-frame-' .. keyPart .. '-no-description' )
+
+	if lang then
+		desc:inLanguage( lang )
+	end
+
+	local clar = self:realizeClarification( 'is-' .. keyPart, lang )
+
+	local msg = desc:isDisabled()
+		and mw.message.new( self:key( 'wrap-no-description' ), clar )
+		or mw.message.new( self:key( 'wrap-description' ), clar, desc:plain() )
+
+	if lang then
+		msg:inLanguage( lang )
+	end
+
+	return msg:plain()
+end
+
 -- Return the final class
 return Render
