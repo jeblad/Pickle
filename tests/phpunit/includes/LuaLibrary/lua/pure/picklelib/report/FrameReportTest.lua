@@ -34,6 +34,16 @@ local function testType( ... )
 	return makeTest( ... ):type()
 end
 
+local function testState( state )
+	local test = makeTest()
+	if state then
+		test:ok()
+	else
+		test:notOk()
+	end
+	return test:isOk()
+end
+
 local function testConstituent( con )
 	local p = makeTest():addConstituent( con )
 	return { p:constituents():export() }
@@ -136,6 +146,18 @@ local tests = {
 		name = name .. '.type ()',
 		func = testType,
 		expect = { class }
+	},
+	{
+		name = name .. '.notOk (single value)',
+		func = testState,
+		args = { false },
+		expect = { false }
+	},
+	{
+		name = name .. '.ok (single value)',
+		func = testState,
+		args = { true },
+		expect = { true }
 	},
 	{
 		name = name .. ':addConstituent (single value type)',
