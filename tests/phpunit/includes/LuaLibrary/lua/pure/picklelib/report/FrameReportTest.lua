@@ -34,16 +34,6 @@ local function testType( ... )
 	return makeTest( ... ):type()
 end
 
-local function testState( state )
-	local test = makeTest()
-	if state then
-		test:ok()
-	else
-		test:notOk()
-	end
-	return test:isOk()
-end
-
 local function testConstituent( con )
 	local p = makeTest():addConstituent( con )
 	return { p:constituents():export() }
@@ -52,14 +42,6 @@ end
 local function testConstituents( ... )
 	local p = makeTest():addConstituents( ... )
 	return { p:constituents():export() }
-end
-
-local function testIsSkip( bool )
-	local test = makeTest()
-	if bool then
-		test:setSkip( 'foo-bar' )
-	end
-	return test:isSkip()
 end
 
 local function testHasSkip( ... )
@@ -72,14 +54,6 @@ local function testHasSkip( ... )
 	return test:hasSkip()
 end
 
-local function testIsTodo( bool )
-	local test = makeTest()
-	if bool then
-		test:setTodo( 'baz' )
-	end
-	return test:isTodo()
-end
-
 local function testHasTodo( ... )
 	local test = makeTest()
 	local adapt = require 'picklelib/report/AdaptReport'
@@ -88,22 +62,6 @@ local function testHasTodo( ... )
 		test:addConstituent( adapt.create():setSkip( v ) )
 	end
 	return test:hasTodo()
-end
-
-local function testGetSetSkip( str )
-	local test = makeTest()
-	if str then
-		test:setSkip( str )
-	end
-	return test:getSkip()
-end
-
-local function testGetSetTodo( str )
-	local test = makeTest()
-	if str then
-		test:setTodo( str )
-	end
-	return test:getTodo()
 end
 
 local tests = {
@@ -148,18 +106,6 @@ local tests = {
 		expect = { class }
 	},
 	{
-		name = name .. '.notOk (single value)',
-		func = testState,
-		args = { false },
-		expect = { false }
-	},
-	{
-		name = name .. '.ok (single value)',
-		func = testState,
-		args = { true },
-		expect = { true }
-	},
-	{
 		name = name .. ':addConstituent (single value type)',
 		func = testConstituent,
 		args = { 'foo' },
@@ -170,18 +116,6 @@ local tests = {
 		func = testConstituents,
 		args = { 'foo', 'bar', 'baz' },
 		expect = { { 'foo', 'bar', 'baz' } }
-	},
-	{
-		name = name .. '.isSkip ()',
-		func = testIsSkip,
-		args = { false },
-		expect = { false }
-	},
-	{
-		name = name .. '.isSkip (ping)',
-		func = testIsSkip,
-		args = { 'ping' },
-		expect = { true }
 	},
 	{
 		name = name .. '.hasSkip ()',
@@ -196,18 +130,6 @@ local tests = {
 		expect = { true }
 	},
 	{
-		name = name .. '.isTodo ()',
-		func = testIsTodo,
-		args = { false },
-		expect = { false }
-	},
-	{
-		name = name .. '.isTodo (pong)',
-		func = testIsTodo,
-		args = { 'pong' },
-		expect = { true }
-	},
-	{
 		name = name .. '.hasTodo ()',
 		func = testHasTodo,
 		args = {},
@@ -218,30 +140,6 @@ local tests = {
 		func = testHasTodo,
 		args = { 'ping' },
 		expect = { false }
-	},
-	{
-		name = name .. '.skip ()',
-		func = testGetSetSkip,
-		args = {},
-		expect = { false }
-	},
-	{
-		name = name .. '.skip ()',
-		func = testGetSetSkip,
-		args = { 'foo' },
-		expect = { 'foo' }
-	},
-	{
-		name = name .. '.todo ()',
-		func = testGetSetTodo,
-		args = { },
-		expect = { false }
-	},
-	{
-		name = name .. '.todo ()',
-		func = testGetSetTodo,
-		args = { 'bar' },
-		expect = { 'bar' }
 	},
 }
 

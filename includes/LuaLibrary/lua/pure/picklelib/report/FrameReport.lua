@@ -105,31 +105,6 @@ function FrameReport:isOk()
 	return state
 end
 
---- Set the skip
--- This is an accessor to set the member.
--- Note that all arguments will be wrapped up in a table before saving.
--- @param string that will be used as the skip note
--- @return self
-function FrameReport:setSkip( str )
-	assert( str, 'Failed to provide a skip' )
-	self._skip = str
-	return self
-end
-
---- Get the skip
--- This is an accessor to get the member.
--- Note that the saved structure will be unpacked before being returned.
--- @return string used as the skip note
-function FrameReport:getSkip()
-	return self._skip
-end
-
---- Check if the instance is itself in a skip state
--- @return boolean that is set if a skip note exist
-function FrameReport:isSkip()
-	return not not self._skip
-end
-
 --- Check if the instance has any member in skip state
 -- This will reject all frame constituents from the analysis.
 -- @return boolean that is set if any constituent has a skip note
@@ -145,29 +120,6 @@ function FrameReport:hasSkip()
 	end
 
 	return tmp
-end
-
---- Set the todo
--- This is an accessor to set the member.
--- @param string that will be used as the todo note
--- @return self
-function FrameReport:setTodo( str )
-	assert( str, 'Failed to provide a todo' )
-	self._todo = str
-	return self
-end
-
---- Get the todo
--- This is an accessor to get the member.
--- @return string used as the todo note
-function FrameReport:getTodo()
-	return self._todo
-end
-
---- Check if the instance is itself in a todo state
--- @return boolean that is set if a skip note exist
-function FrameReport:isTodo()
-	return not not self._todo
 end
 
 --- Check if the instance has any member in todo state
