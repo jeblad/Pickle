@@ -57,6 +57,8 @@
 	"pickle-report-frame-is-todo-translated": "uferdig",
 	"pickle-report-adapt-is-ok-translated": "god",
 	"pickle-report-adapt-is-not-ok-translated": "feil",
+	"pickle-report-adapt-is-skip-translated": "utelatt",
+	"pickle-report-adapt-is-todo-translated": "uferdig",
 	"pickle-adapt-process-first": "Plukk første element",
 	"pickle-adapt-process-second": "Plukk andre element",
 	"pickle-adapt-process-third": "Plukk tredje element",
