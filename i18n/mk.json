@@ -12,6 +12,7 @@
 	"pickle-test-text-fail": "Неуспешно",
 	"pickle-test-text-missing": "Недостасува",
 	"pickle-test-text-unknown": "Непознато",
+	"pickle-test-text-invalid": "Неважечки",
 	"pickle-test-text-todo-good": "Добро (неизвр.)",
 	"pickle-test-text-todo-fail": "Неуспешно (неизвр.)",
 	"pickle-test-text-skip-good": "Добро (прескок.)",
