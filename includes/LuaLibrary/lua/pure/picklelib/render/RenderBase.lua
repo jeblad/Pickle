@@ -29,7 +29,7 @@ function Render:_init( ... ) -- luacheck: no unused args
 end
 
 --- Override key construction
--- Sole purpose of this is to do assertions, and that the provided key should never be used.
+-- Sole purpose of this is to do assertions, and the provided key is never be used.
 -- @param string to be appended to a base string
 -- @return string
 function Render:key( str ) -- luacheck: no self
