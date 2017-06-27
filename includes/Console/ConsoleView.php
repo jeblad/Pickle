@@ -84,14 +84,22 @@ class ConsoleView {
 	/**
 	 * Add a view for test console
 	 *
-	 * @param \EditPage &$editor the edit page access
-	 * @param any &$checkboxes is neglected
-	 * @param any &$tabindex is neglected
+	 * @param \EditPage $editor the edit page access
+	 * @param OutputPage $output where to put the additional stuff
+	 * @param int &$tab Current tabindex
 	 * @return boolean outcome of the call
+
 	 */
-	public static function onEditPageBeforeEditChecks( \EditPage &$editor, &$checkboxes, &$tabindex ) {
-		$output = \RequestContext::getMain()->getOutput();
-		return self::build( $editor, $output );
+	public static function onShowStandardInputsOptions(
+		\EditPage $editor,
+		\OutputPage $output,
+		&$tab
+	) {
+		if ( $editor->getTitle()->hasContentModel( CONTENT_MODEL_SCRIBUNTO ) ) {
+			$output = \RequestContext::getMain()->getOutput();
+			return self::build( $editor, $output );
+		}
+		return true;
 	}
 
 	/**

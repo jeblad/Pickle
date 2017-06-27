@@ -358,8 +358,8 @@
 		"OutputPageParserOutput": [
 			"Pickle\\SubLinksView::onOutputPageParserOutput"
 		],
-		"EditPageBeforeEditChecks": [
-			"Pickle\\ConsoleView::onEditPageBeforeEditChecks"
+		"EditPage::showStandardInputs:options": [
+			"Pickle\\ConsoleView::onShowStandardInputsOptions"
 		],
 		"EditPage::showReadOnlyForm:initial": [
 			"Pickle\\ConsoleView::onShowReadOnlyFormInitial"
