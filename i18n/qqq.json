@@ -60,7 +60,7 @@
 	"pickle-frame-compact-header-some-failed": "{{pickle-gloss}} [Note for dev; delete entry?] Header message used for the compact layout when some contained constituents have failed. Initial \"not ok\" must be retained, but can be followed by an explanation. {{pickle-report-compact}}",
 	"pickle-frame-full-header": "{{pickle-gloss}} [Note for dev; delete entry?] Header message used for the full layout. Initial hash (#) must be retained. {{pickle-report-full}}",
 	"pickle-frame-vivid-header": "{{pickle-gloss}} [Note for dev; delete entry?] Header message used for the full layout. {{pickle-report-vivid}}",
-	"pickle-frame-no-description": "{{pickle-gloss}} The string used for the frame header when the tests provides none. The string should not be on a form that can trigger an extractor.",
+	"pickle-frame-no-description": "{{pickle-gloss}} The string used for the frame header when the tests provides none. The string should not be on a form that can trigger an extractor.\n{{Identical|Anonymous}}",
 	"pickle-frame-no-fixtures": "{{pickle-gloss}} The tests has provided no fixtures, that is the functions containing the tests.",
 	"pickle-frame-no-tests": "{{pickle-gloss}} The tests has run no tests, that is the functions for the fixtures has none.",
 	"pickle-report-frame-wrap-translated": "{{Optional}}\n{{pickle-gloss}} A frame level outher wrapper for the initial keyword and its translation. This is a message where localized parenthesis can be added, other than that it should probably not be changed.",

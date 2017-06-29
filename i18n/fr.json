@@ -3,7 +3,8 @@
 		"authors": [
 			"Gomoko",
 			"Wladek92",
-			"Jeblad"
+			"Jeblad",
+			"Thibaut120094"
 		]
 	},
 	"pickle-desc": "Ajoute les tests basiques Pickle aux modules Lua",
@@ -56,9 +57,14 @@
 	"pickle-report-frame-is-ok-translated": "ok",
 	"pickle-report-frame-is-not-ok-translated": "non ok",
 	"pickle-report-frame-is-skip-translated": "sauter",
+	"pickle-report-frame-is-todo-original": "à faire",
 	"pickle-report-frame-is-todo-translated": "à faire",
 	"pickle-report-adapt-is-ok-translated": "ok",
 	"pickle-report-adapt-is-not-ok-translated": "non ok",
+	"pickle-report-adapt-is-skip-original": "Sauter",
+	"pickle-report-adapt-is-skip-translated": "-",
+	"pickle-report-adapt-is-todo-original": "à faire",
+	"pickle-report-adapt-is-todo-translated": "-",
 	"pickle-adapt-process-first": "Choisir le premier élément",
 	"pickle-adapt-process-second": "Choisir le deuxième élément",
 	"pickle-adapt-process-third": "Choisir le troisième élément",
