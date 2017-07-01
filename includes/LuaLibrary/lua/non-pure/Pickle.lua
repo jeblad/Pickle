@@ -25,6 +25,7 @@ function pickle.describe( ... )
 	local Spy = require 'picklelib/engine/Spy'
 	local Adapt = require 'picklelib/engine/Adapt'
 	local Frame = require 'picklelib/engine/Frame'
+	local counter = require 'picklelib/Counter'
 
 	-- not a real instance of a class
 	-- @todo this should probably be reimplemented, it missuses weird behavior in Lua
@@ -210,7 +211,8 @@ function pickle.describe( ... )
 
 			return obj:reports():top():realize(
 				obj:renders().style( styleName or 'full' ),
-				langCode or mw.language.getContentLanguage():getCode() )
+				langCode or mw.language.getContentLanguage():getCode(),
+				counter.create() )
 		end
 
 	return obj
