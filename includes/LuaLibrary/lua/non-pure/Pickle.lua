@@ -22,7 +22,7 @@ function pickle.describe( ... )
 	local translators = require( 'picklelib/translator/TranslatorStrategies' ).create()
 
 	-- only require libs
-	local Spy = require( 'picklelib/engine/Spy' )
+	local Spy = require 'picklelib/engine/Spy'
 	local Adapt = require 'picklelib/engine/Adapt'
 	local Frame = require 'picklelib/engine/Frame'
 
