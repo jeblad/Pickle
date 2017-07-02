@@ -22,6 +22,32 @@ function Renders:__call( name ) -- luacheck: no self
 	return Renders._styles[name]
 end
 
+--- Initialize a new instance
+-- @private
+-- @param string name of a style of rendering
+function Renders:_init( name )
+	assert( name, 'Renders: _init: Failed to provide a name' )
+	self._version = 'TAP version 13'
+	self._style = name
+	self._types = {}
+end
+
+--- Create a new instance
+-- @param name of a style of rendering
+-- @return self
+function Renders.create( name )
+	local self = setmetatable( {}, Renders )
+	self:_init( name )
+	return self
+end
+
+--- Get the version
+-- This is the TAP-version line.
+-- @return string
+function Renders:realizeVersion() -- luacheck: no unused args
+	return self._version
+end
+
 --- Convenience function to access a specific named style
 -- This will try to create the style if it isn't created yet.
 -- @return Render
@@ -41,24 +67,6 @@ function Renders.registerStyle( name )
 		Renders._styles[name] = Renders.create( name )
 	end
 	return Renders._styles[name]
-end
-
---- Create a new instance
--- @param name of a style of rendering
--- @return self
-function Renders.create( name )
-	local self = setmetatable( {}, Renders )
-	self:_init( name )
-	return self
-end
-
---- Initialize a new instance
--- @private
--- @param string name of a style of rendering
-function Renders:_init( name )
-	assert( name, 'Renders: _init: Failed to provide a name' )
-	self._style = name
-	self._types = {}
 end
 
 --- Register a render of given named type
