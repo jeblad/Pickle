@@ -188,10 +188,10 @@ function pickle.describe( ... )
 			assert(obj:reports():top(), 'Frame: tap: top')
 			assert(obj:renders(), 'Frame: tap: renders')
 
-			local styleName = false
-			local langCode = false
+			local styleName = 'full'
+			local langCode = 'en'
 
-			if type( select( 1, ... ) ) == 'table' and select( '#', ... ) then
+			if select( '#', ... ) == 1 and type( select( 1, ... ) ) == 'table'  then
 				local frame = select( 1, ... )
 
 				if frame.args['style'] then
@@ -216,15 +216,16 @@ function pickle.describe( ... )
 					end
 				end
 
-			else
-				styleName = select( 1, ... )
-				langCode = select( 2, ... )
+			elseif select( '#', ... ) > 0 then
+				if select( '#', ... ) >= 1 and pickle._styles[select( 1, ... )] then
+					styleName = select( 1, ... )
+				end
+				if select( '#', ... ) >= 2 and mw.language.isValidCode( select( 2, ... ) ) then
+					langCode = select( 2, ... )
+				end
 			end
 
-			styleName = styleName or 'full'
-			langCode = langCode or 'en'
-
-			local style = obj:renders().style( styleName or 'full' )
+			local style = obj:renders().style( styleName )
 			langCode = langCode or mw.language.getContentLanguage():getCode()
 			return obj:reports():top():realize( style, langCode, counter.create() )
 		end
