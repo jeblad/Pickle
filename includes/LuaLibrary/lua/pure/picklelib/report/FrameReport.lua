@@ -182,7 +182,7 @@ function FrameReport:realize( renders, lang, counter )
 	end
 
 	if true or init then
-		out = styles:realizeVersion( self, lang, counter ) .. "\n"
+		out = renders:realizeVersion( self, lang, counter ) .. "\n"
 			.. '1..' .. counter:num() .. "\n"
 			.. out
 	end
