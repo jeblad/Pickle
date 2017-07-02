@@ -184,7 +184,6 @@ function pickle.describe( ... )
 		--function obj.tap( name )
 		function obj.tap( ... )
 			obj:eval()
-			-- assert(obj, 'Frame: tap: self')
 			assert(obj:reports(), 'Frame: tap: reports')
 			assert(obj:reports():top(), 'Frame: tap: top')
 			assert(obj:renders(), 'Frame: tap: renders')
@@ -198,7 +197,7 @@ function pickle.describe( ... )
 				if frame.args['style'] then
 					styleName = frame.args['style']
 				else
-					for _,v in ipairs( first.args ) do
+					for _,v in ipairs( frame.args ) do
 						if pickle._styles[v] then
 							styleName = v
 							break
@@ -221,6 +220,9 @@ function pickle.describe( ... )
 				styleName = select( 1, ... )
 				langCode = select( 2, ... )
 			end
+
+			styleName = styleName or 'full'
+			langCode = langCode or 'en'
 
 			local style = obj:renders().style( styleName or 'full' )
 			langCode = langCode or mw.language.getContentLanguage():getCode()
