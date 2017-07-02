@@ -59,14 +59,14 @@ function pickle.describe( ... )
 	end
 
 	-- register extractor types
-	local translationData = false
+	local translationData = {}
 	local prefixedText = mw.getCurrentFrame():getTitle()
 	if prefixedText then
 		pcall( function()
 			translationData = mw.loadData( prefixedText .. mw.pickle._translationSubpage )
 		end )
 	end
-	for k,v in pairs( translationData or {} ) do
+	for k,v in pairs( translationData ) do
 		translators:register( k, v )
 	end
 
