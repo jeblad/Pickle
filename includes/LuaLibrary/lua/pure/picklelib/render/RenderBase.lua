@@ -64,7 +64,7 @@ end
 function Render:realizeClarification( keyPart, lang, counter )
 	assert( keyPart, 'Failed to provide a key part' )
 
-	local orig = false
+	local orig
 	if counter then
 		orig = mw.message.new( self:key( keyPart .. '-original-num' ), counter() )
 	else
