@@ -14,6 +14,9 @@ local name = 'reportRender'
 local fix = require 'picklelib/report/FrameReport'
 assert( fix )
 
+local counter = require 'picklelib/Counter'
+assert( counter )
+
 local function makeTest( ... )
 	return lib.create( ... )
 end
@@ -41,7 +44,7 @@ local function testState( bool )
 	else
 		p:notOk()
 	end
-	return makeTest():realizeState( p, 'qqx' )
+	return makeTest():realizeState( p, 'qqx', counter.create() )
 end
 
 local function testSkip( ... )
@@ -61,12 +64,12 @@ end
 
 local function testHeaderSkip( ... ) -- luacheck: ignore
 	local p = fix.create():setDescription( 'testing' ):setSkip( ... ):notOk()
-	return makeTest():realizeHeader( p, 'qqx' )
+	return makeTest():realizeHeader( p, 'qqx', counter.create() )
 end
 
 local function testHeaderTodo( ... ) -- luacheck: ignore
 	local p = fix.create():setDescription( 'testing' ):setTodo( ... ):ok()
-	return makeTest():realizeHeader( p, 'qqx' )
+	return makeTest():realizeHeader( p, 'qqx', counter.create() )
 end
 --[[
 local function testBody( ... ) -- luacheck: ignore
@@ -135,14 +138,14 @@ local tests = {
 		func = testState,
 		args = { false },
 		expect = { '(pickle-report-frame-wrap-translated:'
-		.. ' not ok, (pickle-report-frame-is-not-ok-translated))' }
+		.. ' not ok 0, (pickle-report-frame-is-not-ok-translated))' }
 	},
 	{
 		name = name .. '.state ()',
 		func = testState,
 		args = { true },
 		expect = { '(pickle-report-frame-wrap-translated:'
-		.. ' ok, (pickle-report-frame-is-ok-translated))' }
+		.. ' ok 0, (pickle-report-frame-is-ok-translated))' }
 	},
 	{
 		name = name .. '.skip ()',
@@ -171,7 +174,7 @@ local tests = {
 		func = testHeaderSkip,
 		args = { 'baz' },
 		expect = { '(pickle-report-frame-wrap-translated:'
-		.. ' not ok, (pickle-report-frame-is-not-ok-translated))'
+		.. ' not ok 0, (pickle-report-frame-is-not-ok-translated))'
 		.. ' (pickle-report-frame-wrap-description: testing)'
 		.. ' (pickle-report-frame-wrap-description:'
 		.. ' (pickle-report-frame-wrap-translated:'
@@ -182,7 +185,7 @@ local tests = {
 		func = testHeaderTodo,
 		args = { 'baz' },
 		expect = { '(pickle-report-frame-wrap-translated:'
-		.. ' ok, (pickle-report-frame-is-ok-translated))'
+		.. ' ok 0, (pickle-report-frame-is-ok-translated))'
 		.. ' (pickle-report-frame-wrap-description: testing)'
 		.. ' (pickle-report-frame-wrap-description:'
 		.. ' (pickle-report-frame-wrap-translated:'

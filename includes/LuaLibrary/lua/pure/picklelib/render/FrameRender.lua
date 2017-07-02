@@ -45,11 +45,12 @@ end
 --- Realize reported data for state
 -- @param Report that shall be realized
 -- @param string language code used for realization
+-- @param Counter holding the running count
 -- @return string
-function FrameRender:realizeState( src, lang )
+function FrameRender:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
-	return self:realizeClarification( src:isOk() and 'is-ok' or 'is-not-ok', lang )
+	return self:realizeClarification( src:isOk() and 'is-ok' or 'is-not-ok', lang, counter )
 end
 
 --- Realize reported data for skip
@@ -104,11 +105,12 @@ end
 -- The "header" is a composite.
 -- @param Report that shall be realized
 -- @param string language code used for realization
+-- @param Counter holding the running count
 -- @return string
-function FrameRender:realizeHeader( src, lang )
+function FrameRender:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
-	local t = { self:realizeState( src, lang ) }
+	local t = { self:realizeState( src, lang, counter ) }
 
 	if src:hasDescription() then
 		table.insert( t, self:realizeDescription( src, lang ) )

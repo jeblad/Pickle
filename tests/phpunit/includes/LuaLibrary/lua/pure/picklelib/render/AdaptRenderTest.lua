@@ -14,6 +14,9 @@ local name = 'reportRender'
 local fix = require 'picklelib/report/AdaptReport'
 assert( fix )
 
+local counter = require 'picklelib/Counter'
+assert( counter )
+
 local function makeTest( ... )
 	return lib.create( ... )
 end
@@ -41,12 +44,12 @@ local function testState( bool )
 	else
 		p:notOk()
 	end
-	return makeTest():realizeState( p, 'qqx' )
+	return makeTest():realizeState( p, 'qqx', counter.create() )
 end
 
 local function testHeader( ... ) -- luacheck: ignore
 	local p = fix.create():ok()
-	return makeTest():realizeHeader( p, 'qqx' )
+	return makeTest():realizeHeader( p, 'qqx', counter.create() )
 end
 
 local function testBody( ... ) -- luacheck: ignore
@@ -115,14 +118,14 @@ local tests = {
 		func = testState,
 		args = { false },
 		expect = { '(pickle-report-adapt-wrap-translated:'
-		.. ' not ok, (pickle-report-adapt-is-not-ok-translated))' }
+		.. ' not ok 0, (pickle-report-adapt-is-not-ok-translated))' }
 	},
 	{
 		name = name .. '.state ()',
 		func = testState,
 		args = { true },
 		expect = { '(pickle-report-adapt-wrap-translated:'
-		.. ' ok, (pickle-report-adapt-is-ok-translated))' }
+		.. ' ok 0, (pickle-report-adapt-is-ok-translated))' }
 	},
 	{
 		name = name .. '.header ()',
@@ -134,7 +137,7 @@ local tests = {
 			.. '# (pickle-report-adapt-wrap-todo: baz)' }
 		]]
 		expect = { '(pickle-report-adapt-wrap-translated:'
-		.. ' ok, (pickle-report-adapt-is-ok-translated))' }
+		.. ' ok 0, (pickle-report-adapt-is-ok-translated))' }
 	},
 	{
 		name = name .. '.body ()',

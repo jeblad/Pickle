@@ -61,14 +61,18 @@ end
 -- @param string part of a message key
 -- @param string optional language code
 -- @return string
-function Render:realizeClarification( keyPart, lang )
+function Render:realizeClarification( keyPart, lang, counter )
 	assert( keyPart, 'Failed to provide a key part' )
 
-	local orig = mw.message.new( self:key( keyPart .. '-original' ) )
-	local trans = mw.message.new( self:key( keyPart .. '-translated' ) )
-
+	local orig = false
+	if counter then
+		orig = mw.message.new( self:key( keyPart .. '-original-num' ), counter() )
+	else
+		orig = mw.message.new( self:key( keyPart .. '-original' ) )
+	end
 	orig:inLanguage( 'en' )
 
+	local trans = mw.message.new( self:key( keyPart .. '-translated' ) )
 	if lang then
 		trans:inLanguage( lang )
 	end

@@ -167,17 +167,24 @@ end
 --- Realize the data by applying a render
 -- @param Renders to use while realizing the reports
 -- @param string holding the language code
-function FrameReport:realize( renders, lang )
+-- @param Counter holding the running count
+function FrameReport:realize( renders, lang, counter )
 	assert( renders, 'Failed to provide renders' )
 
-
 	local styles = renders:find( self:type() )
-	local out = styles:realizeHeader( self, lang )
+	local init = counter and not counter:isInitialized()
+	local out = styles:realizeHeader( self, lang, counter )
 
 	if self._constituents then
 		for _,v in ipairs( { self:constituents():export() } ) do
-			out = styles:append( out, v:realize( renders, lang ) )
+			out = styles:append( out, v:realize( renders, lang, counter ) )
 		end
+	end
+
+	if true or init then
+		out = styles:realizeVersion( self, lang, counter ) .. "\n"
+			.. '1..' .. counter:num() .. "\n"
+			.. out
 	end
 
 	return out

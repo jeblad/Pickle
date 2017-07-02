@@ -46,8 +46,9 @@ end
 --- Override realization of reported data for state
 -- @param Report that shall be realized
 -- @param string language code used for realization
+-- @param Counter holding the running count
 -- @return html
-function FrameRender:realizeState( src, lang )
+function FrameRender:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -57,7 +58,7 @@ function FrameRender:realizeState( src, lang )
 		html:attr( 'lang', lang )
 	end
 
-	html:wikitext( Base.realizeState( self, src, lang ) )
+	html:wikitext( Base.realizeState( self, src, lang, counter ) )
 
 	return html
 end
@@ -123,14 +124,15 @@ end
 -- The "header" is a composite.
 -- @param Report that shall be realized
 -- @param string language code used for realization
+-- @param Counter holding the running count
 -- @return html
-function FrameRender:realizeHeader( src, lang )
+function FrameRender:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'div' )
 		:addClass( 'mw-pickle-header' )
 
-	html:node( self:realizeState( src, lang ) )
+	html:node( self:realizeState( src, lang, counter ) )
 
 	if src:hasDescription() then
 		html:node( self:realizeDescription( src, lang ) )

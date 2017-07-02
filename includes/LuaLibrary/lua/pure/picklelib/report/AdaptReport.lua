@@ -73,11 +73,12 @@ end
 --- Realize the data by applying a render
 -- @param Renders to use while realizing the reports
 -- @param string holding the language code
-function AdaptReport:realize( renders, lang )
+-- @param Counter holding the running count
+function AdaptReport:realize( renders, lang, counter )
 	assert( renders, 'Failed to provide renders' )
 	return ''
-		.. (renders.realizeHeader and renders:realizeHeader( self, lang ) or '')
-		.. (renders.realizeBody and renders:realizeBody( self, lang ) or '')
+		.. (renders.realizeHeader and renders:realizeHeader( self, lang, counter ) or '')
+		.. (renders.realizeBody and renders:realizeBody( self, lang, counter ) or '')
 end
 
 -- Return the final class

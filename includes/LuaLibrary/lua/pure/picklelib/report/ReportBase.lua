@@ -105,7 +105,8 @@ end
 --- Realize the data by applying a render
 -- @param Renders to use while realizing the reports
 -- @param string holding the language code
-function Report:realize( renders, lang ) -- luacheck: ignore
+-- @param Counter holding the running count
+function Report:realize( renders, lang, counter ) -- luacheck: ignore
 	-- @todo this should probably return an error
 	-- error('Method should be overridden')
 	return ''

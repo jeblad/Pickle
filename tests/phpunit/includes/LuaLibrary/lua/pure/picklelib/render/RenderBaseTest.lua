@@ -12,6 +12,9 @@ assert( lib )
 local name = 'base'
 local class = 'base-render'
 
+local counter = require 'picklelib/Counter'
+assert( counter )
+
 local function makeTest( ... )
 	return lib.create( ... )
 end
@@ -33,7 +36,7 @@ local function testKey( ... )
 end
 
 local function testClarification( keyPart )
-	return makeTest():realizeClarification( keyPart )
+	return makeTest():realizeClarification( keyPart, 'qqx' )
 end
 
 local function testComment( keyPart )
@@ -84,13 +87,17 @@ local tests = {
 		name = name .. '.clarification ("skip")',
 		func = testClarification,
 		args = { "skip" },
-		expect = { "⧼pickle-report-base-wrap-untranslated⧽" }
+		expect = { '(pickle-report-base-wrap-translated:'
+		.. ' ⧼pickle-report-base-skip-original⧽,'
+		.. ' (pickle-report-base-skip-translated))' }
 	},
 	{
 		name = name .. '.clarification ("todo")',
 		func = testClarification,
 		args = { "todo" },
-		expect = { "⧼pickle-report-base-wrap-untranslated⧽" }
+		expect = { '(pickle-report-base-wrap-translated:'
+		..' ⧼pickle-report-base-todo-original⧽,'
+		.. ' (pickle-report-base-todo-translated))' }
 	},
 	--[[
 	{
