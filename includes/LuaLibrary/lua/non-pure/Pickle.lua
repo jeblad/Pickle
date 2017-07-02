@@ -182,7 +182,7 @@ function pickle.describe( ... )
 		--- Eval the fixtures over previous dispatched strings
 		-- @return string
 		--function obj.tap( name )
-		function obj.tap( frame )
+		function obj.tap( ... )
 			obj:eval()
 			-- assert(obj, 'Frame: tap: self')
 			assert(obj:reports(), 'Frame: tap: reports')
@@ -190,30 +190,25 @@ function pickle.describe( ... )
 			assert(obj:renders(), 'Frame: tap: renders')
 
 			local styleName = false
-			local first = select( 1, ... )
-			if type( first ) == 'string' then
-				styleName = first
-			elseif type( first ) == 'table' then
+			local langCode = false
+
+			if type( select( 1, ... ) ) == 'table' and select( '#', ... ) then
+				local frame = select( 1, ... )
+
 				if frame.args['style'] then
 					styleName = frame.args['style']
 				else
 					for _,v in ipairs( first.args ) do
 						if pickle._styles[v] then
-							styleName = pickle._styles[v]
+							styleName = v
 							break
 						end
 					end
 				end
-			end
 
-			local langCode = false
-			local second = select( 2, ... )
-			if type( second ) == 'string' then
-				langCode = second
-			elseif type( second ) == 'table' then
 				if frame.args['lang'] then
 					langCode = frame.args['lang']
-					else
+				else
 					for _,v in ipairs( frame.args ) do
 						if mw.language.isValidCode( v ) then
 							langCode = v
@@ -221,13 +216,15 @@ function pickle.describe( ... )
 						end
 					end
 				end
+
+			else
+				styleName = select( 1, ... )
+				langCode = select( 2, ... )
 			end
 
 			local style = obj:renders().style( styleName or 'full' )
-			return obj:reports():top():realize(
-				obj:renders().style( styleName or 'full' ),
-				langCode or mw.language.getContentLanguage():getCode(),
-				counter.create() )
+			langCode = langCode or mw.language.getContentLanguage():getCode()
+			return obj:reports():top():realize( style, langCode, counter.create() )
 		end
 
 	return obj
