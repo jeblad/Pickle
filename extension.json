@@ -124,10 +124,10 @@
 			"full": "Full",
 			"vivid": "Vivid"
 		},
-		"RenderTypes": [
-			"Adapt",
-			"Frame"
-		],
+		"RenderTypes": {
+			"adapt-report": "Adapt",
+			"frame-report": "Frame"
+		},
 		"ExtractorStrategy": [
 			"picklelib/extractor/NilExtractorStrategy",
 			"picklelib/extractor/FalseExtractorStrategy",
