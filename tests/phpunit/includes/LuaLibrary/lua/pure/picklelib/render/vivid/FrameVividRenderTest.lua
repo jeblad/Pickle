@@ -133,7 +133,7 @@ local tests = {
 		func = testSkip,
 		args = { 'foo' },
 		expect = { '<span class="mw-pickle-skip" lang="qqx">'
-			.. '(pickle-report-frame-wrap-description:'
+			.. '(pickle-report-frame-wrap-comment:'
 			.. ' (pickle-report-frame-wrap-translated:'
 			.. ' skip, (pickle-report-frame-is-skip-translated)), foo)'
 			.. '</span>' }
@@ -143,7 +143,7 @@ local tests = {
 		func = testTodo,
 		args = { 'bar' },
 		expect = { '<span class="mw-pickle-todo" lang="qqx">'
-			.. '(pickle-report-frame-wrap-description:'
+			.. '(pickle-report-frame-wrap-comment:'
 			.. ' (pickle-report-frame-wrap-translated:'
 			.. ' todo, (pickle-report-frame-is-todo-translated)), bar)'
 			.. '</span>' }
@@ -170,7 +170,7 @@ local tests = {
 			.. '<span class="mw-pickle-comment">'
 			.. ' '
 			.. '<span class="mw-pickle-skip" lang="qqx">'
-			.. '(pickle-report-frame-wrap-description:'
+			.. '(pickle-report-frame-wrap-comment:'
 			.. ' (pickle-report-frame-wrap-translated:'
 			.. ' skip, (pickle-report-frame-is-skip-translated)), baz)'
 			.. '</span>'
@@ -191,7 +191,7 @@ local tests = {
 			.. '<span class="mw-pickle-comment">'
 			.. ' '
 			.. '<span class="mw-pickle-todo" lang="qqx">'
-			.. '(pickle-report-frame-wrap-description:'
+			.. '(pickle-report-frame-wrap-comment:'
 			.. ' (pickle-report-frame-wrap-translated:'
 			.. ' todo, (pickle-report-frame-is-todo-translated)), baz)'
 			.. '</span>'

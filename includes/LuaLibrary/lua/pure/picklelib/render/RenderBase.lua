@@ -113,8 +113,8 @@ function Render:realizeComment( src, keyPart, lang )
 	local clar = self:realizeClarification( 'is-' .. keyPart, lang )
 
 	local msg = desc:isDisabled()
-		and mw.message.new( self:key( 'wrap-no-description' ), clar )
-		or mw.message.new( self:key( 'wrap-description' ), clar, desc:plain() )
+		and mw.message.new( self:key( 'wrap-no-comment' ), clar )
+		or mw.message.new( self:key( 'wrap-comment' ), clar, desc:plain() )
 
 	if lang then
 		msg:inLanguage( lang )

@@ -133,7 +133,7 @@ local tests = {
 		args = { 'baz' },
 		--[[
 		expect = { '(pickle-report-adapt-is-ok)'
-			.. '(pickle-report-adapt-wrap-description: testing)'
+			.. '(pickle-report-adapt-wrap-comment: testing)'
 			.. '# (pickle-report-adapt-wrap-todo: baz)' }
 		]]
 		expect = { '(pickle-report-adapt-wrap-translated:'

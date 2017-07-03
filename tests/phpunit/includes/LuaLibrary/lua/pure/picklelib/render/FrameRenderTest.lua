@@ -151,7 +151,7 @@ local tests = {
 		name = name .. '.skip ()',
 		func = testSkip,
 		args = { 'foo' },
-		expect = { '(pickle-report-frame-wrap-description:'
+		expect = { '(pickle-report-frame-wrap-comment:'
 		.. ' (pickle-report-frame-wrap-translated:'
 		.. ' skip, (pickle-report-frame-is-skip-translated)), foo)' }
 	},
@@ -159,7 +159,7 @@ local tests = {
 		name = name .. '.todo ()',
 		func = testTodo,
 		args = { 'bar' },
-		expect = { '(pickle-report-frame-wrap-description:'
+		expect = { '(pickle-report-frame-wrap-comment:'
 		.. ' (pickle-report-frame-wrap-translated:'
 		.. ' todo, (pickle-report-frame-is-todo-translated)), bar)' }
 	},
@@ -176,7 +176,7 @@ local tests = {
 		expect = { '(pickle-report-frame-wrap-translated:'
 		.. ' not ok 0, (pickle-report-frame-is-not-ok-translated))'
 		.. ' (pickle-report-frame-wrap-description: testing)'
-		.. ' (pickle-report-frame-wrap-description:'
+		.. ' (pickle-report-frame-wrap-comment:'
 		.. ' (pickle-report-frame-wrap-translated:'
 		.. ' skip, (pickle-report-frame-is-skip-translated)), baz)' }
 	},
@@ -187,7 +187,7 @@ local tests = {
 		expect = { '(pickle-report-frame-wrap-translated:'
 		.. ' ok 0, (pickle-report-frame-is-ok-translated))'
 		.. ' (pickle-report-frame-wrap-description: testing)'
-		.. ' (pickle-report-frame-wrap-description:'
+		.. ' (pickle-report-frame-wrap-comment:'
 		.. ' (pickle-report-frame-wrap-translated:'
 		.. ' todo, (pickle-report-frame-is-todo-translated)), baz)' }
 	},
