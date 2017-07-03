@@ -180,6 +180,10 @@ function pickle.describe( ... )
 		:dispatch( ... )
 
 		--- Eval the fixtures over previous dispatched strings
+		-- This has two different call forms. The first is the usual form with a single
+		-- frame object. This is used if the function is called by "invoke". The other
+		-- form use the same "style" and "language" form, but as arguments. This makes
+		-- it possible to easilly test it in the console.
 		-- @return string
 		--function obj.tap( name )
 		function obj.tap( ... )
