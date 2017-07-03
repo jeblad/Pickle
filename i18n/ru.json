@@ -6,7 +6,8 @@
 			"Nitch",
 			"Alexey zakharenkov",
 			"Okras",
-			"Jeblad"
+			"Jeblad",
+			"DevilishSkull"
 		]
 	},
 	"pickle-test-text-good": "Хорошо",
@@ -26,10 +27,15 @@
 	"pickle-console-run": "Запустить",
 	"pickle-console-clear": "Очистить",
 	"pickle-report-skip-no-message": "Ключ сообщения $1 не существует",
+	"pickle-report-frame-is-ok-original-num": "ок $1",
+	"pickle-report-frame-is-not-ok-original-num": "не ок $1",
 	"pickle-report-frame-is-ok-translated": "ок",
 	"pickle-report-frame-is-not-ok-translated": "не в порядке",
+	"pickle-report-adapt-is-ok-original-num": "ок $1",
+	"pickle-report-adapt-is-not-ok-original-num": "не ок $1",
 	"pickle-report-adapt-is-ok-translated": "ок",
 	"pickle-report-adapt-is-not-ok-translated": "Не в порядке",
+	"pickle-report-adapt-is-skip-original": "пропустить",
 	"pickle-adapt-process-first": "Выбрать первый элемент",
 	"pickle-adapt-process-second": "Выбрать второй элемент",
 	"pickle-adapt-process-third": "Выбрать третий элемент",
