@@ -51,16 +51,15 @@
     <ns>0</ns>
     <id>35</id>
     <revision>
-      <id>122</id>
-      <parentid>121</parentid>
-      <timestamp>2017-06-15T12:56:17Z</timestamp>
+      <id>125</id>
+      <parentid>122</parentid>
+      <timestamp>2017-06-19T09:39:47Z</timestamp>
       <contributor>
         <ip>10.0.2.2</ip>
       </contributor>
-      <comment>/* Simple test cases */</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="4078">A few testcases are provided for manual testing. These test cases are for manual testing of the overall integration. Usually the unit tests should be sufficient, so these tests are only for final verification.
+      <text xml:space="preserve" bytes="4313">A few testcases are provided for manual testing. These test cases are for manual testing of the overall integration. Usually the unit tests should be sufficient, so these tests are only for final verification.
 
 == Exceptional test cases ==
 These are the exceptional cases where most of the framework does not apply. The &quot;missing&quot; case is where there are no test module. The &quot;unknown&quot; case is where there are some kind of test module, but the framework can't recognize the output. Both &quot;missing&quot; and &quot;unknown&quot; are conceptually pending, but whether such a category should be created is up to the community using the extension. 
@@ -112,8 +111,20 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
 |''[[:Category:{{Mediawiki:pickle-tracking-category-todo}}‎|{{Mediawiki:pickle-tracking-category-todo}}‎]]''
 |''[[:Category:{{Mediawiki:pickle-tracking-category-skip}}‎|{{Mediawiki:pickle-tracking-category-skip}}‎]]''
 |
+|}
+
+== Complex test cases ==
+These are complex cases where most of the framework must apply, and give correct responses.
+
+{| class=&quot;wikitable table-data-center&quot;
+!State
+!Normal
+!''Category''
+|-
+!Good
+|[[Module:Hello world|Hello world]]
 |}</text>
-      <sha1>q8guc4roqixd3v955jem81yschtg1ll</sha1>
+      <sha1>mdzs3hpxv23l78zoemc18y8exbhw9f8</sha1>
     </revision>
   </page>
   <page>
@@ -291,6 +302,160 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
       <format>text/x-wiki</format>
       <text xml:space="preserve" bytes="0" />
       <sha1>phoiac9h4m842xq45sp7s6u21eteeq1</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Test Page</title>
+    <ns>0</ns>
+    <id>51</id>
+    <revision>
+      <id>143</id>
+      <parentid>142</parentid>
+      <timestamp>2017-06-28T10:17:25Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="2258">==No args==
+* State: {{#pickle}} &amp;ndash; ''This probably fails because it isn't parsed as a parser function''
+
+==Invalid calls==
+* State: {{#pickle:}} &amp;ndash; ''The argument list is empty''
+* State: {{#pickle:foo}} &amp;ndash; ''The argument is a non-existing page''
+* State: {{#pickle:foo/bar}} &amp;ndash; ''The argument is a non-existing subpage''
+* State: {{#pickle:foo/i18n}} &amp;ndash; ''The argument is an excluded subpage''
+
+==Hard calls==
+
+===Fail===
+* [[Module:Hard fail|Hard fail]]
+* State: {{#pickle:Hard fail}}
+; Default (English)
+&lt;div style=&quot;white-space: pre-wrap;&quot;&gt;{{#invoke:Hard fail/pickle|tap}}&lt;/div&gt;
+; Nynorsk
+&lt;div style=&quot;white-space: pre-wrap;&quot;&gt;{{#invoke:Hard fail/pickle|tap|lang=nn}}&lt;/div&gt;
+; Bokmål
+&lt;div style=&quot;white-space: pre-wrap;&quot;&gt;{{#invoke:Hard fail/pickle|tap|lang=nb}}&lt;/div&gt;
+
+===Good===
+* [[Module:Hard good|Hard good]]
+* State: {{#pickle:Hard good}}
+; Default (English)
+&lt;div style=&quot;white-space: pre-wrap;&quot;&gt;{{#invoke:Hard good/pickle|tap}}&lt;/div&gt;
+; Nynorsk
+&lt;div style=&quot;white-space: pre-wrap;&quot;&gt;{{#invoke:Hard good/pickle|tap|lang=nn}}&lt;/div&gt;
+; Bokmål
+&lt;div style=&quot;white-space: pre-wrap;&quot;&gt;{{#invoke:Hard good/pickle|tap|lang=nb}}&lt;/div&gt;
+
+==Soft calls==
+
+===Fail===
+State: {{#pickle:Soft fail}}
+; Default (English)
+&lt;div style=&quot;white-space: pre-wrap;&quot;&gt;{{#invoke:Soft fail/pickle|tap}}&lt;/div&gt;
+; Nynorsk
+&lt;div style=&quot;white-space: pre-wrap;&quot;&gt;{{#invoke:Soft fail/pickle|tap|lang=nn}}&lt;/div&gt;
+; Bokmål
+&lt;div style=&quot;white-space: pre-wrap;&quot;&gt;{{#invoke:Soft fail/pickle|tap|lang=nb}}&lt;/div&gt;
+
+===Good===
+State: {{#pickle:Soft good}}
+; Default (English)
+&lt;div style=&quot;white-space: pre-wrap;&quot;&gt;{{#invoke:Soft good/pickle|tap}}&lt;/div&gt;
+; Nynorsk
+&lt;div style=&quot;white-space: pre-wrap;&quot;&gt;{{#invoke:Soft good/pickle|tap|lang=nn}}&lt;/div&gt;
+; Bokmål
+&lt;div style=&quot;white-space: pre-wrap;&quot;&gt;{{#invoke:Soft good/pickle|tap|lang=nb}}&lt;/div&gt;
+
+-----
+
+* [[Module:hard fail|hard fail]]: {{#pickle:Hard fail}}
+* [[Module:hard good|hard good]]: {{#pickle:Hard good}}
+* [[Module:hard fail/pickle|hard fail/pickle]]: {{#pickle:Hard fail/pickle}}
+* [[Module:hard good/pickle|hard good/pickle]]: {{#pickle:Hard good/pickle}}
+* [[Module:hard fail/pickle|hard fail/pickle/i18n]]: {{#pickle:Hard fail/pickle/i18n}}
+* [[Module:hard good/pickle|hard good/pickle/i18n]]: {{#pickle:Hard good/pickle/i18n}}</text>
+      <sha1>jckt9qk96u37m8tw0b1jv0terb610wy</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Hello world</title>
+    <ns>828</ns>
+    <id>47</id>
+    <revision>
+      <id>149</id>
+      <parentid>123</parentid>
+      <timestamp>2017-07-04T14:50:45Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <model>Scribunto</model>
+      <format>text/plain</format>
+      <text xml:space="preserve" bytes="69">local p = {}
+function p.hello()
+    return 'Hello World'
+end
+return p</text>
+      <sha1>1pkg2zd1dy98wlnd3buneh7p9s5oyxd</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Hello world/doc</title>
+    <ns>828</ns>
+    <id>58</id>
+    <revision>
+      <id>156</id>
+      <timestamp>2017-07-04T18:18:24Z</timestamp>
+      <contributor>
+        <username>Admin</username>
+        <id>1</id>
+      </contributor>
+      <comment>Created page with &quot;Code for the ubiquitous &quot;Hello World&quot;.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="38">Code for the ubiquitous &quot;Hello World&quot;.</text>
+      <sha1>kt5no1jc0w0kkh8clqcx6h16fm44bop</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Hello world/pickle</title>
+    <ns>828</ns>
+    <id>48</id>
+    <revision>
+      <id>150</id>
+      <parentid>124</parentid>
+      <timestamp>2017-07-04T14:53:39Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <model>Scribunto</model>
+      <format>text/plain</format>
+      <text xml:space="preserve" bytes="179">return describe 'the ubiquitous module for &quot;Hello World&quot;' (function()
+	subject:hello()
+	it 'shall reply with &quot;Hello World&quot;' (function( str )
+		expect( str ):toBeEqual()
+	end)
+end)</text>
+      <sha1>m6atymh40tcwsgxnl6tkljgrzpbtzkm</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Hello world/pickle/doc</title>
+    <ns>828</ns>
+    <id>59</id>
+    <revision>
+      <id>157</id>
+      <timestamp>2017-07-04T18:19:25Z</timestamp>
+      <contributor>
+        <username>Admin</username>
+        <id>1</id>
+      </contributor>
+      <comment>Created page with &quot;Tests for the ubiquitous &quot;Hello World&quot;.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="39">Tests for the ubiquitous &quot;Hello World&quot;.</text>
+      <sha1>1bkjq40hgz6p5v2zq69wth9soym59ic</sha1>
     </revision>
   </page>
   <page>
@@ -838,6 +1003,151 @@ These are simple cases where the framework do apply. The &quot;hard&quot; cases 
       <format>text/x-wiki</format>
       <text xml:space="preserve" bytes="159">This test has a hard coded &quot;good&quot; return value with a &quot;skip&quot;. It does not test the module, it will just return a sufficient tap-string for the enforced result.</text>
       <sha1>5df0muv6j01hypjtie0ztpe1ls5y4cq</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Soft good no fixture</title>
+    <ns>828</ns>
+    <id>49</id>
+    <revision>
+      <id>144</id>
+      <parentid>126</parentid>
+      <timestamp>2017-07-03T08:38:03Z</timestamp>
+      <contributor>
+        <username>Admin</username>
+        <id>1</id>
+      </contributor>
+      <minor/>
+      <comment>Admin moved page [[Module:Soft good]] to [[Module:Soft good no fixture]] without leaving a redirect</comment>
+      <model>Scribunto</model>
+      <format>text/plain</format>
+      <text xml:space="preserve" bytes="9">return {}</text>
+      <sha1>sj7usmx9nzzjybpyohfgym86h4tqmdt</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Soft good no fixture/doc</title>
+    <ns>828</ns>
+    <id>56</id>
+    <revision>
+      <id>154</id>
+      <parentid>153</parentid>
+      <timestamp>2017-07-04T18:09:36Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="54">This module has a test with a soft &quot;good (todo)&quot; test.</text>
+      <sha1>grqmejhmk2huyg96btg68zchlviobfg</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Soft good no fixture/pickle</title>
+    <ns>828</ns>
+    <id>50</id>
+    <revision>
+      <id>145</id>
+      <parentid>127</parentid>
+      <timestamp>2017-07-03T08:38:44Z</timestamp>
+      <contributor>
+        <username>Admin</username>
+        <id>1</id>
+      </contributor>
+      <minor/>
+      <comment>Admin moved page [[Module:Soft good/pickle]] to [[Module:Soft good no fixture/pickle]] without leaving a redirect</comment>
+      <model>Scribunto</model>
+      <format>text/plain</format>
+      <text xml:space="preserve" bytes="17">return describe()</text>
+      <sha1>ll8oytmzk442q3acq25dk8yvrx6kw6a</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Soft good no fixture/pickle/doc</title>
+    <ns>828</ns>
+    <id>57</id>
+    <revision>
+      <id>155</id>
+      <timestamp>2017-07-04T18:11:34Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with &quot;This test has a soft &quot;good (todo)&quot; return value. It has no fixture, and this will be detectad an lead to the todo-part. Otherwise the test gives a good result.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="159">This test has a soft &quot;good (todo)&quot; return value. It has no fixture, and this will be detectad an lead to the todo-part. Otherwise the test gives a good result.</text>
+      <sha1>9qhv32ifxgs1v4qzcbjm7n16whkb751</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Soft good</title>
+    <ns>828</ns>
+    <id>52</id>
+    <revision>
+      <id>146</id>
+      <timestamp>2017-07-03T13:46:41Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with &quot;return {}&quot;</comment>
+      <model>Scribunto</model>
+      <format>text/plain</format>
+      <text xml:space="preserve" bytes="9">return {}</text>
+      <sha1>sj7usmx9nzzjybpyohfgym86h4tqmdt</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Soft good/doc</title>
+    <ns>828</ns>
+    <id>54</id>
+    <revision>
+      <id>151</id>
+      <timestamp>2017-07-04T18:02:05Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with &quot;This module has a test with a soft &quot;good&quot; test.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="47">This module has a test with a soft &quot;good&quot; test.</text>
+      <sha1>nrj0dkvhaif3u1vwy7x3oxo4wi4ctdg</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Soft good/pickle</title>
+    <ns>828</ns>
+    <id>53</id>
+    <revision>
+      <id>148</id>
+      <parentid>147</parentid>
+      <timestamp>2017-07-03T15:09:25Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <model>Scribunto</model>
+      <format>text/plain</format>
+      <text xml:space="preserve" bytes="85">return describe( function()
+	subject( 'foobar' )
+	expect( 'foobar' ).toBeEqual()
+end)</text>
+      <sha1>o5hnmpgi34u8xeneu81hmuh0czh4qe5</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Soft good/pickle/doc</title>
+    <ns>828</ns>
+    <id>55</id>
+    <revision>
+      <id>152</id>
+      <timestamp>2017-07-04T18:06:12Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with &quot;This test has a soft &quot;good&quot; return value. It will run a barely sufficient code to make the test return a good result.&quot;</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="117">This test has a soft &quot;good&quot; return value. It will run a barely sufficient code to make the test return a good result.</text>
+      <sha1>qfr4f0sceyhln5en3yksmgw93pwzcdo</sha1>
     </revision>
   </page>
 </mediawiki>

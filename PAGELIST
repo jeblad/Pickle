@@ -8,6 +8,11 @@ Category:Modules with incomplete tests
 Category:Modules with skipped tests
 Category:Modules with unknown tests
 Category:Modules without test page
+Test Page
+Module:Hello world
+Module:Hello world/doc
+Module:Hello world/pickle
+Module:Hello world/pickle/doc
 Module:Missing
 Module:Missing/doc
 Module:Unknown
@@ -38,3 +43,11 @@ Module:Hard skipped good
 Module:Hard skipped good/doc
 Module:Hard skipped good/pickle
 Module:Hard skipped good/pickle/doc
+Module:Soft good no fixture
+Module:Soft good no fixture/doc
+Module:Soft good no fixture/pickle
+Module:Soft good no fixture/pickle/doc
+Module:Soft good
+Module:Soft good/doc
+Module:Soft good/pickle
+Module:Soft good/pickle/doc
