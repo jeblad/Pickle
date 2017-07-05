@@ -49,7 +49,6 @@ function pickle.describe( ... )
 				.. k .. mw.pickle._renderInfix
 				.. w .. v .. mw.pickle._renderPostfix
 			style:registerType( l, require( lib ) )
--- assert(false, '['..lib..']')
 		end
 	end
 
