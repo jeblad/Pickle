@@ -55,6 +55,8 @@
 	"pickle-report-frame-is-todo-translated": "saltar",
 	"pickle-report-adapt-is-ok-translated": "ok",
 	"pickle-report-adapt-is-not-ok-translated": "non ok",
+	"pickle-report-adapt-is-skip-translated": "-",
+	"pickle-report-adapt-is-todo-translated": "-",
 	"pickle-adapt-process-first": "Coller o primeiro elemento",
 	"pickle-adapt-process-second": "Coller o segundo elemento",
 	"pickle-adapt-process-third": "Coller o terceiro elemento",

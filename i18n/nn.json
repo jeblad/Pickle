@@ -48,6 +48,8 @@
 	"pickle-report-skip-no-message": "Meldingsnøkkelen \"$1\" finst ikkje",
 	"pickle-frame-compact-header-all-good": "ok (alle gode) &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "not ok (noko feila) &mdash; $1",
+	"pickle-frame-full-header": "# $1",
+	"pickle-frame-vivid-header": "$1",
 	"pickle-frame-no-description": "anonym",
 	"pickle-frame-no-fixtures": "Ingen installasjonar registrert",
 	"pickle-frame-no-tests": "Ingen testar registrert",
