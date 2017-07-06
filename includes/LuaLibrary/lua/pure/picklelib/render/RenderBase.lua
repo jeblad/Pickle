@@ -101,10 +101,13 @@ function Render:realizeComment( src, keyPart, lang )
 		return ''
 	end
 
-	local get = src['get'..ucfKeyPart]
-	local desc = get( src )
-		and mw.message.newRawMessage( get( src ) )
-		or mw.message.new( 'pickle-report-frame-' .. keyPart .. '-no-description' )
+	local str = src['get'..ucfKeyPart]( src )
+
+	local desc = (not str)
+		and mw.message.new( 'pickle-report-frame-' .. keyPart .. '-no-description' )
+		or ( string.find( str, '^pickle-[-a-z]+$' )
+			and mw.message.new( str )
+			or mw.message.newRawMessage( str ) )
 
 	if lang then
 		desc:inLanguage( lang )
