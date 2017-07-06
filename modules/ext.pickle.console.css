@@ -2,6 +2,7 @@
 	border-radius: 0.3em;
 	margin-bottom: 0.8em;
 	padding: 0.4em 0.8em;
+	white-space: pre-line;
 }
 
 .mw-pickle-console-output .mw-pickle-console-neutral {
