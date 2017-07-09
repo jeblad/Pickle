@@ -19,8 +19,8 @@ class InvokeSubpageDefault extends InvokeSubpage {
 	public function __construct( array $opts ) {
 		$this->opts = array_merge(
 			[
-				'testerQuestion' => "= p:tap('vivid')",
-				'testeeQuestion' => "= require '%s' ( p ) :tap()"
+				'testerQuestion' => "= p.tap('vivid')",
+				'testeeQuestion' => "= require '%s' ( p ) .tap()"
 			],
 			$opts,
 			[

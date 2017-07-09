@@ -22,8 +22,8 @@ class InvokeSubpageByContentType extends InvokeSubpage {
 			[
 				'name' => '',
 				'type' => 'Scribunto',
-				'testerQuestion' => "= p ( p ) :tap()",
-				'testeeQuestion' => "= require '%s' ( p ) :tap()"
+				'testerQuestion' => "= p ( p ) .tap()",
+				'testeeQuestion' => "= require '%s' ( p ) .tap()"
 			],
 			$opts );
 	}
