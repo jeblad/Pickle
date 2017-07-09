@@ -113,6 +113,7 @@
 	},
 	"config": {
 		"_prefix": "wgPickle",
+		"Setup": "implicit",
 		"ObserverID": 3,
 		"TranslationSubpage": "/i18n",
 		"DefaultNamespace": 828,

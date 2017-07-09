@@ -8,13 +8,13 @@ pickle._types = {}
 pickle._styles = {}
 pickle._extractors = {}
 
---- Describe the test
+--- Implicit describe the test
 -- This act as an alias for the normal describe,
 -- which is not available.
 -- This does implicitt setup.
 -- @param vararg passed on to Adapt.create
 -- @return self newly created object
-function pickle.describe( ... )
+function pickle.implicitDescribe( ... )
 	-- require libs and create an instance
 	local expects = require( 'picklelib/Stack' ).create()
 	local subjects = require( 'picklelib/Stack' ).create()
@@ -249,9 +249,12 @@ function pickle.setupInterface( opts )
 	mw = mw or {}
 	mw.pickle = pickle
 	package.loaded['mw.Pickle'] = pickle
+	pickle._implicit = opts.setup == 'implicit'
 
-	-- create access point
-	describe = pickle.describe -- luacheck: globals describe
+	if pickle._implicit then
+		-- use 'describe' as access point
+		describe = pickle.implicitDescribe -- luacheck: globals describe
+	end
 
 	-- keep subpage name for later, newer mind requiring anything now
 	pickle._translationSubpage = opts.translationSubpage
