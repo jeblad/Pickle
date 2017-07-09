@@ -239,7 +239,7 @@ function pickle.implicitDescribe( ... )
 	-- 'before' and 'after' functions.
 	-- @param vararg passed on to Adapt.create
 	-- @return self newly created object
-	_G.context = function( ... )
+	env.context = function( ... )
 		local obj = Frame.create()
 			:setExtractors( extractors )
 			:setReports( reports )
@@ -251,8 +251,7 @@ function pickle.implicitDescribe( ... )
 	--- It is the actual test for each metod
 	-- @param vararg passed on to Adapt.create
 	-- @return self newly created object
-	--env.it = _G.context
-	--_G.context = env.context
+	env.it = env.context
 
 	registerSpies( env, reports )
 	registerComments( env, reports )
