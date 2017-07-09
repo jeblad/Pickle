@@ -11,16 +11,16 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class PickleTest extends Scribunto_LuaEngineTestBase {
+class PickleImplicitTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'PickleTest';
+	protected static $moduleName = 'PickleImplicitTest';
 
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	function getTestModules() {
 		return parent::getTestModules() + [
-			'PickleTest' => __DIR__ . '/PickleTest.lua'
+			'PickleImplicitTest' => __DIR__ . '/PickleImplicitTest.lua'
 		];
 	}
 }
