@@ -202,6 +202,7 @@ function Frame:eval() -- luacheck: ignore
 		self._eval = true
 		return self
 	end
+	local env = mw.pickle._implicit and getfenv(1) or _G
 
 	for _,v in ipairs( self:hasDescriptions()
 			and { self:descriptions() }
@@ -219,7 +220,7 @@ function Frame:eval() -- luacheck: ignore
 
 		for _,w in ipairs( { self._fixtures:export() } ) do
 			local depth = self:reports():depth()
-			local t = { pcall( w, unpack{ args } ) }
+			local t= { pcall( mw.pickle._implicit and setfenv( w, env ) or w, unpack{ args } ) }
 			if ( not t[1] ) and (not not t[2]) then
 				self:reports():push( AdaptReport.create():setSkip( 'pickle-adapt-catched-exception' ) )
 			end
