@@ -201,7 +201,6 @@ end
 function Frame:eval() -- luacheck: ignore
 	if not self:hasFixtures() then
 		self:reports():push( FrameReport.create():setTodo( 'pickle-frame-no-fixtures' ) )
-		self._eval = true
 		return self
 	end
 	local env = mw.pickle._implicit and getfenv(1) or _G
