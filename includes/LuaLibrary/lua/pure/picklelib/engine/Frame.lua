@@ -19,6 +19,7 @@ end
 local mt = { types = {} }
 
 --- Get arguments for a class call
+-- @todo Verify if this ever get called
 -- @param vararg pass on to dispatch
 -- @return self -ish
 function mt:__call( ... ) -- luacheck: no self
