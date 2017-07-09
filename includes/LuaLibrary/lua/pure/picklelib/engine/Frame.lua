@@ -36,7 +36,8 @@ end
 -- @return self
 function Frame:__call( ... )
 	self:dispatch( ... )
-	assert( not self:isDone(), 'Failed, got a done instance' )
+	assert( not self:isDone(),
+		'Failed, got a done instance. Is it run repeatedly in the debug console?' )
 	if self:hasFixtures() then
 		self:eval()
 	end
