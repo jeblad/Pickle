@@ -198,7 +198,7 @@ end
 -- @return self
 function Frame:eval() -- luacheck: ignore
 	if not self:hasFixtures() then
-		self:reports():push( FrameReport.create():setSkip( 'pickle-frame-no-fixtures' ) )
+		self:reports():push( FrameReport.create():setTodo( 'pickle-frame-no-fixtures' ) )
 		self._eval = true
 		return self
 	end
@@ -226,7 +226,7 @@ function Frame:eval() -- luacheck: ignore
 			local report = FrameReport.create():setDescription( v )
 			local added = self:reports():depth() - depth
 			if added == 0 then
-				report:setSkip( 'pickle-frame-no-tests' )
+				report:setTodo( 'pickle-frame-no-tests' )
 			end
 			report:addConstituents( self:reports():pop( added ) )
 			if t[1] and type( t[2] ) == 'table' then
