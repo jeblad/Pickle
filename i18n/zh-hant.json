@@ -12,8 +12,8 @@
 	"pickle-console-run": "執行",
 	"pickle-console-clear": "清除",
 	"pickle-frame-compact-header-all-good": "確定 (ok) &mdash; $1",
-	"pickle-report-frame-is-ok-translated": "確定",
-	"pickle-report-adapt-is-ok-translated": "確定",
+	"pickle-report-frame-is-ok-keyword": "確定",
+	"pickle-report-adapt-is-ok-keyword": "確定",
 	"pickle-adapt-process-as-u-upper-first": "大寫Unicode字串中的首個碼位",
 	"pickle-adapt-process-as-u-lower-first": "小寫Unicode字串中的首個碼位"
 }

@@ -17,6 +17,6 @@
 	"pickle-console-clear": "Riñsañ",
 	"pickle-frame-compact-header-all-good": "mat eo &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "n'eo ket mat &mdash; $1",
-	"pickle-report-adapt-is-ok-translated": "mat eo",
-	"pickle-report-adapt-is-not-ok-translated": "N'eo ket mat"
+	"pickle-report-adapt-is-ok-keyword": "mat eo",
+	"pickle-report-adapt-is-not-ok-keyword": "N'eo ket mat"
 }
