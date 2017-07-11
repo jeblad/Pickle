@@ -72,7 +72,6 @@
 	"pickle-report-adapt-is-todo-keyword": "todo",
 	"pickle-report-adapt-todo-no-description": "-",
 	"pickle-report-adapt-skip-no-description": "-",
-	"pickle-report-adapt-wrap-line": "$1",
 	"pickle-adapt-process-first": "Pick first element",
 	"pickle-adapt-process-second": "Pick second element",
 	"pickle-adapt-process-third": "Pick third element",

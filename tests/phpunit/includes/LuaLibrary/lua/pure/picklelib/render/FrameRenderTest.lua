@@ -196,9 +196,9 @@ local tests = {
 		name = name .. '.body ()',
 		func = testBody,
 		expect = { "\n"
-			.. '(pickle-report-frame-wrap-line: (foo))' .. "\n"
-			.. '(pickle-report-frame-wrap-line: (bar))' .. "\n"
-			.. '(pickle-report-frame-wrap-line: (baz))' }
+			.. '(foo)' .. "\n"
+			.. '(bar)' .. "\n"
+			.. '(baz)' }
 	},
 	]]
 }

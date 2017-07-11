@@ -150,9 +150,9 @@ local tests = {
 		name = name .. '.body ()',
 		func = testBody,
 		expect = { "\n"
-			.. '(pickle-report-adapt-wrap-line: (foo))' .. "\n"
-			.. '(pickle-report-adapt-wrap-line: (bar))' .. "\n"
-			.. '(pickle-report-adapt-wrap-line: (baz))' }
+			.. '(foo)' .. "\n"
+			.. '(bar)' .. "\n"
+			.. '(baz)' }
 	},
 }
 

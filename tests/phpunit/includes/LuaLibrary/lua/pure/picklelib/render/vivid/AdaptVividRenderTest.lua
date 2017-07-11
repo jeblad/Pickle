@@ -84,9 +84,9 @@ local tests = {
 		name = name .. '.body ()',
 		func = testBodyOk,
 		expect = { '<dl class="mw-pickle-body">'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-wrap-line: (foo))</dd>'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-wrap-line: (bar))</dd>'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-wrap-line: (baz))</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(foo)</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(bar)</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(baz)</dd>'
 			.. '</dl>' }
 	},
 	-- AdaptVividRenderTest[7]
@@ -94,9 +94,9 @@ local tests = {
 		name = name .. '.body ()',
 		func = testBodyNotOk,
 		expect = { '<dl class="mw-pickle-body" style="display:none">'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-wrap-line: (foo))</dd>'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-wrap-line: (bar))</dd>'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-wrap-line: (baz))</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(foo)</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(bar)</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(baz)</dd>'
 			.. '</dl>' }
 	},
 }
