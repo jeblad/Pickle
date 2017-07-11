@@ -138,11 +138,6 @@ local tests = {
 		name = name .. '.header ()',
 		func = testHeader,
 		args = { 'baz' },
-		--[[
-		expect = { '(pickle-report-adapt-is-ok)'
-			.. '(pickle-report-adapt-wrap-comment: testing)'
-			.. '# (pickle-report-adapt-wrap-todo: baz)' }
-		]]
 		expect = { 'ok 0 (parentheses: (pickle-report-adapt-is-ok-keyword))' }
 	},
 	-- AdaptRenderTest[12]
