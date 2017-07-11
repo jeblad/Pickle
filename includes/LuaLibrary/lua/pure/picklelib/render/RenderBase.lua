@@ -47,7 +47,7 @@ function Render:type()
 end
 
 --- Append same type to first
--- This should probably always be string types. The base version only concatenates strinsg.
+-- The base version only concatenates strings.
 -- @param any to act as the head
 -- @param any to act as the tail
 -- @return any
@@ -64,28 +64,26 @@ end
 function Render:realizeClarification( keyPart, lang, counter )
 	assert( keyPart, 'Failed to provide a key part' )
 
-	local orig
-	if counter then
-		orig = mw.message.new( self:key( keyPart .. '-original-num' ), counter() )
-	else
-		orig = mw.message.new( self:key( keyPart .. '-original' ) )
-	end
-	orig:inLanguage( 'en' )
+	local keyword = mw.message.new( self:key( keyPart .. '-keyword' ) )
+		:inLanguage( 'en' )
+		:plain()
 
-	local trans = mw.message.new( self:key( keyPart .. '-translated' ) )
-	if lang then
-		trans:inLanguage( lang )
-	end
+	local msg = keyword .. ( counter and ( ' ' .. counter() ) or '' )
 
-	local msg = trans:isDisabled()
-		and mw.message.new( self:key( 'wrap-untranslated' ), orig:plain() )
-		or mw.message.new( self:key( 'wrap-translated' ), orig:plain(), trans:plain() )
-
-	if lang then
-		msg:inLanguage( lang )
+	if lang ~= 'en' then
+		local translated = mw.message.new( self:key( keyPart .. '-keyword' ) )
+			:inLanguage( lang )
+		if not translated:isDisabled() then
+			local str = translated:plain()
+			if keyword ~= str then
+				msg = msg .. ' ' .. mw.message.new( 'parentheses', str )
+					:inLanguage( lang )
+					:plain()
+			end
+		end
 	end
 
-	return msg:plain()
+	return msg
 end
 
 --- Realize comment
@@ -114,16 +112,9 @@ function Render:realizeComment( src, keyPart, lang )
 	end
 
 	local clar = self:realizeClarification( 'is-' .. keyPart, lang )
+	local msg = clar .. ( desc:isDisabled() and '' or ( ' ' .. desc:plain() ) )
 
-	local msg = desc:isDisabled()
-		and mw.message.new( self:key( 'wrap-no-comment' ), clar )
-		or mw.message.new( self:key( 'wrap-comment' ), clar, desc:plain() )
-
-	if lang then
-		msg:inLanguage( lang )
-	end
-
-	return msg:plain()
+	return msg
 end
 
 -- Return the final class

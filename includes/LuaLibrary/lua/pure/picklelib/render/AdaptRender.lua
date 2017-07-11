@@ -81,33 +81,20 @@ end
 -- @param any that shall be realized
 -- @param string language code used for realization
 -- @return string
-function AdaptRender:realizeLine( param, lang )
+function AdaptRender:realizeLine( param, lang ) -- luacheck: no self
 	assert( param, 'Failed to provide a parameter' )
 
-	local realization = ''
-	local inner = mw.message.new( unpack( param ) )
+	local line = mw.message.new( unpack( param ) )
 
 	if lang then
-		inner:inLanguage( lang )
+		line:inLanguage( lang )
 	end
 
-	if not inner:isDisabled() then
-		realization = inner:plain()
+	if line:isDisabled() then
+		return ''
 	end
 
-	realization = mw.text.encode( realization )
-
-	local outer = mw.message.new( self:key( 'wrap-line' ), realization )
-
-	if lang then
-		outer:inLanguage( lang )
-	end
-
-	if outer:isDisabled() then
-		return realization
-	end
-
-	return outer:plain()
+	return mw.text.encode( line:plain() )
 end
 
 --- Realize reported data for body

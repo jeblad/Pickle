@@ -77,12 +77,14 @@ local function testHeaderNotOk( ... ) -- luacheck: ignore
 end
 
 local tests = {
+	-- FrameVividRenderTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
+	-- FrameVividRenderTest[2]
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
@@ -90,6 +92,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
+	-- FrameVividRenderTest[3]
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
@@ -97,6 +100,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
+	-- FrameVividRenderTest[4]
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
@@ -104,6 +108,7 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
+	-- FrameVividRenderTest[5]
 	{
 		name = name .. '.key ()',
 		func = testKey,
@@ -111,108 +116,109 @@ local tests = {
 		expect = { 'pickle-report-frame-foo' }
 	},
 	--[[
+	-- FrameVividRenderTest[]
 	{
 		name = name .. '.state ()',
 		func = testState,
 		args = { false },
 		expect = { '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-frame-wrap-translated: not ok, (pickle-report-frame-is-not-ok-translated))'
+			.. 'not ok (parentheses: (pickle-report-frame-is-not-ok-keyword))'
 			.. '</span>' }
 	},
+	-- FrameVividRenderTest[]
 	{
 		name = name .. '.state ()',
 		func = testState,
 		args = { true },
 		expect = { '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-frame-wrap-translated: ok, (pickle-report-frame-is-ok-translated))'
+			.. 'ok (parentheses: (pickle-report-frame-is-ok-translated))'
 			.. '</span>' }
 	},
 	]]
+	-- FrameVividRenderTest[6]
 	{
 		name = name .. '.skip ()',
 		func = testSkip,
 		args = { 'foo' },
 		expect = { '<span class="mw-pickle-skip" lang="qqx">'
-			.. '(pickle-report-frame-wrap-comment:'
-			.. ' (pickle-report-frame-wrap-translated:'
-			.. ' skip, (pickle-report-frame-is-skip-translated)), foo)'
+			.. 'skip (parentheses: (pickle-report-frame-is-skip-keyword)) foo'
 			.. '</span>' }
 	},
+	-- FrameVividRenderTest[7]
 	{
 		name = name .. '.todo ()',
 		func = testTodo,
 		args = { 'bar' },
 		expect = { '<span class="mw-pickle-todo" lang="qqx">'
-			.. '(pickle-report-frame-wrap-comment:'
-			.. ' (pickle-report-frame-wrap-translated:'
-			.. ' todo, (pickle-report-frame-is-todo-translated)), bar)'
+			.. 'todo (parentheses: (pickle-report-frame-is-todo-keyword)) bar'
 			.. '</span>' }
 	},
+	-- FrameVividRenderTest[8]
 	{
 		name = name .. '.description ()',
 		func = testDescription,
 		args = { 'baz' },
 		expect = { '<span class="mw-pickle-description" lang="qqx">'
-			.. '(pickle-report-frame-wrap-description: baz)'
+			.. 'baz'
 			.. '</span>' }
 	},
+	-- FrameVividRenderTest[9]
 	{
 		name = name .. '.header skip ()',
 		func = testHeaderSkip,
 		args = { 'baz' },
 		expect = { '<div class="mw-pickle-header">'
 			.. '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-frame-wrap-translated: ok, (pickle-report-frame-is-ok-translated))'
+			.. 'ok (parentheses: (pickle-report-frame-is-ok-keyword))'
 			.. '</span>'
 			.. '<span class="mw-pickle-description" lang="qqx">'
-			.. '(pickle-report-frame-wrap-description: testing)'
+			.. 'testing'
 			.. '</span>'
 			.. '<span class="mw-pickle-comment">'
 			.. ' '
 			.. '<span class="mw-pickle-skip" lang="qqx">'
-			.. '(pickle-report-frame-wrap-comment:'
-			.. ' (pickle-report-frame-wrap-translated:'
-			.. ' skip, (pickle-report-frame-is-skip-translated)), baz)'
+			.. 'skip (parentheses: (pickle-report-frame-is-skip-keyword)) baz'
 			.. '</span>'
 			.. '</span>'
 			.. '</div>' }
 	},
+	-- FrameVividRenderTest[10]
 	{
 		name = name .. '.header todo ()',
 		func = testHeaderTodo,
 		args = { 'baz' },
 		expect = { '<div class="mw-pickle-header">'
 			.. '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-frame-wrap-translated: ok, (pickle-report-frame-is-ok-translated))'
+			.. 'ok (parentheses: (pickle-report-frame-is-ok-keyword))'
 			.. '</span>'
 			.. '<span class="mw-pickle-description" lang="qqx">'
-			.. '(pickle-report-frame-wrap-description: testing)'
+			.. 'testing'
 			.. '</span>'
 			.. '<span class="mw-pickle-comment">'
 			.. ' '
 			.. '<span class="mw-pickle-todo" lang="qqx">'
-			.. '(pickle-report-frame-wrap-comment:'
-			.. ' (pickle-report-frame-wrap-translated:'
-			.. ' todo, (pickle-report-frame-is-todo-translated)), baz)'
+			.. 'todo (parentheses: (pickle-report-frame-is-todo-keyword)) baz'
 			.. '</span>'
 			.. '</span>'
 			.. '</div>' }
 	},
+	-- FrameVividRenderTest[11]
 	{
 		name = name .. '.header ok ()',
 		func = testHeaderOk,
 		expect = { '<div class=\"mw-pickle-header\">'
 			.. '<span class=\"mw-pickle-state\" lang=\"qqx\">'
-			.. '(pickle-report-frame-wrap-translated: ok, (pickle-report-frame-is-ok-translated))'
+			.. 'ok (parentheses: (pickle-report-frame-is-ok-keyword))'
 			.. '</span>'
 			.. '</div>' }
 	},
+	-- FrameVividRenderTest[12]
 	{
 		name = name .. '.header not ok ()',
 		func = testHeaderNotOk,
 		expect = { '<div class=\"mw-pickle-header\">'
 			.. '<span class=\"mw-pickle-state\" lang=\"qqx\">'
-			.. '(pickle-report-frame-wrap-translated: not ok, (pickle-report-frame-is-not-ok-translated))'
+			.. 'not ok (parentheses: (pickle-report-frame-is-not-ok-keyword))'
 			.. '</span>'
 			.. '</div>' }
 	},

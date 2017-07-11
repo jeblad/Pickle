@@ -41,12 +41,14 @@ local function testBodyNotOk( ... ) -- luacheck: ignore
 end
 
 local tests = {
+	-- AdaptCompactRenderTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
+	-- AdaptCompactRenderTest[2]
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
@@ -54,6 +56,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
+	-- AdaptCompactRenderTest[3]
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
@@ -61,6 +64,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
+	-- AdaptCompactRenderTest[4]
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
@@ -68,24 +72,27 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
+	-- AdaptCompactRenderTest[5]
 	{
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-adapt-foo' }
 	},
+	-- AdaptCompactRenderTest[6]
 	{
 		name = name .. '.body ok ()',
 		func = testBodyOk,
 		expect = { '' }
 	},
+	-- AdaptCompactRenderTest[7]
 	{
 		name = name .. '.body not ok ()',
 		func = testBodyNotOk,
 		expect = { "\n"
-			.. '(pickle-report-adapt-wrap-line: (foo))' .. "\n"
-			.. '(pickle-report-adapt-wrap-line: (bar))' .. "\n"
-			.. '(pickle-report-adapt-wrap-line: (baz))' }
+			.. '(foo)' .. "\n"
+			.. '(bar)' .. "\n"
+			.. '(baz)' }
 	},
 }
 

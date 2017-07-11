@@ -41,12 +41,14 @@ local function testBodyNotOk( ... ) -- luacheck: ignore
 end
 
 local tests = {
+	-- AdaptVividRenderTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
+	-- AdaptVividRenderTest[2]
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
@@ -54,6 +56,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
+	-- AdaptVividRenderTest[3]
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
@@ -61,6 +64,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
+	-- AdaptVividRenderTest[4]
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
@@ -68,28 +72,31 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
+	-- AdaptVividRenderTest[5]
 	{
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-adapt-foo' }
 	},
+	-- AdaptVividRenderTest[6]
 	{
 		name = name .. '.body ()',
 		func = testBodyOk,
 		expect = { '<dl class="mw-pickle-body">'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-wrap-line: (foo))</dd>'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-wrap-line: (bar))</dd>'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-wrap-line: (baz))</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(foo)</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(bar)</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(baz)</dd>'
 			.. '</dl>' }
 	},
+	-- AdaptVividRenderTest[7]
 	{
 		name = name .. '.body ()',
 		func = testBodyNotOk,
 		expect = { '<dl class="mw-pickle-body" style="display:none">'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-wrap-line: (foo))</dd>'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-wrap-line: (bar))</dd>'
-			.. '<dd class="mw-pickle-line" lang="qqx">(pickle-report-adapt-wrap-line: (baz))</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(foo)</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(bar)</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(baz)</dd>'
 			.. '</dl>' }
 	},
 }

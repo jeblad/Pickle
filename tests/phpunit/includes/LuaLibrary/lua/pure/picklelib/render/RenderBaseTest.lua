@@ -39,18 +39,22 @@ local function testClarification( keyPart )
 	return makeTest():realizeClarification( keyPart, 'qqx' )
 end
 
+--[[
 local function testComment( keyPart )
 	local p = require('picklelib/report/ReportBase').create()
 	return makeTest():realizeComment( p, keyPart )
 end
+]]
 
 local tests = {
+	-- RenderBaseTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
+	-- RenderBaseTest[2]
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
@@ -58,6 +62,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
+	-- RenderBaseTest[3]
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
@@ -65,6 +70,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
+	-- RenderBaseTest[4]
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
@@ -72,34 +78,37 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
+	-- RenderBaseTest[5]
 	{
 		name = name .. '.type ()',
 		func = testType,
 		expect = { class }
 	},
+	-- RenderBaseTest[6]
 	{
 		name = name .. '.key ("foo-bar")',
 		func = testKey,
 		args = { "foo-bar" },
 		expect = { "pickle-report-base-foo-bar" }
 	},
+	-- RenderBaseTest[7]
 	{
 		name = name .. '.clarification ("skip")',
 		func = testClarification,
 		args = { "skip" },
-		expect = { '(pickle-report-base-wrap-translated:'
-		.. ' ⧼pickle-report-base-skip-original⧽,'
-		.. ' (pickle-report-base-skip-translated))' }
+		expect = { '⧼pickle-report-base-skip-keyword⧽'
+		.. ' (parentheses: (pickle-report-base-skip-keyword))' }
 	},
+	-- RenderBaseTest[8]
 	{
 		name = name .. '.clarification ("todo")',
 		func = testClarification,
 		args = { "todo" },
-		expect = { '(pickle-report-base-wrap-translated:'
-		..' ⧼pickle-report-base-todo-original⧽,'
-		.. ' (pickle-report-base-todo-translated))' }
+		expect = { '⧼pickle-report-base-todo-keyword⧽'
+		.. ' (parentheses: (pickle-report-base-todo-keyword))' }
 	},
 	--[[
+	-- RenderBaseTest[9]
 	{
 		name = name .. '.comment ("foobar")',
 		func = testComment,

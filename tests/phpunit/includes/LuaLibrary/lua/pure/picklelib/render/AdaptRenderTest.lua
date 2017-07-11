@@ -58,12 +58,14 @@ local function testBody( ... ) -- luacheck: ignore
 end
 
 local tests = {
+	-- AdaptRenderTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
+	-- AdaptRenderTest[2]
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
@@ -71,6 +73,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
+	-- AdaptRenderTest[3]
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
@@ -78,6 +81,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
+	-- AdaptRenderTest[4]
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
@@ -85,13 +89,14 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
+	-- AdaptRenderTest[5]
 	{
 		name = name .. '.clarification ("skip", "qqx")',
 		func = testClarification,
 		args = { "is-skip", 'qqx' },
-		expect = { '(pickle-report-adapt-wrap-translated:'
-		.. ' skip, (pickle-report-adapt-is-skip-translated))' }
+		expect = {'skip (parentheses: (pickle-report-adapt-is-skip-keyword))' }
 	},
+	-- AdaptRenderTest[6]
 	{
 		name = name .. '.clarification ("skip", "nb")',
 		func = testClarification,
@@ -99,13 +104,14 @@ local tests = {
 		args = { "is-skip", 'nb' },
 		expect = { "skip (<replacement>)" }
 	},
+	-- AdaptRenderTest[7]
 	{
 		name = name .. '.clarification ("todo", "qqx")',
 		func = testClarification,
 		args = { "is-todo", 'qqx' },
-		expect = { '(pickle-report-adapt-wrap-translated:'
-		.. ' todo, (pickle-report-adapt-is-todo-translated))' }
+		expect = { 'todo (parentheses: (pickle-report-adapt-is-todo-keyword))' }
 	},
+	-- AdaptRenderTest[8]
 	{
 		name = name .. '.clarification ("todo", "nb")',
 		func = testClarification,
@@ -113,39 +119,35 @@ local tests = {
 		args = { "is-todo", 'nb' },
 		expect = { "todo (<replacement>)" }
 	},
+	-- AdaptRenderTest[9]
 	{
 		name = name .. '.state ()',
 		func = testState,
 		args = { false },
-		expect = { '(pickle-report-adapt-wrap-translated:'
-		.. ' not ok 0, (pickle-report-adapt-is-not-ok-translated))' }
+		expect = { 'not ok 0 (parentheses: (pickle-report-adapt-is-not-ok-keyword))' }
 	},
+	-- AdaptRenderTest[10]
 	{
 		name = name .. '.state ()',
 		func = testState,
 		args = { true },
-		expect = { '(pickle-report-adapt-wrap-translated:'
-		.. ' ok 0, (pickle-report-adapt-is-ok-translated))' }
+		expect = { 'ok 0 (parentheses: (pickle-report-adapt-is-ok-keyword))' }
 	},
+	-- AdaptRenderTest[11]
 	{
 		name = name .. '.header ()',
 		func = testHeader,
 		args = { 'baz' },
-		--[[
-		expect = { '(pickle-report-adapt-is-ok)'
-			.. '(pickle-report-adapt-wrap-comment: testing)'
-			.. '# (pickle-report-adapt-wrap-todo: baz)' }
-		]]
-		expect = { '(pickle-report-adapt-wrap-translated:'
-		.. ' ok 0, (pickle-report-adapt-is-ok-translated))' }
+		expect = { 'ok 0 (parentheses: (pickle-report-adapt-is-ok-keyword))' }
 	},
+	-- AdaptRenderTest[12]
 	{
 		name = name .. '.body ()',
 		func = testBody,
 		expect = { "\n"
-			.. '(pickle-report-adapt-wrap-line: (foo))' .. "\n"
-			.. '(pickle-report-adapt-wrap-line: (bar))' .. "\n"
-			.. '(pickle-report-adapt-wrap-line: (baz))' }
+			.. '(foo)' .. "\n"
+			.. '(bar)' .. "\n"
+			.. '(baz)' }
 	},
 }
 

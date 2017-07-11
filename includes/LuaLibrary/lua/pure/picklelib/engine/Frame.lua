@@ -19,6 +19,7 @@ end
 local mt = { types = {} }
 
 --- Get arguments for a class call
+-- @todo Verify if this ever get called
 -- @param vararg pass on to dispatch
 -- @return self -ish
 function mt:__call( ... ) -- luacheck: no self
@@ -36,7 +37,8 @@ end
 -- @return self
 function Frame:__call( ... )
 	self:dispatch( ... )
-	assert( not self:isDone(), 'Failed, got a done instance' )
+	assert( not self:isDone(),
+		'Failed, got a done instance. Is it run repeatedly in the debug console?' )
 	if self:hasFixtures() then
 		self:eval()
 	end
@@ -198,10 +200,10 @@ end
 -- @return self
 function Frame:eval() -- luacheck: ignore
 	if not self:hasFixtures() then
-		self:reports():push( FrameReport.create():setSkip( 'pickle-frame-no-fixtures' ) )
-		self._eval = true
+		self:reports():push( FrameReport.create():setTodo( 'pickle-frame-no-fixtures' ) )
 		return self
 	end
+	local env = mw.pickle._implicit and getfenv(1) or _G
 
 	for _,v in ipairs( self:hasDescriptions()
 			and { self:descriptions() }
@@ -219,14 +221,14 @@ function Frame:eval() -- luacheck: ignore
 
 		for _,w in ipairs( { self._fixtures:export() } ) do
 			local depth = self:reports():depth()
-			local t = { pcall( w, unpack{ args } ) }
+			local t= { pcall( mw.pickle._implicit and setfenv( w, env ) or w, unpack{ args } ) }
 			if ( not t[1] ) and (not not t[2]) then
 				self:reports():push( AdaptReport.create():setSkip( 'pickle-adapt-catched-exception' ) )
 			end
 			local report = FrameReport.create():setDescription( v )
 			local added = self:reports():depth() - depth
 			if added == 0 then
-				report:setSkip( 'pickle-frame-no-tests' )
+				report:setTodo( 'pickle-frame-no-tests' )
 			end
 			report:addConstituents( self:reports():pop( added ) )
 			if t[1] and type( t[2] ) == 'table' then
