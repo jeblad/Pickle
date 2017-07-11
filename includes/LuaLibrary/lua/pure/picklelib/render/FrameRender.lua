@@ -117,6 +117,7 @@ function FrameRender:realizeHeader( src, lang, counter )
 	end
 
 	if src:isSkip() or src:hasSkip() or src:isTodo() or src:hasTodo() then
+		table.insert( t, '#' )
 		if src:isSkip() or src:hasSkip() then
 			table.insert( t, self:realizeSkip( src, lang ) )
 		end

@@ -181,7 +181,7 @@ local tests = {
 		args = { 'baz' },
 		expect = { 'not ok 0 (parentheses: (pickle-report-frame-is-not-ok-keyword))'
 		.. ' (pickle-report-frame-wrap-description: testing)'
-		.. ' skip (parentheses: (pickle-report-frame-is-skip-keyword)) baz' }
+		.. ' # skip (parentheses: (pickle-report-frame-is-skip-keyword)) baz' }
 	},
 	-- FrameRenderTest[15]
 	{
@@ -190,7 +190,7 @@ local tests = {
 		args = { 'baz' },
 		expect = { 'ok 0 (parentheses: (pickle-report-frame-is-ok-keyword))'
 		.. ' (pickle-report-frame-wrap-description: testing)'
-		.. ' todo (parentheses: (pickle-report-frame-is-todo-keyword)) baz' }
+		.. ' # todo (parentheses: (pickle-report-frame-is-todo-keyword)) baz' }
 	},
 	--[[
 	-- FrameRenderTest[16]
