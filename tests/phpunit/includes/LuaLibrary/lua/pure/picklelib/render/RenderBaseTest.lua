@@ -39,10 +39,12 @@ local function testClarification( keyPart )
 	return makeTest():realizeClarification( keyPart, 'qqx' )
 end
 
+--[[
 local function testComment( keyPart )
 	local p = require('picklelib/report/ReportBase').create()
 	return makeTest():realizeComment( p, keyPart )
 end
+]]
 
 local tests = {
 	-- RenderBaseTest[1]
