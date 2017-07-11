@@ -122,7 +122,7 @@ local tests = {
 		func = testState,
 		args = { false },
 		expect = { '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-frame-wrap-translated: not ok, (pickle-report-frame-is-not-ok-translated))'
+			.. 'not ok (parentheses: (pickle-report-frame-is-not-ok-keyword))'
 			.. '</span>' }
 	},
 	-- FrameVividRenderTest[]
@@ -131,7 +131,7 @@ local tests = {
 		func = testState,
 		args = { true },
 		expect = { '<span class="mw-pickle-state" lang="qqx">'
-			.. '(pickle-report-frame-wrap-translated: ok, (pickle-report-frame-is-ok-translated))'
+			.. 'ok (parentheses: (pickle-report-frame-is-ok-translated))'
 			.. '</span>' }
 	},
 	]]
