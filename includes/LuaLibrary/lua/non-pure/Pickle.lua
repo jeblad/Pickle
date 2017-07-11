@@ -278,7 +278,7 @@ function pickle.implicitDescribe( ... )
 		assert(obj:renders(), 'Frame: tap: renders')
 
 		local styleName = 'full'
-		local langCode = 'en'
+		local langCode = mw.language.getContentLanguage():getCode()
 
 		if select( '#', ... ) == 1 and type( select( 1, ... ) ) == 'table'  then
 			local frame = select( 1, ... )
@@ -315,7 +315,6 @@ function pickle.implicitDescribe( ... )
 		end
 
 		local style = obj:renders().style( styleName )
-		langCode = langCode or mw.language.getContentLanguage():getCode()
 		return obj:reports():top():realize( style, langCode, counter.create() )
 	end
 

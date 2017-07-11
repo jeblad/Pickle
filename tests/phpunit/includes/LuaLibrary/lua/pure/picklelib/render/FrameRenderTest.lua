@@ -78,12 +78,14 @@ local function testBody( ... ) -- luacheck: ignore
 end
 ]]
 local tests = {
+	-- FrameRenderTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
+	-- FrameRenderTest[2]
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
@@ -91,6 +93,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
+	-- FrameRenderTest[3]
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
@@ -98,6 +101,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
+	-- FrameRenderTest[4]
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
@@ -105,13 +109,14 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
+	-- FrameRenderTest[5]
 	{
 		name = name .. '.clarification ("skip", "qqx")',
 		func = testClarification,
 		args = { "is-skip", 'qqx' },
-		expect = { '(pickle-report-frame-wrap-translated:'
-		.. ' skip, (pickle-report-frame-is-skip-translated))' }
+		expect = { 'skip (parentheses: (pickle-report-frame-is-skip-keyword))' }
 	},
+	-- FrameRenderTest[6]
 	{
 		name = name .. '.clarification ("skip", "nb")',
 		func = testClarification,
@@ -119,13 +124,14 @@ local tests = {
 		args = { "is-skip", 'nb' },
 		expect = { "skip (<replacement>)" }
 	},
+	-- FrameRenderTest[7]
 	{
 		name = name .. '.clarification ("todo", "qqx")',
 		func = testClarification,
 		args = { "is-todo", 'qqx' },
-		expect = { '(pickle-report-frame-wrap-translated:'
-		.. ' todo, (pickle-report-frame-is-todo-translated))' }
+		expect = { 'todo (parentheses: (pickle-report-frame-is-todo-keyword))' }
 	},
+	-- FrameRenderTest[8]
 	{
 		name = name .. '.clarification ("todo", "nb")',
 		func = testClarification,
@@ -133,65 +139,61 @@ local tests = {
 		args = { "is-todo", 'nb' },
 		expect = { "todo (<replacement>)" }
 	},
+	-- FrameRenderTest[9]
 	{
 		name = name .. '.state ()',
 		func = testState,
 		args = { false },
-		expect = { '(pickle-report-frame-wrap-translated:'
-		.. ' not ok 0, (pickle-report-frame-is-not-ok-translated))' }
+		expect = { 'not ok 0 (parentheses: (pickle-report-frame-is-not-ok-keyword))' }
 	},
+	-- FrameRenderTest[10]
 	{
 		name = name .. '.state ()',
 		func = testState,
 		args = { true },
-		expect = { '(pickle-report-frame-wrap-translated:'
-		.. ' ok 0, (pickle-report-frame-is-ok-translated))' }
+		expect = { 'ok 0 (parentheses: (pickle-report-frame-is-ok-keyword))' }
 	},
+	-- FrameRenderTest[11]
 	{
 		name = name .. '.skip ()',
 		func = testSkip,
 		args = { 'foo' },
-		expect = { '(pickle-report-frame-wrap-comment:'
-		.. ' (pickle-report-frame-wrap-translated:'
-		.. ' skip, (pickle-report-frame-is-skip-translated)), foo)' }
+		expect = { 'skip (parentheses: (pickle-report-frame-is-skip-keyword)) foo' }
 	},
+	-- FrameRenderTest[12]
 	{
 		name = name .. '.todo ()',
 		func = testTodo,
 		args = { 'bar' },
-		expect = { '(pickle-report-frame-wrap-comment:'
-		.. ' (pickle-report-frame-wrap-translated:'
-		.. ' todo, (pickle-report-frame-is-todo-translated)), bar)' }
+		expect = { 'todo (parentheses: (pickle-report-frame-is-todo-keyword)) bar' }
 	},
+	-- FrameRenderTest[13]
 	{
 		name = name .. '.description ()',
 		func = testDescription,
 		args = { 'baz' },
 		expect = { '(pickle-report-frame-wrap-description: baz)' }
 	},
+	-- FrameRenderTest[14]
 	{
 		name = name .. '.header ()',
 		func = testHeaderSkip,
 		args = { 'baz' },
-		expect = { '(pickle-report-frame-wrap-translated:'
-		.. ' not ok 0, (pickle-report-frame-is-not-ok-translated))'
+		expect = { 'not ok 0 (parentheses: (pickle-report-frame-is-not-ok-keyword))'
 		.. ' (pickle-report-frame-wrap-description: testing)'
-		.. ' (pickle-report-frame-wrap-comment:'
-		.. ' (pickle-report-frame-wrap-translated:'
-		.. ' skip, (pickle-report-frame-is-skip-translated)), baz)' }
+		.. ' skip (parentheses: (pickle-report-frame-is-skip-keyword)) baz' }
 	},
+	-- FrameRenderTest[15]
 	{
 		name = name .. '.header ()',
 		func = testHeaderTodo,
 		args = { 'baz' },
-		expect = { '(pickle-report-frame-wrap-translated:'
-		.. ' ok 0, (pickle-report-frame-is-ok-translated))'
+		expect = { 'ok 0 (parentheses: (pickle-report-frame-is-ok-keyword))'
 		.. ' (pickle-report-frame-wrap-description: testing)'
-		.. ' (pickle-report-frame-wrap-comment:'
-		.. ' (pickle-report-frame-wrap-translated:'
-		.. ' todo, (pickle-report-frame-is-todo-translated)), baz)' }
+		.. ' todo (parentheses: (pickle-report-frame-is-todo-keyword)) baz' }
 	},
 	--[[
+	-- FrameRenderTest[16]
 	{
 		name = name .. '.body ()',
 		func = testBody,

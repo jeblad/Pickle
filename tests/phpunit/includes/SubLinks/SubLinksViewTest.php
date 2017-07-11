@@ -23,7 +23,7 @@ class SubLinksViewTest extends \MediaWikiTestCase {
 
 		$link = SubLinksView::makeLink( $title, 'qqx' );
 		$this->assertContains( '<a ', $link );
-		$this->assertContains( 'Special:Log', $link );
+		// $this->assertContains( 'Special:Log', $link );
 		$this->assertContains( '(viewpagelogs)', $link );
 	}
 }

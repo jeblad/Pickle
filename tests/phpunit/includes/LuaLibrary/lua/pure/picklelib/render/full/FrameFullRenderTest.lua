@@ -43,12 +43,14 @@ local function testHeaderNotOk( ... ) -- luacheck: ignore
 end
 
 local tests = {
+	-- FrameFullRenderTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
+	-- FrameFullRenderTest[2]
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
@@ -56,6 +58,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
+	-- FrameFullRenderTest[3]
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
@@ -63,6 +66,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
+	-- FrameFullRenderTest[4]
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
@@ -70,21 +74,24 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
+	-- FrameFullRenderTest[5]
 	{
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-frame-foo' }
 	},
+	-- FrameFullRenderTest[6]
 	{
 		name = name .. '.header ok ()',
 		func = testHeaderOk,
-		expect = { '(pickle-report-frame-wrap-translated: ok, (pickle-report-frame-is-ok-translated))' }
+		expect = { 'ok (parentheses: (pickle-report-frame-is-ok-keyword))' }
 	},
+	-- FrameFullRenderTest[7]
 	{
 		name = name .. '.header not ok ()',
 		func = testHeaderNotOk,
-		expect = { '(pickle-report-frame-wrap-translated: not ok, (pickle-report-frame-is-not-ok-translated))' }
+		expect = { 'not ok (parentheses: (pickle-report-frame-is-not-ok-keyword))' }
 	},
 }
 
