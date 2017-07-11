@@ -159,7 +159,7 @@ local tests = {
 		func = testDescription,
 		args = { 'baz' },
 		expect = { '<span class="mw-pickle-description" lang="qqx">'
-			.. '(pickle-report-frame-wrap-description: baz)'
+			.. 'baz'
 			.. '</span>' }
 	},
 	-- FrameVividRenderTest[9]
@@ -172,7 +172,7 @@ local tests = {
 			.. 'ok (parentheses: (pickle-report-frame-is-ok-keyword))'
 			.. '</span>'
 			.. '<span class="mw-pickle-description" lang="qqx">'
-			.. '(pickle-report-frame-wrap-description: testing)'
+			.. 'testing'
 			.. '</span>'
 			.. '<span class="mw-pickle-comment">'
 			.. ' '
@@ -192,7 +192,7 @@ local tests = {
 			.. 'ok (parentheses: (pickle-report-frame-is-ok-keyword))'
 			.. '</span>'
 			.. '<span class="mw-pickle-description" lang="qqx">'
-			.. '(pickle-report-frame-wrap-description: testing)'
+			.. 'testing'
 			.. '</span>'
 			.. '<span class="mw-pickle-comment">'
 			.. ' '

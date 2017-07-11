@@ -172,7 +172,7 @@ local tests = {
 		name = name .. '.description ()',
 		func = testDescription,
 		args = { 'baz' },
-		expect = { '(pickle-report-frame-wrap-description: baz)' }
+		expect = { 'baz' }
 	},
 	-- FrameRenderTest[14]
 	{
@@ -180,8 +180,7 @@ local tests = {
 		func = testHeaderSkip,
 		args = { 'baz' },
 		expect = { 'not ok 0 (parentheses: (pickle-report-frame-is-not-ok-keyword))'
-		.. ' (pickle-report-frame-wrap-description: testing)'
-		.. ' # skip (parentheses: (pickle-report-frame-is-skip-keyword)) baz' }
+		.. ' testing # skip (parentheses: (pickle-report-frame-is-skip-keyword)) baz' }
 	},
 	-- FrameRenderTest[15]
 	{
@@ -189,8 +188,7 @@ local tests = {
 		func = testHeaderTodo,
 		args = { 'baz' },
 		expect = { 'ok 0 (parentheses: (pickle-report-frame-is-ok-keyword))'
-		.. ' (pickle-report-frame-wrap-description: testing)'
-		.. ' # todo (parentheses: (pickle-report-frame-is-todo-keyword)) baz' }
+		.. ' testing # todo (parentheses: (pickle-report-frame-is-todo-keyword)) baz' }
 	},
 	--[[
 	-- FrameRenderTest[16]

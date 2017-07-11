@@ -80,25 +80,16 @@ end
 -- @param Report that shall be realized
 -- @param string language code used for realization
 -- @return string
-function FrameRender:realizeDescription( src, lang )
+function FrameRender:realizeDescription( src, lang ) -- luacheck: no unused args
 	assert( src, 'Failed to provide a source' )
 
 	if not src:hasDescription() then
 		return ''
 	end
 
-	local realization = mw.text.encode( src:getDescription() )
-	local outer = mw.message.new( self:key( 'wrap-description' ), realization )
+	local str = mw.text.encode( src:getDescription() )
 
-	if lang then
-		outer:inLanguage( lang )
-	end
-
-	if outer:isDisabled() then
-		return realization
-	end
-
-	return outer:plain()
+	return str
 end
 
 --- Realize reported data for header
