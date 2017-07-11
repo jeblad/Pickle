@@ -87,9 +87,7 @@ function FrameRender:realizeDescription( src, lang ) -- luacheck: no unused args
 		return ''
 	end
 
-	local str = mw.text.encode( src:getDescription() )
-
-	return str
+	return mw.text.encode( src:getDescription() )
 end
 
 --- Realize reported data for header

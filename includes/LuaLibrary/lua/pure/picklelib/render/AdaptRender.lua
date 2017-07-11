@@ -94,9 +94,7 @@ function AdaptRender:realizeLine( param, lang ) -- luacheck: no self
 		return ''
 	end
 
-	local str = mw.text.encode( line:plain() )
-
-	return str
+	return mw.text.encode( line:plain() )
 end
 
 --- Realize reported data for body
