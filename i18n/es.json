@@ -4,7 +4,8 @@
 			"Macofe",
 			"Fitoschido",
 			"Jeblad",
-			"Josecurioso"
+			"Josecurioso",
+			"Dgstranz"
 		]
 	},
 	"pickle-desc": "Proporciona un marco de pruebas Pickle básico para módulos escritos en Lua",
@@ -13,6 +14,7 @@
 	"pickle-test-text-fail": "No superada",
 	"pickle-test-text-missing": "Faltante",
 	"pickle-test-text-unknown": "Desconocido",
+	"pickle-test-text-invalid": "No válido",
 	"pickle-test-text-todo-good": "Superada (pendiente)",
 	"pickle-test-text-todo-fail": "No superada (pendiente)",
 	"pickle-test-text-skip-good": "Superada (omitir)",
@@ -48,6 +50,8 @@
 	"pickle-report-skip-no-message": "La clave de mensaje «$1» no existe",
 	"pickle-frame-compact-header-all-good": "correcto &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "no correcto &mdash; $1",
+	"pickle-frame-full-header": "# $1",
+	"pickle-frame-vivid-header": "$1",
 	"pickle-frame-no-description": "anónimo",
 	"pickle-report-frame-is-ok-keyword": "correcto",
 	"pickle-report-frame-is-not-ok-keyword": "no correcto",
@@ -66,5 +70,18 @@
 	"pickle-adapt-process-tenth": "Elegir el decimo elemento",
 	"pickle-adapt-process-eleventh": "Elegir el undécimo elemento",
 	"pickle-adapt-process-twelfth": "Elegir el duodécimo elemento",
-	"pickle-adapt-process-as-type": "Obtener el tipo de elemento"
+	"pickle-adapt-process-as-type": "Obtener el tipo de elemento",
+	"pickle-adapt-process-as-upper": "Poner en mayúsculas todos los caracteres de la cadena",
+	"pickle-adapt-process-as-lower": "Poner en minúsculas todos los caracteres de la cadena",
+	"pickle-adapt-process-as-upper-first": "Poner en mayúsculas el primer carácter de la cadena",
+	"pickle-adapt-process-as-lower-first": "Poner en minúsculas el primer carácter de la cadena",
+	"pickle-adapt-process-as-reverse": "Invertir la cadena",
+	"pickle-adapt-process-as-u-upper": "Poner en mayúsculas la cadena Unicode completa",
+	"pickle-adapt-process-as-u-lower": "Poner en minúsculas la cadena Unicode completa",
+	"pickle-adapt-process-as-u-upper-first": "Poner en mayúsculas el primer punto de código de la cadena Unicode",
+	"pickle-adapt-process-as-u-lower-first": "Poner en minúsculas el primer punto de código de la cadena Unicode",
+	"pickle-adapt-process-as-u-n-f-c": "Recodificar la cadena Unicode en Forma Normal C (NFC)",
+	"pickle-adapt-process-as-u-n-f-d": "Recodificar la cadena Unicode en Forma Normal D (NFD)",
+	"pickle-adapt-catched-exception": "Excepción capturada",
+	"pickle-adapt-catched-return": "Salida capturada"
 }

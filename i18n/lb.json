@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Robby",
-			"Jeblad"
+			"Jeblad",
+			"Nemo bis"
 		]
 	},
 	"pickle-test-text-good": "Gutt",
@@ -23,8 +24,12 @@
 	"pickle-frame-no-tests": "Keng Tester registréiert",
 	"pickle-report-frame-is-ok-keyword": "ok",
 	"pickle-report-frame-is-not-ok-keyword": "net ok",
+	"pickle-report-frame-is-skip-keyword": "iwwersprangen",
+	"pickle-report-frame-is-todo-keyword": "-",
 	"pickle-report-adapt-is-ok-keyword": "ok",
 	"pickle-report-adapt-is-not-ok-keyword": "net ok",
+	"pickle-report-adapt-is-skip-keyword": "-",
+	"pickle-report-adapt-is-todo-keyword": "-",
 	"pickle-adapt-process-first": "Éischt Element eraussichen",
 	"pickle-adapt-process-second": "Zweet Element eraussichen",
 	"pickle-adapt-process-third": "Drëtt Element eraussichen",
