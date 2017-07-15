@@ -111,10 +111,10 @@
 	"pickle-adapt-condition-to-be-u-match": "Shall be matched in the Unicode target",
 	"pickle-adapt-catched-exception": "Catched exception",
 	"pickle-adapt-catched-return": "Catched return",
-	"pickle-spies-carp-todo": "Carp called",
-	"pickle-spies-cluck-todo": "Cluck called",
-	"pickle-spies-confess-skip": "Confess called",
-	"pickle-spies-croak-skip": "Croak called",
-	"pickle-spies-confess-exits": "Confess exits",
-	"pickle-spies-croak-exits": "Croak exits"
+	"pickle-spies-carp-todo": "Function \"carp\" called",
+	"pickle-spies-cluck-todo": "Function \"cluck\" called",
+	"pickle-spies-confess-skip": "Function \"confess\" called",
+	"pickle-spies-croak-skip": "Function \"croak\" called",
+	"pickle-spies-confess-exits": "Function \"confess\" exits",
+	"pickle-spies-croak-exits": "Function \"croak\" exits"
 }
