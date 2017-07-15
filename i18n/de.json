@@ -62,6 +62,8 @@
 	"pickle-report-adapt-is-not-ok-keyword": "nicht ok",
 	"pickle-report-adapt-is-skip-keyword": "überspringen",
 	"pickle-report-adapt-is-todo-keyword": "zu tun",
+	"pickle-report-adapt-todo-no-description": "",
+	"pickle-report-adapt-skip-no-description": "",
 	"pickle-adapt-process-first": "Erstes Element auswählen",
 	"pickle-adapt-process-second": "Zweites Element auswählen",
 	"pickle-adapt-process-third": "Drittes Element auswählen",
