@@ -6,8 +6,8 @@ This is an extension that adds Pickle testing to Lua modules, that is specs amon
 other types of testing. Lua is part of the Scribunto extension, which can be used
 on a wiki running the Mediawiki software.
 
-The project is on-going, and as such will be extremely unstable &ndash; it might
-even trigger a meltdown of your computer. :)
+The project is ongoing, and as such will be extremely unstable — it might
+even trigger a meltdown of your computer. :D
 
 ### Identification
 
@@ -44,7 +44,7 @@ A help portal for users are available at
 
 The purpose of this extension is to make it possible to do efficient
 [continous testing](https://en.wikipedia.org/wiki/Continuous_testing) by detecting
-whether Lua modules (pages) are holding a "Pickle", whereby the Lua code on those
+whether Lua modules (pages) are holding a “Pickle”, whereby the Lua code on those
 pages can run both in an automatic and a manual mode to verify correct operation
 of some other related module. This makes it possible to do continuous testing in
 an environment where new code are not only added as part of
@@ -55,10 +55,10 @@ but even developed in the production environment itself.
 
 The document is targeted to those that need a quick overview of the extension at
 a system level. That is a developer or system maintainer with technical experience.
-It is not ment as a documentation for the casual user. A end user documentation is
+It is not ment as a documentation for the casual user. An end user documentation is
 available at [Help:Pickle](https://www.mediawiki.org/wiki/Help:Pickle)
 
-For a description of the install procedure check out
+For a full install procedure check out
 [Extension:Pickle](https://www.mediawiki.org/wiki/Extension:Pickle)
 
 ## Referenced documents
@@ -81,11 +81,11 @@ Additional documents
 
 ## Design decisions
 
-A core design choice was to make the impact on the servers as small as possible.
+One of the core design choices was to make the impact on the servers as small as possible.
 That means not running anything without it being highly likely that the results
 can be used in further processing. It starts with short circuit on content model,
-which is available in the title structure, and only then request additional data.
-Thus the number of modules that should need further inspection should be fairly
+which is available in the title structure, and only then request additional data,
+thus the number of modules that should need further inspection should be fairly
 low, and then the overall load from the extension should be small.
 
 If a relation between a _tester_ (the code testing a module) and a _testee_ (the
@@ -94,11 +94,11 @@ specific state. If that state changes then extension data is set up and later
 consumed by additional handlers. That makes it possible to create a pluggable
 system where components can be added and detached as necessary.
 
-Pickle code is written at the site in a similar fashion as other Lua code, the
+Pickle code is written at the site similarly as other Lua code, the
 only requirement is that pickle code should be a subpage with a specific name.
 
 The pickle code is assumed to connect with the provided Lua modules, and follows
-the usual _describe_, _context_, and _it_ ladder. Each of those manipulates
+the usual “describe”, “context”, and “it” ladder. Each of those manipulates
 _subject_ and _expect_ to set the expected behavior from some subunit within the
 _testee_. This is fairly similar to how [RSpec](http://rspec.info/documentation/)
 and [Busted](http://olivinelabs.com/busted/) works.
@@ -137,7 +137,7 @@ measure.
  is how easily a system can be used. The extension is based upon time-proven
  techniques from the current interface, and no new types of interactions are
  defined.
-* [Safety](https://en.wikipedia.org/wiki/Safety) &ndash; other than use of
+* [Safety](https://en.wikipedia.org/wiki/Safety) — other than use of
  a system user for logging purposes, it is not known that any part of the
  code needs special [safety engineering](https://en.wikipedia.org/wiki/Safety_engineering)
 
@@ -196,10 +196,10 @@ and the testee (aka the ordinary module).
 
 The test itself is run as Lua, and is set up in the `Pickle.setupInterface()` call
 ([Pickle.lua](https://github.com/jeblad/pickle/blob/master/includes/LuaLibrary/lua/non-pure/Pickle.lua))
-by a call from  `Pickle\LuaLibrary::register()`
+by a call from `Pickle\LuaLibrary::register()`
 ([LuaLibrary.php](https://github.com/jeblad/pickle/blob/master/includes/LuaLibrary/LuaLibrary.php)).
 
-The tests follows pickle-style, with _describe_, _context_, and _it_. Those will
+The tests follow pickle-style, with “describe”, “context”, and “it”. Those will
 then encapsulate tests, which use _subject_ and _expect_ to verify correct behavior
 of the module under test. The code for those modules can be found in
 [engine](https://github.com/jeblad/pickle/tree/master/includes/LuaLibrary/lua/pure/picklelib/engine).
@@ -211,7 +211,7 @@ As of this writing there are three different types of renders. Two of them are p
 text renders, one giving a compact style layout and one that giving a full style.
 The third render creates a web style layout.
 
-Test data can be provided to _describe_, _context_, and _it_ as nearly free form
+Test data can be provided to “describe”, “context”, and “it” as nearly free-form
 text. The data from the text is
 [extracted](https://github.com/jeblad/pickle/tree/master/includes/LuaLibrary/lua/pure/picklelib/extractor)
 and casted into the correct type. The present set of extractors are far from
@@ -242,7 +242,7 @@ would be _InvokeSubpage_.
 
 The following is in a somewhat logical order.
 
-### InvokeSubpage
+### PHP class InvokeSubpage
 
 The unit finds a strategy for accessing a subpage, where the test has a positive
 outcome if a given page exist (or should exist) in a correct location. That is
@@ -250,7 +250,7 @@ a relation between a _testee_ (the module being tested) and a _tester_
 (the code testing a module) can be established. If the relation exist, or should
 exist, then the strategy provide methods for the name of the subpage, and also
 the question that will be parsed and will then provide the report. When a strategy
-find a usable relation it will not itself track the relation but leave it to the
+finds a usable relation it will not itself track the relation but leave it to the
 caller.
 
 The strategies use options from the section `InvokeSubpage` in the extensions own
@@ -264,7 +264,7 @@ and a [singleton](https://github.com/jeblad/pickle/blob/master/includes/InvokeSu
 where the singleton is the access point for higher level code. All PHP classes
 that implements the strategy are implementations of the interface.
 
-### ExtractStatus
+### PHP class ExtractStatus
 
 The unit finds a strategy for interpreting the report from a subpage, where the
 test has a positive outcome if a given parser evaluates to true. That is the
@@ -284,7 +284,7 @@ and a [singleton](https://github.com/jeblad/pickle/blob/master/includes/ExtractS
 where the singleton is the accesspoint for higher level code. All PHP classes
 that implements the strategy are implementations of the interface.
 
-### LuaLibrary
+### PHP class LuaLibrary
 
 This is the main access point for passing data from Mediawiki to Scribunto,
 with `Pickle\LuaLibrary::register()` and `pickle.setupInterface( opts )` as
@@ -298,11 +298,11 @@ and not be user provided data.
 
 This subsystem is central to proper operation of the extension.
 
-### engine
+### Lua module engine
 
 This is a set of classes for setting up and running tests. It contains the main
-rutines to make the frames for _describe_, _context_, and _it_, and the same
-for _subject_ and _expect_. The first three forms the nouns (the frames) in
+rutines to make the frames for “describe”, “context”, and “it”, and the same
+for “subject” and “expect”. The first three forms the nouns (the frames) in
 pickle definitions, while the two last forms the access points for further
 verification.
 
@@ -313,17 +313,17 @@ the output.
 
 This subsystem is central to proper operation of the extension.
 
-### extractor
+### Lua module extractor
 
 This is a set of classes for extracting and casting strings to correct type.
 It contains a limited set of cast operations, only scalar data types and
 a Json type that will be casted into a table. It is used for extracting data
-from descriptions provided to the frames, that is _describe_, _context_, and
-_it_, and the casted strings will then be provided to the functions used by
+from descriptions provided to the frames, that is “describe”, “context”, and
+“it”, and the casted strings will then be provided to the functions used by
 the frames.
 
-This subsystem is a possible security risk because it casts strings into data.
-As it does not create functions the risk should be limited. If an extractor
+This subsystem is a possible security risk because it casts strings into data,
+as it does not create functions the risk should be limited. If an extractor
 is made that casts strings into functions the risk could be higher, but note
 that this only happens in Lua.
 
@@ -332,7 +332,7 @@ is performed, and it will fail if they are wrong.
 
 This subsystem is central to proper operation of the extension.
 
-### render
+### Lua module render
 
 This is a set of classes for rendering reports in the proper format. It contains
 sets of renderers for a specific _style_ and for each _type_ of report. Each
@@ -353,7 +353,7 @@ risk only a need to aoid messing up the output.
 
 This subsystem is central to proper operation of the extension.
 
-### report
+### Lua module report
 
 This is a set of classes for collecting and holding reports. Reports are generated
 by the engine and holds pure data that will be rendered later on by renders. They
@@ -364,7 +364,7 @@ itself. Proper escaping should be done in the render subsystem.
 
 This subsystem is central to proper operation of the extension.
 
-### Strategies
+### PHP class Strategies
 
 This is a utility class that holds a number of strategies. Main purpose is to
 replace the pesky singletons with something that can be easilly tested. Most of
@@ -372,7 +372,7 @@ the strategies use this as a base class.
 
 This subsystem is central to proper operation of the extension.
 
-### Sublinks
+### PHP class Sublinks
 
 If `pickle-status-current` is set, then a link will be created as a _subtitle_
 that points to _Special:Log_ and the proper log entries created for `track/good`,
@@ -384,10 +384,10 @@ be wise to filter on the _module track log_.
 No values should be passed directly from source to sink in this subsystem.
 
 This subsystem is decoupled from the rest of the system, and only respond on
-messages passed as extension data. If necessary the subsystem can be completly
-removed.
+messages passed as extension data. The subsystem can be completly
+removed if necessary.
 
-### TAP
+### PHP class TAP
 
 A parser to compact a messy and large TAP report into something that is easier
 to parse repeatedly. This compacted report will maintain the fallback chain, but
@@ -398,21 +398,21 @@ No values should be passed directly from source to sink in this subsystem.
 This subsystem is central to proper operation of the extension, but it can be
 removed if necessary.
 
-### Console
+### PHP class Console
 
-The visual design of the test console follows the same idea as the debug console,
+The visual design of the test console follows the same design idea as the debug console,
 where a panel is positioned below the usual editor and then extended with Javascript
 in the browser. It is only the `div` that is added directly from the PHP code, but
 additional code includes
 [ext.pickle.console.js](https://github.com/jeblad/pickle/blob/master/modules/ext.pickle.console.js)
 which creates more of the user interface.
 
-On each click of the button a new report will be rendered, in order and in
-a compact fashion.
+On each click of the button a new report will be rendered, in a compact and
+orderly fashion.
 
 The user interface is created whenever a proper subpage is detected.
 
-### Category
+### PHP class Category
 
 If the `pickle-status-current` extension data is set to a valid state, then it
 will be passed on to Mediawiki as a
@@ -423,17 +423,17 @@ tracking categories are formed from message keys created from the name.
 The categories are defined trough entries in `Category` from
 [extension.json](https://github.com/jeblad/pickle/blob/master/extension.json).
 Only named entries will be acted upon, less the default strategy which has
-an overridden name. The names the strategies respond to comes from `ExtractStatus`
+an overridden name. The names the strategies respond to emerge from `ExtractStatus`
 upstream in the pipeline.
 
-There are no direct path from source to sink in the code except for the title
+There is no direct path from source to sink in the code except for the title
 object, but this object should be properly handled by the existing system.
 
 This subsystem is decoupled from the rest of the system, and only respond on
-messages passed as extension data. If necessary the subsystem can be completly
-removed.
+messages passed as extension data. The subsystem can be completly
+removed if necessary.
 
-### Indicator
+### PHP class Indicator
 
 If the `pickle-status-current` extension data is set to a valid state, then it
 will be passed on to Mediawiki as a
@@ -444,18 +444,18 @@ indicators are formed from message keys created from the name.
 The indicators are defined trough entries in `Indicator` from
 [extension.json](https://github.com/jeblad/pickle/blob/master/extension.json).
 Only named entries will be acted upon, less the default strategy which has
-an overridden name. The names the strategies respond to comes from `ExtractStatus`
+an overridden name. The names the strategies respond to emerge from `ExtractStatus`
 upstream in the pipeline.
 
-There are no direct path from source to sink in the code except for some fully
+There is no direct path from source to sink in the code except for some fully
 parsed messages, but that is part of the unprotected and sanitized output and
 should be properly handled by the existing system.
 
 This subsystem is decoupled from the rest of the system, and only respond on
-messages passed as extension data. If necessary the subsystem can be completly
-removed.
+messages passed as extension data. The subsystem can be completly
+removed if necessary.
 
-### LogEntry
+### PHP class LogEntry
 
 If the `pickle-status-current` extension data is valid and set to a different
 value from `pickle-status-previous`, then the state change will be passed on
@@ -466,16 +466,16 @@ are formed from message keys created from the name.
 The indicators are defined trough entries in `LogEntry` from
 [extension.json](https://github.com/jeblad/pickle/blob/master/extension.json).
 Only named entries will be acted upon, less the default strategy which has
-an overridden name. The names the strategies respond to comes from `ExtractStatus`
+an overridden name. The names the strategies respond to emerge from `ExtractStatus`
 upstream in the pipeline.
 
-There are no direct path from source to sink in the code except for the title
+There is no direct path from source to sink in the code except for the title
 object, but this object should be properly handled by the existing system.
 
 This subsystem is decoupled from the rest of the system, and only respond on
 messages passed as extension data.
 
-### Observer
+### PHP class Observer
 
 This is a system user that will be used for reporting state changes that can't
 be attributed to a specific user. The scenario is typically that some change has
