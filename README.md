@@ -55,8 +55,8 @@ but even developed in the production environment itself.
 
 The document is targeted to those that need a quick overview of the extension at
 a system level. That is a developer or system maintainer with technical experience.
-It is not ment as a documentation for the casual user. An end user documentation is
-available at [Help:Pickle](https://www.mediawiki.org/wiki/Help:Pickle)
+It is not ment as a documentation for the casual user. An end user documentation
+is available at [Help:Pickle](https://www.mediawiki.org/wiki/Help:Pickle)
 
 For a full install procedure check out
 [Extension:Pickle](https://www.mediawiki.org/wiki/Extension:Pickle)
@@ -81,11 +81,11 @@ Additional documents
 
 ## Design decisions
 
-One of the core design choices was to make the impact on the servers as small as possible.
-That means not running anything without it being highly likely that the results
-can be used in further processing. It starts with short circuit on content model,
-which is available in the title structure, and only then request additional data,
-thus the number of modules that should need further inspection should be fairly
+One of the core design choices was to make the impact on the servers as small as
+possible, which means not running anything without it being highly likely that the
+results can be used in further processing. It starts with short circuit on content
+model, which is available in the title structure, and only then request additional
+data, thus the number of modules that should need further inspection should be fairly
 low, and then the overall load from the extension should be small.
 
 If a relation between a _tester_ (the code testing a module) and a _testee_ (the
