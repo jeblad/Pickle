@@ -6,6 +6,12 @@
 		]
 	},
 	"pickle-desc": "Adds basic Pickle testing to Lua modules",
+	"pickle-testspec-subpage": "$1/pickle",
+	"pickle-testspec-invoke": "{{#invoke:$1|tap}}",
+	"pickle-testcase-subpage": "$1/testcase",
+	"pickle-testcase-invoke": "-",
+	"pickle-default-subpage": "$1/pickle",
+	"pickle-default-invoke": "-",
 	"pickle-test-text-good": "Good",
 	"pickle-test-text-pending": "Pending",
 	"pickle-test-text-fail": "Failing",

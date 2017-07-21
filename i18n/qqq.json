@@ -9,7 +9,12 @@
 		]
 	},
 	"pickle-desc": "{{pickle-gloss}} {{desc|name=Pickle|url=https://www.mediawiki.org/wiki/Extension:Pickle }}",
-	"pickle-test-text-good": "{{pickle-gloss}} {{pickle-indicator-desc|good}} A good result is one where all reported tests were ok.\n{{Identical|Good}}",
+	"pickle-testspec-subpage": "{{Notranslate}}\n{{pickle-gloss}} {{pickle-subpage-desc}} Used while creating a link to the subpage holding the test code. This is the version used for pickle-style tests.",
+	"pickle-testspec-invoke": "{{Notranslate}}\n{{pickle-gloss}} {{pickle-invoke-desc}} Used while invoking the module on the subpage holding the test code. This is the version used for pickle-style tests.",
+	"pickle-testcase-subpage": "{{Optional}}\n{{pickle-gloss}} {{pickle-subpage-desc}} Used while creating a link to the subpage holding the test code. This is the version used for testcase-style tests.",
+	"pickle-testcase-invoke": "{{Optional}}\n{{pickle-gloss}} {{pickle-invoke-desc}} Used while invoking the module on the subpage holding the test code. This is the version used for testcase-style tests.",
+	"pickle-default-subpage": "{{Optional}}\n{{pickle-gloss}} {{pickle-subpage-desc}} Used while creating a link to the subpage holding the test code. This is the version used for default tests, that is the catch all.",
+	"pickle-default-invoke": "{{Optional}}\n{{pickle-gloss}} {{pickle-invoke-desc}} Used while invoking the module on the subpage holding the test code. This is the version used for default tests, that is the catch all.",	"pickle-test-text-good": "{{pickle-gloss}} {{pickle-indicator-desc|good}} A good result is one where all reported tests were ok.\n{{Identical|Good}}",
 	"pickle-test-text-pending": "{{pickle-gloss}} {{pickle-indicator-desc|pending}} A pending result is one where one or more reported tests were pending.\n{{Identical|Pending}}",
 	"pickle-test-text-fail": "{{pickle-gloss}} {{pickle-indicator-desc|failed}} A failed result is one where one or more reported tests were not ok.\n{{Identical|Failing}}",
 	"pickle-test-text-missing": "{{pickle-gloss}} {{pickle-indicator-desc|missing}} A missing result is one where the test page could not be found.\n{{Identical|Missing}}",
