@@ -3,6 +3,7 @@
 .vscode
 /.project
 /composer.lock
+/package-lock.json
 /vendor
 /node_modules
 /mw-includes
