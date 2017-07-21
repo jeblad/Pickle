@@ -1,4 +1,4 @@
-# i18n
+# Localization
 
 Add languages as necessary. English is the source language for translations,
 all other languages are targets. Norwegian Bokmål is an example target language.
@@ -19,24 +19,24 @@ There should be a template `pickle-gloss` reading (with additional markup)
 There should be a template `pickle-category-desc` reading
 
 > This is the category or the pickle page, given that the test result
-> is "{{{1}}}". Should be a very minimalistic text that can be used as link in
+> is “{{{1}}}”. Should be a very minimalistic text that can be used as link in
 > the page indicators.
 
 There should be a template `pickle-indicator-desc` reading
 
 > This is the text for the link to the pickle page, given that the test result
-> is "{{{1}}}". Should be a very minimalistic text that can be used as link in
+> is “{{{1}}}”. Should be a very minimalistic text that can be used as link in
 > the page indicators.
 
 There should be a template `pickle-invoke-desc` reading
 
 > This is the message used to get the result for a specific page in the module
-> space. The message is chosen depending on som hauristics.
+> space. Chose the message on some hauristics.
 
 There should be a template `pickle-subpage-desc` reading
 
 > This is the message used to build the link to a specific page in the module
-> space. The message is chosen depending on som hauristics.
+> space. Chose the message on some hauristics.
 
 There should be a template `pickle-report-vivid` reading
 
@@ -60,8 +60,8 @@ There should be a template `pickle-preprocess` reading
 
 There should be a template `pickle-string-format` reading
 
-> This processes the string by applying a "{{{1}}}" transform.
+> This processes the string by applying a “{{{1}}}” transform.
 
 There should be a template `pickle-ustring-format` reading
 
-> This processes the Unicode string by applying a "{{{1}}}" transform.
+> This processes the Unicode string by applying a “{{{1}}}” transform.
