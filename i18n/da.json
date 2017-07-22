@@ -108,10 +108,10 @@
 	"pickle-adapt-condition-to-be-u-match": "Skal matches i Unicode-målet",
 	"pickle-adapt-catched-exception": "Fanget avbrudd",
 	"pickle-adapt-catched-return": "Fanget retur",
-	"pickle-spies-carp-todo": "Carp blev kaldt",
-	"pickle-spies-cluck-todo": "Cluck blev kaldt",
-	"pickle-spies-confess-skip": "Confess blev kaldt",
-	"pickle-spies-croak-skip": "Croak blev kaldt",
-	"pickle-spies-confess-exits": "Confess afslutter",
-	"pickle-spies-croak-exits": "Croak afslutter"
+	"pickle-spies-carp-todo": "Funktionen »carp« blev kaldt",
+	"pickle-spies-cluck-todo": "Funktionen »cluck« blev kaldt",
+	"pickle-spies-confess-skip": "Funktionen »confess« blev kaldt",
+	"pickle-spies-croak-skip": "Funktionen »croak« blev kaldt",
+	"pickle-spies-confess-exits": "Funktionen »confess« afslutter",
+	"pickle-spies-croak-exits": "Funktionen »croak« afslutter"
 }

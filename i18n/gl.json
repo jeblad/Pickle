@@ -94,5 +94,20 @@
 	"pickle-adapt-process-as-ceil": "Atopar o enteiro superior",
 	"pickle-adapt-process-as-round": "Atopar o enteiro máis achegado",
 	"pickle-adapt-process-as-integer": "Atopar a parte enteira",
-	"pickle-adapt-process-as-fraction": "Atopar a parte decimal"
+	"pickle-adapt-process-as-fraction": "Atopar a parte decimal",
+	"pickle-adapt-condition-to-be-contained": "Estará contido dentro do destino",
+	"pickle-adapt-condition-to-be-lesser-than": "Será menor que o destino",
+	"pickle-adapt-condition-to-be-greater-than": "Será maior que o destino",
+	"pickle-adapt-condition-to-be-lesser-or-equal": "Será menor ou igual que o destino",
+	"pickle-adapt-condition-to-be-greater-or-equal": "Será maior ou igual que o destino",
+	"pickle-adapt-condition-to-be-match": "Coincidirá co destino",
+	"pickle-adapt-condition-to-be-u-match": "Coincidirá co destino en Unicode",
+	"pickle-adapt-catched-exception": "Excepción capturada",
+	"pickle-adapt-catched-return": "Saída capturada",
+	"pickle-spies-carp-todo": "Función \"carp\" chamada",
+	"pickle-spies-cluck-todo": "Función \"cluck\" chamada",
+	"pickle-spies-confess-skip": "Función \"confess\" chamada",
+	"pickle-spies-croak-skip": "Función \"croak\" chamada",
+	"pickle-spies-confess-exits": "Saída da función \"confess\"",
+	"pickle-spies-croak-exits": "Saída da función \"croak\""
 }

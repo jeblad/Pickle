@@ -106,10 +106,10 @@
 	"pickle-adapt-condition-to-be-u-match": "Skal finnast igjen i Unicode-målet",
 	"pickle-adapt-catched-exception": "Fanga avbrot",
 	"pickle-adapt-catched-return": "Fanga retur",
-	"pickle-spies-carp-todo": "Carp kalla",
-	"pickle-spies-cluck-todo": "Cluck kalla",
-	"pickle-spies-confess-skip": "Confess kalla",
-	"pickle-spies-croak-skip": "Croak kalla",
-	"pickle-spies-confess-exits": "Confess avbryt",
-	"pickle-spies-croak-exits": "Croak avbryt"
+	"pickle-spies-carp-todo": "Funksjonen «carp» blei kalla",
+	"pickle-spies-cluck-todo": "Funksjonen «cluck» blei kalla",
+	"pickle-spies-confess-skip": "Funksjonen «confess» blei kalla",
+	"pickle-spies-croak-skip": "Funksjonen «croak» blei kalla",
+	"pickle-spies-confess-exits": "Funksjonen «confess» avbryt",
+	"pickle-spies-croak-exits": "Funksjonen «croak» avbryt"
 }

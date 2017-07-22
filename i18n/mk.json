@@ -7,6 +7,7 @@
 		]
 	},
 	"pickle-desc": "Додава основно испробување со Pickle во Lua-модули",
+	"pickle-testcase-subpage": "$1/testcase",
 	"pickle-test-text-good": "Добро",
 	"pickle-test-text-pending": "Во исчекување",
 	"pickle-test-text-fail": "Неуспешно",
@@ -57,6 +58,7 @@
 	"pickle-frame-no-tests": "Нема регистрирано проби",
 	"pickle-report-frame-is-ok-keyword": "во ред",
 	"pickle-report-frame-is-not-ok-keyword": "не е во ред",
+	"pickle-report-frame-is-skip-keyword": "прескокни",
 	"pickle-report-frame-is-todo-keyword": "-",
 	"pickle-report-adapt-is-ok-keyword": "во ред",
 	"pickle-report-adapt-is-not-ok-keyword": "не е во ред",
@@ -107,10 +109,10 @@
 	"pickle-adapt-condition-to-be-u-match": "Да се совпаѓа во уникодната цел",
 	"pickle-adapt-catched-exception": "Меѓускладиран исклучок",
 	"pickle-adapt-catched-return": "Меѓускладиран повраток",
-	"pickle-spies-carp-todo": "Се јави Крап",
-	"pickle-spies-cluck-todo": "Се јави Ќутук",
-	"pickle-spies-confess-skip": "Се јави Исповед",
-	"pickle-spies-croak-skip": "Се јави Грак",
-	"pickle-spies-confess-exits": "Исповед изглегува",
-	"pickle-spies-croak-exits": "Грак излегува"
+	"pickle-spies-carp-todo": "Повикана функцијата „carp“",
+	"pickle-spies-cluck-todo": "Повикана функцијата „cluck“",
+	"pickle-spies-confess-skip": "Повикана функцијата „confess“",
+	"pickle-spies-croak-skip": "Повикана функцијата „croak“",
+	"pickle-spies-confess-exits": "Постои функцијата „confess“",
+	"pickle-spies-croak-exits": "Постои функцијата „croak“"
 }

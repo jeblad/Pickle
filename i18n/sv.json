@@ -109,10 +109,10 @@
 	"pickle-adapt-condition-to-be-u-match": "Ska återfinnas i Unicode-målet",
 	"pickle-adapt-catched-exception": "Fångat undantag",
 	"pickle-adapt-catched-return": "Fångat retur",
-	"pickle-spies-carp-todo": "Carp blev kallat",
-	"pickle-spies-cluck-todo": "Cluck blev kallat",
-	"pickle-spies-confess-skip": "Confess blev kallat",
-	"pickle-spies-croak-skip": "Croak blev kallat",
-	"pickle-spies-confess-exits": "Confess avslutar",
-	"pickle-spies-croak-exits": "Croak avslutar"
+	"pickle-spies-carp-todo": "Funktionen »carp« blev kallat",
+	"pickle-spies-cluck-todo": "Funktionen »cluck« blev kallat",
+	"pickle-spies-confess-skip": "Funktionen »confess« blev kallat",
+	"pickle-spies-croak-skip": "Funktionen »croak« blev kallat",
+	"pickle-spies-confess-exits": "Funktionen »confess« avslutar",
+	"pickle-spies-croak-exits": "Funktionen »croak« avslutar"
 }

@@ -109,10 +109,10 @@
 	"pickle-adapt-condition-to-be-u-match": "Devrait correspondre à la cible en Unicode",
 	"pickle-adapt-catched-exception": "Exception récupérée",
 	"pickle-adapt-catched-return": "Retour récupéré",
-	"pickle-spies-carp-todo": "Critique appelée",
+	"pickle-spies-carp-todo": "Fonction « critique » appelée",
 	"pickle-spies-cluck-todo": "Gloussement appelé",
-	"pickle-spies-confess-skip": "Confession appelée",
-	"pickle-spies-croak-skip": "Croassement appelé",
-	"pickle-spies-confess-exits": "Sortie de confession",
-	"pickle-spies-croak-exits": "Sortie de croassement"
+	"pickle-spies-confess-skip": "Fonction « confession » appelée",
+	"pickle-spies-croak-skip": "Fonction « croassement » appelée",
+	"pickle-spies-confess-exits": "Sortie de la fonction « confession »",
+	"pickle-spies-croak-exits": "Sortie de la fonction « croassement »"
 }

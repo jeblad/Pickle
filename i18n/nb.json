@@ -106,10 +106,10 @@
 	"pickle-adapt-condition-to-be-u-match": "Skal gjenfinnes i Unicode-målet",
 	"pickle-adapt-catched-exception": "Fanget avbrudd",
 	"pickle-adapt-catched-return": "Fanget retur",
-	"pickle-spies-carp-todo": "Carp ble kalt",
-	"pickle-spies-cluck-todo": "Cluck ble kalt",
-	"pickle-spies-confess-skip": "Confess ble kalt",
-	"pickle-spies-croak-skip": "Croak ble kalt",
-	"pickle-spies-confess-exits": "Confess avslutter",
-	"pickle-spies-croak-exits": "Croak avslutter"
+	"pickle-spies-carp-todo": "Funksjonen «carp» ble kalt",
+	"pickle-spies-cluck-todo": "Funksjonen «cluck» ble kalt",
+	"pickle-spies-confess-skip": "Funksjonen «confess» ble kalt",
+	"pickle-spies-croak-skip": "Funksjonen «croak» ble kalt",
+	"pickle-spies-confess-exits": "Funksjonen «confess» avslutter",
+	"pickle-spies-croak-exits": "Funksjonen «croak» avslutter"
 }

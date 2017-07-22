@@ -108,10 +108,10 @@
 	"pickle-adapt-condition-to-be-u-match": "应与Unicode目标匹配",
 	"pickle-adapt-catched-exception": "捕捉到的例外",
 	"pickle-adapt-catched-return": "捕捉到的返回",
-	"pickle-spies-carp-todo": "Carp被取消",
-	"pickle-spies-cluck-todo": "Cluck被取消",
-	"pickle-spies-confess-skip": "Confess被取消",
-	"pickle-spies-croak-skip": "Croak被取消",
-	"pickle-spies-confess-exits": "Confess已存在",
-	"pickle-spies-croak-exits": "Croak已存在"
+	"pickle-spies-carp-todo": "函数“carp”已取消",
+	"pickle-spies-cluck-todo": "函数“cluck”已取消",
+	"pickle-spies-confess-skip": "函数“confess”已取消",
+	"pickle-spies-croak-skip": "函数“croak”已取消",
+	"pickle-spies-confess-exits": "函数“confess”已存在",
+	"pickle-spies-croak-exits": "函数“croak”已存在"
 }
