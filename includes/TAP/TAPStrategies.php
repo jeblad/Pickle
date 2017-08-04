@@ -28,7 +28,7 @@ class TAPStrategies extends Strategies {
 	public static function init() {
 		global $wgPickleTAP;
 
-		$results = TAPStrategies::getInstance();
+		$results = self::getInstance();
 		foreach ( $wgPickleTAP as $struct ) {
 			$results->register( $struct );
 		}
@@ -45,7 +45,7 @@ class TAPStrategies extends Strategies {
 	 */
 	public function find( $str ) {
 		if ( $this->isEmpty() ) {
-			TAPStrategies::init();
+			self::init();
 		}
 		foreach ( $this->instances as $parser ) {
 			if ( $parser->checkValid( $str ) ) {

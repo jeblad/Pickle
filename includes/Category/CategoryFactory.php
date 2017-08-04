@@ -30,7 +30,7 @@ class CategoryFactory extends Strategies {
 	public static function init() {
 		global $wgPickleCategory;
 
-		$results = CategoryFactory::getInstance();
+		$results = self::getInstance();
 		foreach ( $wgPickleCategory as $struct ) {
 			$results->register( $struct );
 		}

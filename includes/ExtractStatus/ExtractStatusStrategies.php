@@ -30,7 +30,7 @@ class ExtractStatusStrategies extends Strategies {
 	public static function init() {
 		global $wgPickleExtractStatus;
 
-		$results = ExtractStatusStrategies::getInstance();
+		$results = self::getInstance();
 		foreach ( $wgPickleExtractStatus as $struct ) {
 			$results->register( $struct );
 		}
@@ -46,7 +46,7 @@ class ExtractStatusStrategies extends Strategies {
 	 */
 	public function find( $str ) {
 		if ( $this->isEmpty() ) {
-			ExtractStatusStrategies::init();
+			self::init();
 		}
 		foreach ( $this->instances as $strategy ) {
 			$state = $strategy->checkState( $str );

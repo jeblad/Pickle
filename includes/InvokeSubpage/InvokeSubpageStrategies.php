@@ -30,7 +30,7 @@ class InvokeSubpageStrategies extends Strategies {
 	public static function init() {
 		global $wgPickleInvokeSubpage;
 
-		$results = InvokeSubpageStrategies::getInstance();
+		$results = self::getInstance();
 		foreach ( $wgPickleInvokeSubpage as $struct ) {
 			$results->register( $struct );
 		}
@@ -46,7 +46,7 @@ class InvokeSubpageStrategies extends Strategies {
 	 */
 	public function find( \Title $title ) {
 		if ( $this->isEmpty() ) {
-			InvokeSubpageStrategies::init();
+			self::init();
 		}
 		foreach ( $this->instances as $strategy ) {
 			if ( $strategy->checkSubpageType( $title ) ) {

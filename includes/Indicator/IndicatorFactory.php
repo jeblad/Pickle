@@ -32,7 +32,7 @@ class IndicatorFactory extends Strategies {
 	public static function init() {
 		global $wgPickleIndicator;
 
-		$results = IndicatorFactory::getInstance();
+		$results = self::getInstance();
 		foreach ( $wgPickleIndicator as $struct ) {
 			$results->register( $struct );
 		}
