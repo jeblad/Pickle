@@ -212,7 +212,7 @@ class Hooks {
 
 	/**
 	 * Render the pickle
-	 * This is the function evaluate {{#pickle:}} and stringifies the result.
+	 * This is the function that evaluate {{#pickle:}} and stringifies the result.
 	 *
 	 * @param any $parser the object that triggered the call
 	 * @param string $text for page name
