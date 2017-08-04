@@ -66,7 +66,7 @@ class IndicatorFactoryTest extends StrategiesTestCase {
 				'class' => 'Pickle\IndicatorDefault'
 			]
 		);
-		$Strategy = $test->find( $name );
-		$this->assertEquals( $expect, get_class( $Strategy ) );
+		$strategy = $test->find( $name );
+		$this->assertEquals( $expect, get_class( $strategy ) );
 	}
 }
