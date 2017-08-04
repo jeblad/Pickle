@@ -29,12 +29,9 @@ class TAP13Parser extends ATAPParser {
 		$stats = $this->stats( $str );
 
 		// check if we got everything
-		if ( $count !== false ) {
-			// it is not compulsory to include the count in tap-13
-			if ( $stats[0][0] + $stats[1][0] !== $count ) {
-				// wrong overall count
-				return 'bad';
-			}
+		if ( $count !== false && ( $stats[0][0] + $stats[1][0] !== $count ) ) {
+			// wrong overall count
+			return 'bad';
 		}
 
 		// at least one cleraly bad?
@@ -88,20 +85,12 @@ class TAP13Parser extends ATAPParser {
 			// start collecting statistics
 			if ( self::isOk( $line ) ) {
 				$good[0]++;
-				if ( self::isSkip( $line ) ) {
-					$good[1]++;
-				}
-				if ( self::isTodo( $line ) ) {
-					$good[2]++;
-				}
+				self::isSkip( $line ) && $good[1]++;
+				self::isTodo( $line ) && $good[2]++;
 			} elseif ( self::isNotOk( $line ) ) {
 				$bad[0]++;
-				if ( self::isSkip( $line ) ) {
-					$bad[1]++;
-				}
-				if ( self::isTodo( $line ) ) {
-					$bad[2]++;
-				}
+				self::isSkip( $line ) && $bad[1]++;
+				self::isTodo( $line ) && $bad[2]++;
 			}
 		}
 
