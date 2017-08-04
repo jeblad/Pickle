@@ -35,7 +35,9 @@
 		"phpunit/phpunit": "4.8.*",
 		"phpspec/prophecy": "~1.0",
 		"liuggio/fastest": "~1.4",
-		"jakub-onderka/php-console-highlighter": "0.3.2"
+		"jakub-onderka/php-console-highlighter": "0.3.2",
+		"pdepend/pdepend" : "~2.5.0",
+		"phpmd/phpmd" : "~2.6.0"
 	},
 	"scripts": {
 		"fix": [
