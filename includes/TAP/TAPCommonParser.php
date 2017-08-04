@@ -91,20 +91,12 @@ class TAPCommonParser extends ATAPParser {
 			// start collecting statistics
 			if ( self::isOk( $line ) ) {
 				$good[0]++;
-				if ( self::isSkip( $line ) ) {
-					$good[1]++;
-				}
-				if ( self::isTodo( $line ) ) {
-					$good[2]++;
-				}
+				self::isSkip( $line ) && $good[1]++;
+				self::isTodo( $line ) && $good[2]++;
 			} elseif ( self::isNotOk( $line ) ) {
 				$bad[0]++;
-				if ( self::isSkip( $line ) ) {
-					$bad[1]++;
-				}
-				if ( self::isTodo( $line ) ) {
-					$bad[2]++;
-				}
+				self::isSkip( $line ) && $bad[1]++;
+				self::isTodo( $line ) && $bad[2]++;
 			}
 		}
 
