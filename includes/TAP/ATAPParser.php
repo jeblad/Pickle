@@ -57,7 +57,7 @@ abstract class ATAPParser {
 	 * Check if the line represent a good test
 	 *
 	 * @param string $line result to inspect
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isOk( $line ) {
 		return ( preg_match( '/^(ok)\b/i', $line ) === 1 );
@@ -67,7 +67,7 @@ abstract class ATAPParser {
 	 * Check if the line represent a bad test
 	 *
 	 * @param string $line result to inspect
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isNotOk( $line ) {
 		return ( preg_match( '/^(not\s+ok)\b/i', $line ) === 1 );
@@ -79,7 +79,7 @@ abstract class ATAPParser {
 	 * Skipped tests imply that the test set isn't complete.
 	 *
 	 * @param string $line result to inspect
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isSkip( $line ) {
 		return ( preg_match( '/#\s*(skipp?(ing|ed|))\b/i', $line ) === 1 );
@@ -89,7 +89,7 @@ abstract class ATAPParser {
 	 * Check if the line represent a test that is marked as todo
 	 *
 	 * @param string $line result to inspect
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isTodo( $line ) {
 		return ( preg_match( '/#\s*(todo)\b/i', $line ) === 1 );
@@ -100,7 +100,7 @@ abstract class ATAPParser {
 	 * Note that not all TAP-format uses indexes.
 	 *
 	 * @param string $line result to inspect
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isIndex( $line ) {
 		if ( preg_match( '/^(not\s+ok|ok)\s+(\d+)/i', $line, $matches ) === 1 ) {
@@ -113,7 +113,7 @@ abstract class ATAPParser {
 	 * Check if the line represent a comment
 	 *
 	 * @param string $line result to inspect
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isComment( $line ) {
 		if ( preg_match( '/^#/', $line ) === 1 ) {
@@ -126,7 +126,7 @@ abstract class ATAPParser {
 	 * Check if the line represent a text
 	 *
 	 * @param string $line result to inspect
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isText( $line ) {
 		if ( preg_match( '/^[ \t]/', $line ) === 1 ) {
@@ -147,7 +147,7 @@ abstract class ATAPParser {
 	 * Checks if the text is accoring to a given version
 	 *
 	 * @param string $str result from the evaluation
-	 * @return boolean
+	 * @return bool
 	 */
 	abstract public function checkValid( $str );
 

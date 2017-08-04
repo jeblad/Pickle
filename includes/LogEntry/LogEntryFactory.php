@@ -26,7 +26,7 @@ class LogEntryFactory extends Strategies {
 
 	/**
 	 * Configure the strategies
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function init() {
 		global $wgPickleLogEntry;
@@ -46,7 +46,7 @@ class LogEntryFactory extends Strategies {
 	 * @param \Title $title header information
 	 * @param \ParserOutput $parserOutput parser
 	 * @param array $states previous identified states (optional)
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function addLogEntry(
 		\Title $title,

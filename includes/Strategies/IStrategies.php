@@ -44,7 +44,7 @@ interface IStrategies {
 	/**
 	 * Check if a class has no instances
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isEmpty();
 }

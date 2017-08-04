@@ -24,7 +24,7 @@ class ExtractStatusByPattern extends ExtractStatus {
 	/**
 	 * @see \Pickle\ExtractStatus::checkState()
 	 * @param string $str heystack
-	 * @return number|boolean
+	 * @return number|bool
 	 */
 	public function checkState( $str ) {
 		$match = preg_match( $this->opts['pattern'], $str );

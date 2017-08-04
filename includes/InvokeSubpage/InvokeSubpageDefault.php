@@ -41,7 +41,7 @@ class InvokeSubpageDefault extends InvokeSubpage {
 	/**
 	 * @see \Pickle\InvokeSubpage::checkSubpageType()
 	 * @param \Title &$title to be used as source
-	 * @param boolean $type of content model (optional)
+	 * @param bool $type of content model (optional)
 	 * @return true
 	 */
 	public function checkSubpageType( \Title &$title, $type = null ) {

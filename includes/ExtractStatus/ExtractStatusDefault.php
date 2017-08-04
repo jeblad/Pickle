@@ -23,7 +23,7 @@ class ExtractStatusDefault extends ExtractStatus {
 	/**
 	 * @see \Pickle\ExtractStatus::checkState()
 	 * @param string $str heystack
-	 * @return number|booleanS
+	 * @return number|bool
 	 */
 	public function checkState( $str ) {
 		return true;

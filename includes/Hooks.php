@@ -60,7 +60,7 @@ class Hooks {
 	 * Is Scribunto
 	 *
 	 * @param \Title|null $title header information
-	 * @return boolean
+	 * @return bool
 	 */
 	 protected static function isScribunto( \Title $title = null ) {
 		return ( $title !== null
@@ -73,7 +73,7 @@ class Hooks {
 	 * This only scans for similar text fragments, and can fail badly.
 	 *
 	 * @param \Title $title header information
-	 * @return boolean
+	 * @return bool
 	 */
 	 protected static function isNeglected( \Title $title = null ) {
 		global $wgPickleNeglectSubpages;
@@ -99,7 +99,7 @@ class Hooks {
 	 * @param \Content $content destination for changes
 	 * @param \Title $title header information
 	 * @param \ParserOutput $parserOutput to be passed on
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function onContentAlterParserOutput(
 		\Content $content,
@@ -317,7 +317,7 @@ class Hooks {
 	 *
 	 * @param any $engine to be used for the call
 	 * @param array &$extraLibraryPaths additional libs
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function onRegisterScribuntoExternalLibraryPaths(
 		$engine,

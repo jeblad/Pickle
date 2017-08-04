@@ -111,7 +111,7 @@ class TAP13Parser extends ATAPParser {
 	/**
 	 * @see \Pickle\ATAPParser::checkValid()
 	 * @param string $str result from the evaluation
-	 * @return boolean
+	 * @return bool
 	 */
 	public function checkValid( $str ) {
 		return ( $this->getVersion( $str ) === 13 );

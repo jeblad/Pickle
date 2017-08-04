@@ -47,7 +47,7 @@ class ConsoleView {
 	 *
 	 * @param \EditPage &$editor the edit page access
 	 * @param \OutputPage $output the output page
-	 * @return boolean outcome of the call
+	 * @return bool outcome of the call
 	 */
 	public static function build( \EditPage &$editor, \OutputPage $output ) {
 		// get the title of current page
@@ -87,7 +87,7 @@ class ConsoleView {
 	 * @param \EditPage $editor the edit page access
 	 * @param OutputPage $output where to put the additional stuff
 	 * @param int &$tab Current tabindex
-	 * @return boolean outcome of the call
+	 * @return bool outcome of the call
 
 	 */
 	public static function onShowStandardInputsOptions(
@@ -107,7 +107,7 @@ class ConsoleView {
 	 *
 	 * @param \EditPage $editor the edit page access
 	 * @param \OutputPage $output the output page
-	 * @return boolean outcome of the call
+	 * @return bool outcome of the call
 	 */
 	public static function onShowReadOnlyFormInitial( \EditPage $editor, \OutputPage $output ) {
 		return self::build( $editor, $output );

@@ -28,7 +28,7 @@ class ExtractStatus {
 	 * Checks if the string has the strategys stored pattern
 	 *
 	 * @param string $str heystack
-	 * @return number|boolean
+	 * @return number|bool
 	 */
 	public function checkState( $str ) {
 		return false;

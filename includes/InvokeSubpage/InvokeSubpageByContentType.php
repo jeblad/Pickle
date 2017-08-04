@@ -31,7 +31,7 @@ class InvokeSubpageByContentType extends InvokeSubpage {
 	/**
 	 * @see \Pickle\InvokeSubpage::checkType()
 	 * @param \Title &$title to be used as source
-	 * @return boolean
+	 * @return bool
 	 */
 	public function checkType( \Title &$title ) {
 		return $title->exists() && $title->getContentModel() === $this->opts['type'];
@@ -40,8 +40,8 @@ class InvokeSubpageByContentType extends InvokeSubpage {
 	/**
 	 * @see \Pickle\InvokeSubpage::checkSubpageType()
 	 * @param \Title &$title to be used as source
-	 * @param boolean $type of content model (optional)
-	 * @return boolean
+	 * @param bool $type of content model (optional)
+	 * @return bool
 	 */
 	public function checkSubpageType( \Title &$title, $type = null ) {
 		// this will be cached

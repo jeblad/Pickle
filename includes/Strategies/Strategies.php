@@ -81,7 +81,7 @@ class Strategies implements IStrategies {
 
 	/**
 	 * @see \Pickle\IStrategy::isEmpty()
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isEmpty() {
 		return ( $this->instances === [] );

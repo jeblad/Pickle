@@ -28,7 +28,7 @@ abstract class InvokeSubpage {
 	 * Checks if the title has the strategys stored type
 	 *
 	 * @param \Title &$title to be used as source
-	 * @return boolean
+	 * @return bool
 	 */
 	public function checkType( \Title &$title ) {
 		return false;
@@ -38,8 +38,8 @@ abstract class InvokeSubpage {
 	 * Checks if the subpage title has the strategys stored type
 	 *
 	 * @param \Title &$title to be used as source
-	 * @param boolean $type of content model (optional)
-	 * @return boolean
+	 * @param bool $type of content model (optional)
+	 * @return bool
 	 */
 	public function checkSubpageType( \Title &$title, $type = null ) {
 		return false;
