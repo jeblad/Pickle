@@ -150,14 +150,10 @@ abstract class Indicator {
 	public function addIndicator( \Title $title = null, \ParserOutput &$parserOutput ) {
 		$elem = null;
 
-		if ( $title === null ) {
-			$elem = $this->makeNote();
-		} else {
-			$elem = $this->makeLink( $title->getLocalURL() );
-		}
+		$elem = $title ? $this->makeLink( $title->getLocalURL() ) : $this->makeNote();
 
 		if ( $elem !== null ) {
-			$res = $parserOutput->setIndicator( $this->getClassKey(), $elem );
+			$parserOutput->setIndicator( $this->getClassKey(), $elem );
 			$parserOutput->addModuleStyles( [ 'ext.pickle.default', 'ext.pickle.indicator.icon' ] );
 		}
 
