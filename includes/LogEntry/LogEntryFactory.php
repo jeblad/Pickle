@@ -66,7 +66,7 @@ class LogEntryFactory extends Strategies {
 			$states );
 
 		$currentKey = $mergedStates[ 'status-current' ];
-		$currentKey = $mergedStates[ 'status-previous' ];
+		$previousKey = $mergedStates[ 'status-previous' ];
 		$currentType = $mergedStates[ 'page-type' ];
 
 		if ( $currentKey !== null
