@@ -110,6 +110,12 @@ module.exports = function ( grunt ) {
 			]
 		},
 		markdownlint: {
+			options: {
+				config: {
+					'default': true,
+					MD013: false
+				}
+			},
 			all: [
 				'**/*.md',
 				'!node_modules/**',
