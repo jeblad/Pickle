@@ -131,25 +131,16 @@ class Hooks {
 					if ( ! $maybePageMsg->isDisabled() ) {
 						$maybePage = $maybePageMsg->plain();
 						if ( $maybePage == $title->getPrefixedText() ) {
-							// start collecting args for the hook
-							$args = [
-								// at this point the page type is test"
-								'page-type' => 'normal',
-							];
+							$statusStrategy = self::getFinalStrategy( $baseInvokeStrategy, $baseTitle );
 
-							// if invocation is disabled, then the state will be set to "exists" or "missing"
-							if ( $baseInvokeStrategy->getInvoke( $baseTitle )->isDisabled() ) {
-								// @todo either this or the comment above is wrong
-								$args[ 'status-current' ] = 'unknown';
-							} else {
-								// if status isn't found, then the state will be set to "unknown"
-								$statusStrategy = self::getFinalStrategy( $baseInvokeStrategy, $baseTitle );
-								if ( $statusStrategy === null ) {
-									$args[ 'status-current' ] = 'unknown';
-								} else {
-									$args[ 'status-current' ] = $statusStrategy->getName();
-								}
+							// collect args for the hook
+							$args = [];
+							$args[ 'page-type' ] = 'normal';
+							if ( !$baseInvokeStrategy->getInvoke( $baseTitle )->isDisabled() ) {
+								$args[ 'status-current' ] =
+									isset( $statusStrategy ) ? $statusStrategy->getName() : 'unknown';
 							}
+
 							$logger->debug( 'Current status: {text}', [
 								'text' => $args[ 'status-current' ],
 								'title' => $title->getFullText(),
@@ -169,36 +160,22 @@ class Hooks {
 			}
 		}
 
-		// keep the current state as page property for later
+		// keep the current page props for later
 		$pageProps = \PageProps::getInstance()->getProperties( $title, 'pickle-status' );
-		// @todo missing test, previous is not necessarilly defined
-		$previousStatus = array_key_exists( $title->getArticleId(), $pageProps )
-			? unserialize( $pageProps[$title->getArticleId()] )
-			: null;
 		$statusStrategy = self::getFinalStrategy( $invokeStrategy, $title );
 		$parserOutput->setProperty( 'pickle-status', serialize( $statusStrategy->getName() ) );
 
-		// start collecting args for the hook
-		$args = [
-			// at this point the page type is "normal"
-			'page-type' => 'normal',
-			// at this point it is safe to expect the subpage
-			'subpage-message' => $invokeStrategy->getSubpagePrefixedText( $title ),
-		];
-		// if invocation is disabled, then the state will be set to "exists" or "missing"
-		if ( $invokeStrategy->getInvoke( $title )->isDisabled() ) {
+		// collect args for the hook
+		$args = [];
+		$args[ 'page-type' ] = 'normal';
+		$args[ 'subpage-message' ] = $invokeStrategy->getSubpagePrefixedText( $title );
+		if ( !$invokeStrategy->getInvoke( $title )->isDisabled() ) {
 			$args[ 'status-current' ] =
-				$invokeStrategy->getSubpageTitle( $title )->exists() ? 'exists' : 'missing';
-		} else {
-			// if status isn't found, then the state will be set to "unknown"
-			if ( $statusStrategy === null ) {
-				$args[ 'status-current' ] = 'unknown';
-			} else {
-				// should be safe to set these now
-				$args[ 'status-previous' ] = $previousStatus === null ? '' : $previousStatus;
-				$args[ 'status-current' ] = $statusStrategy->getName();
-			}
+				isset( $statusStrategy ) ? $statusStrategy->getName() : 'unknown';
+			$args[ 'status-previous' ] =
+				isset( $pageProps[$title->getArticleId()] ) ? $pageProps[$title->getArticleId()]: '';
 		}
+
 		$logger->debug( 'Current status: {text}', [
 			'text' => $args[ 'status-current' ],
 			'title' => $title->getFullText(),
