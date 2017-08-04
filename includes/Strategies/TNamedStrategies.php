@@ -17,7 +17,7 @@ trait TNamedStrategies {
 	 */
 	public function register( array $struct ) {
 		$instance = new $struct['class']( $struct );
-		if ( $instance === null or $instance->getName() === null ) {
+		if ( $instance === null || $instance->getName() === null ) {
 			return null;
 		}
 		$this->instances[$instance->getName()] = $instance;
