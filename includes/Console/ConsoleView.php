@@ -116,14 +116,4 @@ class ConsoleView {
 	public static function onShowReadOnlyFormInitial( \EditPage $editor, \OutputPage $output ) {
 		return self::build( $editor, $output );
 	}
-
-	/**
-	 * @todo This doc section must be wrong
-	 * @see \Pickle\IObserver::getName()
-	 * @return any
-	 */
-	public function makeForm() {
-		$editor->editFormTextAfterTools .= '<div id="mw-scribunto-console"></div>';
-		return self::$instance;
-	}
 }
