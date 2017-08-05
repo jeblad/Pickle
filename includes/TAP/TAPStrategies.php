@@ -23,6 +23,8 @@ class TAPStrategies extends Strategies {
 	/**
 	 * Configure the strategies
 	 *
+	 * @SuppressWarnings(PHPMD.LongVariable)
+	 *
 	 * @return true
 	 */
 	public static function init() {

@@ -15,6 +15,8 @@ class LuaLibPickle extends Scribunto_LuaLibraryBase {
 	/**
 	 * Register the library
 	 *
+	 * @SuppressWarnings(PHPMD.LongVariable)
+	 *
 	 * @return array
 	 */
 	public function register() {
