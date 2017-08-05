@@ -214,11 +214,12 @@ class Hooks {
 		// Try to bail out early
 		if ( !self::isScribunto( $title ) ) {
 			$msg = wfMessage( 'pickle-test-text-invalid' );
-			$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );
+			isset( $lang ) ? $msg->inLanguage( $lang ) : $msg->inContentLanguage();
 			return $msg->plain();
-		} elseif ( self::isNeglected( $title ) ) {
+		}
+		if ( self::isNeglected( $title ) ) {
 			$msg = wfMessage( 'pickle-test-text-missing' );
-			$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );
+			isset( $lang ) ? $msg->inLanguage( $lang ) : $msg->inContentLanguage();
 			return $msg->plain();
 		}
 
@@ -226,7 +227,7 @@ class Hooks {
 		$invokeStrategy = InvokeSubpageStrategies::getInstance()->find( $title );
 		if ( $invokeStrategy === null ) {
 			$msg = wfMessage( 'pickle-test-text-invalid' );
-			$msg = $lang === null ? $msg->inContentLanguage() : $msg->inLanguage( $lang );
+			isset( $lang ) ? $msg->inLanguage( $lang ) : $msg->inContentLanguage();
 			return $msg->plain();
 		}
 
@@ -241,24 +242,16 @@ class Hooks {
 					if ( ! $maybePageMsg->isDisabled() ) {
 						$maybePage = $maybePageMsg->plain();
 						if ( $maybePage == $title->getPrefixedText() ) {
-							// start collecting args for the hook
-							$args = [
-								// at this point the page type is test"
-								'page-type' => 'normal',
-							];
+							$statusStrategy = self::getFinalStrategy( $baseInvokeStrategy, $baseTitle );
+
+							// collect args for the hook (but we don't use the hook in this case…)
+							$args = [];
+							$args[ 'page-type' ] = 'normal';
 
 							// if invocation is disabled, then the state will be set to "exists" or "missing"
-							if ( $baseInvokeStrategy->getInvoke( $baseTitle )->isDisabled() ) {
-								// @todo either this or the comment above is wrong
-								$args[ 'status-current' ] = 'unknown';
-							} else {
-								// if status isn't found, then the state will be set to "unknown"
-								$statusStrategy = self::getFinalStrategy( $baseInvokeStrategy, $baseTitle );
-								if ( $statusStrategy === null ) {
-									$args[ 'status-current' ] = 'unknown';
-								} else {
-									$args[ 'status-current' ] = $statusStrategy->getName();
-								}
+							if ( ! $baseInvokeStrategy->getInvoke( $baseTitle )->isDisabled() ) {
+								$args[ 'status-current' ] =
+									isset( $statusStrategy ) ? $statusStrategy->getName() : 'unknown';
 							}
 
 							$msg = wfMessage( 'pickle-test-text-subpage' );
