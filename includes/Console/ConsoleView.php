@@ -86,8 +86,6 @@ class ConsoleView {
 	/**
 	 * Add a view for test console
 	 *
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-	 *
 	 * @param \EditPage $editor the edit page access
 	 * @param OutputPage $output where to put the additional stuff
 	 * @param int &$tabIndex Current tabindex

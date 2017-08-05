@@ -27,8 +27,6 @@ abstract class InvokeSubpage {
 	/**
 	 * Checks if the title has the strategys stored type
 	 *
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-	 *
 	 * @param \Title &$title to be used as source
 	 * @return bool
 	 */
@@ -38,8 +36,6 @@ abstract class InvokeSubpage {
 
 	/**
 	 * Checks if the subpage title has the strategys stored type
-	 *
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 *
 	 * @param \Title &$title to be used as source
 	 * @param bool $type of content model (optional)
@@ -53,8 +49,6 @@ abstract class InvokeSubpage {
 	 * Get the invoke
 	 * It is parsed as wikitext, and will most likely contain an invoke call.
 	 *
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-	 *
 	 * @param \Title &$title to be used as source
 	 * @return \Message
 	 */
@@ -66,8 +60,6 @@ abstract class InvokeSubpage {
 	 * Get the SubpagePrefixedText
 	 * It is parsed as plain text, and should be a safe message.
 	 *
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-	 *
 	 * @param \Title &$title to be used as source
 	 * @return \Message
 	 */
@@ -78,8 +70,6 @@ abstract class InvokeSubpage {
 	/**
 	 * Get the SubpageBaseText
 	 * It is parsed as plain text, and should be a safe message.
-	 *
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 *
 	 * @param \Title &$title to be used as source
 	 * @return \Message
@@ -103,8 +93,6 @@ abstract class InvokeSubpage {
 
 	/**
 	 * Get the question part of the console call for the tester
-	 *
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 *
 	 * @param \Title &$title to used as source (not in use)
 	 * @return simplexml_load_string

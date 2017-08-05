@@ -27,8 +27,6 @@ class ExtractStatus {
 	/**
 	 * Checks if the string has the strategys stored pattern
 	 *
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-	 *
 	 * @param string $str heystack
 	 * @return number|bool
 	 */

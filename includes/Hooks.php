@@ -102,7 +102,6 @@ class Hooks {
 	 * Page indicator for module with pickle tests
 	 *
 	 * @SuppressWarnings(PHPMD.StaticAccess)
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 *
 	 * @todo design debt
 	 * @param \Content $content destination for changes
@@ -202,7 +201,6 @@ class Hooks {
 	 *
 	 * @SuppressWarnings(PHPMD.LongVariable)
 	 * @SuppressWarnings(PHPMD.StaticAccess)
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 *
 	 * @param any $parser the object that triggered the call
 	 * @param string $text for page name
