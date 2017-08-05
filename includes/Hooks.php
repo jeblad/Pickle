@@ -89,6 +89,7 @@ class Hooks {
 
 		$text = $title->getSubpageText();
 		foreach ( $wgPickleNeglectSubpages as $pattern ) {
+			// @todo https://github.com/jeblad/Pickle/issues/2
 			if ( preg_match( $pattern, $text ) ) {
 				return true;
 			}
