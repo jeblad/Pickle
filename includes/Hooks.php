@@ -276,6 +276,9 @@ class Hooks {
 	}
 
 	/**
+	 *
+	 * @SuppressWarnings(PHPMD.LongVariable)
+	 *
 	 * Setup for the extension
 	 */
 	public static function onExtensionSetup() {
