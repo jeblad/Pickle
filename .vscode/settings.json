@@ -1,0 +1,44 @@
+{
+	"files.exclude": {
+		"node_modules/": true
+	},
+
+	// Whether the linter is run on save or on type.
+	"php.validate.run": "onType",
+
+	// Linters
+	"json.schemas": [
+		{
+			"fileMatch": [
+				"/.jscrc"
+			],
+			"url": "http://json.schemastore.org/jscrc"
+		},
+		{
+			"fileMatch": [
+				"/.jshintrc"
+			],
+			"url": "http://json.schemastore.org/jshintrc"
+		},
+		{
+			"fileMatch": [
+				"/package.json"
+			],
+			"url": "http://json.schemastore.org/package"
+		},
+		{
+			"fileMatch": [
+				"/composer.json"
+			],
+			"url": "http://json.schemastore.org/composer"
+		}
+	],
+
+	// stylelint
+	"stylelint.configOverrides": {
+		"ignoreFiles": "vendor/**"
+	},
+
+	// PHP Mess Detector
+	"phpmd.rules": "./phpmd.xml"
+}
