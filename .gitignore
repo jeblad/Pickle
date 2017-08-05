@@ -1,6 +1,5 @@
 .*.swp
 *~
-.vscode
 /.project
 /composer.lock
 /package-lock.json
