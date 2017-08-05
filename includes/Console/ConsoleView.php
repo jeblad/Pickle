@@ -86,16 +86,18 @@ class ConsoleView {
 	/**
 	 * Add a view for test console
 	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 *
 	 * @param \EditPage $editor the edit page access
 	 * @param OutputPage $output where to put the additional stuff
-	 * @param int &$tab Current tabindex
+	 * @param int &$tabIndex Current tabindex
 	 * @return bool outcome of the call
 
 	 */
 	public static function onShowStandardInputsOptions(
 		\EditPage $editor,
 		\OutputPage $output,
-		&$tab
+		&$tabIndex
 	) {
 		if ( $editor->getTitle()->hasContentModel( CONTENT_MODEL_SCRIBUNTO ) ) {
 			$output = \RequestContext::getMain()->getOutput();
