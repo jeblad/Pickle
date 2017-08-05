@@ -38,6 +38,8 @@ class InvokeSubpageByContentType extends InvokeSubpage {
 	}
 
 	/**
+	 * @SuppressWarnings(PHPMD.StaticAccess)
+	 *
 	 * @see \Pickle\InvokeSubpage::checkSubpageType()
 	 * @param \Title &$title to be used as source
 	 * @param bool $type of content model (optional)

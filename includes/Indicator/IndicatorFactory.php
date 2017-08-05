@@ -46,6 +46,8 @@ class IndicatorFactory extends Strategies {
 	 * Add track indicator for tested module
 	 * This is a replacement for a hook registered in extensions.json
 	 *
+	 * @SuppressWarnings(PHPMD.StaticAccess)
+	 *
 	 * @param \Title $title target of the categorization
 	 * @param \ParserOutput $parserOutput parser result from the parsing process
 	 * @param array $states additional states to be merged (optional)

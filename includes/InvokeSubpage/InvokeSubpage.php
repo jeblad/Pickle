@@ -82,6 +82,8 @@ abstract class InvokeSubpage {
 	 * Get the SubpageTitle
 	 * The prefixed text is interpreted as the text for a title.
 	 *
+	 * @SuppressWarnings(PHPMD.StaticAccess)
+	 *
 	 * @param \Title &$title to be used as source
 	 * @return \Title
 	 */
