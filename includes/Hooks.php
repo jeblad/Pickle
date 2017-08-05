@@ -95,9 +95,101 @@ class Hooks {
 	 }
 
 	/**
+	 * Bulid arguments for the tester hook
+	 *
+	 * @param InvokeSubpage $invoke how to get the subpage
+	 * @param \Title $title header information
+	 * @param ExtractStatus $extract how to extract the status
+	 * @return table containing the arguments
+	 */
+	public static function buildTesterArgs(
+		InvokeSubpage $invoke,
+		\Title $title,
+		ExtractStatus $extract
+	) {
+		$args = [];
+
+		// collect args
+		$args[ 'page-type' ] = 'test';
+		if ( !$invoke->getInvoke( $title )->isDisabled() ) {
+			$args[ 'status-current' ] =
+				isset( $extract ) ? $extract->getName() : 'unknown';
+		}
+
+		return $args;
+	}
+
+	/**
+	 * Bulid arguments for the testee hook
+	 *
+	 * @param InvokeSubpage $invoke how to get the subpage
+	 * @param \Title $title header information
+	 * @param ExtractStatus $extract how to extract the status
+	 * @return table containing the arguments
+	 */
+	public static function buildTesteeArgs(
+		InvokeSubpage $invoke,
+		\Title $title,
+		ExtractStatus $extract
+	) {
+		$args = [];
+
+		// collect args
+		$args[ 'page-type' ] = 'normal';
+		$args[ 'subpage-message' ] = $invoke->getSubpagePrefixedText( $title );
+		if ( !$invoke->getInvoke( $title )->isDisabled() ) {
+			$args[ 'status-current' ] =
+				isset( $extract ) ? $extract->getName() : 'unknown';
+		}
+
+		return $args;
+	}
+
+	/**
+	 * Check page and return a descriptive argument set
+	 *
+	 * @param \Title $title header information
+	 * @return table containing the arguments
+	 */
+	public static function checkPageType( \Title $title ) {
+		// subpages need special handling
+		if ( $title->isSubpage() ) {
+			// check if this page is a valid subpage itself
+			$baseTitle = $title->getBaseTitle();
+			if ( $baseTitle !== null ) {
+				$baseInvokeStrategy = InvokeSubpageStrategies::getInstance()->find( $baseTitle );
+				if ( $baseInvokeStrategy !== null ) {
+					$maybePageMsg = $baseInvokeStrategy->getSubpagePrefixedText( $baseTitle );
+					if ( ! $maybePageMsg->isDisabled() ) {
+						$maybePage = $maybePageMsg->plain();
+						if ( $maybePage == $title->getPrefixedText() ) {
+							// collect args for the hook
+							$args = self::buildTesterArgs( $baseInvokeStrategy, $baseTitle,
+								self::getFinalStrategy( $baseInvokeStrategy, $baseTitle ) );
+
+							return $args;
+						}
+					}
+				}
+			}
+		}
+
+		// try to find a subpage to invoke
+		$invokeStrategy = InvokeSubpageStrategies::getInstance()->find( $title );
+		if ( $invokeStrategy === null ) {
+			return null;
+		}
+
+		// collect args for the hook
+		$args = self::buildTesterArgs( $invokeStrategy, $title,
+			self::getFinalStrategy( $invokeStrategy, $title ) );
+
+		return $args;
+	}
+
+	/**
 	 * Page indicator for module with pickle tests
 	 *
-	 * @todo design debt
 	 * @param \Content $content destination for changes
 	 * @param \Title $title header information
 	 * @param \ParserOutput $parserOutput to be passed on
@@ -113,79 +205,44 @@ class Hooks {
 			return true;
 		}
 
-		// try to find a subpage to invoke
-		$invokeStrategy = InvokeSubpageStrategies::getInstance()->find( $title );
-		if ( $invokeStrategy === null ) {
+		// figure out what kind of page this is
+		$args = self::checkPageType( $title );
+		if ( $args === null ) {
 			return true;
 		}
 
-		// It is probably safe to assume this will be used
-		$logger = LoggerFactory::getInstance( 'Pickle' );
-
-		// subpages need special handling
-		if ( $title->isSubpage() ) {
-			// check if this page is a valid subpage itself
-			$baseTitle = $title->getBaseTitle();
-			if ( $baseTitle !== null ) {
-				$baseInvokeStrategy = InvokeSubpageStrategies::getInstance()->find( $baseTitle );
-				if ( $baseInvokeStrategy !== null ) {
-					$maybePageMsg = $baseInvokeStrategy->getSubpagePrefixedText( $baseTitle );
-					if ( ! $maybePageMsg->isDisabled() ) {
-						$maybePage = $maybePageMsg->plain();
-						if ( $maybePage == $title->getPrefixedText() ) {
-							$statusStrategy = self::getFinalStrategy( $baseInvokeStrategy, $baseTitle );
-
-							// collect args for the hook
-							$args = [];
-							$args[ 'page-type' ] = 'normal';
-							if ( !$baseInvokeStrategy->getInvoke( $baseTitle )->isDisabled() ) {
-								$args[ 'status-current' ] =
-									isset( $statusStrategy ) ? $statusStrategy->getName() : 'unknown';
-							}
-
-							$logger->debug( 'Current status: {text}', [
-								'text' => $args[ 'status-current' ],
-								'title' => $title->getFullText(),
-								'method' => __METHOD__
-							] );
-
-							// add the usual help link
-							HelpView::build();
-
-							// run registered callbacks to create testee gadgets
-							\Hooks::run( 'SpecTesterGadgets', [ $title, $parserOutput, $args ] );
-
-							return true;
-						}
-					}
-				}
-			}
-		}
-
-		// keep the current page props for later
-		$pageProps = \PageProps::getInstance()->getProperties( $title, 'pickle-status' );
-		$statusStrategy = self::getFinalStrategy( $invokeStrategy, $title );
-		$parserOutput->setProperty( 'pickle-status', serialize( $statusStrategy->getName() ) );
-
-		// collect args for the hook
-		$args = [];
-		$args[ 'page-type' ] = 'normal';
-		$args[ 'subpage-message' ] = $invokeStrategy->getSubpagePrefixedText( $title );
-		if ( !$invokeStrategy->getInvoke( $title )->isDisabled() ) {
-			$args[ 'status-current' ] =
-				isset( $statusStrategy ) ? $statusStrategy->getName() : 'unknown';
-			$args[ 'status-previous' ] =
-				isset( $pageProps[$title->getArticleId()] ) ? $pageProps[$title->getArticleId()]: '';
-		}
-
-		$logger->debug( 'Current status: {text}', [
+		// log our decision about what kind of page this is
+		LoggerFactory::getInstance( 'Pickle' )->debug( 'Current status: {text}', [
 			'text' => $args[ 'status-current' ],
 			'title' => $title->getFullText(),
 			'method' => __METHOD__
 		] );
 
-		// run registered callbacks to create testee gadgets
-		\Hooks::run( 'SpecTesteeGadgets', [ $title, $parserOutput, $args ] );
+		// inject a help view if it is the special tester page
+		if ( $args['page-type'] === 'test' ) {
+			HelpView::build();
+		}
+
+		// keep status if testee page
+		if ( $args['page-type'] === 'normal' && isset( $args[ 'status-current' ] ) ) {
+			// keep the current page props for later
+			$pageProps = \PageProps::getInstance()->getProperties( $title, 'pickle-status' );
+			$parserOutput->setProperty( 'pickle-status', serialize( $args[ 'status-current' ] ) );
+			// extend the args
+			$args[ 'status-previous' ] =
+				isset( $pageProps[$title->getArticleId()] ) ? $pageProps[$title->getArticleId()] : '';
+		}
+
+		// run registered callbacks to create gadgets
+		$callbacks = [
+			'test' => 'SpecTesterGadgets',
+			'normal' => 'SpecTesteeGadgets'
+		];
+		$callback = $callbacks[$args['page-type']];
+		if ( isset( $callback ) ) {
+			\Hooks::run( $callback, [ $title, $parserOutput, $args ] );
+		}
+
 		return true;
 	}
 
