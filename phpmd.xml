@@ -13,7 +13,9 @@
 		<exclude name="UnusedFormalParameter" />
 	</rule>
 	<rule ref="rulesets/naming.xml">
+		<!-- this is not really necessary -->
 		<exclude name="ShortVariable" />
+		<!-- this hits constructed config names -->
 		<exclude name="LongVariable" />
 	</rule>
 	<rule ref="rulesets/cleancode.xml">
