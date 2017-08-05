@@ -201,6 +201,7 @@ class Hooks {
 	 *
 	 * @SuppressWarnings(PHPMD.LongVariable)
 	 * @SuppressWarnings(PHPMD.StaticAccess)
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 *
 	 * @param any $parser the object that triggered the call
 	 * @param string $text for page name

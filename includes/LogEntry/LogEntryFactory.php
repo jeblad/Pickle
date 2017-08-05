@@ -46,6 +46,8 @@ class LogEntryFactory extends Strategies {
 	 * Add track log for tested module
 	 * This is a callback for a hook registered in extensions.json
 	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 *
 	 * @param \Title $title header information
 	 * @param \ParserOutput $parserOutput parser
 	 * @param array $states previous identified states (optional)
