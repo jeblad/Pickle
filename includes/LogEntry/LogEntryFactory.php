@@ -27,8 +27,6 @@ class LogEntryFactory extends Strategies {
 	/**
 	 * Configure the strategies
 	 *
-	 * @SuppressWarnings(PHPMD.LongVariable)
-	 *
 	 * @return bool
 	 */
 	public static function init() {

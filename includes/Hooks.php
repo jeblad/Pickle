@@ -74,8 +74,6 @@ class Hooks {
 	 * Is neglected
 	 * This only scans for similar text fragments, and can fail badly.
 	 *
-	 * @SuppressWarnings(PHPMD.LongVariable)
-	 *
 	 * @param \Title $title header information
 	 * @return bool
 	 */
@@ -199,7 +197,6 @@ class Hooks {
 	 * Render the pickle
 	 * This is the function that evaluate {{#pickle:}} and stringifies the result.
 	 *
-	 * @SuppressWarnings(PHPMD.LongVariable)
 	 * @SuppressWarnings(PHPMD.StaticAccess)
 	 *
 	 * @param any $parser the object that triggered the call
@@ -277,9 +274,6 @@ class Hooks {
 	}
 
 	/**
-	 *
-	 * @SuppressWarnings(PHPMD.LongVariable)
-	 *
 	 * Setup for the extension
 	 */
 	public static function onExtensionSetup() {

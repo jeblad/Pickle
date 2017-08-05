@@ -14,7 +14,6 @@ class Observer {
 	/**
 	 * Get the user
 	 *
-	 * @SuppressWarnings(PHPMD.LongVariable)
 	 * @SuppressWarnings(PHPMD.StaticAccess)
 	 *
 	 * @return string
