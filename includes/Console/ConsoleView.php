@@ -44,8 +44,6 @@ class ConsoleView {
 	/**
 	 * Build the view
 	 * This isn't really part of a normal MVC design pattern, it will only build a minimal view.
-
-	 * @SuppressWarnings(PHPMD.StaticAccess)
 	 *
 	 * @param \EditPage &$editor the edit page access
 	 * @param \OutputPage $output the output page

@@ -10,8 +10,6 @@ namespace Pickle;
 class SubLinksView implements ISubLinksView {
 
 	/**
-	 * @SuppressWarnings(PHPMD.StaticAccess)
-	 *
 	 * @see \Pickle\ISubLinksView::makeLink()
 	 * @param \Title $title link destination
 	 * @param any $lang representing the language

@@ -15,8 +15,6 @@ class Hooks {
 	/**
 	 * Get final strategy
 	 *
-	 *  @SuppressWarnings(PHPMD.StaticAccess)
-	 *
 	 * @param \Pickle\InvokeSubpage $strategy to act upon
 	 * @param \Title $title header information
 	 * @return any|null
@@ -98,8 +96,6 @@ class Hooks {
 
 	/**
 	 * Page indicator for module with pickle tests
-	 *
-	 * @SuppressWarnings(PHPMD.StaticAccess)
 	 *
 	 * @todo design debt
 	 * @param \Content $content destination for changes
@@ -196,8 +192,6 @@ class Hooks {
 	/**
 	 * Render the pickle
 	 * This is the function that evaluate {{#pickle:}} and stringifies the result.
-	 *
-	 * @SuppressWarnings(PHPMD.StaticAccess)
 	 *
 	 * @param any $parser the object that triggered the call
 	 * @param string $text for page name

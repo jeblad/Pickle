@@ -27,8 +27,6 @@ class LogEntry {
 	 * Create a new track log entry
 	 * This will not insert and publish the entry.
 	 *
-	 * @SuppressWarnings(PHPMD.StaticAccess)
-	 *
 	 * @param \Title $title target of the logged action
 	 * @param \LogEntry|null $logEntry predefined log entry for testing purposes (optional)
 	 *

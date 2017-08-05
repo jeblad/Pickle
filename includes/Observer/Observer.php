@@ -14,8 +14,6 @@ class Observer {
 	/**
 	 * Get the user
 	 *
-	 * @SuppressWarnings(PHPMD.StaticAccess)
-	 *
 	 * @return string
 	 */
 	public static function getUser() {

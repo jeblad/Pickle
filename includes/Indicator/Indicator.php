@@ -28,8 +28,6 @@ abstract class Indicator {
 	/**
 	 * Make a page status indicator link given status and url
 	 *
-	 * @SuppressWarnings(PHPMD.StaticAccess)
-	 *
 	 * @param string $url to the internal or external page
 	 * @param string $lang representing the language (optional)
 	 * @return Html|null
@@ -70,8 +68,6 @@ abstract class Indicator {
 
 	/**
 	 * Make a page status indicator note given status
-	 *
-	 * @SuppressWarnings(PHPMD.StaticAccess)
 	 *
 	 * @param string $lang representing the language (optional)
 	 * @return Html|null
