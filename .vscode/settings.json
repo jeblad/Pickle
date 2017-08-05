@@ -40,5 +40,5 @@
 	},
 
 	// PHP Mess Detector
-	"phpmd.rules": "./phpmd.xml"
+	"phpmd.rules": "phpmd.xml"
 }
