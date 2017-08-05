@@ -36,9 +36,8 @@ trait TNamedStrategies {
 		}
 		if ( array_key_exists( $name, $this->instances ) ) {
 			return $this->instances[$name];
-		} else {
-			return $this->instances['unknown'];
 		}
+		return $this->instances['unknown'];
 	}
 
 }
