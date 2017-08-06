@@ -202,10 +202,29 @@ abstract class ATAPParser {
 	}
 
 	/**
-	 * @see \Pickle\ATAPParser::stats()
+	 * Analyze the TAP-file for specific properties
 	 * @param string $str result to be analyzed
 	 * @return array
 	 */
-	abstract public function stats( $str );
+	public function stats( $str ) {
+		$good = [ 0, 0, 0 ];
+		$bad = [ 0, 0, 0 ];
+
+		$lines = self::extract( $str );
+		foreach ( $lines as $line ) {
+			// start collecting statistics
+			if ( self::isOk( $line ) ) {
+				$good[0]++;
+				self::isSkip( $line ) && $good[1]++;
+				self::isTodo( $line ) && $good[2]++;
+			} elseif ( self::isNotOk( $line ) ) {
+				$bad[0]++;
+				self::isSkip( $line ) && $bad[1]++;
+				self::isTodo( $line ) && $bad[2]++;
+			}
+		}
+
+		return [ $good, $bad ];
+	}
 
 }

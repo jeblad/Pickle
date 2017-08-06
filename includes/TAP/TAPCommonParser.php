@@ -51,32 +51,6 @@ class TAPCommonParser extends ATAPParser {
 	}
 
 	/**
-	 * @see \Pickle\ATAPParser::stats()
-	 * @param string $str result to be analyzed
-	 * @return array
-	 */
-	public function stats( $str ) {
-		$good = [ 0, 0, 0 ];
-		$bad = [ 0, 0, 0 ];
-
-		$lines = parent::extract( $str );
-		foreach ( $lines as $line ) {
-			// start collecting statistics
-			if ( self::isOk( $line ) ) {
-				$good[0]++;
-				self::isSkip( $line ) && $good[1]++;
-				self::isTodo( $line ) && $good[2]++;
-			} elseif ( self::isNotOk( $line ) ) {
-				$bad[0]++;
-				self::isSkip( $line ) && $bad[1]++;
-				self::isTodo( $line ) && $bad[2]++;
-			}
-		}
-
-		return [ $good, $bad ];
-	}
-
-	/**
 	 * @see \Pickle\ATAPParser::checkValid()
 	 * @param string $str result from the evaluation
 	 * @return bool
