@@ -24,6 +24,35 @@ abstract class ATAPParser {
 	}
 
 	/**
+	 * Default clauses to test generated statistics against
+	 * @return array of functions
+	 */
+	protected static function clauses() {
+		$clauses = [];
+
+		$clauses[] = function ( $stats ) {
+			return $stats[1][0] > $stats[1][1] + $stats[1][2] ? 'bad' : null;
+		};
+		$clauses[] = function ( $stats ) {
+			return $stats[1][2] > 0 ? 'todo-bad' : null;
+		};
+		$clauses[] = function ( $stats ) {
+			return $stats[0][2] > 0 ? 'todo-good' : null;
+		};
+		$clauses[] = function ( $stats ) {
+			return $stats[1][1] > 0 ? 'skip-bad' : null;
+		};
+		$clauses[] = function ( $stats ) {
+			return $stats[0][1] > 0 ? 'skip-good' : null;
+		};
+		$clauses[] = function ( $stats ) {
+			return $stats[0][0] > 0 && $stats[0][1] + $stats[0][2] === 0 ? 'good' : null;
+		};
+
+		return $clauses;
+	}
+
+	/**
 	 * Try to get the version of the test result
 	 *
 	 * @param string $str result from the evaluation

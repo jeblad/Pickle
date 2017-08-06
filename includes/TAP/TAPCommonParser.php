@@ -14,34 +14,10 @@ use \Pickle\ATAPParser;
 class TAPCommonParser extends ATAPParser {
 
 	/**
-	 * @var array of functions
-	 */
-	private $clauses = [];
-
-	/**
 	 * @param array $opts structure from extension setup
 	 */
 	public function __construct( array $opts ) {
 		$this->opts = array_merge( [ 'name' => 'tap' ], $opts );
-
-		$this->clauses[] = function ( $stats ) {
-			return $stats[1][0] > $stats[1][1] + $stats[1][2] ? 'bad' : null;
-		};
-		$this->clauses[] = function ( $stats ) {
-			return $stats[1][2] > 0 ? 'todo-bad' : null;
-		};
-		$this->clauses[] = function ( $stats ) {
-			return $stats[0][2] > 0 ? 'todo-good' : null;
-		};
-		$this->clauses[] = function ( $stats ) {
-			return $stats[1][1] > 0 ? 'skip-bad' : null;
-		};
-		$this->clauses[] = function ( $stats ) {
-			return $stats[0][1] > 0 ? 'skip-good' : null;
-		};
-		$this->clauses[] = function ( $stats ) {
-			return $stats[0][0] > 0 && $stats[0][1] + $stats[0][2] === 0 ? 'good' : null;
-		};
 	}
 
 	/**
@@ -63,7 +39,7 @@ class TAPCommonParser extends ATAPParser {
 		}
 
 		// try all clauses
-		foreach ( $this->clauses as $clause ) {
+		foreach ( parent::clauses() as $clause ) {
 			$result = $clause( $stats );
 			if ( $result ) {
 				return $result;
