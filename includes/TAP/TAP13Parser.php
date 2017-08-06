@@ -13,10 +13,34 @@ use \Pickle\ATAPParser;
 class TAP13Parser extends ATAPParser {
 
 	/**
+	 * @var array of functions
+	 */
+	private $clauses = [];
+
+	/**
 	 * @param array $opts structure from extension setup
 	 */
 	public function __construct( array $opts ) {
 		$this->opts = array_merge( [ 'name' => 'tap-13' ], $opts );
+
+		$this->clauses[] = function ( $stats ) {
+			return $stats[1][0] > $stats[1][1] + $stats[1][2] ? 'bad' : null;
+		};
+		$this->clauses[] = function ( $stats ) {
+			return $stats[1][2] > 0 ? 'todo-bad' : null;
+		};
+		$this->clauses[] = function ( $stats ) {
+			return $stats[0][2] > 0 ? 'todo-good' : null;
+		};
+		$this->clauses[] = function ( $stats ) {
+			return $stats[1][1] > 0 ? 'skip-bad' : null;
+		};
+		$this->clauses[] = function ( $stats ) {
+			return $stats[0][1] > 0 ? 'skip-good' : null;
+		};
+		$this->clauses[] = function ( $stats ) {
+			return $stats[0][0] > 0 && $stats[0][1] + $stats[0][2] === 0 ? 'good' : null;
+		};
 	}
 
 	/**
@@ -25,43 +49,25 @@ class TAP13Parser extends ATAPParser {
 	 * @return string
 	 */
 	public function parse( $str ) {
+		// get count and calculate statistics
 		$count = self::getCount( $str );
 		$stats = $this->stats( $str );
 
 		// check if we got everything
-		if ( $count !== false && ( $stats[0][0] + $stats[1][0] !== $count ) ) {
-			// wrong overall count
-			return 'bad';
+		if ( $count !== false ) {
+			// it is not compulsory to include the count in tap-13
+			if ( $stats[0][0] + $stats[1][0] !== $count ) {
+				// wrong overall count
+				return 'bad';
+			}
 		}
 
-		// at least one cleraly bad?
-		if ( $stats[1][0] > $stats[1][1] + $stats[1][2] ) {
-			// some tests marked as bad
-			return 'bad';
-		}
-
-		// any todo?
-		if ( $stats[1][2] > 0 ) {
-			// some tests marked as bad
-			return 'todo-bad';
-		} elseif ( $stats[0][2] > 0 ) {
-			// some tests marked as good
-			return 'todo-good';
-		}
-
-		// any skipped?
-		if ( $stats[1][1] > 0 ) {
-			// some tests marked as bad
-			return 'skip-bad';
-		} elseif ( $stats[0][1] > 0 ) {
-			// some tests marked as good
-			return 'skip-good';
-		}
-
-		// all clearly good?
-		if ( $stats[0][0] > 0 && $stats[0][1] + $stats[0][2] === 0 ) {
-			// some tests marked as good
-			return 'good';
+		// try all clauses
+		foreach ( $this->clauses as $clause ) {
+			$result = $clause( $stats );
+			if ( $result ) {
+				return $result;
+			}
 		}
 
 		// probably a test set without any tests
