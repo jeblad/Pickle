@@ -51,18 +51,6 @@ class TAP13Parser extends ATAPParser {
 	}
 
 	/**
-	 * Extract the interesting lines from a TAP13-report
-	 * @param string $str result to be split and filtered
-	 * @return array of extracted lines
-	*/
-	private static function extract( $str ) {
-		$lines = preg_split( '/[\n\r]/', $str );
-		return array_filter( $lines, function ( $line ) {
-			return !( self::isComment( $line ) || self::isText( $line ) );
-		} );
-	}
-
-	/**
 	 * @see \Pickle\ATAPParser::stats()
 	 * @param string $str result to be analyzed
 	 * @return array
@@ -71,7 +59,7 @@ class TAP13Parser extends ATAPParser {
 		$good = [ 0, 0, 0 ];
 		$bad = [ 0, 0, 0 ];
 
-		$lines = self::extract( $str );
+		$lines = parent::extract( $str );
 		foreach ( $lines as $line ) {
 			// start collecting statistics
 			if ( self::isOk( $line ) ) {
