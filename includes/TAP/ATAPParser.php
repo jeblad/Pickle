@@ -178,7 +178,9 @@ abstract class ATAPParser {
 	 * @param string $str result from the evaluation
 	 * @return bool
 	 */
-	abstract public function checkValid( $str );
+	public function checkValid( $str ) {
+		return false;
+	}
 
 	/**
 	 * Get the parsed form
