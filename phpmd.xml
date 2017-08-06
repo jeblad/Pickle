@@ -22,4 +22,6 @@
 		<!-- this will not work for mw-code -->
 		<exclude name="StaticAccess" />
 	</rule>
+	<rule ref="rulesets/controversial.xml" />
+	<rule ref="rulesets/design.xml" />
 </ruleset>
