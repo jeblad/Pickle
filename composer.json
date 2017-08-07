@@ -48,10 +48,12 @@
 			"php ../../tests/phpunit/phpunit.php --wiki wiki --group Pickle"
 		],
 		"codesize": [
-			"phpmd ./includes/ text codesize"
+			"phpmd ./includes/ text codesize",
+			"phpmd ./tests/ text codesize"
 		],
 		"mess": [
-			"phpmd ./includes/ text phpmd.xml"
+			"phpmd ./includes/ text phpmd.xml",
+			"phpmd ./tests/ text phpmd.xml"
 		],
 		"test": [
 			"parallel-lint . --exclude vendor --exclude node_modules",
