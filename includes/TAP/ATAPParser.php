@@ -183,13 +183,44 @@ abstract class ATAPParser {
 	}
 
 	/**
+	 * Check the overall consistency
+	 *
+	 * @param array $stats extracted from the TAP-file
+	 * @param int $count found markers
+	 * @return bool assumed consistency
+	 */
+	protected function checkConsistency( array $stats, $count ) {
+		return $stats[0][0] + $stats[1][0] === $count;
+	}
+
+	/**
 	 * Get the parsed form
 	 * This isn't really a parser, it just squashes the string into submission.
 	 *
 	 * @param string $str result from the evaluation
 	 * @return string
 	 */
-	abstract public function parse( $str );
+	public function parse( $str ) {
+		// get count and calculate statistics
+		$count = self::getCount( $str );
+		$stats = $this->stats( $str );
+
+		// check if we got everything
+		if ( !$this->checkConsistency( $stats, $count ) ) {
+			return 'bad';
+		}
+
+		// try all clauses
+		foreach ( self::clauses() as $clause ) {
+			$result = $clause( $stats );
+			if ( $result ) {
+				return $result;
+			}
+		}
+
+		// probably a test set without any tests
+		return 'unknown';
+	}
 
 	/**
 	 * Extract the interesting lines from a TAP13-report

@@ -21,33 +21,16 @@ class TAPCommonParser extends ATAPParser {
 	}
 
 	/**
-	 * @see \Pickle\ATAPParser::parse()
-	 * @param string $str result from the evaluation
-	 * @return string
+	 * @see \Pickle\ATAPParser::checkConsistency()
+	 * @param array $stats extracted from the TAP-file
+	 * @param int $count found markers
+	 * @return bool assumed consistency
 	 */
-	public function parse( $str ) {
-		// get count and check if we got everything
-		$count = self::getCount( $str );
+	protected function checkConsistency( array $stats, $count ) {
 		if ( $count === false ) {
-			return 'bad';
+			return false;
 		}
-
-		// calculate statistics and check it
-		$stats = $this->stats( $str );
-		if ( $stats[0][0] + $stats[1][0] !== $count ) {
-			return 'bad';
-		}
-
-		// try all clauses
-		foreach ( parent::clauses() as $clause ) {
-			$result = $clause( $stats );
-			if ( $result ) {
-				return $result;
-			}
-		}
-
-		// probably a test set without any tests
-		return 'unknown';
+		return parent::checkConsistency( $stats, $count );
 	}
 
 	/**
