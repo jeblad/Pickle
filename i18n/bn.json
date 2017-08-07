@@ -6,6 +6,8 @@
 		]
 	},
 	"pickle-desc": "লুয়া মডিউলে মৌলিক পিকল পরীক্ষণ যোগ করে",
+	"pickle-function-text-good": "$1 হল ভালো",
+	"pickle-function-text-unknown": "$1 হল অজানা",
 	"pickle-test-text-good": "ভাল",
 	"pickle-test-text-pending": "অমীমাংসিত",
 	"pickle-test-text-fail": "ব্যর্থ",
