@@ -8,6 +8,10 @@
 		]
 	},
 	"pickle-desc": "Ajoute les tests basiques Pickle aux modules Lua",
+	"pickle-function-text-good": "$1 est bon",
+	"pickle-function-text-missing": "$1 est absent",
+	"pickle-function-text-unknown": "$1 est inconnu",
+	"pickle-function-text-invalid": "$1 est invalide",
 	"pickle-test-text-good": "Bon",
 	"pickle-test-text-pending": "En attente",
 	"pickle-test-text-fail": "Échec",
