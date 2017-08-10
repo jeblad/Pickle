@@ -7,7 +7,7 @@
 		]
 	},
 	"pickle-desc": "添加基本Pickle测试至Lua模块",
-	"pickle-function-text-good": "$1良好",
+	"pickle-function-text-good": "$1已通过",
 	"pickle-function-text-pending": "$1待定",
 	"pickle-function-text-fail": "$1失败",
 	"pickle-function-text-missing": "$1丢失",
