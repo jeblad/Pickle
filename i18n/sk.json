@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Lexected",
-			"Jeblad"
+			"Jeblad",
+			"TomášPolonec"
 		]
 	},
 	"pickle-desc": "Pridá základné testovanie rozšírenia Pickle do modulov jazyka Lua",
+	"pickle-function-text-fail": "$1 zlyhalo",
 	"pickle-test-text-good": "Dobrý",
 	"pickle-test-text-pending": "Čakajúce",
 	"pickle-test-text-fail": "Zlyhávajúci",
