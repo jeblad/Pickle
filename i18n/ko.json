@@ -2,15 +2,23 @@
 	"@metadata": {
 		"authors": [
 			"Ykhwong",
-			"Nemo bis"
+			"Nemo bis",
+			"CYAN"
 		]
 	},
+	"pickle-desc": "기본 피클 테스트를 루아 모듈에 추가합니다",
 	"pickle-test-text-unknown": "알 수 없음",
 	"pickle-test-text-invalid": "유효하지 않음",
-	"pickle-tracking-category-good-desc": "결과는 테스트 평가 후 \"좋음\" 상태로 표시합니다.",
+	"pickle-tracking-category-good": "통과한 테스트가 있는 모듈",
+	"pickle-tracking-category-good-desc": "결과는 테스트 평가 후 \"통과\" 상태로 표시합니다.",
+	"pickle-tracking-category-pending": "대기 중인 테스트가 있는 모듈",
+	"pickle-tracking-category-pending-desc": "결과는 테스트 평가 후 \"대기 중\" 상태로 표시합니다.",
 	"pickle-tracking-category-todo": "테스트가 끝나지 않은 모듈",
+	"pickle-tracking-category-skip": "건너뛴 테스트가 있는 모듈",
+	"pickle-tracking-category-fail": "실패한 테스트가 있는 모듈",
 	"pickle-tracking-category-fail-desc": "결과는 테스트 평가 후 \"실패\" 상태로 표시합니다.",
 	"pickle-tracking-category-missing": "테스트 페이지가 없는 모듈",
+	"pickle-tracking-category-unknown": "알 수 없는 테스트가 있는 모듈",
 	"pickle-tracking-category-unknown-desc": "결과는 테스트 평가 후 \"알 수 없음\" 상태로 표시합니다.",
 	"pickle-track-log-name": "모듈 추적 기록",
 	"pickle-console-title": "테스트 콘솔",
@@ -19,6 +27,8 @@
 	"pickle-console-run": "실행",
 	"pickle-console-clear": "지우기",
 	"pickle-report-skip-no-message": "\"$1\" 메시지 키가 존재하지 않습니다",
+	"pickle-frame-full-header": "# $1",
+	"pickle-frame-vivid-header": "$1",
 	"pickle-frame-no-description": "익명",
 	"pickle-frame-no-tests": "등록된 테스트가 없습니다",
 	"pickle-report-frame-is-todo-keyword": "-",
@@ -39,6 +49,7 @@
 	"pickle-adapt-process-as-type": "요소의 타입 가져오기",
 	"pickle-adapt-process-as-upper": "문자열의 모든 문자를 대문자로 변경",
 	"pickle-adapt-process-as-lower": "문자열의 모든 문자를 소문자로 변경",
+	"pickle-adapt-process-as-upper-first": "문자열에서 첫 번째 문자를 대문자로 변경합니다",
 	"pickle-adapt-process-as-lower-first": "문자열의 첫 문자를 소문자로 변경",
 	"pickle-adapt-process-as-u-upper": "모든 유니코드 문자열을 대문자로 변경",
 	"pickle-adapt-process-as-u-lower": "모든 유니코드 문자열을 소문자로 변경",
