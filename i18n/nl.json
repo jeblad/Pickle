@@ -33,6 +33,7 @@
 	"pickle-console-cleared": "Console geleegd.",
 	"pickle-console-run": "Uitvoeren",
 	"pickle-console-clear": "Leegmaken",
+	"pickle-report-skip-no-message": "De berichtnaam \"$1\" bestaat niet",
 	"pickle-frame-compact-header-all-good": "oke &mdash; $1",
 	"pickle-frame-compact-header-some-failed": "niet oke &mdash; $1",
 	"pickle-frame-full-header": "# $1",
