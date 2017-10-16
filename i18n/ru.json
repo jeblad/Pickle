@@ -10,7 +10,7 @@
 			"DevilishSkull"
 		]
 	},
-	"pickle-test-text-good": "Хорошо",
+	"pickle-test-text-good": "Пройдено",
 	"pickle-test-text-pending": "Ожидание",
 	"pickle-test-text-missing": "Отсутствует",
 	"pickle-test-text-unknown": "Неизвестно",
@@ -27,6 +27,8 @@
 	"pickle-console-run": "Запустить",
 	"pickle-console-clear": "Очистить",
 	"pickle-report-skip-no-message": "Ключ сообщения $1 не существует",
+	"pickle-frame-full-header": "# $1",
+	"pickle-frame-vivid-header": "$1",
 	"pickle-report-frame-is-ok-keyword": "ок",
 	"pickle-report-frame-is-not-ok-keyword": "не в порядке",
 	"pickle-report-adapt-is-ok-keyword": "ок",
