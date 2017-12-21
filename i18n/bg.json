@@ -101,10 +101,10 @@
 	"pickle-adapt-condition-to-be-u-match": "Да бъде съчетано в целта в Уникод",
 	"pickle-adapt-catched-exception": "Хванато изключение",
 	"pickle-adapt-catched-return": "Хванато връщане",
-	"pickle-spies-carp-todo": "Carp е извикан",
-	"pickle-spies-cluck-todo": "Cluck е извикан",
-	"pickle-spies-confess-skip": "Confess е извикан",
-	"pickle-spies-croak-skip": "Croak е извикан",
-	"pickle-spies-confess-exits": "Confess излиза",
-	"pickle-spies-croak-exits": "Croak излиза"
+	"pickle-spies-carp-todo": "Функция „carp“ е извикана",
+	"pickle-spies-cluck-todo": "Функция „cluck“ е извикана",
+	"pickle-spies-confess-skip": "Функция „confess“ е извикана",
+	"pickle-spies-croak-skip": "Функция „croak“ е извикана",
+	"pickle-spies-confess-exits": "Функция „confess“ приключва",
+	"pickle-spies-croak-exits": "Функция „croak“ приключва"
 }
