@@ -49,6 +49,8 @@
 	"pickle-report-skip-no-message": "Ключът „$1“ не съществува",
 	"pickle-frame-compact-header-all-good": "ok – $1",
 	"pickle-frame-compact-header-some-failed": "не е наред – $1",
+	"pickle-frame-full-header": "№ $1",
+	"pickle-frame-vivid-header": "$1",
 	"pickle-frame-no-description": "анонимно",
 	"pickle-frame-no-fixtures": "Не са регистрирани инициализации",
 	"pickle-frame-no-tests": "Не са регистрирани тестове",
