@@ -53,6 +53,7 @@
 	"pickle-frame-full-header": "# $1",
 	"pickle-frame-vivid-header": "$1",
 	"pickle-frame-no-description": "anónimo",
+	"pickle-frame-no-tests": "No se registró ninguna prueba",
 	"pickle-report-frame-is-ok-keyword": "correcto",
 	"pickle-report-frame-is-not-ok-keyword": "no correcto",
 	"pickle-report-frame-is-todo-keyword": "saltar",
