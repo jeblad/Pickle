@@ -1,8 +1,40 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
-	"pickle-test-text-unknown": "Desconhecido"
+	"pickle-desc": "Adiciona aos módulos Lua os testes básicos Pickle",
+	"pickle-function-text-good": "$1 passou",
+	"pickle-function-text-pending": "$1 está pendente",
+	"pickle-function-text-fail": "$1 falhou",
+	"pickle-function-text-missing": "$1 não existe",
+	"pickle-function-text-unknown": "$1 é desconhecido",
+	"pickle-function-text-invalid": "$1 é inválido",
+	"pickle-function-text-todo-good": "$1 passou com pendentes",
+	"pickle-function-text-todo-fail": "$1 falhou com pendentes",
+	"pickle-function-text-skip-good": "$1 passou com saltos",
+	"pickle-function-text-skip-fail": "$1 falhou com saltos",
+	"pickle-test-text-good": "Passado",
+	"pickle-test-text-pending": "Pendente",
+	"pickle-test-text-fail": "Falha",
+	"pickle-test-text-missing": "Não existe",
+	"pickle-test-text-unknown": "Desconhecido",
+	"pickle-test-text-invalid": "Inválido",
+	"pickle-test-text-todo-good": "Passado com pendentes",
+	"pickle-test-text-todo-fail": "Falhado com pendentes",
+	"pickle-test-text-skip-good": "Passado com saltados",
+	"pickle-test-text-skip-fail": "Falhado com saltados",
+	"pickle-tracking-category-good": "Módulos com testes passados",
+	"pickle-tracking-category-good-desc": "O resultado indica um estado \"passado\" após a avaliação dos testes.",
+	"pickle-tracking-category-pending": "Módulos com testes pendentes",
+	"pickle-tracking-category-pending-desc": "O resultado indica um estado \"pendente\" após a avaliação dos testes.",
+	"pickle-tracking-category-todo": "Módulos com testes incompletos",
+	"pickle-tracking-category-todo-desc": "O resultado indica que foram encontrados um ou mais marcadores \"incompleto\" após a avaliação dos testes.",
+	"pickle-tracking-category-skip": "Módulos com testes saltados",
+	"pickle-tracking-category-skip-desc": "O resultado indica que foram encontrados um ou mais marcadores \"saltado\" após a avaliação dos testes.",
+	"pickle-tracking-category-fail": "Módulos com testes falhados",
+	"pickle-tracking-category-fail-desc": "O resultado indica um estado \"falhado\" após a avaliação dos testes.",
+	"pickle-tracking-category-missing": "Módulos sem página de testes"
 }
