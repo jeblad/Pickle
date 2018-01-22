@@ -36,5 +36,13 @@
 	"pickle-tracking-category-skip-desc": "O resultado indica que foram encontrados um ou mais marcadores \"saltado\" após a avaliação dos testes.",
 	"pickle-tracking-category-fail": "Módulos com testes falhados",
 	"pickle-tracking-category-fail-desc": "O resultado indica um estado \"falhado\" após a avaliação dos testes.",
-	"pickle-tracking-category-missing": "Módulos sem página de testes"
+	"pickle-tracking-category-missing": "Módulos sem página de testes",
+	"pickle-tracking-category-missing-desc": "O resultado indica uma página de testes \"em falta\" após a avaliação da invocação.",
+	"pickle-tracking-category-unknown": "Módulos com testes desconhecidos",
+	"pickle-tracking-category-unknown-desc": "O resultado indica um estado \"desconhecido\" após a avaliação dos testes.",
+	"pickle-track-log-name": "Registo da monitorização de módulos",
+	"pickle-track-log-header": "Este registo mostra um resumo dos resultados de modificações dos módulos testados.",
+	"pickle-track-log-entry-good": "{{GENDER:$2|inferiu automaticamente}} que $1 passou todos os testes",
+	"pickle-track-log-entry-todo-good": "{{GENDER:$2|inferiu automaticamente}} que $1 passou com testes incompletos",
+	"pickle-track-log-entry-todo-fail": "{{GENDER:$2|inferiu automaticamente}} que $1 falhou com testes incompletos"
 }
