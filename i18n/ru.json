@@ -7,13 +7,16 @@
 			"Alexey zakharenkov",
 			"Okras",
 			"Jeblad",
-			"DevilishSkull"
+			"DevilishSkull",
+			"Patrick Star"
 		]
 	},
 	"pickle-test-text-good": "Пройдено",
 	"pickle-test-text-pending": "Ожидание",
+	"pickle-test-text-fail": "Провал",
 	"pickle-test-text-missing": "Отсутствует",
 	"pickle-test-text-unknown": "Неизвестно",
+	"pickle-test-text-invalid": "Недопустимый",
 	"pickle-tracking-category-pending": "Модули с ожидающими тестами",
 	"pickle-tracking-category-pending-desc": "Результат указывает на состояние \"ожидания\" после оценки тестов.",
 	"pickle-tracking-category-todo": "Модули с незавершенными тестами",
@@ -29,6 +32,7 @@
 	"pickle-report-skip-no-message": "Ключ сообщения $1 не существует",
 	"pickle-frame-full-header": "# $1",
 	"pickle-frame-vivid-header": "$1",
+	"pickle-frame-no-description": "аноним",
 	"pickle-report-frame-is-ok-keyword": "ок",
 	"pickle-report-frame-is-not-ok-keyword": "не в порядке",
 	"pickle-report-adapt-is-ok-keyword": "ок",
