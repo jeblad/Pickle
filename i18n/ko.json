@@ -7,8 +7,16 @@
 		]
 	},
 	"pickle-desc": "기본 피클 테스트를 루아 모듈에 추가합니다",
+	"pickle-test-text-good": "통과",
+	"pickle-test-text-pending": "보류 중",
+	"pickle-test-text-fail": "실패",
+	"pickle-test-text-missing": "없음",
 	"pickle-test-text-unknown": "알 수 없음",
 	"pickle-test-text-invalid": "유효하지 않음",
+	"pickle-test-text-todo-good": "통과 (일정 있음)",
+	"pickle-test-text-todo-fail": "실패 (일정 있음)",
+	"pickle-test-text-skip-good": "통과 (건너뛴 항목 있음)",
+	"pickle-test-text-skip-fail": "실패 (건너뛴 항목 있음)",
 	"pickle-tracking-category-good": "통과한 테스트가 있는 모듈",
 	"pickle-tracking-category-good-desc": "결과는 테스트 평가 후 \"통과\" 상태로 표시합니다.",
 	"pickle-tracking-category-pending": "대기 중인 테스트가 있는 모듈",
@@ -55,5 +63,7 @@
 	"pickle-adapt-process-as-u-lower": "모든 유니코드 문자열을 소문자로 변경",
 	"pickle-adapt-process-as-number": "문자열을 숫자로 캐스팅",
 	"pickle-adapt-process-as-string": "문자열로 캐스팅",
-	"pickle-adapt-process-as-round": "가장 근접한 정수 찾기"
+	"pickle-adapt-process-as-round": "가장 근접한 정수 찾기",
+	"pickle-adapt-process-as-integer": "정수부 찾기",
+	"pickle-adapt-process-as-fraction": "분수부 찾기"
 }
