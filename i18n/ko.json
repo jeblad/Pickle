@@ -29,6 +29,7 @@
 	"pickle-tracking-category-unknown": "알 수 없는 테스트가 있는 모듈",
 	"pickle-tracking-category-unknown-desc": "결과는 테스트 평가 후 \"알 수 없음\" 상태로 표시합니다.",
 	"pickle-track-log-name": "모듈 추적 기록",
+	"pickle-track-log-header": "이 기록은 테스트된 모듈의 변경사항 결과의 요약을 표시합니다.",
 	"pickle-console-title": "테스트 콘솔",
 	"pickle-console-empty": "이용 가능한 보고서가 없습니다.",
 	"pickle-console-cleared": "콘솔 내용을 지웠습니다.",
@@ -63,7 +64,15 @@
 	"pickle-adapt-process-as-u-lower": "모든 유니코드 문자열을 소문자로 변경",
 	"pickle-adapt-process-as-number": "문자열을 숫자로 캐스팅",
 	"pickle-adapt-process-as-string": "문자열로 캐스팅",
+	"pickle-adapt-process-as-floor": "더 낮은 정수 찾기",
+	"pickle-adapt-process-as-ceil": "더 높은 정수 찾기",
 	"pickle-adapt-process-as-round": "가장 근접한 정수 찾기",
 	"pickle-adapt-process-as-integer": "정수부 찾기",
-	"pickle-adapt-process-as-fraction": "분수부 찾기"
+	"pickle-adapt-process-as-fraction": "분수부 찾기",
+	"pickle-spies-carp-todo": "\"carp\" 함수 호출됨",
+	"pickle-spies-cluck-todo": "\"cluck\" 함수 호출됨",
+	"pickle-spies-confess-skip": "\"confess\" 함수 호출됨",
+	"pickle-spies-croak-skip": "\"croak\" 함수 호출됨",
+	"pickle-spies-confess-exits": "\"confess\" 함수 종료됨",
+	"pickle-spies-croak-exits": "\"croak\" 함수 종료됨"
 }
