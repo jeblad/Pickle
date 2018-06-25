@@ -1,8 +1,48 @@
 {
 	"@metadata": {
 		"authors": [
-			"GR"
+			"GR",
+			"Nikosgranturismogt"
 		]
 	},
-	"pickle-frame-no-description": "ανώνυμος"
+	"pickle-function-text-good": "το $1 πέρασε",
+	"pickle-function-text-pending": "το $1 εκκρεμεί",
+	"pickle-function-text-fail": "το $1 απέτυχε",
+	"pickle-function-text-missing": "το $1 λείπει",
+	"pickle-function-text-unknown": "το $1 είναι άγνωστο",
+	"pickle-function-text-invalid": "το $1 είναι άκυρο",
+	"pickle-function-text-skip-good": "το $1 έχει περάσει με παράβλεψη",
+	"pickle-test-text-good": "Έχει περάσει",
+	"pickle-test-text-pending": "Σε εκκρεμότητα",
+	"pickle-test-text-fail": "Αποτυχία",
+	"pickle-test-text-missing": "Λείπει",
+	"pickle-test-text-unknown": "Άγνωστο",
+	"pickle-test-text-invalid": "Μη έγκυρο",
+	"pickle-test-text-skip-good": "Περάστε με παράβλεψη",
+	"pickle-test-text-skip-fail": "Αποτύχετε με παράβλεψη",
+	"pickle-console-title": "Δοκιμαστική κονσόλα",
+	"pickle-console-empty": "Δεν υπάρχουν διαθέσιμες αναφορές.",
+	"pickle-console-cleared": "Η κονσόλα καθαρίστηκε.",
+	"pickle-console-run": "Εκτέλεση",
+	"pickle-console-clear": "Εκκαθάριση",
+	"pickle-frame-compact-header-all-good": "εντάξει &mdash; $1",
+	"pickle-frame-compact-header-some-failed": "όχι εντάξει &mdash; $1",
+	"pickle-frame-full-header": "# $1",
+	"pickle-frame-vivid-header": "$1",
+	"pickle-frame-no-description": "ανώνυμος",
+	"pickle-adapt-process-first": "Επιλογή πρώτου στοιχείου",
+	"pickle-adapt-process-second": "Επιλογή δεύτερου στοιχείου",
+	"pickle-adapt-process-third": "Επιλογή τρίτου στοιχείου",
+	"pickle-adapt-process-fourth": "Επιλογή τέταρτου στοιχείου",
+	"pickle-adapt-process-fifth": "Επιλογή πέμπτου στοιχείου",
+	"pickle-adapt-process-sixth": "Επιλογή έκτου στοιχείου",
+	"pickle-adapt-process-seventh": "Επιλογή έβδομου στοιχείου",
+	"pickle-adapt-process-eighth": "Επιλογή όγδοου στοιχείου",
+	"pickle-adapt-process-ninth": "Επιλογή ένατου στοιχείου",
+	"pickle-adapt-process-tenth": "Επιλογή δέκατου στοιχείου",
+	"pickle-adapt-process-eleventh": "Επιλογή εντέκατου στοιχείου",
+	"pickle-adapt-process-twelfth": "Επιλογή δωδέκατου στοιχείου",
+	"pickle-adapt-process-as-type": "Λάβετε τον τύπο στοιχείου",
+	"pickle-adapt-catched-exception": "Πιάστηκε εξαίρεση",
+	"pickle-adapt-catched-return": "Πιάστηκε επιστροφή"
 }
