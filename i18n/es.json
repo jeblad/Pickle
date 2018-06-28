@@ -6,13 +6,15 @@
 			"Jeblad",
 			"Josecurioso",
 			"Dgstranz",
-			"Ejegg"
+			"Ejegg",
+			"RisingVoices"
 		]
 	},
 	"pickle-desc": "Proporciona un marco de pruebas Pickle básico para módulos escritos en Lua",
 	"pickle-function-text-pending": "$1 está pendiente",
 	"pickle-function-text-fail": "$1 ha fallado",
 	"pickle-function-text-missing": "$1 falta",
+	"pickle-function-text-invalid": "$1 no es válido",
 	"pickle-test-text-good": "Superada",
 	"pickle-test-text-pending": "Pendiente",
 	"pickle-test-text-fail": "No superada",
