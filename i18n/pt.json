@@ -104,7 +104,7 @@
 	"pickle-adapt-process-as-integer": "Encontrar a parte inteira",
 	"pickle-adapt-process-as-fraction": "Encontrar a parte decimal",
 	"pickle-adapt-condition-to-be-equal": "Será igual ao destino (igualdade)",
-	"pickle-adapt-condition-to-be-boolean-equal": "Será igual ao destino de forma booleana (resulta no mesmo valor booleano)",
+	"pickle-adapt-condition-to-be-boolean-equal": "Será igual ao destino de forma booliana (ao ser avaliado, resulta no mesmo valor booliano)",
 	"pickle-adapt-condition-to-be-strict-equal": "Será igual ao destino de forma estrita (igualdade exata e igualdade de tipo)",
 	"pickle-adapt-condition-to-be-same": "Será o mesmo que o destino (igual após coerção do tipo)",
 	"pickle-adapt-condition-to-be-deep-equal": "Será igual ao destino de forma profunda (explora tabelas)",
