@@ -43,7 +43,7 @@
 	"pickle-tracking-category-unknown": "Módulos con tests descoñecidos",
 	"pickle-tracking-category-unknown-desc": "O resultado indica un estado \"descoñecido\" despois de avaliar os tests.",
 	"pickle-track-log-name": "Rexistro de seguimento de módulo",
-	"pickle-track-log-header": "Este rexistro mostra un resumo de resultados de modificación para os módulos testados.",
+	"pickle-track-log-header": "Este rexistro amosa un resumo de resultados de modificación para os módulos testados.",
 	"pickle-track-log-entry-good": "{{GENDER:$2|infiriu automaticamente}} que $1 pasou tódolos tests",
 	"pickle-track-log-entry-todo-good": "{{GENDER:$2|infiriu automaticamente}} que $1 pasou pero tests incompletos",
 	"pickle-track-log-entry-todo-fail": "{{GENDER:$2|infiriu automaticamente}} que $1 fallou con tests incompletos",
