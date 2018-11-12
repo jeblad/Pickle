@@ -17,8 +17,11 @@
 	"pickle-test-text-missing": "Ontbrekend",
 	"pickle-test-text-unknown": "Onbekend",
 	"pickle-test-text-invalid": "Ongeldig",
+	"pickle-test-text-skip-good": "Geslaagt met overgeslagen",
+	"pickle-test-text-skip-fail": "Mislukt met overgeslagen",
 	"pickle-tracking-category-good": "Modules met geslaagde testen",
 	"pickle-tracking-category-pending": "Modules met testen in behandeling",
+	"pickle-tracking-category-todo": "Modules met incomplete testen",
 	"pickle-tracking-category-skip": "Modules met overgeslagen testen",
 	"pickle-tracking-category-fail": "Modules met mislukte testen",
 	"pickle-tracking-category-missing": "Modules zonder testpagina",
@@ -59,5 +62,9 @@
 	"pickle-adapt-process-ninth": "Kies negende element",
 	"pickle-adapt-process-tenth": "Kies tiende element",
 	"pickle-adapt-process-eleventh": "Kies elfde element",
-	"pickle-adapt-process-twelfth": "Kies twaalfde element"
+	"pickle-adapt-process-twelfth": "Kies twaalfde element",
+	"pickle-spies-carp-todo": "Functie \"carp\" aangeroepen",
+	"pickle-spies-cluck-todo": "Functie \"cluck\" aangeroepen",
+	"pickle-spies-confess-skip": "Functie \"confess\" aangeroepen",
+	"pickle-spies-croak-skip": "Functie \"croak\" aangeroepen"
 }
