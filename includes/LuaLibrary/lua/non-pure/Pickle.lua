@@ -1,4 +1,4 @@
--- accesspoints for the bilerplate
+-- accesspoints for the boilerplate
 local php		-- luacheck: ignore
 local options	-- luacheck: ignore
 
