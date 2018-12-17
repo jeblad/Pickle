@@ -9,9 +9,18 @@
 			"Jeblad",
 			"DevilishSkull",
 			"Patrick Star",
-			"Shaleych"
+			"Shaleych",
+			"Nk88"
 		]
 	},
+	"pickle-function-text-good": "$1 прошло",
+	"pickle-function-text-pending": "$1 в ожидании",
+	"pickle-function-text-fail": "$1 не удалось",
+	"pickle-function-text-missing": "$1 отсутствует",
+	"pickle-function-text-unknown": "$1 неизвестен",
+	"pickle-function-text-invalid": "$1 недействителен",
+	"pickle-function-text-skip-good": "$1 прошло с пропуском",
+	"pickle-function-text-skip-fail": "$1 не удалось пропустить",
 	"pickle-test-text-good": "Пройдено",
 	"pickle-test-text-pending": "Ожидание",
 	"pickle-test-text-fail": "Провал",
@@ -25,6 +34,7 @@
 	"pickle-tracking-category-fail": "Модули с не прошедшими тестами",
 	"pickle-tracking-category-missing": "Модули без тестовой страницы",
 	"pickle-tracking-category-unknown": "Модули с неизвестными тестами",
+	"pickle-track-log-name": "\nЖурнал отслеживания модуля",
 	"pickle-console-title": "Тестовая консоль",
 	"pickle-console-empty": "Нет отчетов",
 	"pickle-console-cleared": "Консоль очищена",
