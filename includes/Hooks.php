@@ -207,7 +207,7 @@ class Hooks {
 
 		// figure out what kind of page this is
 		$args = self::checkPageType( $title );
-		if ( $args === null ) {
+		if ( $args === null || !array_key_exists( 'status-current', $args )) {
 			return true;
 		}
 
