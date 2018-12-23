@@ -138,11 +138,11 @@
 			"picklelib/extractor/JsonExtractorStrategy"
 		],
 		"NeglectSubpages": [
-			"doc",
-			"conf",
-			"data",
-			"i18n",
-			"l10n"
+			"/^(?:.*?\\.)?doc$/",
+			"/^(?:.*?\\.)?conf$/",
+			"/^(?:.*?\\.)?data$/",
+			"/^(?:.*?\\.)?i18n$/",
+			"/^(?:.*?\\.)?l10n$/"
 		],
 		"Indicator": [
 			{
