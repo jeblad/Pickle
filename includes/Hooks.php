@@ -207,13 +207,13 @@ class Hooks {
 
 		// figure out what kind of page this is
 		$args = self::checkPageType( $title );
-		if ( $args === null || !array_key_exists( 'status-current', $args )) {
+		if ( $args === null ) {
 			return true;
 		}
 
 		// log our decision about what kind of page this is
 		LoggerFactory::getInstance( 'Pickle' )->debug( 'Current status: {text}', [
-			'text' => $args[ 'status-current' ],
+			'text' => array_key_exists( 'status-current', $args ) ? $args[ 'status-current' ] : 'no current status',
 			'title' => $title->getFullText(),
 			'method' => __METHOD__
 		] );
