@@ -297,6 +297,7 @@ class Hooks {
 							$args = [];
 							$args[ 'page-type' ] = 'normal';
 
+							// @todo fix comment, outcome is not what comment says
 							// if invocation is disabled, then the state will be set to "exists" or "missing"
 							if ( ! $baseInvokeStrategy->getInvoke( $baseTitle )->isDisabled() ) {
 								$args[ 'status-current' ] =
@@ -312,6 +313,7 @@ class Hooks {
 			}
 		}
 
+		// @todo check if $invokeStrategy is disabled
 		$statusStrategy = self::getFinalStrategy( $invokeStrategy, $title );
 		return $title->getPrefixedText();
 	}
