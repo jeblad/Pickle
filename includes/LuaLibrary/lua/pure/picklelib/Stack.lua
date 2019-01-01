@@ -104,7 +104,7 @@ end
 
 --- Get the indexed entry
 -- Accessing this will not change stored values.
--- @param n entry number, egative numbers count backwards
+-- @param n entry number, negative numbers count backwards
 -- @return stored value
 function Stack:get( n )
 	assert( n ~= 0 )
