@@ -370,9 +370,6 @@
 		],
 		"ScribuntoExternalLibraryPaths": [
 			"Pickle\\Hooks::onRegisterScribuntoExternalLibraryPaths"
-		],
-		"UnitTestsList": [
-			"Pickle\\Hooks::onUnitTestsList"
 		]
 	},
 	"MessagesDirs": {

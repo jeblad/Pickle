@@ -337,13 +337,6 @@ class Hooks {
 	}
 
 	/**
-	 * @param string[] &$files to be tested
-	 */
-	public static function onUnitTestsList( array &$files ) {
-		$files[] = __DIR__ . '/../tests/phpunit/';
-	}
-
-	/**
 	 * External Lua library paths for Scribunto
 	 *
 	 * @param any $engine to be used for the call
