@@ -78,7 +78,6 @@ end
 -- @param string alternate free form
 -- @return Report
 function Spy:todo( key, str )
-
 	return self:report():setTodo( str or mw.message.new( key ):plain() )
 end
 
@@ -87,7 +86,6 @@ end
 -- @param string alternate free form
 -- @return Report
 function Spy:skip( key, str )
-
 	return self:report():setSkip( str or mw.message.new( key ):plain() )
 end
 
