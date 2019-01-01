@@ -9,66 +9,61 @@ local testframework = require 'Module:TestFramework'
 local Spy = require 'picklelib/engine/Spy'
 assert( Spy )
 
-local function testTracebackFirst( pattern, ... )
-	local first,_ = Spy:traceback( ... )
-	return string.match( first, pattern )
-end
-
-local function testTracebackRest( pattern, idx, ... )
-	local _,rest = Spy:traceback( ... )
-	return string.match( rest[ idx ], pattern )
+local function testTraceback( pattern, idx, ... )
+	local line = Spy:traceback( ... ):report():getLine( idx )
+	return string.match( unpack( line ), pattern )
 end
 
 -- @todo lots of failing stuff here
 local tests = {
 	{
-		name = 'tracebacFirstk()',
-		func = testTracebackFirst,
-		args = { "([%a%s]*)" },
+		name = 'tracebackFirst()',
+		func = testTraceback,
+		args = { "([%a%s]*)", 1 },
 		expect = { 'stack traceback' }
 	},
 	{
 		name = 'tracebacFirstk()',
-		func = testTracebackFirst,
-		args = { "([%a%s]*)", 'foo bar baz' },
+		func = testTraceback,
+		args = { "([%a%s]*)", 1, 'foo bar baz' },
 		expect = { 'foo bar baz' }
 	},
 	{
 		name = 'tracebackRest()',
-		func = testTracebackRest,
-		args = { "/(%a+).lua.*'(.-)'", 1 },
+		func = testTraceback,
+		args = { "/(%a+).lua.*'(.-)'", 2 },
 		expect = { 'Spy', 'traceback' }
 	},
 	{
 		name = 'tracebackRest()',
-		func = testTracebackRest,
-		args = { "([%a%s]*)", 1, 'foo bar baz' },
+		func = testTraceback,
+		args = { "([%a%s]*)", 2, 'foo bar baz' },
 		expect = { 'stack traceback' }
 	},
 	{
 		name = 'tracebackRest()',
-		func = testTracebackRest,
-		args = { "/(%a+).lua.*'(.-)'", 2, 'foo bar baz' },
+		func = testTraceback,
+		args = { "/(%a+).lua.*'(.-)'", 3, 'foo bar baz' },
 		expect = { 'Spy', 'traceback' }
 	},
 	{
 		name = 'tracebackRest()',
-		func = testTracebackRest,
-		args = { "function[^%a]+Module[^%a]+(%a+)", 3, 'foo bar baz' },
+		func = testTraceback,
+		args = { "function[^%a]+Module[^%a]+(%a+)", 3, 'foo bar baz', 2 },
 		expect = { 'SpyTest' }
 	},
 	{
 		name = 'tracebackRest()',
-		func = testTracebackRest,
-		args = { "([%a%s]*)", 1, 'foo bar baz', 2 },
+		func = testTraceback,
+		args = { "([%a%s]*)", 2, 'foo bar baz', 2 },
 		expect = { 'stack traceback' }
 	},
 	{
 		name = 'tracebackRest()',
-		func = testTracebackRest,
-		args = { "function[^%a]+Module[^%a]+(%a+)", 2, 'foo bar baz', 2 },
+		func = testTraceback,
+		args = { "function[^%a]+Module[^%a]+(%a+)", 3, 'foo bar baz', 2 },
 		expect = { 'SpyTest' }
 	},
 }
 
---return testframework.getTestProvider( tests )
+return testframework.getTestProvider( tests )
