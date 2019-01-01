@@ -61,6 +61,10 @@ local function testDrop2( ... )
 	return makeStack( ... ):drop(2):export()
 end
 
+local function testGet( idx, ... )
+	return makeStack( ... ):get( idx ) -- :export()
+end
+
 local function testExport( ... )
 	local test = makeStack( ... )
 	return { test:export() }, test:top()
@@ -254,6 +258,36 @@ local tests = {
 		func = testDrop2,
 		args = { 'a', 'b', 'c' },
 		expect = { 'a' }
+	},
+	{
+		name = 'stack.get (nil value)',
+		func = testGet,
+		args = { 1, nil },
+		expect = { nil }
+	},
+	{
+		name = 'stack.get (single value)',
+		func = testGet,
+		args = { 1, 'a' },
+		expect = { 'a' }
+	},
+	{
+		name = 'stack.get (single value)',
+		func = testGet,
+		args = { -1, 'a' },
+		expect = { 'a' }
+	},
+	{
+		name = 'stack.get (multiple value)',
+		func = testGet,
+		args = { 2, 'a', 'b', 'c' },
+		expect = { 'b' }
+	},
+	{
+		name = 'stack.get (multiple value)',
+		func = testGet,
+		args = { -2, 'a', 'b', 'c' },
+		expect = { 'b' }
 	},
 	{
 		name = 'stack.export (nil value)',

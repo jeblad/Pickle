@@ -102,6 +102,20 @@ function Stack:drop( n )
 	return self
 end
 
+--- Get the indexed entry
+-- Accessing this will not change stored values.
+-- @param n entry number, egative numbers count backwards
+-- @return stored value
+function Stack:get( n )
+	assert( n ~= 0 )
+	if n < 0 then
+		-- n is negative, and add 1 to hit the end point
+		return self._stack[#self._stack + n + 1]
+	end
+	-- note n is positive
+	return self._stack[n]
+end
+
 --- Export a list of all the contents
 -- @return list of values
 function Stack:export()
