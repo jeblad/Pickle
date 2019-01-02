@@ -38,6 +38,10 @@ local function testAddLine( ... )
 	return test:lines():export()
 end
 
+local function testGetLine( idx, ... )
+	return makeTest( ... ):getLine( idx )
+end
+
 local tests = {
 	{
 		name = name .. ' exists',
@@ -106,6 +110,24 @@ local tests = {
 		func = testAddLine,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' } }
+	},
+	{
+		name = name .. '.getLine (nil value)',
+		func = testGetLine,
+		args = { 1, nil, 0 },
+		expect = { }
+	},
+	{
+		name = name .. '.getLine (single value)',
+		func = testGetLine,
+		args = { 1, 'a' },
+		expect = { 'a' }
+	},
+	{
+		name = name .. '.getLine (multiple value)',
+		func = testGetLine,
+		args = { 2, 'a', 'b', 'c' },
+		expect = { 'b' }
 	},
 }
 

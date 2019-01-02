@@ -70,6 +70,14 @@ function AdaptReport:addLine( ... )
 	return self
 end
 
+--- Get a line
+-- Note that all parts will be returned wrapped up in a table.
+-- @param idx line number
+-- @return table containing list of parts
+function AdaptReport:getLine( idx )
+	return self:lines():get( idx )
+end
+
 --- Realize the data by applying a render
 -- @param Renders to use while realizing the reports
 -- @param string holding the language code
