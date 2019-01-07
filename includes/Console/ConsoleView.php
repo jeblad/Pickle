@@ -47,7 +47,7 @@ class ConsoleView {
 	 *
 	 * @param \EditPage &$editor the edit page access
 	 * @param \OutputPage $output the output page
-	 * @return bool outcome of the call
+	 * @return OOUI built interface
 	 */
 	public static function build( \EditPage &$editor, \OutputPage $output ) {
 		// get the title of current page
@@ -55,13 +55,13 @@ class ConsoleView {
 
 		// If there is no title or content model is wrong, then bail out
 		if ( $title === null || $title->getContentModel() !== CONTENT_MODEL_SCRIBUNTO ) {
-			return true;
+			return '';
 		}
 
 		// get the question to be used for querrying the console
 		$question = self::getQuestion( $title );
 		if ( $question === null ) {
-			return true;
+			return '';
 		}
 
 		// wrap it up for use in the browser
@@ -73,17 +73,47 @@ class ConsoleView {
 		);
 
 		// and the stuff to actually do it all
+		$output->enableOOUI();
 		$output->addModules( 'ext.pickle.console' );
 
-		// add container for form
-		$editor->editFormTextAfterTools .=
-			'<div id="mw-pickle-console"></div>';
+		$ui = new \OOUI\FieldsetLayout( [
+			'id' => 'mw-pickle-console-fieldset',
+			'label' => wfMessage( 'pickle-console-title' )->escaped(),
+			'items' => [
+				new \OOUI\FieldLayout(
+					new \OOUI\Widget( [
+						'id' => 'mw-pickle-console-output',
+						'classes' => 'mw-pickle-console-output'
+					 ] )
+				),
+				new \OOUI\FieldLayout(
+					new \OOUI\Widget( [
+						'content' => [
+							new \OOUI\HorizontalLayout( [
+								'items' => [
+									new \OOUI\ButtonWidget( [
+										'label' => wfMessage( 'pickle-console-run' )->escaped(),
+										'flags' => ['progressive', 'primary']
+									] ),
+									new \OOUI\ButtonWidget( [
+										'label' => wfMessage( 'pickle-console-clear' )->escaped(),
+										'flags' => []
+									] )
+								]
+							] )
+						]
+					] )
+				)
+			]
+		] );
 
-		return true;
+		// add container for form
+		//$editor->editFormTextAfterTools .=
+		return	$ui;
 	}
 
 	/**
-	 * Add a view for test console
+	 * Add a view for test console in edit mode
 	 *
 	 * @param \EditPage $editor the edit page access
 	 * @param OutputPage $output where to put the additional stuff
@@ -97,20 +127,28 @@ class ConsoleView {
 		&$tabIndex
 	) {
 		if ( $editor->getTitle()->hasContentModel( CONTENT_MODEL_SCRIBUNTO ) ) {
-			$output = \RequestContext::getMain()->getOutput();
-			return self::build( $editor, $output );
+			$editor->editFormTextAfterTools .=
+				'<div id="mw-pickle-console" class="mw-pickle-console-edit">'
+					. self::build( $editor, $output )->toString()
+					. '</div>';
 		}
 		return true;
 	}
 
 	/**
-	 * Add a view for test console
+	 * Add a view for test console in view mode
 	 *
 	 * @param \EditPage $editor the edit page access
 	 * @param \OutputPage $output the output page
 	 * @return bool outcome of the call
 	 */
 	public static function onShowReadOnlyFormInitial( \EditPage $editor, \OutputPage $output ) {
-		return self::build( $editor, $output );
+		if ( $editor->getTitle()->hasContentModel( CONTENT_MODEL_SCRIBUNTO ) ) {
+			$editor->editFormTextAfterContent .=
+				'<div id="mw-pickle-console" class="mw-pickle-console-view">'
+					. self::build( $editor, $output )->toString()
+					. '</div>';
+		}
+		return true;
 	}
 }

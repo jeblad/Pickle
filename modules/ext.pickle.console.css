@@ -1,21 +1,33 @@
-.mw-pickle-console-output div {
+#mw-pickle-console {
+	border: 1px solid #2a4b8d;
+}
+
+.mw-pickle-console-view {
+	margin-top: 2em;
+}
+
+#mw-pickle-console-fieldset {
+	margin: 1em;
+}
+
+#mw-pickle-console-output div {
 	border-radius: 0.3em;
 	margin-bottom: 0.8em;
 	padding: 0.4em 0.8em;
 	white-space: pre-line;
 }
 
-.mw-pickle-console-output .mw-pickle-console-neutral {
+#mw-pickle-console-output .mw-pickle-console-neutral {
 	background-color: #f0f0f0;
 	border: 1px solid #c0c0c0;
 }
 
-.mw-pickle-console-output .mw-pickle-console-bad {
+#mw-pickle-console-output .mw-pickle-console-bad {
 	background-color: #fff0f0;
 	border: 1px solid #ffc0c0;
 }
 
-.mw-pickle-console-output .mw-pickle-console-good {
+#mw-pickle-console-output .mw-pickle-console-good {
 	background-color: #f0fff0;
 	border: 1px solid #c0ffc0;
 }

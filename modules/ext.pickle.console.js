@@ -145,72 +145,18 @@ $( function () {
 	/**
 	 * Test console
 	 */
-	function initEditPage() {
-		var $wpTextbox1,
-			$debugConsole,
-			$console = $( '#mw-pickle-console' );
-		if ( !$console.length ) {
-			// There is no console in the DOM; on read-only (protected) pages,
-			// we need to add it here, because the hook does not insert
-			// it server-side.
-			$wpTextbox1 = $( '#wpTextbox1' );
-			if ( !$wpTextbox1.length || !$wpTextbox1.prop( 'readonly' ) ) {
-				return;
-			}
-
-			$console = $( '<div>' ).attr( { id: 'mw-pickle-console' } );
-
-			// This can in some cases insert the test console before the debug
-			// console, that is we have a race condition.
-			$debugConsole = $( '#mw-scribunto-console' );
-			if ( $debugConsole.length ) {
-				$debugConsole.after( $console );
-			} else {
-				$wpTextbox1.after( $console );
-			}
-		}
-
-		$( '<fieldset>' )
-			.attr( 'class', 'mw-pickle-console-fieldset' )
-			.append(
-				$( '<legend>' ).text( mw.msg( 'pickle-console-title' ) ) )
-			.append(
-				$( '<div id="mw-pickle-console-output">' )
-					.addClass( 'mw-pickle-console-output' )
-					.append(
-						$( '<div>' )
-							.addClass( 'mw-pickle-console-neutral' )
-							.addClass( 'mw-pickle-console-transient' )
-							.text( mw.msg( 'pickle-console-empty' ) )
-				) )
-			.append(
-				$( '<div>' )
-					.append(
-						$( '<input>' )
-							.attr( {
-								type: 'button',
-								value: mw.msg( 'pickle-console-run' )
-							} )
-							.bind( 'click', onRunClick )
-					)
-					.append(
-						$( '<input>' )
-							.attr( {
-								type: 'button',
-								value: mw.msg( 'pickle-console-clear' )
-							} )
-							.bind( 'click', onClearClick )
-					) )
-			.wrap( '<form>' )
-			.appendTo( $console );
-
-		$output = $( '#mw-pickle-console-output' );
+	function initTestConsole() {
+		$( '<div>' )
+			.addClass( 'mw-pickle-console-neutral' )
+			.addClass( 'mw-pickle-console-transient' )
+			.text( mw.msg( 'pickle-console-empty' ) )
+			.appendTo( $( '#mw-pickle-console-output' ) );
 	}
 
 	$( function () {
 		var action = mw.config.get( 'wgAction' );
 		if ( action === 'edit' || action === 'submit' || action === 'editredlink' ) {
-			initEditPage();
+			initTestConsole();
 		}
 	} );
 
