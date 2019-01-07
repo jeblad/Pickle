@@ -154,7 +154,7 @@ abstract class Indicator {
 
 		if ( $elem !== null ) {
 			$parserOutput->setIndicator( $this->getClassKey(), $elem );
-			$parserOutput->addModuleStyles( [ 'ext.pickle.default', 'ext.pickle.indicator.icon' ] );
+			$parserOutput->addModuleStyles( [ 'ext.pickle.indicator.icon' ] );
 		}
 
 		return $elem;

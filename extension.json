@@ -359,6 +359,9 @@
 		"OutputPageParserOutput": [
 			"Pickle\\SubLinksView::onOutputPageParserOutput"
 		],
+		"BeforePageDisplay": [
+			"Pickle\\Hooks::onBeforePageDisplay"
+		],
 		"EditPage::showStandardInputs:options": [
 			"Pickle\\ConsoleView::onShowStandardInputsOptions"
 		],

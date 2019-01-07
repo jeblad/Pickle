@@ -376,4 +376,20 @@ class Hooks {
 
 		return true;
 	}
+
+	/**
+	 * @TODO: This does unnecessary double work, find a better solution.
+	 */
+	public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {
+		// Try to bail out early
+		$title = $out->getTitle();
+		if ( !self::isScribunto( $title ) || self::isNeglected( $title ) ) {
+			return true;
+		}
+
+		// include the default style early
+		$out->addModuleStyles( [ 'ext.pickle.default' ] );
+
+		return true;
+	}
 }
