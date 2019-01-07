@@ -7,3 +7,9 @@
 	line-height: 24px;
 	padding-left: 28px;
 }
+
+.client-nojs .mw-pickle-console-edit,
+.client-nojs .mw-pickle-console-view
+{
+	display: none;
+}
