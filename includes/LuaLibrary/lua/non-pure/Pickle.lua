@@ -143,7 +143,7 @@ local function registerTranslators( subpage )
 	-- require libs
 	local translators = require( 'picklelib/translator/TranslatorStrategies' ).create()
 
-	-- register extractor types
+	-- register translation data
 	local translationData = {}
 	local prefixedText = mw.getCurrentFrame():getTitle()
 	if prefixedText then
