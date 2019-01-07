@@ -97,7 +97,6 @@ class ConsoleView {
 		&$tabIndex
 	) {
 		if ( $editor->getTitle()->hasContentModel( CONTENT_MODEL_SCRIBUNTO ) ) {
-			$output = \RequestContext::getMain()->getOutput();
 			return self::build( $editor, $output );
 		}
 		return true;
