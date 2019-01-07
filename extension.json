@@ -432,6 +432,7 @@
 				"ext.pickle.console.js"
 			],
 			"dependencies": [
+				"oojs-ui-core",
 				"jquery.spinner"
 			],
 			"messages": [

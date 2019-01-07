@@ -146,6 +146,13 @@ $( function () {
 	 * Test console
 	 */
 	function initTestConsole() {
+
+		OO.ui.infuse( $( '#pickle-console-button-run' ) )
+			.on( 'click', onRunClick );
+
+		OO.ui.ButtonWidget.static.infuse( $( '#pickle-console-button-clear' ) )
+			.on( 'click', onClearClick );
+
 		$( '<div>' )
 			.addClass( 'mw-pickle-console-neutral' )
 			.addClass( 'mw-pickle-console-transient' )

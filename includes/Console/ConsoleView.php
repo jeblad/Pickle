@@ -92,10 +92,14 @@ class ConsoleView {
 							new \OOUI\HorizontalLayout( [
 								'items' => [
 									new \OOUI\ButtonWidget( [
+										'infusable' => true,
+										'id' => 'pickle-console-button-run',
 										'label' => wfMessage( 'pickle-console-run' )->escaped(),
-										'flags' => ['progressive', 'primary']
+										'flags' => ['primary']
 									] ),
 									new \OOUI\ButtonWidget( [
+										'infusable' => true,
+										'id' => 'pickle-console-button-clear',
 										'label' => wfMessage( 'pickle-console-clear' )->escaped(),
 										'flags' => []
 									] )
