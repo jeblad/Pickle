@@ -3,7 +3,8 @@
 		"authors": [
 			"محمد أحمد عبد الفتاح",
 			"Helmoony",
-			"ديفيد"
+			"ديفيد",
+			"Meno25"
 		]
 	},
 	"pickle-desc": "ويضيف اختبار Pickle الأساسي لوحدات لوا",
@@ -65,6 +66,10 @@
 	"pickle-frame-no-description": "مجهول",
 	"pickle-frame-no-fixtures": "لم يتم تسجيل تجهيزات",
 	"pickle-frame-no-tests": "لم يتم تسجيل اختبارات",
+	"pickle-report-frame-is-skip-keyword": "تجاوز",
+	"pickle-report-frame-is-todo-keyword": "بحاجة للعمل",
+	"pickle-report-adapt-is-skip-keyword": "تجاوز",
+	"pickle-report-adapt-is-todo-keyword": "بحاجة للعمل",
 	"pickle-adapt-process-first": "اختر العنصر الأول",
 	"pickle-adapt-process-second": "اختر العنصر الثاني",
 	"pickle-adapt-process-third": "اختر العنصر الثالث",
