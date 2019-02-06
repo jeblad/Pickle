@@ -62,7 +62,9 @@ class Hooks {
 	 * @param \Title|null $title header information
 	 * @return bool
 	 */
-	 protected static function isScribunto( \Title $title = null ) {
+	 protected static function isScribunto(
+		\Title $title = null
+	) {
 		return ( $title !== null
 			&& $title->getArticleID() !== 0
 			&& $title->getContentModel() === CONTENT_MODEL_SCRIBUNTO );
@@ -75,7 +77,9 @@ class Hooks {
 	 * @param \Title $title header information
 	 * @return bool
 	 */
-	 protected static function isNeglected( \Title $title = null ) {
+	 protected static function isNeglected(
+		\Title $title = null
+	) {
 		global $wgPickleNeglectSubpages;
 
 		// just to handle null without croaking
@@ -151,7 +155,9 @@ class Hooks {
 	 * @param \Title $title header information
 	 * @return table containing the arguments
 	 */
-	public static function checkPageType( \Title $title ) {
+	public static function checkPageType(
+		\Title $title
+	) {
 		// subpages need special handling
 		if ( $title->isSubpage() ) {
 			// check if this page is a valid subpage itself
@@ -254,7 +260,10 @@ class Hooks {
 	 * @param string $text for page name
 	 * @return string
 	 */
-	public static function renderPickle( $parser, $text ) {
+	public static function renderPickle(
+		$parser,
+		$text
+	) {
 		global $wgPickleDefaultNamespace;
 
 		// Get the assumed title object
@@ -322,7 +331,9 @@ class Hooks {
 	 * Setup for the parser
 	 * @param any &$parser the place to inject the new function
 	 */
-	public static function onParserSetup( &$parser ) {
+	public static function onParserSetup(
+		&$parser
+	) {
 		$parser->setFunctionHook( 'pickle', [ __CLASS__, 'Pickle\\Hooks::renderPickle' ] );
 	}
 
@@ -364,7 +375,10 @@ class Hooks {
 	 * @param array &$extraLibraries additional libs
 	 * @return bool
 	 */
-	public static function onRegisterScribuntoLibraries( $engine, array &$extraLibraries ) {
+	public static function onRegisterScribuntoLibraries(
+		$engine,
+		array &$extraLibraries
+	) {
 		if ( $engine !== 'lua' ) {
 			return true;
 		}
@@ -373,22 +387,6 @@ class Hooks {
 			'class' => '\Pickle\LuaLibPickle',
 			'deferLoad' => false
 		];
-
-		return true;
-	}
-
-	/**
-	 * @TODO: This does unnecessary double work, find a better solution.
-	 */
-	public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {
-		// Try to bail out early
-		$title = $out->getTitle();
-		if ( !self::isScribunto( $title ) || self::isNeglected( $title ) ) {
-			return true;
-		}
-
-		// include the default style early
-		$out->addModuleStyles( [ 'ext.pickle.default' ] );
 
 		return true;
 	}

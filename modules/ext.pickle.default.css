@@ -8,8 +8,30 @@
 	padding-left: 28px;
 }
 
-.client-nojs .mw-pickle-console-edit,
-.client-nojs .mw-pickle-console-view
-{
+.client-nojs .mw-pickle-console {
 	display: none;
+}
+
+.mw-pickle-console .oo-ui-fieldLayout-field {
+	width: 100%
+}
+
+.mw-pickle-console {
+	background-color: #eaecf0;
+	border: 1px solid #c8ccd1;
+	padding: 1em 1em 1em 1em;
+	margin-bottom: 2em;
+}
+
+.mw-pickle-console-view {
+	margin-top: 2em;
+}
+
+.mw-pickle-console-fieldset {
+	margin-top: 0;
+}
+.mw-pickle-console-output > div {
+	border-radius: 0.3em;
+	padding: 0.4em 0.8em;
+	white-space: pre-line;
 }

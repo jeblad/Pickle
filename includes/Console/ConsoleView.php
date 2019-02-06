@@ -53,11 +53,6 @@ class ConsoleView {
 		// get the title of current page
 		$title = $editor->getTitle();
 
-		// If there is no title or content model is wrong, then bail out
-		if ( $title === null || $title->getContentModel() !== CONTENT_MODEL_SCRIBUNTO ) {
-			return '';
-		}
-
 		// get the question to be used for querrying the console
 		$question = self::getQuestion( $title );
 		if ( $question === null ) {
@@ -76,16 +71,20 @@ class ConsoleView {
 		$output->enableOOUI();
 		$output->addModules( 'ext.pickle.console' );
 
+		// additional bare bone user interface
 		$ui = new \OOUI\FieldsetLayout( [
 			'id' => 'mw-pickle-console-fieldset',
+			'classes' => [ 'mw-pickle-console-fieldset' ],
 			'label' => wfMessage( 'pickle-console-title' )->escaped(),
 			'items' => [
+				// output area
 				new \OOUI\FieldLayout(
 					new \OOUI\Widget( [
 						'id' => 'mw-pickle-console-output',
-						'classes' => 'mw-pickle-console-output'
+						'classes' => [ 'mw-pickle-console-output' ],
 					 ] )
 				),
+				// button area
 				new \OOUI\FieldLayout(
 					new \OOUI\Widget( [
 						'content' => [
@@ -111,8 +110,6 @@ class ConsoleView {
 			]
 		] );
 
-		// add container for form
-		//$editor->editFormTextAfterTools .=
 		return	$ui;
 	}
 
@@ -130,12 +127,23 @@ class ConsoleView {
 		\OutputPage $output,
 		&$tabIndex
 	) {
-		if ( $editor->getTitle()->hasContentModel( CONTENT_MODEL_SCRIBUNTO ) ) {
-			$editor->editFormTextAfterTools .=
-				'<div id="mw-pickle-console" class="mw-pickle-console-edit">'
-					. self::build( $editor, $output )->toString()
-					. '</div>';
+		// get the title of current page
+		$title = $editor->getTitle();
+
+		// If there is no title or content model is wrong, then bail out
+		if ( $title === null || !$title->hasContentModel( CONTENT_MODEL_SCRIBUNTO ) ) {
+			return true;
 		}
+
+		// include the default style early
+		$output->addModuleStyles( 'ext.pickle.default' );
+
+		// edit allowed, insert after tools
+		$editor->editFormTextAfterTools .=
+			'<div id="mw-pickle-console" class="mw-pickle-console mw-pickle-console-edit">'
+				. self::build( $editor, $output )->toString()
+				. '</div>';
+
 		return true;
 	}
 
@@ -147,12 +155,22 @@ class ConsoleView {
 	 * @return bool outcome of the call
 	 */
 	public static function onShowReadOnlyFormInitial( \EditPage $editor, \OutputPage $output ) {
-		if ( $editor->getTitle()->hasContentModel( CONTENT_MODEL_SCRIBUNTO ) ) {
-			$editor->editFormTextAfterContent .=
-				'<div id="mw-pickle-console" class="mw-pickle-console-view">'
-					. self::build( $editor, $output )->toString()
-					. '</div>';
+		// get the title of current page
+		$title = $editor->getTitle();
+
+		// If there is no title or content model is wrong, then bail out
+		if ( $title === null || !$title->hasContentModel( CONTENT_MODEL_SCRIBUNTO ) ) {
+			return true;
 		}
+
+		// include the default style early
+		$output->addModuleStyles( 'ext.pickle.default' );
+		// edit disallowed, insert after content
+		$editor->editFormTextAfterContent .=
+			'<div id="mw-pickle-console" class="mw-pickle-console mw-pickle-console-view">'
+				. self::build( $editor, $output )->toString()
+				. '</div>';
+
 		return true;
 	}
 }

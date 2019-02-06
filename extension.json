@@ -359,9 +359,6 @@
 		"OutputPageParserOutput": [
 			"Pickle\\SubLinksView::onOutputPageParserOutput"
 		],
-		"BeforePageDisplay": [
-			"Pickle\\Hooks::onBeforePageDisplay"
-		],
 		"EditPage::showStandardInputs:options": [
 			"Pickle\\ConsoleView::onShowStandardInputsOptions"
 		],
@@ -423,9 +420,9 @@
 			}
 		},
 		"ext.pickle.default": {
-			"styles": {
-				"0": "ext.pickle.default.css"
-			}
+			"styles": [
+				"ext.pickle.default.css"
+			]
 		},
 		"ext.pickle.console": {
 			"styles": [
