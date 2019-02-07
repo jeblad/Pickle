@@ -41,6 +41,9 @@
 		"fix": [
 			"phpcbf"
 		],
+		"ldoc": [
+			"ldoc includes/LuaLibrary/lua -c ./config.ld -d docs -o mw.pickle"
+		],
 		"minify": [
 			"find modules/images -type d -path minified -prune -o -type d -execdir svgo --pretty --indent=2 -i . -o ./minified \\;"
 		],
