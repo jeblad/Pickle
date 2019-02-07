@@ -1,4 +1,4 @@
---- Tests for the counter module
+--- Tests for the counter module.
 -- This is a preliminary solution
 -- @license GNU GPL v2+
 -- @author John Erling Blad < jeblad@gmail.com >
