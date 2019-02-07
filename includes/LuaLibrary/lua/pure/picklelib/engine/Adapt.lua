@@ -1,4 +1,5 @@
---- Baseclass for Expect and Subject
+--- Baseclass for Expect and Subject.
+-- @classmod Adapt
 
 -- pure libs
 local Stack = require 'picklelib/Stack'
@@ -8,7 +9,7 @@ local AdaptReport = require 'picklelib/report/AdaptReport' -- @todo might be ski
 -- @var class var for lib
 local Adapt = {}
 
---- Lookup of missing class members
+--- Lookup of missing class members.
 -- @param string used for lookup of member
 -- @return any
 function Adapt:__index( key ) -- luacheck: no self
@@ -18,9 +19,9 @@ end
 -- @var metatable for the class
 local mt = {}
 
---- Get a clone or create a new instance
--- @param vararg conditionally passed to create
--- @return self
+--- Get a clone or create a new instance.
+-- @tparam vararg ... conditionally passed to create
+-- @treturn self
 function mt:__call( ... ) -- luacheck: ignore
 	self:adaptations():push( select( '#', ... ) == 0 and self:adaptations():top() or Adapt.create( ... ) )
 	return self:adaptations():top()
@@ -28,19 +29,19 @@ end
 
 setmetatable( Adapt, mt )
 
---- Create a new instance
--- @param vararg set to temporal
--- @return self
+--- Create a new instance.
+-- @tparam vararg ... set to temporal
+-- @treturn self
 function Adapt.create( ... )
 	local self = setmetatable( {}, Adapt )
 	self:_init( ... )
 	return self
 end
 
---- Initialize a new instance
--- @private
--- @param vararg set to temporal
--- @return self
+--- Initialize a new instance.
+-- @local
+-- @tparam vararg ... set to temporal
+-- @treturn self
 function Adapt:_init( ... )
 	local t = { ... }
 	self._processes = Stack.create()
@@ -57,7 +58,7 @@ function Adapt:addProcess( func )
 	return self
 end
 
---- Set the reference to the adaptations collection
+--- Set the reference to the adaptations collection.
 -- This keeps a reference, the object is not cloned.
 -- @param table that somehow maintain a collection
 function Adapt:setAdaptations( obj )
@@ -66,7 +67,7 @@ function Adapt:setAdaptations( obj )
 	return self
 end
 
---- Expose reference to adaptations
+--- Expose reference to adaptations.
 -- If no report is set, then a new one is created.
 -- @return list of adaptations
 function Adapt:adaptations()
@@ -76,7 +77,7 @@ function Adapt:adaptations()
 	return self._adaptations
 end
 
---- Set the reference to the reports collection
+--- Set the reference to the reports collection.
 -- This keeps a reference, the object is not cloned.
 -- @param table that somehow maintain a collection
 function Adapt:setReports( obj )
@@ -85,7 +86,7 @@ function Adapt:setReports( obj )
 	return self
 end
 
---- Expose reference to reports
+--- Expose reference to reports.
 -- If no report is set, then a new one is created.
 -- @return list of reports
 function Adapt:reports()
@@ -95,9 +96,9 @@ function Adapt:reports()
 	return self._reports
 end
 
---- Get the temporal
+--- Get the temporal.
 -- Will not return a table unless it is packed in a table itself.
--- @return {list|any}
+-- @return list|any
 function Adapt:temporal()
 	if type( self._temporal ) == 'table' then
 		return unpack( self._temporal )
@@ -105,7 +106,7 @@ function Adapt:temporal()
 	return self._temporal
 end
 
---- Get the report
+--- Get the report.
 -- If no report is set, then a new one is created.
 -- @return AdaptReport
 function Adapt:report()
@@ -115,7 +116,7 @@ function Adapt:report()
 	return self._report
 end
 
---- Evaluate the registered processes with temporal as arguments
+--- Evaluate the registered processes with temporal as arguments.
 -- @return list of any
 function Adapt:eval()
 	-- local tmp = self._subject or subjects:top()
@@ -126,10 +127,10 @@ function Adapt:eval()
 	return unpack( tmp )
 end
 
---- Make a delayed process for the pick functions
+--- Make a delayed process for the pick functions.
 -- This is a private function that will create a function with a closure.
 -- It will create an additional delayed function for the provided definition.
--- @private
+-- @local
 -- @param string name of the constructed created method
 -- @param number index of the extracted item
 -- @return function
@@ -149,40 +150,52 @@ end
 -- @var table of definitions for the pick functions
 -- Format is ''name'' = ''index''
 local picks = {
-	--- Make a pick process for first item
+	--- Make a pick for first item.
+	-- @function Adapt:first
 	first = 1,
 
-	--- Make a pick process for second item
+	--- Make a pick for second item.
+	-- @function Adapt:second
 	second = 2,
 
-	--- Make a pick process for third item
+	--- Make a pick for third item.
+	-- @function Adapt:third
 	third = 3,
 
-	--- Make a pick process for fourth item
+	--- Make a pick for fourth item.
+	-- @function Adapt:fourth
 	fourth = 4,
 
-	--- Make a pick process for fifth item
+	--- Make a pick for fifth item.
+	-- @function Adapt:fifth
 	fifth = 5,
 
-	--- Make a pick process for sixth item
+	--- Make a pick for sixth item.
+	-- @function Adapt:sixth
 	sixth = 6,
 
-	--- Make a pick process for seventh item
+	--- Make a pick for seventh item.
+	-- @function Adapt:seventh
 	seventh = 7,
 
-	--- Make a pick process for eight item
+	--- Make a pick for eight item.
+	-- @function Adapt:eight
 	eight = 8,
 
-	--- Make a pick process for ninth item
+	--- Make a pick for ninth item.
+	-- @function Adapt:ninth
 	ninth = 9,
 
-	--- Make a pick process for tenth item
+	--- Make a pick for tenth item.
+	-- @function Adapt:tenth
 	tenth = 10,
 
-	--- Make a pick process for eleventh item
+	--- Make a pick for eleventh item.
+	-- @function Adapt:eleventh
 	eleventh = 11,
 
-	--- Make a pick process for twelfth item
+	--- Make a pick for twelfth item.
+	-- @function Adapt:twelfth
 	twelfth = 12
 }
 
@@ -192,10 +205,10 @@ for name,val in pairs( picks ) do
 	Adapt[name] = _makePickProcess( name, val )
 end
 
---- Make a delayed process for the general functions
+--- Make a delayed process for the general functions.
 -- This is a private function that will create a function with a closure.
 -- The delayed function comes from the provided definition.
--- @private
+-- @local
 -- @param string name of the constructed created method
 -- @param function to adjust the process
 -- @return function
@@ -211,133 +224,153 @@ end
 -- @var table of definitions for the transform functions
 -- Format is ''name'' = { ''function'', { ''aliases, ... }
 local general = {
-	--- Make a transform process to get the argument type
+	--- Make a transform to get the argument type.
+	-- @function Adapt:asType
+	-- @alias Adapt:type
 	asType = {
 		function( val )
 			return type( val )
 		end,
 		{ 'type' } },
 
-	--- Make a transform process to get the string as upper case
+	--- Make a transform to get the string as upper case.
+	-- @function Adapt:asUpper
 	asUpper = {
 		function( str )
 			return string.upper( str )
 		end,
 		{ 'upper', 'asUC', 'uc' } },
 
-	--- Make a transform process to get the string as lower case
+	--- Make a transform to get the string as lower case.
+	-- @function Adapt:asLower
 	asLower = {
 		function( str )
 			return string.lower( str )
 		end,
 		{ 'lower', 'asLC', 'lc' } },
 
-	--- Make a transform process to get the string with first char as upper case
+	--- Make a transform to get the string with first char as upper case.
+	-- @function Adapt:asUpperFirst
 	asUpperFirst = {
 		function( str )
 			return string.upper( string.sub( str, 1, 1 ) )..string.sub( str, 2 )
 		end,
 		{ 'upperfirst', 'asUCFirst', 'asUCfirst', 'ucfirst' } },
 
-	--- Make a transform process to get the string with first char as lower case
+	--- Make a transform to get the string with first char as lower case.
+	-- @function Adapt:asLowerFirst
 	asLowerFirst = {
 		function( str )
 			return string.lower( string.sub( str, 1, 1 ) )..string.sub( str, 2 )
 		end,
 		{ 'lowerfirst', 'asLCFirst', 'asLCfirst', 'lcfirst' } },
 
-	--- Make a transform process to get the string reversed
+	--- Make a transform to get the string reversed.
+	-- @function Adapt:asReverse
 	asReverse = {
 		function( str )
 			return string.reverse( str )
 		end,
 		{ 'reverse' } },
 
-	--- Make a transform process to get the Unicode string as upper case
+	--- Make a transform to get the ustring as upper case.
+	-- @function Adapt:asUUpper
 	asUUpper = {
 		function( str )
 			return mw.ustring.upper( str )
 		end,
 		{ 'uupper', 'asUUC', 'uuc' } },
 
-	--- Make a transform process to get the Unicode string as lower case
+	--- Make a transform to get the ustring as lower case.
+	-- @function Adapt:asULower
 	asULower = {
 		function( str )
 			return mw.ustring.lower( str )
 		end,
 		{ 'ulower', 'asULC', 'ulc' } },
 
-	--- Make a transform process to get the Unicode string with first code point as upper case
+	--- Make a transform to get the ustring with first code point as upper case.
+	-- @function Adapt:asUUpperFirst
 	asUUpperFirst = {
 		function( str )
 			return mw.ustring.upper( mw.ustring.sub( str, 1, 1 ) )..mw.ustring.sub( str, 2 )
 		end,
 		{ 'uupperfirst', 'asUUCFirst', 'asUUCfirst', 'uucfirst' } },
 
-	--- Make a transform process to get the Unicode string with first code point as lower case
+	--- Make a transform to get the ustring with first code point as lower case.
+	-- @function Adapt:asULowerFirst
 	asULowerFirst = {
 		function( str )
 			return mw.ustring.lower( mw.ustring.sub( str, 1, 1 ) )..mw.ustring.sub( str, 2 )
 		end,
 		{ 'ulowerfirst', 'asULCFirst', 'asULCfirst', 'ulcfirst' } },
 
-	--- Make a transform process to get the Unicode string as Normalized Form "C"
+	--- Make a transform to get the ustring as Normalized Form "C".
+	-- @function Adapt:asUNFC
 	asUNFC = {
 		function( str )
 			return mw.ustring.toNFC( str )
 		end,
 		{ 'unfc', 'uNFC', 'nfc' } },
 
-	--- Make a transform process to get the Unicode string as Normalized Form "D"
+	--- Make a transform to get the ustring as Normalized Form "D".
+	-- @function Adapt:asUNFD
 	asUNFD = {
 		function( str )
 			return mw.ustring.toNFD( str )
 		end,
 		{ 'unfd', 'uNFD', 'nfd' } },
 
-	--- Make a transform process to get the string as number
+	--- Make a transform to get the string as number.
+	-- @function Adapt:asNumber
 	asNumber = {
 		function( str )
 			return tonumber( str )
 		end,
 		{ 'number', 'asNum', 'num' } },
 
-	--- Make a transform process to get the number as string
+	--- Make a transform to get the number as string.
+	-- @function Adapt:asString
 	asString = {
 		function( num )
 			return tostring( num )
 		end,
 		{ 'string', 'asStr', 'str' } },
 
-	--- Make a transform process to get the next lower number
+	--- Make a transform to get the next lower number.
+	-- @function Adapt:asFloor
 	asFloor = {
 		function( num )
 			return math.floor( num )
 		end,
 		{ 'floor' } },
 
-	--- Make a transform process to get the next higher number
+	--- Make a transform to get the next higher number.
+	-- @function Adapt:asCeil
 	asCeil = {
 		function( num )
 			return math.ceil( num )
 		end,
 		{ 'ceil' } },
 
-	--- Make a transform process to get the rounded number
+	--- Make a transform to get the rounded number.
+	-- @function Adapt:asRound
 	asRound = {
 		function( num )
 			return num % 1 >= 0.5 and math.ceil( num ) or math.floor( num )
 		end,
 		{ 'round' } },
 
-	--- Make a transform process to get the integer part of the number
+	--- Make a transform to get the integer part of the number.
+	-- @function Adapt:asInteger
 	asInteger = {
 		function( num )
 			return num < 0 and math.ceil( num ) or math.floor( num )
 		end,
 		{ 'integer', 'asInt', 'int' } },
 
-	--- Make a transform process to get the fraction part of the number
+	--- Make a transform to get the fraction part of the number.
+	-- @function Adapt:asFraction
 	asFraction = {
 		function( num )
 			return num - ( num < 0 and math.ceil( num ) or math.floor( num ) )
@@ -355,7 +388,7 @@ for name,lst in pairs( general ) do
 	end
 end
 
---- Set the accessor for the other party
+--- Set the accessor for the other party.
 -- For a subject the other part will be the expect, and for expect it will
 -- be the subject.
 -- @param function that points to the other party in a comparation
@@ -364,7 +397,7 @@ function Adapt:setOther( func )
 	self._other = func
 end
 
---- Get the other part
+--- Get the other part.
 -- Note that this is the real other part, and not a previously set accessor.
 function Adapt:other()
 	if self._other then
@@ -373,19 +406,19 @@ function Adapt:other()
 	return nil
 end
 
---- Reorder the pair of parties involved in the condition
+--- Reorder the pair of parties involved in the condition.
 -- This can be overridden in subclasses.
 -- Standard version which does an identity operation, that is it does not reorder arguments.
--- @param vararg
+-- @tparam vararg ...
 -- @return list
 function Adapt:reorder( ... ) -- luacheck: no self
 	return ...
 end
 
---- Make a delayed process for the condition functions
+--- Make a delayed process for the condition functions.
 -- This is a private function that will create a function with a closure.
 -- The delayed function comes from the provided definition.
--- @private
+-- @local
 -- @param string name of the constructed created method
 -- @param function to adjust the process
 -- @param boolean to swap the comparation
@@ -409,28 +442,32 @@ end
 -- @var table of definitions for the comparator functions
 -- Format is ''name'' = { ''function'', { ''aliases, ... }
 local conditions = {
-	--- Make a comparison process to check equality
+	--- Make a comparison to check equality.
+	-- @function toBeEqual
 	toBeEqual = {
 		function ( a, b )
 			return a == b
 		end,
 		{ 'equal', 'isEqual', 'ifEqual' } },
 
-	--- Make a comparison process to check boolean equality
+	--- Make a comparison to check boolean equality.
+	-- @function toBeBooleanEqual
 	toBeBooleanEqual = {
 		function ( a, b )
 			return ( not not a ) == ( not not b )
 		end,
 		{ 'booleanequal', 'isBooleanEqual', 'ifBooleanEqual' } },
 
-	--- Make a comparison process to check strict equality
+	--- Make a comparison to check strict equality.
+	-- @function toBeStrictEqual
 	toBeStrictEqual = {
 		function ( a, b )
 			return a == b and type( a ) == type( b )
 		end,
 		{ 'strictequal', 'isStrictEqual', 'ifStrictEqual' } },
 
-	--- Make a comparison process to check similarity
+	--- Make a comparison to check similarity.
+	-- @function toBeSame
 	toBeSame = {
 		function ( a, b )
 			if ( type( a ) == type( b ) ) then
@@ -445,21 +482,24 @@ local conditions = {
 		end,
 		{ 'same', 'isSame', 'ifSame' } },
 
-	--- Make a comparison process to check deep equality
+	--- Make a comparison to check deep equality.
+	-- @function toBeDeepEqual
 	toBeDeepEqual = {
 		function ( a, b )
 			return util.deepEqual( b, a )
 		end,
 		{ 'deepequal', 'isDeepEqual', 'ifDeepEqual' } },
 
-	--- Make a comparison process to check if first is contained in second
+	--- Make a comparison to check if first is contained in second.
+	-- @function toBeContained
 	toBeContained = {
 		function ( a, b )
 			return util.contains( b, a )
 		end,
 		{ 'contained', 'isContained', 'ifContained' } },
 
-	--- Make a comparison process to check if first is strict lesser than second
+	--- Make a comparison to check if first is strict lesser than second.
+	-- @function toBeLesserThan
 	toBeLesserThan = {
 		function ( a, b )
 			return a < b
@@ -471,7 +511,8 @@ local conditions = {
 			'ifLesser', 'ifLT' }
 		},
 
-	--- Make a comparison process to check if first is strict greater than second
+	--- Make a comparison to check if first is strict greater than second.
+	-- @function toBeGreaterThan
 	toBeGreaterThan = {
 		function ( a, b )
 			return a > b
@@ -483,7 +524,8 @@ local conditions = {
 			'ifGreater', 'ifGT' }
 		},
 
-	--- Make a comparison process to check if first is lesser or equal than second
+	--- Make a comparison to check if first is lesser or equal than second.
+	-- @function toBeLesserOrEqual
 	toBeLesserOrEqual = {
 		function ( a, b )
 			return a <= b
@@ -495,7 +537,8 @@ local conditions = {
 			'ifLesserOrEqual', 'ifLE' }
 		},
 
-	--- Make a comparison process to check if first is strict greater or equal than second
+	--- Make a comparison to check if first is strict greater or equal than second.
+	-- @function toBeGreaterOrEqual
 	toBeGreaterOrEqual = {
 		function ( a, b )
 			return a >= b
@@ -507,14 +550,16 @@ local conditions = {
 			'ifGreaterOrEqual', 'ifGE' }
 		},
 
-	--- Make a comparison process to check if first is a match in second
+	--- Make a comparison to check if first is a match in second.
+	-- @function toBeMatch
 	toBeMatch = {
 		function ( a, b )
 			return string.match( b, a ) or false
 		end,
 		{ 'match', 'isMatch', 'ifMatch' } },
 
-	--- Make a comparison process to check if first is an Unicode match in second
+	--- Make a comparison to check if first is an Unicode match in second.
+	-- @function toBeUMatch
 	toBeUMatch = {
 		function ( a, b )
 			return mw.ustring.match( b, a ) or false
@@ -532,5 +577,5 @@ for name,lst in pairs( conditions ) do
 	end
 end
 
--- Return the final class
+-- Return the final class.
 return Adapt
