@@ -1,29 +1,31 @@
---- BaseClass for an translator strategy
--- This should be a strategy pattern
+--- BaseClass for an translator strategy.
+-- This should be a strategy pattern.
+-- @classmod TranslatorStrategyBase
+-- @alias Translator
 
 -- @var class var for lib
 local Translator = {}
 
---- Lookup of missing class members
--- @param string used for lookup of member
+--- Lookup of missing class members.
+-- @tparam string key lookup of member
 -- @return any
 function Translator:__index( key ) -- luacheck: no self
 	return Translator[key]
 end
 
---- Create a new instance
--- @param vararg list of patterns
--- @return self
+--- Create a new instance.
+-- @tparam vararg ... list of patterns
+-- @treturn self
 function Translator.create( ... )
 	local self = setmetatable( {}, Translator )
 	self:_init( ... )
 	return self
 end
 
---- Initialize a new instance
--- @private
--- @param vararg list of patterns
--- @return self
+--- Initialize a new instance.
+-- @local
+-- @tparam vararg ... list of patterns
+-- @treturn self
 function Translator:_init( ... )
 	--self._patterns = Stack.create()
 	for _,v in ipairs( { ... } ) do
@@ -33,20 +35,20 @@ function Translator:_init( ... )
 	return self
 end
 
---- Get the type of the strategy
+--- Get the type of the strategy.
 -- All translator strategies have an explicit type name.
--- @return string
+-- @treturn string
 function Translator:type()
 	return self._type
 end
 
---- Try to find the string for this strategy
+--- Try to find the string for this strategy.
 -- The goodness of the match is given by the returned position.
 -- If found it should return a position and the found string.
 -- @todo Should have another name to avoid confusion
--- @param string used as the extraction source
--- @param number for an inclusive index where extraction starts
--- @return {nil|number, number}
+-- @tparam string str the extraction source
+-- @tparam number pos of the inclusive index where extraction starts
+-- @treturn nil|number,number
 function Translator:find( str, pos )
 	assert( str, 'Failed to provide a string' )
 	assert( pos, 'Failed to provide a position' )
@@ -59,23 +61,23 @@ function Translator:find( str, pos )
 	return nil
 end
 
---- Cast the string into the correct type for this strategy
--- @exception Unconditional unless overridden
--- @param string used as the extraction source
--- @param number for an inclusive index where extraction starts
--- @param number for an inclusive index where extraction finishes
--- @return nil
+--- Cast the string into the correct type for this strategy.
+-- @raise Unconditional unless overridden
+-- @tparam string str the extraction source
+-- @tparam number start of the inclusive index where extraction starts
+-- @tparam number finish of the inclusive index where extraction finishes
+-- @treturn nil
 function Translator:cast( str, start, finish ) -- luacheck: ignore
 	error('Method should be overridden')
 	return nil
 end
 
---- Get the placeholder for this strategy
--- @exception Unconditional unless overridden
--- @return string
+--- Get the placeholder for this strategy.
+-- @raise Unconditional unless overridden
+-- @treturn string
 function Translator:placeholder() -- luacheck: ignore
 	return nil
 end
 
--- Return the final class
+-- Return the final class.
 return Translator
