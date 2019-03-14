@@ -1,5 +1,7 @@
---- Baseclass for extractor strategies
+--- Baseclass for extractor strategies.
 -- This should be a strategy pattern
+-- @classmod ExtractorStrategies
+-- @alias Extractors
 
 -- pure libs
 local Stack = require 'picklelib/Stack'
@@ -7,8 +9,8 @@ local Stack = require 'picklelib/Stack'
 -- @var class var for lib
 local Extractors = {}
 
---- Lookup of missing class members
--- @param string used for lookup of member
+--- Lookup of missing class members.
+-- @tparam string key used for lookup of member
 -- @return any
 function Extractors:__index( key ) -- luacheck: no self
 	return Extractors[key]
@@ -17,19 +19,19 @@ end
 -- @var class var for strategies, holding reference to defined extractor strategies
 Extractors.strategies = Stack.create()
 
---- Create a new instance
--- @param vararg list of strategies
--- @return self
+--- Create a new instance.
+-- @tparam vararg ... list of strategies
+-- @treturn self
 function Extractors.create( ... )
 	local self = setmetatable( {}, Extractors )
 	self:_init( ... )
 	return self
 end
 
---- Initialize a new instance
--- @private
--- @param vararg list of strategies
--- @return self
+--- Initialize a new instance.
+-- @local
+-- @tparam vararg ... list of strategies
+-- @treturn self
 function Extractors:_init( ... )
 	self._strategies = Stack.create()
 	for _,v in ipairs( { ... } ) do
@@ -38,33 +40,33 @@ function Extractors:_init( ... )
 	return self
 end
 
---- Register a new strategy
+--- Register a new strategy.
 -- @param strategy to be registered
--- @return self
+-- @treturn self
 function Extractors:register( strategy )
 	self._strategies:push( strategy )
 	return self
 end
 
---- Removes all registered extractors
--- @return self
+--- Removes all registered extractors.
+-- @treturn self
 function Extractors:flush()
 	self._strategies:flush()
 	return self
 end
 
---- The number of registered extractors
--- @return number
+--- The number of registered extractors.
+-- @treturn number
 function Extractors:num()
 	return self._strategies:depth()
 end
 
---- Find a matching extractor
--- @exception On missing source
--- @param string used as the extraction source
--- @param number for an inclusive index where extraction starts
--- @param number for an inclusive index where extraction finishes
--- @return strategy, first, last
+--- Find a matching extractor.
+-- @todo fix pos
+-- @raise On missing source
+-- @tparam string str used as the extraction source
+-- @tparam number pos for an inclusive index where extraction starts
+-- @treturn strategy,first,last
 function Extractors:find( str, pos )
 	-- @todo figure out if it should be valid to not provide a string
 	assert( str, 'Failed to provide a string' )
@@ -86,5 +88,5 @@ function Extractors:find( str, pos )
 	return nil
 end
 
--- Return the final class
+-- Return the final class.
 return Extractors
