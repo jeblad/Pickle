@@ -10,7 +10,7 @@ local AdaptReport = require 'picklelib/report/AdaptReport' -- @todo might be ski
 local Adapt = {}
 
 --- Lookup of missing class members.
--- @param string used for lookup of member
+-- @tparam string key used for lookup of member
 -- @return any
 function Adapt:__index( key ) -- luacheck: no self
 	return Adapt[key]
@@ -60,7 +60,8 @@ end
 
 --- Set the reference to the adaptations collection.
 -- This keeps a reference, the object is not cloned.
--- @param table that somehow maintain a collection
+-- @tparam table obj that somehow maintain a collection
+-- @treturn self
 function Adapt:setAdaptations( obj )
 	assert( type( obj ) == 'table' )
 	self._adaptations = obj
@@ -79,7 +80,8 @@ end
 
 --- Set the reference to the reports collection.
 -- This keeps a reference, the object is not cloned.
--- @param table that somehow maintain a collection
+-- @tparam table obj that somehow maintain a collection
+-- @treturn self
 function Adapt:setReports( obj )
 	assert( type( obj ) == 'table' )
 	self._reports = obj
@@ -131,9 +133,9 @@ end
 -- This is a private function that will create a function with a closure.
 -- It will create an additional delayed function for the provided definition.
 -- @local
--- @param string name of the constructed created method
--- @param number index of the extracted item
--- @return function
+-- @tparam string name of the constructed created method
+-- @tparam number idx of the extracted item
+-- @treturn function
 local function _makePickProcess( name, idx )
 	local g = function( ... )
 		local t = { ... }
@@ -209,9 +211,9 @@ end
 -- This is a private function that will create a function with a closure.
 -- The delayed function comes from the provided definition.
 -- @local
--- @param string name of the constructed created method
--- @param function to adjust the process
--- @return function
+-- @tparam string name of the constructed created method
+-- @tparam function func to adjust the process
+-- @treturn function
 local function _makeGeneralProcess( name, func )
 	local f = function( self )
 		self:report():addLine( 'pickle-adapt-process-'..util.buildName( name ) )
@@ -391,7 +393,7 @@ end
 --- Set the accessor for the other party.
 -- For a subject the other part will be the expect, and for expect it will
 -- be the subject.
--- @param function that points to the other party in a comparation
+-- @tparam function func that points to the other party in a comparation
 function Adapt:setOther( func )
 	assert( type( func ) == 'function' )
 	self._other = func
@@ -399,6 +401,7 @@ end
 
 --- Get the other part.
 -- Note that this is the real other part, and not a previously set accessor.
+-- @treturn nil,Adapt
 function Adapt:other()
 	if self._other then
 		return self._other()
@@ -419,10 +422,10 @@ end
 -- This is a private function that will create a function with a closure.
 -- The delayed function comes from the provided definition.
 -- @local
--- @param string name of the constructed created method
--- @param function to adjust the process
--- @param boolean to swap the comparation
--- @return function
+-- @tparam string name of the constructed created method
+-- @tparam function func to adjust the process
+-- @tparam boolean other to swap the comparation
+-- @treturn function
 local function _makeConditionProcess( name, func, other )
 	local f = function( self )
 		local report = self:report()

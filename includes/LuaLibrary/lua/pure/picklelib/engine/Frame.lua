@@ -1,4 +1,5 @@
--- Baseclass for Describe, Context, and It
+--- Baseclass for Describe, Context, and It
+-- @classmod Frame
 
 -- pure libs
 local Stack = require 'picklelib/Stack'
@@ -8,8 +9,8 @@ local FrameReport = require 'picklelib/report/FrameReport' -- luacheck: ignore
 -- @var class var for lib
 local Frame = {}
 
---- Lookup of missing class members
--- @param string used for lookup of member
+--- Lookup of missing class members.
+-- @tparam string key lookup of member
 -- @return any
 function Frame:__index( key ) -- luacheck: no self
 	return Frame[key]
@@ -18,10 +19,11 @@ end
 -- @var metatable for the class
 local mt = { types = {} }
 
---- Get arguments for a class call
+--- Get arguments for a class call.
 -- @todo Verify if this ever get called
--- @param vararg pass on to dispatch
--- @return self -ish
+-- @local
+-- @tparam vararg ... pass on to dispatch
+-- @treturn self -ish
 function mt:__call( ... ) -- luacheck: no self
 	local obj = Frame.create()
 	obj:dispatch( ... )
@@ -32,9 +34,9 @@ function mt:__call( ... ) -- luacheck: no self
 	return obj
 end
 
---- Get arguments for a instance call
--- @param vararg pass on to dispatch
--- @return self
+--- Get arguments for a instance call.
+-- @tparam vararg ... pass on to dispatch
+-- @treturn self
 function Frame:__call( ... )
 	self:dispatch( ... )
 	assert( not self:isDone(),
@@ -47,8 +49,8 @@ end
 
 setmetatable( Frame, mt )
 
---- Create a new instance
--- @param vararg list to be dispatched
+--- Create a new instance.
+-- @tparam vararg ... list to be dispatched
 -- @return Frame
 function Frame.create( ... )
 	local self = setmetatable( {}, Frame )
@@ -56,9 +58,9 @@ function Frame.create( ... )
 	return self
 end
 
---- Initialize a new instance
--- @private
--- @param vararg list to be dispatched
+--- Initialize a new instance.
+-- @local
+-- @tparam vararg ... list to be dispatched
 -- @return Frame
 function Frame:_init( ... ) -- luacheck: ignore
 	self._descriptions = Stack.create()
@@ -67,9 +69,9 @@ function Frame:_init( ... ) -- luacheck: ignore
 	return self
 end
 
---- Dispach on type
--- @param vararg list to dispatch
--- @return self
+--- Dispach on type.
+-- @tparam vararg ... list to dispatch
+-- @treturn self
 function Frame:dispatch( ... )
 	for _,v in ipairs( { ... } ) do
 		local tname = type( v )
@@ -79,125 +81,135 @@ function Frame:dispatch( ... )
 	return self
 end
 
---- Push a string
--- @param this place to store value
--- @param string value that should be stored
-mt.types[ 'string' ] = function( this, val )
-	this._descriptions:push( val )
+--- Push a string.
+-- @local
+-- @function Frame.types:string
+-- @tparam table self place to store value
+-- @tparam string val that should be stored
+mt.types.string = function( self, val )
+	self._descriptions:push( val )
 end
 
---- Push a function
--- @param this place to store value
--- @param function value that should be stored
-mt.types[ 'function' ] = function( this, val )
-	this._fixtures:push( val )
+--- Push a function.
+-- @local
+-- @function Frame.types:function
+-- @tparam table self place to store value
+-- @tparam function func that should be stored
+mt.types.function = function( self, func )
+	self._fixtures:push( func )
 end
 
---- Push a table
--- @param this place to store value
--- @param table value that should be stored
-mt.types[ 'table' ] = function( this, val )
-	this._subjects:push( val )
+--- Push a table.
+-- @local
+-- @function Frame.types:table
+-- @tparam table self place to store value
+-- @tparam table tbl that should be stored
+mt.types.table = function( self, tbl )
+	self._subjects:push( tbl )
 end
 
---- Check if the frame has descriptions
--- @return boolean
+--- Check if the frame has descriptions.
+-- @treturn boolean
 function Frame:hasDescriptions()
 	return not self._descriptions:isEmpty()
 end
 
---- Check number of descriptions
--- @return number
+--- Check number of descriptions.
+-- @treturn number
 function Frame:numDescriptions()
 	return self._descriptions:depth()
 end
 
---- Check if the frame has fixtures
--- @return boolean
+--- Check if the frame has fixtures.
+-- @treturn boolean
 function Frame:hasFixtures()
 	return not self._fixtures:isEmpty()
 end
 
---- Check number of fixtures
--- @return number
+--- Check number of fixtures.
+-- @treturn number
 function Frame:numFixtures()
 	return self._fixtures:depth()
 end
 
---- Check if the instance is evaluated
--- @return boolean
+--- Check if the instance is evaluated.
+-- @treturn boolean
 function Frame:isDone()
 	return self._done
 end
 
---- Get descriptions
+--- Get descriptions.
 -- @return list of descriptions
 function Frame:descriptions()
 	return self._descriptions:export()
 end
 
---- Set the reference to the subjects collection
+--- Set the reference to the subjects collection.
 -- This keeps a reference, the object is not cloned.
--- @param table that somehow maintain a collection
+-- @tparam table obj somehow maintain a collection
+-- @treturn self
 function Frame:setSubjects( obj )
 	assert( type( obj ) == 'table' )
 	self._subjects = obj
 	return self
 end
 
---- Expose reference to subjects
+--- Expose reference to subjects.
 -- @return list of subjects
 function Frame:subjects()
 	return self._subjects
 end
 
---- Set the reference to the reports collection
+--- Set the reference to the reports collection.
 -- This keeps a reference, the object is not cloned.
--- @param table that somehow maintain a collection
+-- @tparam table obj somehow maintain a collection
+-- @treturn self
 function Frame:setReports( obj )
 	assert( type( obj ) == 'table' )
 	self._reports = obj
 	return self
 end
 
---- Expose reference to reports
+--- Expose reference to reports.
 -- @return list of reports
 function Frame:reports()
 	return self._reports
 end
 
---- Set the reference to the extractors
+--- Set the reference to the extractors.
 -- This keeps a reference, the object is not cloned.
--- @param table that somehow maintain a collection
+-- @tparam table obj somehow maintain a collection
+-- @treturn self
 function Frame:setExtractors( obj )
 	assert( type( obj ) == 'table' )
 	self._extractors = obj
 	return self
 end
 
---- Expose reference to extractors
+--- Expose reference to extractors.
 -- @return list of extractors
 function Frame:extractors()
 	return self._extractors
 end
 
---- Set the reference to the renders
+--- Set the reference to the renders.
 -- This keeps a reference, the object is not cloned.
--- @param table that somehow maintain a collection
+-- @tparam table obj somehow maintain a collection
+-- @treturn self
 function Frame:setRenders( obj )
 	assert( type( obj ) == 'table' )
 	self._renders = obj
 	return self
 end
 
---- Expose reference to renders
+--- Expose reference to renders.
 -- @return list of renders
 function Frame:renders()
 	return self._renders
 end
 
---- Eval the fixtures over previous dispatched strings
--- @return self
+--- Eval the fixtures over previous dispatched strings.
+-- @treturn self
 function Frame:eval() -- luacheck: ignore
 	if not self:hasFixtures() then
 		self:reports():push( FrameReport.create():setTodo( 'pickle-frame-no-fixtures' ) )
@@ -245,5 +257,5 @@ function Frame:eval() -- luacheck: ignore
 	return self
 end
 
--- Return the final class
+-- Return the final class.
 return Frame
