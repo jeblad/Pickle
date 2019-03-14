@@ -1,19 +1,19 @@
--- module to support Pickle
--- @provenance ideas from Moses [https://github.com/Yonaba/Moses/blob/master/moses.lua]
+--- Utils to support Pickle.
+-- Ideas from Moses [https://github.com/Yonaba/Moses/blob/master/moses.lua]
 -- @author John Erling Blad < jeblad@gmail.com >
 
 -- @var Table holding the modules exported members
 local util = {}
 
---- Transform names in camel case into hyphen separated keys
--- @param string in camel case
+--- Transform names in camel case into hyphen separated keys.
+-- @param str name in camel case
 -- @return hyphenated string
 function util.buildName( str )
 	return str:gsub("([A-Z])", function(s) return '-'..string.lower(s) end )
 end
 
--- raw count of all the items in the provided table
--- @provenance variant of 'local function count(t)' from "Moses"
+--- Raw count of all the items in the provided table.
+-- Variant of 'local function count(t)' from "Moses"
 -- @param t table that has its entries counted
 -- @return count of raw entries
 function util.count( t )
@@ -24,8 +24,8 @@ function util.count( t )
 	return i
 end
 
--- size based on the raw count
--- @provenance variant of 'function _.size(...)' from "Moses"
+--- Size based on the raw count.
+-- Variant of 'function _.size(...)' from "Moses"
 -- @param optional [table|any] count entries if table, count all args otherwise
 -- @return count of entries
 function util.size( ... )
@@ -38,9 +38,9 @@ function util.size( ... )
 	return util.count( { ... } )
 end
 
--- deep equal of two objects
--- @provenance variant of 'UnitTester:equals_deep(name, actual, expected, options)' from [[w:no:Module:UnitTests]]
--- @provenance variant of 'function _.isEqual(objA, objB, useMt)' from "Moses"
+--- Deep equal of two objects.
+-- Variant of 'UnitTester:equals_deep(name, actual, expected, options)' from [[w:no:Module:UnitTests]]
+-- and 'function _.isEqual(objA, objB, useMt)' from "Moses"
 -- @param objA any type of object
 -- @param objB any type of object
 -- @param useMt boolean optional indicator for whether to include the meta table
@@ -87,8 +87,8 @@ function util.deepEqual( objA, objB, useMt )
 	return true
 end
 
--- checks if a table contains the arg
--- @provenance variant of 'function _.contains(t, value)' from "Moses"
+--- Checks if a table contains the arg.
+-- Variant of 'function _.contains(t, value)' from "Moses"
 -- @param t table that is searched for the arg
 -- @param arg any item to be searched for
 -- @return boolean result of the operation
