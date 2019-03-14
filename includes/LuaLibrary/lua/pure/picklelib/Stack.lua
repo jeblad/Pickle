@@ -13,7 +13,7 @@ end
 
 --- Create a new instance.
 -- @param ... varargs pushed on the stack
--- @return self
+-- @treturn self
 function Stack.create( ... )
 	local self = setmetatable( {}, Stack )
 	self:_init( ... )
@@ -23,7 +23,7 @@ end
 --- Initialize a new instance.
 -- @local
 -- @param ... varargs pushed on the stack
--- @return self
+-- @treturn self
 function Stack:_init( ... )
 	self._stack = {}
 	self:push( ... )
@@ -77,7 +77,7 @@ end
 Stack.last = Stack.top
 
 --- Push a value on the stack.
--- @return self so chaing is unbroken
+-- @treturn self so chaing is unbroken
 function Stack:push( ... )
 	for _,v in ipairs( { ... } ) do
 		table.insert( self._stack, v )
@@ -102,7 +102,7 @@ end
 --- Drop the last n values of the stack.
 -- Note that this will remove the last (topmost) values.
 -- @param num of items to drop
--- @return self so chaing is unbroken
+-- @treturn self so chaing is unbroken
 function Stack:drop( num )
 	for _=1,(num or 1) do
 		table.remove( self._stack )
