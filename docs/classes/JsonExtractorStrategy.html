@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../mw.pickle.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Metamethods">Metamethods</a></li>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Stack.html">Stack</a></li>
+  <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Frame.html">Frame</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/ExtractorStrategies.html">ExtractorStrategies</a></li>
+  <li><a href="../classes/ExtractorStrategyBase.html">ExtractorStrategyBase</a></li>
+  <li><a href="../classes/FalseExtractorStrategy.html">FalseExtractorStrategy</a></li>
+  <li><strong>JsonExtractorStrategy</strong></li>
+  <li><a href="../classes/NilExtractorStrategy.html">NilExtractorStrategy</a></li>
+  <li><a href="../classes/NumberExtractorStrategy.html">NumberExtractorStrategy</a></li>
+  <li><a href="../classes/StringExtractorStrategy.html">StringExtractorStrategy</a></li>
+  <li><a href="../classes/TrueExtractorStrategy.html">TrueExtractorStrategy</a></li>
+  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
+  <li><a href="../classes/FrameRender.html">FrameRender</a></li>
+  <li><a href="../classes/Render.html">Render</a></li>
+  <li><a href="../classes/AdaptCompactRender.html">AdaptCompactRender</a></li>
+  <li><a href="../classes/FrameCompactRender.html">FrameCompactRender</a></li>
+  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
+  <li><a href="../classes/FrameFullRender.html">FrameFullRender</a></li>
+  <li><a href="../classes/AdaptVividRender.html">AdaptVividRender</a></li>
+  <li><a href="../classes/FrameVividRender.html">FrameVividRender</a></li>
+  <li><a href="../classes/AdaptReport.html">AdaptReport</a></li>
+  <li><a href="../classes/FrameReport.html">FrameReport</a></li>
+  <li><a href="../classes/ReportBase.html">ReportBase</a></li>
+  <li><a href="../classes/TranslatorStrategies.html">TranslatorStrategies</a></li>
+  <li><a href="../classes/TranslatorStrategyBase.html">TranslatorStrategyBase</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/pure.picklelib.render.Renders.html">pure.picklelib.render.Renders</a></li>
+  <li><a href="../modules/pure.picklelib.util.html">pure.picklelib.util</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/top.md.html">top</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>JsonExtractorStrategy</code></h1>
+<p>Subclass to do specialization of the extractor strategy class.</p>
+<p> This is the spesialization to do casting into a string type</p>
+
+
+<h2><a href="#Metamethods">Metamethods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#JsonExtractorStrategy:__index">JsonExtractorStrategy:__index (key)</a></td>
+	<td class="summary">Lookup of missing class members.</td>
+	</tr>
+</table>
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#JsonExtractorStrategy:create">JsonExtractorStrategy:create ()</a></td>
+	<td class="summary">Create a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#JsonExtractorStrategy:cast">JsonExtractorStrategy:cast (str, start, finish)</a></td>
+	<td class="summary">Cast the string into the correct type for this strategy.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#JsonExtractorStrategy:placeholder">JsonExtractorStrategy:placeholder (str, start, finish)</a></td>
+	<td class="summary">Get the placeholder for this strategy.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "JsonExtractorStrategy:__index"></a>
+    <strong>JsonExtractorStrategy:__index (key)</strong>
+    </dt>
+    <dd>
+    Lookup of missing class members.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         used for lookup of member
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "JsonExtractorStrategy:create"></a>
+    <strong>JsonExtractorStrategy:create ()</strong>
+    </dt>
+    <dd>
+    Create a new instance.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "JsonExtractorStrategy:cast"></a>
+    <strong>JsonExtractorStrategy:cast (str, start, finish)</strong>
+    </dt>
+    <dd>
+    Cast the string into the correct type for this strategy.
+ There are no safeguards for erroneous casts
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         used as the extraction source
+        </li>
+        <li><span class="parameter">start</span>
+            <span class="types"><span class="type">number</span></span>
+         for an inclusive index where extraction starts
+        </li>
+        <li><span class="parameter">finish</span>
+            <span class="types"><span class="type">number</span></span>
+         for an inclusive index where extraction finishes
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">JSON</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "JsonExtractorStrategy:placeholder"></a>
+    <strong>JsonExtractorStrategy:placeholder (str, start, finish)</strong>
+    </dt>
+    <dd>
+    Get the placeholder for this strategy.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><span class="type">luacheck</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">start</span>
+
+
+
+        </li>
+        <li><span class="parameter">finish</span>
+         ignore
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+    </ol>
+
+    <h3>Raises:</h3>
+    Unconditional unless overridden
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2019-02-08 13:23:58 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

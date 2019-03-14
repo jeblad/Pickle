@@ -1,0 +1,539 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../mw.pickle.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Fields">Fields</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>Pickle</strong></li>
+  <li><a href="../modules/pure.picklelib.render.Renders.html">pure.picklelib.render.Renders</a></li>
+  <li><a href="../modules/pure.picklelib.util.html">pure.picklelib.util</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Stack.html">Stack</a></li>
+  <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Frame.html">Frame</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/ExtractorStrategies.html">ExtractorStrategies</a></li>
+  <li><a href="../classes/ExtractorStrategyBase.html">ExtractorStrategyBase</a></li>
+  <li><a href="../classes/FalseExtractorStrategy.html">FalseExtractorStrategy</a></li>
+  <li><a href="../classes/JsonExtractorStrategy.html">JsonExtractorStrategy</a></li>
+  <li><a href="../classes/NilExtractorStrategy.html">NilExtractorStrategy</a></li>
+  <li><a href="../classes/NumberExtractorStrategy.html">NumberExtractorStrategy</a></li>
+  <li><a href="../classes/StringExtractorStrategy.html">StringExtractorStrategy</a></li>
+  <li><a href="../classes/TrueExtractorStrategy.html">TrueExtractorStrategy</a></li>
+  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
+  <li><a href="../classes/FrameRender.html">FrameRender</a></li>
+  <li><a href="../classes/Render.html">Render</a></li>
+  <li><a href="../classes/AdaptCompactRender.html">AdaptCompactRender</a></li>
+  <li><a href="../classes/FrameCompactRender.html">FrameCompactRender</a></li>
+  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
+  <li><a href="../classes/FrameFullRender.html">FrameFullRender</a></li>
+  <li><a href="../classes/AdaptVividRender.html">AdaptVividRender</a></li>
+  <li><a href="../classes/FrameVividRender.html">FrameVividRender</a></li>
+  <li><a href="../classes/AdaptReport.html">AdaptReport</a></li>
+  <li><a href="../classes/FrameReport.html">FrameReport</a></li>
+  <li><a href="../classes/ReportBase.html">ReportBase</a></li>
+  <li><a href="../classes/TranslatorStrategies.html">TranslatorStrategies</a></li>
+  <li><a href="../classes/TranslatorStrategyBase.html">TranslatorStrategyBase</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/top.md.html">top</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Pickle</code></h1>
+<p>Register functions for the testing framework.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#carp">carp (str)</a></td>
+	<td class="summary">Carp, warn called due to a possible error condition.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#cluck">cluck (str)</a></td>
+	<td class="summary">Cluck, warn called due to a possible error condition, with a stack backtrace.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#croak">croak (str)</a></td>
+	<td class="summary">Croak, die called due to a possible error condition.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#confess">confess (str)</a></td>
+	<td class="summary">Confess, die called due to a possible error condition, with a stack backtrace.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#skip">skip (str)</a></td>
+	<td class="summary">skip, comment on the current reports.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#todo">todo (str)</a></td>
+	<td class="summary">todo, comment on the current reports.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#expect">expect (...)</a></td>
+	<td class="summary">Expect whatever to be compared to the subject.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#subject">subject (...)</a></td>
+	<td class="summary">Subject of whatever to be compared to the expected.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mw.pickle.__call">mw.pickle.__call (env)</a></td>
+	<td class="summary">Install the library.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pickle.implicitDescribe">pickle.implicitDescribe (...)</a></td>
+	<td class="summary">Describe the test.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#context">context (...)</a></td>
+	<td class="summary">Context for the test.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#obj.tap">obj.tap (...)</a></td>
+	<td class="summary">Eval the fixtures over previous dispatched strings.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pickle.setupInterface">pickle.setupInterface (opts)</a></td>
+	<td class="summary">install the module in the global space.</td>
+	</tr>
+</table>
+<h2><a href="#Fields">Fields</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#env.it">env.it</a></td>
+	<td class="summary">It is the actual test for each metod.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "carp"></a>
+    <strong>carp (str)</strong>
+    </dt>
+    <dd>
+    Carp, warn called due to a possible error condition.
+ Print a message without exiting, with caller's name and arguments.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         message to be passed on
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Spy
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "cluck"></a>
+    <strong>cluck (str)</strong>
+    </dt>
+    <dd>
+    Cluck, warn called due to a possible error condition, with a stack backtrace.
+ Print a message without exiting, with caller's name and arguments, and a stack trace.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         message to be passed on
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Spy
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "croak"></a>
+    <strong>croak (str)</strong>
+    </dt>
+    <dd>
+    Croak, die called due to a possible error condition.
+ Print a message then exits, with caller's name and arguments.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         message to be passed on
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Spy
+    </ol>
+
+    <h3>Raises:</h3>
+    error called unconditionally
+
+
+
+</dd>
+    <dt>
+    <a name = "confess"></a>
+    <strong>confess (str)</strong>
+    </dt>
+    <dd>
+    Confess, die called due to a possible error condition, with a stack backtrace.
+ Print a message then exits, with caller's name and arguments, and a stack trace.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         message to be passed on
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Spy
+    </ol>
+
+    <h3>Raises:</h3>
+    error called unconditionally
+
+
+
+</dd>
+    <dt>
+    <a name = "skip"></a>
+    <strong>skip (str)</strong>
+    </dt>
+    <dd>
+    skip, comment on the current reports.
+ This will not terminate current run.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         message to be passed on
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "todo"></a>
+    <strong>todo (str)</strong>
+    </dt>
+    <dd>
+    todo, comment on the current reports.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         message to be passed on
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "expect"></a>
+    <strong>expect (...)</strong>
+    </dt>
+    <dd>
+    Expect whatever to be compared to the subject.
+ The expected value is the assumed outcome,
+ or something that can be transformed into the
+ assumed outcome.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+         varargs passed on to Adapt.create
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Adapt
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "subject"></a>
+    <strong>subject (...)</strong>
+    </dt>
+    <dd>
+    Subject of whatever to be compared to the expected.
+ The subject is whatever object we want to test,
+ usually the returned table for a module.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+         varargs passed on to Adapt.create
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Adapt
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "mw.pickle.__call"></a>
+    <strong>mw.pickle.__call (env)</strong>
+    </dt>
+    <dd>
+    Install the library.
+ This install all dependencies and changes the environment
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">env</span>
+         table for the environment
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pickle.implicitDescribe"></a>
+    <strong>pickle.implicitDescribe (...)</strong>
+    </dt>
+    <dd>
+    Describe the test.
+ This act as an alias for the normal describe,
+ which is not available.
+ This does implicitt setup.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+         varargs passed on to Frame:dispatch
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">self</span></span>
+        newly created object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "context"></a>
+    <strong>context (...)</strong>
+    </dt>
+    <dd>
+    Context for the test.
+ This is usually used for creating some additional context
+ before the actual testing. An alternate would be to use
+ 'before' and 'after' functions.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+         varargs passed on to Frame:dispatch
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Frame
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "obj.tap"></a>
+    <strong>obj.tap (...)</strong>
+    </dt>
+    <dd>
+    Eval the fixtures over previous dispatched strings.
+ This has two different call forms. The first is the usual form with a single
+ frame object. This is used if the function is called by "invoke". The other
+ form use the same "style" and "language" form, but as arguments. This makes
+ it possible to easilly test it in the console.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string
+function obj.tap( name )
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pickle.setupInterface"></a>
+    <strong>pickle.setupInterface (opts)</strong>
+    </dt>
+    <dd>
+    install the module in the global space.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span>
+        boilerplate
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "env.it"></a>
+    <strong>env.it</strong>
+    </dt>
+    <dd>
+    It is the actual test for each metod.
+
+
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         passed on to Adapt.create
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2019-02-08 13:23:58 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

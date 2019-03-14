@@ -1,0 +1,471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../mw.pickle.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Metamethods">Metamethods</a></li>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><strong>Stack</strong></li>
+  <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Frame.html">Frame</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/ExtractorStrategies.html">ExtractorStrategies</a></li>
+  <li><a href="../classes/ExtractorStrategyBase.html">ExtractorStrategyBase</a></li>
+  <li><a href="../classes/FalseExtractorStrategy.html">FalseExtractorStrategy</a></li>
+  <li><a href="../classes/JsonExtractorStrategy.html">JsonExtractorStrategy</a></li>
+  <li><a href="../classes/NilExtractorStrategy.html">NilExtractorStrategy</a></li>
+  <li><a href="../classes/NumberExtractorStrategy.html">NumberExtractorStrategy</a></li>
+  <li><a href="../classes/StringExtractorStrategy.html">StringExtractorStrategy</a></li>
+  <li><a href="../classes/TrueExtractorStrategy.html">TrueExtractorStrategy</a></li>
+  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
+  <li><a href="../classes/FrameRender.html">FrameRender</a></li>
+  <li><a href="../classes/Render.html">Render</a></li>
+  <li><a href="../classes/AdaptCompactRender.html">AdaptCompactRender</a></li>
+  <li><a href="../classes/FrameCompactRender.html">FrameCompactRender</a></li>
+  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
+  <li><a href="../classes/FrameFullRender.html">FrameFullRender</a></li>
+  <li><a href="../classes/AdaptVividRender.html">AdaptVividRender</a></li>
+  <li><a href="../classes/FrameVividRender.html">FrameVividRender</a></li>
+  <li><a href="../classes/AdaptReport.html">AdaptReport</a></li>
+  <li><a href="../classes/FrameReport.html">FrameReport</a></li>
+  <li><a href="../classes/ReportBase.html">ReportBase</a></li>
+  <li><a href="../classes/TranslatorStrategies.html">TranslatorStrategies</a></li>
+  <li><a href="../classes/TranslatorStrategyBase.html">TranslatorStrategyBase</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/pure.picklelib.render.Renders.html">pure.picklelib.render.Renders</a></li>
+  <li><a href="../modules/pure.picklelib.util.html">pure.picklelib.util</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/top.md.html">top</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>Stack</code></h1>
+<p>Stack for managing values.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Metamethods">Metamethods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Stack:__index">Stack:__index (key)</a></td>
+	<td class="summary">Lookup of missing class members.</td>
+	</tr>
+</table>
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Stack:create">Stack:create (...)</a></td>
+	<td class="summary">Create a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Stack:isEmpty">Stack:isEmpty ()</a></td>
+	<td class="summary">Is the stack empty.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Stack:depth">Stack:depth ()</a></td>
+	<td class="summary">What is the depth of the internal structure.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Stack:layout">Stack:layout ()</a></td>
+	<td class="summary">Get the layout of the stack.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Stack:bottom">Stack:bottom ()</a></td>
+	<td class="summary">Get a reference to the bottommost item in the stack.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Stack:top">Stack:top ()</a></td>
+	<td class="summary">Get a reference to the topmost item in the stack.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Stack:push">Stack:push (...)</a></td>
+	<td class="summary">Push a value on the stack.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Stack:pop">Stack:pop (num)</a></td>
+	<td class="summary">Pop the last value of the stack.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Stack:drop">Stack:drop (num)</a></td>
+	<td class="summary">Drop the last n values of the stack.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Stack:get">Stack:get (num)</a></td>
+	<td class="summary">Get the indexed entry.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Stack:export">Stack:export ()</a></td>
+	<td class="summary">Export a list of all the contents.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Stack:flush">Stack:flush ()</a></td>
+	<td class="summary">Flush all the contents.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Stack:__index"></a>
+    <strong>Stack:__index (key)</strong>
+    </dt>
+    <dd>
+    Lookup of missing class members.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+         string used for lookup of member
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Stack:create"></a>
+    <strong>Stack:create (...)</strong>
+    </dt>
+    <dd>
+    Create a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+         varargs pushed on the stack
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Stack:isEmpty"></a>
+    <strong>Stack:isEmpty ()</strong>
+    </dt>
+    <dd>
+    Is the stack empty.
+ Note that the internal structure is non-empty even if a nil
+ is pushed on the stack.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean saying whether the internal structure has length zero
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Stack:depth"></a>
+    <strong>Stack:depth ()</strong>
+    </dt>
+    <dd>
+    What is the depth of the internal structure.
+ Note that the internal structure has a depth even if a nil
+ is pushed on the stack.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number saying how deep the internal structure is
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Stack:layout"></a>
+    <strong>Stack:layout ()</strong>
+    </dt>
+    <dd>
+    Get the layout of the stack.
+ This method is used for testing to inspect which types of objects
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Stack:bottom"></a>
+    <strong>Stack:bottom ()</strong>
+    </dt>
+    <dd>
+    Get a reference to the bottommost item in the stack.
+ The bottommost item can also be described as the first item.
+ This method leaves the item on the stack.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any item that can be put on the stack
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Stack:top"></a>
+    <strong>Stack:top ()</strong>
+    </dt>
+    <dd>
+    Get a reference to the topmost item in the stack.
+ The topmost item can also be described as the last item.
+ This method leaves the item on the stack.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any item that can be put on the stack
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Stack:push"></a>
+    <strong>Stack:push (...)</strong>
+    </dt>
+    <dd>
+    Push a value on the stack.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">self</span></span>
+        so chaing is unbroken
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Stack:pop"></a>
+    <strong>Stack:pop (num)</strong>
+    </dt>
+    <dd>
+    Pop the last value of the stack.
+ Note that this will remove the last (topmost) value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">num</span>
+         items to drop
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any item that can be put on the stack
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Stack:drop"></a>
+    <strong>Stack:drop (num)</strong>
+    </dt>
+    <dd>
+    Drop the last n values of the stack.
+ Note that this will remove the last (topmost) values.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">num</span>
+         of items to drop
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">self</span></span>
+        so chaing is unbroken
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Stack:get"></a>
+    <strong>Stack:get (num)</strong>
+    </dt>
+    <dd>
+    Get the indexed entry.
+ Accessing this will not change stored values.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">num</span>
+         entry number, negative numbers count backwards
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        stored value
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Stack:export"></a>
+    <strong>Stack:export ()</strong>
+    </dt>
+    <dd>
+    Export a list of all the contents.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        list of values
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Stack:flush"></a>
+    <strong>Stack:flush ()</strong>
+    </dt>
+    <dd>
+    Flush all the contents.
+ Note that this clears the internal storage.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        list of values
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2019-02-08 13:23:58 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

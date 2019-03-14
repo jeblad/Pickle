@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../mw.pickle.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/pure.picklelib.render.Renders.html">pure.picklelib.render.Renders</a></li>
+  <li><strong>pure.picklelib.util</strong></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Stack.html">Stack</a></li>
+  <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Frame.html">Frame</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/ExtractorStrategies.html">ExtractorStrategies</a></li>
+  <li><a href="../classes/ExtractorStrategyBase.html">ExtractorStrategyBase</a></li>
+  <li><a href="../classes/FalseExtractorStrategy.html">FalseExtractorStrategy</a></li>
+  <li><a href="../classes/JsonExtractorStrategy.html">JsonExtractorStrategy</a></li>
+  <li><a href="../classes/NilExtractorStrategy.html">NilExtractorStrategy</a></li>
+  <li><a href="../classes/NumberExtractorStrategy.html">NumberExtractorStrategy</a></li>
+  <li><a href="../classes/StringExtractorStrategy.html">StringExtractorStrategy</a></li>
+  <li><a href="../classes/TrueExtractorStrategy.html">TrueExtractorStrategy</a></li>
+  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
+  <li><a href="../classes/FrameRender.html">FrameRender</a></li>
+  <li><a href="../classes/Render.html">Render</a></li>
+  <li><a href="../classes/AdaptCompactRender.html">AdaptCompactRender</a></li>
+  <li><a href="../classes/FrameCompactRender.html">FrameCompactRender</a></li>
+  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
+  <li><a href="../classes/FrameFullRender.html">FrameFullRender</a></li>
+  <li><a href="../classes/AdaptVividRender.html">AdaptVividRender</a></li>
+  <li><a href="../classes/FrameVividRender.html">FrameVividRender</a></li>
+  <li><a href="../classes/AdaptReport.html">AdaptReport</a></li>
+  <li><a href="../classes/FrameReport.html">FrameReport</a></li>
+  <li><a href="../classes/ReportBase.html">ReportBase</a></li>
+  <li><a href="../classes/TranslatorStrategies.html">TranslatorStrategies</a></li>
+  <li><a href="../classes/TranslatorStrategyBase.html">TranslatorStrategyBase</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/top.md.html">top</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>pure.picklelib.util</code></h1>
+<p>Utils to support Pickle.</p>
+<p> Ideas from Moses [https://github.com/Yonaba/Moses/blob/master/moses.lua]</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Author</strong>: John Erling Blad &lt; jeblad@gmail.com ></li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#buildName">buildName (str)</a></td>
+	<td class="summary">Transform names in camel case into hyphen separated keys.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#count">count (t)</a></td>
+	<td class="summary">Raw count of all the items in the provided table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#size">size (optional)</a></td>
+	<td class="summary">Size based on the raw count.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#deepEqual">deepEqual (objA, objB, useMt)</a></td>
+	<td class="summary">Deep equal of two objects.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#contains">contains (t, arg)</a></td>
+	<td class="summary">Checks if a table contains the arg.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "buildName"></a>
+    <strong>buildName (str)</strong>
+    </dt>
+    <dd>
+    Transform names in camel case into hyphen separated keys.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         name in camel case
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        hyphenated string
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "count"></a>
+    <strong>count (t)</strong>
+    </dt>
+    <dd>
+    Raw count of all the items in the provided table.
+ Variant of 'local function count(t)' from "Moses"
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">t</span>
+         table that has its entries counted
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        count of raw entries
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "size"></a>
+    <strong>size (optional)</strong>
+    </dt>
+    <dd>
+    Size based on the raw count.
+ Variant of 'function _.size(...)' from "Moses"
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">optional</span>
+         [table|any] count entries if table, count all args otherwise
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        count of entries
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "deepEqual"></a>
+    <strong>deepEqual (objA, objB, useMt)</strong>
+    </dt>
+    <dd>
+    Deep equal of two objects.
+ Variant of 'UnitTester:equals_deep(name, actual, expected, options)' from [[w:no:Module:UnitTests]]
+ and 'function _.isEqual(objA, objB, useMt)' from "Moses"
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">objA</span>
+         any type of object
+        </li>
+        <li><span class="parameter">objB</span>
+         any type of object
+        </li>
+        <li><span class="parameter">useMt</span>
+         boolean optional indicator for whether to include the meta table
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean result of comparison
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "contains"></a>
+    <strong>contains (t, arg)</strong>
+    </dt>
+    <dd>
+    Checks if a table contains the arg.
+ Variant of 'function _.contains(t, value)' from "Moses"
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">t</span>
+         table that is searched for the arg
+        </li>
+        <li><span class="parameter">arg</span>
+         any item to be searched for
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean result of the operation
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2019-02-08 13:23:58 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
