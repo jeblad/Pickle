@@ -1,4 +1,5 @@
---- Subclass for reports
+--- Subclass for reports.
+-- @classmod FrameReport
 
 -- pure libs
 local Stack = require 'picklelib/Stack'
@@ -9,8 +10,8 @@ local Base = require 'picklelib/report/ReportBase'
 -- @var class var for lib
 local FrameReport = {}
 
---- Lookup of missing class members
--- @param string used for lookup of member
+--- Lookup of missing class members.
+-- @tparam string key lookup of member
 -- @return any
 function FrameReport:__index( key ) -- luacheck: no self
 	return FrameReport[key]
@@ -30,19 +31,19 @@ end
 -- @var metatable for the class
 setmetatable( FrameReport, { __index = Base } )
 
---- Create a new instance
--- @param vararg unused
--- @return FrameReport
+--- Create a new instance.
+-- @tparam vararg ... unused
+-- @treturn self
 function FrameReport.create( ... )
 	local self = setmetatable( {}, FrameReport )
 	self:_init( ... )
 	return self
 end
 
---- Initialize a new instance
--- @private
--- @param vararg unused
--- @return FrameReport
+--- Initialize a new instance.
+-- @local
+-- @tparam vararg ... unused
+-- @treturn FrameReport
 function FrameReport:_init( ... )
 	Base._init( self, ... )
 	self._type = 'frame-report'
@@ -52,7 +53,7 @@ function FrameReport:_init( ... )
 	return self
 end
 
---- Export the constituents as an multivalue return
+--- Export the constituents as an multivalue return.
 -- Note that each constituent is not unwrapped.
 -- @return list of constituents
 function FrameReport:constituents()
@@ -62,24 +63,24 @@ function FrameReport:constituents()
 	return self._constituents
 end
 
---- Get the number of constituents
+--- Get the number of constituents.
 -- @return number of constituents
 function FrameReport:numConstituents()
 	return self._constituents and self._constituents:depth() or 0
 end
 
---- Add a constituent
--- @param any part that can be a constituent
--- @return self
+--- Add a constituent.
+-- @tparam any part that can be a constituent
+-- @treturn self
 function FrameReport:addConstituent( part )
 	assert( part, 'Failed to provide a constituent' )
 	self:constituents():push( part )
 	return self
 end
 
---- Add several constituents
--- @param vararg list of parts that can be constituents
--- @return self
+--- Add several constituents.
+-- @tparam vararg ... list of parts that can be constituents
+-- @treturn self
 function FrameReport:addConstituents( ... )
 	self:constituents():push( ... )
 	return self
@@ -89,10 +90,10 @@ function FrameReport:hasConstituents()
 	return not ( self._constituents and self:constituents():isEmpty() or true )
 end
 
---- Check if the instance state is ok
+--- Check if the instance state is ok.
 -- Note that initial state is "not ok".
 -- @todo the initial state is not correct
--- @return boolean state
+-- @treturn boolean state
 function FrameReport:isOk()
 	local state = self._state
 
@@ -105,9 +106,9 @@ function FrameReport:isOk()
 	return state
 end
 
---- Check if the instance has any member in skip state
+--- Check if the instance has any member in skip state.
 -- This will reject all frame constituents from the analysis.
--- @return boolean that is set if any constituent has a skip note
+-- @treturn boolean that is set if any constituent has a skip note
 function FrameReport:hasSkip()
 	local tmp = false
 
@@ -122,9 +123,9 @@ function FrameReport:hasSkip()
 	return tmp
 end
 
---- Check if the instance has any member in todo state
+--- Check if the instance has any member in todo state.
 -- This will reject all frame constituents from the analysis.
--- @return boolean that is set if any constituent has a skip note
+-- @treturn boolean that is set if any constituent has a skip note
 function FrameReport:hasTodo()
 	local tmp = false
 
@@ -139,35 +140,36 @@ function FrameReport:hasTodo()
 	return tmp
 end
 
---- Set the description
+--- Set the description.
 -- This is an accessor to set the member.
 -- Note that all arguments will be wrapped up in a table before saving.
--- @param string that will be used as the description
--- @return self
+-- @tparam string str that will be used as the description
+-- @treturn self
 function FrameReport:setDescription( str )
 	assert( str, 'Failed to provide a description' )
 	self._description = str
 	return self
 end
 
---- Get the description
+--- Get the description.
 -- This is an accessor to get the member.
 -- Note that the saved structure will be unpacked before being returned.
--- @return string used as the description
+-- @treturn string used as the description
 function FrameReport:getDescription()
 	return self._description
 end
 
---- Check if the instance has any description member
--- @return boolean that is set if a description exist
+--- Check if the instance has any description member.
+-- @treturn boolean that is set if a description exist
 function FrameReport:hasDescription()
 	return not not self._description
 end
 
---- Realize the data by applying a render
--- @param Renders to use while realizing the reports
--- @param string holding the language code
--- @param Counter holding the running count
+--- Realize the data by applying a render.
+-- @tparam Renders renders to use while realizing the reports
+-- @tparam string lang holding the language code
+-- @tparam Counter counter holding the running count
+-- @return out
 function FrameReport:realize( renders, lang, counter )
 	assert( renders, 'Failed to provide renders' )
 
@@ -190,5 +192,5 @@ function FrameReport:realize( renders, lang, counter )
 	return out
 end
 
--- Return the final class
+-- Return the final class.
 return FrameReport

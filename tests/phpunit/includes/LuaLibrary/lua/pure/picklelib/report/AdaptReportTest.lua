@@ -1,4 +1,4 @@
---- Tests for the report module
+--- Tests for the report module.
 -- This is a preliminary solution
 -- @license GNU GPL v2+
 -- @author John Erling Blad < jeblad@gmail.com >
