@@ -5,7 +5,7 @@
 local Counter = {}
 
 --- Lookup of missing class members.
--- @param key string used for lookup of member
+-- @tparam string key lookup of member
 -- @return any
 function Counter:__index( key ) -- luacheck: no self
 	return Counter[key]
@@ -13,7 +13,7 @@ end
 
 --- Call on instance.
 -- Increment value, but return the old value.
--- @return previous value
+-- @treturn number previous value
 function Counter:__call() -- luacheck: no self
 	local prev = self:num() or 0
 	self:inc()
@@ -21,8 +21,8 @@ function Counter:__call() -- luacheck: no self
 end
 
 --- Create a new instance.
--- @param num initial value
--- @return self
+-- @tparam number num initial value
+-- @treturn self
 function Counter.create( num )
 	local self = setmetatable( {}, Counter )
 	self:_init( num )
@@ -31,15 +31,15 @@ end
 
 --- Initialize a new instance.
 -- @local
--- @param num initial value
--- @return self
+-- @tparam number num initial value
+-- @treturn self
 function Counter:_init( num )
 	self._num = num or false
 	return self
 end
 
 --- Is the running count initialized.
--- @return boolean saying whether the internal structure has been initialized
+-- @treturn boolean saying whether the internal structure has been initialized
 function Counter:isInitialized()
 	return not not self._num
 end
