@@ -1,4 +1,5 @@
---- Baseclass for report renderer
+--- Baseclass for report renderer.
+-- @classmod AdaptRender
 
 -- non-pure libs
 local Base = require 'picklelib/render/RenderBase'
@@ -6,8 +7,8 @@ local Base = require 'picklelib/render/RenderBase'
 -- @var class var for lib
 local AdaptRender = {}
 
---- Lookup of missing class members
--- @param string used for lookup of member
+--- Lookup of missing class members.
+-- @tparam string key used for lookup of member
 -- @return any
 function AdaptRender:__index( key ) -- luacheck: no self
 	return AdaptRender[key]
@@ -16,8 +17,8 @@ end
 -- @var metatable for the class
 setmetatable( AdaptRender, { __index = Base } )
 
---- Create a new instance
--- @param vararg unused
+--- Create a new instance.
+-- @tparam vararg ... unused
 -- @return AdaptRender
 function AdaptRender.create( ... )
 	local self = setmetatable( {}, AdaptRender )
@@ -25,40 +26,40 @@ function AdaptRender.create( ... )
 	return self
 end
 
---- Initialize a new instance
--- @private
--- @param vararg unused
--- @return AdaptRender
+--- Initialize a new instance.
+-- @local
+-- @tparam vararg ... unused
+-- @treturn self
 function AdaptRender:_init( ... ) -- luacheck: no unused args
 	Base._init( self, ... )
 	return self
 end
 
---- Override key construction
--- @param string to be appended to a base string
--- @return string
+--- Override key construction.
+-- @tparam string str to be appended to a base string
+-- @treturn string
 function AdaptRender:key( str )
 	Base._init( self, str )
 	return 'pickle-report-adapt-' .. str
 end
 
---- Realize reported data for state
--- @param Report that shall be realized
--- @param string language code used for realization
--- @param Counter holding the running count
--- @return string
+--- Realize reported data for state.
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @tparam Counter counter holding the running count
+-- @treturn string
 function AdaptRender:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	return self:realizeClarification( src:isOk() and 'is-ok' or 'is-not-ok', lang, counter )
 end
 
---- Realize reported data for header
+--- Realize reported data for header.
 -- The "header" is a composite.
--- @param Report that shall be realized
--- @param string language code used for realization
--- @param Counter holding the running count
--- @return string
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @tparam Counter counter holding the running count
+-- @treturn string
 function AdaptRender:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
@@ -77,10 +78,10 @@ function AdaptRender:realizeHeader( src, lang, counter )
 	return table.concat( t, '' )
 end
 
---- Realize reported data for a line
--- @param any that shall be realized
--- @param string language code used for realization
--- @return string
+--- Realize reported data for a line.
+-- @tparam any param that shall be realized
+-- @tparam string lang code used for realization
+-- @treturn string
 function AdaptRender:realizeLine( param, lang ) -- luacheck: no self
 	assert( param, 'Failed to provide a parameter' )
 
@@ -97,11 +98,11 @@ function AdaptRender:realizeLine( param, lang ) -- luacheck: no self
 	return mw.text.encode( line:plain() )
 end
 
---- Realize reported data for body
+--- Realize reported data for body.
 -- The "body" is a composite.
--- @param Report that shall be realized
--- @param string language code used for realization
--- @return string
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @treturn string
 function AdaptRender:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -114,5 +115,5 @@ function AdaptRender:realizeBody( src, lang )
 	return #t == 0 and '' or ( "\n"  .. table.concat( t, "\n" ) )
 end
 
--- Return the final class
+-- Return the final class.
 return AdaptRender

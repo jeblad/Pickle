@@ -1,4 +1,5 @@
---- Baseclass for frame report renderer
+--- Baseclass for frame report renderer.
+-- @classmod FrameRender
 
 -- non-pure libs
 local Base = require 'picklelib/render/RenderBase'
@@ -6,8 +7,8 @@ local Base = require 'picklelib/render/RenderBase'
 -- @var class var for lib
 local FrameRender = {}
 
---- Lookup of missing class members
--- @param string used for lookup of member
+--- Lookup of missing class members.
+-- @tparam string key used for lookup of member
 -- @return any
 function FrameRender:__index( key ) -- luacheck: no self
 	return FrameRender[key]
@@ -16,8 +17,8 @@ end
 -- @var metatable for the class
 setmetatable( FrameRender, { __index = Base } )
 
---- Create a new instance
--- @param vararg unused
+--- Create a new instance.
+-- @tparam vararg ... unused
 -- @return FrameRender
 function FrameRender.create( ... )
 	local self = setmetatable( {}, FrameRender )
@@ -25,61 +26,61 @@ function FrameRender.create( ... )
 	return self
 end
 
---- Initialize a new instance
--- @private
--- @param vararg unused
+--- Initialize a new instance.
+-- @local
+-- @tparam vararg ... unused
 -- @return FrameRender
 function FrameRender:_init( ... ) -- luacheck: no unused args
 	Base._init( self, ... )
 	return self
 end
 
---- Override key construction
--- @param string to be appended to a base string
--- @return string
+--- Override key construction.
+-- @tparam string str to be appended to a base string
+-- @treturn string
 function FrameRender:key( str )
 	Base._init( self, str )
 	return 'pickle-report-frame-' .. str
 end
 
---- Realize reported data for state
--- @param Report that shall be realized
--- @param string language code used for realization
--- @param Counter holding the running count
--- @return string
+--- Realize reported data for state.
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @tparam Counter counter holding the running count
+-- @treturn string
 function FrameRender:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	return self:realizeClarification( src:isOk() and 'is-ok' or 'is-not-ok', lang, counter )
 end
 
---- Realize reported data for skip
+--- Realize reported data for skip.
 -- The "skip" is a message identified by a key.
--- @param Report that shall be realized
--- @param string language code used for realization
--- @return string
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @treturn string
 function FrameRender:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	return self:realizeComment( src, 'skip', lang )
 end
 
---- Realize reported data for todo
+--- Realize reported data for todo.
 -- The "todo" is a text string.
--- @param Report that shall be realized
--- @param string language code used for realization
--- @return string
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @treturn string
 function FrameRender:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	return self:realizeComment( src, 'todo', lang )
 end
 
---- Realize reported data for description
+--- Realize reported data for description.
 -- The "description" is a text string.
--- @param Report that shall be realized
--- @param string language code used for realization
--- @return string
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @treturn string
 function FrameRender:realizeDescription( src, lang ) -- luacheck: no unused args
 	assert( src, 'Failed to provide a source' )
 
@@ -90,12 +91,12 @@ function FrameRender:realizeDescription( src, lang ) -- luacheck: no unused args
 	return mw.text.encode( src:getDescription() )
 end
 
---- Realize reported data for header
+--- Realize reported data for header.
 -- The "header" is a composite.
--- @param Report that shall be realized
--- @param string language code used for realization
--- @param Counter holding the running count
--- @return string
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @tparam Counter counter holding the running count
+-- @treturn string
 function FrameRender:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
@@ -118,11 +119,11 @@ function FrameRender:realizeHeader( src, lang, counter )
 	return table.concat( t, ' ' )
 end
 
---- Realize reported data for body
+--- Realize reported data for body.
 -- The "body" is a composite.
--- @param Report that shall be realized
--- @param string language code used for realization
--- @return string
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @treturn string
 function FrameRender:realizeBody( src, lang ) -- luacheck: ignore self lang
 	assert( src, 'Failed to provide a source' )
 
@@ -136,5 +137,5 @@ function FrameRender:realizeBody( src, lang ) -- luacheck: ignore self lang
 	return #t == 0 and '' or ( "\n"  .. table.concat( t, "\n" ) )
 end
 
--- Return the final class
+-- Return the final class.
 return FrameRender

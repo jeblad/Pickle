@@ -1,4 +1,6 @@
---- Subclass for frame report renderer
+--- Subclass for frame report renderer.
+-- @classmod FrameVividRender
+-- @alias FrameRender
 
 -- pure libs
 local Base = require 'picklelib/render/FrameRender'
@@ -6,8 +8,8 @@ local Base = require 'picklelib/render/FrameRender'
 -- @var class var for lib
 local FrameRender = {}
 
---- Lookup of missing class members
--- @param string used for lookup of member
+--- Lookup of missing class members.
+-- @tparam string key used for lookup of member
 -- @return any
 function FrameRender:__index( key ) -- luacheck: no self
 	return FrameRender[key]
@@ -16,38 +18,39 @@ end
 -- @var metatable for the class
 setmetatable( FrameRender, { __index = Base } )
 
---- Create a new instance
--- @param vararg unused
--- @return FrameRender
+--- Create a new instance.
+-- @tparam vararg ... unused
+-- @return self
 function FrameRender.create( ... )
 	local self = setmetatable( {}, FrameRender )
 	self:_init( ... )
 	return self
 end
 
---- Initialize a new instance
--- @private
--- @param vararg unused
--- @return FrameRender
+--- Initialize a new instance.
+-- @local
+-- @tparam vararg ... unused
+-- @treturn self
 function FrameRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
---- Append same type to first
--- @param any to act as the head
--- @param any to act as the tail
--- @return self
+--- Append same type to first.
+-- @tparam any head to act as the head
+-- @tparam any tail to act as the tail
+-- @treturn self
 function FrameRender:append( head, tail ) -- luacheck: no self
 	assert( head )
 	assert( tail )
-	return head:node( tail )
+	head:node( tail )
+	return self
 end
 
---- Override realization of reported data for state
--- @param Report that shall be realized
--- @param string language code used for realization
--- @param Counter holding the running count
--- @return html
+--- Override realization of reported data for state.
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @tparam Counter counter holding the running count
+-- @treturn html
 function FrameRender:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
@@ -63,10 +66,10 @@ function FrameRender:realizeState( src, lang, counter )
 	return html
 end
 
---- Override realization of reported data for skip
--- @param Report that shall be realized
--- @param string language code used for realization
--- @return html
+--- Override realization of reported data for skip.
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @treturn html
 function FrameRender:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -82,10 +85,10 @@ function FrameRender:realizeSkip( src, lang )
 	return html
 end
 
---- Override realization of reported data for todo
--- @param Report that shall be realized
--- @param string language code used for realization
--- @return html
+--- Override realization of reported data for todo.
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @treturn html
 function FrameRender:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -101,10 +104,10 @@ function FrameRender:realizeTodo( src, lang )
 	return html
 end
 
---- Override realization of reported data for description
--- @param Report that shall be realized
--- @param string language code used for realization
--- @return html
+--- Override realization of reported data for description.
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @treturn html
 function FrameRender:realizeDescription( src, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -120,12 +123,12 @@ function FrameRender:realizeDescription( src, lang )
 	return html
 end
 
---- Realize reported data for header
+--- Realize reported data for header.
 -- The "header" is a composite.
--- @param Report that shall be realized
--- @param string language code used for realization
--- @param Counter holding the running count
--- @return html
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @tparam Counter counter holding the running count
+-- @treturn html
 function FrameRender:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
@@ -153,5 +156,5 @@ function FrameRender:realizeHeader( src, lang, counter )
 	return html
 end
 
--- Return the final class
+-- Return the final class.
 return FrameRender

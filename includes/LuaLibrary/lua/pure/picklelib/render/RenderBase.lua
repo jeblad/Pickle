@@ -1,37 +1,38 @@
---- Baseclass for renders
+--- Baseclass for renders.
+-- @classmod Render
 
 -- @var class var for lib
 local Render = {}
 
---- Lookup of missing class members
--- @param string used for lookup of member
+--- Lookup of missing class members.
+-- @tparam string key used for lookup of member
 -- @return any
 function Render:__index( key ) -- luacheck: no self
 	return Render[key]
 end
 
---- Create a new instance
--- @param vararg unused
--- @return Render
+--- Create a new instance.
+-- @tparam vararg ... unused
+-- @return self
 function Render.create( ... )
 	local self = setmetatable( {}, Render )
 	self:_init( ... )
 	return self
 end
 
---- Initialize a new instance
--- @private
--- @param vararg unused
--- @return Render
+--- Initialize a new instance.
+-- @local
+-- @tparam vararg ... unused
+-- @treturn self
 function Render:_init( ... ) -- luacheck: no unused args
 	self._type = 'base-render'
 	return self
 end
 
---- Override key construction
+--- Override key construction.
 -- Sole purpose of this is to do assertions, and the provided key is never be used.
--- @param string to be appended to a base string
--- @return string
+-- @tparam string str to be appended to a base string
+-- @treturn string
 function Render:key( str ) -- luacheck: no self
 	assert( str, 'Failed to provide a string' )
 	local keep = string.match( str, '^[-%a]+$' )
@@ -39,17 +40,17 @@ function Render:key( str ) -- luacheck: no self
 	return 'pickle-report-base-' .. keep
 end
 
---- Get the type of report
+--- Get the type of report.
 -- All reports has an explicit type name.
--- @return string
+-- @treturn string
 function Render:type()
 	return self._type
 end
 
---- Append same type to first
+--- Append same type to first.
 -- The base version only concatenates strings.
--- @param any to act as the head
--- @param any to act as the tail
+-- @tparam any head to act as the head
+-- @tparam any tail to act as the tail
 -- @return any
 function Render:append( head, tail ) -- luacheck: no self
 	assert( head )
@@ -57,10 +58,11 @@ function Render:append( head, tail ) -- luacheck: no self
 	return head .. ' ' .. tail
 end
 
---- Realize clarification
--- @param string part of a message key
--- @param string optional language code
--- @return string
+--- Realize clarification.
+-- @tparam string keyPart of a message key
+-- @tparam string lang code (optional)
+-- @tparam Counter counter holding the running count
+-- @treturn string
 function Render:realizeClarification( keyPart, lang, counter )
 	assert( keyPart, 'Failed to provide a key part' )
 
@@ -86,11 +88,11 @@ function Render:realizeClarification( keyPart, lang, counter )
 	return msg
 end
 
---- Realize comment
--- @param Report that shall be realized
--- @param string part of a message key
--- @param string optional language code
--- @return string
+--- Realize comment.
+-- @tparam Report src that shall be realized
+-- @tparam string keyPart of a message key
+-- @tparam string lang code (optional)
+-- @treturn string
 function Render:realizeComment( src, keyPart, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -117,5 +119,5 @@ function Render:realizeComment( src, keyPart, lang )
 	return msg
 end
 
--- Return the final class
+-- Return the final class.
 return Render

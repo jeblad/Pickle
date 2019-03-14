@@ -1,4 +1,6 @@
---- Subclass for frame report renderer
+--- Subclass for frame report renderer.
+-- @classmod FrameFullRender
+-- @alias FrameRender
 
 -- pure libs
 local Base = require 'picklelib/render/FrameRender'
@@ -6,8 +8,8 @@ local Base = require 'picklelib/render/FrameRender'
 -- @var class var for lib
 local FrameRender = {}
 
---- Lookup of missing class members
--- @param string used for lookup of member
+--- Lookup of missing class members.
+-- @tparam string key used for lookup of member
 -- @return any
 function FrameRender:__index( key ) -- luacheck: no self
 	return FrameRender[key]
@@ -16,22 +18,22 @@ end
 -- @var metatable for the class
 setmetatable( FrameRender, { __index = Base } )
 
---- Create a new instance
--- @param vararg unused
--- @return FrameRender
+--- Create a new instance.
+-- @tparam vararg ... unused
+-- @treturn self
 function FrameRender.create( ... )
 	local self = setmetatable( {}, FrameRender )
 	self:_init( ... )
 	return self
 end
 
---- Initialize a new instance
--- @private
--- @param vararg unused
--- @return FrameRender
+--- Initialize a new instance.
+-- @local
+-- @tparam vararg ... unused
+-- @treturn self
 function FrameRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
--- Return the final class
+-- Return the final class.
 return FrameRender

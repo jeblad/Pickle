@@ -1,4 +1,6 @@
---- Subclass for report renderer
+--- Subclass for vivid report renderer.
+-- @classmod AdaptVividRender
+-- @alias AdaptRender
 
 -- pure libs
 local Base = require 'picklelib/render/AdaptRender'
@@ -6,8 +8,8 @@ local Base = require 'picklelib/render/AdaptRender'
 -- @var class var for lib
 local AdaptRender = {}
 
---- Lookup of missing class members
--- @param string used for lookup of member
+--- Lookup of missing class members.
+-- @tparam string key used for lookup of member
 -- @return any
 function AdaptRender:__index( key ) -- luacheck: no self
 	return AdaptRender[key]
@@ -16,28 +18,28 @@ end
 -- @var metatable for the class
 setmetatable( AdaptRender, { __index = Base } )
 
---- Create a new instance
--- @param vararg unused
--- @return AdaptRender
+--- Create a new instance.
+-- @tparam vararg ... unused
+-- @treturn self
 function AdaptRender.create( ... )
 	local self = setmetatable( {}, AdaptRender )
 	self:_init( ... )
 	return self
 end
 
---- Initialize a new instance
--- @private
--- @param vararg unused
--- @return AdaptRender
+--- Initialize a new instance.
+-- @local
+-- @tparam vararg ... unused
+-- @treturn self
 function AdaptRender:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
---- Override realization of reported data for state
--- @param Report that shall be realized
--- @param string language code used for realization
--- @param Counter holding the running count
--- @return html
+--- Override realization of reported data for state.
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @tparam Counter counter holding the running count
+-- @treturn html
 function AdaptRender:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
@@ -53,11 +55,11 @@ function AdaptRender:realizeState( src, lang, counter )
 	return html
 end
 
---- Override realization of reported data for header
--- @param Report that shall be realized
--- @param string language code used for realization
--- @param Counter holding the running count
--- @return html
+--- Override realization of reported data for header.
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @tparam Counter counter holding the running count
+-- @treturn html
 function AdaptRender:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
@@ -85,9 +87,9 @@ function AdaptRender:realizeHeader( src, lang, counter )
 	return html
 end
 
---- Override realization of reported data for line
--- @param any that shall be realized
--- @param string language code used for realization
+--- Override realization of reported data for line.
+-- @tparam any param that shall be realized
+-- @tparam string lang code used for realization
 -- @return html
 function AdaptRender:realizeLine( param, lang )
 	assert( param, 'Failed to provide a parameter' )
@@ -104,13 +106,13 @@ function AdaptRender:realizeLine( param, lang )
 	return html
 end
 
---- Override realization of reported data for body
+--- Override realization of reported data for body.
 -- The "body" is a composite.
 -- @todo this should probably be realize() as it should contain
 -- the header as a "dt".
--- @param Report that shall be realized
--- @param string language code used for realization
--- @return html
+-- @tparam Report src that shall be realized
+-- @tparam string lang code used for realization
+-- @treturn html
 function AdaptRender:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )
 
@@ -132,5 +134,5 @@ function AdaptRender:realizeBody( src, lang )
 	return '' -- @todo is this right?
 end
 
--- Return the final class
+-- Return the final class.
 return AdaptRender
