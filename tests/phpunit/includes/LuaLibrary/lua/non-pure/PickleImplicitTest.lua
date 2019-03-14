@@ -1,4 +1,4 @@
---- Tests for the subject module
+--- Tests for the subject module.
 -- This testset is only run when the Pickle extension is set up for implicit style.
 -- @license GNU GPL v2+
 -- @author John Erling Blad < jeblad@gmail.com >

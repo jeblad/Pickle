@@ -1,25 +1,32 @@
+--- Register functions for the testing framework.
+-- @module Pickle
+
 -- accesspoints for the boilerplate
 local php		-- luacheck: ignore
 local options	-- luacheck: ignore
 
 -- @var structure for storage of the lib
-local pickle = {}
-pickle._types = {}
-pickle._styles = {}
-pickle._extractors = {}
+local pickle = {
+	_types = {},		-- holds type methods
+	_styles = {},		-- holds style methods
+	_extractors = {},	-- holds extractor methods
+}
 
---- Register spies
+--- Register spies.
 -- This needs a valid environment, for example from getfenv()
--- @param table environment
+-- @param env table for the environment
+-- @param reports ref to objects holding set of reports
 local function registerSpies( env, reports )
 	assert( env )
 
 	-- require libs
 	local Spy = require 'picklelib/engine/Spy'
 
-	--- Carp, warn called due to a possible error condition
+	--- Carp, warn called due to a possible error condition.
 	-- Print a message without exiting, with caller's name and arguments.
-	-- @param string message to be passed on
+	-- @function carp
+	-- @param str message to be passed on
+	-- @return Spy
 	env.carp = function( str )
 		local obj = Spy.create():setReports( reports )
 		obj:todo( 'todo', 'pickle-spies-carp-todo', str ) -- @todo not sure why this must use 'obj'
@@ -27,9 +34,11 @@ local function registerSpies( env, reports )
 		return obj
 	end
 
-	--- Cluck, warn called due to a possible error condition, with a stack backtrace
+	--- Cluck, warn called due to a possible error condition, with a stack backtrace.
 	-- Print a message without exiting, with caller's name and arguments, and a stack trace.
-	-- @param string message to be passed on
+	-- @function cluck
+	-- @param str message to be passed on
+	-- @return Spy
 	env.cluck = function( str )
 		local obj = Spy.create():setReports( reports )
 		obj:todo( 'pickle-spies-cluck-todo', str )
@@ -38,10 +47,12 @@ local function registerSpies( env, reports )
 		return obj
 	end
 
-	--- Croak, die called due to a possible error condition
+	--- Croak, die called due to a possible error condition.
 	-- Print a message then exits, with caller's name and arguments.
-	-- @exception error called unconditionally
-	-- @param string message to be passed on
+	-- @function croak
+	-- @raise error called unconditionally
+	-- @param str message to be passed on
+	-- @return Spy
 	env.croak = function( str )
 		local obj = Spy.create():setReports( reports )
 		obj:skip( 'pickle-spies-croak-skip', str )
@@ -50,10 +61,12 @@ local function registerSpies( env, reports )
 		return obj
 	end
 
-	--- Confess, die called due to a possible error condition, with a stack backtrace
+	--- Confess, die called due to a possible error condition, with a stack backtrace.
 	-- Print a message then exits, with caller's name and arguments, and a stack trace.
-	-- @exception error called unconditionally
-	-- @param string message to be passed on
+	-- @function confess
+	-- @raise error called unconditionally
+	-- @param str message to be passed on
+	-- @return Spy
 	env.confess = function( str )
 		local obj = Spy.create():setReports( reports )
 		obj:skip( 'pickle-spies-confess-skip', str )
@@ -64,31 +77,35 @@ local function registerSpies( env, reports )
 	end
 end
 
---- Register comments
+--- Register comments.
 -- This needs a valid environment, for example from getfenv()
--- @param table environment
+-- @param env table for the environment
+-- @param reports ref to objects holding set of reports
 local function registerComments( env, reports )
 	assert( env )
 
-	--- skip, comment on the current reports
+	--- skip, comment on the current reports.
 	-- This will not terminate current run.
-	-- @param string message to be passed on
+	-- @function skip
+	-- @param str message to be passed on
 	env.skip = function( str )
 		reports:top():setSkip( str
 			or mw.message.new( 'pickle-report-frame-skip-no-description' ):plain() )
 	end
 
-	--- todo, comment on the current reports
-	-- @param string message to be passed on
+	--- todo, comment on the current reports.
+	-- @function todo
+	-- @param str message to be passed on
 	env.todo = function( str )
 		reports:top():setTodo( str
 			or mw.message.new( 'pickle-report-frame-todo-no-description' ):plain() )
 	end
 end
 
---- Register reports
+--- Register reports.
 -- This needs a valid environment, for example from getfenv()
--- @param table environment
+-- @param env table for the environment
+-- @return Stack of reports
 local function registerReports( env )
 	assert( env )
 
@@ -99,9 +116,10 @@ local function registerReports( env )
 	return reports
 end
 
---- Register renders
+--- Register renders.
 -- This needs a valid environment, for example from getfenv()
--- @param table environment
+-- @param env table for the environment
+-- @return Renders
 local function registerRenders( env )
 	assert( env )
 
@@ -122,7 +140,8 @@ local function registerRenders( env )
 	return renders
 end
 
---- Register extractors
+--- Register extractors.
+-- @return ExtractorStrategies
 local function registerExtractors()
 
 	-- require libs
@@ -136,7 +155,9 @@ local function registerExtractors()
 	return extractors
 end
 
---- Register translators
+--- Register translators.
+-- @param subpage name of page
+-- @return TranslatorStrategies
 local function registerTranslators( subpage )
 	assert( subpage )
 
@@ -159,7 +180,9 @@ local function registerTranslators( subpage )
 	return translators
 end
 
---- Register adaptations
+--- Register adaptations.
+-- @param env table for the environment
+-- @param reports ref to objects holding set of reports
 local function registerAdaptations( env, reports )
 	assert( env )
 
@@ -168,12 +191,13 @@ local function registerAdaptations( env, reports )
 	local expects = require( 'picklelib/Stack' ).create()
 	local subjects = require( 'picklelib/Stack' ).create()
 
-	--- Expect whatever to be compared to the subject
+	--- Expect whatever to be compared to the subject.
 	-- The expected value is the assumed outcome,
 	-- or something that can be transformed into the
 	-- assumed outcome.
-	-- @param vararg passed on to Adapt.create
-	-- @return self newly created object
+	-- @function expect
+	-- @param ... varargs passed on to Adapt.create
+	-- @return Adapt
 	env.expect = function( ... )
 		local obj = Adapt.create( ... )
 			:setReports( reports )
@@ -181,11 +205,12 @@ local function registerAdaptations( env, reports )
 		return obj
 	end
 
-	--- Subject of whatever to be compared to the expected
+	--- Subject of whatever to be compared to the expected.
 	-- The subject is whatever object we want to test,
 	-- usually the returned table for a module.
-	-- @param vararg passed on to Adapt.create
-	-- @return self newly created object
+	-- @function subject
+	-- @param ... varargs passed on to Adapt.create
+	-- @return Adapt
 	env.subject = function( ... )
 		local obj = Adapt.create( ... )
 			:setReports( reports )
@@ -199,21 +224,23 @@ end
 -- @var metatable for the library
 local mt = { types = {} }
 
---- Install the library
+--- Install the library.
 -- This install all dependencies and changes the environment
--- @return self
+-- @function mw.pickle.__call
+-- @param env table for the environment
+-- @treturn self
 function mt:__call( env ) -- luacheck: ignore
-
+	-- @todo
 end
 
 setmetatable( pickle, mt )
 
---- Describe the test
+--- Describe the test.
 -- This act as an alias for the normal describe,
 -- which is not available.
 -- This does implicitt setup.
--- @param vararg passed on to Adapt.create
--- @return self newly created object
+-- @param ... varargs passed on to Frame:dispatch
+-- @treturn self newly created object
 function pickle.implicitDescribe( ... )
 
 	-- only require libs
@@ -233,12 +260,13 @@ function pickle.implicitDescribe( ... )
 	local translators = registerTranslators( mw.pickle._translationSubpage )	-- luacheck: ignore
 	local expects, subjects = registerAdaptations( env, reports )	-- luacheck: ignore
 
-	--- Context for the test
+	--- Context for the test.
 	-- This is usually used for creating some additional context
 	-- before the actual testing. An alternate would be to use
 	-- 'before' and 'after' functions.
-	-- @param vararg passed on to Adapt.create
-	-- @return self newly created object
+	-- @function context
+	-- @param ... varargs passed on to Frame:dispatch
+	-- @return Frame
 	env.context = function( ... )
 		local obj = Frame.create()
 			:setExtractors( extractors )
@@ -248,9 +276,9 @@ function pickle.implicitDescribe( ... )
 		return obj
 	end
 
-	--- It is the actual test for each metod
-	-- @param vararg passed on to Adapt.create
-	-- @return self newly created object
+	--- It is the actual test for each metod.
+	-- @tparam vararg ... passed on to Adapt.create
+	-- @treturn self newly created object
 	env.it = env.context
 
 	registerSpies( env, reports )
@@ -264,7 +292,7 @@ function pickle.implicitDescribe( ... )
 		:setExtractors( extractors )
 		:dispatch( ... )
 
-	--- Eval the fixtures over previous dispatched strings
+	--- Eval the fixtures over previous dispatched strings.
 	-- This has two different call forms. The first is the usual form with a single
 	-- frame object. This is used if the function is called by "invoke". The other
 	-- form use the same "style" and "language" form, but as arguments. This makes
@@ -321,7 +349,7 @@ function pickle.implicitDescribe( ... )
 	return obj
 end
 
---- install the module in the global space
+--- install the module in the global space.
 function pickle.setupInterface( opts )
 
 	-- boilerplate
