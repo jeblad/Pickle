@@ -51,8 +51,9 @@ class CategoryFactoryTest extends StrategiesTestCase {
 	 * @dataProvider provideFind
 	 */
 	public function testFind( $expect, $name ) {
-		$title = $this->getMockBuilder( '\Title' )
-			->getMock();
+		// @todo cleanup later on…
+		// $title = $this->getMockBuilder( '\Title' )
+		//	->getMock();
 
 		$test = CategoryFactory::getInstance();
 		$test->register(
@@ -66,7 +67,7 @@ class CategoryFactoryTest extends StrategiesTestCase {
 				'class' => 'Pickle\CategoryDefault'
 			]
 		);
-		$Strategy = $test->find( $name );
-		$this->assertEquals( $expect, get_class( $Strategy ) );
+		$strategy = $test->find( $name );
+		$this->assertEquals( $expect, get_class( $strategy ) );
 	}
 }

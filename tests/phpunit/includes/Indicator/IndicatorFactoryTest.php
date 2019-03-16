@@ -51,8 +51,9 @@ class IndicatorFactoryTest extends StrategiesTestCase {
 	 * @dataProvider provideFind
 	 */
 	public function testFind( $expect, $name ) {
-		$title = $this->getMockBuilder( '\Title' )
-			->getMock();
+		// @todo cleanup later on…
+		// $title = $this->getMockBuilder( '\Title' )
+		//	->getMock();
 
 		$test = IndicatorFactory::getInstance();
 		$test->register(

@@ -51,8 +51,9 @@ class LogEntryFactoryTest extends StrategiesTestCase {
 	 * @dataProvider provideFind
 	 */
 	public function testFind( $expect, $name ) {
-		$title = $this->getMockBuilder( '\Title' )
-			->getMock();
+		// @todo cleanup later on…
+		// $title = $this->getMockBuilder( '\Title' )
+		//	->getMock();
 
 		$test = LogEntryFactory::getInstance();
 		$test->register(
@@ -66,7 +67,7 @@ class LogEntryFactoryTest extends StrategiesTestCase {
 				'class' => 'Pickle\LogEntryDefault'
 			]
 		);
-		$Strategy = $test->find( $name );
-		$this->assertEquals( $expect, get_class( $Strategy ) );
+		$strategy = $test->find( $name );
+		$this->assertEquals( $expect, get_class( $strategy ) );
 	}
 }
