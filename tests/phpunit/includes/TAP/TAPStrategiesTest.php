@@ -71,9 +71,9 @@ class TAPStrategiesTest extends StrategiesTestCase {
 		$parser = $test->find( $str );
 		if ( $name === null ) {
 			$this->assertNull( $parser );
-		} else {
-			$this->assertEquals( $name, $parser->getName() );
-			$this->assertEquals( $expect, $parser->parse( $str ) );
+			return;
 		}
+		$this->assertEquals( $name, $parser->getName() );
+		$this->assertEquals( $expect, $parser->parse( $str ) );
 	}
 }
