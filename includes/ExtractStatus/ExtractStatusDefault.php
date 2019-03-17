@@ -2,8 +2,6 @@
 
 namespace Pickle;
 
-use \Pickle\ExtractStatus;
-
 /**
  * Concrete strategy to extract stratus
  * Encapsulates a default extract status as a strategy. The default extract strategy is used when

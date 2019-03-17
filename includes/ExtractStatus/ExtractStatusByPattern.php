@@ -2,8 +2,6 @@
 
 namespace Pickle;
 
-use \Pickle\ExtractStatus;
-
 /**
  * Concrete strategy to extract status
  * Encapsulates an extract status as a strategy. This extract status is used when a matching
