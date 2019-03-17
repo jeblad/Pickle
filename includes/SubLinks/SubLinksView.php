@@ -12,7 +12,7 @@ class SubLinksView implements ISubLinksView {
 	/**
 	 * @see \Pickle\ISubLinksView::makeLink()
 	 * @param \Title $title link destination
-	 * @param any $lang representing the language
+	 * @param any|null $lang representing the language
 	 * @return Html|null
 	 */
 	public static function makeLink( \Title $title, $lang = null ) {
