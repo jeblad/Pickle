@@ -1,37 +1,36 @@
---- Subclass for frame report renderer.
+--- Final class for frame report renderer.
 -- @classmod FrameVividRender
--- @alias FrameRender
+-- @alias Render
 
 -- pure libs
-local Base = require 'picklelib/render/FrameRender'
+local Super = require 'picklelib/render/FrameRender'
 
 -- @var class var for lib
-local FrameRender = {}
+local Render = {}
 
 --- Lookup of missing class members.
 -- @tparam string key used for lookup of member
 -- @return any
-function FrameRender:__index( key ) -- luacheck: no self
-	return FrameRender[key]
+function Render:__index( key ) -- luacheck: no self
+	return Render[key]
 end
 
 -- @var metatable for the class
-setmetatable( FrameRender, { __index = Base } )
+setmetatable( Render, { __index = Super } )
 
 --- Create a new instance.
+-- @see RenderBase:create
 -- @tparam vararg ... unused
--- @return self
-function FrameRender.create( ... )
-	local self = setmetatable( {}, FrameRender )
-	self:_init( ... )
-	return self
+-- @treturn FrameVividRender|any
+function Render:create( ... )
+	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
 -- @local
 -- @tparam vararg ... unused
--- @treturn self
-function FrameRender:_init( ... ) -- luacheck: no unused args
+-- @return self
+function Render:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
@@ -39,7 +38,7 @@ end
 -- @tparam any head to act as the head
 -- @tparam any tail to act as the tail
 -- @treturn self
-function FrameRender:append( head, tail ) -- luacheck: no self
+function Render:append( head, tail ) -- luacheck: no self
 	assert( head )
 	assert( tail )
 	head:node( tail )
@@ -51,7 +50,7 @@ end
 -- @tparam string lang code used for realization
 -- @tparam Counter counter holding the running count
 -- @treturn html
-function FrameRender:realizeState( src, lang, counter )
+function Render:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -61,7 +60,7 @@ function FrameRender:realizeState( src, lang, counter )
 		html:attr( 'lang', lang )
 	end
 
-	html:wikitext( Base.realizeState( self, src, lang, counter ) )
+	html:wikitext( Super.realizeState( self, src, lang, counter ) )
 
 	return html
 end
@@ -70,7 +69,7 @@ end
 -- @tparam Report src that shall be realized
 -- @tparam string lang code used for realization
 -- @treturn html
-function FrameRender:realizeSkip( src, lang )
+function Render:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -80,7 +79,7 @@ function FrameRender:realizeSkip( src, lang )
 		html:attr( 'lang', lang )
 	end
 
-	html:wikitext( Base.realizeSkip( self, src, lang ) )
+	html:wikitext( Super.realizeSkip( self, src, lang ) )
 
 	return html
 end
@@ -89,7 +88,7 @@ end
 -- @tparam Report src that shall be realized
 -- @tparam string lang code used for realization
 -- @treturn html
-function FrameRender:realizeTodo( src, lang )
+function Render:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -99,7 +98,7 @@ function FrameRender:realizeTodo( src, lang )
 		html:attr( 'lang', lang )
 	end
 
-	html:wikitext( Base.realizeTodo( self, src, lang ) )
+	html:wikitext( Super.realizeTodo( self, src, lang ) )
 
 	return html
 end
@@ -108,7 +107,7 @@ end
 -- @tparam Report src that shall be realized
 -- @tparam string lang code used for realization
 -- @treturn html
-function FrameRender:realizeDescription( src, lang )
+function Render:realizeDescription( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -118,7 +117,7 @@ function FrameRender:realizeDescription( src, lang )
 		html:attr( 'lang', lang )
 	end
 
-	html:wikitext( Base.realizeDescription( self, src, lang ) )
+	html:wikitext( Super.realizeDescription( self, src, lang ) )
 
 	return html
 end
@@ -129,7 +128,7 @@ end
 -- @tparam string lang code used for realization
 -- @tparam Counter counter holding the running count
 -- @treturn html
-function FrameRender:realizeHeader( src, lang, counter )
+function Render:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'div' )
@@ -157,4 +156,4 @@ function FrameRender:realizeHeader( src, lang, counter )
 end
 
 -- Return the final class.
-return FrameRender
+return Render

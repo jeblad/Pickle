@@ -1,45 +1,45 @@
---- Baseclass for report renderer.
+--- Intermediate class for report renderer.
 -- @classmod AdaptRender
+-- @alias Render
 
 -- non-pure libs
-local Base = require 'picklelib/render/RenderBase'
+local Super = require 'picklelib/render/RenderBase'
 
 -- @var class var for lib
-local AdaptRender = {}
+local Render = {}
 
 --- Lookup of missing class members.
 -- @tparam string key used for lookup of member
 -- @return any
-function AdaptRender:__index( key ) -- luacheck: no self
-	return AdaptRender[key]
+function Render:__index( key ) -- luacheck: no self
+	return Render[key]
 end
 
 -- @var metatable for the class
-setmetatable( AdaptRender, { __index = Base } )
+setmetatable( Render, { __index = Super } )
 
 --- Create a new instance.
+-- @see RenderBase:create
 -- @tparam vararg ... unused
--- @return AdaptRender
-function AdaptRender.create( ... )
-	local self = setmetatable( {}, AdaptRender )
-	self:_init( ... )
-	return self
+-- @treturn AdaptRender|any
+function Render:create( ... )
+	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
 -- @local
 -- @tparam vararg ... unused
--- @treturn self
-function AdaptRender:_init( ... ) -- luacheck: no unused args
-	Base._init( self, ... )
+-- @return self
+function Render:_init( ... ) -- luacheck: no unused args
+	Super._init( self, ... )
 	return self
 end
 
 --- Override key construction.
 -- @tparam string str to be appended to a base string
 -- @treturn string
-function AdaptRender:key( str )
-	Base._init( self, str )
+function Render:key( str )
+	Super._init( self, str )
 	return 'pickle-report-adapt-' .. str
 end
 
@@ -48,7 +48,7 @@ end
 -- @tparam string lang code used for realization
 -- @tparam Counter counter holding the running count
 -- @treturn string
-function AdaptRender:realizeState( src, lang, counter )
+function Render:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	return self:realizeClarification( src:isOk() and 'is-ok' or 'is-not-ok', lang, counter )
@@ -60,7 +60,7 @@ end
 -- @tparam string lang code used for realization
 -- @tparam Counter counter holding the running count
 -- @treturn string
-function AdaptRender:realizeHeader( src, lang, counter )
+function Render:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	local t = { self:realizeState( src, lang, counter ) }
@@ -82,7 +82,7 @@ end
 -- @tparam any param that shall be realized
 -- @tparam string lang code used for realization
 -- @treturn string
-function AdaptRender:realizeLine( param, lang ) -- luacheck: no self
+function Render:realizeLine( param, lang ) -- luacheck: no self
 	assert( param, 'Failed to provide a parameter' )
 
 	local line = mw.message.new( unpack( param ) )
@@ -103,7 +103,7 @@ end
 -- @tparam Report src that shall be realized
 -- @tparam string lang code used for realization
 -- @treturn string
-function AdaptRender:realizeBody( src, lang )
+function Render:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local t = {}
@@ -116,4 +116,4 @@ function AdaptRender:realizeBody( src, lang )
 end
 
 -- Return the final class.
-return AdaptRender
+return Render

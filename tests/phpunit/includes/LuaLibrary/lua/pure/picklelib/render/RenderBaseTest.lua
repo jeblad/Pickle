@@ -16,7 +16,7 @@ local counter = require 'picklelib/Counter'
 assert( counter )
 
 local function makeTest( ... )
-	return lib.create( ... )
+	return lib:create( ... )
 end
 
 local function testExists()

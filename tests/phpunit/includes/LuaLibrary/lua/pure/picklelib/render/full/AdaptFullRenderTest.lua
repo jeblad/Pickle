@@ -15,7 +15,7 @@ local fix = require 'picklelib/report/AdaptReport'
 assert( fix )
 
 local function makeTest( ... )
-	return lib.create( ... )
+	return lib:create( ... )
 end
 
 local function testExists()

@@ -1,5 +1,6 @@
 --- Baseclass for renders.
--- @classmod Render
+-- @classmod RenderBase
+-- @alias Render
 
 -- @var class var for lib
 local Render = {}
@@ -12,18 +13,21 @@ function Render:__index( key ) -- luacheck: no self
 end
 
 --- Create a new instance.
+-- Assumption is either to create a new instance from an existing class,
+-- or from a previous instance of some kind.
 -- @tparam vararg ... unused
--- @return self
-function Render.create( ... )
-	local self = setmetatable( {}, Render )
-	self:_init( ... )
-	return self
+-- @treturn RenderBase|any
+function Render:create( ... )
+	local meta = rawget( self, 'create' ) and self or getmetatable( self )
+	local new = setmetatable( {}, meta )
+	new:_init( ... )
+	return new
 end
 
 --- Initialize a new instance.
 -- @local
 -- @tparam vararg ... unused
--- @treturn self
+-- @return self
 function Render:_init( ... ) -- luacheck: no unused args
 	self._type = 'base-render'
 	return self

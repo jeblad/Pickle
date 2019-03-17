@@ -1,4 +1,4 @@
--- Class for render strategies
+--- Class for render strategies.
 -- @classmod Renders
 
 -- @var class var for lib

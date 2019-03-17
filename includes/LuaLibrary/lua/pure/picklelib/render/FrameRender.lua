@@ -1,45 +1,45 @@
---- Baseclass for frame report renderer.
+--- Intermediate class for frame report renderer.
 -- @classmod FrameRender
+-- @alias Render
 
 -- non-pure libs
-local Base = require 'picklelib/render/RenderBase'
+local Super = require 'picklelib/render/RenderBase'
 
 -- @var class var for lib
-local FrameRender = {}
+local Render = {}
 
 --- Lookup of missing class members.
 -- @tparam string key used for lookup of member
 -- @return any
-function FrameRender:__index( key ) -- luacheck: no self
-	return FrameRender[key]
+function Render:__index( key ) -- luacheck: no self
+	return Render[key]
 end
 
 -- @var metatable for the class
-setmetatable( FrameRender, { __index = Base } )
+setmetatable( Render, { __index = Super } )
 
 --- Create a new instance.
+-- @see RenderBase:create
 -- @tparam vararg ... unused
--- @return FrameRender
-function FrameRender.create( ... )
-	local self = setmetatable( {}, FrameRender )
-	self:_init( ... )
-	return self
+-- @treturn FrameRender|any
+function Render:create( ... )
+	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
 -- @local
 -- @tparam vararg ... unused
--- @return FrameRender
-function FrameRender:_init( ... ) -- luacheck: no unused args
-	Base._init( self, ... )
+-- @return self
+function Render:_init( ... ) -- luacheck: no unused args
+	Super._init( self, ... )
 	return self
 end
 
 --- Override key construction.
 -- @tparam string str to be appended to a base string
 -- @treturn string
-function FrameRender:key( str )
-	Base._init( self, str )
+function Render:key( str )
+	Super._init( self, str )
 	return 'pickle-report-frame-' .. str
 end
 
@@ -48,7 +48,7 @@ end
 -- @tparam string lang code used for realization
 -- @tparam Counter counter holding the running count
 -- @treturn string
-function FrameRender:realizeState( src, lang, counter )
+function Render:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	return self:realizeClarification( src:isOk() and 'is-ok' or 'is-not-ok', lang, counter )
@@ -59,7 +59,7 @@ end
 -- @tparam Report src that shall be realized
 -- @tparam string lang code used for realization
 -- @treturn string
-function FrameRender:realizeSkip( src, lang )
+function Render:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	return self:realizeComment( src, 'skip', lang )
@@ -70,7 +70,7 @@ end
 -- @tparam Report src that shall be realized
 -- @tparam string lang code used for realization
 -- @treturn string
-function FrameRender:realizeTodo( src, lang )
+function Render:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	return self:realizeComment( src, 'todo', lang )
@@ -81,7 +81,7 @@ end
 -- @tparam Report src that shall be realized
 -- @tparam string lang code used for realization
 -- @treturn string
-function FrameRender:realizeDescription( src, lang ) -- luacheck: no unused args
+function Render:realizeDescription( src, lang ) -- luacheck: no unused args
 	assert( src, 'Failed to provide a source' )
 
 	if not src:hasDescription() then
@@ -97,7 +97,7 @@ end
 -- @tparam string lang code used for realization
 -- @tparam Counter counter holding the running count
 -- @treturn string
-function FrameRender:realizeHeader( src, lang, counter )
+function Render:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	local t = { self:realizeState( src, lang, counter ) }
@@ -124,7 +124,7 @@ end
 -- @tparam Report src that shall be realized
 -- @tparam string lang code used for realization
 -- @treturn string
-function FrameRender:realizeBody( src, lang ) -- luacheck: ignore self lang
+function Render:realizeBody( src, lang ) -- luacheck: ignore self lang
 	assert( src, 'Failed to provide a source' )
 
 	local t = {}
@@ -134,8 +134,8 @@ function FrameRender:realizeBody( src, lang ) -- luacheck: ignore self lang
 		table.insert( t, self:realize( v, lang ) )
 	end
 ]]
-	return #t == 0 and '' or ( "\n"  .. table.concat( t, "\n" ) )
+	return #t == 0 and '' or ( "\n" .. table.concat( t, "\n" ) )
 end
 
 -- Return the final class.
-return FrameRender
+return Render

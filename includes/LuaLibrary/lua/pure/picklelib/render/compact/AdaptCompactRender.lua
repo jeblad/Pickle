@@ -1,37 +1,36 @@
---- Subclass for compact report renderer.
+--- Final class for compact report renderer.
 -- @classmod AdaptCompactRender
--- @alias AdaptRender
+-- @alias Render
 
 -- pure libs
-local Base = require 'picklelib/render/AdaptRender'
+local Super = require 'picklelib/render/AdaptRender'
 
 -- @var class var for lib
-local AdaptRender = {}
+local Render = {}
 
 --- Lookup of missing class members.
 -- @tparam string key used for lookup of member
 -- @return any
-function AdaptRender:__index( key ) -- luacheck: no self
-	return AdaptRender[key]
+function Render:__index( key ) -- luacheck: no self
+	return Render[key]
 end
 
 -- @var metatable for the class
-setmetatable( AdaptRender, { __index = Base } )
+setmetatable( Render, { __index = Super } )
 
 --- Create a new instance.
+-- @see RenderBase:create
 -- @tparam vararg ... unused
--- @return AdaptRender
-function AdaptRender.create( ... )
-	local self = setmetatable( {}, AdaptRender )
-	self:_init( ... )
-	return self
+-- @treturn AdaptCompactRender|any
+function Render:create( ... )
+	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
 -- @local
 -- @tparam vararg ... unused
--- @return AdaptRender
-function AdaptRender:_init( ... ) -- luacheck: no unused args
+-- @return self
+function Render:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
@@ -40,7 +39,7 @@ end
 -- @tparam Report src that shall be realized
 -- @tparam string lang code used for realization
 -- @treturn string
-function AdaptRender:realizeBody( src, lang )
+function Render:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	if src:isOk() then
@@ -59,4 +58,4 @@ function AdaptRender:realizeBody( src, lang )
 end
 
 -- Return the final class.
-return AdaptRender
+return Render

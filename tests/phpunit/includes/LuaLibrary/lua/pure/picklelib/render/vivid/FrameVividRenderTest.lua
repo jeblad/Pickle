@@ -14,7 +14,7 @@ local fix = require 'picklelib/report/FrameReport'
 assert( fix )
 
 local function makeTest( ... )
-	return lib.create( ... )
+	return lib:create( ... )
 end
 
 local function testExists()
