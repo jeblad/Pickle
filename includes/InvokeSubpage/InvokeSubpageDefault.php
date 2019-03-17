@@ -2,8 +2,6 @@
 
 namespace Pickle;
 
-use \Pickle\InvokeSubpage;
-
 /**
  * Concrete strategy to invoke subpage
  * Encapsulates a default invoke subpage as a strategy. The default invoke subpage is used when
@@ -41,7 +39,7 @@ class InvokeSubpageDefault extends InvokeSubpage {
 	/**
 	 * @see \Pickle\InvokeSubpage::checkSubpageType()
 	 * @param \Title &$title to be used as source
-	 * @param bool $type of content model (optional)
+	 * @param bool|type $type of content model (optional)
 	 * @return true
 	 */
 	public function checkSubpageType( \Title &$title, $type = null ) {

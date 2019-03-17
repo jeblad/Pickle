@@ -2,8 +2,6 @@
 
 namespace Pickle;
 
-use \Pickle\InvokeSubpage;
-
 /**
  * Concrete strategy to invoke subpage
  * Encapsulates an invoke subpage as a strategy. This invoke subpage is used when a matching
@@ -40,7 +38,7 @@ class InvokeSubpageByContentType extends InvokeSubpage {
 	/**
 	 * @see \Pickle\InvokeSubpage::checkSubpageType()
 	 * @param \Title &$title to be used as source
-	 * @param bool $type of content model (optional)
+	 * @param bool|null $type of content model (optional)
 	 * @return bool
 	 */
 	public function checkSubpageType( \Title &$title, $type = null ) {
