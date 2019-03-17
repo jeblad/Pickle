@@ -30,7 +30,7 @@ class Strategies implements IStrategies {
 	 * Get the instance and if necessary initialize the strategy
 	 * This does an injection of the class name to make it possible to instantiate a subclass.
 	 *
-	 * @param any $className holding the name of the class (optional)
+	 * @param any|null $className holding the name of the class (optional)
 	 * @return any|null
 	 */
 	public static function getInstance( $className = null ) {
@@ -53,7 +53,7 @@ class Strategies implements IStrategies {
 
 	/**
 	 * @see \Pickle\IStrategy::import()
-	 * @param array $arr holding the new strategies (optional)
+	 * @param array|null $arr holding the new strategies (optional)
 	 * @return array
 	 */
 	public function import( array $arr = null ) {

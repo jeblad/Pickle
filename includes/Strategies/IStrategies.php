@@ -23,7 +23,7 @@ interface IStrategies {
 	 * The imported structure should be treated as oblique.
 	 * Should only be used during test!
 	 *
-	 * @param array $arr holding the new strategies (optional)
+	 * @param array|null $arr holding the new strategies (optional)
 	 */
 	public function import( array $arr = null );
 
