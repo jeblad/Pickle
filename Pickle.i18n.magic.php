@@ -2,7 +2,7 @@
 /**
  * Internationalization file for the Pickle extension.
  *
- * @licence GPL-2.0-or-later
+ * @license GPL-2.0-or-later
  * @author John Erling Blad < jeblad@gmail.com >
  */
 
