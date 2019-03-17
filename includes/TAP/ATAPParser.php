@@ -226,7 +226,7 @@ abstract class ATAPParser {
 	 * Extract the interesting lines from a TAP13-report
 	 * @param string $str result to be split and filtered
 	 * @return array of extracted lines
-	*/
+	 */
 	protected static function extract( $str ) {
 		$lines = preg_split( '/[\n\r]/', $str );
 		return array_filter( $lines, function ( $line ) {

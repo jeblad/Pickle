@@ -2,8 +2,6 @@
 
 namespace Pickle;
 
-use \Pickle\ATAPParser;
-
 /**
  * Squash a tap into its final form
  * Encapsulates a common TAP parser as an adapter. The common TAP parser is used when recognized

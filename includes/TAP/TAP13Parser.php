@@ -2,8 +2,6 @@
 
 namespace Pickle;
 
-use \Pickle\ATAPParser;
-
 /**
  * Squash a tap into its final form
  * This is version 13 of tap, with its tiny changes.
