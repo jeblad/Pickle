@@ -44,7 +44,7 @@
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
-  <li><strong>ExtractorStrategies</strong></li>
+  <li><a href="../classes/ExtractorStrategies.html">ExtractorStrategies</a></li>
   <li><a href="../classes/ExtractorStrategyBase.html">ExtractorStrategyBase</a></li>
   <li><a href="../classes/FalseExtractorStrategy.html">FalseExtractorStrategy</a></li>
   <li><a href="../classes/JsonExtractorStrategy.html">JsonExtractorStrategy</a></li>
@@ -58,7 +58,7 @@
   <li><a href="../classes/Renders.html">Renders</a></li>
   <li><a href="../classes/AdaptCompactRender.html">AdaptCompactRender</a></li>
   <li><a href="../classes/FrameCompactRender.html">FrameCompactRender</a></li>
-  <li><a href="../classes/AdaptFullRender.html">AdaptFullRender</a></li>
+  <li><strong>AdaptFullRender</strong></li>
   <li><a href="../classes/FrameFullRender.html">FrameFullRender</a></li>
   <li><a href="../classes/AdaptVividRender.html">AdaptVividRender</a></li>
   <li><a href="../classes/FrameVividRender.html">FrameVividRender</a></li>
@@ -82,39 +82,25 @@
 
 <div id="content">
 
-<h1>Class <code>ExtractorStrategies</code></h1>
-<p>Baseclass for extractor strategies.</p>
-<p> This should be a strategy pattern</p>
+<h1>Class <code>AdaptFullRender</code></h1>
+<p>Final class for full report renderer.</p>
+<p>
+
+</p>
 
 
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#ExtractorStrategies:__index">ExtractorStrategies:__index (key)</a></td>
+	<td class="name" nowrap><a href="#AdaptFullRender:__index">AdaptFullRender:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#ExtractorStrategies:create">ExtractorStrategies:create (...)</a></td>
+	<td class="name" nowrap><a href="#AdaptFullRender:create">AdaptFullRender:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#ExtractorStrategies:register">ExtractorStrategies:register (strategy)</a></td>
-	<td class="summary">Register a new strategy.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#ExtractorStrategies:flush">ExtractorStrategies:flush ()</a></td>
-	<td class="summary">Removes all registered extractors.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#ExtractorStrategies:num">ExtractorStrategies:num ()</a></td>
-	<td class="summary">The number of registered extractors.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#ExtractorStrategies:find">ExtractorStrategies:find (str, pos)</a></td>
-	<td class="summary">Find a matching extractor.</td>
 	</tr>
 </table>
 
@@ -126,8 +112,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "ExtractorStrategies:__index"></a>
-    <strong>ExtractorStrategies:__index (key)</strong>
+    <a name = "AdaptFullRender:__index"></a>
+    <strong>AdaptFullRender:__index (key)</strong>
     </dt>
     <dd>
     Lookup of missing class members.
@@ -156,8 +142,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "ExtractorStrategies:create"></a>
-    <strong>ExtractorStrategies:create (...)</strong>
+    <a name = "AdaptFullRender:create"></a>
+    <strong>AdaptFullRender:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
@@ -167,127 +153,24 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         list of strategies
+         unused
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">self</span></span>
+           <span class="types"><a class="type" href="../classes/AdaptFullRender.html#">AdaptFullRender</a> or <span class="type">any</span></span>
 
 
 
     </ol>
 
 
-
-
-</dd>
-    <dt>
-    <a name = "ExtractorStrategies:register"></a>
-    <strong>ExtractorStrategies:register (strategy)</strong>
-    </dt>
-    <dd>
-    Register a new strategy.
-
-
-    <h3>Parameters:</h3>
+    <h3>See also:</h3>
     <ul>
-        <li><span class="parameter">strategy</span>
-         to be registered
-        </li>
+         <a href="../classes/RenderBase.html#RenderBase:create">RenderBase:create</a>
     </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">self</span></span>
-
-
-
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "ExtractorStrategies:flush"></a>
-    <strong>ExtractorStrategies:flush ()</strong>
-    </dt>
-    <dd>
-    Removes all registered extractors.
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">self</span></span>
-
-
-
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "ExtractorStrategies:num"></a>
-    <strong>ExtractorStrategies:num ()</strong>
-    </dt>
-    <dd>
-    The number of registered extractors.
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">number</span></span>
-
-
-
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "ExtractorStrategies:find"></a>
-    <strong>ExtractorStrategies:find (str, pos)</strong>
-    </dt>
-    <dd>
-    Find a matching extractor.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">str</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         used as the extraction source
-        </li>
-        <li><span class="parameter">pos</span>
-            <span class="types"><span class="type">number</span></span>
-         for an inclusive index where extraction starts
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">strategy,first,last</span></span>
-
-
-
-    </ol>
-
-    <h3>Raises:</h3>
-    On missing source
-
 
 
 </dd>

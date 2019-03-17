@@ -54,10 +54,11 @@
   <li><a href="../classes/TrueExtractorStrategy.html">TrueExtractorStrategy</a></li>
   <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
   <li><a href="../classes/FrameRender.html">FrameRender</a></li>
-  <li><strong>Render</strong></li>
+  <li><strong>RenderBase</strong></li>
+  <li><a href="../classes/Renders.html">Renders</a></li>
   <li><a href="../classes/AdaptCompactRender.html">AdaptCompactRender</a></li>
   <li><a href="../classes/FrameCompactRender.html">FrameCompactRender</a></li>
-  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
+  <li><a href="../classes/AdaptFullRender.html">AdaptFullRender</a></li>
   <li><a href="../classes/FrameFullRender.html">FrameFullRender</a></li>
   <li><a href="../classes/AdaptVividRender.html">AdaptVividRender</a></li>
   <li><a href="../classes/FrameVividRender.html">FrameVividRender</a></li>
@@ -70,8 +71,7 @@
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/Pickle.html">Pickle</a></li>
-  <li><a href="../modules/pure.picklelib.render.Renders.html">pure.picklelib.render.Renders</a></li>
-  <li><a href="../modules/pure.picklelib.util.html">pure.picklelib.util</a></li>
+  <li><a href="../modules/util.html">util</a></li>
 </ul>
 <h2>Topics</h2>
 <ul class="">
@@ -82,7 +82,7 @@
 
 <div id="content">
 
-<h1>Class <code>Render</code></h1>
+<h1>Class <code>RenderBase</code></h1>
 <p>Baseclass for renders.</p>
 <p>
 
@@ -92,34 +92,34 @@
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Render:__index">Render:__index (key)</a></td>
+	<td class="name" nowrap><a href="#RenderBase:__index">RenderBase:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Render:create">Render:create (...)</a></td>
+	<td class="name" nowrap><a href="#RenderBase:create">RenderBase:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Render:key">Render:key (str)</a></td>
+	<td class="name" nowrap><a href="#RenderBase:key">RenderBase:key (str)</a></td>
 	<td class="summary">Override key construction.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Render:type">Render:type ()</a></td>
+	<td class="name" nowrap><a href="#RenderBase:type">RenderBase:type ()</a></td>
 	<td class="summary">Get the type of report.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Render:append">Render:append (head, tail)</a></td>
+	<td class="name" nowrap><a href="#RenderBase:append">RenderBase:append (head, tail)</a></td>
 	<td class="summary">Append same type to first.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Render:realizeClarification">Render:realizeClarification (keyPart, lang, counter)</a></td>
+	<td class="name" nowrap><a href="#RenderBase:realizeClarification">RenderBase:realizeClarification (keyPart, lang, counter)</a></td>
 	<td class="summary">Realize clarification.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Render:realizeComment">Render:realizeComment (src, keyPart, lang)</a></td>
+	<td class="name" nowrap><a href="#RenderBase:realizeComment">RenderBase:realizeComment (src, keyPart, lang)</a></td>
 	<td class="summary">Realize comment.</td>
 	</tr>
 </table>
@@ -132,8 +132,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "Render:__index"></a>
-    <strong>Render:__index (key)</strong>
+    <a name = "RenderBase:__index"></a>
+    <strong>RenderBase:__index (key)</strong>
     </dt>
     <dd>
     Lookup of missing class members.
@@ -162,11 +162,13 @@
 
     <dl class="function">
     <dt>
-    <a name = "Render:create"></a>
-    <strong>Render:create (...)</strong>
+    <a name = "RenderBase:create"></a>
+    <strong>RenderBase:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
+ Assumption is either to create a new instance from an existing class,
+ or from a previous instance of some kind.
 
 
     <h3>Parameters:</h3>
@@ -180,7 +182,10 @@
     <h3>Returns:</h3>
     <ol>
 
-        self
+           <span class="types"><a class="type" href="../classes/RenderBase.html#">RenderBase</a> or <span class="type">any</span></span>
+
+
+
     </ol>
 
 
@@ -188,8 +193,8 @@
 
 </dd>
     <dt>
-    <a name = "Render:key"></a>
-    <strong>Render:key (str)</strong>
+    <a name = "RenderBase:key"></a>
+    <strong>RenderBase:key (str)</strong>
     </dt>
     <dd>
     Override key construction.
@@ -218,8 +223,8 @@
 
 </dd>
     <dt>
-    <a name = "Render:type"></a>
-    <strong>Render:type ()</strong>
+    <a name = "RenderBase:type"></a>
+    <strong>RenderBase:type ()</strong>
     </dt>
     <dd>
     Get the type of report.
@@ -241,8 +246,8 @@
 
 </dd>
     <dt>
-    <a name = "Render:append"></a>
-    <strong>Render:append (head, tail)</strong>
+    <a name = "RenderBase:append"></a>
+    <strong>RenderBase:append (head, tail)</strong>
     </dt>
     <dd>
     Append same type to first.
@@ -272,8 +277,8 @@
 
 </dd>
     <dt>
-    <a name = "Render:realizeClarification"></a>
-    <strong>Render:realizeClarification (keyPart, lang, counter)</strong>
+    <a name = "RenderBase:realizeClarification"></a>
+    <strong>RenderBase:realizeClarification (keyPart, lang, counter)</strong>
     </dt>
     <dd>
     Realize clarification.
@@ -309,8 +314,8 @@
 
 </dd>
     <dt>
-    <a name = "Render:realizeComment"></a>
-    <strong>Render:realizeComment (src, keyPart, lang)</strong>
+    <a name = "RenderBase:realizeComment"></a>
+    <strong>RenderBase:realizeComment (src, keyPart, lang)</strong>
     </dt>
     <dd>
     Realize comment.
@@ -352,7 +357,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-03-15 01:07:17 </i>
+<i style="float:right;">Last updated 2019-03-17 11:29:11 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
