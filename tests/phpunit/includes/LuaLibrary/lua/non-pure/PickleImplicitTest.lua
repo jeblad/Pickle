@@ -1,6 +1,6 @@
 --- Tests for the subject module.
 -- This testset is only run when the Pickle extension is set up for implicit style.
--- @license GNU GPL v2+
+-- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
 
 local testframework = require 'Module:TestFramework'
