@@ -75,7 +75,8 @@ class TAPCommonParserTest extends TAPParserTestCase {
 	}
 
 	/**
-	 * @dataProvider provideValidExamples
+	 * @todo something strange here
+	 * @ dataProvider provideValidExamples
 	 */
 	public function parse( $type, $valid, $str ) {
 		$test = $this->newInstance( $this->conf );
