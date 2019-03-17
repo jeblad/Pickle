@@ -1,5 +1,5 @@
 --- Tests for the Spy module.
--- @license GNU GPL v2+
+-- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
 
 
