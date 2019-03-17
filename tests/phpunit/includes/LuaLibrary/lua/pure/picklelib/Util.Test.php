@@ -18,7 +18,7 @@ class UtilTest extends Scribunto_LuaEngineTestBase {
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
-	function getTestModules() {
+	protected function getTestModules() {
 		return parent::getTestModules() + [
 			'UtilTest' => __DIR__ . '/UtilTest.lua'
 		];

@@ -18,7 +18,7 @@ class StackTest extends Scribunto_LuaEngineTestBase {
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
-	function getTestModules() {
+	protected function getTestModules() {
 		return parent::getTestModules() + [
 			'StackTest' => __DIR__ . '/StackTest.lua'
 		];

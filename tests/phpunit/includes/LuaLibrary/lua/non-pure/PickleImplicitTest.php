@@ -18,7 +18,7 @@ class PickleImplicitTest extends Scribunto_LuaEngineTestBase {
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
-	function getTestModules() {
+	protected function getTestModules() {
 		return parent::getTestModules() + [
 			'PickleImplicitTest' => __DIR__ . '/PickleImplicitTest.lua'
 		];

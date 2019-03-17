@@ -18,7 +18,7 @@ class AdaptFullRenderTest extends Scribunto_LuaEngineTestBase {
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
-	function getTestModules() {
+	protected function getTestModules() {
 		return parent::getTestModules() + [
 			'AdaptFullRenderTest' => __DIR__ . '/AdaptFullRenderTest.lua'
 		];

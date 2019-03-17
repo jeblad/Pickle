@@ -18,7 +18,7 @@ class AdaptVividRenderTest extends Scribunto_LuaEngineTestBase {
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
-	function getTestModules() {
+	protected function getTestModules() {
 		return parent::getTestModules() + [
 			'AdaptVividRenderTest' => __DIR__ . '/AdaptVividRenderTest.lua'
 		];

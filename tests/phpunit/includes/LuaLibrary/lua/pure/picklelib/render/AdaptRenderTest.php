@@ -19,7 +19,7 @@ class AdaptRenderTest extends Scribunto_LuaEngineTestBase {
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 * @return configuration data
 	 */
-	function getTestModules() {
+	protected function getTestModules() {
 		return parent::getTestModules() + [
 			'AdaptRenderTest' => __DIR__ . '/AdaptRenderTest.lua'
 		];

@@ -18,7 +18,7 @@ class FrameVividRenderTest extends Scribunto_LuaEngineTestBase {
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
-	function getTestModules() {
+	protected function getTestModules() {
 		return parent::getTestModules() + [
 			'FrameVividRenderTest' => __DIR__ . '/FrameVividRenderTest.lua'
 		];

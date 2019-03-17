@@ -18,7 +18,7 @@ class CounterTest extends Scribunto_LuaEngineTestBase {
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
-	function getTestModules() {
+	protected function getTestModules() {
 		return parent::getTestModules() + [
 			'CounterTest' => __DIR__ . '/CounterTest.lua'
 		];

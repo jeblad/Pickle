@@ -18,7 +18,7 @@ class FrameFullRenderTest extends Scribunto_LuaEngineTestBase {
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
-	function getTestModules() {
+	protected function getTestModules() {
 		return parent::getTestModules() + [
 			'FrameFullRenderTest' => __DIR__ . '/FrameFullRenderTest.lua'
 		];

@@ -18,7 +18,7 @@ class ExtractorStrategiesTest extends Scribunto_LuaEngineTestBase {
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
-	function getTestModules() {
+	protected function getTestModules() {
 		return parent::getTestModules() + [
 			'ExtractorStrategiesTest' => __DIR__ . '/ExtractorStrategiesTest.lua'
 		];
