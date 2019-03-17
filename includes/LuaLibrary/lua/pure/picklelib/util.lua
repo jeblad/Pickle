@@ -1,5 +1,6 @@
 --- Utils to support Pickle.
--- Ideas from Moses [https://github.com/Yonaba/Moses/blob/master/moses.lua]
+-- Ideas from [Github: Yonaba/moses Moses](https://github.com/Yonaba/Moses/blob/master/moses.lua).
+-- @module util
 -- @author John Erling Blad < jeblad@gmail.com >
 
 -- @var Table holding the modules exported members
