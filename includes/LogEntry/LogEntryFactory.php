@@ -46,7 +46,7 @@ class LogEntryFactory extends Strategies {
 	 *
 	 * @param \Title $title header information
 	 * @param \ParserOutput $parserOutput parser
-	 * @param array $states previous identified states (optional)
+	 * @param array|null $states previous identified states (optional)
 	 * @return bool
 	 */
 	public static function addLogEntry(

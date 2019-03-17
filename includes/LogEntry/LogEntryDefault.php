@@ -21,7 +21,7 @@ class LogEntryDefault extends LogEntry {
 	/**
 	 * @see \Pickle\LogEntryStrategy::newLogEntry()
 	 * @param \Title $title header information
-	 * @param \LogEntry $logEntry preexisting log entry (optional)
+	 * @param \LogEntry|null $logEntry preexisting log entry (optional)
 	 * @return \LogEntry
 	 */
 	public function newLogEntry( \Title $title, \LogEntry $logEntry = null ) {
