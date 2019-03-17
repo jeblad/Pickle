@@ -1,6 +1,6 @@
 --- Tests for the extractor strategies module.
 -- This is a preliminary solution.
--- @license GNU GPL v2+
+-- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
 
 
