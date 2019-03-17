@@ -2,7 +2,6 @@
 
 namespace Pickle\Tests;
 
-use MediaWikiTestCase;
 use \Pickle\InvokeSubpageStrategies;
 
 /**
