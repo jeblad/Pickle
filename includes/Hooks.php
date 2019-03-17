@@ -74,7 +74,7 @@ class Hooks {
 	 * Is neglected
 	 * This only scans for similar text fragments, and can fail badly.
 	 *
-	 * @param \Title $title header information
+	 * @param \Title|null $title header information
 	 * @return bool
 	 */
 	 protected static function isNeglected(
@@ -240,6 +240,7 @@ class Hooks {
 		}
 
 		// run registered callbacks to create gadgets
+		// @todo Seems like the callback is setup wrong somehow…
 		$callbacks = [
 			'test' => 'SpecTesterGadgets',
 			'normal' => 'SpecTesteeGadgets'
