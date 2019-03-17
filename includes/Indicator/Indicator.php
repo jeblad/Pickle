@@ -29,7 +29,7 @@ abstract class Indicator {
 	 * Make a page status indicator link given status and url
 	 *
 	 * @param string $url to the internal or external page
-	 * @param string $lang representing the language (optional)
+	 * @param string|null $lang representing the language (optional)
 	 * @return Html|null
 	 */
 	public function makeLink( $url, $lang = null ) {
@@ -69,7 +69,7 @@ abstract class Indicator {
 	/**
 	 * Make a page status indicator note given status
 	 *
-	 * @param string $lang representing the language (optional)
+	 * @param string|null $lang representing the language (optional)
 	 * @return Html|null
 	 */
 	public function makeNote( $lang = null ) {
@@ -143,7 +143,7 @@ abstract class Indicator {
 	/**
 	 * Add a new track indicator
 	 *
-	 * @param \Title $title target for the indicator
+	 * @param \Title|null $title target for the indicator
 	 * @param \ParserOutput &$parserOutput where the indicator should be added
 	 * @return Message
 	 */

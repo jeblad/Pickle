@@ -46,7 +46,7 @@ class IndicatorFactory extends Strategies {
 	 *
 	 * @param \Title $title target of the categorization
 	 * @param \ParserOutput $parserOutput parser result from the parsing process
-	 * @param array $states additional states to be merged (optional)
+	 * @param array|null $states additional states to be merged (optional)
 	 * @return true
 	 */
 	public static function addIndicator(
