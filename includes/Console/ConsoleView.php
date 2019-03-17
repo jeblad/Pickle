@@ -110,7 +110,7 @@ class ConsoleView {
 			]
 		] );
 
-		return	$ui;
+		return $ui;
 	}
 
 	/**
