@@ -94,7 +94,7 @@ class ConsoleView {
 										'infusable' => true,
 										'id' => 'pickle-console-button-run',
 										'label' => wfMessage( 'pickle-console-run' )->escaped(),
-										'flags' => ['primary']
+										'flags' => [ 'primary' ]
 									] ),
 									new \OOUI\ButtonWidget( [
 										'infusable' => true,
