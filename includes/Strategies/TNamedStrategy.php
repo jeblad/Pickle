@@ -5,7 +5,6 @@ namespace Pickle;
 /**
  *
  * @ingroup Extensions
- * @group Pickle
  */
 trait TNamedStrategy {
 
