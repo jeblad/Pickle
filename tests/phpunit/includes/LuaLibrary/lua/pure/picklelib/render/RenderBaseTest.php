@@ -7,7 +7,7 @@ use Scribunto_LuaEngineTestBase;
 /**
  * @group Pickle
  *
- * @license GPL-2.0-or-laterlater
+ * @license GPL-2.0-or-later
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
