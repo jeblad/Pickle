@@ -91,6 +91,6 @@ class InvokeSubpageStrategiesTest extends StrategiesTestCase {
 		// These methods contain static calls and are thus difficult to test.
 		$strategy = $test->find( $title );
 		$this->assertContains( $expect,
-			$strategy->getInvoke( $title )->inLanguage( 'qqx' )	->plain() );
+			$strategy->getInvoke( $title )->inLanguage( 'qqx' )->plain() );
 	}
 }
