@@ -52,7 +52,7 @@ class CategoryFactoryTest extends StrategiesTestCase {
 	public function testFind( $expect, $name ) {
 		// @todo cleanup later on…
 		// $title = $this->getMockBuilder( '\Title' )
-		//	->getMock();
+		// ->getMock();
 
 		$test = CategoryFactory::getInstance();
 		$test->register(

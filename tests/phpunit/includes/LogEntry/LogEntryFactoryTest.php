@@ -52,7 +52,7 @@ class LogEntryFactoryTest extends StrategiesTestCase {
 	public function testFind( $expect, $name ) {
 		// @todo cleanup later on…
 		// $title = $this->getMockBuilder( '\Title' )
-		//	->getMock();
+		// ->getMock();
 
 		$test = LogEntryFactory::getInstance();
 		$test->register(
