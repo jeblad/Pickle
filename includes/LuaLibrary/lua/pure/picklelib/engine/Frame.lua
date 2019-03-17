@@ -1,4 +1,4 @@
---- Baseclass for Describe, Context, and It
+--- Baseclass for Describe, Context, and It.
 -- @classmod Frame
 
 -- pure libs
