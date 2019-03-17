@@ -24,7 +24,7 @@ class HelpView {
 	 * Build the help view
 	 * This isn't really part of a normal MVC design pattern, it will only build a minimal view.
 	 *
-	 * @param \OutputPage $output target (optional)
+	 * @param \OutputPage|null $output target (optional)
 	 * @return \Pickle\HelpView
 	 */
 	public static function build( \OutputPage $output = null ) {
