@@ -219,7 +219,9 @@ class Hooks {
 
 		// log our decision about what kind of page this is
 		LoggerFactory::getInstance( 'Pickle' )->debug( 'Current status: {text}', [
-			'text' => array_key_exists( 'status-current', $args ) ? $args[ 'status-current' ] : 'no current status',
+			'text' => array_key_exists( 'status-current', $args )
+				? $args[ 'status-current' ]
+				: 'no current status',
 			'title' => $title->getFullText(),
 			'method' => __METHOD__
 		] );
