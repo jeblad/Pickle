@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../mw.pickle.html">Index</a></li>
+</ul>
+
+
+
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/adapt.md.html">adapt</a></li>
+  <li><a href="../topics/call-style.md.html">call-style</a></li>
+  <li><strong>change-log</strong></li>
+  <li><a href="../topics/databases.md.html">databases</a></li>
+  <li><a href="../topics/musings.md.html">musings</a></li>
+  <li><a href="../topics/vscode-snippets.md.html">vscode-snippets</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/util.html">util</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Stack.html">Stack</a></li>
+  <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Frame.html">Frame</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/ExtractorStrategies.html">ExtractorStrategies</a></li>
+  <li><a href="../classes/ExtractorStrategyBase.html">ExtractorStrategyBase</a></li>
+  <li><a href="../classes/FalseExtractorStrategy.html">FalseExtractorStrategy</a></li>
+  <li><a href="../classes/JsonExtractorStrategy.html">JsonExtractorStrategy</a></li>
+  <li><a href="../classes/NilExtractorStrategy.html">NilExtractorStrategy</a></li>
+  <li><a href="../classes/NumberExtractorStrategy.html">NumberExtractorStrategy</a></li>
+  <li><a href="../classes/StringExtractorStrategy.html">StringExtractorStrategy</a></li>
+  <li><a href="../classes/TrueExtractorStrategy.html">TrueExtractorStrategy</a></li>
+  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
+  <li><a href="../classes/FrameRender.html">FrameRender</a></li>
+  <li><a href="../classes/RenderBase.html">RenderBase</a></li>
+  <li><a href="../classes/Renders.html">Renders</a></li>
+  <li><a href="../classes/AdaptCompactRender.html">AdaptCompactRender</a></li>
+  <li><a href="../classes/FrameCompactRender.html">FrameCompactRender</a></li>
+  <li><a href="../classes/AdaptFullRender.html">AdaptFullRender</a></li>
+  <li><a href="../classes/FrameFullRender.html">FrameFullRender</a></li>
+  <li><a href="../classes/AdaptVividRender.html">AdaptVividRender</a></li>
+  <li><a href="../classes/FrameVividRender.html">FrameVividRender</a></li>
+  <li><a href="../classes/AdaptReport.html">AdaptReport</a></li>
+  <li><a href="../classes/FrameReport.html">FrameReport</a></li>
+  <li><a href="../classes/ReportBase.html">ReportBase</a></li>
+  <li><a href="../classes/TranslatorStrategies.html">TranslatorStrategies</a></li>
+  <li><a href="../classes/TranslatorStrategyBase.html">TranslatorStrategyBase</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>Log</h1>
+
+<p>A test status <a href="https://mediawiki.org/wiki/Help:Log">change log</a> is implemented. This list the previous overall results for modules that has tests, and the entries will be added conditionally during rendering. The log entry will be added if the overall outcome of the tests has changed from the previous run, or if there are no results from earlier. The logged page will be the tested page, and the user will be a specific one that is created for this purpose.</p>
+
+<p>By having a status change log it will be easier to track down where and when a change happen, and then how to fix the problem. Often the status change will be at the same time that someone is editing the page, but that is not always the case. The rendering can take place some time after a change on a related page, so it is not necessarily the user triggering the rendering that did the change that is the reason for the status change.</p>
+
+<p>The change will typically happen when rendering is triggered, and at that point the page props are already saved, and that can happen because a more or less random user visits the page. It is probably not necessary to log who did the edit that created the ripple that ultimately lead to a status change in most cases, and it can also be difficult to identify the correct edit. Instead of using the user who triggered the rendering, or the user who previously did the edit, a system user is registered and used. The system user will presumably be something like “Test observer”, “Test logger”, or “Test manager” for those cases. A name like “observer” is a bit more generic than “logger”, but the “manager” form is already in use by the Flow-system. The user is identified through its user id, so it can be renamed. It could be that it is better to use a fixed name, as this can be more easily handled on a server farm.</p>
+
+<p><em>NOTE</em>: Only use the following if a flag “log on render” is set?</p>
+
+<p>One possible solution is to save a notice about a changed render state to memcached instead of page props, and to use that as basis for logging, and other status tracking if it exists and are different from page props. If the state notice in memcached does not exist, then all status tracking will happen according to page props, and then the state notice will be recreated. The state notice will be deleted on page save. This will make new log entries as the memcached state notices disappears or changes.</p>
+
+<p>In some cases the status change can be detected during the save action, and then it is possible to log the test status change with the correct user. This is although not trivial.</p>
+
+<p>There are other special users like <a href="https://en.wikipedia.org/wiki/User:Maintenance_script">User:Maintenance script</a> and <a href="https://en.wikipedia.org/wiki/User:Flow_talk_page_manager">User:Flow talk page manager</a>. The special user that logs the status changes should be handled the same way.</p>
+
+<p>At the top of the page there is a link to the special log page.</p>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2019-03-18 10:20:19 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

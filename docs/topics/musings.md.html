@@ -1,0 +1,337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../mw.pickle.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Import_of_module_under_test">Import of module under test </a></li>
+<li><a href="#Regression_testing">Regression testing </a></li>
+<li><a href="#Interactive_runs">Interactive runs </a></li>
+<li><a href="#Conditional_require">Conditional require </a></li>
+<li><a href="#Assert">Assert </a></li>
+<li><a href="#Looping_over_testdata">Looping over testdata </a></li>
+<li><a href="#Insulate___expose">Insulate & expose </a></li>
+<li><a href="#Randomize">Randomize </a></li>
+<li><a href="#Style">Style </a></li>
+<li><a href="#Pending">Pending </a></li>
+<li><a href="#Summary">Summary </a></li>
+<li><a href="#Tags">Tags </a></li>
+<li><a href="#Category">Category </a></li>
+<li><a href="#Indicators">Indicators </a></li>
+</ul>
+
+
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/adapt.md.html">adapt</a></li>
+  <li><a href="../topics/call-style.md.html">call-style</a></li>
+  <li><a href="../topics/change-log.md.html">change-log</a></li>
+  <li><a href="../topics/databases.md.html">databases</a></li>
+  <li><strong>musings</strong></li>
+  <li><a href="../topics/vscode-snippets.md.html">vscode-snippets</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/util.html">util</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Stack.html">Stack</a></li>
+  <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Frame.html">Frame</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/ExtractorStrategies.html">ExtractorStrategies</a></li>
+  <li><a href="../classes/ExtractorStrategyBase.html">ExtractorStrategyBase</a></li>
+  <li><a href="../classes/FalseExtractorStrategy.html">FalseExtractorStrategy</a></li>
+  <li><a href="../classes/JsonExtractorStrategy.html">JsonExtractorStrategy</a></li>
+  <li><a href="../classes/NilExtractorStrategy.html">NilExtractorStrategy</a></li>
+  <li><a href="../classes/NumberExtractorStrategy.html">NumberExtractorStrategy</a></li>
+  <li><a href="../classes/StringExtractorStrategy.html">StringExtractorStrategy</a></li>
+  <li><a href="../classes/TrueExtractorStrategy.html">TrueExtractorStrategy</a></li>
+  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
+  <li><a href="../classes/FrameRender.html">FrameRender</a></li>
+  <li><a href="../classes/RenderBase.html">RenderBase</a></li>
+  <li><a href="../classes/Renders.html">Renders</a></li>
+  <li><a href="../classes/AdaptCompactRender.html">AdaptCompactRender</a></li>
+  <li><a href="../classes/FrameCompactRender.html">FrameCompactRender</a></li>
+  <li><a href="../classes/AdaptFullRender.html">AdaptFullRender</a></li>
+  <li><a href="../classes/FrameFullRender.html">FrameFullRender</a></li>
+  <li><a href="../classes/AdaptVividRender.html">AdaptVividRender</a></li>
+  <li><a href="../classes/FrameVividRender.html">FrameVividRender</a></li>
+  <li><a href="../classes/AdaptReport.html">AdaptReport</a></li>
+  <li><a href="../classes/FrameReport.html">FrameReport</a></li>
+  <li><a href="../classes/ReportBase.html">ReportBase</a></li>
+  <li><a href="../classes/TranslatorStrategies.html">TranslatorStrategies</a></li>
+  <li><a href="../classes/TranslatorStrategyBase.html">TranslatorStrategyBase</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>Musings</h1>
+
+<p>This page lists some notes and examples about the prototype, and the concept as such.</p>
+
+<p>The initial concept is at <a href="https://no.wikipedia.org/wiki/User:Jeblad/Module:BDD">w:no:User:Jeblad/Module:BDD</a>, with backup at <a href="keybase://team/wm_bdd/bdd">keybase</a> and is now reimplemented as <a href="https://github.com/jeblad/Pickle">Github:jeblad/Pickle</a>. (<a href="https://keybase.io/blog/encrypted-git-for-everyone">Keybase launches encrypted git</a>)</p>
+
+<p><a name="Import_of_module_under_test"></a></p>
+<h2>Import of module under test</h2>
+
+<p>At present the module under test is imported by a require. This is not a good solution, it is like using a global var for the module. Instead the modules should be injected into the tests. This imply that the test callbacks are held in an unevaluated state until the tested module is injected.</p>
+
+<p>Present call is like this at the top of the pickle page <code>Module:Foo</code> (This is according to <a href="https://no.wikipedia.org/wiki/User:Jeblad/Module:BDD/dok">w:no:User:Jeblad/Module:BDD/dok</a>)</p>
+
+
+<pre>
+<span class="global">require</span> <span class="string">'Module:Bar'</span>()
+</pre>
+
+
+<p>Future form will be like this</p>
+
+
+<pre>
+<span class="global">require</span> <span class="string">'Module:Foo'</span>(<span class="string">'Module:Bar'</span>)
+</pre>
+
+
+<p>or a call from the console for <code>Module:Foo</code> that is the pickle page</p>
+
+
+<pre>
+=p(<span class="string">'Module:Bar'</span>)
+</pre>
+
+
+<p>or a call from the console for <code>Module:Bar</code> that is the tested module</p>
+
+
+<pre>
+=<span class="global">require</span> <span class="string">'Module:Bar'</span>(p)
+</pre>
+
+
+<p>or from wikitext</p>
+
+
+<pre>
+{{#invoke:Foo|run|Bar}}
+</pre>
+
+
+<p>or from the special test runner</p>
+
+
+<pre>
+{{#pickle:Bar}}
+</pre>
+
+
+<p>The last form will find all subpages called <code>Module:Bar/anything.pickle</code> and link them, giving the user the option to navigate to them and possibly run them. (TODO:Is this still supported?)</p>
+
+<p>If the <code>__call()</code> is without arguments then the base page will be found and used, if possible. That is a pickle page named as <code>Module:Bar/Foo</code> will work, while a pickle page that is itself a base page will not work.</p>
+
+<p><a name="Regression_testing"></a></p>
+<h2>Regression testing</h2>
+
+<p>In the code for proof of concept <a href="https://www.lua.org/manual/5.1/manual.html#pdf-require">require</a> was used to load the module under test. Because of that there was <a href="https://en.wikipedia.org/wiki/Regression_testing">regression testing</a> in place. If the code is changed to use dependency injection the reevaluation after changes must be done in some other way, possibly by the <code>{{#pickle}}</code> parser function.</p>
+
+<p><a name="Interactive_runs"></a></p>
+<h2>Interactive runs</h2>
+
+<ul>
+    <li>There will be a button below the console on the pickle page that runs this pickle with the base page as injection.</li>
+    <li>There will be a button below the console on the page for the tested module, that runs all found pickles with the tested module as injection.</li>
+    <li>There will be a button on the doc part of the pickle page to rerun the tests (Not sure if it is necessary)</li>
+</ul>
+
+<p><a name="Conditional_require"></a></p>
+<h2>Conditional require</h2>
+
+<p>The <code>__call()</code> metamethod will check if it is run from the page that is required, and if so pick up either an array or a function to construct the array instead of loading the required module.</p>
+
+<p><a name="Assert"></a></p>
+<h2>Assert</h2>
+
+<p>Check whether <a href="https://github.com/Olivine-Labs/luassert">luassert library</a> should be used instead of the expectations. The later is better on reporting whats going on, but the former is in common use.</p>
+
+<p><a name="Looping_over_testdata"></a></p>
+<h2>Looping over testdata</h2>
+
+<p>Testdata can be provided for all of <em>describe</em>, <em>context</em> and <em>it</em>, but only makes sense for <em>context</em> and <em>it</em>. Within a <em>context</em> we do context switching and within <em>it</em> we do the actual behavior testing.</p>
+
+
+<pre>
+describe(<span class="string">"summary..."</span>, <span class="keyword">function</span>()
+  <span class="keyword">local</span> data = {{<span class="string">'Foo'</span>}, {<span class="string">'Bar'</span>}, {<span class="string">'Baz'</span>}}
+  context(<span class="string">"summary..."</span>, data, <span class="keyword">function</span>(name)
+    it(<span class="string">"summary..."</span>, <span class="keyword">function</span>()
+    <span class="keyword">end</span>)
+  <span class="keyword">end</span>)
+<span class="keyword">end</span>)
+</pre>
+
+
+<p>When testdata are available each entry in the table will be provided to the provided callback in turn.</p>
+
+<p><a name="Insulate___expose"></a></p>
+<h2>Insulate &amp; expose</h2>
+
+<p>All code will be exposed, and only way to insulate a test is to run it on a separate pickle page.</p>
+
+<p><a name="Randomize"></a></p>
+<h2>Randomize</h2>
+
+<p>There are no randomization of tests in the , although this will be possible in the refactored version.</p>
+
+<p><a name="Style"></a></p>
+<h2>Style</h2>
+<p>The style used in the prototype is the usual <em>describe</em> - <em>context</em> - <em>it</em>, where arguments are a summary for the test, optional arguments for the test, and the actual test. The summary is either a string or a table. If it is a string it is assumed to be in the language of the wiki, if it is a table language specific summaries are keyed by language codes and tags are indexed in no particular order. The actual test is always a function, usually an anonymous one, and always the last argument.</p>
+
+
+<pre>
+describe(<span class="string">"foo"</span>, <span class="keyword">function</span>()
+  context(<span class="string">"bar"</span>, <span class="keyword">function</span>()
+    it(<span class="string">"baz"</span>, <span class="keyword">function</span>()
+    <span class="keyword">end</span>)
+  <span class="keyword">end</span>)
+<span class="keyword">end</span>)
+</pre>
+
+
+<p><a name="Pending"></a></p>
+<h2>Pending</h2>
+
+<p>The call <code>pending()</code> can't be implemented as pure Lua, so instead change the ordinary wrappers to an exclude variant.</p>
+
+
+<pre>
+xdescribe(<span class="string">'string'</span>, <span class="keyword">function</span>() <span class="keyword">end</span>)
+</pre>
+
+
+<p>Seems like Rspec does a shortcut: “When RSpec encounters this block it actually executes the block. If the block fails or raises an error, RSpec proceeds as with any other pending example.”</p>
+
+<p><a name="Summary"></a></p>
+<h2>Summary</h2>
+
+<p>Summary strings might be either singular and assumed to be in the wikis own content language</p>
+
+
+<pre>
+describe(<span class="string">"this is a summary"</span>, <span class="keyword">function</span>() <span class="keyword">end</span>)
+</pre>
+
+
+<p>or it might be in explicitly given languages</p>
+
+
+<pre>
+describe({en=<span class="string">"this is a summary"</span>, no=<span class="string">"dette er et sammendrag"</span>}, <span class="keyword">function</span>() <span class="keyword">end</span>)
+</pre>
+
+
+<p>An indexed string in the array  that isn't a valid tag is assumed to be a summary in the wikis own content language.</p>
+
+<p><a name="Tags"></a></p>
+<h2>Tags</h2>
+
+<p>Summary strings may take tags. It is not necessary to declare tags</p>
+
+
+<pre>
+describe(<span class="string">"a test #tag"</span>, <span class="keyword">function</span>()
+  <span class="comment">-- tests go here
+</span><span class="keyword">end</span>)
+
+describe(<span class="string">"a nested block #foo"</span>, <span class="keyword">function</span>()
+  context(<span class="string">"can have many levels #bar"</span>, <span class="keyword">function</span>()
+    it(<span class="string">"can have many levels #baz"</span>, <span class="keyword">function</span>()
+      <span class="comment">-- more tests go here
+</span>    <span class="keyword">end</span>)
+  <span class="keyword">end</span>)
+  <span class="comment">-- more tests pertaining to the top level
+</span><span class="keyword">end</span>)
+</pre>
+
+
+<p>Children will inherit parents tags. In the above the <em>context</em> will inherit the tag <code>#foo</code> from the second <em>describe</em>, and the <em>it</em> will inherit bot <code>#foo</code> and <code>#bar</code> from previous parents.</p>
+
+<p>Tags can be added either in the summary string or on indexed entries in the array</p>
+
+
+<pre>
+describe(<span class="string">"this is a summary #foo #bar #baz"</span>, <span class="keyword">function</span>() <span class="keyword">end</span>)
+describe({<span class="string">"this is a summary"</span>, <span class="string">"#foo"</span>, <span class="string">"#bar"</span>, <span class="string">"#baz"</span>}, <span class="keyword">function</span>() <span class="keyword">end</span>)
+describe({en=<span class="string">"this is a summary #foo #bar #baz"</span>}, <span class="keyword">function</span>() <span class="keyword">end</span>)
+describe({en=<span class="string">"this is a summary"</span>, <span class="string">"#foo"</span>, <span class="string">"#bar"</span>, <span class="string">"#baz"</span>}, <span class="keyword">function</span>() <span class="keyword">end</span>)
+</pre>
+
+
+<p>All indexed strings that is fully valid tags will be added as such and not as summary strings.</p>
+
+<p>From wikitext the tests can be filtered on tags like so</p>
+
+
+<pre>
+{{#invoke:Foo|run|Bar|#Baz}}
+{{#pickle:Bar|#Baz}}
+</pre>
+
+
+<p><a name="Category"></a></p>
+<h2>Category</h2>
+
+<p>Tracking categories would be set up for modules with and without tests. Those with tests will be <em>good</em>, <em>pending</em> and <em>failed</em>. Or would this be only for indicators?</p>
+
+<p><a name="Indicators"></a></p>
+<h2>Indicators</h2>
+
+<p>Page indicators are inserted for all modules that has functions. There are two different messages, one for pickles and one for all the others.</p>
+
+<p>Color scheme and symbols are implemented by the Lua scripts that run as part of the parsed messages.</p>
+
+<p>Linked to the actual tests.</p>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2019-03-18 10:20:19 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
