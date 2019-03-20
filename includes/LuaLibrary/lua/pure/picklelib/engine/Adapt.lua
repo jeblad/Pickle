@@ -1,4 +1,4 @@
---- Baseclass for Expect and Subject.
+--- Base class for Expect and Subject.
 -- @classmod Adapt
 
 -- pure libs
@@ -150,7 +150,7 @@ local function _makePickProcess( name, idx )
 end
 
 -- @var table of definitions for the pick functions
--- Format is ''name'' = ''index''
+-- Format is `name = index`
 local picks = {
 	--- Make a pick for first item.
 	-- @function Adapt:first
