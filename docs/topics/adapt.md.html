@@ -30,10 +30,15 @@
   <li><a href="../mw.pickle.html">Index</a></li>
 </ul>
 
+<h2>Contents</h2>
+<ul>
+<li><a href="#Methods">Methods </a></li>
+</ul>
 
 
 <h2>Topics</h2>
 <ul class="">
+  <li><a href="../topics/activities.md.html">activities</a></li>
   <li><strong>adapt</strong></li>
   <li><a href="../topics/call-style.md.html">call-style</a></li>
   <li><a href="../topics/change-log.md.html">change-log</a></li>
@@ -85,16 +90,87 @@
 
 <h1>Adapt</h1>
 
-<p>Tests are a series of premises that are instantiated and must evaluate to a true state. Most tests are a simple sequence of statements that are conjoined together. Because of the conjunction, the first false in the sequence will imply that any further tests can be dismissed. This is the default case. In some cases it is only necessary that one of a few tests has a true state. Because of the disjunction, the first true in the sequence will imply that any further tests can be dismissed.</p>
+<p>The <a href="../classes/Adapt.html#">Adapt</a> class (<code>subject</code>, <code>expect</code>) defines an <a href="https://en.wikipedia.org/wiki/Assertion_definition_language">assertion definition language</a> used in Pickle, which provides methods that are easy to use and fast to declare as long as the tests has a clearly defined structure. That is, it is a “pickle”.</p>
 
-<p>It is not clear how the connectives should be set, and if a full description (statement, declaration) of the graph is necessary.</p>
+<p>Tests can be described as series of <a href="https://en.wikipedia.org/wiki/Premise">premises</a>, that must evaluate to a true state. The outcome of a test can be viewed as a sequence of statements that are conjoined together. Because of the <a href="https://en.wikipedia.org/wiki/Logical_conjunction">logical conjunction</a>, the first //falsy// in the sequence will then imply that any further tests can be dismissed. This is the default case.</p>
+
+<p>In some cases it is only necessary that one of a few tests has a true state. Because of the <a href="https://en.wikipedia.org/wiki/Logical_disjunction">logical disjunction</a>, the first //truthy// in the sequence will then imply that any further tests can be dismissed.</p>
+
+<p><em>NOTE</em>: It is not clear how the connectives should be set, and if a full description (statement, declaration) of the graph is necessary.</p>
+
+<p>The <a href="../classes/Frame.html#">Frame</a> class (<code>describe</code>, <code>context</code>, <code>it</code>) will put data on a <a href="../classes/Stack.html#">Stack</a> called <code>subject</code>, with last frame on top. This will then be available to <code>expect</code> for inspection.</p>
+
+<p><em>NOTE</em>: This method of cross-referencing the Adapt instances could be dropped in favor of simply accessing the <code>subject</code>, leaving <code>expect</code> for other out-of-order tests.</p>
+
+<p><a name="Methods"></a></p>
+<h2>Methods</h2>
+
+<p>An Adapt instance will typically store a set of objects for later retrieval and test. To load a test instance onto the stack use the table call form, that is <code>subject( ... )</code>. This will store whatever provided. Then those values can be processed with three types of operations; pick a value, transform the value, and evaluate a conditional on the value. The final value is then used for the final outcome of a single premise.</p>
+
+<h3>Pick value</h3>
+
+<ul>
+    <li><a href="../classes/Adapt.html#Adapt:first">Adapt:first</a> – Pick the first item.</li>
+    <li><a href="../classes/Adapt.html#Adapt:second">Adapt:second</a> – Pick the second item.</li>
+    <li><a href="../classes/Adapt.html#Adapt:third">Adapt:third</a> – Pick the third item.</li>
+    <li><a href="../classes/Adapt.html#Adapt:fourth">Adapt:fourth</a> – Pick the fourth item.</li>
+    <li><a href="../classes/Adapt.html#Adapt:fifth">Adapt:fifth</a> – Pick the fifth item.</li>
+    <li><a href="../classes/Adapt.html#Adapt:sixth">Adapt:sixth</a> – Pick the sixth item.</li>
+    <li><a href="../classes/Adapt.html#Adapt:seventh">Adapt:seventh</a> – Pick the seventh item.</li>
+    <li><a href="../classes/Adapt.html#Adapt:eight">Adapt:eight</a> – Pick the eight item.</li>
+    <li><a href="../classes/Adapt.html#Adapt:ninth">Adapt:ninth</a> – Pick the ninth item.</li>
+    <li><a href="../classes/Adapt.html#Adapt:tenth">Adapt:tenth</a> – Pick the tenth item.</li>
+    <li><a href="../classes/Adapt.html#Adapt:eleventh">Adapt:eleventh</a> – Pick the eleventh item.</li>
+    <li><a href="../classes/Adapt.html#Adapt:twelfth">Adapt:twelfth</a> – Pick the twelfth item.</li>
+</ul>
+
+<h3>Transform value</h3>
+
+<ul>
+    <li><a href="../classes/Adapt.html#Adapt:asType">Adapt:asType</a> – Transform to type name.<br>Aliases: <a href="https://www.lua.org/manual/5.1/manual.html#pdf-type">type</a></li>
+    <li><a href="../classes/Adapt.html#Adapt:asUpper">Adapt:asUpper</a> – Transform to upper case character.<br>Aliases: <code>upper</code>, <code>asUC</code>, <code>uc</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asLower">Adapt:asLower</a> – Transform to lower case character.<br>Aliases: <code>lower</code>, <code>asLC</code>, <code>lc</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asUpperFirst">Adapt:asUpperFirst</a> – Transform first character to upper case.<br>Aliases: <code>upperfirst</code>, <code>asUCFirst</code>, <code>asUCfirst</code>, <code>ucfirst</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asLowerFirst">Adapt:asLowerFirst</a> – Transform first character to lower case.<br>Aliases: <code>lowerfirst</code>, <code>asLCFirst</code>, <code>asLCfirst</code>, <code>lcfirst</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asReverse">Adapt:asReverse</a> – Transform to reversed character sequence.<br>Aliases: <code>reverse</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asUUpper">Adapt:asUUpper</a> – Transform to upper case code point.<br>Aliases: <code>uupper</code>, <code>asUUC</code>, <code>uuc</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asULower">Adapt:asULower</a> – Transform to lower case code point.<br>Aliases: <code>ulower</code>, <code>asULC</code>, <code>ulc</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asUUpperFirst">Adapt:asUUpperFirst</a> – Transform first code point to upper case.<br>Aliases: <code>uupperfirst</code>, <code>asUUCFirst</code>, <code>asUUCfirst</code>, <code>uucfirst</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asULowerFirst">Adapt:asULowerFirst</a> – Transform first code point to lower case.<br>Aliases: <code>ulowerfirst</code>, <code>asULCFirst</code>, <code>asULCfirst</code>, <code>ulcfirst</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asUNFC">Adapt:asUNFC</a> – Transform to Unicode Normalized Form C.<br>Aliases: <code>unfc</code>, <code>uNFC</code>, <code>nfc</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asUNFD">Adapt:asUNFD</a> – Transform to Unicode Normalized Form D.<br>Aliases: <code>unfd</code>, <code>uNFD</code>, <code>nfd</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asNumber">Adapt:asNumber</a> – Transform to number.<br>Aliases: <code>number</code>, <code>asNum</code>, <code>num</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asString">Adapt:asString</a> – Transform to string.<br>Aliases: <a href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <code>asStr</code>, <code>str</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asFloor">Adapt:asFloor</a> – Transform to floor of number.<br>Aliases: <code>floor</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asCeil">Adapt:asCeil</a> – Transform to ceil of number.<br>Aliases: <code>ceil</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asRound">Adapt:asRound</a> – Transform to rounded number.<br>Aliases: <code>round</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asInteger">Adapt:asInteger</a> – Transform to integer part of number.<br>Aliases: <code>integer</code>, <code>asInt</code>, <code>int</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:asFraction">Adapt:asFraction</a> – Transform to fraction part of number.<br>Aliases: <code>fraction</code>, <code>asFrac</code>, <code>frac</code></li>
+</ul>
+
+<h3>Conditional</h3>
+
+<ul>
+    <li><a href="../classes/Adapt.html#Adapt:toBeEqual">Adapt:toBeEqual</a> – Compare as equal.<br>Aliases: <code>equal</code>, <code>isEqual</code>, <code>ifEqual</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:toBeBooleanEqual">Adapt:toBeBooleanEqual</a> – Compare as boolean equal.<br>Aliases: <code>booleanequal</code>, <code>isBooleanEqual</code>, <code>ifBooleanEqual</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:toBeStrictEqual">Adapt:toBeStrictEqual</a> – Compare as strict equal.<br>Aliases: <code>strictequal</code>, <code>isStrictEqual</code>, <code>ifStrictEqual</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:toBeSame">Adapt:toBeSame</a> – Compare as the same.<br>Aliases: <code>same</code>, <code>isSame</code>, <code>ifSame</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:toBeDeepEqual">Adapt:toBeDeepEqual</a> – Compare as deep equal.<br>Aliases: <code>deepequal</code>, <code>isDeepEqual</code>, <code>ifDeepEqual</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:toBeContained">Adapt:toBeContained</a> – Compare as contained within.<br>Aliases: <code>contained</code>, <code>isContained</code>, <code>ifContained</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:toBeLesserThan">Adapt:toBeLesserThan</a> – Compare as lesser than.<br>Aliases: <code>lesser</code>, <code>lt</code>, <code>toBeLesser</code>, <code>toBeLT</code>, <code>isLesser</code>, <code>isLT</code>, <code>ifLesser</code>, <code>ifLT</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:toBeGreaterThan">Adapt:toBeGreaterThan</a> – Compare as greater than.<br>Aliases: <code>greater</code>, <code>gt</code>, <code>toBeGreater</code>, <code>toBeGT</code>, <code>isGreater</code>, <code>isGT</code>, <code>ifGreater</code>, <code>ifGT</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:toBeLesserOrEqual">Adapt:toBeLesserOrEqual</a> – Compare as lesser or equal.<br>Aliases: <code>lesserOrEqual</code>, <code>le</code>, <code>toBeLE</code>, <code>isLesserOrEqual</code>, <code>isLE</code>, <code>ifLesserOrEqual</code>, <code>ifLE</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:toBeGreaterOrEqual">Adapt:toBeGreaterOrEqual</a> – Compare as greater or equal.<br>Aliases: <code>greaterOrEqual</code>, <code>ge</code>, <code>toBeGE</code>, <code>isGreaterOrEqual</code>, <code>isGE</code>, <code>ifGreaterOrEqual</code>, <code>ifGE</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:toBeMatch">Adapt:toBeMatch</a> – Compare as a pattern match.<br>Aliases: <code>match</code>, <code>isMatch</code>, <code>ifMatch</code></li>
+    <li><a href="../classes/Adapt.html#Adapt:toBeUMatch">Adapt:toBeUMatch</a> – Compare as a Unicode pattern match.<br>Aliases: <code>umatch</code>, <code>isUMatch</code>, <code>ifUMatch</code></li>
+</ul>
 
 
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-03-18 10:20:19 </i>
+<i style="float:right;">Last updated 2019-03-20 02:47:17 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

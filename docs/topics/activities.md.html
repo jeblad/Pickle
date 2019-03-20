@@ -30,13 +30,20 @@
   <li><a href="../mw.pickle.html">Index</a></li>
 </ul>
 
+<h2>Contents</h2>
+<ul>
+<li><a href="#Development">Development </a></li>
+<li><a href="#Refactor_for_production">Refactor for production </a></li>
+<li><a href="#Progress">Progress </a></li>
+<li><a href="#Socializing">Socializing </a></li>
+</ul>
 
 
 <h2>Topics</h2>
 <ul class="">
-  <li><a href="../topics/activities.md.html">activities</a></li>
+  <li><strong>activities</strong></li>
   <li><a href="../topics/adapt.md.html">adapt</a></li>
-  <li><strong>call-style</strong></li>
+  <li><a href="../topics/call-style.md.html">call-style</a></li>
   <li><a href="../topics/change-log.md.html">change-log</a></li>
   <li><a href="../topics/databases.md.html">databases</a></li>
   <li><a href="../topics/musings.md.html">musings</a></li>
@@ -84,46 +91,75 @@
 <div id="content">
 
 
-<h1>Call style</h1>
+<h1>Activities</h1>
 
-<p>Lua allows the following form of calling</p>
+<p>Lists are in prioritized order, not in execution order.</p>
 
+<p><a name="Development"></a></p>
+<h2>Development</h2>
 
-<pre>
-<span class="keyword">local</span> lib = <span class="global">require</span> <span class="string">'Module:Foo'</span>
-<span class="keyword">return</span> describe lib <span class="keyword">function</span>()
-  expect <span class="comment">-- something
-</span><span class="keyword">end</span>
-</pre>
+<h3>Create an extension</h3>
 
+<ul>
+    <li>☑ Add proper localization through Translatewiki (<a href="translatewiki">translatewiki</a>)</li>
+    <li>☐ … and additional code (<a href="../tree/master/includes/LuaLibrary/lua/pure/picklelib/extractor">extractor</a>, <a href="../tree/master/includes/LuaLibrary/lua/pure/picklelib/translator">translator</a>) for localizing tests</li>
+    <li>☐ Create a gadget to rerun the tests when a user develop code (<a href="../tree/master/includes/Console">Console</a>)</li>
+    <li>☐ Create a parser function to invoke a set of test “files” (pages)</li>
+</ul>
 
-<p>The funny part is <code>return describe lib (function…</code> which seems almost magical. Each call eats one value argument, and it progresses until a statement is found. At that point it stops, but it might restart from the that statement. To make this work the call to the left must generate a new call, typically by defining a <code>__call()</code> meta function. Only one value is eaten at a time, and each time a new call must be made. Because only value arguments are eaten, all arguments that somehow is a statement must be wrapped in parentheses.</p>
+<h3>Test styles</h3>
 
-<p>Hidden in the previous is the fact that <code>return</code> is an operator, and thus defines a statement by itself, so the chaining starts at <code>describe</code>.</p>
+<ul>
+    <li>☐ Add assert-style tests (“Busted”) in addition to the present expect-style tests (“Rspec”)</li>
+</ul>
 
-<p>Unfortunately the linter does not like this form, and that is why the function is wrapped in parentheses. The previous must thus be written as</p>
+<h3>Setup and teardown</h3>
 
+<ul>
+    <li>☐ Add stacks for the callbacks</li>
+</ul>
 
-<pre>
-<span class="keyword">local</span> lib = <span class="global">require</span> <span class="string">'Module:Foo'</span>
-<span class="keyword">return</span> describe (lib) (<span class="keyword">function</span>()
-  expect <span class="comment">-- something
-</span><span class="keyword">end</span>)
-</pre>
+<h3>Extract and format data</h3>
 
+<ul>
+    <li>☐ Add methods for passing data to <em>describe</em>, <em>context</em> and <em>it</em></li>
+</ul>
 
-<p>or as a list of arguments to a common call</p>
+<h3>Coverage</h3>
 
+<ul>
+    <li>☐ Add functionality for coarse coverage</li>
+    <li>☐ Add injection of spies (monkey patching) on all methods on whole tables</li>
+    <li>☐ Add some kind of visualization (list) of non-tested methods</li>
+</ul>
 
-<pre>
-<span class="keyword">local</span> lib = <span class="global">require</span> <span class="string">'Module:Foo'</span>
-<span class="keyword">return</span> describe(lib, <span class="keyword">function</span>()
-  expect :bar() :toBe(<span class="string">"Baz"</span>)
-<span class="keyword">end</span>)
-</pre>
+<p><a name="Refactor_for_production"></a></p>
+<h2>Refactor for production</h2>
 
+<ul>
+    <li>☐ Cleanup construction of methods</li>
+    <li>☐ Shift to use table-style objects instead of closures</li>
+    <li>☐ Solidify the code (add checks for sane data)</li>
+</ul>
 
-<p>In some cases the parenthesized form can be more readable and more easily interpreted as a repeated call.</p>
+<p><a name="Progress"></a></p>
+<h2>Progress</h2>
+
+<ul>
+    <li>☒ <s>first implementation, use a template with <code>ifexist</code></s></li>
+    <li>☑ later implementation, use content model and track those modules that has functions, and then identify according to title scheme</li>
+</ul>
+
+<p><a name="Socializing"></a></p>
+<h2>Socializing</h2>
+
+<ul>
+    <li>☐ Maintain a list of non-techie updates of <a href="https://mediawiki.org/wiki/Help:Pickle/Rollout">mw:Help:Pickle/Rollout</a> (all major changes)</li>
+    <li>☑ At startup add a note at the biggest wikimedia projects' community portals about existence of the <a href="https://mediawiki.org/wiki/Help:Pickle">mw:Help:Pickle</a></li>
+    <li>☑ Mark introduction and core pages at <a href="https://mediawiki.org/wiki/Help:Pickle/Help:Pickle">mw:Help:Pickle</a> for translation as early as possible, these pages gives a lot of necessary information</li>
+    <li>☐ Write a monthly newsletter for the wikitech mailing list, mostly about technical progress</li>
+    <li>☐ Write a non-techie newsletter for the biggest wikimedia projects' community portals when the extension has the first on-wiki running tests for the examples (that is the extension is functional) and then make it monthly</li>
+</ul>
 
 
 </div> <!-- id="content" -->
