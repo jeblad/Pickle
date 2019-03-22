@@ -30,6 +30,11 @@
   <li><a href="../mw.pickle.html">Index</a></li>
 </ul>
 
+<h2>Contents</h2>
+<ul>
+<li><a href="#Usage">Usage </a></li>
+<li><a href="#Entries">Entries </a></li>
+</ul>
 
 
 <h2>Topics</h2>
@@ -39,6 +44,7 @@
   <li><a href="../topics/call-style.md.html">call-style</a></li>
   <li><strong>change-log</strong></li>
   <li><a href="../topics/databases.md.html">databases</a></li>
+  <li><a href="../topics/dataflow.md.html">dataflow</a></li>
   <li><a href="../topics/musings.md.html">musings</a></li>
   <li><a href="../topics/vscode-snippets.md.html">vscode-snippets</a></li>
 </ul>
@@ -86,28 +92,66 @@
 
 <h1>Log</h1>
 
-<p>A test status <a href="https://mediawiki.org/wiki/Help:Log">change log</a> is implemented. This list the previous overall results for modules that has tests, and the entries will be added conditionally during rendering. The log entry will be added if the overall outcome of the tests has changed from the previous run, or if there are no results from earlier. The logged page will be the tested page, and the user will be a specific one that is created for this purpose.</p>
+<p><em>NOTE</em>: The following assumes logging will be done during rendering, but that is no longer the case, thus should be changed to logging on editing the page.</p>
+
+<p>The ??? class implements a test observer that <a href="https://mediawiki.org/wiki/Help:Log">log status changes</a>. This list the overall results for modules that has tests, and the entries will be added conditionally during rendering. The log entry will be added if the overall outcome of the tests has changed from the previous run, or if there are no results from earlier. The logged page will be the tested page, and the user will be a specific one that is created for this purpose.</p>
 
 <p>By having a status change log it will be easier to track down where and when a change happen, and then how to fix the problem. Often the status change will be at the same time that someone is editing the page, but that is not always the case. The rendering can take place some time after a change on a related page, so it is not necessarily the user triggering the rendering that did the change that is the reason for the status change.</p>
 
-<p>The change will typically happen when rendering is triggered, and at that point the page props are already saved, and that can happen because a more or less random user visits the page. It is probably not necessary to log who did the edit that created the ripple that ultimately lead to a status change in most cases, and it can also be difficult to identify the correct edit. Instead of using the user who triggered the rendering, or the user who previously did the edit, a system user is registered and used. The system user will presumably be something like “Test observer”, “Test logger”, or “Test manager” for those cases. A name like “observer” is a bit more generic than “logger”, but the “manager” form is already in use by the Flow-system. The user is identified through its user id, so it can be renamed. It could be that it is better to use a fixed name, as this can be more easily handled on a server farm.</p>
+<p>The change will typically happen when rendering is triggered, and at that point the page props are already saved, and that can happen because a more or less random user visits the page. It is probably not necessary to log who did the edit that created the ripple that ultimately lead to a status change in most cases, and it can also be difficult to identify the correct edit. Instead of using the user who triggered the rendering, or the user who previously did the edit, a system user is registered and used. The system user will presumably be something like “Test observer”, “Test logger”, or “Test manager” for those cases. A name like “observer” is a bit more generic than “logger”, but the “manager” form is already in use by the Flow-system.</p>
 
 <p><em>NOTE</em>: Only use the following if a flag “log on render” is set?</p>
 
-<p>One possible solution is to save a notice about a changed render state to memcached instead of page props, and to use that as basis for logging, and other status tracking if it exists and are different from page props. If the state notice in memcached does not exist, then all status tracking will happen according to page props, and then the state notice will be recreated. The state notice will be deleted on page save. This will make new log entries as the memcached state notices disappears or changes.</p>
+<p>One possible solution is to save a notice about a changed render state to <a href="https://en.wikipedia.org/wiki/Memcached">memcached</a> instead of page props, and to use that as basis for logging, and other status tracking if it exists and are different from page props. If the state notice in memcached does not exist, then all status tracking will happen according to page props, and then the state notice will be recreated. The state notice will be deleted on page save. This will make new log entries as the memcached state notices disappears or changes.</p>
 
-<p>In some cases the status change can be detected during the save action, and then it is possible to log the test status change with the correct user. This is although not trivial.</p>
+<p>In some cases the status change can be detected during the save action, and then it is possible to log the test status change with the correct user. This is although not trivial, as the status change for one page can be triggered by some other page, and a cascade of log entries created.</p>
 
 <p>There are other special users like <a href="https://en.wikipedia.org/wiki/User:Maintenance_script">User:Maintenance script</a> and <a href="https://en.wikipedia.org/wiki/User:Flow_talk_page_manager">User:Flow talk page manager</a>. The special user that logs the status changes should be handled the same way.</p>
 
+<p><em>NOTE</em>: Following is not implemented.</p>
+
 <p>At the top of the page there is a link to the special log page.</p>
+
+<p><a name="Usage"></a></p>
+<h2>Usage</h2>
+
+<p>The user is identified through its user id, so it can be renamed. It could be that it is better to use a fixed name, as this can be more easily handled on a server farm.</p>
+
+
+<pre>
+{
+    <span class="string">"config"</span>: {
+        <span class="string">"ObserverID"</span>: <span class="number">3</span>
+    }
+}
+</pre>
+
+
+<p>The special user must be manually created, and unless created status change log entries will not be made.</p>
+
+<p><a name="Entries"></a></p>
+<h2>Entries</h2>
+
+<p>Log entries will be made on changes, and it is the final state that is logged</p>
+
+
+<ul>
+    <li>track/good – all tests passed</li>
+    <li>track/fail – some tests failed</li>
+    <li>track/skip-good – all tests passed, but some tests marked “skip” (i.e. could be a pending failure)</li>
+    <li>track/skip-fail – some tests failed, and some tests also marked “skip”</li>
+    <li>track/todo-good – all tests passed, but some tests marked “todo” (i.e. could be a pending failure)</li>
+    <li>track/todo-fail – some tests failed, and some tests also marked “skip”</li>
+    <li>track/missing – missing testpage</li>
+    <li>track/unknown – unknown testpage</li>
+</ul>
 
 
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-03-20 02:47:17 </i>
+<i style="float:right;">Last updated 2019-03-22 19:51:36 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

@@ -32,6 +32,7 @@
 
 <h2>Contents</h2>
 <ul>
+<li><a href="#Usage">Usage </a></li>
 <li><a href="#Methods">Methods </a></li>
 </ul>
 
@@ -43,6 +44,7 @@
   <li><a href="../topics/call-style.md.html">call-style</a></li>
   <li><a href="../topics/change-log.md.html">change-log</a></li>
   <li><a href="../topics/databases.md.html">databases</a></li>
+  <li><a href="../topics/dataflow.md.html">dataflow</a></li>
   <li><a href="../topics/musings.md.html">musings</a></li>
   <li><a href="../topics/vscode-snippets.md.html">vscode-snippets</a></li>
 </ul>
@@ -92,20 +94,49 @@
 
 <p>The <a href="../classes/Adapt.html#">Adapt</a> class (<code>subject</code>, <code>expect</code>) defines an <a href="https://en.wikipedia.org/wiki/Assertion_definition_language">assertion definition language</a> used in Pickle, which provides methods that are easy to use and fast to declare as long as the tests has a clearly defined structure. That is, it is a “pickle”.</p>
 
-<p>Tests can be described as series of <a href="https://en.wikipedia.org/wiki/Premise">premises</a>, that must evaluate to a true state. The outcome of a test can be viewed as a sequence of statements that are conjoined together. Because of the <a href="https://en.wikipedia.org/wiki/Logical_conjunction">logical conjunction</a>, the first //falsy// in the sequence will then imply that any further tests can be dismissed. This is the default case.</p>
+<p>Tests can be described as series of <a href="https://en.wikipedia.org/wiki/Premise">premises</a>, that must evaluate to a true state. The outcome of a test can be viewed as a sequence of statements that are conjoined together. Because of the <a href="https://en.wikipedia.org/wiki/Logical_conjunction">logical conjunction</a>, the first <a href="https://en.wiktionary.org/wiki/falsy">falsy</a> in the sequence will then imply that any further tests can be dismissed. This is the default case.</p>
 
-<p>In some cases it is only necessary that one of a few tests has a true state. Because of the <a href="https://en.wikipedia.org/wiki/Logical_disjunction">logical disjunction</a>, the first //truthy// in the sequence will then imply that any further tests can be dismissed.</p>
+<p>In some cases it is only necessary that one of a few tests has a true state. Because of the <a href="https://en.wikipedia.org/wiki/Logical_disjunction">logical disjunction</a>, the first <a href="https://en.wiktionary.org/wiki/truthy">truthy</a> in the sequence will then imply that any further tests can be dismissed.</p>
 
-<p><em>NOTE</em>: It is not clear how the connectives should be set, and if a full description (statement, declaration) of the graph is necessary.</p>
+<p><em>NOTE</em>: It is not clear how the <a href="https://en.wikipedia.org/wiki/Logical_connective">logical connectives</a> should be set, and if a full description (statement, declaration) of the graph is necessary.</p>
 
 <p>The <a href="../classes/Frame.html#">Frame</a> class (<code>describe</code>, <code>context</code>, <code>it</code>) will put data on a <a href="../classes/Stack.html#">Stack</a> called <code>subject</code>, with last frame on top. This will then be available to <code>expect</code> for inspection.</p>
 
 <p><em>NOTE</em>: This method of cross-referencing the Adapt instances could be dropped in favor of simply accessing the <code>subject</code>, leaving <code>expect</code> for other out-of-order tests.</p>
 
+<p><a name="Usage"></a></p>
+<h2>Usage</h2>
+
+<p>Present call works like the following</p>
+
+
+<pre>
+subject( <span class="string">'foo'</span> ) <span class="comment">-- call as part of frame setup
+</span><span class="comment">-- some processing
+</span><span class="comment">-- ⋮
+</span><span class="comment">-- more processing
+</span>expect( <span class="string">'string'</span> ):first():asType():toBeSame()
+</pre>
+
+
+<p>The cross-referencing makes the use very opaque, but as most of its use is hidden it does not matter too much.</p>
+
+<p><em>NOTE</em>: Corrected call would be like the following</p>
+
+
+<pre>
+subject( obj ) <span class="comment">-- call as part of frame setup
+</span><span class="comment">-- some processing
+</span><span class="comment">-- ⋮
+</span><span class="comment">-- more processing
+</span>subject:first():asType():toBeSame( <span class="string">'string'</span> )
+</pre>
+
+
 <p><a name="Methods"></a></p>
 <h2>Methods</h2>
 
-<p>An Adapt instance will typically store a set of objects for later retrieval and test. To load a test instance onto the stack use the table call form, that is <code>subject( ... )</code>. This will store whatever provided. Then those values can be processed with three types of operations; pick a value, transform the value, and evaluate a conditional on the value. The final value is then used for the final outcome of a single premise.</p>
+<p>An Adapt instance will typically store a set of objects for later retrieval and test. To load a test instance onto the stack use the table call form, that is <code>subject( ... )</code>. This will store whatever provided on the stack for later retrieval. Those values can be further conditioned and processed with three types of operations; pick a value, transform the value, and evaluate a conditional on the value. The final value is then used for the final outcome of a single premise.</p>
 
 <h3>Pick value</h3>
 
@@ -170,7 +201,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-03-20 02:47:17 </i>
+<i style="float:right;">Last updated 2019-03-22 19:51:36 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
