@@ -13,13 +13,13 @@ The _head_ of the extension is targeted at the _head_ of [Mediawiki](https://www
 A help portal for users are available at [Mediawiki](https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Pickle).
 
 * Mediawiki ([issues](https://phabricator.wikimedia.org/tag/mediawiki-general-or-unknown/) | [code](https://phabricator.wikimedia.org/diffusion/MW/))
-  * Gerrit `git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git`
+  * Gerrit `git clone https://gerrit.wikimedia.org/r/mediawiki/core.git`
   * GitHub `git clone https://github.com/wikimedia/mediawiki.git`
 * Scribunto ([issues](https://phabricator.wikimedia.org/tag/mediawiki-extensions-scribunto/) | [code](https://phabricator.wikimedia.org/diffusion/ELUA/))
-  * Gerrit `git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/Scribunto`
+  * Gerrit `git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/Scribunto`
   * GitHub `git clone https://github.com/wikimedia/mediawiki-extensions-Scribunto.git`
 * Pickle _experimental_ ([issues](https://phabricator.wikimedia.org/tag/mediawiki-extensions-pickle/) | [code](https://phabricator.wikimedia.org/diffusion/EPKL/))
-  * Gerrit `git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/Pickle`
+  * Gerrit `git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/Pickle`
   * GitHub `git clone https://github.com/wikimedia/mediawiki-extensions-Pickle.git`
 * Pickle _development_ ([issues](https://github.com/jeblad/Pickle/issues) | [code](https://github.com/jeblad/Pickle))
   * GitHub `git clone https://github.com/jeblad/Pickle.git`
