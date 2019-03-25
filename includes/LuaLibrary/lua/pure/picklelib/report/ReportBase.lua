@@ -105,11 +105,11 @@ function Report:isTodo()
 end
 
 --- Realize the data by applying a render.
--- @tparam Renders renders to use while realizing the reports
--- @tparam string lang holding the language code
--- @tparam Counter counter holding the running count
+-- @tparam Renders renders to use while realizing the reports (unused)
+-- @tparam string lang holding the language code (unused)
+-- @tparam Counter counter holding the running count (unused)
 -- @treturn string
-function Report:realize( renders, lang, counter ) -- luacheck: ignore
+function Report:realize() -- luacheck: no self
 	-- @todo this should probably return an error
 	-- error('Method should be overridden')
 	return ''
