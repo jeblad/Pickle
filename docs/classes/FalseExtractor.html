@@ -44,14 +44,14 @@
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
-  <li><a href="../classes/ExtractorStrategies.html">ExtractorStrategies</a></li>
-  <li><a href="../classes/ExtractorStrategyBase.html">ExtractorStrategyBase</a></li>
-  <li><a href="../classes/FalseExtractorStrategy.html">FalseExtractorStrategy</a></li>
-  <li><strong>JsonExtractorStrategy</strong></li>
-  <li><a href="../classes/NilExtractorStrategy.html">NilExtractorStrategy</a></li>
-  <li><a href="../classes/NumberExtractorStrategy.html">NumberExtractorStrategy</a></li>
-  <li><a href="../classes/StringExtractorStrategy.html">StringExtractorStrategy</a></li>
-  <li><a href="../classes/TrueExtractorStrategy.html">TrueExtractorStrategy</a></li>
+  <li><a href="../classes/ExtractorBase.html">ExtractorBase</a></li>
+  <li><a href="../classes/Extractors.html">Extractors</a></li>
+  <li><strong>FalseExtractor</strong></li>
+  <li><a href="../classes/JsonExtractor.html">JsonExtractor</a></li>
+  <li><a href="../classes/NilExtractor.html">NilExtractor</a></li>
+  <li><a href="../classes/NumberExtractor.html">NumberExtractor</a></li>
+  <li><a href="../classes/StringExtractor.html">StringExtractor</a></li>
+  <li><a href="../classes/TrueExtractor.html">TrueExtractor</a></li>
   <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
   <li><a href="../classes/FrameRender.html">FrameRender</a></li>
   <li><a href="../classes/RenderBase.html">RenderBase</a></li>
@@ -89,31 +89,31 @@
 
 <div id="content">
 
-<h1>Class <code>JsonExtractorStrategy</code></h1>
+<h1>Class <code>FalseExtractor</code></h1>
 <p>Subclass to do specialization of the extractor strategy class.</p>
-<p> This is the spesialization to do casting into a string type</p>
+<p> This is the spesialization to do casting into a false boolean type</p>
 
 
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#JsonExtractorStrategy:__index">JsonExtractorStrategy:__index (key)</a></td>
+	<td class="name" nowrap><a href="#FalseExtractor:__index">FalseExtractor:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#JsonExtractorStrategy:create">JsonExtractorStrategy:create ()</a></td>
+	<td class="name" nowrap><a href="#FalseExtractor:create">FalseExtractor:create ()</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#JsonExtractorStrategy:cast">JsonExtractorStrategy:cast (str, start, finish)</a></td>
+	<td class="name" nowrap><a href="#FalseExtractor:cast">FalseExtractor:cast ()</a></td>
 	<td class="summary">Cast the string into the correct type for this strategy.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#JsonExtractorStrategy:placeholder">JsonExtractorStrategy:placeholder ()</a></td>
-	<td class="summary">Get the placeholder for this strategy</td>
+	<td class="name" nowrap><a href="#FalseExtractor:placeholder">FalseExtractor:placeholder ()</a></td>
+	<td class="summary">Get the placeholder for this strategy.</td>
 	</tr>
 </table>
 
@@ -125,8 +125,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "JsonExtractorStrategy:__index"></a>
-    <strong>JsonExtractorStrategy:__index (key)</strong>
+    <a name = "FalseExtractor:__index"></a>
+    <strong>FalseExtractor:__index (key)</strong>
     </dt>
     <dd>
     Lookup of missing class members.
@@ -155,8 +155,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "JsonExtractorStrategy:create"></a>
-    <strong>JsonExtractorStrategy:create ()</strong>
+    <a name = "FalseExtractor:create"></a>
+    <strong>FalseExtractor:create ()</strong>
     </dt>
     <dd>
     Create a new instance.
@@ -177,52 +177,36 @@
 
 </dd>
     <dt>
-    <a name = "JsonExtractorStrategy:cast"></a>
-    <strong>JsonExtractorStrategy:cast (str, start, finish)</strong>
+    <a name = "FalseExtractor:cast"></a>
+    <strong>FalseExtractor:cast ()</strong>
     </dt>
     <dd>
     Cast the string into the correct type for this strategy.
  There are no safeguards for erroneous casts.
 
 
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">str</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         used as the extraction source
-        </li>
-        <li><span class="parameter">start</span>
-            <span class="types"><span class="type">number</span></span>
-         for an inclusive index where extraction starts
-        </li>
-        <li><span class="parameter">finish</span>
-            <span class="types"><span class="type">number</span></span>
-         for an inclusive index where extraction finishes
-        </li>
-    </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">JSON</span></span>
-
-
-
+           <span class="types"><span class="type">boolean</span></span>
+        false
     </ol>
 
 
     <h3>See also:</h3>
     <ul>
+         <a href="../classes/ExtractorBase.html#ExtractorBase:cast">ExtractorBase:cast</a>
     </ul>
 
 
 </dd>
     <dt>
-    <a name = "JsonExtractorStrategy:placeholder"></a>
-    <strong>JsonExtractorStrategy:placeholder ()</strong>
+    <a name = "FalseExtractor:placeholder"></a>
+    <strong>FalseExtractor:placeholder ()</strong>
     </dt>
     <dd>
-    Get the placeholder for this strategy
+    Get the placeholder for this strategy.
 
 
 
@@ -246,7 +230,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-03-25 14:23:29 </i>
+<i style="float:right;">Last updated 2019-03-25 15:15:14 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

@@ -45,14 +45,14 @@
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
   <li><a href="../classes/ExtractorBase.html">ExtractorBase</a></li>
-  <li><a href="../classes/Extractors.html">Extractors</a></li>
+  <li><strong>Extractors</strong></li>
   <li><a href="../classes/FalseExtractor.html">FalseExtractor</a></li>
   <li><a href="../classes/JsonExtractor.html">JsonExtractor</a></li>
   <li><a href="../classes/NilExtractor.html">NilExtractor</a></li>
   <li><a href="../classes/NumberExtractor.html">NumberExtractor</a></li>
   <li><a href="../classes/StringExtractor.html">StringExtractor</a></li>
   <li><a href="../classes/TrueExtractor.html">TrueExtractor</a></li>
-  <li><strong>AdaptRender</strong></li>
+  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
   <li><a href="../classes/FrameRender.html">FrameRender</a></li>
   <li><a href="../classes/RenderBase.html">RenderBase</a></li>
   <li><a href="../classes/Renders.html">Renders</a></li>
@@ -89,45 +89,39 @@
 
 <div id="content">
 
-<h1>Class <code>AdaptRender</code></h1>
-<p>Intermediate class for report renderer.</p>
-<p>
-
-</p>
+<h1>Class <code>Extractors</code></h1>
+<p>Baseclass for extractor strategies.</p>
+<p> This should be a strategy pattern</p>
 
 
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#AdaptRender:__index">AdaptRender:__index (key)</a></td>
+	<td class="name" nowrap><a href="#Extractors:__index">Extractors:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#AdaptRender:create">AdaptRender:create (...)</a></td>
+	<td class="name" nowrap><a href="#Extractors:create">Extractors:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#AdaptRender:key">AdaptRender:key (str)</a></td>
-	<td class="summary">Override key construction.</td>
+	<td class="name" nowrap><a href="#Extractors:register">Extractors:register (strategy)</a></td>
+	<td class="summary">Register a new strategy.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#AdaptRender:realizeState">AdaptRender:realizeState (src, lang, counter)</a></td>
-	<td class="summary">Realize reported data for state.</td>
+	<td class="name" nowrap><a href="#Extractors:flush">Extractors:flush ()</a></td>
+	<td class="summary">Removes all registered extractors.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#AdaptRender:realizeHeader">AdaptRender:realizeHeader (src, lang, counter)</a></td>
-	<td class="summary">Realize reported data for header.</td>
+	<td class="name" nowrap><a href="#Extractors:num">Extractors:num ()</a></td>
+	<td class="summary">The number of registered extractors.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#AdaptRender:realizeLine">AdaptRender:realizeLine (param, lang)</a></td>
-	<td class="summary">Realize reported data for a line.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#AdaptRender:realizeBody">AdaptRender:realizeBody (src, lang)</a></td>
-	<td class="summary">Realize reported data for body.</td>
+	<td class="name" nowrap><a href="#Extractors:find">Extractors:find (str, pos)</a></td>
+	<td class="summary">Find a matching extractor.</td>
 	</tr>
 </table>
 
@@ -139,8 +133,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "AdaptRender:__index"></a>
-    <strong>AdaptRender:__index (key)</strong>
+    <a name = "Extractors:__index"></a>
+    <strong>Extractors:__index (key)</strong>
     </dt>
     <dd>
     Lookup of missing class members.
@@ -169,8 +163,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "AdaptRender:create"></a>
-    <strong>AdaptRender:create (...)</strong>
+    <a name = "Extractors:create"></a>
+    <strong>Extractors:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
@@ -180,194 +174,126 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         unused
+         list of strategies
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="../classes/AdaptRender.html#">AdaptRender</a> or <span class="type">any</span></span>
+           <span class="types"><span class="type">self</span></span>
 
 
 
     </ol>
 
 
-    <h3>See also:</h3>
-    <ul>
-         <a href="../classes/RenderBase.html#RenderBase:create">RenderBase:create</a>
-    </ul>
 
 
 </dd>
     <dt>
-    <a name = "AdaptRender:key"></a>
-    <strong>AdaptRender:key (str)</strong>
+    <a name = "Extractors:register"></a>
+    <strong>Extractors:register (strategy)</strong>
     </dt>
     <dd>
-    Override key construction.
+    Register a new strategy.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">strategy</span>
+         to be registered
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Extractors:flush"></a>
+    <strong>Extractors:flush ()</strong>
+    </dt>
+    <dd>
+    Removes all registered extractors.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Extractors:num"></a>
+    <strong>Extractors:num ()</strong>
+    </dt>
+    <dd>
+    The number of registered extractors.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Extractors:find"></a>
+    <strong>Extractors:find (str, pos)</strong>
+    </dt>
+    <dd>
+    Find a matching extractor.
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">str</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         to be appended to a base string
+         used as the extraction source
+        </li>
+        <li><span class="parameter">pos</span>
+            <span class="types"><span class="type">number</span></span>
+         for an inclusive index where extraction starts
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><span class="type">strategy,first,last</span></span>
 
 
 
     </ol>
 
-
-
-
-</dd>
-    <dt>
-    <a name = "AdaptRender:realizeState"></a>
-    <strong>AdaptRender:realizeState (src, lang, counter)</strong>
-    </dt>
-    <dd>
-    Realize reported data for state.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">src</span>
-            <span class="types"><span class="type">Report</span></span>
-         that shall be realized
-        </li>
-        <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         code used for realization
-        </li>
-        <li><span class="parameter">counter</span>
-            <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
-         holding the running count
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-
-
-
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "AdaptRender:realizeHeader"></a>
-    <strong>AdaptRender:realizeHeader (src, lang, counter)</strong>
-    </dt>
-    <dd>
-    Realize reported data for header.
- The "header" is a composite.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">src</span>
-            <span class="types"><span class="type">Report</span></span>
-         that shall be realized
-        </li>
-        <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         code used for realization
-        </li>
-        <li><span class="parameter">counter</span>
-            <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
-         holding the running count
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-
-
-
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "AdaptRender:realizeLine"></a>
-    <strong>AdaptRender:realizeLine (param, lang)</strong>
-    </dt>
-    <dd>
-    Realize reported data for a line.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">param</span>
-            <span class="types"><span class="type">any</span></span>
-         that shall be realized
-        </li>
-        <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         code used for realization
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-
-
-
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "AdaptRender:realizeBody"></a>
-    <strong>AdaptRender:realizeBody (src, lang)</strong>
-    </dt>
-    <dd>
-    Realize reported data for body.
- The "body" is a composite.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">src</span>
-            <span class="types"><span class="type">Report</span></span>
-         that shall be realized
-        </li>
-        <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         code used for realization
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-
-
-
-    </ol>
-
+    <h3>Raises:</h3>
+    On missing source
 
 
 
