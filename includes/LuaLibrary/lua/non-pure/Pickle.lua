@@ -229,7 +229,7 @@ local mt = { types = {} }
 -- @function mw.pickle.__call
 -- @param env table for the environment
 -- @treturn self
-function mt:__call( env ) -- luacheck: no self
+function mt:__call() -- luacheck: no self
 	-- @todo
 end
 
