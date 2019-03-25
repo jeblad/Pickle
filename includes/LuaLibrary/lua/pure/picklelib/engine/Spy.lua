@@ -16,9 +16,9 @@ function Spy:__index( key ) -- luacheck: no self
 end
 
 --- Create a new instance.
--- @tparam vararg ... set to temporal
+-- @tparam vararg ... set to temporal (unused)
 -- @treturn self
-function Spy.create( ... ) -- luacheck: ignore
+function Spy.create()
 	local self = setmetatable( {}, Spy )
 	return self
 end
