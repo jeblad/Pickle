@@ -129,13 +129,13 @@
 			"adapt-report": "Adapt",
 			"frame-report": "Frame"
 		},
-		"ExtractorStrategy": [
-			"picklelib/extractor/NilExtractorStrategy",
-			"picklelib/extractor/FalseExtractorStrategy",
-			"picklelib/extractor/TrueExtractorStrategy",
-			"picklelib/extractor/StringExtractorStrategy",
-			"picklelib/extractor/NumberExtractorStrategy",
-			"picklelib/extractor/JsonExtractorStrategy"
+		"Extractor": [
+			"picklelib/extractor/NilExtractor",
+			"picklelib/extractor/FalseExtractor",
+			"picklelib/extractor/TrueExtractor",
+			"picklelib/extractor/StringExtractor",
+			"picklelib/extractor/NumberExtractor",
+			"picklelib/extractor/JsonExtractor"
 		],
 		"NeglectSubpages": [
 			"/^(?:.*?\\.)?doc$/",

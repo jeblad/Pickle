@@ -1,4 +1,4 @@
---- Tests for the nil extractor module.
+--- Tests for the boolean false extractor module.
 -- This is a preliminary solution.
 -- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/extractor/NilExtractorStrategy'
+local lib = require 'picklelib/extractor/FalseExtractor'
 assert( lib )
 local name = 'extractor'
 
@@ -42,34 +42,34 @@ local tests = {
 	{
 		name = name .. ' exists',
 		func = testExists,
-		type ='ToString',
+		type = 'ToString',
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
-		type ='ToString',
+		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
-		type ='ToString',
+		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
-		type ='ToString',
+		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.type ()',
 		func = testType,
-		expect = { 'nil' }
+		expect = { 'false' }
 	},
 	{
 		name = name .. '.find (not matched)',
@@ -80,37 +80,37 @@ local tests = {
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'nil' },
-		expect = { 1, 3 }
+		args = { 'false' },
+		expect = { 1, 5 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'nil bar baz' },
-		expect = { 1, 3 }
+		args = { 'false bar baz' },
+		expect = { 1, 5 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'foo nil baz' },
-		expect = { 5, 7 }
+		args = { 'foo false baz' },
+		expect = { 5, 9 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'foo bar nil' },
-		expect = { 9, 11 }
+		args = { 'foo bar false' },
+		expect = { 9, 13 }
 	},
 	{
 		name = name .. '.cast (empty)',
 		func = testCast,
-		expect = { nil }
+		expect = { false }
 	},
 	{
 		name = name .. '.placeholder ()',
 		func = testPlaceholder,
 		args = {},
-		expect = { 'nil' }
+		expect = { 'boolean' }
 	},
 }
 

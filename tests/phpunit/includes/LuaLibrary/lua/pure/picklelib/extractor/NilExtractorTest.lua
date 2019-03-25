@@ -1,4 +1,4 @@
---- Tests for the json extractor module.
+--- Tests for the nil extractor module.
 -- This is a preliminary solution.
 -- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/extractor/JsonExtractorStrategy'
+local lib = require 'picklelib/extractor/NilExtractor'
 assert( lib )
 local name = 'extractor'
 
@@ -42,34 +42,34 @@ local tests = {
 	{
 		name = name .. ' exists',
 		func = testExists,
-		type = 'ToString',
+		type ='ToString',
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
-		type = 'ToString',
+		type ='ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
-		type = 'ToString',
+		type ='ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
-		type = 'ToString',
+		type ='ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.type ()',
 		func = testType,
-		expect = { 'json' }
+		expect = { 'nil' }
 	},
 	{
 		name = name .. '.find (not matched)',
@@ -80,56 +80,37 @@ local tests = {
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { '{}' },
-		expect = { 1, 2 }
+		args = { 'nil' },
+		expect = { 1, 3 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { '[]' },
-		expect = { 1, 2 }
+		args = { 'nil bar baz' },
+		expect = { 1, 3 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { '["test"] bar baz' },
-		expect = { 1, 8 }
+		args = { 'foo nil baz' },
+		expect = { 5, 7 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'foo ["test"] baz' },
-		expect = { 5, 12 }
-	},
-	{
-		name = name .. '.find (matched)',
-		func = testFind,
-		args = { 'foo bar ["test"]' },
-		expect = { 9, 16 }
-	},
-	{
-		name = name .. '.find (matched)',
-		func = testFind,
-		args = { 'foo {"test":["ping","pong"],"test2":42} baz' },
-		expect = { 5, 39 }
+		args = { 'foo bar nil' },
+		expect = { 9, 11 }
 	},
 	{
 		name = name .. '.cast (empty)',
 		func = testCast,
-		args = { 'foo bar ["test"]', 9, 16 },
-		expect = { {"test"} }
-	},
-	{
-		name = name .. '.cast (empty)',
-		func = testCast,
-		args = { 'foo {"test":["ping","pong"],"test2":42} baz', 5, 39 },
-		expect = { { ["test"] = { "ping", "pong" }, ["test2"] = 42 } }
+		expect = { nil }
 	},
 	{
 		name = name .. '.placeholder ()',
 		func = testPlaceholder,
 		args = {},
-		expect = { 'json' }
+		expect = { 'nil' }
 	},
 }
 

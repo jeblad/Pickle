@@ -1,10 +1,10 @@
 --- Subclass to do specialization of the extractor strategy class.
 -- This is the spesialization to do casting into a false boolean type
--- @classmod FalseExtractorStrategy
+-- @classmod FalseExtractor
 -- @alias Extractor
 
 -- pure libs
-local Base = require 'picklelib/extractor/ExtractorStrategyBase'
+local Base = require 'picklelib/extractor/ExtractorBase'
 
 -- @var class var for lib
 local Extractor = {}
@@ -41,19 +41,16 @@ function Extractor:_init()
 end
 
 --- Cast the string into the correct type for this strategy.
--- There are no safeguards for erroneous casts
--- @tparam string str used as the extraction source
--- @tparam number start for an inclusive index where extraction starts
--- @tparam number finish for an inclusive index where extraction finishes
--- @treturn boolean true
-function Extractor:cast( str, start, finish ) -- luacheck: ignore
+-- There are no safeguards for erroneous casts.
+-- @see ExtractorBase:cast
+-- @treturn boolean false
+function Extractor:cast() -- luacheck: ignore self
 	return false
 end
 
 --- Get the placeholder for this strategy.
--- @raise Unconditional unless overridden
 -- @treturn string
-function Extractor:placeholder() -- luacheck: ignore
+function Extractor:placeholder() -- luacheck: ignore self
 	return 'boolean'
 end
 

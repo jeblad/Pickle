@@ -1,7 +1,6 @@
 --- Baseclass for extractor strategies.
 -- This should be a strategy pattern
--- @classmod ExtractorStrategies
--- @alias Extractors
+-- @classmod Extractors
 
 -- pure libs
 local Stack = require 'picklelib/Stack'

@@ -1,4 +1,4 @@
---- Tests for the boolean false extractor module.
+--- Tests for the string extractor module.
 -- This is a preliminary solution.
 -- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/extractor/FalseExtractorStrategy'
+local lib = require 'picklelib/extractor/StringExtractor'
 assert( lib )
 local name = 'extractor'
 
@@ -69,7 +69,7 @@ local tests = {
 	{
 		name = name .. '.type ()',
 		func = testType,
-		expect = { 'false' }
+		expect = { 'string' }
 	},
 	{
 		name = name .. '.find (not matched)',
@@ -80,37 +80,38 @@ local tests = {
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'false' },
-		expect = { 1, 5 }
+		args = { '"test"' },
+		expect = { 2, 5 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'false bar baz' },
-		expect = { 1, 5 }
+		args = { '"test" bar baz' },
+		expect = { 2, 5 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'foo false baz' },
-		expect = { 5, 9 }
+		args = { 'foo "test" baz' },
+		expect = { 6, 9 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'foo bar false' },
-		expect = { 9, 13 }
+		args = { 'foo bar "test"' },
+		expect = { 10, 13 }
 	},
 	{
 		name = name .. '.cast (empty)',
 		func = testCast,
-		expect = { false }
+		args = { 'foo bar "test"', 10, 13 },
+		expect = { "test" }
 	},
 	{
 		name = name .. '.placeholder ()',
 		func = testPlaceholder,
 		args = {},
-		expect = { 'boolean' }
+		expect = { 'string' }
 	},
 }
 

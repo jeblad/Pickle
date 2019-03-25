@@ -1,10 +1,10 @@
 --- Subclass to do specialization of the extractor strategy class.
--- This is the spesialization to do casting into a number type
--- @classmod NumberExtractorStrategy
+-- This is the spesialization to do casting into a string type
+-- @classmod StringExtractor
 -- @alias Extractor
 
 -- pure libs
-local Base = require 'picklelib/extractor/ExtractorStrategyBase'
+local Base = require 'picklelib/extractor/ExtractorBase'
 
 -- @var class var for lib
 local Extractor = {}
@@ -32,36 +32,30 @@ end
 -- @treturn self
 function Extractor:_init()
 	Base._init( self,
-		{ '^[-+]?%d+%.%d+$', 0, 0 },
-		{ '^[-+]?%d+%.%d+[%s%p]', 0, -1 },
-		{ '[%s%p][-+]?%d+%.%d+$', 1, 0 },
-		{ '[%s%p][-+]?%d+%.%d+[%s%p]', 1, -1 },
-		{ '^[-+]?%d+$', 0, 0 },
-		{ '^[-+]?%d+[%s%p]', 0, -1 },
-		{ '[%s%p][-+]?%d+$', 1, 0 },
-		{ '[%s%p][-+]?%d+[%s%p]', 1, -1 } )
-	self._type = 'number'
+		{ '%b""', 1, -1 } )
+	self._type = 'string'
 	return self
 end
 
 --- Cast the string into the correct type for this strategy.
--- There are no safeguards for erroneous casts
+-- There are no safeguards for erroneous casts.
+-- @see ExtractorBase:cast
 -- @tparam string str used as the extraction source
 -- @tparam number start for an inclusive index where extraction starts
 -- @tparam number finish for an inclusive index where extraction finishes
--- @treturn number
+-- @treturn string
 function Extractor:cast( str, start, finish )
 	if not finish then
-		start, finish = self:find( str, (start or 1) )
+		start, finish = self:find( str, (start or 2) -1 )
 	end
-	return tonumber( mw.ustring.sub( str, start, finish ) )
+
+	return mw.ustring.sub( str, start, finish )
 end
 
 --- Get the placeholder for this strategy.
--- @raise Unconditional unless overridden
 -- @treturn string
-function Extractor:placeholder( str, start, finish ) -- luacheck: ignore
-	return 'number'
+function Extractor:placeholder() -- luacheck: ignore self
+	return 'string'
 end
 
 -- Return the final class.

@@ -1,6 +1,6 @@
 --- BaseClass for an extractor strategy.
 -- This should be a strategy pattern
--- @classmod ExtractorStrategyBase
+-- @classmod ExtractorBase
 -- @alias Extractor
 
 -- pure libs
@@ -65,20 +65,21 @@ function Extractor:find( str, pos )
 end
 
 --- Cast the string into the correct type for this strategy.
--- @raise Unconditional unless overridden
--- @tparam string str used as the extraction source
--- @tparam number start for an inclusive index where extraction starts
--- @tparam number finish for an inclusive index where extraction finishes
+-- @raise Unconditional error unless overridden
+-- @tparam string str used as the extraction source (unused)
+-- @tparam number start for an inclusive index where extraction starts (unused)
+-- @tparam number finish for an inclusive index where extraction finishes (unused)
 -- @treturn nil
-function Extractor:cast( str, start, finish ) -- luacheck: ignore
+function Extractor:cast() -- luacheck: ignore self
 	error('Method should be overridden')
 	return nil
 end
 
 --- Get the placeholder for this strategy.
--- @raise Unconditional unless overridden
+-- @raise Unconditional error unless overridden
 -- @treturn string
-function Extractor:placeholder() -- luacheck: ignore
+function Extractor:placeholder() -- luacheck: ignore self
+	error('Method should be overridden')
 	return nil
 end
 
