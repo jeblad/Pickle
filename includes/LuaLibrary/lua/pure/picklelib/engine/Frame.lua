@@ -3,8 +3,8 @@
 
 -- pure libs
 local Stack = require 'picklelib/Stack'
-local AdaptReport = require 'picklelib/report/AdaptReport' -- luacheck: ignore
-local FrameReport = require 'picklelib/report/FrameReport' -- luacheck: ignore
+local AdaptReport = require 'picklelib/report/AdaptReport'
+local FrameReport = require 'picklelib/report/FrameReport'
 
 -- @var class var for lib
 local Frame = {}
@@ -60,9 +60,9 @@ end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... list to be dispatched
+-- @tparam vararg ... list to be dispatched (unused)
 -- @return Frame
-function Frame:_init( ... ) -- luacheck: ignore
+function Frame:_init()
 	self._descriptions = Stack.create()
 	self._fixtures = Stack.create()
 	self._done = false
@@ -81,32 +81,36 @@ function Frame:dispatch( ... )
 	return self
 end
 
---- Push a string.
--- @local
--- @function Frame.types:string
--- @tparam table self place to store value
--- @tparam string val that should be stored
-mt.types.string = function( self, val )
-	self._descriptions:push( val )
-end
+mt.types = {
 
---- Push a function.
--- @local
--- @function Frame.types:function
--- @tparam table self place to store value
--- @tparam function func that should be stored
-mt.types.function = function( self, func )
-	self._fixtures:push( func )
-end
+	--- Push a string.
+	-- @local
+	-- @function Frame.types:string
+	-- @tparam table self place to store value
+	-- @tparam string val that should be stored
+	['string'] = function( self, val )
+		self._descriptions:push( val )
+	end,
 
---- Push a table.
--- @local
--- @function Frame.types:table
--- @tparam table self place to store value
--- @tparam table tbl that should be stored
-mt.types.table = function( self, tbl )
-	self._subjects:push( tbl )
-end
+	--- Push a function.
+	-- @local
+	-- @function Frame.types:function
+	-- @tparam table self place to store value
+	-- @tparam function func that should be stored
+	['function'] = function( self, func )
+		self._fixtures:push( func )
+	end,
+
+	--- Push a table.
+	-- @local
+	-- @function Frame.types:table
+	-- @tparam table self place to store value
+	-- @tparam table tbl that should be stored
+	['table'] = function( self, tbl )
+		self._subjects:push( tbl )
+	end,
+
+}
 
 --- Check if the frame has descriptions.
 -- @treturn boolean
@@ -210,9 +214,10 @@ end
 
 --- Eval the fixtures over previous dispatched strings.
 -- @treturn self
-function Frame:eval() -- luacheck: ignore
+function Frame:eval()
 	if not self:hasFixtures() then
-		self:reports():push( FrameReport.create():setTodo( 'pickle-frame-no-fixtures' ) )
+		self:reports()
+			:push( FrameReport.create():setTodo( 'pickle-frame-no-fixtures' ) )
 		return self
 	end
 	local env = mw.pickle._implicit and getfenv(1) or _G
@@ -235,7 +240,8 @@ function Frame:eval() -- luacheck: ignore
 			local depth = self:reports():depth()
 			local t= { pcall( mw.pickle._implicit and setfenv( w, env ) or w, unpack{ args } ) }
 			if ( not t[1] ) and (not not t[2]) then
-				self:reports():push( AdaptReport.create():setSkip( 'pickle-adapt-catched-exception' ) )
+				self:reports()
+					:push( AdaptReport.create():setSkip( 'pickle-adapt-catched-exception' ) )
 			end
 			local report = FrameReport.create():setDescription( v )
 			local added = self:reports():depth() - depth
