@@ -44,13 +44,13 @@ end
 -- There are no safeguards for erroneous casts.
 -- @see ExtractorBase:cast
 -- @treturn boolean true
-function Extractor:cast() -- luacheck: ignore self
+function Extractor:cast() -- luacheck: no self
 	return true
 end
 
 --- Get the placeholder for this strategy.
 -- @treturn string
-function Extractor:placeholder() -- luacheck: ignore self
+function Extractor:placeholder() -- luacheck: no self
 	return 'boolean'
 end
 

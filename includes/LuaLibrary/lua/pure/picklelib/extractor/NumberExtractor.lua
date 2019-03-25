@@ -60,7 +60,7 @@ end
 
 --- Get the placeholder for this strategy.
 -- @treturn string
-function Extractor:placeholder() -- luacheck: ignore self
+function Extractor:placeholder() -- luacheck: no self
 	return 'number'
 end
 
