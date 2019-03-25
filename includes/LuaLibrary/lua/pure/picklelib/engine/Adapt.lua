@@ -22,8 +22,10 @@ local mt = {}
 --- Get a clone or create a new instance.
 -- @tparam vararg ... conditionally passed to create
 -- @treturn self
-function mt:__call( ... ) -- luacheck: ignore
-	self:adaptations():push( select( '#', ... ) == 0 and self:adaptations():top() or Adapt.create( ... ) )
+function mt:__call( ... )
+	self:adaptations():push( select( '#', ... ) == 0
+		and self:adaptations():top()
+		or Adapt.create( ... ) )
 	return self:adaptations():top()
 end
 
@@ -142,7 +144,8 @@ local function _makePickProcess( name, idx )
 		return t[idx]
 	end
 	local f = function( self )
-		self:report():addLine( 'pickle-adapt-process-'..name )
+		self:report()
+			:addLine( 'pickle-adapt-process-'..name )
 		self:addProcess( g )
 		return self
 	end
@@ -216,7 +219,8 @@ end
 -- @treturn function
 local function _makeGeneralProcess( name, func )
 	local f = function( self )
-		self:report():addLine( 'pickle-adapt-process-'..util.buildName( name ) )
+		self:report()
+			:addLine( 'pickle-adapt-process-'..util.buildName( name ) )
 		self:addProcess( func )
 		return self
 	end
@@ -429,14 +433,17 @@ end
 local function _makeConditionProcess( name, func, other )
 	local f = function( self )
 		local report = self:report()
-		self:report():addLine( 'pickle-adapt-condition-'..util.buildName( name ) )
-		self:report():addLine( mw.dumpObject({ self:reorder( self:eval(), other or self:other() ) }) )
+		self:report()
+			:addLine( 'pickle-adapt-condition-'..util.buildName( name ) )
+		self:report()
+			:addLine( mw.dumpObject({ self:reorder( self:eval(), other or self:other() ) }) )
 		local final = func( self:reorder( self:eval(), other or self:other() ) )
 		if final then
 			report:ok()
 		end
 		-- @todo add handover
-		self:reports():push( report )
+		self:reports()
+			:push( report )
 		return report
 	end
 	return f
