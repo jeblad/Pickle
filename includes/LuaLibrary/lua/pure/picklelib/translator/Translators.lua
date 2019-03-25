@@ -1,7 +1,6 @@
 --- Class for extractor strategies.
 -- This should be a strategy pattern.
--- @classmod TranslatorStrategies
--- @alias Translators
+-- @classmod Translators
 
 -- @var class var for lib
 local Translators = {}

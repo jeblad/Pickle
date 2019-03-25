@@ -1,6 +1,6 @@
 --- BaseClass for an translator strategy.
 -- This should be a strategy pattern.
--- @classmod TranslatorStrategyBase
+-- @classmod TranslatorBase
 -- @alias Translator
 
 -- @var class var for lib
@@ -63,11 +63,11 @@ end
 
 --- Cast the string into the correct type for this strategy.
 -- @raise Unconditional unless overridden
--- @tparam string str the extraction source
--- @tparam number start of the inclusive index where extraction starts
--- @tparam number finish of the inclusive index where extraction finishes
+-- @tparam string str the extraction source (unused)
+-- @tparam number start of the inclusive index where extraction starts (unused)
+-- @tparam number finish of the inclusive index where extraction finishes (unused)
 -- @treturn nil
-function Translator:cast( str, start, finish ) -- luacheck: ignore
+function Translator:cast() -- luacheck: ignore self
 	error('Method should be overridden')
 	return nil
 end
@@ -75,7 +75,7 @@ end
 --- Get the placeholder for this strategy.
 -- @raise Unconditional unless overridden
 -- @treturn string
-function Translator:placeholder() -- luacheck: ignore
+function Translator:placeholder() -- luacheck: ignore self
 	return nil
 end
 

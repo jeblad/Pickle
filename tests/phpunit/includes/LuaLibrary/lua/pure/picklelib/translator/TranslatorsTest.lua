@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/translator/TranslatorStrategies'
+local lib = require 'picklelib/translator/Translators'
 assert( lib )
 local name = 'translator'
 

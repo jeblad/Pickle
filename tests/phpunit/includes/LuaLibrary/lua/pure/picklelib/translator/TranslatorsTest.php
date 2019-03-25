@@ -11,16 +11,16 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class TranslatorStrategiesTest extends Scribunto_LuaEngineTestBase {
+class TranslatorsTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'TranslatorStrategiesTest';
+	protected static $moduleName = 'TranslatorsTest';
 
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {
 		return parent::getTestModules() + [
-			'TranslatorStrategiesTest' => __DIR__ . '/TranslatorStrategiesTest.lua'
+			'TranslatorsTest' => __DIR__ . '/TranslatorsTest.lua'
 		];
 	}
 }
