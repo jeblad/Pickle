@@ -67,7 +67,7 @@ end
 -- @tparam number start of the inclusive index where extraction starts (unused)
 -- @tparam number finish of the inclusive index where extraction finishes (unused)
 -- @treturn nil
-function Translator:cast() -- luacheck: ignore self
+function Translator:cast() -- luacheck: no self
 	error('Method should be overridden')
 	return nil
 end
@@ -75,7 +75,7 @@ end
 --- Get the placeholder for this strategy.
 -- @raise Unconditional unless overridden
 -- @treturn string
-function Translator:placeholder() -- luacheck: ignore self
+function Translator:placeholder() -- luacheck: no self
 	return nil
 end
 
