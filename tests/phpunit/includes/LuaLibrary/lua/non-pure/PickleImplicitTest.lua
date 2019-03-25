@@ -15,7 +15,7 @@ local function testExists()
 	return type( mw.pickle )
 end
 
-local function testType( name ) -- luacheck: ignore
+local function testType( name )
 	local _type = type( _G[ name ] )
 	return _type
 end

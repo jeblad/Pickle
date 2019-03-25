@@ -229,7 +229,7 @@ local mt = { types = {} }
 -- @function mw.pickle.__call
 -- @param env table for the environment
 -- @treturn self
-function mt:__call( env ) -- luacheck: ignore
+function mt:__call( env ) -- luacheck: no self
 	-- @todo
 end
 
@@ -354,8 +354,8 @@ function pickle.setupInterface( opts )
 
 	-- boilerplate
 	pickle.setupInterface = nil
-	php = mw_interface -- luacheck: globals mw_interface
-	mw_interface = nil -- luacheck: globals mw_interface
+	php = mw_interface
+	mw_interface = nil
 	options = opts -- @todo move data from this more methodically
 
 	-- register main lib
