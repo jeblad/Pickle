@@ -92,7 +92,7 @@ end
 -- @treturn nil|Render
 function Renders:find( name )
 	assert( name, 'Renders: find: Failed to provide a name' )
-	assert( self._types[name], 'Renderers: find: Failed to provide a previously registered type for "' .. name .. '"')
+	assert( self._types[name], 'Renderers: find: Failed to provide a type for "' .. name .. '"')
 	return self._types[name]
 end
 

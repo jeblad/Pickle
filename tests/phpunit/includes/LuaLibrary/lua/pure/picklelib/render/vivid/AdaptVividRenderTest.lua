@@ -30,12 +30,12 @@ local function testKey( ... )
 	return makeTest():key( ... )
 end
 
-local function testBodyOk( ... ) -- luacheck: ignore
+local function testBodyOk()
 	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):ok()
 	return tostring( makeTest():realizeBody( p, 'qqx' ) )
 end
 
-local function testBodyNotOk( ... ) -- luacheck: ignore
+local function testBodyNotOk()
 	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):notOk()
 	return tostring( makeTest():realizeBody( p, 'qqx' ) )
 end

@@ -108,12 +108,14 @@ function Render:realizeHeader( src, lang, counter )
 
 	if src:isSkip() or src:hasSkip() or src:isTodo() or src:hasTodo() then
 		table.insert( t, '#' )
-		if src:isSkip() or src:hasSkip() then
-			table.insert( t, self:realizeSkip( src, lang ) )
-		end
-		if src:isTodo() or src:hasTodo() then
-			table.insert( t, self:realizeTodo( src, lang ) )
-		end
+	end
+
+	if src:isSkip() or src:hasSkip() then
+		table.insert( t, self:realizeSkip( src, lang ) )
+	end
+
+	if src:isTodo() or src:hasTodo() then
+		table.insert( t, self:realizeTodo( src, lang ) )
 	end
 
 	return table.concat( t, ' ' )

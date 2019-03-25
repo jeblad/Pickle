@@ -47,12 +47,12 @@ local function testState( bool )
 	return makeTest():realizeState( p, 'qqx', counter.create() )
 end
 
-local function testHeader( ... ) -- luacheck: ignore
+local function testHeader()
 	local p = fix.create():ok()
 	return makeTest():realizeHeader( p, 'qqx', counter.create() )
 end
 
-local function testBody( ... ) -- luacheck: ignore
+local function testBody()
 	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' )
 	return makeTest():realizeBody( p, 'qqx' )
 end

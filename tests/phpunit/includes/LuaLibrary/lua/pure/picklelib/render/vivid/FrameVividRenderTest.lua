@@ -64,13 +64,13 @@ local function testHeaderTodo( ... )
 	return tostring( makeTest():realizeHeader( p, 'qqx' ) )
 end
 
-local function testHeaderOk( ... ) -- luacheck: ignore
+local function testHeaderOk()
 	local adapt = require 'picklelib/report/AdaptReport'.create():ok()
 	local p = fix.create():addConstituent( adapt )
 	return tostring( makeTest():realizeHeader( p, 'qqx' ) )
 end
 
-local function testHeaderNotOk( ... ) -- luacheck: ignore
+local function testHeaderNotOk()
 	local adapt = require 'picklelib/report/AdaptReport'.create():notOk()
 	local p = fix.create():addConstituent( adapt )
 	return tostring( makeTest():realizeHeader( p, 'qqx' ) )
