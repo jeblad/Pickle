@@ -145,7 +145,7 @@ end
 local function registerExtractors()
 
 	-- require libs
-	local extractors = require( 'picklelib/extractor/ExtractorStrategies' ).create()
+	local extractors = require( 'picklelib/extractor/Extractors' ).create()
 
 	-- register extractor types
 	for _,v in ipairs( mw.pickle._extractors ) do
@@ -162,7 +162,7 @@ local function registerTranslators( subpage )
 	assert( subpage )
 
 	-- require libs
-	local translators = require( 'picklelib/translator/TranslatorStrategies' ).create()
+	local translators = require( 'picklelib/translator/Translators' ).create()
 
 	-- register translation data
 	local translationData = {}
@@ -388,7 +388,7 @@ function pickle.setupInterface( opts )
 	end
 
 	-- keep extractors for later, newer mind requiring them now
-	for i,v in ipairs( opts.extractorStrategies ) do
+	for i,v in ipairs( opts.extractors ) do
 		pickle._extractors[i] = v
 	end
 

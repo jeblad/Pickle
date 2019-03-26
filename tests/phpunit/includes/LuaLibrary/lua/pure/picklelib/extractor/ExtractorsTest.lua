@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/extractor/ExtractorStrategies'
+local lib = require 'picklelib/extractor/Extractors'
 assert( lib )
 local name = 'extractor'
 
@@ -55,35 +55,35 @@ local tests = {
 		name = name .. '.create (single value type)',
 		func = testCreate,
 		type = 'ToString',
-		args = { require 'picklelib/extractor/NilExtractorStrategy' },
+		args = { require 'picklelib/extractor/NilExtractor' },
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
 		type = 'ToString',
-		args = { require 'picklelib/extractor/FalseExtractorStrategy' },
+		args = { require 'picklelib/extractor/FalseExtractor' },
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
 		type = 'ToString',
-		args = { require 'picklelib/extractor/TrueExtractorStrategy' },
+		args = { require 'picklelib/extractor/TrueExtractor' },
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
 		type = 'ToString',
-		args = { require 'picklelib/extractor/StringExtractorStrategy' },
+		args = { require 'picklelib/extractor/StringExtractor' },
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
 		type = 'ToString',
-		args = { require 'picklelib/extractor/NumberExtractorStrategy' },
+		args = { require 'picklelib/extractor/NumberExtractor' },
 		expect = { 'table' }
 	},
 	{
@@ -107,31 +107,31 @@ local tests = {
 	{
 		name = name .. '.find (nil extract)',
 		func = testFind,
-		args = { 'foo nil bar', require('picklelib/extractor/NilExtractorStrategy').create() },
+		args = { 'foo nil bar', require('picklelib/extractor/NilExtractor').create() },
 		expect = { 5, 7, 'nil' }
 	},
 	{
 		name = name .. '.find (false extract)',
 		func = testFind,
-		args = { 'foo false bar', require('picklelib/extractor/FalseExtractorStrategy').create() },
+		args = { 'foo false bar', require('picklelib/extractor/FalseExtractor').create() },
 		expect = { 5, 9, 'false' }
 	},
 	{
 		name = name .. '.find (true extract)',
 		func = testFind,
-		args = { 'foo true bar', require('picklelib/extractor/TrueExtractorStrategy').create() },
+		args = { 'foo true bar', require('picklelib/extractor/TrueExtractor').create() },
 		expect = { 5, 8, 'true' }
 	},
 	{
 		name = name .. '.find (string extract)',
 		func = testFind,
-		args = { 'foo "test" bar', require('picklelib/extractor/StringExtractorStrategy').create() },
+		args = { 'foo "test" bar', require('picklelib/extractor/StringExtractor').create() },
 		expect = { 6, 9, 'string' }
 	},
 	{
 		name = name .. '.find (number extract)',
 		func = testFind,
-		args = { 'foo 42 bar', require('picklelib/extractor/NumberExtractorStrategy').create() },
+		args = { 'foo 42 bar', require('picklelib/extractor/NumberExtractor').create() },
 		expect = { 5, 6, 'number' }
 	},
 }
