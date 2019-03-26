@@ -30,8 +30,14 @@ local function testFind( str, ... )
 	return makeTest( ... ):find( str, 1 )
 end
 
+local function testCast()
+	local val, err = pcall( function() makeTest():cast() end )
+	return val, string.match( err, 'Method should be overridden' )
+end
+
 local function testPlaceholder()
-	return makeTest():placeholder()
+	local val, err = pcall( function() makeTest():placeholder() end )
+	return val, string.match( err, 'Method should be overridden' )
 end
 
 local tests = {
@@ -92,10 +98,16 @@ local tests = {
 		expect = { 9, 11 }
 	},
 	{
+		name = name .. '.cast ()',
+		func = testCast,
+		args = {},
+		expect = { false, "Method should be overridden" }
+	},
+	{
 		name = name .. '.placeholder ()',
 		func = testPlaceholder,
 		args = {},
-		expect = {}
+		expect = { false, "Method should be overridden" }
 	},
 }
 
