@@ -212,6 +212,11 @@ function Frame:renders()
 	return self._renders
 end
 
+--- Eval a single fixture.
+-- @tparam string description
+-- @tparam function fixture
+-- @tparam table environment
+-- @param ...
 function Frame:evalFixture( description, fixture, environment, ... )
 	local depth = self:reports():depth()
 	local t= { pcall( mw.pickle._implicit and setfenv( fixture, environment ) or fixture, ... ) }
