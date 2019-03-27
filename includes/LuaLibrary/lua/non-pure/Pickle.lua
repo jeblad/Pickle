@@ -329,11 +329,11 @@ function pickle.implicitDescribe( ... )
 	-- it possible to easilly test it in the console.
 	-- @return string
 	--function obj.tap( name )
-	function obj.tap( ... )
-		obj:eval()
-		assert(obj:reports(), 'Frame: tap: reports')
-		assert(obj:reports():top(), 'Frame: tap: top')
-		assert(obj:renders(), 'Frame: tap: renders')
+	function obj:tap( ... )
+		self:eval()
+		assert(self:reports(), 'Frame: tap: reports')
+		assert(self:reports():top(), 'Frame: tap: top')
+		assert(self:renders(), 'Frame: tap: renders')
 
 		local styleName = nil
 		local langCode = nil
@@ -352,8 +352,8 @@ function pickle.implicitDescribe( ... )
 		styleName = styleName or 'full'
 		langCode = langCode or mw.language.getContentLanguage():getCode()
 
-		local style = obj:renders().style( styleName )
-		return obj:reports():top():realize( style, langCode, counter.create() )
+		local style = self:renders().style( styleName )
+		return self:reports():top():realize( style, langCode, counter.create() )
 	end
 
 	return obj
