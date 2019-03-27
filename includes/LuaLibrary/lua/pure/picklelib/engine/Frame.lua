@@ -212,6 +212,29 @@ function Frame:renders()
 	return self._renders
 end
 
+function Frame:evalFixture( description, fixture, environment, ... )
+	local depth = self:reports():depth()
+	local t= { pcall( mw.pickle._implicit and setfenv( fixture, environment ) or fixture, ... ) }
+	if ( not t[1] ) and (not not t[2]) then
+		self:reports()
+			:push( AdaptReport.create():setSkip( 'pickle-adapt-catched-exception' ) )
+	end
+	local report = FrameReport.create():setDescription( description )
+	local added = self:reports():depth() - depth
+	if added == 0 then
+		report:setTodo( 'pickle-frame-no-tests' )
+	end
+	report:addConstituents( self:reports():pop( added ) )
+	if t[1] and type( t[2] ) == 'table' then
+		local tmp = AdaptReport.create():setTodo( 'pickle-adapt-catched-return' )
+		for _,u in ipairs( t[2] or {} ) do
+			tmp:addLine( mw.dumpObject( u ) )
+		end
+		report:addConstituent( tmp )
+	end
+	self:reports():push( report )
+end
+
 --- Eval the fixtures over previous dispatched strings.
 -- @treturn self
 function Frame:eval()
@@ -237,26 +260,7 @@ function Frame:eval()
 		until( not strategy )
 
 		for _,w in ipairs( { self._fixtures:export() } ) do
-			local depth = self:reports():depth()
-			local t= { pcall( mw.pickle._implicit and setfenv( w, env ) or w, unpack{ args } ) }
-			if ( not t[1] ) and (not not t[2]) then
-				self:reports()
-					:push( AdaptReport.create():setSkip( 'pickle-adapt-catched-exception' ) )
-			end
-			local report = FrameReport.create():setDescription( v )
-			local added = self:reports():depth() - depth
-			if added == 0 then
-				report:setTodo( 'pickle-frame-no-tests' )
-			end
-			report:addConstituents( self:reports():pop( added ) )
-			if t[1] and type( t[2] ) == 'table' then
-				local tmp = AdaptReport.create():setTodo( 'pickle-adapt-catched-return' )
-				for _,u in ipairs( t[2] or {} ) do
-					tmp:addLine( mw.dumpObject( u ) )
-				end
-				report:addConstituent( tmp )
-			end
-			self:reports():push( report )
+			self:evalFixture( v, w, env, unpack{ args } )
 		end
 	end
 	self._done = true
