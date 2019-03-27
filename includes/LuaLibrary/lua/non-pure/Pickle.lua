@@ -292,6 +292,36 @@ function pickle.implicitDescribe( ... )
 		:setExtractors( extractors )
 		:dispatch( ... )
 
+	--- Helper to get the named style
+	-- @tparam Frame frame
+	-- @treturn string
+	local function findStyle( frame )
+		if frame.args['style'] then
+			return frame.args['style']
+		end
+		for _,v in ipairs( frame.args ) do
+			if pickle._styles[v] then
+				return v
+			end
+		end
+		return nil
+	end
+
+	--- Helper to get the identified language
+	-- @tparam Frame frame
+	-- @treturn string
+	local function findLang( frame )
+		if frame.args['lang'] then
+			return frame.args['lang']
+		end
+		for _,v in ipairs( frame.args ) do
+			if mw.language.isValidCode( v ) then
+				return v
+			end
+		end
+		return nil
+	end
+
 	--- Eval the fixtures over previous dispatched strings.
 	-- This has two different call forms. The first is the usual form with a single
 	-- frame object. This is used if the function is called by "invoke". The other
@@ -305,42 +335,22 @@ function pickle.implicitDescribe( ... )
 		assert(obj:reports():top(), 'Frame: tap: top')
 		assert(obj:renders(), 'Frame: tap: renders')
 
-		local styleName = 'full'
-		local langCode = mw.language.getContentLanguage():getCode()
+		local styleName = nil
+		local langCode = nil
 
 		if select( '#', ... ) == 1 and type( select( 1, ... ) ) == 'table'  then
 			local frame = select( 1, ... )
+			styleName = findStyle( frame )
+			langCode = findLang( frame )
 
-			if frame.args['style'] then
-				styleName = frame.args['style']
-			else
-				for _,v in ipairs( frame.args ) do
-					if pickle._styles[v] then
-						styleName = v
-						break
-					end
-				end
-			end
-
-			if frame.args['lang'] then
-				langCode = frame.args['lang']
-			else
-				for _,v in ipairs( frame.args ) do
-					if mw.language.isValidCode( v ) then
-						langCode = v
-						break
-					end
-				end
-			end
-
-		elseif select( '#', ... ) > 0 then
-			if select( '#', ... ) >= 1 and pickle._styles[select( 1, ... )] then
-				styleName = select( 1, ... )
-			end
-			if select( '#', ... ) >= 2 and mw.language.isValidCode( select( 2, ... ) ) then
-				langCode = select( 2, ... )
-			end
+		elseif select( '#', ... ) > 1 then
+			local frame = { args = { style = select( 1, ... ), lang = select( 2, ... ) } }
+			styleName = findStyle( frame )
+			langCode = findLang( frame )
 		end
+
+		styleName = styleName or 'full'
+		langCode = langCode or mw.language.getContentLanguage():getCode()
 
 		local style = obj:renders().style( styleName )
 		return obj:reports():top():realize( style, langCode, counter.create() )
