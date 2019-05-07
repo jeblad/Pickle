@@ -28,7 +28,7 @@ end
 --- Size based on the raw count.
 -- Variant of 'function _.size(...)' from "Moses"
 -- @tparam[opt] table|any count entries if table, count all args otherwise
--- @return count of entries
+-- @treturn number counted entries
 function util.size( ... )
 	local v = select( 1, ... )
 	if v == nil then
@@ -43,6 +43,7 @@ end
 -- If the objects are of different type, return 'false'.
 -- Unless type is 'table', compare the objects.
 -- Otherwise return 'nil'.
+-- @local
 -- @param a any type of object
 -- @param b any type of object
 -- @treturn nil|boolean result of comparison
@@ -64,6 +65,7 @@ end
 --- Test whether two objects are mt equal.
 -- If any of the objects have an `__eq` method, then compare the objects with it.
 -- use it, otherwise test for same value.
+-- @local
 -- @param a any type of object
 -- @param b any type of object
 -- @treturn nil|boolean result of comparison
