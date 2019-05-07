@@ -7,16 +7,16 @@
 local util = {}
 
 --- Transform names in camel case into hyphen separated keys.
--- @param str name in camel case
--- @return hyphenated string
-function util.buildName( str )
-	return str:gsub("([A-Z])", function(s) return '-'..string.lower(s) end )
+-- @tparam string name in camel case
+-- @treturn string hyphenated name
+function util.buildName( name )
+	return name:gsub("([A-Z])", function(s) return '-'..string.lower(s) end )
 end
 
 --- Raw count of all the items in the provided table.
 -- Variant of 'local function count(t)' from "Moses"
--- @param t table that has its entries counted
--- @return count of raw entries
+-- @tparam table t has its entries counted
+-- @treturn number raw entries
 function util.count( t )
 	local i = 0
 	for _,_ in pairs( t ) do
@@ -27,7 +27,7 @@ end
 
 --- Size based on the raw count.
 -- Variant of 'function _.size(...)' from "Moses"
--- @param optional [table|any] count entries if table, count all args otherwise
+-- @tparam optional [table|any] count entries if table, count all args otherwise
 -- @return count of entries
 function util.size( ... )
 	local v = select( 1, ... )
@@ -39,47 +39,81 @@ function util.size( ... )
 	return util.count( { ... } )
 end
 
---- Deep equal of two objects.
--- Variant of 'UnitTester:equals_deep(name, actual, expected, options)' from [[w:no:Module:UnitTests]]
--- and 'function _.isEqual(objA, objB, useMt)' from "Moses"
--- @param objA any type of object
--- @param objB any type of object
--- @param useMt boolean optional indicator for whether to include the meta table
--- @return boolean result of comparison
-function util.deepEqual( objA, objB, useMt )
-	local typeObjA = type( objA )
-	local typeObjB = type( objB )
+--- Test whether two objects are of equal type.
+-- If the objects are of different type, return 'false'.
+-- Unless type is 'table', compare the objects.
+-- Otherwise return 'nil'.
+-- @param a any type of object
+-- @param b any type of object
+-- @treturn nil|boolean result of comparison
+function util.isTypeEqual( a, b )
+	local typeA = type( a )
+	local typeB = type( b )
 
-	if typeObjA ~= typeObjB then
-		return false end
-	if typeObjA ~= 'table' then
-		return objA == objB
-	end
-
-	local mtA = getmetatable( objA )
-	local mtB = getmetatable( objB )
-
-	if useMt then
-		if (mtA or mtB) and (mtA.__eq or mtB.__eq) then
-			return mtA.__eq( objA, objB ) or mtB.__eq( objB, objA ) or ( objA==objB )
-		end
-	end
-
-	if util.size( objA ) ~= util.size( objB ) then
+	if typeA ~= typeB then
 		return false
 	end
 
-	for i,v1 in pairs( objA ) do
-		local v2 = objB[i]
-		-- test is partly inlined, differs from "Moses"
+	if typeA ~= 'table' then
+		return a == b
+	end
+
+	return nil
+end
+
+--- Test whether two objects are mt equal.
+-- If any of the objects have an `__eq` method, then compare the objects with it.
+-- use it, otherwise test for same value.
+-- @param a any type of object
+-- @param b any type of object
+-- @treturn nil|boolean result of comparison
+function util.isMetatableEqual( a, b )
+	local mtA = getmetatable( a )
+	if mtA and mtA.__eq then
+		return mtA.__eq( a, b )
+	end
+
+	local mtB = getmetatable( b )
+	if mtB and mtB.__eq then
+		return mtB.__eq( b, a )
+	end
+
+	return nil
+end
+
+--- Deep equal of two objects.
+-- Variant of 'UnitTester:equals_deep(name, actual, expected, options)' from [[w:no:Module:UnitTests]]
+-- and 'function _.isEqual(objA, objB, useMt)' from "Moses"
+-- @param a any type of object
+-- @param b any type of object
+-- @param useMt boolean optional indicator for whether to include the meta table
+-- @treturn boolean result of comparison
+function util.deepEqual( a, b, useMt )
+	local typeEqual = util.isTypeEqual( a, b )
+	if typeEqual ~= nil then
+		return typeEqual
+	end
+
+	if useMt then
+		local metaEqual = util.isMetatableEqual( a, b )
+		if metaEqual ~= nil then
+			return metaEqual
+		end
+	end
+
+	if util.size( a ) ~= util.size( b ) then
+		return false
+	end
+
+	for i,v1 in pairs( a ) do
+		local v2 = b[i]
 		if v2 == nil or not util.deepEqual( v1, v2, useMt ) then
 			return false
 		end
 	end
 
-	for i,_ in pairs( objB ) do
-		local v = objA[i]
-		-- test is inlined, differs from "Moses"
+	for i,_ in pairs( b ) do
+		local v = a[i]
 		if v == nil then
 			return false
 		end
@@ -90,9 +124,9 @@ end
 
 --- Checks if a table contains the arg.
 -- Variant of 'function _.contains(t, value)' from "Moses"
--- @param t table that is searched for the arg
+-- @tparam table t searched for the arg
 -- @param arg any item to be searched for
--- @return boolean result of the operation
+-- @treturn boolean result of the operation
 function util.contains( t, arg )
 	-- inlined code from '_.toBoolean' and '_.detect' from "Moses"
 	local cmp = ( type( arg ) == 'function' ) and arg or util.deepEqual
