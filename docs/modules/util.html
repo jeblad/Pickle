@@ -69,8 +69,8 @@
   <li><a href="../classes/AdaptReport.html">AdaptReport</a></li>
   <li><a href="../classes/FrameReport.html">FrameReport</a></li>
   <li><a href="../classes/ReportBase.html">ReportBase</a></li>
-  <li><a href="../classes/TranslatorStrategies.html">TranslatorStrategies</a></li>
-  <li><a href="../classes/TranslatorStrategyBase.html">TranslatorStrategyBase</a></li>
+  <li><a href="../classes/TranslatorBase.html">TranslatorBase</a></li>
+  <li><a href="../classes/Translators.html">Translators</a></li>
 </ul>
 <h2>Topics</h2>
 <ul class="">
@@ -100,7 +100,7 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#buildName">buildName (str)</a></td>
+	<td class="name" nowrap><a href="#buildName">buildName (name)</a></td>
 	<td class="summary">Transform names in camel case into hyphen separated keys.</td>
 	</tr>
 	<tr>
@@ -108,11 +108,19 @@
 	<td class="summary">Raw count of all the items in the provided table.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#size">size (optional)</a></td>
+	<td class="name" nowrap><a href="#size">size (table)</a></td>
 	<td class="summary">Size based on the raw count.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#deepEqual">deepEqual (objA, objB, useMt)</a></td>
+	<td class="name" nowrap><a href="#isTypeEqual">isTypeEqual (a, b)</a></td>
+	<td class="summary">Test whether two objects are of equal type.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#isMetatableEqual">isMetatableEqual (a, b)</a></td>
+	<td class="summary">Test whether two objects are mt equal.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#deepEqual">deepEqual (a, b, useMt)</a></td>
 	<td class="summary">Deep equal of two objects.</td>
 	</tr>
 	<tr>
@@ -130,7 +138,7 @@
     <dl class="function">
     <dt>
     <a name = "buildName"></a>
-    <strong>buildName (str)</strong>
+    <strong>buildName (name)</strong>
     </dt>
     <dd>
     Transform names in camel case into hyphen separated keys.
@@ -138,15 +146,17 @@
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">str</span>
-         name in camel case
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         in camel case
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        hyphenated string
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        hyphenated name
     </ol>
 
 
@@ -165,14 +175,16 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">t</span>
-         table that has its entries counted
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         has its entries counted
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        count of raw entries
+           <span class="types"><span class="type">number</span></span>
+        raw entries
     </ol>
 
 
@@ -181,7 +193,7 @@
 </dd>
     <dt>
     <a name = "size"></a>
-    <strong>size (optional)</strong>
+    <strong>size (table)</strong>
     </dt>
     <dd>
     Size based on the raw count.
@@ -190,8 +202,9 @@
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">optional</span>
-         [table|any] count entries if table, count all args otherwise
+        <li><span class="parameter">table</span>
+            <span class="types"><span class="type">optional</span></span>
+        |any] count entries if table, count all args otherwise
         </li>
     </ul>
 
@@ -206,8 +219,71 @@
 
 </dd>
     <dt>
+    <a name = "isTypeEqual"></a>
+    <strong>isTypeEqual (a, b)</strong>
+    </dt>
+    <dd>
+    Test whether two objects are of equal type.
+ If the objects are of different type, return 'false'.
+ Unless type is 'table', compare the objects.
+ Otherwise return 'nil'.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         any type of object
+        </li>
+        <li><span class="parameter">b</span>
+         any type of object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
+        result of comparison
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "isMetatableEqual"></a>
+    <strong>isMetatableEqual (a, b)</strong>
+    </dt>
+    <dd>
+    Test whether two objects are mt equal.
+ If any of the objects have an <code>__eq</code> method, then compare the objects with it.
+ use it, otherwise test for same value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         any type of object
+        </li>
+        <li><span class="parameter">b</span>
+         any type of object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
+        result of comparison
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "deepEqual"></a>
-    <strong>deepEqual (objA, objB, useMt)</strong>
+    <strong>deepEqual (a, b, useMt)</strong>
     </dt>
     <dd>
     Deep equal of two objects.
@@ -217,10 +293,10 @@
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">objA</span>
+        <li><span class="parameter">a</span>
          any type of object
         </li>
-        <li><span class="parameter">objB</span>
+        <li><span class="parameter">b</span>
          any type of object
         </li>
         <li><span class="parameter">useMt</span>
@@ -231,7 +307,8 @@
     <h3>Returns:</h3>
     <ol>
 
-        boolean result of comparison
+           <span class="types"><span class="type">boolean</span></span>
+        result of comparison
     </ol>
 
 
@@ -250,7 +327,8 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">t</span>
-         table that is searched for the arg
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         searched for the arg
         </li>
         <li><span class="parameter">arg</span>
          any item to be searched for
@@ -260,7 +338,8 @@
     <h3>Returns:</h3>
     <ol>
 
-        boolean result of the operation
+           <span class="types"><span class="type">boolean</span></span>
+        result of the operation
     </ol>
 
 
@@ -274,7 +353,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-03-25 15:15:14 </i>
+<i style="float:right;">Last updated 2019-05-07 22:09:04 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
