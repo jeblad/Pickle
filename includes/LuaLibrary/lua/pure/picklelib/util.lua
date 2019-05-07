@@ -88,7 +88,7 @@ end
 -- and 'function _.isEqual(objA, objB, useMt)' from "Moses"
 -- @param a any type of object
 -- @param b any type of object
--- @param useMt boolean optional indicator for whether to include the meta table
+-- @tparam[opt] boolean useMt indicator for whether to include the meta table
 -- @treturn boolean result of comparison
 function util.deepEqual( a, b, useMt )
 	local typeEqual = util.isTypeEqual( a, b )
