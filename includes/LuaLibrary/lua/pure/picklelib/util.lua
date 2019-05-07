@@ -84,7 +84,7 @@ function util.isMetatableEqual( a, b )
 end
 
 --- Deep equal of two objects.
--- Variant of 'UnitTester:equals_deep(name, actual, expected, options)' from [[w:no:Module:UnitTests]]
+-- Variant of 'UnitTester:equals_deep(name, actual, expected, options)'
 -- and 'function _.isEqual(objA, objB, useMt)' from "Moses"
 -- @param a any type of object
 -- @param b any type of object
