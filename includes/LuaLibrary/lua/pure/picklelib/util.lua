@@ -64,7 +64,7 @@ end
 
 --- Test whether two objects are mt equal.
 -- If any of the objects have an `__eq` method, then compare the objects with it.
--- use it, otherwise test for same value.
+-- Otherwise return 'nil'.
 -- @local
 -- @param a any type of object
 -- @param b any type of object
