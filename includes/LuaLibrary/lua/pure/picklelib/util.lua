@@ -27,7 +27,7 @@ end
 
 --- Size based on the raw count.
 -- Variant of 'function _.size(...)' from "Moses"
--- @tparam optional [table|any] count entries if table, count all args otherwise
+-- @tparam optional table|any count entries if table, count all args otherwise
 -- @return count of entries
 function util.size( ... )
 	local v = select( 1, ... )
