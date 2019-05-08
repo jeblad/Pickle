@@ -53,9 +53,9 @@
   <li><a href="../classes/StringExtractor.html">StringExtractor</a></li>
   <li><a href="../classes/TrueExtractor.html">TrueExtractor</a></li>
   <li><a href="../classes/Render.html">Render</a></li>
-  <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
+  <li><strong>RenderAdapt</strong></li>
   <li><a href="../classes/RenderFrame.html">RenderFrame</a></li>
-  <li><strong>Renders</strong></li>
+  <li><a href="../classes/Renders.html">Renders</a></li>
   <li><a href="../classes/RenderAdaptCompact.html">RenderAdaptCompact</a></li>
   <li><a href="../classes/RenderFrameCompact.html">RenderFrameCompact</a></li>
   <li><a href="../classes/RenderAdaptFull.html">RenderAdaptFull</a></li>
@@ -90,47 +90,43 @@
 
 <div id="content">
 
-<h1>Class <code>Renders</code></h1>
-<p>Class for render strategies.</p>
+<h1>Class <code>RenderAdapt</code></h1>
+<p>Intermediate class for report renderer.</p>
 <p> This class follows the pattern from <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Renders:__index">Renders:__index (key)</a></td>
+	<td class="name" nowrap><a href="#RenderAdapt:__index">RenderAdapt:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#Renders:__call">Renders:__call (name)</a></td>
-	<td class="summary">Convenience function to access a specific named style.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Renders:create">Renders:create (name)</a></td>
+	<td class="name" nowrap><a href="#RenderAdapt:create">RenderAdapt:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Renders:realizeVersion">Renders:realizeVersion ()</a></td>
-	<td class="summary">Get the version.</td>
+	<td class="name" nowrap><a href="#RenderAdapt:key">RenderAdapt:key (str)</a></td>
+	<td class="summary">Override key construction.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Renders:style">Renders:style (name)</a></td>
-	<td class="summary">Convenience function to access a specific named style.</td>
+	<td class="name" nowrap><a href="#RenderAdapt:realizeState">RenderAdapt:realizeState (src[, lang[, counter]])</a></td>
+	<td class="summary">Realize reported data for state.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Renders:registerStyle">Renders:registerStyle (name)</a></td>
-	<td class="summary">Register named style.</td>
+	<td class="name" nowrap><a href="#RenderAdapt:realizeHeader">RenderAdapt:realizeHeader (src[, lang[, counter]])</a></td>
+	<td class="summary">Realize reported data for header.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Renders:registerType">Renders:registerType (name, lib)</a></td>
-	<td class="summary">Register a render of given named type.</td>
+	<td class="name" nowrap><a href="#RenderAdapt:realizeLine">RenderAdapt:realizeLine (param[, lang])</a></td>
+	<td class="summary">Realize reported data for a line.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Renders:find">Renders:find (name)</a></td>
-	<td class="summary">Find render of the correct named type.</td>
+	<td class="name" nowrap><a href="#RenderAdapt:realizeBody">RenderAdapt:realizeBody (src[, lang])</a></td>
+	<td class="summary">Realize reported data for body.</td>
 	</tr>
 </table>
 
@@ -142,8 +138,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "Renders:__index"></a>
-    <strong>Renders:__index (key)</strong>
+    <a name = "RenderAdapt:__index"></a>
+    <strong>RenderAdapt:__index (key)</strong>
     </dt>
     <dd>
     Lookup of missing class members.
@@ -153,7 +149,7 @@
     <ul>
         <li><span class="parameter">key</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         lookup of member
+         used for lookup of member
         </li>
     </ul>
 
@@ -167,43 +163,13 @@
 
 
 </dd>
-    <dt>
-    <a name = "Renders:__call"></a>
-    <strong>Renders:__call (name)</strong>
-    </dt>
-    <dd>
-    Convenience function to access a specific named style.
- This will try to create the style if it isn't created yet.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-          style of rendering
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">self</span></span>
-
-
-
-    </ol>
-
-
-
-
-</dd>
 </dl>
     <h2 class="section-header "><a name="Methods"></a>Methods</h2>
 
     <dl class="function">
     <dt>
-    <a name = "Renders:create"></a>
-    <strong>Renders:create (name)</strong>
+    <a name = "RenderAdapt:create"></a>
+    <strong>RenderAdapt:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
@@ -211,9 +177,9 @@
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         style of rendering
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         forwarded to <a href="../classes/Render.html#Render:create">Render:create</a>
         </li>
     </ul>
 
@@ -227,18 +193,28 @@
     </ol>
 
 
+    <h3>See also:</h3>
+    <ul>
+         <a href="../classes/Render.html#Render:create">Render:create</a>
+    </ul>
 
 
 </dd>
     <dt>
-    <a name = "Renders:realizeVersion"></a>
-    <strong>Renders:realizeVersion ()</strong>
+    <a name = "RenderAdapt:key"></a>
+    <strong>RenderAdapt:key (str)</strong>
     </dt>
     <dd>
-    Get the version.
- This is the TAP-version line.
+    Override key construction.
 
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to be appended to a base string
+        </li>
+    </ul>
 
     <h3>Returns:</h3>
     <ol>
@@ -254,26 +230,35 @@
 
 </dd>
     <dt>
-    <a name = "Renders:style"></a>
-    <strong>Renders:style (name)</strong>
+    <a name = "RenderAdapt:realizeState"></a>
+    <strong>RenderAdapt:realizeState (src[, lang[, counter]])</strong>
     </dt>
     <dd>
-    Convenience function to access a specific named style.
- This will try to create the style if it isn't created yet.
+    Realize reported data for state.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">name</span>
+        <li><span class="parameter">src</span>
+            <span class="types"><span class="type">Report</span></span>
+         that shall be realized
+        </li>
+        <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         style of rendering
+         code used for realization
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">counter</span>
+            <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
+         holding the running count
+         (<em>optional</em>)
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">nil</span> or <a class="type" href="../classes/Render.html#">Render</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -284,27 +269,36 @@
 
 </dd>
     <dt>
-    <a name = "Renders:registerStyle"></a>
-    <strong>Renders:registerStyle (name)</strong>
+    <a name = "RenderAdapt:realizeHeader"></a>
+    <strong>RenderAdapt:realizeHeader (src[, lang[, counter]])</strong>
     </dt>
     <dd>
-    Register named style.
- This is at class level. It is really a two level strategy, but we're lazy
- and skip one of the levels.
+    Realize reported data for header.
+ The "header" is a composite.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">name</span>
+        <li><span class="parameter">src</span>
+            <span class="types"><span class="type">Report</span></span>
+         that shall be realized
+        </li>
+        <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         style of rendering
+         code used for realization
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">counter</span>
+            <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
+         holding the running count
+         (<em>optional</em>)
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">nil</span> or <a class="type" href="../classes/Render.html#">Render</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -315,30 +309,30 @@
 
 </dd>
     <dt>
-    <a name = "Renders:registerType"></a>
-    <strong>Renders:registerType (name, lib)</strong>
+    <a name = "RenderAdapt:realizeLine"></a>
+    <strong>RenderAdapt:realizeLine (param[, lang])</strong>
     </dt>
     <dd>
-    Register a render of given named type.
- This will typically be "Result" or "Report".
+    Realize reported data for a line.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         style of rendering
+        <li><span class="parameter">param</span>
+            <span class="types"><span class="type">any</span></span>
+         that shall be realized
         </li>
-        <li><span class="parameter">lib</span>
-            <span class="types"><a class="type" href="../classes/Render.html#">Render</a></span>
-         for the specific kind of rendering
+        <li><span class="parameter">lang</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         code used for realization
+         (<em>optional</em>)
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">nil</span> or <a class="type" href="../classes/Render.html#">Render</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -349,26 +343,31 @@
 
 </dd>
     <dt>
-    <a name = "Renders:find"></a>
-    <strong>Renders:find (name)</strong>
+    <a name = "RenderAdapt:realizeBody"></a>
+    <strong>RenderAdapt:realizeBody (src[, lang])</strong>
     </dt>
     <dd>
-    Find render of the correct named type.
- This will typically be "Result" or "Report".
+    Realize reported data for body.
+ The "body" is a composite.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">name</span>
+        <li><span class="parameter">src</span>
+            <span class="types"><span class="type">Report</span></span>
+         that shall be realized
+        </li>
+        <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         style of rendering
+         code used for realization
+         (<em>optional</em>)
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">nil</span> or <a class="type" href="../classes/Render.html#">Render</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
