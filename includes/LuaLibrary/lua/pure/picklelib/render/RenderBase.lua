@@ -2,7 +2,7 @@
 -- @classmod RenderBase
 -- @alias Render
 
--- @var class var for lib
+-- @var base class
 local Render = {}
 
 --- Lookup of missing class members.
