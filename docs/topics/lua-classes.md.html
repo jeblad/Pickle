@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../mw.pickle.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Class_creation">Class creation </a></li>
+<li><a href="#Method_lookup">Method lookup </a></li>
+</ul>
+
+
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/activities.md.html">activities</a></li>
+  <li><a href="../topics/adapt.md.html">adapt</a></li>
+  <li><a href="../topics/call-style.md.html">call-style</a></li>
+  <li><a href="../topics/change-log.md.html">change-log</a></li>
+  <li><a href="../topics/databases.md.html">databases</a></li>
+  <li><a href="../topics/dataflow.md.html">dataflow</a></li>
+  <li><strong>lua-classes</strong></li>
+  <li><a href="../topics/musings.md.html">musings</a></li>
+  <li><a href="../topics/vscode-snippets.md.html">vscode-snippets</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/util.html">util</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Stack.html">Stack</a></li>
+  <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Frame.html">Frame</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/ExtractorBase.html">ExtractorBase</a></li>
+  <li><a href="../classes/Extractors.html">Extractors</a></li>
+  <li><a href="../classes/FalseExtractor.html">FalseExtractor</a></li>
+  <li><a href="../classes/JsonExtractor.html">JsonExtractor</a></li>
+  <li><a href="../classes/NilExtractor.html">NilExtractor</a></li>
+  <li><a href="../classes/NumberExtractor.html">NumberExtractor</a></li>
+  <li><a href="../classes/StringExtractor.html">StringExtractor</a></li>
+  <li><a href="../classes/TrueExtractor.html">TrueExtractor</a></li>
+  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
+  <li><a href="../classes/FrameRender.html">FrameRender</a></li>
+  <li><a href="../classes/RenderBase.html">RenderBase</a></li>
+  <li><a href="../classes/Renders.html">Renders</a></li>
+  <li><a href="../classes/AdaptCompactRender.html">AdaptCompactRender</a></li>
+  <li><a href="../classes/FrameCompactRender.html">FrameCompactRender</a></li>
+  <li><a href="../classes/AdaptFullRender.html">AdaptFullRender</a></li>
+  <li><a href="../classes/FrameFullRender.html">FrameFullRender</a></li>
+  <li><a href="../classes/AdaptVividRender.html">AdaptVividRender</a></li>
+  <li><a href="../classes/FrameVividRender.html">FrameVividRender</a></li>
+  <li><a href="../classes/AdaptReport.html">AdaptReport</a></li>
+  <li><a href="../classes/FrameReport.html">FrameReport</a></li>
+  <li><a href="../classes/ReportBase.html">ReportBase</a></li>
+  <li><a href="../classes/TranslatorBase.html">TranslatorBase</a></li>
+  <li><a href="../classes/Translators.html">Translators</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>Lua classes</h1>
+
+<p>The classes used in this project use a base structure as defined in the <a href="http://lua-users.org/wiki/ObjectOrientationTutorial">Object Orientation Tutorial</a> at the <a href="http://lua-users.org/wiki/">lua-users wiki</a>. There are three different variations on this theme; base classes and derived classes which are quite similar to the class structure described in the section of “Inheritance”, and an inheritance-less design which are similar to the class structure described in the section “Simple metatable-based class”.</p>
+
+<p>The only place where closure is used to keep state is during initial setup, in <a href="../modules/Pickle.html">Pickle.lua</a>, where state would otherwise be lost. That is although a module and not a class.</p>
+
+<p><a name="Class_creation"></a></p>
+<h2>Class creation</h2>
+
+<p>New instances are created from a method <code>create()</code> that can be called on loaded modules and on preexisting instances. (TODO: Cleanup from previous function-like creation is not yet done.) Specialization of the newly created instance is done in an <code>_init()</code> method called immediately after creation.</p>
+
+<p><a name="Method_lookup"></a></p>
+<h2>Method lookup</h2>
+
+<p>To make virtual methods work properly the metamethod <code>__index()</code> is used instead of tables. This is just a plain redirect and is similar in all classes. It will also avoid problems otherwise created by memory loops in the lua environment.</p>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2019-05-08 14:49:58 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
