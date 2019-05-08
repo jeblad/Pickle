@@ -1,11 +1,12 @@
 --- Intermediate class for frame report renderer.
+-- This class follows the pattern from [Lua classes](lua-classes).
 -- @classmod FrameRender
 -- @alias Render
 
--- non-pure libs
+-- @var super class
 local Super = require 'picklelib/render/RenderBase'
 
--- @var class var for lib
+-- @var intermediate class
 local Render = {}
 
 --- Lookup of missing class members.
