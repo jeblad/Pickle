@@ -1,5 +1,5 @@
 --- Intermediate class for frame report renderer.
--- This class follows the pattern from [Lua classes](lua-classes).
+-- This class follows the pattern from [Lua classes](../topics/lua-classes).
 -- @classmod FrameRender
 -- @alias Render
 
