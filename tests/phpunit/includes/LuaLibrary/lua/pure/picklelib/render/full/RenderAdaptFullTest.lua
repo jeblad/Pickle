@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/compact/AdaptCompactRender'
+local lib = require 'picklelib/render/full/RenderAdaptFull'
 assert( lib )
 
 local name = 'resultRender'
@@ -41,14 +41,14 @@ local function testBodyNotOk()
 end
 
 local tests = {
-	-- AdaptCompactRenderTest[1]
+	-- RenderAdaptFullTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	-- AdaptCompactRenderTest[2]
+	-- RenderAdaptFullTest[2]
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
@@ -56,7 +56,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
-	-- AdaptCompactRenderTest[3]
+	-- RenderAdaptFullTest[3]
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
@@ -64,7 +64,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	-- AdaptCompactRenderTest[4]
+	-- RenderAdaptFullTest[4]
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
@@ -72,22 +72,25 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	-- AdaptCompactRenderTest[5]
+	-- RenderAdaptFullTest[5]
 	{
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-adapt-foo' }
 	},
-	-- AdaptCompactRenderTest[6]
+	-- RenderAdaptFullTest[6]
 	{
-		name = name .. '.body ok ()',
+		name = name .. '.body ()',
 		func = testBodyOk,
-		expect = { '' }
+		expect = { "\n"
+			.. '(foo)' .. "\n"
+			.. '(bar)' .. "\n"
+			.. '(baz)' }
 	},
-	-- AdaptCompactRenderTest[7]
+	-- RenderAdaptFullTest[7]
 	{
-		name = name .. '.body not ok ()',
+		name = name .. '.body ()',
 		func = testBodyNotOk,
 		expect = { "\n"
 			.. '(foo)' .. "\n"

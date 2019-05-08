@@ -1,39 +1,39 @@
 --- Final class for vivid report renderer.
 -- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
--- @classmod AdaptVividRender
--- @alias Render
+-- @classmod RenderAdaptVivid
+-- @alias Subclass
 
 -- pure libs
-local Super = require 'picklelib/render/AdaptRender'
+local Super = require 'picklelib/render/RenderAdapt'
 
 -- @var class var for lib
-local Render = {}
+local Subclass = {}
 
 --- Lookup of missing class members.
 -- @tparam string key used for lookup of member
 -- @return any
-function Render:__index( key ) -- luacheck: no self
-	return Render[key]
+function Subclass:__index( key ) -- luacheck: no self
+	return Subclass[key]
 end
 
 -- @var metatable for the class
-setmetatable( Render, { __index = Super } )
+setmetatable( Subclass, { __index = Super } )
 
 --- Create a new instance.
--- @see RenderBase:create
--- @tparam vararg ... forwarded to @{AdaptRender:create}
+-- @see RenderAdapt:create
+-- @tparam vararg ... forwarded to @{RenderAdapt:create}
 -- @treturn self
-function Render:create( ... )
+function Subclass:create( ... )
 	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... forwarded to @{AdaptRender:_init}
+-- @tparam vararg ... forwarded to @{RenderAdapt:_init}
 -- @return self
-function Render:_init( ... )
+function Subclass:_init( ... )
 	Super._init( self, ... )
-	self._type = 'adapt-vivid-render'
+	self._type = 'render-adapt-vivid'
 	return self
 end
 
@@ -42,7 +42,7 @@ end
 -- @tparam[opt] string lang code used for realization
 -- @tparam[optchain] Counter counter holding the running count
 -- @treturn html
-function Render:realizeState( src, lang, counter )
+function Subclass:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -62,7 +62,7 @@ end
 -- @tparam[opt] string lang code used for realization
 -- @tparam[optchain] Counter counter holding the running count
 -- @treturn html
-function Render:realizeHeader( src, lang, counter )
+function Subclass:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'div' )
@@ -93,7 +93,7 @@ end
 -- @tparam any param that shall be realized
 -- @tparam[opt] string lang code used for realization
 -- @return html
-function Render:realizeLine( param, lang )
+function Subclass:realizeLine( param, lang )
 	assert( param, 'Failed to provide a parameter' )
 
 	local html = mw.html.create( 'dd' )
@@ -115,7 +115,7 @@ end
 -- @tparam Report src that shall be realized
 -- @tparam[opt] string lang code used for realization
 -- @treturn html
-function Render:realizeBody( src, lang )
+function Subclass:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	if src:numLines() > 0 then
@@ -137,4 +137,4 @@ function Render:realizeBody( src, lang )
 end
 
 -- Return the final class.
-return Render
+return Subclass

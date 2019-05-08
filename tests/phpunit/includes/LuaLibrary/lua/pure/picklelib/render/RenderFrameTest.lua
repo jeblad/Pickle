@@ -6,12 +6,12 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/AdaptRender'
+local lib = require 'picklelib/render/RenderFrame'
 assert( lib )
 
 local name = 'reportRender'
 
-local fix = require 'picklelib/report/AdaptReport'
+local fix = require 'picklelib/report/FrameReport'
 assert( fix )
 
 local counter = require 'picklelib/Counter'
@@ -47,25 +47,45 @@ local function testState( bool )
 	return makeTest():realizeState( p, 'qqx', counter.create() )
 end
 
-local function testHeader()
-	local p = fix.create():ok()
+local function testSkip( ... )
+	local p = fix.create():setSkip( ... )
+	return makeTest():realizeSkip( p, 'qqx' )
+end
+
+local function testTodo( ... )
+	local p = fix.create():setTodo( ... )
+	return makeTest():realizeTodo( p, 'qqx' )
+end
+
+local function testDescription( ... )
+	local p = fix.create():setDescription( ... )
+	return makeTest():realizeDescription( p, 'qqx' )
+end
+
+local function testHeaderSkip( ... )
+	local p = fix.create():setDescription( 'testing' ):setSkip( ... ):notOk()
 	return makeTest():realizeHeader( p, 'qqx', counter.create() )
 end
 
+local function testHeaderTodo( ... )
+	local p = fix.create():setDescription( 'testing' ):setTodo( ... ):ok()
+	return makeTest():realizeHeader( p, 'qqx', counter.create() )
+end
+--[[
 local function testBody()
 	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' )
 	return makeTest():realizeBody( p, 'qqx' )
 end
-
+]]
 local tests = {
-	-- AdaptRenderTest[1]
+	-- RenderFrameTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	-- AdaptRenderTest[2]
+	-- RenderFrameTest[2]
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
@@ -73,7 +93,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
-	-- AdaptRenderTest[3]
+	-- RenderFrameTest[3]
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
@@ -81,7 +101,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	-- AdaptRenderTest[4]
+	-- RenderFrameTest[4]
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
@@ -89,14 +109,14 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	-- AdaptRenderTest[5]
+	-- RenderFrameTest[5]
 	{
 		name = name .. '.clarification ("skip", "qqx")',
 		func = testClarification,
 		args = { "is-skip", 'qqx' },
-		expect = {'skip (parentheses: (pickle-report-adapt-is-skip-keyword))' }
+		expect = { 'skip (parentheses: (pickle-report-frame-is-skip-keyword))' }
 	},
-	-- AdaptRenderTest[6]
+	-- RenderFrameTest[6]
 	{
 		name = name .. '.clarification ("skip", "nb")',
 		func = testClarification,
@@ -104,14 +124,14 @@ local tests = {
 		args = { "is-skip", 'nb' },
 		expect = { "skip (<replacement>)" }
 	},
-	-- AdaptRenderTest[7]
+	-- RenderFrameTest[7]
 	{
 		name = name .. '.clarification ("todo", "qqx")',
 		func = testClarification,
 		args = { "is-todo", 'qqx' },
-		expect = { 'todo (parentheses: (pickle-report-adapt-is-todo-keyword))' }
+		expect = { 'todo (parentheses: (pickle-report-frame-is-todo-keyword))' }
 	},
-	-- AdaptRenderTest[8]
+	-- RenderFrameTest[8]
 	{
 		name = name .. '.clarification ("todo", "nb")',
 		func = testClarification,
@@ -119,28 +139,59 @@ local tests = {
 		args = { "is-todo", 'nb' },
 		expect = { "todo (<replacement>)" }
 	},
-	-- AdaptRenderTest[9]
+	-- RenderFrameTest[9]
 	{
 		name = name .. '.state ()',
 		func = testState,
 		args = { false },
-		expect = { 'not ok 0 (parentheses: (pickle-report-adapt-is-not-ok-keyword))' }
+		expect = { 'not ok 0 (parentheses: (pickle-report-frame-is-not-ok-keyword))' }
 	},
-	-- AdaptRenderTest[10]
+	-- RenderFrameTest[10]
 	{
 		name = name .. '.state ()',
 		func = testState,
 		args = { true },
-		expect = { 'ok 0 (parentheses: (pickle-report-adapt-is-ok-keyword))' }
+		expect = { 'ok 0 (parentheses: (pickle-report-frame-is-ok-keyword))' }
 	},
-	-- AdaptRenderTest[11]
+	-- RenderFrameTest[11]
+	{
+		name = name .. '.skip ()',
+		func = testSkip,
+		args = { 'foo' },
+		expect = { 'skip (parentheses: (pickle-report-frame-is-skip-keyword)) foo' }
+	},
+	-- RenderFrameTest[12]
+	{
+		name = name .. '.todo ()',
+		func = testTodo,
+		args = { 'bar' },
+		expect = { 'todo (parentheses: (pickle-report-frame-is-todo-keyword)) bar' }
+	},
+	-- RenderFrameTest[13]
+	{
+		name = name .. '.description ()',
+		func = testDescription,
+		args = { 'baz' },
+		expect = { 'baz' }
+	},
+	-- RenderFrameTest[14]
 	{
 		name = name .. '.header ()',
-		func = testHeader,
+		func = testHeaderSkip,
 		args = { 'baz' },
-		expect = { 'ok 0 (parentheses: (pickle-report-adapt-is-ok-keyword))' }
+		expect = { 'not ok 0 (parentheses: (pickle-report-frame-is-not-ok-keyword))'
+		.. ' testing # skip (parentheses: (pickle-report-frame-is-skip-keyword)) baz' }
 	},
-	-- AdaptRenderTest[12]
+	-- RenderFrameTest[15]
+	{
+		name = name .. '.header ()',
+		func = testHeaderTodo,
+		args = { 'baz' },
+		expect = { 'ok 0 (parentheses: (pickle-report-frame-is-ok-keyword))'
+		.. ' testing # todo (parentheses: (pickle-report-frame-is-todo-keyword)) baz' }
+	},
+	--[[
+	-- RenderFrameTest[16]
 	{
 		name = name .. '.body ()',
 		func = testBody,
@@ -149,6 +200,7 @@ local tests = {
 			.. '(bar)' .. "\n"
 			.. '(baz)' }
 	},
+	]]
 }
 
 return testframework.getTestProvider( tests )

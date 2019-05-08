@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/full/FrameFullRender'
+local lib = require 'picklelib/render/full/RenderFrameFull'
 assert( lib )
 
 local name = 'resultRender'
@@ -43,14 +43,14 @@ local function testHeaderNotOk()
 end
 
 local tests = {
-	-- FrameFullRenderTest[1]
+	-- RenderFrameFullTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	-- FrameFullRenderTest[2]
+	-- RenderFrameFullTest[2]
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
@@ -58,7 +58,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
-	-- FrameFullRenderTest[3]
+	-- RenderFrameFullTest[3]
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
@@ -66,7 +66,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	-- FrameFullRenderTest[4]
+	-- RenderFrameFullTest[4]
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
@@ -74,20 +74,20 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	-- FrameFullRenderTest[5]
+	-- RenderFrameFullTest[5]
 	{
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-frame-foo' }
 	},
-	-- FrameFullRenderTest[6]
+	-- RenderFrameFullTest[6]
 	{
 		name = name .. '.header ok ()',
 		func = testHeaderOk,
 		expect = { 'ok (parentheses: (pickle-report-frame-is-ok-keyword))' }
 	},
-	-- FrameFullRenderTest[7]
+	-- RenderFrameFullTest[7]
 	{
 		name = name .. '.header not ok ()',
 		func = testHeaderNotOk,

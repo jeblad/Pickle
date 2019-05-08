@@ -6,11 +6,11 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/RenderBase'
+local lib = require 'picklelib/render/Render'
 assert( lib )
 
 local name = 'base'
-local class = 'base-render'
+local class = 'render-base'
 
 local counter = require 'picklelib/Counter'
 assert( counter )
@@ -41,20 +41,20 @@ end
 
 --[[
 local function testComment( keyPart )
-	local p = require('picklelib/report/ReportBase').create()
+	local p = require('picklelib/report/Report').create()
 	return makeTest():realizeComment( p, keyPart )
 end
 ]]
 
 local tests = {
-	-- RenderBaseTest[1]
+	-- RenderTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	-- RenderBaseTest[2]
+	-- RenderTest[2]
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
@@ -62,7 +62,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
-	-- RenderBaseTest[3]
+	-- RenderTest[3]
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
@@ -70,7 +70,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	-- RenderBaseTest[4]
+	-- RenderTest[4]
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
@@ -78,20 +78,20 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	-- RenderBaseTest[5]
+	-- RenderTest[5]
 	{
 		name = name .. '.type ()',
 		func = testType,
 		expect = { class }
 	},
-	-- RenderBaseTest[6]
+	-- RenderTest[6]
 	{
 		name = name .. '.key ("foo-bar")',
 		func = testKey,
 		args = { "foo-bar" },
 		expect = { "pickle-report-base-foo-bar" }
 	},
-	-- RenderBaseTest[7]
+	-- RenderTest[7]
 	{
 		name = name .. '.clarification ("skip")',
 		func = testClarification,
@@ -99,7 +99,7 @@ local tests = {
 		expect = { '⧼pickle-report-base-skip-keyword⧽'
 		.. ' (parentheses: (pickle-report-base-skip-keyword))' }
 	},
-	-- RenderBaseTest[8]
+	-- RenderTest[8]
 	{
 		name = name .. '.clarification ("todo")',
 		func = testClarification,
@@ -108,7 +108,7 @@ local tests = {
 		.. ' (parentheses: (pickle-report-base-todo-keyword))' }
 	},
 	--[[
-	-- RenderBaseTest[9]
+	-- RenderTest[9]
 	{
 		name = name .. '.comment ("foobar")',
 		func = testComment,

@@ -1,16 +1,16 @@
 --- Baseclass for renders.
 -- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
--- @classmod RenderBase
--- @alias Render
+-- @classmod Render
+-- @alias Baseclass
 
 -- @var base class
-local Render = {}
+local Baseclass = {}
 
 --- Lookup of missing class members.
 -- @tparam string key used for lookup of member
 -- @return any
-function Render:__index( key ) -- luacheck: no self
-	return Render[key]
+function Baseclass:__index( key ) -- luacheck: no self
+	return Baseclass[key]
 end
 
 --- Create a new instance.
@@ -18,7 +18,7 @@ end
 -- or from a previous instance of some kind.
 -- @tparam vararg ... forwarded to `_init()`
 -- @treturn self
-function Render:create( ... )
+function Baseclass:create( ... )
 	local meta = rawget( self, 'create' ) and self or getmetatable( self )
 	local new = setmetatable( {}, meta )
 	new:_init( ... )
@@ -29,8 +29,8 @@ end
 -- @local
 -- @tparam vararg ... unused
 -- @return self
-function Render:_init( ... ) -- luacheck: no unused args
-	self._type = 'base-render'
+function Baseclass:_init( ... ) -- luacheck: no unused args
+	self._type = 'render-base'
 	return self
 end
 
@@ -38,7 +38,7 @@ end
 -- Sole purpose of this is to do assertions and un-tainting.
 -- @tparam string str to be appended to a base string
 -- @treturn string
-function Render:cleanKey( str ) -- luacheck: no self
+function Baseclass:cleanKey( str ) -- luacheck: no self
 	assert( str, 'Failed to provide a string' )
 	local keep = string.match( str, '^[-%a]+$' )
 	assert( keep, 'Failed to find a valid string' )
@@ -50,14 +50,14 @@ end
 -- Sole purpose of this is to do assertions, and the provided key is never be used.
 -- @tparam string str to be appended to a base string
 -- @treturn string
-function Render:key( str )
+function Baseclass:key( str )
 	return 'pickle-report-base-' .. self:cleanKey( str )
 end
 
 --- Get the type of report.
 -- All reports has an explicit type name.
 -- @treturn string
-function Render:type()
+function Baseclass:type()
 	return self._type
 end
 
@@ -66,7 +66,7 @@ end
 -- @tparam any head to act as the head
 -- @tparam any tail to act as the tail
 -- @return any
-function Render:append( head, tail ) -- luacheck: no self
+function Baseclass:append( head, tail ) -- luacheck: no self
 	assert( head )
 	assert( tail )
 	return head .. ' ' .. tail
@@ -77,7 +77,7 @@ end
 -- @tparam[opt] string lang code
 -- @tparam[optchain] Counter counter holding the running count
 -- @treturn string
-function Render:realizeClarification( keyPart, lang, counter )
+function Baseclass:realizeClarification( keyPart, lang, counter )
 	assert( keyPart, 'Failed to provide a key part' )
 
 	local keyword = mw.message.new( self:key( keyPart .. '-keyword' ) )
@@ -107,7 +107,7 @@ end
 -- @tparam string keyPart of a message key
 -- @tparam[opt] string lang code
 -- @treturn string
-function Render:realizeComment( src, keyPart, lang )
+function Baseclass:realizeComment( src, keyPart, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local ucfKeyPart = string.upper( string.sub( keyPart, 1, 1 ) )..string.sub( keyPart, 2 )
@@ -134,4 +134,4 @@ function Render:realizeComment( src, keyPart, lang )
 end
 
 -- Return the final class.
-return Render
+return Baseclass

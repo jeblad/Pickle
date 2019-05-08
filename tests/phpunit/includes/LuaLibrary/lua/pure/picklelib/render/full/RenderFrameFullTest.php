@@ -11,16 +11,16 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class AdaptFullRenderTest extends Scribunto_LuaEngineTestBase {
+class RenderFrameFullTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'AdaptFullRenderTest';
+	protected static $moduleName = 'RenderFrameFullTest';
 
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {
 		return parent::getTestModules() + [
-			'AdaptFullRenderTest' => __DIR__ . '/AdaptFullRenderTest.lua'
+			'RenderFrameFullTest' => __DIR__ . '/RenderFrameFullTest.lua'
 		];
 	}
 }

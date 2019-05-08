@@ -1,39 +1,39 @@
 --- Final class for frame report renderer.
 -- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
--- @classmod FrameVividRender
--- @alias Render
+-- @classmod RenderFrameVivid
+-- @alias Subclass
 
 -- pure libs
-local Super = require 'picklelib/render/FrameRender'
+local Super = require 'picklelib/render/RenderFrame'
 
 -- @var class var for lib
-local Render = {}
+local Subclass = {}
 
 --- Lookup of missing class members.
 -- @tparam string key used for lookup of member
 -- @return any
-function Render:__index( key ) -- luacheck: no self
-	return Render[key]
+function Subclass:__index( key ) -- luacheck: no self
+	return Subclass[key]
 end
 
 -- @var metatable for the class
-setmetatable( Render, { __index = Super } )
+setmetatable( Subclass, { __index = Super } )
 
 --- Create a new instance.
--- @see RenderBase:create
--- @tparam vararg ... forwarded to @{FrameRender:create}
+-- @see RenderFrame:create
+-- @tparam vararg ... forwarded to @{RenderFrame:create}
 -- @treturn self
-function Render:create( ... )
+function Subclass:create( ... )
 	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... forwarded to @{FrameRender:_init}
+-- @tparam vararg ... forwarded to @{RenderFrame:_init}
 -- @return self
-function Render:_init( ... )
+function Subclass:_init( ... )
 	Super._init( self, ... )
-	self._type = 'frame-vivid-render'
+	self._type = 'render-frame-vivid'
 	return self
 end
 
@@ -41,7 +41,7 @@ end
 -- @tparam any head to act as the head
 -- @tparam any tail to act as the tail
 -- @treturn self
-function Render:append( head, tail ) -- luacheck: no self
+function Subclass:append( head, tail ) -- luacheck: no self
 	assert( head )
 	assert( tail )
 	head:node( tail )
@@ -53,7 +53,7 @@ end
 -- @tparam[opt] string lang code used for realization
 -- @tparam[optchain] Counter counter holding the running count
 -- @treturn html
-function Render:realizeState( src, lang, counter )
+function Subclass:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -72,7 +72,7 @@ end
 -- @tparam Report src that shall be realized
 -- @tparam[opt] string lang code used for realization
 -- @treturn html
-function Render:realizeSkip( src, lang )
+function Subclass:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -91,7 +91,7 @@ end
 -- @tparam Report src that shall be realized
 -- @tparam[opt] string lang code used for realization
 -- @treturn html
-function Render:realizeTodo( src, lang )
+function Subclass:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -110,7 +110,7 @@ end
 -- @tparam Report src that shall be realized
 -- @tparam[opt] string lang code used for realization
 -- @treturn html
-function Render:realizeDescription( src, lang )
+function Subclass:realizeDescription( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'span' )
@@ -131,7 +131,7 @@ end
 -- @tparam[opt] string lang code used for realization
 -- @tparam[optchain] Counter counter holding the running count
 -- @treturn html
-function Render:realizeHeader( src, lang, counter )
+function Subclass:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	local html = mw.html.create( 'div' )
@@ -159,4 +159,4 @@ function Render:realizeHeader( src, lang, counter )
 end
 
 -- Return the final class.
-return Render
+return Subclass

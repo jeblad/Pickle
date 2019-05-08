@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/vivid/FrameVividRender'
+local lib = require 'picklelib/render/vivid/RenderFrameVivid'
 assert( lib )
 local name = 'resultRender'
 
@@ -77,14 +77,14 @@ local function testHeaderNotOk()
 end
 
 local tests = {
-	-- FrameVividRenderTest[1]
+	-- RenderFrameVividTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	-- FrameVividRenderTest[2]
+	-- RenderFrameVividTest[2]
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
@@ -92,7 +92,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
-	-- FrameVividRenderTest[3]
+	-- RenderFrameVividTest[3]
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
@@ -100,7 +100,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	-- FrameVividRenderTest[4]
+	-- RenderFrameVividTest[4]
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
@@ -108,7 +108,7 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	-- FrameVividRenderTest[5]
+	-- RenderFrameVividTest[5]
 	{
 		name = name .. '.key ()',
 		func = testKey,
@@ -116,7 +116,7 @@ local tests = {
 		expect = { 'pickle-report-frame-foo' }
 	},
 	--[[
-	-- FrameVividRenderTest[]
+	-- RenderFrameVividTest[]
 	{
 		name = name .. '.state ()',
 		func = testState,
@@ -125,7 +125,7 @@ local tests = {
 			.. 'not ok (parentheses: (pickle-report-frame-is-not-ok-keyword))'
 			.. '</span>' }
 	},
-	-- FrameVividRenderTest[]
+	-- RenderFrameVividTest[]
 	{
 		name = name .. '.state ()',
 		func = testState,
@@ -135,7 +135,7 @@ local tests = {
 			.. '</span>' }
 	},
 	]]
-	-- FrameVividRenderTest[6]
+	-- RenderFrameVividTest[6]
 	{
 		name = name .. '.skip ()',
 		func = testSkip,
@@ -144,7 +144,7 @@ local tests = {
 			.. 'skip (parentheses: (pickle-report-frame-is-skip-keyword)) foo'
 			.. '</span>' }
 	},
-	-- FrameVividRenderTest[7]
+	-- RenderFrameVividTest[7]
 	{
 		name = name .. '.todo ()',
 		func = testTodo,
@@ -153,7 +153,7 @@ local tests = {
 			.. 'todo (parentheses: (pickle-report-frame-is-todo-keyword)) bar'
 			.. '</span>' }
 	},
-	-- FrameVividRenderTest[8]
+	-- RenderFrameVividTest[8]
 	{
 		name = name .. '.description ()',
 		func = testDescription,
@@ -162,7 +162,7 @@ local tests = {
 			.. 'baz'
 			.. '</span>' }
 	},
-	-- FrameVividRenderTest[9]
+	-- RenderFrameVividTest[9]
 	{
 		name = name .. '.header skip ()',
 		func = testHeaderSkip,
@@ -182,7 +182,7 @@ local tests = {
 			.. '</span>'
 			.. '</div>' }
 	},
-	-- FrameVividRenderTest[10]
+	-- RenderFrameVividTest[10]
 	{
 		name = name .. '.header todo ()',
 		func = testHeaderTodo,
@@ -202,7 +202,7 @@ local tests = {
 			.. '</span>'
 			.. '</div>' }
 	},
-	-- FrameVividRenderTest[11]
+	-- RenderFrameVividTest[11]
 	{
 		name = name .. '.header ok ()',
 		func = testHeaderOk,
@@ -212,7 +212,7 @@ local tests = {
 			.. '</span>'
 			.. '</div>' }
 	},
-	-- FrameVividRenderTest[12]
+	-- RenderFrameVividTest[12]
 	{
 		name = name .. '.header not ok ()',
 		func = testHeaderNotOk,

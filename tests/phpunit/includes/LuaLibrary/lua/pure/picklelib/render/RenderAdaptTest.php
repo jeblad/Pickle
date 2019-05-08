@@ -11,16 +11,17 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class RenderBaseTest extends Scribunto_LuaEngineTestBase {
+class RenderAdaptTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'RenderBaseTest';
+	protected static $moduleName = 'RenderAdaptTest';
 
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
+	 * @return configuration data
 	 */
 	protected function getTestModules() {
 		return parent::getTestModules() + [
-			'RenderBaseTest' => __DIR__ . '/RenderBaseTest.lua'
+			'RenderAdaptTest' => __DIR__ . '/RenderAdaptTest.lua'
 		];
 	}
 }

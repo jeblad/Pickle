@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/full/AdaptFullRender'
+local lib = require 'picklelib/render/vivid/RenderAdaptVivid'
 assert( lib )
 
 local name = 'resultRender'
@@ -32,23 +32,23 @@ end
 
 local function testBodyOk()
 	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):ok()
-	return makeTest():realizeBody( p, 'qqx' )
+	return tostring( makeTest():realizeBody( p, 'qqx' ) )
 end
 
 local function testBodyNotOk()
 	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):notOk()
-	return makeTest():realizeBody( p, 'qqx' )
+	return tostring( makeTest():realizeBody( p, 'qqx' ) )
 end
 
 local tests = {
-	-- AdaptFullRenderTest[1]
+	-- RenderAdaptVividTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	-- AdaptFullRenderTest[2]
+	-- RenderAdaptVividTest[2]
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
@@ -56,7 +56,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
-	-- AdaptFullRenderTest[3]
+	-- RenderAdaptVividTest[3]
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
@@ -64,7 +64,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	-- AdaptFullRenderTest[4]
+	-- RenderAdaptVividTest[4]
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
@@ -72,30 +72,32 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	-- AdaptFullRenderTest[5]
+	-- RenderAdaptVividTest[5]
 	{
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-adapt-foo' }
 	},
-	-- AdaptFullRenderTest[6]
+	-- RenderAdaptVividTest[6]
 	{
 		name = name .. '.body ()',
 		func = testBodyOk,
-		expect = { "\n"
-			.. '(foo)' .. "\n"
-			.. '(bar)' .. "\n"
-			.. '(baz)' }
+		expect = { '<dl class="mw-pickle-body">'
+			.. '<dd class="mw-pickle-line" lang="qqx">(foo)</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(bar)</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(baz)</dd>'
+			.. '</dl>' }
 	},
-	-- AdaptFullRenderTest[7]
+	-- RenderAdaptVividTest[7]
 	{
 		name = name .. '.body ()',
 		func = testBodyNotOk,
-		expect = { "\n"
-			.. '(foo)' .. "\n"
-			.. '(bar)' .. "\n"
-			.. '(baz)' }
+		expect = { '<dl class="mw-pickle-body" style="display:none">'
+			.. '<dd class="mw-pickle-line" lang="qqx">(foo)</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(bar)</dd>'
+			.. '<dd class="mw-pickle-line" lang="qqx">(baz)</dd>'
+			.. '</dl>' }
 	},
 }
 

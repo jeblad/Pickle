@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/compact/FrameCompactRender'
+local lib = require 'picklelib/render/compact/RenderFrameCompact'
 assert( lib )
 
 local name = 'resultRender'
@@ -43,14 +43,14 @@ local function testHeaderNotOk()
 end
 
 local tests = {
-	-- FrameCompactRenderTest[1]
+	-- RenderFrameCompactTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	-- FrameCompactRenderTest[2]
+	-- RenderFrameCompactTest[2]
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
@@ -58,7 +58,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
-	-- FrameCompactRenderTest[3]
+	-- RenderFrameCompactTest[3]
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
@@ -66,7 +66,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	-- FrameCompactRenderTest[4]
+	-- RenderFrameCompactTest[4]
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
@@ -74,20 +74,20 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	-- FrameCompactRenderTest[5]
+	-- RenderFrameCompactTest[5]
 	{
 		name = name .. '.key ()',
 		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-frame-foo' }
 	},
-	-- FrameCompactRenderTest[6]
+	-- RenderFrameCompactTest[6]
 	{
 		name = name .. '.header ok ()',
 		func = testHeaderOk,
 		expect = { 'ok (parentheses: (pickle-report-frame-is-ok-keyword))' }
 	},
-	-- FrameCompactRenderTest[7]
+	-- RenderFrameCompactTest[7]
 	{
 		name = name .. '.header not ok ()',
 		func = testHeaderNotOk,

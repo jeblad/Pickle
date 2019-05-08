@@ -1,6 +1,6 @@
 <?php
 
-namespace Pickle\Test\Vivid;
+namespace Pickle\Test;
 
 use Scribunto_LuaEngineTestBase;
 
@@ -11,16 +11,16 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class FrameVividRenderTest extends Scribunto_LuaEngineTestBase {
+class RenderTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'FrameVividRenderTest';
+	protected static $moduleName = 'RenderTest';
 
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {
 		return parent::getTestModules() + [
-			'FrameVividRenderTest' => __DIR__ . '/FrameVividRenderTest.lua'
+			'RenderTest' => __DIR__ . '/RenderTest.lua'
 		];
 	}
 }

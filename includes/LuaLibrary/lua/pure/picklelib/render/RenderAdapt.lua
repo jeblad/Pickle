@@ -1,46 +1,46 @@
 --- Intermediate class for report renderer.
 -- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
--- @classmod AdaptRender
--- @alias Render
+-- @classmod RenderAdapt
+-- @alias Subclass
 
 -- non-pure libs
-local Super = require 'picklelib/render/RenderBase'
+local Super = require 'picklelib/render/Render'
 
 -- @var class var for lib
-local Render = {}
+local Subclass = {}
 
 --- Lookup of missing class members.
 -- @tparam string key used for lookup of member
 -- @return any
-function Render:__index( key ) -- luacheck: no self
-	return Render[key]
+function Subclass:__index( key ) -- luacheck: no self
+	return Subclass[key]
 end
 
 -- @var metatable for the class
-setmetatable( Render, { __index = Super } )
+setmetatable( Subclass, { __index = Super } )
 
 --- Create a new instance.
--- @see RenderBase:create
--- @tparam vararg ... forwarded to @{RenderBase:create}
+-- @see Render:create
+-- @tparam vararg ... forwarded to @{Render:create}
 -- @treturn self
-function Render:create( ... )
+function Subclass:create( ... )
 	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... forwarded to @{RenderBase:_init}
+-- @tparam vararg ... forwarded to @{Render:_init}
 -- @return self
-function Render:_init( ... )
+function Subclass:_init( ... )
 	Super._init( self, ... )
-	self._type = 'adapt-render'
+	self._type = 'render-adapt'
 	return self
 end
 
 --- Override key construction.
 -- @tparam string str to be appended to a base string
 -- @treturn string
-function Render:key( str )
+function Subclass:key( str )
 	return 'pickle-report-adapt-' .. self:cleanKey( str )
 end
 
@@ -49,7 +49,7 @@ end
 -- @tparam[opt] string lang code used for realization
 -- @tparam[optchain] Counter counter holding the running count
 -- @treturn string
-function Render:realizeState( src, lang, counter )
+function Subclass:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	return self:realizeClarification( src:isOk() and 'is-ok' or 'is-not-ok', lang, counter )
@@ -61,7 +61,7 @@ end
 -- @tparam[opt] string lang code used for realization
 -- @tparam[optchain] Counter counter holding the running count
 -- @treturn string
-function Render:realizeHeader( src, lang, counter )
+function Subclass:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
 
 	local t = { self:realizeState( src, lang, counter ) }
@@ -83,7 +83,7 @@ end
 -- @tparam any param that shall be realized
 -- @tparam[opt] string lang code used for realization
 -- @treturn string
-function Render:realizeLine( param, lang ) -- luacheck: no self
+function Subclass:realizeLine( param, lang ) -- luacheck: no self
 	assert( param, 'Failed to provide a parameter' )
 
 	local line = mw.message.new( unpack( param ) )
@@ -104,7 +104,7 @@ end
 -- @tparam Report src that shall be realized
 -- @tparam[opt] string lang code used for realization
 -- @treturn string
-function Render:realizeBody( src, lang )
+function Subclass:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )
 
 	local t = {}
@@ -117,4 +117,4 @@ function Render:realizeBody( src, lang )
 end
 
 -- Return the final class.
-return Render
+return Subclass
