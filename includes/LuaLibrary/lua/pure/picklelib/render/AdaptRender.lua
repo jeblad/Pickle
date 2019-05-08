@@ -30,8 +30,9 @@ end
 -- @local
 -- @tparam vararg ... unused
 -- @return self
-function Render:_init( ... ) -- luacheck: no unused args
+function Render:_init( ... )
 	Super._init( self, ... )
+	self._type = 'adapt-render'
 	return self
 end
 
