@@ -39,8 +39,7 @@ end
 -- @tparam string str to be appended to a base string
 -- @treturn string
 function Render:key( str )
-	Super._init( self, str )
-	return 'pickle-report-adapt-' .. str
+	return 'pickle-report-adapt-' .. self:cleanKey( str )
 end
 
 --- Realize reported data for state.

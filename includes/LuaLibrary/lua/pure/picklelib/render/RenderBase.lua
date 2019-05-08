@@ -33,15 +33,24 @@ function Render:_init( ... ) -- luacheck: no unused args
 	return self
 end
 
+--- Clean key.
+-- Sole purpose of this is to do assertions and un-tainting.
+-- @tparam string str to be appended to a base string
+-- @treturn string
+function Render:cleanKey( str ) -- luacheck: no self
+	assert( str, 'Failed to provide a string' )
+	local keep = string.match( str, '^[-%a]+$' )
+	assert( keep, 'Failed to find a valid string' )
+	return keep
+end
+
+
 --- Override key construction.
 -- Sole purpose of this is to do assertions, and the provided key is never be used.
 -- @tparam string str to be appended to a base string
 -- @treturn string
-function Render:key( str ) -- luacheck: no self
-	assert( str, 'Failed to provide a string' )
-	local keep = string.match( str, '^[-%a]+$' )
-	assert( keep, 'Failed to find a valid string' )
-	return 'pickle-report-base-' .. keep
+function Render:key( str )
+	return 'pickle-report-base-' .. self:cleanKey( str )
 end
 
 --- Get the type of report.

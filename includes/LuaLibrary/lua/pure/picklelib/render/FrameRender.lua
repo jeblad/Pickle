@@ -1,5 +1,5 @@
 --- Intermediate class for frame report renderer.
--- This class follows the pattern from [Lua classes](../topics/lua-classes).
+-- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
 -- @classmod FrameRender
 -- @alias Render
 
@@ -40,8 +40,7 @@ end
 -- @tparam string str to be appended to a base string
 -- @treturn string
 function Render:key( str )
-	Super._init( self, str )
-	return 'pickle-report-frame-' .. str
+	return 'pickle-report-frame-' .. self:cleanKey( str )
 end
 
 --- Realize reported data for state.
