@@ -21,15 +21,15 @@ setmetatable( Render, { __index = Super } )
 
 --- Create a new instance.
 -- @see RenderBase:create
--- @tparam vararg ... unused
--- @treturn FrameRender|any
+-- @tparam vararg ... forwarded to @{RenderBase:create}
+-- @treturn self
 function Render:create( ... )
 	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... unused
+-- @tparam vararg ... forwarded to @{RenderBase:_init}
 -- @return self
 function Render:_init( ... )
 	Super._init( self, ... )
@@ -46,8 +46,8 @@ end
 
 --- Realize reported data for state.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
--- @tparam Counter counter holding the running count
+-- @tparam[opt] string lang code used for realization
+-- @tparam[optchain] Counter counter holding the running count
 -- @treturn string
 function Render:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
@@ -58,7 +58,7 @@ end
 --- Realize reported data for skip.
 -- The "skip" is a message identified by a key.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
+-- @tparam[opt] string lang code used for realization
 -- @treturn string
 function Render:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
@@ -69,7 +69,7 @@ end
 --- Realize reported data for todo.
 -- The "todo" is a text string.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
+-- @tparam[opt] string lang code used for realization
 -- @treturn string
 function Render:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
@@ -80,7 +80,7 @@ end
 --- Realize reported data for description.
 -- The "description" is a text string.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
+-- @tparam[opt] string lang code used for realization
 -- @treturn string
 function Render:realizeDescription( src, lang ) -- luacheck: no unused args
 	assert( src, 'Failed to provide a source' )
@@ -95,8 +95,8 @@ end
 --- Realize reported data for header.
 -- The "header" is a composite.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
--- @tparam Counter counter holding the running count
+-- @tparam[opt] string lang code used for realization
+-- @tparam[optchain] Counter counter holding the running count
 -- @treturn string
 function Render:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
@@ -125,7 +125,7 @@ end
 --- Realize reported data for body.
 -- The "body" is a composite.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
+-- @tparam[opt] string lang code used for realization
 -- @treturn string
 function Render:realizeBody( src, lang ) -- luacheck: ignore self lang
 	assert( src, 'Failed to provide a source' )

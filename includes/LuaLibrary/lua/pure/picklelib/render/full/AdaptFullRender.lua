@@ -1,4 +1,5 @@
 --- Final class for full report renderer.
+-- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
 -- @classmod AdaptFullRender
 -- @alias Render
 
@@ -20,15 +21,15 @@ setmetatable( Render, { __index = Super } )
 
 --- Create a new instance.
 -- @see RenderBase:create
--- @tparam vararg ... unused
--- @treturn AdaptFullRender|any
+-- @tparam vararg ... forwarded to @{AdaptRender:create}
+-- @treturn self
 function Render:create( ... )
 	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... unused
+-- @tparam vararg ... forwarded to @{AdaptRender:_init}
 -- @return self
 function Render:_init( ... )
 	Super._init( self, ... )

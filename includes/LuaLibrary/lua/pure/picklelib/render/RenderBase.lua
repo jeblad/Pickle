@@ -1,4 +1,5 @@
 --- Baseclass for renders.
+-- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
 -- @classmod RenderBase
 -- @alias Render
 
@@ -15,8 +16,8 @@ end
 --- Create a new instance.
 -- Assumption is either to create a new instance from an existing class,
 -- or from a previous instance of some kind.
--- @tparam vararg ... unused
--- @treturn RenderBase|any
+-- @tparam vararg ... forwarded to `_init()`
+-- @treturn self
 function Render:create( ... )
 	local meta = rawget( self, 'create' ) and self or getmetatable( self )
 	local new = setmetatable( {}, meta )
@@ -73,8 +74,8 @@ end
 
 --- Realize clarification.
 -- @tparam string keyPart of a message key
--- @tparam string lang code (optional)
--- @tparam Counter counter holding the running count
+-- @tparam[opt] string lang code
+-- @tparam[optchain] Counter counter holding the running count
 -- @treturn string
 function Render:realizeClarification( keyPart, lang, counter )
 	assert( keyPart, 'Failed to provide a key part' )
@@ -104,7 +105,7 @@ end
 --- Realize comment.
 -- @tparam Report src that shall be realized
 -- @tparam string keyPart of a message key
--- @tparam string lang code (optional)
+-- @tparam[opt] string lang code
 -- @treturn string
 function Render:realizeComment( src, keyPart, lang )
 	assert( src, 'Failed to provide a source' )

@@ -1,4 +1,5 @@
 --- Final class for frame report renderer.
+-- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
 -- @classmod FrameVividRender
 -- @alias Render
 
@@ -20,15 +21,15 @@ setmetatable( Render, { __index = Super } )
 
 --- Create a new instance.
 -- @see RenderBase:create
--- @tparam vararg ... unused
--- @treturn FrameVividRender|any
+-- @tparam vararg ... forwarded to @{FrameRender:create}
+-- @treturn self
 function Render:create( ... )
 	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... unused
+-- @tparam vararg ... forwarded to @{FrameRender:_init}
 -- @return self
 function Render:_init( ... )
 	Super._init( self, ... )
@@ -49,8 +50,8 @@ end
 
 --- Override realization of reported data for state.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
--- @tparam Counter counter holding the running count
+-- @tparam[opt] string lang code used for realization
+-- @tparam[optchain] Counter counter holding the running count
 -- @treturn html
 function Render:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
@@ -69,7 +70,7 @@ end
 
 --- Override realization of reported data for skip.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
+-- @tparam[opt] string lang code used for realization
 -- @treturn html
 function Render:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
@@ -88,7 +89,7 @@ end
 
 --- Override realization of reported data for todo.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
+-- @tparam[opt] string lang code used for realization
 -- @treturn html
 function Render:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
@@ -107,7 +108,7 @@ end
 
 --- Override realization of reported data for description.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
+-- @tparam[opt] string lang code used for realization
 -- @treturn html
 function Render:realizeDescription( src, lang )
 	assert( src, 'Failed to provide a source' )
@@ -127,8 +128,8 @@ end
 --- Realize reported data for header.
 -- The "header" is a composite.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
--- @tparam Counter counter holding the running count
+-- @tparam[opt] string lang code used for realization
+-- @tparam[optchain] Counter counter holding the running count
 -- @treturn html
 function Render:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )

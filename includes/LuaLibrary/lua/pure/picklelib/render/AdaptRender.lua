@@ -1,4 +1,5 @@
 --- Intermediate class for report renderer.
+-- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
 -- @classmod AdaptRender
 -- @alias Render
 
@@ -20,15 +21,15 @@ setmetatable( Render, { __index = Super } )
 
 --- Create a new instance.
 -- @see RenderBase:create
--- @tparam vararg ... unused
--- @treturn AdaptRender|any
+-- @tparam vararg ... forwarded to @{RenderBase:create}
+-- @treturn self
 function Render:create( ... )
 	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... unused
+-- @tparam vararg ... forwarded to @{RenderBase:_init}
 -- @return self
 function Render:_init( ... )
 	Super._init( self, ... )
@@ -45,8 +46,8 @@ end
 
 --- Realize reported data for state.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
--- @tparam Counter counter holding the running count
+-- @tparam[opt] string lang code used for realization
+-- @tparam[optchain] Counter counter holding the running count
 -- @treturn string
 function Render:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
@@ -57,8 +58,8 @@ end
 --- Realize reported data for header.
 -- The "header" is a composite.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
--- @tparam Counter counter holding the running count
+-- @tparam[opt] string lang code used for realization
+-- @tparam[optchain] Counter counter holding the running count
 -- @treturn string
 function Render:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
@@ -80,7 +81,7 @@ end
 
 --- Realize reported data for a line.
 -- @tparam any param that shall be realized
--- @tparam string lang code used for realization
+-- @tparam[opt] string lang code used for realization
 -- @treturn string
 function Render:realizeLine( param, lang ) -- luacheck: no self
 	assert( param, 'Failed to provide a parameter' )
@@ -101,7 +102,7 @@ end
 --- Realize reported data for body.
 -- The "body" is a composite.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
+-- @tparam[opt] string lang code used for realization
 -- @treturn string
 function Render:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )

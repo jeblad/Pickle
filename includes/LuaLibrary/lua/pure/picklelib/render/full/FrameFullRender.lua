@@ -1,4 +1,5 @@
 --- Final class for frame report renderer.
+-- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
 -- @classmod FrameFullRender
 -- @alias Render
 
@@ -20,15 +21,15 @@ setmetatable( Render, { __index = Super } )
 
 --- Create a new instance.
 -- @see RenderBase:create
--- @tparam vararg ... unused
--- @treturn FrameFullRender|any
+-- @tparam vararg ... forwarded to @{FrameRender:create}
+-- @treturn self
 function Render:create( ... )
 	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... unused
+-- @tparam vararg ... forwarded to @{FrameRender:_init}
 -- @return self
 function Render:_init( ... )
 	Super._init( self, ... )

@@ -1,4 +1,5 @@
 --- Final class for vivid report renderer.
+-- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
 -- @classmod AdaptVividRender
 -- @alias Render
 
@@ -20,15 +21,15 @@ setmetatable( Render, { __index = Super } )
 
 --- Create a new instance.
 -- @see RenderBase:create
--- @tparam vararg ... unused
--- @treturn AdaptVividRender|any
+-- @tparam vararg ... forwarded to @{AdaptRender:create}
+-- @treturn self
 function Render:create( ... )
 	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... unused
+-- @tparam vararg ... forwarded to @{AdaptRender:_init}
 -- @return self
 function Render:_init( ... )
 	Super._init( self, ... )
@@ -38,8 +39,8 @@ end
 
 --- Override realization of reported data for state.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
--- @tparam Counter counter holding the running count
+-- @tparam[opt] string lang code used for realization
+-- @tparam[optchain] Counter counter holding the running count
 -- @treturn html
 function Render:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
@@ -58,8 +59,8 @@ end
 
 --- Override realization of reported data for header.
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
--- @tparam Counter counter holding the running count
+-- @tparam[opt] string lang code used for realization
+-- @tparam[optchain] Counter counter holding the running count
 -- @treturn html
 function Render:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
@@ -90,7 +91,7 @@ end
 
 --- Override realization of reported data for line.
 -- @tparam any param that shall be realized
--- @tparam string lang code used for realization
+-- @tparam[opt] string lang code used for realization
 -- @return html
 function Render:realizeLine( param, lang )
 	assert( param, 'Failed to provide a parameter' )
@@ -112,7 +113,7 @@ end
 -- @todo this should probably be realize() as it should contain
 -- the header as a "dt".
 -- @tparam Report src that shall be realized
--- @tparam string lang code used for realization
+-- @tparam[opt] string lang code used for realization
 -- @treturn html
 function Render:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )
