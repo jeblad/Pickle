@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Reference</title>
+    <title>Pickle documentation</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
 <body>
@@ -24,7 +24,7 @@
 
 <div id="navigation">
 <br/>
-<h1>ldoc</h1>
+<h1>Pickle</h1>
 
 <ul>
   <li><a href="../mw.pickle.html">Index</a></li>
@@ -113,27 +113,27 @@
 	<td class="summary">Override key construction.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#FrameRender:realizeState">FrameRender:realizeState (src, lang, counter)</a></td>
+	<td class="name" nowrap><a href="#FrameRender:realizeState">FrameRender:realizeState (src[, lang[, counter]])</a></td>
 	<td class="summary">Realize reported data for state.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#FrameRender:realizeSkip">FrameRender:realizeSkip (src, lang)</a></td>
+	<td class="name" nowrap><a href="#FrameRender:realizeSkip">FrameRender:realizeSkip (src[, lang])</a></td>
 	<td class="summary">Realize reported data for skip.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#FrameRender:realizeTodo">FrameRender:realizeTodo (src, lang)</a></td>
+	<td class="name" nowrap><a href="#FrameRender:realizeTodo">FrameRender:realizeTodo (src[, lang])</a></td>
 	<td class="summary">Realize reported data for todo.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#FrameRender:realizeDescription">FrameRender:realizeDescription (src, lang)</a></td>
+	<td class="name" nowrap><a href="#FrameRender:realizeDescription">FrameRender:realizeDescription (src[, lang])</a></td>
 	<td class="summary">Realize reported data for description.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#FrameRender:realizeHeader">FrameRender:realizeHeader (src, lang, counter)</a></td>
+	<td class="name" nowrap><a href="#FrameRender:realizeHeader">FrameRender:realizeHeader (src[, lang[, counter]])</a></td>
 	<td class="summary">Realize reported data for header.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#FrameRender:realizeBody">FrameRender:realizeBody (src, lang)</a></td>
+	<td class="name" nowrap><a href="#FrameRender:realizeBody">FrameRender:realizeBody (src[, lang])</a></td>
 	<td class="summary">Realize reported data for body.</td>
 	</tr>
 </table>
@@ -187,14 +187,14 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         unused
+         forwarded to <a href="../classes/RenderBase.html#RenderBase:create">RenderBase:create</a>
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="../classes/FrameRender.html#">FrameRender</a> or <span class="type">any</span></span>
+           <span class="types"><span class="type">self</span></span>
 
 
 
@@ -239,7 +239,7 @@
 </dd>
     <dt>
     <a name = "FrameRender:realizeState"></a>
-    <strong>FrameRender:realizeState (src, lang, counter)</strong>
+    <strong>FrameRender:realizeState (src[, lang[, counter]])</strong>
     </dt>
     <dd>
     Realize reported data for state.
@@ -254,10 +254,12 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">counter</span>
             <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -276,7 +278,7 @@
 </dd>
     <dt>
     <a name = "FrameRender:realizeSkip"></a>
-    <strong>FrameRender:realizeSkip (src, lang)</strong>
+    <strong>FrameRender:realizeSkip (src[, lang])</strong>
     </dt>
     <dd>
     Realize reported data for skip.
@@ -292,6 +294,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -310,7 +313,7 @@
 </dd>
     <dt>
     <a name = "FrameRender:realizeTodo"></a>
-    <strong>FrameRender:realizeTodo (src, lang)</strong>
+    <strong>FrameRender:realizeTodo (src[, lang])</strong>
     </dt>
     <dd>
     Realize reported data for todo.
@@ -326,6 +329,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -344,7 +348,7 @@
 </dd>
     <dt>
     <a name = "FrameRender:realizeDescription"></a>
-    <strong>FrameRender:realizeDescription (src, lang)</strong>
+    <strong>FrameRender:realizeDescription (src[, lang])</strong>
     </dt>
     <dd>
     Realize reported data for description.
@@ -360,6 +364,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -378,7 +383,7 @@
 </dd>
     <dt>
     <a name = "FrameRender:realizeHeader"></a>
-    <strong>FrameRender:realizeHeader (src, lang, counter)</strong>
+    <strong>FrameRender:realizeHeader (src[, lang[, counter]])</strong>
     </dt>
     <dd>
     Realize reported data for header.
@@ -394,10 +399,12 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">counter</span>
             <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -416,7 +423,7 @@
 </dd>
     <dt>
     <a name = "FrameRender:realizeBody"></a>
-    <strong>FrameRender:realizeBody (src, lang)</strong>
+    <strong>FrameRender:realizeBody (src[, lang])</strong>
     </dt>
     <dd>
     Realize reported data for body.
@@ -432,6 +439,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -455,7 +463,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-05-08 15:57:18 </i>
+<i style="float:right;">Last updated 2019-05-08 18:25:16 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

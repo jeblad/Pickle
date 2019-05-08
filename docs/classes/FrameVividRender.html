@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Reference</title>
+    <title>Pickle documentation</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
 <body>
@@ -24,7 +24,7 @@
 
 <div id="navigation">
 <br/>
-<h1>ldoc</h1>
+<h1>Pickle</h1>
 
 <ul>
   <li><a href="../mw.pickle.html">Index</a></li>
@@ -92,9 +92,7 @@
 
 <h1>Class <code>FrameVividRender</code></h1>
 <p>Final class for frame report renderer.</p>
-<p>
-
-</p>
+<p> This class follows the pattern from <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
 <h2><a href="#Metamethods">Metamethods</a></h2>
@@ -115,23 +113,23 @@
 	<td class="summary">Append same type to first.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#FrameVividRender:realizeState">FrameVividRender:realizeState (src, lang, counter)</a></td>
+	<td class="name" nowrap><a href="#FrameVividRender:realizeState">FrameVividRender:realizeState (src[, lang[, counter]])</a></td>
 	<td class="summary">Override realization of reported data for state.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#FrameVividRender:realizeSkip">FrameVividRender:realizeSkip (src, lang)</a></td>
+	<td class="name" nowrap><a href="#FrameVividRender:realizeSkip">FrameVividRender:realizeSkip (src[, lang])</a></td>
 	<td class="summary">Override realization of reported data for skip.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#FrameVividRender:realizeTodo">FrameVividRender:realizeTodo (src, lang)</a></td>
+	<td class="name" nowrap><a href="#FrameVividRender:realizeTodo">FrameVividRender:realizeTodo (src[, lang])</a></td>
 	<td class="summary">Override realization of reported data for todo.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#FrameVividRender:realizeDescription">FrameVividRender:realizeDescription (src, lang)</a></td>
+	<td class="name" nowrap><a href="#FrameVividRender:realizeDescription">FrameVividRender:realizeDescription (src[, lang])</a></td>
 	<td class="summary">Override realization of reported data for description.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#FrameVividRender:realizeHeader">FrameVividRender:realizeHeader (src, lang, counter)</a></td>
+	<td class="name" nowrap><a href="#FrameVividRender:realizeHeader">FrameVividRender:realizeHeader (src[, lang[, counter]])</a></td>
 	<td class="summary">Realize reported data for header.</td>
 	</tr>
 </table>
@@ -185,14 +183,14 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         unused
+         forwarded to <a href="../classes/FrameRender.html#FrameRender:create">FrameRender:create</a>
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="../classes/FrameVividRender.html#">FrameVividRender</a> or <span class="type">any</span></span>
+           <span class="types"><span class="type">self</span></span>
 
 
 
@@ -241,7 +239,7 @@
 </dd>
     <dt>
     <a name = "FrameVividRender:realizeState"></a>
-    <strong>FrameVividRender:realizeState (src, lang, counter)</strong>
+    <strong>FrameVividRender:realizeState (src[, lang[, counter]])</strong>
     </dt>
     <dd>
     Override realization of reported data for state.
@@ -256,10 +254,12 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">counter</span>
             <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -278,7 +278,7 @@
 </dd>
     <dt>
     <a name = "FrameVividRender:realizeSkip"></a>
-    <strong>FrameVividRender:realizeSkip (src, lang)</strong>
+    <strong>FrameVividRender:realizeSkip (src[, lang])</strong>
     </dt>
     <dd>
     Override realization of reported data for skip.
@@ -293,6 +293,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -311,7 +312,7 @@
 </dd>
     <dt>
     <a name = "FrameVividRender:realizeTodo"></a>
-    <strong>FrameVividRender:realizeTodo (src, lang)</strong>
+    <strong>FrameVividRender:realizeTodo (src[, lang])</strong>
     </dt>
     <dd>
     Override realization of reported data for todo.
@@ -326,6 +327,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -344,7 +346,7 @@
 </dd>
     <dt>
     <a name = "FrameVividRender:realizeDescription"></a>
-    <strong>FrameVividRender:realizeDescription (src, lang)</strong>
+    <strong>FrameVividRender:realizeDescription (src[, lang])</strong>
     </dt>
     <dd>
     Override realization of reported data for description.
@@ -359,6 +361,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -377,7 +380,7 @@
 </dd>
     <dt>
     <a name = "FrameVividRender:realizeHeader"></a>
-    <strong>FrameVividRender:realizeHeader (src, lang, counter)</strong>
+    <strong>FrameVividRender:realizeHeader (src[, lang[, counter]])</strong>
     </dt>
     <dd>
     Realize reported data for header.
@@ -393,10 +396,12 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">counter</span>
             <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -420,7 +425,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-05-08 15:57:18 </i>
+<i style="float:right;">Last updated 2019-05-08 18:25:16 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
