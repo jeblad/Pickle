@@ -6,14 +6,14 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/report/ReportBase'
+local lib = require 'picklelib/report/Report'
 assert( lib )
 
 local name = 'base'
-local class = 'base-report'
+local class = 'report-base'
 
 local function makeTest( ... )
-	return lib.create( ... )
+	return lib:create( ... )
 end
 
 local function testExists()

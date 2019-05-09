@@ -1,42 +1,46 @@
 --- Baseclass for reports.
--- @classmod ReportBase
--- @alias Report
+-- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
+-- @classmod Report
+-- @alias Baseclass
 
--- @var class var for lib
-local Report = {}
+-- @var base class
+local Baseclass = {}
 
 --- Lookup of missing class members.
 -- @tparam string key lookup of member
 -- @return any
-function Report:__index( key ) -- luacheck: no self
-	return Report[key]
+function Baseclass:__index( key ) -- luacheck: no self
+	return Baseclass[key]
 end
 
 --- Create a new instance.
--- @tparam vararg ... unused
+-- Assumption is either to create a new instance from an existing class,
+-- or from a previous instance of some kind.
+-- @tparam vararg ... forwarded to `_init()`
 -- @treturn self
-function Report.create( ... )
-	local self = setmetatable( {}, Report )
-	self:_init( ... )
-	return self
+function Baseclass:create( ... )
+	local meta = rawget( self, 'create' ) and self or getmetatable( self )
+	local new = setmetatable( {}, meta )
+	new:_init( ... )
+	return new
 end
 
 --- Initialize a new instance.
 -- @local
 -- @tparam vararg ... unused
 -- @treturn self
-function Report:_init( ... ) -- luacheck: no unused args
+function Baseclass:_init( ... ) -- luacheck: no unused args
 	self._skip = false
 	self._todo = false
 	self._state = true
-	self._type = 'base-report'
+	self._type = 'report-base'
 	return self
 end
 
 --- Set the state unconditionally as "not ok"".
 -- Note that initial state is not ok.
 -- @treturn self
-function Report:notOk()
+function Baseclass:notOk()
 	self._state = false
 	return self
 end
@@ -44,16 +48,16 @@ end
 --- Set the state unconditionally as "ok"".
 -- Note that initial state is not ok.
 -- @treturn self
-function Report:ok()
+function Baseclass:ok()
 	self._state = true
 	return self
 end
 
 --- Check if the instance state is "ok"".
 -- Note that initial state is not ok.
--- @return boolean that is set if state is "ok"
-function Report:isOk()
-	return self._state
+-- @treturn boolean the existing state
+function Baseclass:isOk()
+	return not not self._state
 end
 
 --- Set the skip.
@@ -61,7 +65,7 @@ end
 -- Note that all arguments will be wrapped up in a table before saving.
 -- @tparam string str that will be used as the skip note
 -- @treturn self
-function Report:setSkip( str )
+function Baseclass:setSkip( str )
 	assert( str, 'Failed to provide a skip' )
 	self._skip = str
 	return self
@@ -70,14 +74,14 @@ end
 --- Get the skip.
 -- This is an accessor to get the member.
 -- Note that the saved structure will be unpacked before being returned.
--- @treturn string used as the skip note
-function Report:getSkip()
+-- @treturn string the skip note
+function Baseclass:getSkip()
 	return self._skip
 end
 
 --- Check if the instance is itself in a skip state.
--- @treturn boolean that is set if a skip note exist
-function Report:isSkip()
+-- @treturn boolean does the skip note exist
+function Baseclass:isSkip()
 	return not not self._skip
 end
 
@@ -85,7 +89,7 @@ end
 -- This is an accessor to set the member.
 -- @tparam string str that will be used as the todo note
 -- @treturn self
-function Report:setTodo( str )
+function Baseclass:setTodo( str )
 	assert( str, 'Failed to provide a todo' )
 	self._todo = str
 	return self
@@ -93,23 +97,23 @@ end
 
 --- Get the todo.
 -- This is an accessor to get the member.
--- @treturn string used as the todo note
-function Report:getTodo()
+-- @treturn string the todo note
+function Baseclass:getTodo()
 	return self._todo
 end
 
 --- Check if the instance is itself in a todo state.
--- @treturn boolean that is set if a skip note exist
-function Report:isTodo()
+-- @treturn boolean does the todo note exist
+function Baseclass:isTodo()
 	return not not self._todo
 end
 
 --- Realize the data by applying a render.
--- @tparam Renders renders to use while realizing the reports (unused)
+-- @tparam Renders renders to use while realizing the Baseclasss (unused)
 -- @tparam string lang holding the language code (unused)
 -- @tparam Counter counter holding the running count (unused)
 -- @treturn string
-function Report:realize() -- luacheck: no self
+function Baseclass:realize() -- luacheck: no self
 	-- @todo this should probably return an error
 	-- error('Method should be overridden')
 	return ''
@@ -118,9 +122,9 @@ end
 --- Get the type of report.
 -- All reports has an explicit type name.
 -- @treturn string
-function Report:type()
+function Baseclass:type()
 	return self._type
 end
 
 -- Return the final class.
-return Report
+return Baseclass

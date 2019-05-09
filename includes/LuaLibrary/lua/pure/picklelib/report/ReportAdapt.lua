@@ -1,44 +1,45 @@
 --- Subclass for adapt report.
--- @classmod AdaptReport
+-- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
+-- @classmod ReportAdapt
+-- @alias Subclass
 
 -- pure libs
 local Stack = require 'picklelib/Stack'
 
--- non-pure libs
-local Base = require 'picklelib/report/ReportBase'
+-- @var base class
+local Super = require 'picklelib/report/Report'
 
--- @var class var for lib
-local AdaptReport = {}
+-- @var intermediate class
+local Subclass = {}
 
 --- Lookup of missing class members.
 -- @tparam string key used for lookup of member
 -- @return any
-function AdaptReport:__index( key ) -- luacheck: no self
-	return AdaptReport[key]
+function Subclass:__index( key ) -- luacheck: no self
+	return Subclass[key]
 end
 
 -- @var metatable for the class
-setmetatable( AdaptReport, { __index = Base } )
+setmetatable( Subclass, { __index = Super } )
 
 --- Create a new instance.
--- @tparam vararg ... pushed to lines
+-- @see Report:create
+-- @tparam vararg ... forwarded to @{Report:create}
 -- @treturn self
-function AdaptReport.create( ... )
-	local self = setmetatable( {}, AdaptReport )
-	self:_init( ... )
-	return self
+function Subclass:create( ... )
+	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
 -- @local
 -- @tparam vararg ... pushed to lines
 -- @treturn self
-function AdaptReport:_init( ... )
-	Base._init( self )
+function Subclass:_init( ... )
+	Super._init( self )
 	self._description = false
 	self._state = false
 	self._lang = false -- @todo is this correct?
-	self._type = 'adapt-report'
+	self._type = 'report-adapt'
 	if select('#',...) then
 		self:lines():push( ... )
 	end
@@ -47,8 +48,8 @@ end
 
 --- Export the lines as an multivalue return.
 -- Note that each line is not unwrapped.
--- @return list of lines
-function AdaptReport:lines()
+-- @treturn table list of lines
+function Subclass:lines()
 	if not self._lines then
 		self._lines = Stack.create()
 	end
@@ -56,8 +57,8 @@ function AdaptReport:lines()
 end
 
 --- Get the number of lines.
--- @return number of lines
-function AdaptReport:numLines()
+-- @treturn number of lines
+function Subclass:numLines()
 	return self._lines and self._lines:depth() or 0
 end
 
@@ -66,7 +67,7 @@ end
 -- Note that all arguments will be wrapped up in a table before saving.
 -- @tparam vararg ... that can be a line
 -- @treturn self
-function AdaptReport:addLine( ... )
+function Subclass:addLine( ... )
 	self:lines():push( { ... } )
 	return self
 end
@@ -75,16 +76,16 @@ end
 -- Note that all parts will be returned wrapped up in a table.
 -- @tparam number idx line number
 -- @treturn table containing list of parts
-function AdaptReport:getLine( idx )
+function Subclass:getLine( idx )
 	return self:lines():get( idx )
 end
 
 --- Realize the data by applying a render.
 -- @tparam Renders renders to use while realizing the reports
--- @tparam string lang holding the language code
--- @tparam Counter counter holding the running count
+-- @tparam[opt] string lang holding the language code
+-- @tparam[optchain] Counter counter holding the running count
 -- @treturn string
-function AdaptReport:realize( renders, lang, counter )
+function Subclass:realize( renders, lang, counter )
 	assert( renders, 'Failed to provide renders' )
 	return ''
 		.. (renders.realizeHeader and renders:realizeHeader( self, lang, counter ) or '')
@@ -92,4 +93,4 @@ function AdaptReport:realize( renders, lang, counter )
 end
 
 -- Return the final class.
-return AdaptReport
+return Subclass

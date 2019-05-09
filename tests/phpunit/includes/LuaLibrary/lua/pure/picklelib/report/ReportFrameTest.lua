@@ -3,17 +3,16 @@
 -- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
 
-
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/report/FrameReport'
+local lib = require 'picklelib/report/ReportFrame'
 assert( lib )
 
 local name = 'frame'
-local class = 'frame-report'
+local class = 'report-frame'
 
 local function makeTest( ... )
-	return lib.create( ... )
+	return lib:create( ... )
 end
 
 local function testExists()
@@ -46,20 +45,20 @@ end
 
 local function testHasSkip( ... )
 	local test = makeTest()
-	local adapt = require 'picklelib/report/AdaptReport'
+	local adapt = require 'picklelib/report/ReportAdapt'
 	local t = { ... }
 	for _,v in ipairs( t ) do
-		test:addConstituent( adapt.create():setSkip( v ) )
+		test:addConstituent( adapt:create():setSkip( v ) )
 	end
 	return test:hasSkip()
 end
 
 local function testHasTodo( ... )
 	local test = makeTest()
-	local adapt = require 'picklelib/report/AdaptReport'
+	local adapt = require 'picklelib/report/ReportAdapt'
 	local t = { ... }
 	for _,v in ipairs( t ) do
-		test:addConstituent( adapt.create():setSkip( v ) )
+		test:addConstituent( adapt:create():setSkip( v ) )
 	end
 	return test:hasTodo()
 end
