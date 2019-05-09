@@ -21,7 +21,7 @@ local function testType( name )
 end
 
 local function testComment( name, ... )
-	_G._reports:push( require( 'picklelib/report/FrameReport' ).create() )
+	_G._reports:push( require( 'picklelib/report/ReportFrame' ):create() )
 	local res,_ = pcall( _G[ name ], ... )
 	local report = _G._reports:pop()
 	return res, report:getTodo(), report:getSkip()
