@@ -52,21 +52,21 @@
   <li><a href="../classes/NumberExtractor.html">NumberExtractor</a></li>
   <li><a href="../classes/StringExtractor.html">StringExtractor</a></li>
   <li><a href="../classes/TrueExtractor.html">TrueExtractor</a></li>
-  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
-  <li><a href="../classes/FrameRender.html">FrameRender</a></li>
-  <li><a href="../classes/RenderBase.html">RenderBase</a></li>
+  <li><a href="../classes/Render.html">Render</a></li>
+  <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
+  <li><a href="../classes/RenderFrame.html">RenderFrame</a></li>
   <li><a href="../classes/Renders.html">Renders</a></li>
-  <li><strong>AdaptCompactRender</strong></li>
-  <li><a href="../classes/FrameCompactRender.html">FrameCompactRender</a></li>
-  <li><a href="../classes/AdaptFullRender.html">AdaptFullRender</a></li>
-  <li><a href="../classes/FrameFullRender.html">FrameFullRender</a></li>
-  <li><a href="../classes/AdaptVividRender.html">AdaptVividRender</a></li>
-  <li><a href="../classes/FrameVividRender.html">FrameVividRender</a></li>
+  <li><a href="../classes/RenderAdaptCompact.html">RenderAdaptCompact</a></li>
+  <li><a href="../classes/RenderFrameCompact.html">RenderFrameCompact</a></li>
+  <li><a href="../classes/RenderAdaptFull.html">RenderAdaptFull</a></li>
+  <li><a href="../classes/RenderFrameFull.html">RenderFrameFull</a></li>
+  <li><a href="../classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
+  <li><a href="../classes/RenderFrameVivid.html">RenderFrameVivid</a></li>
   <li><a href="../classes/AdaptReport.html">AdaptReport</a></li>
   <li><a href="../classes/FrameReport.html">FrameReport</a></li>
   <li><a href="../classes/ReportBase.html">ReportBase</a></li>
   <li><a href="../classes/TranslatorBase.html">TranslatorBase</a></li>
-  <li><a href="../classes/Translators.html">Translators</a></li>
+  <li><strong>Translators</strong></li>
 </ul>
 <h2>Modules</h2>
 <ul class="nowrap">
@@ -75,42 +75,50 @@
 </ul>
 <h2>Topics</h2>
 <ul class="">
-  <li><a href="../topics/activities.md.html">activities</a></li>
-  <li><a href="../topics/adapt.md.html">adapt</a></li>
-  <li><a href="../topics/call-style.md.html">call-style</a></li>
-  <li><a href="../topics/change-log.md.html">change-log</a></li>
-  <li><a href="../topics/databases.md.html">databases</a></li>
-  <li><a href="../topics/dataflow.md.html">dataflow</a></li>
-  <li><a href="../topics/lua-classes.md.html">lua-classes</a></li>
-  <li><a href="../topics/musings.md.html">musings</a></li>
-  <li><a href="../topics/vscode-snippets.md.html">vscode-snippets</a></li>
+  <li><a href="../topics/activities.md.html">Activities</a></li>
+  <li><a href="../topics/adapt.md.html">Adapt</a></li>
+  <li><a href="../topics/call-style.md.html">Call style</a></li>
+  <li><a href="../topics/change-log.md.html">Log</a></li>
+  <li><a href="../topics/databases.md.html">Databases</a></li>
+  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
+  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
+  <li><a href="../topics/musings.md.html">Musings</a></li>
+  <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
 </ul>
 
 </div>
 
 <div id="content">
 
-<h1>Class <code>AdaptCompactRender</code></h1>
-<p>Final class for compact report renderer.</p>
-<p> This class follows the pattern from <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
+<h1>Class <code>Translators</code></h1>
+<p>Class for extractor strategies.</p>
+<p> This should be a strategy pattern.</p>
 
 
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#AdaptCompactRender:__index">AdaptCompactRender:__index (key)</a></td>
+	<td class="name" nowrap><a href="#Translators:__index">Translators:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#AdaptCompactRender:create">AdaptCompactRender:create (...)</a></td>
+	<td class="name" nowrap><a href="#Translators:create">Translators:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#AdaptCompactRender:realizeBody">AdaptCompactRender:realizeBody (src[, lang])</a></td>
-	<td class="summary">Override realization of reported data for body.</td>
+	<td class="name" nowrap><a href="#Translators:register">Translators:register (key, strategy)</a></td>
+	<td class="summary">Register a new strategy.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Translators:flush">Translators:flush ()</a></td>
+	<td class="summary">Removes all registered translators.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Translators:find">Translators:find (key)</a></td>
+	<td class="summary">Find a matching extractor.</td>
 	</tr>
 </table>
 
@@ -122,8 +130,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "AdaptCompactRender:__index"></a>
-    <strong>AdaptCompactRender:__index (key)</strong>
+    <a name = "Translators:__index"></a>
+    <strong>Translators:__index (key)</strong>
     </dt>
     <dd>
     Lookup of missing class members.
@@ -133,7 +141,7 @@
     <ul>
         <li><span class="parameter">key</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         used for lookup of member
+         lookup of member
         </li>
     </ul>
 
@@ -152,8 +160,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "AdaptCompactRender:create"></a>
-    <strong>AdaptCompactRender:create (...)</strong>
+    <a name = "Translators:create"></a>
+    <strong>Translators:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
@@ -163,7 +171,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/AdaptRender.html#AdaptRender:create">AdaptRender:create</a>
+         list of strategies
         </li>
     </ul>
 
@@ -177,43 +185,89 @@
     </ol>
 
 
-    <h3>See also:</h3>
-    <ul>
-         <a href="../classes/RenderBase.html#RenderBase:create">RenderBase:create</a>
-    </ul>
 
 
 </dd>
     <dt>
-    <a name = "AdaptCompactRender:realizeBody"></a>
-    <strong>AdaptCompactRender:realizeBody (src[, lang])</strong>
+    <a name = "Translators:register"></a>
+    <strong>Translators:register (key, strategy)</strong>
     </dt>
     <dd>
-    Override realization of reported data for body.
+    Register a new strategy.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">src</span>
-            <span class="types"><span class="type">Report</span></span>
-         that shall be realized
-        </li>
-        <li><span class="parameter">lang</span>
+        <li><span class="parameter">key</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         code used for realization
-         (<em>optional</em>)
+         lookup of translator
+        </li>
+        <li><span class="parameter">strategy</span>
+            <span class="types"><span class="type">Translator</span></span>
+         to be registered
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><span class="type">self</span></span>
 
 
 
     </ol>
 
+
+
+
+</dd>
+    <dt>
+    <a name = "Translators:flush"></a>
+    <strong>Translators:flush ()</strong>
+    </dt>
+    <dd>
+    Removes all registered translators.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Translators:find"></a>
+    <strong>Translators:find (key)</strong>
+    </dt>
+    <dd>
+    Find a matching extractor.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         lookup of translator
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">Translator,number,number</span></span>
+        strategy,first,last
+    </ol>
+
+    <h3>Raises:</h3>
+    On missing source
 
 
 
@@ -225,7 +279,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-05-08 18:25:16 </i>
+<i style="float:right;">Last updated 2019-05-09 11:36:20 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
