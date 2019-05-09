@@ -3,8 +3,8 @@
 
 -- pure libs
 local Stack = require 'picklelib/Stack'
-local AdaptReport = require 'picklelib/report/AdaptReport'
-local FrameReport = require 'picklelib/report/FrameReport'
+local ReportAdapt = require 'picklelib/report/ReportAdapt'
+local ReportFrame = require 'picklelib/report/ReportFrame'
 
 -- @var class var for lib
 local Frame = {}
@@ -222,16 +222,16 @@ function Frame:evalFixture( description, fixture, environment, ... )
 	local t= { pcall( mw.pickle._implicit and setfenv( fixture, environment ) or fixture, ... ) }
 	if ( not t[1] ) and (not not t[2]) then
 		self:reports()
-			:push( AdaptReport.create():setSkip( 'pickle-adapt-catched-exception' ) )
+			:push( ReportAdapt:create():setSkip( 'pickle-adapt-catched-exception' ) )
 	end
-	local report = FrameReport.create():setDescription( description )
+	local report = ReportFrame:create():setDescription( description )
 	local added = self:reports():depth() - depth
 	if added == 0 then
 		report:setTodo( 'pickle-frame-no-tests' )
 	end
 	report:addConstituents( self:reports():pop( added ) )
 	if t[1] and type( t[2] ) == 'table' then
-		local tmp = AdaptReport.create():setTodo( 'pickle-adapt-catched-return' )
+		local tmp = ReportAdapt:create():setTodo( 'pickle-adapt-catched-return' )
 		for _,u in ipairs( t[2] or {} ) do
 			tmp:addLine( mw.dumpObject( u ) )
 		end
@@ -245,7 +245,7 @@ end
 function Frame:eval()
 	if not self:hasFixtures() then
 		self:reports()
-			:push( FrameReport.create():setTodo( 'pickle-frame-no-fixtures' ) )
+			:push( ReportFrame:create():setTodo( 'pickle-frame-no-fixtures' ) )
 		return self
 	end
 	local env = mw.pickle._implicit and getfenv(1) or _G

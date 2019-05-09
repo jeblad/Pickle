@@ -3,7 +3,7 @@
 
 -- pure libs
 local Stack = require 'picklelib/Stack'
-local AdaptReport = require 'picklelib/report/AdaptReport'
+local ReportAdapt = require 'picklelib/report/ReportAdapt'
 
 -- @var lib var
 local Spy = {}
@@ -37,7 +37,7 @@ end
 -- @return Report
 function Spy:report()
 	if not self._report then
-		self._report = AdaptReport.create()
+		self._report = ReportAdapt:create()
 	end
 	return self._report
 end

@@ -4,7 +4,7 @@
 -- pure libs
 local Stack = require 'picklelib/Stack'
 local util = require 'picklelib/util'
-local AdaptReport = require 'picklelib/report/AdaptReport' -- @todo might be skipped
+local ReportAdapt = require 'picklelib/report/ReportAdapt' -- @todo might be skipped
 
 -- @var class var for lib
 local Adapt = {}
@@ -112,10 +112,10 @@ end
 
 --- Get the report.
 -- If no report is set, then a new one is created.
--- @return AdaptReport
+-- @return ReportAdapt
 function Adapt:report()
 	if not self._report then
-		self._report = AdaptReport.create()
+		self._report = ReportAdapt:create()
 	end
 	return self._report
 end
