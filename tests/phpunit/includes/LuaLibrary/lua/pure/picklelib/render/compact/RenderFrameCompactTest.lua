@@ -11,7 +11,7 @@ assert( lib )
 
 local name = 'resultRender'
 
-local fix = require 'picklelib/report/FrameReport'
+local fix = require 'picklelib/report/ReportFrame'
 assert( fix )
 
 local function makeTest( ... )
@@ -31,14 +31,14 @@ local function testKey( ... )
 end
 
 local function testHeaderOk()
-	local adapt = require('picklelib/report/AdaptReport').create():ok()
-	local p = fix.create():addConstituent( adapt )
+	local adapt = require('picklelib/report/ReportAdapt'):create():ok()
+	local p = fix:create():addConstituent( adapt )
 	return makeTest():realizeHeader( p, 'qqx' )
 end
 
 local function testHeaderNotOk()
-	local adapt = require('picklelib/report/AdaptReport').create():notOk()
-	local p = fix.create():addConstituent( adapt )
+	local adapt = require('picklelib/report/ReportAdapt'):create():notOk()
+	local p = fix:create():addConstituent( adapt )
 	return makeTest():realizeHeader( p, 'qqx' )
 end
 

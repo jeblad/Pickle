@@ -11,7 +11,7 @@ assert( lib )
 
 local name = 'resultRender'
 
-local fix = require 'picklelib/report/AdaptReport'
+local fix = require 'picklelib/report/ReportAdapt'
 assert( fix )
 
 local function makeTest( ... )
@@ -31,12 +31,12 @@ local function testKey( ... )
 end
 
 local function testBodyOk()
-	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):ok()
+	local p = fix:create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):ok()
 	return tostring( makeTest():realizeBody( p, 'qqx' ) )
 end
 
 local function testBodyNotOk()
-	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):notOk()
+	local p = fix:create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):notOk()
 	return tostring( makeTest():realizeBody( p, 'qqx' ) )
 end
 

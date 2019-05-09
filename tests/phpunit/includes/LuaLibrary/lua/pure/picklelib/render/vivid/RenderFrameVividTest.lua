@@ -10,7 +10,7 @@ local lib = require 'picklelib/render/vivid/RenderFrameVivid'
 assert( lib )
 local name = 'resultRender'
 
-local fix = require 'picklelib/report/FrameReport'
+local fix = require 'picklelib/report/ReportFrame'
 assert( fix )
 
 local function makeTest( ... )
@@ -40,39 +40,39 @@ local function testState( bool )
 end
 ]]
 local function testSkip( ... )
-	local p = fix.create():setSkip( ... )
+	local p = fix:create():setSkip( ... )
 	return tostring( makeTest():realizeSkip( p, 'qqx' ) )
 end
 
 local function testTodo( ... )
-	local p = fix.create():setTodo( ... )
+	local p = fix:create():setTodo( ... )
 	return tostring( makeTest():realizeTodo( p, 'qqx' ) )
 end
 
 local function testDescription( ... )
-	local p = fix.create():setDescription( ... )
+	local p = fix:create():setDescription( ... )
 	return tostring( makeTest():realizeDescription( p, 'qqx' ) )
 end
 
 local function testHeaderSkip( ... )
-	local p = fix.create():setDescription( 'testing' ):setSkip( ... )
+	local p = fix:create():setDescription( 'testing' ):setSkip( ... )
 	return tostring( makeTest():realizeHeader( p, 'qqx' ) )
 end
 
 local function testHeaderTodo( ... )
-	local p = fix.create():setDescription( 'testing' ):setTodo( ... )
+	local p = fix:create():setDescription( 'testing' ):setTodo( ... )
 	return tostring( makeTest():realizeHeader( p, 'qqx' ) )
 end
 
 local function testHeaderOk()
-	local adapt = require 'picklelib/report/AdaptReport'.create():ok()
-	local p = fix.create():addConstituent( adapt )
+	local adapt = require( 'picklelib/report/ReportAdapt' ):create():ok()
+	local p = fix:create():addConstituent( adapt )
 	return tostring( makeTest():realizeHeader( p, 'qqx' ) )
 end
 
 local function testHeaderNotOk()
-	local adapt = require 'picklelib/report/AdaptReport'.create():notOk()
-	local p = fix.create():addConstituent( adapt )
+	local adapt = require( 'picklelib/report/ReportAdapt' ):create():notOk()
+	local p = fix:create():addConstituent( adapt )
 	return tostring( makeTest():realizeHeader( p, 'qqx' ) )
 end
 

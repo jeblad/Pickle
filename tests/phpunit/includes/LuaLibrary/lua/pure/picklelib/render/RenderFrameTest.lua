@@ -11,7 +11,7 @@ assert( lib )
 
 local name = 'reportRender'
 
-local fix = require 'picklelib/report/FrameReport'
+local fix = require 'picklelib/report/ReportFrame'
 assert( fix )
 
 local counter = require 'picklelib/Counter'
@@ -38,7 +38,7 @@ local function testClarification( keyPart, lang )
 end
 
 local function testState( bool )
-	local p = fix.create()
+	local p = fix:create()
 	if bool then
 		p:ok()
 	else
@@ -48,27 +48,27 @@ local function testState( bool )
 end
 
 local function testSkip( ... )
-	local p = fix.create():setSkip( ... )
+	local p = fix:create():setSkip( ... )
 	return makeTest():realizeSkip( p, 'qqx' )
 end
 
 local function testTodo( ... )
-	local p = fix.create():setTodo( ... )
+	local p = fix:create():setTodo( ... )
 	return makeTest():realizeTodo( p, 'qqx' )
 end
 
 local function testDescription( ... )
-	local p = fix.create():setDescription( ... )
+	local p = fix:create():setDescription( ... )
 	return makeTest():realizeDescription( p, 'qqx' )
 end
 
 local function testHeaderSkip( ... )
-	local p = fix.create():setDescription( 'testing' ):setSkip( ... ):notOk()
+	local p = fix:create():setDescription( 'testing' ):setSkip( ... ):notOk()
 	return makeTest():realizeHeader( p, 'qqx', counter.create() )
 end
 
 local function testHeaderTodo( ... )
-	local p = fix.create():setDescription( 'testing' ):setTodo( ... ):ok()
+	local p = fix:create():setDescription( 'testing' ):setTodo( ... ):ok()
 	return makeTest():realizeHeader( p, 'qqx', counter.create() )
 end
 --[[

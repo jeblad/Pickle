@@ -11,7 +11,7 @@ assert( lib )
 
 local name = 'reportRender'
 
-local fix = require 'picklelib/report/AdaptReport'
+local fix = require 'picklelib/report/ReportAdapt'
 assert( fix )
 
 local counter = require 'picklelib/Counter'
@@ -38,7 +38,7 @@ local function testClarification( keyPart, lang )
 end
 
 local function testState( bool )
-	local p = fix.create()
+	local p = fix:create()
 	if bool then
 		p:ok()
 	else
@@ -48,12 +48,12 @@ local function testState( bool )
 end
 
 local function testHeader()
-	local p = fix.create():ok()
+	local p = fix:create():ok()
 	return makeTest():realizeHeader( p, 'qqx', counter.create() )
 end
 
 local function testBody()
-	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' )
+	local p = fix:create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' )
 	return makeTest():realizeBody( p, 'qqx' )
 end
 
