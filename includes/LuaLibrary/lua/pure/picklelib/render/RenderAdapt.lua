@@ -3,10 +3,10 @@
 -- @classmod RenderAdapt
 -- @alias Subclass
 
--- non-pure libs
+-- @var super class
 local Super = require 'picklelib/render/Render'
 
--- @var class var for lib
+-- @var intermediate class
 local Subclass = {}
 
 --- Lookup of missing class members.

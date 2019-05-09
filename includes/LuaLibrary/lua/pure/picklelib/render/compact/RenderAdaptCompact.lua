@@ -6,7 +6,7 @@
 -- pure libs
 local Super = require 'picklelib/render/RenderAdapt'
 
--- @var class var for lib
+-- @var final class
 local Subclass = {}
 
 --- Lookup of missing class members.
