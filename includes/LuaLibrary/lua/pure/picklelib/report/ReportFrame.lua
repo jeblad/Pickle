@@ -37,7 +37,7 @@ setmetatable( Subclass, { __index = Super } )
 -- @tparam vararg ... forwarded to @{Report:create}
 -- @treturn self
 function Subclass:create( ... )
-	return Super.create( self, ... )
+	return Super.create( self or Subclass, ... )
 end
 
 --- Initialize a new instance.
