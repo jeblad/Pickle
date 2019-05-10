@@ -45,7 +45,7 @@
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
   <li><a href="../classes/ExtractorBase.html">ExtractorBase</a></li>
-  <li><strong>Extractors</strong></li>
+  <li><a href="../classes/Extractors.html">Extractors</a></li>
   <li><a href="../classes/FalseExtractor.html">FalseExtractor</a></li>
   <li><a href="../classes/JsonExtractor.html">JsonExtractor</a></li>
   <li><a href="../classes/NilExtractor.html">NilExtractor</a></li>
@@ -63,7 +63,7 @@
   <li><a href="../classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
   <li><a href="../classes/RenderFrameVivid.html">RenderFrameVivid</a></li>
   <li><a href="../classes/Report.html">Report</a></li>
-  <li><a href="../classes/ReportAdapt.html">ReportAdapt</a></li>
+  <li><strong>ReportAdapt</strong></li>
   <li><a href="../classes/ReportFrame.html">ReportFrame</a></li>
   <li><a href="../classes/TranslatorBase.html">TranslatorBase</a></li>
   <li><a href="../classes/Translators.html">Translators</a></li>
@@ -90,39 +90,43 @@
 
 <div id="content">
 
-<h1>Class <code>Extractors</code></h1>
-<p>Baseclass for extractor strategies.</p>
-<p> This should be a strategy pattern</p>
+<h1>Class <code>ReportAdapt</code></h1>
+<p>Subclass for adapt report.</p>
+<p> This class follows the pattern from <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Extractors:__index">Extractors:__index (key)</a></td>
+	<td class="name" nowrap><a href="#ReportAdapt:__index">ReportAdapt:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Extractors:create">Extractors:create (...)</a></td>
+	<td class="name" nowrap><a href="#ReportAdapt:create">ReportAdapt:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Extractors:register">Extractors:register (strategy)</a></td>
-	<td class="summary">Register a new strategy.</td>
+	<td class="name" nowrap><a href="#ReportAdapt:lines">ReportAdapt:lines ()</a></td>
+	<td class="summary">Export the lines as an multivalue return.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Extractors:flush">Extractors:flush ()</a></td>
-	<td class="summary">Removes all registered extractors.</td>
+	<td class="name" nowrap><a href="#ReportAdapt:numLines">ReportAdapt:numLines ()</a></td>
+	<td class="summary">Get the number of lines.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Extractors:num">Extractors:num ()</a></td>
-	<td class="summary">The number of registered extractors.</td>
+	<td class="name" nowrap><a href="#ReportAdapt:addLine">ReportAdapt:addLine (...)</a></td>
+	<td class="summary">Add a line.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Extractors:find">Extractors:find (str, pos)</a></td>
-	<td class="summary">Find a matching extractor.</td>
+	<td class="name" nowrap><a href="#ReportAdapt:getLine">ReportAdapt:getLine (idx)</a></td>
+	<td class="summary">Get a line.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ReportAdapt:realize">ReportAdapt:realize (renders[, lang[, counter]])</a></td>
+	<td class="summary">Realize the data by applying a render.</td>
 	</tr>
 </table>
 
@@ -134,8 +138,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "Extractors:__index"></a>
-    <strong>Extractors:__index (key)</strong>
+    <a name = "ReportAdapt:__index"></a>
+    <strong>ReportAdapt:__index (key)</strong>
     </dt>
     <dd>
     Lookup of missing class members.
@@ -164,8 +168,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "Extractors:create"></a>
-    <strong>Extractors:create (...)</strong>
+    <a name = "ReportAdapt:create"></a>
+    <strong>ReportAdapt:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
@@ -175,7 +179,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         list of strategies
+         forwarded to <a href="../classes/Report.html#Report:create">Report:create</a>
         </li>
     </ul>
 
@@ -189,31 +193,28 @@
     </ol>
 
 
-
-
-</dd>
-    <dt>
-    <a name = "Extractors:register"></a>
-    <strong>Extractors:register (strategy)</strong>
-    </dt>
-    <dd>
-    Register a new strategy.
-
-
-    <h3>Parameters:</h3>
+    <h3>See also:</h3>
     <ul>
-        <li><span class="parameter">strategy</span>
-         to be registered
-        </li>
+         <a href="../classes/Report.html#Report:create">Report:create</a>
     </ul>
 
+
+</dd>
+    <dt>
+    <a name = "ReportAdapt:lines"></a>
+    <strong>ReportAdapt:lines ()</strong>
+    </dt>
+    <dd>
+    Export the lines as an multivalue return.
+ Note that each line is not unwrapped.
+
+
+
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">self</span></span>
-
-
-
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        list of lines
     </ol>
 
 
@@ -221,33 +222,11 @@
 
 </dd>
     <dt>
-    <a name = "Extractors:flush"></a>
-    <strong>Extractors:flush ()</strong>
+    <a name = "ReportAdapt:numLines"></a>
+    <strong>ReportAdapt:numLines ()</strong>
     </dt>
     <dd>
-    Removes all registered extractors.
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">self</span></span>
-
-
-
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Extractors:num"></a>
-    <strong>Extractors:num ()</strong>
-    </dt>
-    <dd>
-    The number of registered extractors.
+    Get the number of lines.
 
 
 
@@ -255,6 +234,33 @@
     <ol>
 
            <span class="types"><span class="type">number</span></span>
+        of lines
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ReportAdapt:addLine"></a>
+    <strong>ReportAdapt:addLine (...)</strong>
+    </dt>
+    <dd>
+    Add a line.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         that can be a line
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">self</span></span>
 
 
 
@@ -265,36 +271,68 @@
 
 </dd>
     <dt>
-    <a name = "Extractors:find"></a>
-    <strong>Extractors:find (str, pos)</strong>
+    <a name = "ReportAdapt:getLine"></a>
+    <strong>ReportAdapt:getLine (idx)</strong>
     </dt>
     <dd>
-    Find a matching extractor.
+    Get a line.
+ Note that all parts will be returned wrapped up in a table.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">str</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         used as the extraction source
-        </li>
-        <li><span class="parameter">pos</span>
+        <li><span class="parameter">idx</span>
             <span class="types"><span class="type">number</span></span>
-         for an inclusive index where extraction starts
+         line number
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">strategy,first,last</span></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        containing list of parts
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ReportAdapt:realize"></a>
+    <strong>ReportAdapt:realize (renders[, lang[, counter]])</strong>
+    </dt>
+    <dd>
+    Realize the data by applying a render.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">renders</span>
+            <span class="types"><a class="type" href="../classes/Renders.html#">Renders</a></span>
+         to use while realizing the reports
+        </li>
+        <li><span class="parameter">lang</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         holding the language code
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">counter</span>
+            <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
+         holding the running count
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
     </ol>
 
-    <h3>Raises:</h3>
-    On missing source
 
 
 
