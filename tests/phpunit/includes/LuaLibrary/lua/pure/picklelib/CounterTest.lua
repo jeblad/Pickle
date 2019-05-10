@@ -5,27 +5,43 @@
 
 local testframework = require 'Module:TestFramework'
 
-local counter = require 'picklelib/Counter'
-assert( counter )
-
 local function makeCounter( ... )
-	return counter.create( ... )
+	local counter = require 'picklelib/Counter'
+	assert( counter )
+	return counter:create( ... )
 end
 
 local function testExists()
-	return type( counter )
+	return type( makeCounter() )
 end
 
 local function testCreate( ... )
 	return type( makeCounter( ... ) )
 end
 
-local function testSequence( len )
-	local count = makeCounter()
+local function testIncSequence( len, init, num )
+	local count = makeCounter( init )
 	local seq = {}
 	for _=1,len,1 do
-		table.insert( seq, count:inc() )
-		table.insert( seq, count:num() )
+		table.insert( seq, count:inc( num ) )
+	end
+	return seq
+end
+
+local function testDecSequence( len, init, num )
+	local count = makeCounter( init )
+	local seq = {}
+	for _=1,len,1 do
+		table.insert( seq, count:dec( num ) )
+	end
+	return seq
+end
+
+local function testCallSequence( len, init, num )
+	local count = makeCounter( init )
+	local seq = {}
+	for _=1,len,1 do
+		table.insert( seq, count( num ) )
 	end
 	return seq
 end
@@ -59,10 +75,70 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
-		name = 'counter.sequence (5)',
-		func = testSequence,
+		name = 'counter.inc-sequence (5)',
+		func = testIncSequence,
 		args = { 5 },
-		expect = { { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5 } }
+		expect = { { 1, 2, 3, 4, 5 } }
+	},
+	{
+		name = 'counter.inc-sequence (5, 1)',
+		func = testIncSequence,
+		args = { 5, 1 },
+		expect = { { 2, 3, 4, 5, 6 } }
+	},
+	{
+		name = 'counter.inc-sequence (5, 1, 2)',
+		func = testIncSequence,
+		args = { 5, 1, 2 },
+		expect = { { 3, 5, 7, 9, 11 } }
+	},
+	{
+		name = 'counter.dec-sequence (5)',
+		func = testDecSequence,
+		args = { 5 },
+		expect = { { -1, -2, -3, -4, -5 } }
+	},
+	{
+		name = 'counter.dec-sequence (5, 1)',
+		func = testDecSequence,
+		args = { 5, -1 },
+		expect = { { -2, -3, -4, -5, -6 } }
+	},
+	{
+		name = 'counter.dec-sequence (5, 1, 2)',
+		func = testDecSequence,
+		args = { 5, -1, 2 },
+		expect = { { -3, -5, -7, -9, -11 } }
+	},
+	{
+		name = 'counter.dec-sequence (5, 1, -2)',
+		func = testDecSequence,
+		args = { 5, -1, -2 },
+		expect = { { -3, -5, -7, -9, -11 } }
+	},
+	{
+		name = 'counter.call-sequence (5)',
+		func = testCallSequence,
+		args = { 5 },
+		expect = { { 0, 1, 2, 3, 4 } }
+	},
+	{
+		name = 'counter.call-sequence (5, 1)',
+		func = testCallSequence,
+		args = { 5, 1 },
+		expect = { { 1, 2, 3, 4, 5 } }
+	},
+	{
+		name = 'counter.call-sequence (5, 1, 2)',
+		func = testCallSequence,
+		args = { 5, 1, 2 },
+		expect = { { 1, 3, 5, 7, 9 } }
+	},
+	{
+		name = 'counter.call-sequence (5, 1, -2)',
+		func = testCallSequence,
+		args = { 5, 1, -2 },
+		expect = { { 1, -1, -3, -5, -7 } }
 	},
 }
 

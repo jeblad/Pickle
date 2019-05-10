@@ -20,8 +20,8 @@ local class = 'Frame'
 
 local function makeFrame( ... )
 	return Frame.create( ... )
-		:setSubjects( subjects.create() )
-		:setReports( reports.create() )
+		:setSubjects( subjects:create() )
+		:setReports( reports:create() )
 		:setExtractors( extractors.create() )
 end
 
@@ -65,7 +65,7 @@ local function testEval( libs, ... )
 	local obj = makeFrame( ... )
 	for _,v in ipairs( libs ) do
 --		assert( v )
-		obj:extractors():register( require( v ).create() )
+		obj:extractors():register( require( v ):create() )
 	end
 	local result = {}
 	obj:dispatch( ... )

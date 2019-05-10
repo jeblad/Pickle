@@ -46,7 +46,7 @@ end
 -- @treturn self
 function Adapt:_init( ... )
 	local t = { ... }
-	self._processes = Stack.create()
+	self._processes = Stack:create()
 	self._report = nil
 	self._temporal = t
 	self._other = nil
@@ -75,7 +75,7 @@ end
 -- @return list of adaptations
 function Adapt:adaptations()
 	if not self._adaptations then
-		self._adaptations = Stack.create()
+		self._adaptations = Stack:create()
 	end
 	return self._adaptations
 end
@@ -95,7 +95,7 @@ end
 -- @return list of reports
 function Adapt:reports()
 	if not self._reports then
-		self._reports = Stack.create()
+		self._reports = Stack:create()
 	end
 	return self._reports
 end

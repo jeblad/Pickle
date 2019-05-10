@@ -5,15 +5,14 @@
 
 local testframework = require 'Module:TestFramework'
 
-local stack = require 'picklelib/Stack'
-assert( stack )
-
 local function makeStack( ... )
-	return stack.create( ... )
+	local stack = require 'picklelib/Stack'
+	assert( stack )
+	return stack:create( ... )
 end
 
 local function testExists()
-	return type( stack )
+	return type( makeStack() )
 end
 
 local function testCreate( ... )

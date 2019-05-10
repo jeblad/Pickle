@@ -51,7 +51,7 @@ end
 -- @treturn table list of lines
 function Subclass:lines()
 	if not self._lines then
-		self._lines = Stack.create()
+		self._lines = Stack:create()
 	end
 	return self._lines
 end

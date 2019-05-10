@@ -13,7 +13,7 @@ local adaptations = require 'picklelib/Stack'
 assert( adaptations )
 
 local function makeAdapt( ... )
-	return Adapt.create( ... ):setReports( reports.create() ):setAdaptations( adaptations.create() )
+	return Adapt.create( ... ):setReports( reports:create() ):setAdaptations( adaptations:create() )
 end
 
 local function testExists()

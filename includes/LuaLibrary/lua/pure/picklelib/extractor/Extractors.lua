@@ -16,7 +16,7 @@ function Extractors:__index( key ) -- luacheck: no self
 end
 
 -- @var class var for strategies, holding reference to defined extractor strategies
-Extractors.strategies = Stack.create()
+Extractors.strategies = Stack:create()
 
 --- Create a new instance.
 -- @tparam vararg ... list of strategies
@@ -32,7 +32,7 @@ end
 -- @tparam vararg ... list of strategies
 -- @treturn self
 function Extractors:_init( ... )
-	self._strategies = Stack.create()
+	self._strategies = Stack:create()
 	for _,v in ipairs( { ... } ) do
 		self:register( v )
 	end

@@ -44,12 +44,12 @@ local function testState( bool )
 	else
 		p:notOk()
 	end
-	return makeTest():realizeState( p, 'qqx', counter.create() )
+	return makeTest():realizeState( p, 'qqx', counter:create() )
 end
 
 local function testHeader()
 	local p = fix:create():ok()
-	return makeTest():realizeHeader( p, 'qqx', counter.create() )
+	return makeTest():realizeHeader( p, 'qqx', counter:create() )
 end
 
 local function testBody()

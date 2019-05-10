@@ -63,8 +63,8 @@ end
 -- @tparam vararg ... list to be dispatched (unused)
 -- @return Frame
 function Frame:_init()
-	self._descriptions = Stack.create()
-	self._fixtures = Stack.create()
+	self._descriptions = Stack:create()
+	self._fixtures = Stack:create()
 	self._done = false
 	return self
 end

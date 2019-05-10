@@ -58,7 +58,7 @@ end
 -- @return list of constituents
 function Subclass:constituents()
 	if not self._constituents then
-		self._constituents = Stack.create()
+		self._constituents = Stack:create()
 	end
 	return self._constituents
 end

@@ -110,7 +110,7 @@ local function registerReports( env )
 	assert( env )
 
 	-- require libs
-	local reports = require( 'picklelib/Stack' ).create()
+	local reports = require( 'picklelib/Stack' ):create()
 	env._reports = reports
 
 	return reports
@@ -188,8 +188,8 @@ local function registerAdaptations( env, reports )
 
 	-- require libs
 	local Adapt = require 'picklelib/engine/Adapt'
-	local expects = require( 'picklelib/Stack' ).create()
-	local subjects = require( 'picklelib/Stack' ).create()
+	local expects = require( 'picklelib/Stack' ):create()
+	local subjects = require( 'picklelib/Stack' ):create()
 
 	--- Expect whatever to be compared to the subject.
 	-- The expected value is the assumed outcome,
@@ -353,7 +353,7 @@ function pickle.implicitDescribe( ... )
 		langCode = langCode or mw.language.getContentLanguage():getCode()
 
 		local style = self:renders().style( styleName )
-		return self:reports():top():realize( style, langCode, counter.create() )
+		return self:reports():top():realize( style, langCode, counter:create() )
 	end
 
 	return obj

@@ -44,7 +44,7 @@ local function testState( bool )
 	else
 		p:notOk()
 	end
-	return makeTest():realizeState( p, 'qqx', counter.create() )
+	return makeTest():realizeState( p, 'qqx', counter:create() )
 end
 
 local function testSkip( ... )
@@ -64,16 +64,16 @@ end
 
 local function testHeaderSkip( ... )
 	local p = fix:create():setDescription( 'testing' ):setSkip( ... ):notOk()
-	return makeTest():realizeHeader( p, 'qqx', counter.create() )
+	return makeTest():realizeHeader( p, 'qqx', counter:create() )
 end
 
 local function testHeaderTodo( ... )
 	local p = fix:create():setDescription( 'testing' ):setTodo( ... ):ok()
-	return makeTest():realizeHeader( p, 'qqx', counter.create() )
+	return makeTest():realizeHeader( p, 'qqx', counter:create() )
 end
 --[[
 local function testBody()
-	local p = fix.create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' )
+	local p = fix:create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' )
 	return makeTest():realizeBody( p, 'qqx' )
 end
 ]]

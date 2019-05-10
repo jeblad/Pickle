@@ -56,7 +56,7 @@ end
 -- @return Reports
 function Spy:reports()
 	if not self._reports then
-		self._reports = Stack.create()
+		self._reports = Stack:create()
 	end
 	return self._reports
 end
