@@ -15,15 +15,13 @@ end
 
 --- Create a new instance.
 -- Assumption is either to create a new instance from an existing class,
--- or from a previous instance of some kind, or the subclass itself.
--- The last one is used if the create method is called function style.
+-- or from a previous instance of some kind.
 -- @tparam vararg ... forwarded to `_init()`
 -- @treturn self
 function Baseclass:create( ... )
 	local meta = rawget( self, 'create' ) and self or getmetatable( self )
-	local new = setmetatable( {}, meta or Subclass )
-	new:_init( ... )
-	return new
+	local new = setmetatable( {}, meta )
+	return new:_init( ... )
 end
 
 --- Initialize a new instance.
