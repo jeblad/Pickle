@@ -135,6 +135,7 @@ end
 -- This is a private function that will create a function with a closure.
 -- It will create an additional delayed function for the provided definition.
 -- @local
+-- @delayed
 -- @tparam string name of the constructed created method
 -- @tparam number idx of the extracted item
 -- @treturn function
@@ -156,50 +157,62 @@ end
 -- Format is `name = index`
 local picks = {
 	--- Make a pick for first item.
+	-- @pick
 	-- @function Adapt:first
 	first = 1,
 
 	--- Make a pick for second item.
+	-- @pick
 	-- @function Adapt:second
 	second = 2,
 
 	--- Make a pick for third item.
+	-- @pick
 	-- @function Adapt:third
 	third = 3,
 
 	--- Make a pick for fourth item.
+	-- @pick
 	-- @function Adapt:fourth
 	fourth = 4,
 
 	--- Make a pick for fifth item.
+	-- @pick
 	-- @function Adapt:fifth
 	fifth = 5,
 
 	--- Make a pick for sixth item.
+	-- @pick
 	-- @function Adapt:sixth
 	sixth = 6,
 
 	--- Make a pick for seventh item.
+	-- @pick
 	-- @function Adapt:seventh
 	seventh = 7,
 
 	--- Make a pick for eight item.
+	-- @pick
 	-- @function Adapt:eight
 	eight = 8,
 
 	--- Make a pick for ninth item.
+	-- @pick
 	-- @function Adapt:ninth
 	ninth = 9,
 
 	--- Make a pick for tenth item.
+	-- @pick
 	-- @function Adapt:tenth
 	tenth = 10,
 
 	--- Make a pick for eleventh item.
+	-- @pick
 	-- @function Adapt:eleventh
 	eleventh = 11,
 
 	--- Make a pick for twelfth item.
+	-- @pick
 	-- @function Adapt:twelfth
 	twelfth = 12
 }
@@ -210,14 +223,15 @@ for name,val in pairs( picks ) do
 	Adapt[name] = _makePickProcess( name, val )
 end
 
---- Make a delayed process for the general functions.
+--- Make a delayed process for the transform functions.
 -- This is a private function that will create a function with a closure.
 -- The delayed function comes from the provided definition.
 -- @local
+-- @delayed
 -- @tparam string name of the constructed created method
 -- @tparam function func to adjust the process
 -- @treturn function
-local function _makeGeneralProcess( name, func )
+local function _makeTransformProcess( name, func )
 	local f = function( self )
 		self:report()
 			:addLine( 'pickle-adapt-process-'..util.buildName( name ) )
@@ -229,10 +243,11 @@ end
 
 -- @var table of definitions for the transform functions
 -- Format is ''name'' = { ''function'', { ''aliases, ... }
-local general = {
+local transform = {
 	--- Make a transform to get the argument type.
+	-- @transform
 	-- @function Adapt:asType
-	-- @alias Adapt:type
+	-- @nick Adapt:type
 	asType = {
 		function( val )
 			return type( val )
@@ -240,7 +255,11 @@ local general = {
 		{ 'type' } },
 
 	--- Make a transform to get the string as upper case.
+	-- @transform
 	-- @function Adapt:asUpper
+	-- @nick Adapt:upper
+	-- @nick Adapt:asUC
+	-- @nick Adapt:uc
 	asUpper = {
 		function( str )
 			return string.upper( str )
@@ -248,7 +267,11 @@ local general = {
 		{ 'upper', 'asUC', 'uc' } },
 
 	--- Make a transform to get the string as lower case.
+	-- @transform
 	-- @function Adapt:asLower
+	-- @nick Adapt:lower
+	-- @nick Adapt:asLC
+	-- @nick Adapt:lc
 	asLower = {
 		function( str )
 			return string.lower( str )
@@ -256,7 +279,12 @@ local general = {
 		{ 'lower', 'asLC', 'lc' } },
 
 	--- Make a transform to get the string with first char as upper case.
+	-- @transform
 	-- @function Adapt:asUpperFirst
+	-- @nick Adapt:upperfirst
+	-- @nick Adapt:asUCFirst
+	-- @nick Adapt:asUCfirst
+	-- @nick Adapt:ucfirst
 	asUpperFirst = {
 		function( str )
 			return string.upper( string.sub( str, 1, 1 ) )..string.sub( str, 2 )
@@ -264,7 +292,12 @@ local general = {
 		{ 'upperfirst', 'asUCFirst', 'asUCfirst', 'ucfirst' } },
 
 	--- Make a transform to get the string with first char as lower case.
+	-- @transform
 	-- @function Adapt:asLowerFirst
+	-- @nick Adapt:lowerfirst
+	-- @nick Adapt:asLCFirst
+	-- @nick Adapt:asLCfirst
+	-- @nick Adapt:lcfirst
 	asLowerFirst = {
 		function( str )
 			return string.lower( string.sub( str, 1, 1 ) )..string.sub( str, 2 )
@@ -272,7 +305,9 @@ local general = {
 		{ 'lowerfirst', 'asLCFirst', 'asLCfirst', 'lcfirst' } },
 
 	--- Make a transform to get the string reversed.
+	-- @transform
 	-- @function Adapt:asReverse
+	-- @nick Adapt:reverse
 	asReverse = {
 		function( str )
 			return string.reverse( str )
@@ -280,7 +315,11 @@ local general = {
 		{ 'reverse' } },
 
 	--- Make a transform to get the ustring as upper case.
+	-- @transform
 	-- @function Adapt:asUUpper
+	-- @nick Adapt:uupper
+	-- @nick Adapt:asUUC
+	-- @nick Adapt:uuc
 	asUUpper = {
 		function( str )
 			return mw.ustring.upper( str )
@@ -288,7 +327,11 @@ local general = {
 		{ 'uupper', 'asUUC', 'uuc' } },
 
 	--- Make a transform to get the ustring as lower case.
+	-- @transform
 	-- @function Adapt:asULower
+	-- @nick Adapt:ulower
+	-- @nick Adapt:asULC
+	-- @nick Adapt:ulc
 	asULower = {
 		function( str )
 			return mw.ustring.lower( str )
@@ -296,7 +339,12 @@ local general = {
 		{ 'ulower', 'asULC', 'ulc' } },
 
 	--- Make a transform to get the ustring with first code point as upper case.
+	-- @transform
 	-- @function Adapt:asUUpperFirst
+	-- @nick Adapt:uupperfirst
+	-- @nick Adapt:asUUCFirst
+	-- @nick Adapt:asUUCfirst
+	-- @nick Adapt:uucfirst
 	asUUpperFirst = {
 		function( str )
 			return mw.ustring.upper( mw.ustring.sub( str, 1, 1 ) )..mw.ustring.sub( str, 2 )
@@ -304,7 +352,12 @@ local general = {
 		{ 'uupperfirst', 'asUUCFirst', 'asUUCfirst', 'uucfirst' } },
 
 	--- Make a transform to get the ustring with first code point as lower case.
+	-- @transform
 	-- @function Adapt:asULowerFirst
+	-- @nick Adapt:ulowerfirst
+	-- @nick Adapt:asULCFirst
+	-- @nick Adapt:asULCfirst
+	-- @nick Adapt:ulcfirst
 	asULowerFirst = {
 		function( str )
 			return mw.ustring.lower( mw.ustring.sub( str, 1, 1 ) )..mw.ustring.sub( str, 2 )
@@ -312,7 +365,11 @@ local general = {
 		{ 'ulowerfirst', 'asULCFirst', 'asULCfirst', 'ulcfirst' } },
 
 	--- Make a transform to get the ustring as Normalized Form "C".
+	-- @transform
 	-- @function Adapt:asUNFC
+	-- @nick Adapt:unfc
+	-- @nick Adapt:uNFC
+	-- @nick Adapt:nfc
 	asUNFC = {
 		function( str )
 			return mw.ustring.toNFC( str )
@@ -320,7 +377,11 @@ local general = {
 		{ 'unfc', 'uNFC', 'nfc' } },
 
 	--- Make a transform to get the ustring as Normalized Form "D".
+	-- @transform
 	-- @function Adapt:asUNFD
+	-- @nick Adapt:unfd
+	-- @nick Adapt:uNFD
+	-- @nick Adapt:nfd
 	asUNFD = {
 		function( str )
 			return mw.ustring.toNFD( str )
@@ -328,7 +389,11 @@ local general = {
 		{ 'unfd', 'uNFD', 'nfd' } },
 
 	--- Make a transform to get the string as number.
+	-- @transform
 	-- @function Adapt:asNumber
+	-- @nick Adapt:number
+	-- @nick Adapt:asNum
+	-- @nick Adapt:num
 	asNumber = {
 		function( str )
 			return tonumber( str )
@@ -336,7 +401,11 @@ local general = {
 		{ 'number', 'asNum', 'num' } },
 
 	--- Make a transform to get the number as string.
+	-- @transform
 	-- @function Adapt:asString
+	-- @nick Adapt:string
+	-- @nick Adapt:asStr
+	-- @nick Adapt:str
 	asString = {
 		function( num )
 			return tostring( num )
@@ -344,7 +413,9 @@ local general = {
 		{ 'string', 'asStr', 'str' } },
 
 	--- Make a transform to get the next lower number.
+	-- @transform
 	-- @function Adapt:asFloor
+	-- @nick Adapt:floor
 	asFloor = {
 		function( num )
 			return math.floor( num )
@@ -352,7 +423,9 @@ local general = {
 		{ 'floor' } },
 
 	--- Make a transform to get the next higher number.
+	-- @transform
 	-- @function Adapt:asCeil
+	-- @nick Adapt:ceil
 	asCeil = {
 		function( num )
 			return math.ceil( num )
@@ -360,7 +433,9 @@ local general = {
 		{ 'ceil' } },
 
 	--- Make a transform to get the rounded number.
+	-- @transform
 	-- @function Adapt:asRound
+	-- @nick Adapt:round
 	asRound = {
 		function( num )
 			return num % 1 >= 0.5 and math.ceil( num ) or math.floor( num )
@@ -368,7 +443,11 @@ local general = {
 		{ 'round' } },
 
 	--- Make a transform to get the integer part of the number.
+	-- @transform
 	-- @function Adapt:asInteger
+	-- @nick Adapt:integer
+	-- @nick Adapt:asInt
+	-- @nick Adapt:int
 	asInteger = {
 		function( num )
 			return num < 0 and math.ceil( num ) or math.floor( num )
@@ -376,7 +455,11 @@ local general = {
 		{ 'integer', 'asInt', 'int' } },
 
 	--- Make a transform to get the fraction part of the number.
+	-- @transform
 	-- @function Adapt:asFraction
+	-- @nick Adapt:fraction
+	-- @nick Adapt:asFrac
+	-- @nick Adapt:frac
 	asFraction = {
 		function( num )
 			return num - ( num < 0 and math.ceil( num ) or math.floor( num ) )
@@ -384,10 +467,10 @@ local general = {
 		{ 'fraction', 'asFrac', 'frac' } },
 }
 
--- loop over the general definitions and create the functions
-for name,lst in pairs( general ) do
+-- loop over the transform definitions and create the functions
+for name,lst in pairs( transform ) do
 	local func = lst[1]
-	Adapt[name] = _makeGeneralProcess( name, func )
+	Adapt[name] = _makeTransformProcess( name, func )
 	for _,alias in ipairs( lst[2] ) do
 		assert( not Adapt[alias], alias )
 		Adapt[alias] = Adapt[name]
@@ -426,6 +509,7 @@ end
 -- This is a private function that will create a function with a closure.
 -- The delayed function comes from the provided definition.
 -- @local
+-- @delayed
 -- @tparam string name of the constructed created method
 -- @tparam function func to adjust the process
 -- @tparam boolean other to swap the comparation
@@ -453,7 +537,11 @@ end
 -- Format is ''name'' = { ''function'', { ''aliases, ... }
 local conditions = {
 	--- Make a comparison to check equality.
+	-- @condition
 	-- @function toBeEqual
+	-- @nick Adapt:equal
+	-- @nick Adapt:isEqual
+	-- @nick Adapt:ifEqual
 	toBeEqual = {
 		function ( a, b )
 			return a == b
@@ -461,7 +549,11 @@ local conditions = {
 		{ 'equal', 'isEqual', 'ifEqual' } },
 
 	--- Make a comparison to check boolean equality.
+	-- @condition
 	-- @function toBeBooleanEqual
+	-- @nick Adapt:booleanequal
+	-- @nick Adapt:isBooleanEqual
+	-- @nick Adapt:ifBooleanEqual
 	toBeBooleanEqual = {
 		function ( a, b )
 			return ( not not a ) == ( not not b )
@@ -469,7 +561,11 @@ local conditions = {
 		{ 'booleanequal', 'isBooleanEqual', 'ifBooleanEqual' } },
 
 	--- Make a comparison to check strict equality.
+	-- @condition
 	-- @function toBeStrictEqual
+	-- @nick Adapt:strictequal
+	-- @nick Adapt:isStrictEqual
+	-- @nick Adapt:ifStrictEqual
 	toBeStrictEqual = {
 		function ( a, b )
 			return a == b and type( a ) == type( b )
@@ -477,7 +573,11 @@ local conditions = {
 		{ 'strictequal', 'isStrictEqual', 'ifStrictEqual' } },
 
 	--- Make a comparison to check similarity.
+	-- @condition
 	-- @function toBeSame
+	-- @nick Adapt:same
+	-- @nick Adapt:isSame
+	-- @nick Adapt:ifSame
 	toBeSame = {
 		function ( a, b )
 			if ( type( a ) == type( b ) ) then
@@ -493,7 +593,11 @@ local conditions = {
 		{ 'same', 'isSame', 'ifSame' } },
 
 	--- Make a comparison to check deep equality.
+	-- @condition
 	-- @function toBeDeepEqual
+	-- @nick Adapt:deepequal
+	-- @nick Adapt:isDeepEqual
+	-- @nick Adapt:ifDeepEqual
 	toBeDeepEqual = {
 		function ( a, b )
 			return util.deepEqual( b, a )
@@ -501,7 +605,11 @@ local conditions = {
 		{ 'deepequal', 'isDeepEqual', 'ifDeepEqual' } },
 
 	--- Make a comparison to check if first is contained in second.
+	-- @condition
 	-- @function toBeContained
+	-- @nick Adapt:contained
+	-- @nick Adapt:isContained
+	-- @nick Adapt:ifContained
 	toBeContained = {
 		function ( a, b )
 			return util.contains( b, a )
@@ -509,7 +617,16 @@ local conditions = {
 		{ 'contained', 'isContained', 'ifContained' } },
 
 	--- Make a comparison to check if first is strict lesser than second.
+	-- @condition
 	-- @function toBeLesserThan
+	-- @nick Adapt:lesser
+	-- @nick Adapt:lt
+	-- @nick Adapt:toBeLesser
+	-- @nick Adapt:toBeLT
+	-- @nick Adapt:isLesser
+	-- @nick Adapt:isLT
+	-- @nick Adapt:ifLesser
+	-- @nick Adapt:ifLt
 	toBeLesserThan = {
 		function ( a, b )
 			return a < b
@@ -522,6 +639,7 @@ local conditions = {
 		},
 
 	--- Make a comparison to check if first is strict greater than second.
+	-- @condition
 	-- @function toBeGreaterThan
 	toBeGreaterThan = {
 		function ( a, b )
@@ -535,6 +653,7 @@ local conditions = {
 		},
 
 	--- Make a comparison to check if first is lesser or equal than second.
+	-- @condition
 	-- @function toBeLesserOrEqual
 	toBeLesserOrEqual = {
 		function ( a, b )
@@ -548,6 +667,7 @@ local conditions = {
 		},
 
 	--- Make a comparison to check if first is strict greater or equal than second.
+	-- @condition
 	-- @function toBeGreaterOrEqual
 	toBeGreaterOrEqual = {
 		function ( a, b )
@@ -561,6 +681,7 @@ local conditions = {
 		},
 
 	--- Make a comparison to check if first is a match in second.
+	-- @condition
 	-- @function toBeMatch
 	toBeMatch = {
 		function ( a, b )
@@ -569,6 +690,7 @@ local conditions = {
 		{ 'match', 'isMatch', 'ifMatch' } },
 
 	--- Make a comparison to check if first is an Unicode match in second.
+	-- @condition
 	-- @function toBeUMatch
 	toBeUMatch = {
 		function ( a, b )
