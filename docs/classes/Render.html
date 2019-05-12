@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Pickle documentation</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
@@ -32,6 +32,7 @@
 
 <h2>Contents</h2>
 <ul>
+<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -95,41 +96,48 @@
 <p> This class follows the pattern from <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#Render._init">Render._init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Render:__index">Render:__index (key)</a></td>
+	<td class="name nowrap"><a href="#Render:__index">Render:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Render:create">Render:create (...)</a></td>
+	<td class="name nowrap"><a href="#Render:create">Render:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Render:cleanKey">Render:cleanKey (str)</a></td>
+	<td class="name nowrap"><a href="#Render:cleanKey">Render:cleanKey (str)</a></td>
 	<td class="summary">Clean key.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Render:key">Render:key (str)</a></td>
+	<td class="name nowrap"><a href="#Render:key">Render:key (str)</a></td>
 	<td class="summary">Override key construction.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Render:type">Render:type ()</a></td>
+	<td class="name nowrap"><a href="#Render:type">Render:type ()</a></td>
 	<td class="summary">Get the type of report.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Render:append">Render:append (head, tail)</a></td>
+	<td class="name nowrap"><a href="#Render:append">Render:append (head, tail)</a></td>
 	<td class="summary">Append same type to first.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Render:realizeClarification">Render:realizeClarification (keyPart[, lang[, counter]])</a></td>
+	<td class="name nowrap"><a href="#Render:realizeClarification">Render:realizeClarification (keyPart[, lang[, counter]])</a></td>
 	<td class="summary">Realize clarification.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Render:realizeComment">Render:realizeComment (src, keyPart[, lang])</a></td>
+	<td class="name nowrap"><a href="#Render:realizeComment">Render:realizeComment (src, keyPart[, lang])</a></td>
 	<td class="summary">Realize comment.</td>
 	</tr>
 </table>
@@ -138,6 +146,34 @@
 <br/>
 
 
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Render._init"></a>
+    <strong>Render._init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         unused
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        self
+
+
+
+
+</dd>
+</dl>
     <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
@@ -158,10 +194,8 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
         any
-    </ol>
 
 
 
@@ -191,11 +225,21 @@
 
     <h3>Returns:</h3>
     <ol>
-
+        <li>
            <span class="types"><span class="type">self</span></span>
 
 
+</li>
+        <li>
+           <span class="types"><span class="type">foo</span></span>
 
+
+</li>
+        <li>
+           <span class="types"><span class="type">bar</span></span>
+
+
+</li>
     </ol>
 
 
@@ -220,13 +264,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
-    </ol>
 
 
 
@@ -250,13 +292,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
-    </ol>
 
 
 
@@ -273,13 +313,11 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
-    </ol>
 
 
 
@@ -307,10 +345,8 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
         any
-    </ol>
 
 
 
@@ -343,13 +379,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
-    </ol>
 
 
 
@@ -381,13 +415,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
-    </ol>
 
 
 
@@ -400,8 +432,8 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-05-09 20:49:42 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
 </html>
+

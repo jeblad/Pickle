@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Pickle documentation</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
@@ -32,6 +32,7 @@
 
 <h2>Contents</h2>
 <ul>
+<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -95,37 +96,44 @@
 <p> This class follows the pattern from <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#ReportAdapt._init">ReportAdapt._init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#ReportAdapt:__index">ReportAdapt:__index (key)</a></td>
+	<td class="name nowrap"><a href="#ReportAdapt:__index">ReportAdapt:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#ReportAdapt:create">ReportAdapt:create (...)</a></td>
+	<td class="name nowrap"><a href="#ReportAdapt:create">ReportAdapt:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ReportAdapt:lines">ReportAdapt:lines ()</a></td>
+	<td class="name nowrap"><a href="#ReportAdapt:lines">ReportAdapt:lines ()</a></td>
 	<td class="summary">Export the lines as an multivalue return.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ReportAdapt:numLines">ReportAdapt:numLines ()</a></td>
+	<td class="name nowrap"><a href="#ReportAdapt:numLines">ReportAdapt:numLines ()</a></td>
 	<td class="summary">Get the number of lines.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ReportAdapt:addLine">ReportAdapt:addLine (...)</a></td>
+	<td class="name nowrap"><a href="#ReportAdapt:addLine">ReportAdapt:addLine (...)</a></td>
 	<td class="summary">Add a line.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ReportAdapt:getLine">ReportAdapt:getLine (idx)</a></td>
+	<td class="name nowrap"><a href="#ReportAdapt:getLine">ReportAdapt:getLine (idx)</a></td>
 	<td class="summary">Get a line.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ReportAdapt:realize">ReportAdapt:realize (renders[, lang[, counter]])</a></td>
+	<td class="name nowrap"><a href="#ReportAdapt:realize">ReportAdapt:realize (renders[, lang[, counter]])</a></td>
 	<td class="summary">Realize the data by applying a render.</td>
 	</tr>
 </table>
@@ -134,6 +142,37 @@
 <br/>
 
 
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ReportAdapt._init"></a>
+    <strong>ReportAdapt._init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         pushed to lines
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+</dl>
     <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
@@ -154,10 +193,8 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
         any
-    </ol>
 
 
 
@@ -184,13 +221,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
     <h3>See also:</h3>
@@ -211,11 +246,9 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         list of lines
-    </ol>
 
 
 
@@ -231,11 +264,9 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">number</span></span>
         of lines
-    </ol>
 
 
 
@@ -258,13 +289,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -288,11 +317,9 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         containing list of parts
-    </ol>
 
 
 
@@ -325,13 +352,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
-    </ol>
 
 
 
@@ -344,8 +369,8 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-05-09 20:49:42 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
 </html>
+

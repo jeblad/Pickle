@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Pickle documentation</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
@@ -32,6 +32,7 @@
 
 <h2>Contents</h2>
 <ul>
+<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -97,89 +98,112 @@
 </p>
 
 
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#mt:__call">mt:__call (...)</a></td>
+	<td class="summary">Get arguments for a class call.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Frame._init">Frame._init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Frame.types:string">Frame.types:string (self, val)</a></td>
+	<td class="summary">Push a string.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Frame.types:function">Frame.types:function (self, func)</a></td>
+	<td class="summary">Push a function.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Frame.types:table">Frame.types:table (self, tbl)</a></td>
+	<td class="summary">Push a table.</td>
+	</tr>
+</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Frame:__index">Frame:__index (key)</a></td>
+	<td class="name nowrap"><a href="#Frame:__index">Frame:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:__call">Frame:__call (...)</a></td>
+	<td class="name nowrap"><a href="#Frame:__call">Frame:__call (...)</a></td>
 	<td class="summary">Get arguments for a instance call.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Frame:create">Frame:create (...)</a></td>
+	<td class="name nowrap"><a href="#Frame:create">Frame:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:dispatch">Frame:dispatch (...)</a></td>
+	<td class="name nowrap"><a href="#Frame:dispatch">Frame:dispatch (...)</a></td>
 	<td class="summary">Dispach on type.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:hasDescriptions">Frame:hasDescriptions ()</a></td>
+	<td class="name nowrap"><a href="#Frame:hasDescriptions">Frame:hasDescriptions ()</a></td>
 	<td class="summary">Check if the frame has descriptions.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:numDescriptions">Frame:numDescriptions ()</a></td>
+	<td class="name nowrap"><a href="#Frame:numDescriptions">Frame:numDescriptions ()</a></td>
 	<td class="summary">Check number of descriptions.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:hasFixtures">Frame:hasFixtures ()</a></td>
+	<td class="name nowrap"><a href="#Frame:hasFixtures">Frame:hasFixtures ()</a></td>
 	<td class="summary">Check if the frame has fixtures.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:numFixtures">Frame:numFixtures ()</a></td>
+	<td class="name nowrap"><a href="#Frame:numFixtures">Frame:numFixtures ()</a></td>
 	<td class="summary">Check number of fixtures.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:isDone">Frame:isDone ()</a></td>
+	<td class="name nowrap"><a href="#Frame:isDone">Frame:isDone ()</a></td>
 	<td class="summary">Check if the instance is evaluated.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:descriptions">Frame:descriptions ()</a></td>
+	<td class="name nowrap"><a href="#Frame:descriptions">Frame:descriptions ()</a></td>
 	<td class="summary">Get descriptions.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:setSubjects">Frame:setSubjects (obj)</a></td>
+	<td class="name nowrap"><a href="#Frame:setSubjects">Frame:setSubjects (obj)</a></td>
 	<td class="summary">Set the reference to the subjects collection.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:subjects">Frame:subjects ()</a></td>
+	<td class="name nowrap"><a href="#Frame:subjects">Frame:subjects ()</a></td>
 	<td class="summary">Expose reference to subjects.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:setReports">Frame:setReports (obj)</a></td>
+	<td class="name nowrap"><a href="#Frame:setReports">Frame:setReports (obj)</a></td>
 	<td class="summary">Set the reference to the reports collection.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:reports">Frame:reports ()</a></td>
+	<td class="name nowrap"><a href="#Frame:reports">Frame:reports ()</a></td>
 	<td class="summary">Expose reference to reports.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:setExtractors">Frame:setExtractors (obj)</a></td>
+	<td class="name nowrap"><a href="#Frame:setExtractors">Frame:setExtractors (obj)</a></td>
 	<td class="summary">Set the reference to the extractors.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:extractors">Frame:extractors ()</a></td>
+	<td class="name nowrap"><a href="#Frame:extractors">Frame:extractors ()</a></td>
 	<td class="summary">Expose reference to extractors.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:setRenders">Frame:setRenders (obj)</a></td>
+	<td class="name nowrap"><a href="#Frame:setRenders">Frame:setRenders (obj)</a></td>
 	<td class="summary">Set the reference to the renders.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:renders">Frame:renders ()</a></td>
+	<td class="name nowrap"><a href="#Frame:renders">Frame:renders ()</a></td>
 	<td class="summary">Expose reference to renders.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:evalFixture">Frame:evalFixture (description, fixture, environment, ...)</a></td>
+	<td class="name nowrap"><a href="#Frame:evalFixture">Frame:evalFixture (description, fixture, environment, ...)</a></td>
 	<td class="summary">Eval a single fixture.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Frame:eval">Frame:eval ()</a></td>
+	<td class="name nowrap"><a href="#Frame:eval">Frame:eval ()</a></td>
 	<td class="summary">Eval the fixtures over previous dispatched strings.</td>
 	</tr>
 </table>
@@ -188,6 +212,134 @@
 <br/>
 
 
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "mt:__call"></a>
+    <strong>mt:__call (...)</strong>
+    </dt>
+    <dd>
+    Get arguments for a class call.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         pass on to dispatch
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+        -ish
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Frame._init"></a>
+    <strong>Frame._init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         list to be dispatched (unused)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        Frame
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Frame.types:string"></a>
+    <strong>Frame.types:string (self, val)</strong>
+    </dt>
+    <dd>
+    Push a string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
+         place to store value
+        </li>
+        <li><span class="parameter">val</span>
+            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:string">string</a></span>
+         that should be stored
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Frame.types:function"></a>
+    <strong>Frame.types:function (self, func)</strong>
+    </dt>
+    <dd>
+    Push a function.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
+         place to store value
+        </li>
+        <li><span class="parameter">func</span>
+            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:function">function</a></span>
+         that should be stored
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Frame.types:table"></a>
+    <strong>Frame.types:table (self, tbl)</strong>
+    </dt>
+    <dd>
+    Push a table.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
+         place to store value
+        </li>
+        <li><span class="parameter">tbl</span>
+            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
+         that should be stored
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
     <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
@@ -202,16 +354,14 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">key</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:string">string</a></span>
          lookup of member
         </li>
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
         any
-    </ol>
 
 
 
@@ -234,13 +384,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -267,10 +415,8 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
         Frame
-    </ol>
 
 
 
@@ -293,13 +439,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -315,13 +459,11 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">boolean</span></span>
 
 
 
-    </ol>
 
 
 
@@ -337,13 +479,11 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">number</span></span>
 
 
 
-    </ol>
 
 
 
@@ -359,13 +499,11 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">boolean</span></span>
 
 
 
-    </ol>
 
 
 
@@ -381,13 +519,11 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">number</span></span>
 
 
 
-    </ol>
 
 
 
@@ -403,13 +539,11 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">boolean</span></span>
 
 
 
-    </ol>
 
 
 
@@ -425,10 +559,8 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
         list of descriptions
-    </ol>
 
 
 
@@ -446,19 +578,17 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">obj</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
          somehow maintain a collection
         </li>
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -474,10 +604,8 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
         list of subjects
-    </ol>
 
 
 
@@ -495,19 +623,17 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">obj</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
          somehow maintain a collection
         </li>
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -523,10 +649,8 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
         list of reports
-    </ol>
 
 
 
@@ -544,19 +668,17 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">obj</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
          somehow maintain a collection
         </li>
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -572,10 +694,8 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
         list of extractors
-    </ol>
 
 
 
@@ -593,19 +713,17 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">obj</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
          somehow maintain a collection
         </li>
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -621,10 +739,8 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
         list of renders
-    </ol>
 
 
 
@@ -641,19 +757,19 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">description</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:string">string</a></span>
 
 
 
         </li>
         <li><span class="parameter">fixture</span>
-            <span class="types"><span class="type">function</span></span>
+            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:function">function</a></span>
 
 
 
         </li>
         <li><span class="parameter">environment</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
 
 
 
@@ -680,13 +796,11 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -699,8 +813,8 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-05-09 20:49:42 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
 </html>
+

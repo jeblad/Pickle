@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Pickle documentation</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
@@ -32,6 +32,7 @@
 
 <h2>Contents</h2>
 <ul>
+<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -97,37 +98,44 @@
 </p>
 
 
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#Counter._init">Counter._init ([num])</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Counter:__index">Counter:__index (key)</a></td>
+	<td class="name nowrap"><a href="#Counter:__index">Counter:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Counter:__call">Counter:__call ([num])</a></td>
+	<td class="name nowrap"><a href="#Counter:__call">Counter:__call ([num])</a></td>
 	<td class="summary">Call on instance.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Counter:create">Counter:create ([num])</a></td>
+	<td class="name nowrap"><a href="#Counter:create">Counter:create ([num])</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Counter:isInitialized">Counter:isInitialized ()</a></td>
+	<td class="name nowrap"><a href="#Counter:isInitialized">Counter:isInitialized ()</a></td>
 	<td class="summary">Is the running count initialized.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Counter:num">Counter:num ()</a></td>
+	<td class="name nowrap"><a href="#Counter:num">Counter:num ()</a></td>
 	<td class="summary">The current value.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Counter:inc">Counter:inc ([num])</a></td>
+	<td class="name nowrap"><a href="#Counter:inc">Counter:inc ([num])</a></td>
 	<td class="summary">Increment the value.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Counter:dec">Counter:dec ([num])</a></td>
+	<td class="name nowrap"><a href="#Counter:dec">Counter:dec ([num])</a></td>
 	<td class="summary">Decrement the value.</td>
 	</tr>
 </table>
@@ -136,6 +144,38 @@
 <br/>
 
 
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Counter._init"></a>
+    <strong>Counter._init ([num])</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">num</span>
+            <span class="types"><span class="type">number</span></span>
+         initial value
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+</dl>
     <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
@@ -156,10 +196,8 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
         any
-    </ol>
 
 
 
@@ -171,7 +209,7 @@
     </dt>
     <dd>
     Call on instance.
- Increment value, but return the old value.
+ Update value, but return the old value.
 
 
     <h3>Parameters:</h3>
@@ -184,11 +222,9 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">number</span></span>
         previous value
-    </ol>
 
 
 
@@ -216,13 +252,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -238,11 +272,9 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">boolean</span></span>
         has the internal structure been initialized
-    </ol>
 
 
 
@@ -258,11 +290,9 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">number</span></span>
         current value
-    </ol>
 
 
 
@@ -274,6 +304,7 @@
     </dt>
     <dd>
     Increment the value.
+ This method will always increment in positive direction.
 
 
     <h3>Parameters:</h3>
@@ -286,11 +317,9 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">number</span></span>
         incremented value
-    </ol>
 
 
 
@@ -302,6 +331,7 @@
     </dt>
     <dd>
     Decrement the value.
+ This method will always decrement in negative direction.
 
 
     <h3>Parameters:</h3>
@@ -314,11 +344,9 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">number</span></span>
         incremented value
-    </ol>
 
 
 
@@ -331,8 +359,8 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-05-09 20:49:42 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
 </html>
+

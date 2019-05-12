@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Pickle documentation</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
@@ -32,6 +32,7 @@
 
 <h2>Contents</h2>
 <ul>
+<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -95,61 +96,68 @@
 <p> This class follows the pattern from <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#Report._init">Report._init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Report:__index">Report:__index (key)</a></td>
+	<td class="name nowrap"><a href="#Report:__index">Report:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Report:create">Report:create (...)</a></td>
+	<td class="name nowrap"><a href="#Report:create">Report:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Report:notOk">Report:notOk ()</a></td>
+	<td class="name nowrap"><a href="#Report:notOk">Report:notOk ()</a></td>
 	<td class="summary">Set the state unconditionally as "not ok"".</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Report:ok">Report:ok ()</a></td>
+	<td class="name nowrap"><a href="#Report:ok">Report:ok ()</a></td>
 	<td class="summary">Set the state unconditionally as "ok"".</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Report:isOk">Report:isOk ()</a></td>
+	<td class="name nowrap"><a href="#Report:isOk">Report:isOk ()</a></td>
 	<td class="summary">Check if the instance state is "ok"".</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Report:setSkip">Report:setSkip (str)</a></td>
+	<td class="name nowrap"><a href="#Report:setSkip">Report:setSkip (str)</a></td>
 	<td class="summary">Set the skip.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Report:getSkip">Report:getSkip ()</a></td>
+	<td class="name nowrap"><a href="#Report:getSkip">Report:getSkip ()</a></td>
 	<td class="summary">Get the skip.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Report:isSkip">Report:isSkip ()</a></td>
+	<td class="name nowrap"><a href="#Report:isSkip">Report:isSkip ()</a></td>
 	<td class="summary">Check if the instance is itself in a skip state.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Report:setTodo">Report:setTodo (str)</a></td>
+	<td class="name nowrap"><a href="#Report:setTodo">Report:setTodo (str)</a></td>
 	<td class="summary">Set the todo.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Report:getTodo">Report:getTodo ()</a></td>
+	<td class="name nowrap"><a href="#Report:getTodo">Report:getTodo ()</a></td>
 	<td class="summary">Get the todo.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Report:isTodo">Report:isTodo ()</a></td>
+	<td class="name nowrap"><a href="#Report:isTodo">Report:isTodo ()</a></td>
 	<td class="summary">Check if the instance is itself in a todo state.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Report:realize">Report:realize (renders, lang, counter)</a></td>
+	<td class="name nowrap"><a href="#Report:realize">Report:realize (renders, lang, counter)</a></td>
 	<td class="summary">Realize the data by applying a render.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Report:type">Report:type ()</a></td>
+	<td class="name nowrap"><a href="#Report:type">Report:type ()</a></td>
 	<td class="summary">Get the type of report.</td>
 	</tr>
 </table>
@@ -158,6 +166,37 @@
 <br/>
 
 
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Report._init"></a>
+    <strong>Report._init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         unused
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+</dl>
     <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
@@ -178,10 +217,8 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
         any
-    </ol>
 
 
 
@@ -210,13 +247,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -233,13 +268,11 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -256,13 +289,11 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -279,11 +310,9 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">boolean</span></span>
         the existing state
-    </ol>
 
 
 
@@ -308,13 +337,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -332,11 +359,9 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         the skip note
-    </ol>
 
 
 
@@ -352,11 +377,9 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">boolean</span></span>
         does the skip note exist
-    </ol>
 
 
 
@@ -380,13 +403,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -403,11 +424,9 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         the todo note
-    </ol>
 
 
 
@@ -423,11 +442,9 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">boolean</span></span>
         does the todo note exist
-    </ol>
 
 
 
@@ -458,13 +475,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
-    </ol>
 
 
 
@@ -481,13 +496,11 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
-    </ol>
 
 
 
@@ -500,8 +513,8 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-05-09 20:49:42 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
 </html>
+

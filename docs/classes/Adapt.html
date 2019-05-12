@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Pickle documentation</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
@@ -33,6 +33,7 @@
 <h2>Contents</h2>
 <ul>
 <li><a href="#Functions">Functions</a></li>
+<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -101,233 +102,252 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#mt:__call">mt:__call (...)</a></td>
+	<td class="name nowrap"><a href="#mt:__call">mt:__call (...)</a></td>
 	<td class="summary">Get a clone or create a new instance.</td>
+	</tr>
+</table>
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#Adapt._init">Adapt._init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Adapt._makePickProcess">Adapt._makePickProcess (name, idx)</a></td>
+	<td class="summary">Make a delayed process for the pick functions.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Adapt._makeTransformProcess">Adapt._makeTransformProcess (name, func)</a></td>
+	<td class="summary">Make a delayed process for the transform functions.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Adapt._makeConditionProcess">Adapt._makeConditionProcess (name, func, other)</a></td>
+	<td class="summary">Make a delayed process for the condition functions.</td>
 	</tr>
 </table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:__index">Adapt:__index (key)</a></td>
+	<td class="name nowrap"><a href="#Adapt:__index">Adapt:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:create">Adapt:create (...)</a></td>
+	<td class="name nowrap"><a href="#Adapt:create">Adapt:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:setAdaptations">Adapt:setAdaptations (obj)</a></td>
+	<td class="name nowrap"><a href="#Adapt:setAdaptations">Adapt:setAdaptations (obj)</a></td>
 	<td class="summary">Set the reference to the adaptations collection.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:adaptations">Adapt:adaptations ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:adaptations">Adapt:adaptations ()</a></td>
 	<td class="summary">Expose reference to adaptations.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:setReports">Adapt:setReports (obj)</a></td>
+	<td class="name nowrap"><a href="#Adapt:setReports">Adapt:setReports (obj)</a></td>
 	<td class="summary">Set the reference to the reports collection.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:reports">Adapt:reports ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:reports">Adapt:reports ()</a></td>
 	<td class="summary">Expose reference to reports.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:temporal">Adapt:temporal ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:temporal">Adapt:temporal ()</a></td>
 	<td class="summary">Get the temporal.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:report">Adapt:report ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:report">Adapt:report ()</a></td>
 	<td class="summary">Get the report.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:eval">Adapt:eval ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:eval">Adapt:eval ()</a></td>
 	<td class="summary">Evaluate the registered processes with temporal as arguments.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:first">Adapt:first ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:first">Adapt:first ()</a></td>
 	<td class="summary">Make a pick for first item.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:second">Adapt:second ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:second">Adapt:second ()</a></td>
 	<td class="summary">Make a pick for second item.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:third">Adapt:third ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:third">Adapt:third ()</a></td>
 	<td class="summary">Make a pick for third item.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:fourth">Adapt:fourth ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:fourth">Adapt:fourth ()</a></td>
 	<td class="summary">Make a pick for fourth item.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:fifth">Adapt:fifth ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:fifth">Adapt:fifth ()</a></td>
 	<td class="summary">Make a pick for fifth item.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:sixth">Adapt:sixth ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:sixth">Adapt:sixth ()</a></td>
 	<td class="summary">Make a pick for sixth item.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:seventh">Adapt:seventh ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:seventh">Adapt:seventh ()</a></td>
 	<td class="summary">Make a pick for seventh item.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:eight">Adapt:eight ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:eight">Adapt:eight ()</a></td>
 	<td class="summary">Make a pick for eight item.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:ninth">Adapt:ninth ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:ninth">Adapt:ninth ()</a></td>
 	<td class="summary">Make a pick for ninth item.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:tenth">Adapt:tenth ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:tenth">Adapt:tenth ()</a></td>
 	<td class="summary">Make a pick for tenth item.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:eleventh">Adapt:eleventh ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:eleventh">Adapt:eleventh ()</a></td>
 	<td class="summary">Make a pick for eleventh item.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:twelfth">Adapt:twelfth ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:twelfth">Adapt:twelfth ()</a></td>
 	<td class="summary">Make a pick for twelfth item.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asType">Adapt:asType ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asType">Adapt:asType ()</a></td>
 	<td class="summary">Make a transform to get the argument type.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asUpper">Adapt:asUpper ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asUpper">Adapt:asUpper ()</a></td>
 	<td class="summary">Make a transform to get the string as upper case.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asLower">Adapt:asLower ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asLower">Adapt:asLower ()</a></td>
 	<td class="summary">Make a transform to get the string as lower case.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asUpperFirst">Adapt:asUpperFirst ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asUpperFirst">Adapt:asUpperFirst ()</a></td>
 	<td class="summary">Make a transform to get the string with first char as upper case.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asLowerFirst">Adapt:asLowerFirst ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asLowerFirst">Adapt:asLowerFirst ()</a></td>
 	<td class="summary">Make a transform to get the string with first char as lower case.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asReverse">Adapt:asReverse ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asReverse">Adapt:asReverse ()</a></td>
 	<td class="summary">Make a transform to get the string reversed.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asUUpper">Adapt:asUUpper ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asUUpper">Adapt:asUUpper ()</a></td>
 	<td class="summary">Make a transform to get the ustring as upper case.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asULower">Adapt:asULower ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asULower">Adapt:asULower ()</a></td>
 	<td class="summary">Make a transform to get the ustring as lower case.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asUUpperFirst">Adapt:asUUpperFirst ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asUUpperFirst">Adapt:asUUpperFirst ()</a></td>
 	<td class="summary">Make a transform to get the ustring with first code point as upper case.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asULowerFirst">Adapt:asULowerFirst ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asULowerFirst">Adapt:asULowerFirst ()</a></td>
 	<td class="summary">Make a transform to get the ustring with first code point as lower case.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asUNFC">Adapt:asUNFC ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asUNFC">Adapt:asUNFC ()</a></td>
 	<td class="summary">Make a transform to get the ustring as Normalized Form "C".</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asUNFD">Adapt:asUNFD ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asUNFD">Adapt:asUNFD ()</a></td>
 	<td class="summary">Make a transform to get the ustring as Normalized Form "D".</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asNumber">Adapt:asNumber ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asNumber">Adapt:asNumber ()</a></td>
 	<td class="summary">Make a transform to get the string as number.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asString">Adapt:asString ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asString">Adapt:asString ()</a></td>
 	<td class="summary">Make a transform to get the number as string.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asFloor">Adapt:asFloor ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asFloor">Adapt:asFloor ()</a></td>
 	<td class="summary">Make a transform to get the next lower number.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asCeil">Adapt:asCeil ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asCeil">Adapt:asCeil ()</a></td>
 	<td class="summary">Make a transform to get the next higher number.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asRound">Adapt:asRound ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asRound">Adapt:asRound ()</a></td>
 	<td class="summary">Make a transform to get the rounded number.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asInteger">Adapt:asInteger ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asInteger">Adapt:asInteger ()</a></td>
 	<td class="summary">Make a transform to get the integer part of the number.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:asFraction">Adapt:asFraction ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:asFraction">Adapt:asFraction ()</a></td>
 	<td class="summary">Make a transform to get the fraction part of the number.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:setOther">Adapt:setOther (func)</a></td>
+	<td class="name nowrap"><a href="#Adapt:setOther">Adapt:setOther (func)</a></td>
 	<td class="summary">Set the accessor for the other party.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:other">Adapt:other ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:other">Adapt:other ()</a></td>
 	<td class="summary">Get the other part.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:reorder">Adapt:reorder (...)</a></td>
+	<td class="name nowrap"><a href="#Adapt:reorder">Adapt:reorder (...)</a></td>
 	<td class="summary">Reorder the pair of parties involved in the condition.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:toBeEqual">Adapt:toBeEqual ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:toBeEqual">Adapt:toBeEqual ()</a></td>
 	<td class="summary">Make a comparison to check equality.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:toBeBooleanEqual">Adapt:toBeBooleanEqual ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:toBeBooleanEqual">Adapt:toBeBooleanEqual ()</a></td>
 	<td class="summary">Make a comparison to check boolean equality.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:toBeStrictEqual">Adapt:toBeStrictEqual ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:toBeStrictEqual">Adapt:toBeStrictEqual ()</a></td>
 	<td class="summary">Make a comparison to check strict equality.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:toBeSame">Adapt:toBeSame ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:toBeSame">Adapt:toBeSame ()</a></td>
 	<td class="summary">Make a comparison to check similarity.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:toBeDeepEqual">Adapt:toBeDeepEqual ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:toBeDeepEqual">Adapt:toBeDeepEqual ()</a></td>
 	<td class="summary">Make a comparison to check deep equality.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:toBeContained">Adapt:toBeContained ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:toBeContained">Adapt:toBeContained ()</a></td>
 	<td class="summary">Make a comparison to check if first is contained in second.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:toBeLesserThan">Adapt:toBeLesserThan ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:toBeLesserThan">Adapt:toBeLesserThan ()</a></td>
 	<td class="summary">Make a comparison to check if first is strict lesser than second.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:toBeGreaterThan">Adapt:toBeGreaterThan ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:toBeGreaterThan">Adapt:toBeGreaterThan ()</a></td>
 	<td class="summary">Make a comparison to check if first is strict greater than second.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:toBeLesserOrEqual">Adapt:toBeLesserOrEqual ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:toBeLesserOrEqual">Adapt:toBeLesserOrEqual ()</a></td>
 	<td class="summary">Make a comparison to check if first is lesser or equal than second.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:toBeGreaterOrEqual">Adapt:toBeGreaterOrEqual ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:toBeGreaterOrEqual">Adapt:toBeGreaterOrEqual ()</a></td>
 	<td class="summary">Make a comparison to check if first is strict greater or equal than second.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:toBeMatch">Adapt:toBeMatch ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:toBeMatch">Adapt:toBeMatch ()</a></td>
 	<td class="summary">Make a comparison to check if first is a match in second.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Adapt:toBeUMatch">Adapt:toBeUMatch ()</a></td>
+	<td class="name nowrap"><a href="#Adapt:toBeUMatch">Adapt:toBeUMatch ()</a></td>
 	<td class="summary">Make a comparison to check if first is an Unicode match in second.</td>
 	</tr>
 </table>
@@ -356,13 +376,145 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Adapt._init"></a>
+    <strong>Adapt._init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         set to temporal
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Adapt._makePickProcess"></a>
+    <strong>Adapt._makePickProcess (name, idx)</strong>
+    </dt>
+    <dd>
+    Make a delayed process for the pick functions.
+ This is a private function that will create a function with a closure.
+ It will create an additional delayed function for the provided definition.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         of the constructed created method
+        </li>
+        <li><span class="parameter">idx</span>
+            <span class="types"><span class="type">number</span></span>
+         of the extracted item
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">function</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Adapt._makeTransformProcess"></a>
+    <strong>Adapt._makeTransformProcess (name, func)</strong>
+    </dt>
+    <dd>
+    Make a delayed process for the transform functions.
+ This is a private function that will create a function with a closure.
+ The delayed function comes from the provided definition.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         of the constructed created method
+        </li>
+        <li><span class="parameter">func</span>
+            <span class="types"><span class="type">function</span></span>
+         to adjust the process
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">function</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Adapt._makeConditionProcess"></a>
+    <strong>Adapt._makeConditionProcess (name, func, other)</strong>
+    </dt>
+    <dd>
+    Make a delayed process for the condition functions.
+ This is a private function that will create a function with a closure.
+ The delayed function comes from the provided definition.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         of the constructed created method
+        </li>
+        <li><span class="parameter">func</span>
+            <span class="types"><span class="type">function</span></span>
+         to adjust the process
+        </li>
+        <li><span class="parameter">other</span>
+            <span class="types"><span class="type">boolean</span></span>
+         to swap the comparation
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">function</span></span>
+
+
+
 
 
 
@@ -389,10 +541,8 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
         any
-    </ol>
 
 
 
@@ -419,13 +569,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -449,13 +597,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -472,10 +618,8 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
         list of adaptations
-    </ol>
 
 
 
@@ -499,13 +643,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -522,10 +664,8 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
         list of reports
-    </ol>
 
 
 
@@ -542,10 +682,8 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
         list|any
-    </ol>
 
 
 
@@ -562,10 +700,8 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
         ReportAdapt
-    </ol>
 
 
 
@@ -581,10 +717,8 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
         list of any
-    </ol>
 
 
 
@@ -765,6 +899,10 @@
     <dd>
     Make a transform to get the argument type.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         Adapt:type
+    </ul "@todo">
 
 
 
@@ -779,6 +917,12 @@
     <dd>
     Make a transform to get the string as upper case.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:upper</li>
+         <li>Adapt:asUC</li>
+         <li>Adapt:uc</li>
+    </ul "@todo">
 
 
 
@@ -793,6 +937,12 @@
     <dd>
     Make a transform to get the string as lower case.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:lower</li>
+         <li>Adapt:asLC</li>
+         <li>Adapt:lc</li>
+    </ul "@todo">
 
 
 
@@ -807,6 +957,13 @@
     <dd>
     Make a transform to get the string with first char as upper case.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:upperfirst</li>
+         <li>Adapt:asUCFirst</li>
+         <li>Adapt:asUCfirst</li>
+         <li>Adapt:ucfirst</li>
+    </ul "@todo">
 
 
 
@@ -821,6 +978,13 @@
     <dd>
     Make a transform to get the string with first char as lower case.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:lowerfirst</li>
+         <li>Adapt:asLCFirst</li>
+         <li>Adapt:asLCfirst</li>
+         <li>Adapt:lcfirst</li>
+    </ul "@todo">
 
 
 
@@ -835,6 +999,10 @@
     <dd>
     Make a transform to get the string reversed.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         Adapt:reverse
+    </ul "@todo">
 
 
 
@@ -849,6 +1017,12 @@
     <dd>
     Make a transform to get the ustring as upper case.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:uupper</li>
+         <li>Adapt:asUUC</li>
+         <li>Adapt:uuc</li>
+    </ul "@todo">
 
 
 
@@ -863,6 +1037,12 @@
     <dd>
     Make a transform to get the ustring as lower case.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:ulower</li>
+         <li>Adapt:asULC</li>
+         <li>Adapt:ulc</li>
+    </ul "@todo">
 
 
 
@@ -877,6 +1057,13 @@
     <dd>
     Make a transform to get the ustring with first code point as upper case.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:uupperfirst</li>
+         <li>Adapt:asUUCFirst</li>
+         <li>Adapt:asUUCfirst</li>
+         <li>Adapt:uucfirst</li>
+    </ul "@todo">
 
 
 
@@ -891,6 +1078,13 @@
     <dd>
     Make a transform to get the ustring with first code point as lower case.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:ulowerfirst</li>
+         <li>Adapt:asULCFirst</li>
+         <li>Adapt:asULCfirst</li>
+         <li>Adapt:ulcfirst</li>
+    </ul "@todo">
 
 
 
@@ -905,6 +1099,12 @@
     <dd>
     Make a transform to get the ustring as Normalized Form "C".
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:unfc</li>
+         <li>Adapt:uNFC</li>
+         <li>Adapt:nfc</li>
+    </ul "@todo">
 
 
 
@@ -919,6 +1119,12 @@
     <dd>
     Make a transform to get the ustring as Normalized Form "D".
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:unfd</li>
+         <li>Adapt:uNFD</li>
+         <li>Adapt:nfd</li>
+    </ul "@todo">
 
 
 
@@ -933,6 +1139,12 @@
     <dd>
     Make a transform to get the string as number.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:number</li>
+         <li>Adapt:asNum</li>
+         <li>Adapt:num</li>
+    </ul "@todo">
 
 
 
@@ -947,6 +1159,12 @@
     <dd>
     Make a transform to get the number as string.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:string</li>
+         <li>Adapt:asStr</li>
+         <li>Adapt:str</li>
+    </ul "@todo">
 
 
 
@@ -961,6 +1179,10 @@
     <dd>
     Make a transform to get the next lower number.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         Adapt:floor
+    </ul "@todo">
 
 
 
@@ -975,6 +1197,10 @@
     <dd>
     Make a transform to get the next higher number.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         Adapt:ceil
+    </ul "@todo">
 
 
 
@@ -989,6 +1215,10 @@
     <dd>
     Make a transform to get the rounded number.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         Adapt:round
+    </ul "@todo">
 
 
 
@@ -1003,6 +1233,12 @@
     <dd>
     Make a transform to get the integer part of the number.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:integer</li>
+         <li>Adapt:asInt</li>
+         <li>Adapt:int</li>
+    </ul "@todo">
 
 
 
@@ -1017,6 +1253,12 @@
     <dd>
     Make a transform to get the fraction part of the number.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:fraction</li>
+         <li>Adapt:asFrac</li>
+         <li>Adapt:frac</li>
+    </ul "@todo">
 
 
 
@@ -1058,13 +1300,11 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">nil,Adapt</span></span>
 
 
 
-    </ol>
 
 
 
@@ -1091,10 +1331,8 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
         list
-    </ol>
 
 
 
@@ -1107,6 +1345,12 @@
     <dd>
     Make a comparison to check equality.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:equal</li>
+         <li>Adapt:isEqual</li>
+         <li>Adapt:ifEqual</li>
+    </ul "@todo">
 
 
 
@@ -1121,6 +1365,12 @@
     <dd>
     Make a comparison to check boolean equality.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:booleanequal</li>
+         <li>Adapt:isBooleanEqual</li>
+         <li>Adapt:ifBooleanEqual</li>
+    </ul "@todo">
 
 
 
@@ -1135,6 +1385,12 @@
     <dd>
     Make a comparison to check strict equality.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:strictequal</li>
+         <li>Adapt:isStrictEqual</li>
+         <li>Adapt:ifStrictEqual</li>
+    </ul "@todo">
 
 
 
@@ -1149,6 +1405,12 @@
     <dd>
     Make a comparison to check similarity.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:same</li>
+         <li>Adapt:isSame</li>
+         <li>Adapt:ifSame</li>
+    </ul "@todo">
 
 
 
@@ -1163,6 +1425,12 @@
     <dd>
     Make a comparison to check deep equality.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:deepequal</li>
+         <li>Adapt:isDeepEqual</li>
+         <li>Adapt:ifDeepEqual</li>
+    </ul "@todo">
 
 
 
@@ -1177,6 +1445,12 @@
     <dd>
     Make a comparison to check if first is contained in second.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:contained</li>
+         <li>Adapt:isContained</li>
+         <li>Adapt:ifContained</li>
+    </ul "@todo">
 
 
 
@@ -1191,6 +1465,17 @@
     <dd>
     Make a comparison to check if first is strict lesser than second.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Adapt:lesser</li>
+         <li>Adapt:lt</li>
+         <li>Adapt:toBeLesser</li>
+         <li>Adapt:toBeLT</li>
+         <li>Adapt:isLesser</li>
+         <li>Adapt:isLT</li>
+         <li>Adapt:ifLesser</li>
+         <li>Adapt:ifLt</li>
+    </ul "@todo">
 
 
 
@@ -1275,8 +1560,8 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-05-09 20:49:42 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
 </html>
+

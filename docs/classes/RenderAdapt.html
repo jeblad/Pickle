@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Pickle documentation</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
@@ -32,6 +32,7 @@
 
 <h2>Contents</h2>
 <ul>
+<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -95,37 +96,44 @@
 <p> This class follows the pattern from <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#RenderAdapt._init">RenderAdapt._init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#RenderAdapt:__index">RenderAdapt:__index (key)</a></td>
+	<td class="name nowrap"><a href="#RenderAdapt:__index">RenderAdapt:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#RenderAdapt:create">RenderAdapt:create (...)</a></td>
+	<td class="name nowrap"><a href="#RenderAdapt:create">RenderAdapt:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#RenderAdapt:key">RenderAdapt:key (str)</a></td>
+	<td class="name nowrap"><a href="#RenderAdapt:key">RenderAdapt:key (str)</a></td>
 	<td class="summary">Override key construction.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#RenderAdapt:realizeState">RenderAdapt:realizeState (src[, lang[, counter]])</a></td>
+	<td class="name nowrap"><a href="#RenderAdapt:realizeState">RenderAdapt:realizeState (src[, lang[, counter]])</a></td>
 	<td class="summary">Realize reported data for state.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#RenderAdapt:realizeHeader">RenderAdapt:realizeHeader (src[, lang[, counter]])</a></td>
+	<td class="name nowrap"><a href="#RenderAdapt:realizeHeader">RenderAdapt:realizeHeader (src[, lang[, counter]])</a></td>
 	<td class="summary">Realize reported data for header.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#RenderAdapt:realizeLine">RenderAdapt:realizeLine (param[, lang])</a></td>
+	<td class="name nowrap"><a href="#RenderAdapt:realizeLine">RenderAdapt:realizeLine (param[, lang])</a></td>
 	<td class="summary">Realize reported data for a line.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#RenderAdapt:realizeBody">RenderAdapt:realizeBody (src[, lang])</a></td>
+	<td class="name nowrap"><a href="#RenderAdapt:realizeBody">RenderAdapt:realizeBody (src[, lang])</a></td>
 	<td class="summary">Realize reported data for body.</td>
 	</tr>
 </table>
@@ -134,6 +142,34 @@
 <br/>
 
 
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "RenderAdapt._init"></a>
+    <strong>RenderAdapt._init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         forwarded to <a href="../classes/Render.html#Render._init">Render:_init</a>
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        self
+
+
+
+
+</dd>
+</dl>
     <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
@@ -154,10 +190,8 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
         any
-    </ol>
 
 
 
@@ -184,13 +218,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
     <h3>See also:</h3>
@@ -217,13 +249,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
-    </ol>
 
 
 
@@ -256,13 +286,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
-    </ol>
 
 
 
@@ -296,13 +324,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
-    </ol>
 
 
 
@@ -330,13 +356,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
-    </ol>
 
 
 
@@ -365,13 +389,11 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
-    </ol>
 
 
 
@@ -384,8 +406,8 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-05-09 20:49:42 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
 </html>
+

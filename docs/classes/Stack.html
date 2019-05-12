@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Pickle documentation</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
@@ -32,6 +32,7 @@
 
 <h2>Contents</h2>
 <ul>
+<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -97,61 +98,68 @@
 </p>
 
 
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#Stack._init">Stack._init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Stack:__index">Stack:__index (key)</a></td>
+	<td class="name nowrap"><a href="#Stack:__index">Stack:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Stack:create">Stack:create ()</a></td>
+	<td class="name nowrap"><a href="#Stack:create">Stack:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Stack:isEmpty">Stack:isEmpty ()</a></td>
+	<td class="name nowrap"><a href="#Stack:isEmpty">Stack:isEmpty ()</a></td>
 	<td class="summary">Is the stack empty.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Stack:depth">Stack:depth ()</a></td>
+	<td class="name nowrap"><a href="#Stack:depth">Stack:depth ()</a></td>
 	<td class="summary">What is the depth of the internal structure.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Stack:layout">Stack:layout ()</a></td>
+	<td class="name nowrap"><a href="#Stack:layout">Stack:layout ()</a></td>
 	<td class="summary">Get the layout of the stack.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Stack:bottom">Stack:bottom ()</a></td>
+	<td class="name nowrap"><a href="#Stack:bottom">Stack:bottom ()</a></td>
 	<td class="summary">Get a reference to the bottommost item in the stack.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Stack:top">Stack:top ()</a></td>
+	<td class="name nowrap"><a href="#Stack:top">Stack:top ()</a></td>
 	<td class="summary">Get a reference to the topmost item in the stack.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Stack:push">Stack:push (...)</a></td>
+	<td class="name nowrap"><a href="#Stack:push">Stack:push (...)</a></td>
 	<td class="summary">Push a value on the stack.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Stack:pop">Stack:pop (num)</a></td>
+	<td class="name nowrap"><a href="#Stack:pop">Stack:pop (num)</a></td>
 	<td class="summary">Pop the last value of the stack.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Stack:drop">Stack:drop (num)</a></td>
+	<td class="name nowrap"><a href="#Stack:drop">Stack:drop (num)</a></td>
 	<td class="summary">Drop the last n values of the stack.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Stack:get">Stack:get (num)</a></td>
+	<td class="name nowrap"><a href="#Stack:get">Stack:get (num)</a></td>
 	<td class="summary">Get the indexed entry.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Stack:export">Stack:export ()</a></td>
+	<td class="name nowrap"><a href="#Stack:export">Stack:export ()</a></td>
 	<td class="summary">Export a list of all the contents.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Stack:flush">Stack:flush ()</a></td>
+	<td class="name nowrap"><a href="#Stack:flush">Stack:flush ()</a></td>
 	<td class="summary">Flush all the contents.</td>
 	</tr>
 </table>
@@ -160,6 +168,37 @@
 <br/>
 
 
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Stack._init"></a>
+    <strong>Stack._init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         pushed on the stack
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+</dl>
     <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
@@ -174,15 +213,14 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">key</span>
-         string used for lookup of member
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         used for lookup of member
         </li>
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
         any
-    </ol>
 
 
 
@@ -194,21 +232,26 @@
     <dl class="function">
     <dt>
     <a name = "Stack:create"></a>
-    <strong>Stack:create ()</strong>
+    <strong>Stack:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
 
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         forwarded to <code>_init()</code>
+        </li>
+    </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
 
 
 
-    </ol>
 
 
 
@@ -226,11 +269,9 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">boolean</span></span>
         whether the internal structure has length zero
-    </ol>
 
 
 
@@ -248,11 +289,9 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">number</span></span>
         how deep is the internal structure
-    </ol>
 
 
 
@@ -269,11 +308,9 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         description of the stack
-    </ol>
 
 
 
@@ -288,14 +325,16 @@
  The bottommost item can also be described as the first item.
  This method leaves the item on the stack.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         first
+    </ul "@todo">
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">any</span></span>
         item that can be put on the stack
-    </ol>
 
 
 
@@ -310,14 +349,16 @@
  The topmost item can also be described as the last item.
  This method leaves the item on the stack.
 
+    <h3>Nicknames:</h3>
+    <ul>
+         last
+    </ul "@todo">
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">any</span></span>
         item that can be put on the stack
-    </ol>
 
 
 
@@ -341,11 +382,9 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
         facilitate chaining
-    </ol>
 
 
 
@@ -369,11 +408,9 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">any</span></span>
         item that can be put on the stack
-    </ol>
 
 
 
@@ -397,11 +434,9 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">self</span></span>
         facilitate chaining
-    </ol>
 
 
 
@@ -425,11 +460,9 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">any</span></span>
         item that can be put on the stack
-    </ol>
 
 
 
@@ -445,11 +478,9 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         list of values
-    </ol>
 
 
 
@@ -466,11 +497,9 @@
 
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         list of values
-    </ol>
 
 
 
@@ -483,8 +512,8 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-05-09 20:49:42 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
 </html>
+
