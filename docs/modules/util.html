@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Reference</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Pickle documentation</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
 <body>
@@ -24,7 +24,7 @@
 
 <div id="navigation">
 <br/>
-<h1>ldoc</h1>
+<h1>Pickle</h1>
 
 <ul>
   <li><a href="../mw.pickle.html">Index</a></li>
@@ -33,6 +33,7 @@
 <h2>Contents</h2>
 <ul>
 <li><a href="#Functions">Functions</a></li>
+<li><a href="#Local_Functions">Local Functions</a></li>
 </ul>
 
 
@@ -56,32 +57,33 @@
   <li><a href="../classes/NumberExtractor.html">NumberExtractor</a></li>
   <li><a href="../classes/StringExtractor.html">StringExtractor</a></li>
   <li><a href="../classes/TrueExtractor.html">TrueExtractor</a></li>
-  <li><a href="../classes/AdaptRender.html">AdaptRender</a></li>
-  <li><a href="../classes/FrameRender.html">FrameRender</a></li>
-  <li><a href="../classes/RenderBase.html">RenderBase</a></li>
+  <li><a href="../classes/Render.html">Render</a></li>
+  <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
+  <li><a href="../classes/RenderFrame.html">RenderFrame</a></li>
   <li><a href="../classes/Renders.html">Renders</a></li>
-  <li><a href="../classes/AdaptCompactRender.html">AdaptCompactRender</a></li>
-  <li><a href="../classes/FrameCompactRender.html">FrameCompactRender</a></li>
-  <li><a href="../classes/AdaptFullRender.html">AdaptFullRender</a></li>
-  <li><a href="../classes/FrameFullRender.html">FrameFullRender</a></li>
-  <li><a href="../classes/AdaptVividRender.html">AdaptVividRender</a></li>
-  <li><a href="../classes/FrameVividRender.html">FrameVividRender</a></li>
-  <li><a href="../classes/AdaptReport.html">AdaptReport</a></li>
-  <li><a href="../classes/FrameReport.html">FrameReport</a></li>
-  <li><a href="../classes/ReportBase.html">ReportBase</a></li>
+  <li><a href="../classes/RenderAdaptCompact.html">RenderAdaptCompact</a></li>
+  <li><a href="../classes/RenderFrameCompact.html">RenderFrameCompact</a></li>
+  <li><a href="../classes/RenderAdaptFull.html">RenderAdaptFull</a></li>
+  <li><a href="../classes/RenderFrameFull.html">RenderFrameFull</a></li>
+  <li><a href="../classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
+  <li><a href="../classes/RenderFrameVivid.html">RenderFrameVivid</a></li>
+  <li><a href="../classes/Report.html">Report</a></li>
+  <li><a href="../classes/ReportAdapt.html">ReportAdapt</a></li>
+  <li><a href="../classes/ReportFrame.html">ReportFrame</a></li>
   <li><a href="../classes/TranslatorBase.html">TranslatorBase</a></li>
   <li><a href="../classes/Translators.html">Translators</a></li>
 </ul>
 <h2>Topics</h2>
 <ul class="">
-  <li><a href="../topics/activities.md.html">activities</a></li>
-  <li><a href="../topics/adapt.md.html">adapt</a></li>
-  <li><a href="../topics/call-style.md.html">call-style</a></li>
-  <li><a href="../topics/change-log.md.html">change-log</a></li>
-  <li><a href="../topics/databases.md.html">databases</a></li>
-  <li><a href="../topics/dataflow.md.html">dataflow</a></li>
-  <li><a href="../topics/musings.md.html">musings</a></li>
-  <li><a href="../topics/vscode-snippets.md.html">vscode-snippets</a></li>
+  <li><a href="../topics/activities.md.html">Activities</a></li>
+  <li><a href="../topics/adapt.md.html">Adapt</a></li>
+  <li><a href="../topics/call-style.md.html">Call style</a></li>
+  <li><a href="../topics/change-log.md.html">Log</a></li>
+  <li><a href="../topics/databases.md.html">Databases</a></li>
+  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
+  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
+  <li><a href="../topics/musings.md.html">Musings</a></li>
+  <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
 </ul>
 
 </div>
@@ -100,24 +102,35 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#buildName">buildName (name)</a></td>
+	<td class="name nowrap"><a href="#buildName">buildName (name)</a></td>
 	<td class="summary">Transform names in camel case into hyphen separated keys.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#count">count (t)</a></td>
+	<td class="name nowrap"><a href="#count">count (t)</a></td>
 	<td class="summary">Raw count of all the items in the provided table.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#size">size ([count])</a></td>
+	<td class="name nowrap"><a href="#size">size ([count])</a></td>
 	<td class="summary">Size based on the raw count.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#deepEqual">deepEqual (a, b[, useMt])</a></td>
+	<td class="name nowrap"><a href="#deepEqual">deepEqual (a, b[, useMt])</a></td>
 	<td class="summary">Deep equal of two objects.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#contains">contains (t, arg)</a></td>
+	<td class="name nowrap"><a href="#contains">contains (t, arg)</a></td>
 	<td class="summary">Checks if a table contains the arg.</td>
+	</tr>
+</table>
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#isTypeEqual">isTypeEqual (a, b)</a></td>
+	<td class="summary">Test whether two objects are of equal type.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#isMetatableEqual">isMetatableEqual (a, b)</a></td>
+	<td class="summary">Test whether two objects are mt equal.</td>
 	</tr>
 </table>
 
@@ -145,11 +158,9 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         hyphenated name
-    </ol>
 
 
 
@@ -173,11 +184,9 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">number</span></span>
         raw entries
-    </ol>
 
 
 
@@ -202,11 +211,9 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">number</span></span>
         counted entries
-    </ol>
 
 
 
@@ -238,11 +245,9 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">boolean</span></span>
         result of comparison
-    </ol>
 
 
 
@@ -269,11 +274,72 @@
     </ul>
 
     <h3>Returns:</h3>
-    <ol>
 
            <span class="types"><span class="type">boolean</span></span>
         result of the operation
-    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "isTypeEqual"></a>
+    <strong>isTypeEqual (a, b)</strong>
+    </dt>
+    <dd>
+    Test whether two objects are of equal type.
+ If the objects are of different type, return 'false'.
+ Unless type is 'table', compare the objects.
+ Otherwise return 'nil'.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         any type of object
+        </li>
+        <li><span class="parameter">b</span>
+         any type of object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
+        result of comparison
+
+
+
+
+</dd>
+    <dt>
+    <a name = "isMetatableEqual"></a>
+    <strong>isMetatableEqual (a, b)</strong>
+    </dt>
+    <dd>
+    Test whether two objects are mt equal.
+ If any of the objects have an <code>__eq</code> method, then compare the objects with it.
+ Otherwise return 'nil'.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         any type of object
+        </li>
+        <li><span class="parameter">b</span>
+         any type of object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
+        result of comparison
 
 
 
@@ -286,8 +352,8 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-05-07 22:54:17 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
 </html>
+

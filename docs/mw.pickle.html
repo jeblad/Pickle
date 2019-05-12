@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Reference</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Pickle documentation</title>
     <link rel="stylesheet" href="ldoc.css" type="text/css" />
 </head>
 <body>
@@ -24,7 +24,7 @@
 
 <div id="navigation">
 <br/>
-<h1>ldoc</h1>
+<h1>Pickle</h1>
 
 
 
@@ -49,33 +49,33 @@
   <li><a href="classes/NumberExtractor.html">NumberExtractor</a></li>
   <li><a href="classes/StringExtractor.html">StringExtractor</a></li>
   <li><a href="classes/TrueExtractor.html">TrueExtractor</a></li>
-  <li><a href="classes/AdaptRender.html">AdaptRender</a></li>
-  <li><a href="classes/FrameRender.html">FrameRender</a></li>
-  <li><a href="classes/RenderBase.html">RenderBase</a></li>
+  <li><a href="classes/Render.html">Render</a></li>
+  <li><a href="classes/RenderAdapt.html">RenderAdapt</a></li>
+  <li><a href="classes/RenderFrame.html">RenderFrame</a></li>
   <li><a href="classes/Renders.html">Renders</a></li>
-  <li><a href="classes/AdaptCompactRender.html">AdaptCompactRender</a></li>
-  <li><a href="classes/FrameCompactRender.html">FrameCompactRender</a></li>
-  <li><a href="classes/AdaptFullRender.html">AdaptFullRender</a></li>
-  <li><a href="classes/FrameFullRender.html">FrameFullRender</a></li>
-  <li><a href="classes/AdaptVividRender.html">AdaptVividRender</a></li>
-  <li><a href="classes/FrameVividRender.html">FrameVividRender</a></li>
-  <li><a href="classes/AdaptReport.html">AdaptReport</a></li>
-  <li><a href="classes/FrameReport.html">FrameReport</a></li>
-  <li><a href="classes/ReportBase.html">ReportBase</a></li>
+  <li><a href="classes/RenderAdaptCompact.html">RenderAdaptCompact</a></li>
+  <li><a href="classes/RenderFrameCompact.html">RenderFrameCompact</a></li>
+  <li><a href="classes/RenderAdaptFull.html">RenderAdaptFull</a></li>
+  <li><a href="classes/RenderFrameFull.html">RenderFrameFull</a></li>
+  <li><a href="classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
+  <li><a href="classes/RenderFrameVivid.html">RenderFrameVivid</a></li>
+  <li><a href="classes/Report.html">Report</a></li>
+  <li><a href="classes/ReportAdapt.html">ReportAdapt</a></li>
+  <li><a href="classes/ReportFrame.html">ReportFrame</a></li>
   <li><a href="classes/TranslatorBase.html">TranslatorBase</a></li>
   <li><a href="classes/Translators.html">Translators</a></li>
 </ul>
 <h2>Topics</h2>
 <ul class="">
-  <li><a href="topics/activities.md.html">activities</a></li>
-  <li><a href="topics/adapt.md.html">adapt</a></li>
-  <li><a href="topics/call-style.md.html">call-style</a></li>
-  <li><a href="topics/change-log.md.html">change-log</a></li>
-  <li><a href="topics/databases.md.html">databases</a></li>
-  <li><a href="topics/dataflow.md.html">dataflow</a></li>
-  <li><a href="topics/lua-classes.md.html">lua-classes</a></li>
-  <li><a href="topics/musings.md.html">musings</a></li>
-  <li><a href="topics/vscode-snippets.md.html">vscode-snippets</a></li>
+  <li><a href="topics/activities.md.html">Activities</a></li>
+  <li><a href="topics/adapt.md.html">Adapt</a></li>
+  <li><a href="topics/call-style.md.html">Call style</a></li>
+  <li><a href="topics/change-log.md.html">Log</a></li>
+  <li><a href="topics/databases.md.html">Databases</a></li>
+  <li><a href="topics/dataflow.md.html">Dataflow</a></li>
+  <li><a href="topics/lua-classes.md.html">Lua classes</a></li>
+  <li><a href="topics/musings.md.html">Musings</a></li>
+  <li><a href="topics/vscode-snippets.md.html">VScode snippets</a></li>
 </ul>
 
 </div>
@@ -83,170 +83,186 @@
 <div id="content">
 
 
-  <h2>Testing framework for Lua within Mediawiki.</h2>
+  <h2>Testing framework for Lua embedded within Mediawiki.</h2>
+  <p>The <a href="https://mediawiki.org/wiki/Extension:Pickle">Pickle extension</a> is a
+project to integrate <a href="https://en.wikipedia.org/wiki/continuous_testing">continuous testing</a> into an
+environment for <a href="https://en.wikipedia.org/wiki/continuous_integration">continuous integration</a>, like
+<a href="https://en.wikipedia.org/wiki/Wikipedia">Wikipedia</a> which embed
+<a href="https://en.wikipedia.org/wiki/Lua_programming language">Lua-scripts</a> through the
+<a href="https://mediawiki.org/wiki/Extension:Scribunto">Scribunto extension</a>. Within Wikipedia Lua is used
+to implement advanced templates with <a href="https://en.wikipedia.org/wiki/Help:Lua">Lua modules</a>, and the
+same solution is used on a lot of other websites and projects. Continuous integration is a core
+element of <a href="https://en.wikipedia.org/wiki/continuous_deployment">continuous deployment</a>, which is
+very important for sites that must be up and running 24×7.
+<a href="https://mediawiki.org/wiki/Help:Pickle">Pickle testing</a> is a kind of spec-style testing, which can
+be described as a variant of <a href="https://en.wikipedia.org/wiki/unit_testing">unit testing</a>, or <em>how to
+make the thing right</em>. Later on, Pickle might be extended with step-style testing, or <em>how to build
+the right thing</em>. What to build, and how to build it, is not the only important thing. It is also
+utterly important to reduce the overall risk associated with running live Lua development within an
+active <a href="https://en.wikipedia.org/wiki/MediaWiki">MediaWiki</a> project.</p>
 
 <h2>Modules</h2>
 <table class="module_list">
 	<tr>
-		<td class="name"  nowrap><a href="modules/Pickle.html">Pickle</a></td>
+		<td class="name nowrap"><a href="modules/Pickle.html">Pickle</a></td>
 		<td class="summary">Register functions for the testing framework.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="modules/util.html">util</a></td>
+		<td class="name nowrap"><a href="modules/util.html">util</a></td>
 		<td class="summary">Utils to support Pickle.</td>
 	</tr>
 </table>
 <h2>Classes</h2>
 <table class="module_list">
 	<tr>
-		<td class="name"  nowrap><a href="classes/Counter.html">Counter</a></td>
+		<td class="name nowrap"><a href="classes/Counter.html">Counter</a></td>
 		<td class="summary">Counter for a continuous incrementing number.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/Stack.html">Stack</a></td>
+		<td class="name nowrap"><a href="classes/Stack.html">Stack</a></td>
 		<td class="summary">Stack for managing values.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/Adapt.html">Adapt</a></td>
+		<td class="name nowrap"><a href="classes/Adapt.html">Adapt</a></td>
 		<td class="summary">Base class for Expect and Subject.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/Frame.html">Frame</a></td>
+		<td class="name nowrap"><a href="classes/Frame.html">Frame</a></td>
 		<td class="summary">Baseclass for Describe, Context, and It.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/Spy.html">Spy</a></td>
+		<td class="name nowrap"><a href="classes/Spy.html">Spy</a></td>
 		<td class="summary">Baseclass for Spy.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/ExtractorBase.html">ExtractorBase</a></td>
+		<td class="name nowrap"><a href="classes/ExtractorBase.html">ExtractorBase</a></td>
 		<td class="summary">BaseClass for an extractor strategy.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/Extractors.html">Extractors</a></td>
+		<td class="name nowrap"><a href="classes/Extractors.html">Extractors</a></td>
 		<td class="summary">Baseclass for extractor strategies.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/FalseExtractor.html">FalseExtractor</a></td>
+		<td class="name nowrap"><a href="classes/FalseExtractor.html">FalseExtractor</a></td>
 		<td class="summary">Subclass to do specialization of the extractor strategy class.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/JsonExtractor.html">JsonExtractor</a></td>
+		<td class="name nowrap"><a href="classes/JsonExtractor.html">JsonExtractor</a></td>
 		<td class="summary">Subclass to do specialization of the extractor strategy class.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/NilExtractor.html">NilExtractor</a></td>
+		<td class="name nowrap"><a href="classes/NilExtractor.html">NilExtractor</a></td>
 		<td class="summary">Subclass to do specialization of the extractor strategy class.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/NumberExtractor.html">NumberExtractor</a></td>
+		<td class="name nowrap"><a href="classes/NumberExtractor.html">NumberExtractor</a></td>
 		<td class="summary">Subclass to do specialization of the extractor strategy class.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/StringExtractor.html">StringExtractor</a></td>
+		<td class="name nowrap"><a href="classes/StringExtractor.html">StringExtractor</a></td>
 		<td class="summary">Subclass to do specialization of the extractor strategy class.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/TrueExtractor.html">TrueExtractor</a></td>
+		<td class="name nowrap"><a href="classes/TrueExtractor.html">TrueExtractor</a></td>
 		<td class="summary">Subclass to do specialization of the extractor strategy class.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/AdaptRender.html">AdaptRender</a></td>
-		<td class="summary">Intermediate class for report renderer.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="classes/FrameRender.html">FrameRender</a></td>
-		<td class="summary">Intermediate class for frame report renderer.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="classes/RenderBase.html">RenderBase</a></td>
+		<td class="name nowrap"><a href="classes/Render.html">Render</a></td>
 		<td class="summary">Baseclass for renders.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/Renders.html">Renders</a></td>
+		<td class="name nowrap"><a href="classes/RenderAdapt.html">RenderAdapt</a></td>
+		<td class="summary">Intermediate class for report renderer.</td>
+	</tr>
+	<tr>
+		<td class="name nowrap"><a href="classes/RenderFrame.html">RenderFrame</a></td>
+		<td class="summary">Intermediate class for frame report renderer.</td>
+	</tr>
+	<tr>
+		<td class="name nowrap"><a href="classes/Renders.html">Renders</a></td>
 		<td class="summary">Class for render strategies.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/AdaptCompactRender.html">AdaptCompactRender</a></td>
+		<td class="name nowrap"><a href="classes/RenderAdaptCompact.html">RenderAdaptCompact</a></td>
 		<td class="summary">Final class for compact report renderer.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/FrameCompactRender.html">FrameCompactRender</a></td>
+		<td class="name nowrap"><a href="classes/RenderFrameCompact.html">RenderFrameCompact</a></td>
 		<td class="summary">Final class for frame report renderer.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/AdaptFullRender.html">AdaptFullRender</a></td>
+		<td class="name nowrap"><a href="classes/RenderAdaptFull.html">RenderAdaptFull</a></td>
 		<td class="summary">Final class for full report renderer.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/FrameFullRender.html">FrameFullRender</a></td>
+		<td class="name nowrap"><a href="classes/RenderFrameFull.html">RenderFrameFull</a></td>
 		<td class="summary">Final class for frame report renderer.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/AdaptVividRender.html">AdaptVividRender</a></td>
+		<td class="name nowrap"><a href="classes/RenderAdaptVivid.html">RenderAdaptVivid</a></td>
 		<td class="summary">Final class for vivid report renderer.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/FrameVividRender.html">FrameVividRender</a></td>
+		<td class="name nowrap"><a href="classes/RenderFrameVivid.html">RenderFrameVivid</a></td>
 		<td class="summary">Final class for frame report renderer.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/AdaptReport.html">AdaptReport</a></td>
-		<td class="summary">Subclass for adapt report.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="classes/FrameReport.html">FrameReport</a></td>
-		<td class="summary">Subclass for reports.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="classes/ReportBase.html">ReportBase</a></td>
+		<td class="name nowrap"><a href="classes/Report.html">Report</a></td>
 		<td class="summary">Baseclass for reports.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/TranslatorBase.html">TranslatorBase</a></td>
+		<td class="name nowrap"><a href="classes/ReportAdapt.html">ReportAdapt</a></td>
+		<td class="summary">Subclass for adapt report.</td>
+	</tr>
+	<tr>
+		<td class="name nowrap"><a href="classes/ReportFrame.html">ReportFrame</a></td>
+		<td class="summary">Subclass for reports.</td>
+	</tr>
+	<tr>
+		<td class="name nowrap"><a href="classes/TranslatorBase.html">TranslatorBase</a></td>
 		<td class="summary">BaseClass for an translator strategy.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="classes/Translators.html">Translators</a></td>
+		<td class="name nowrap"><a href="classes/Translators.html">Translators</a></td>
 		<td class="summary">Class for extractor strategies.</td>
 	</tr>
 </table>
 <h2>Topics</h2>
 <table class="module_list">
 	<tr>
-		<td class="name"  nowrap><a href="topics/activities.md.html">activities.md</a></td>
+		<td class="name nowrap"><a href="topics/activities.md.html">activities.md</a></td>
 		<td class="summary"></td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="topics/adapt.md.html">adapt.md</a></td>
+		<td class="name nowrap"><a href="topics/adapt.md.html">adapt.md</a></td>
 		<td class="summary"></td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="topics/call-style.md.html">call-style.md</a></td>
+		<td class="name nowrap"><a href="topics/call-style.md.html">call-style.md</a></td>
 		<td class="summary"></td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="topics/change-log.md.html">change-log.md</a></td>
+		<td class="name nowrap"><a href="topics/change-log.md.html">change-log.md</a></td>
 		<td class="summary"></td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="topics/databases.md.html">databases.md</a></td>
+		<td class="name nowrap"><a href="topics/databases.md.html">databases.md</a></td>
 		<td class="summary"></td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="topics/dataflow.md.html">dataflow.md</a></td>
+		<td class="name nowrap"><a href="topics/dataflow.md.html">dataflow.md</a></td>
 		<td class="summary"></td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="topics/lua-classes.md.html">lua-classes.md</a></td>
+		<td class="name nowrap"><a href="topics/lua-classes.md.html">lua-classes.md</a></td>
 		<td class="summary"></td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="topics/musings.md.html">musings.md</a></td>
+		<td class="name nowrap"><a href="topics/musings.md.html">musings.md</a></td>
 		<td class="summary"></td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="topics/vscode-snippets.md.html">vscode-snippets.md</a></td>
+		<td class="name nowrap"><a href="topics/vscode-snippets.md.html">vscode-snippets.md</a></td>
 		<td class="summary"></td>
 	</tr>
 </table>
@@ -255,8 +271,8 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-05-08 14:49:58 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
 </html>
+
