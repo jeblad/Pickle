@@ -5,14 +5,14 @@
 local Stack = {}
 
 --- Lookup of missing class members.
--- @param key string used for lookup of member
+-- @tparam string key used for lookup of member
 -- @return any
 function Stack:__index( key ) -- luacheck: no self
 	return Stack[key]
 end
 
 --- Create a new instance.
--- @param ...forwarded to `_init()`
+-- @tparam vararg ... forwarded to `_init()`
 -- @treturn self
 function Stack:create( ... )
 	local meta = rawget( self, 'create' ) and self or getmetatable( self )
@@ -22,7 +22,7 @@ end
 
 --- Initialize a new instance.
 -- @local
--- @param ... varargs pushed on the stack
+-- @tparam vararg ... pushed on the stack
 -- @treturn self
 function Stack:_init( ... )
 	self._stack = {}
@@ -60,7 +60,7 @@ end
 --- Get a reference to the bottommost item in the stack.
 -- The bottommost item can also be described as the first item.
 -- This method leaves the item on the stack.
--- @alias first
+-- @nick first
 -- @treturn any item that can be put on the stack
 function Stack:bottom()
 	return self._stack[1]
@@ -70,7 +70,7 @@ Stack.first = Stack.bottom
 --- Get a reference to the topmost item in the stack.
 -- The topmost item can also be described as the last item.
 -- This method leaves the item on the stack.
--- @alias last
+-- @nick last
 -- @treturn any item that can be put on the stack
 function Stack:top()
 	return self._stack[#self._stack]
