@@ -51,7 +51,7 @@ end
 --- Override realization of reported data for state.
 -- @tparam Report src that shall be realized
 -- @tparam[opt] string lang code used for realization
--- @tparam[optchain] Counter counter holding the running count
+-- @tparam[opt] Counter counter holding the running count
 -- @treturn html
 function Subclass:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
@@ -129,7 +129,7 @@ end
 -- The "header" is a composite.
 -- @tparam Report src that shall be realized
 -- @tparam[opt] string lang code used for realization
--- @tparam[optchain] Counter counter holding the running count
+-- @tparam[opt] Counter counter holding the running count
 -- @treturn html
 function Subclass:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )

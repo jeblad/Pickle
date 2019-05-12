@@ -74,7 +74,7 @@ end
 --- Realize clarification.
 -- @tparam string keyPart of a message key
 -- @tparam[opt] string lang code
--- @tparam[optchain] Counter counter holding the running count
+-- @tparam[opt] Counter counter holding the running count
 -- @treturn string
 function Baseclass:realizeClarification( keyPart, lang, counter )
 	assert( keyPart, 'Failed to provide a key part' )

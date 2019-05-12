@@ -168,7 +168,7 @@ end
 --- Realize the data by applying a render.
 -- @tparam Renders renders to use while realizing the reports
 -- @tparam[opt] string lang holding the language code
--- @tparam[optchain] Counter counter holding the running count
+-- @tparam[opt] Counter counter holding the running count
 -- @treturn string
 function Subclass:realize( renders, lang, counter )
 	assert( renders, 'Failed to provide renders' )
