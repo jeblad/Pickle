@@ -118,16 +118,16 @@
 		"TranslationSubpage": "/i18n",
 		"DefaultNamespace": 828,
 		"RenderPrefix": "picklelib/render/",
-		"RenderInfix": "/",
-		"RenderPostfix": "Render",
+		"RenderInfix": "/Render",
+		"RenderPostfix": "",
 		"RenderStyles": {
 			"compact": "Compact",
 			"full": "Full",
 			"vivid": "Vivid"
 		},
 		"RenderTypes": {
-			"adapt-report": "Adapt",
-			"frame-report": "Frame"
+			"report-adapt": "Adapt",
+			"report-frame": "Frame"
 		},
 		"Extractor": [
 			"picklelib/extractor/NilExtractor",
