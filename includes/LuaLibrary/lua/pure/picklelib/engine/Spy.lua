@@ -9,7 +9,7 @@ local ReportAdapt = require 'picklelib/report/ReportAdapt'
 local Spy = {}
 
 --- Lookup of missing class members.
--- @tparam string key used for lookup of member
+-- @tparam string key lookup of member
 -- @return any
 function Spy:__index( key ) -- luacheck: no self
 	return Spy[key]

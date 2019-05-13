@@ -13,7 +13,7 @@ local Super = require 'picklelib/report/Report'
 local Subclass = {}
 
 --- Lookup of missing class members.
--- @tparam string key used for lookup of member
+-- @tparam string key lookup of member
 -- @return any
 function Subclass:__index( key ) -- luacheck: no self
 	return Subclass[key]

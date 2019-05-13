@@ -7,7 +7,7 @@
 local Baseclass = {}
 
 --- Lookup of missing class members.
--- @tparam string key used for lookup of member
+-- @tparam string key lookup of member
 -- @return any
 function Baseclass:__index( key ) -- luacheck: no self
 	return Baseclass[key]

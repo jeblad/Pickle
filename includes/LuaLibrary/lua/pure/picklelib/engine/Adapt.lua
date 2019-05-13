@@ -10,7 +10,7 @@ local ReportAdapt = require 'picklelib/report/ReportAdapt' -- @todo might be ski
 local Adapt = {}
 
 --- Lookup of missing class members.
--- @tparam string key used for lookup of member
+-- @tparam string key lookup of member
 -- @return any
 function Adapt:__index( key ) -- luacheck: no self
 	return Adapt[key]

@@ -5,7 +5,7 @@
 local Stack = {}
 
 --- Lookup of missing class members.
--- @tparam string key used for lookup of member
+-- @tparam string key lookup of member
 -- @return any
 function Stack:__index( key ) -- luacheck: no self
 	return Stack[key]

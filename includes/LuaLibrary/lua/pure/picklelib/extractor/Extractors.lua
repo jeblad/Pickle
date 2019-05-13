@@ -9,7 +9,7 @@ local Stack = require 'picklelib/Stack'
 local Extractors = {}
 
 --- Lookup of missing class members.
--- @tparam string key used for lookup of member
+-- @tparam string key lookup of member
 -- @return any
 function Extractors:__index( key ) -- luacheck: no self
 	return Extractors[key]
