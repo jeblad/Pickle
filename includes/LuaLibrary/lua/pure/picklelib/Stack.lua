@@ -88,11 +88,11 @@ end
 
 --- Pop the last value of the stack.
 -- Note that this will remove the last (topmost) value.
--- @tparam number num items to drop
+-- @tparam[opt=1] number num items to drop
 -- @treturn any item that can be put on the stack
 function Stack:pop( num )
 	local t = {}
-	for i=1,(num or 1) do
+	for i=1,math.abs(num or 1) do
 		t[(num or 1) - i + 1] = table.remove( self._stack )
 	end
 	return unpack( t )
@@ -100,10 +100,10 @@ end
 
 --- Drop the last n values of the stack.
 -- Note that this will remove the last (topmost) values.
--- @tparam number num items to drop
+-- @tparam[opt=1] number num items to drop
 -- @treturn self facilitate chaining
 function Stack:drop( num )
-	for _=1,(num or 1) do
+	for _=1,math.abs(num or 1) do
 		table.remove( self._stack )
 	end
 	return self
@@ -111,16 +111,10 @@ end
 
 --- Get the indexed entry.
 -- Accessing this will not change stored values.
--- @tparam number num entry, negative numbers count backwards
+-- @tparam[opt=1] number num entry, negative numbers count backwards
 -- @treturn any item that can be put on the stack
 function Stack:get( num )
-	assert( num ~= 0 )
-	if num < 0 then
-		-- num is negative, and add 1 to hit the end point
-		return self._stack[#self._stack + num + 1]
-	end
-	-- note num is positive
-	return self._stack[num]
+	return self._stack[math.abs(num or 1)]
 end
 
 --- Export a list of all the contents.
