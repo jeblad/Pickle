@@ -121,23 +121,23 @@
 	<td class="summary">Append same type to first.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrameVivid:realizeState">RenderFrameVivid:realizeState (src[, lang[, counter]])</a></td>
+	<td class="name nowrap"><a href="#RenderFrameVivid:realizeState">RenderFrameVivid:realizeState (src[, lang=nil[, counter=nil]])</a></td>
 	<td class="summary">Override realization of reported data for state.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrameVivid:realizeSkip">RenderFrameVivid:realizeSkip (src[, lang])</a></td>
+	<td class="name nowrap"><a href="#RenderFrameVivid:realizeSkip">RenderFrameVivid:realizeSkip (src[, lang=nil])</a></td>
 	<td class="summary">Override realization of reported data for skip.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrameVivid:realizeTodo">RenderFrameVivid:realizeTodo (src[, lang])</a></td>
+	<td class="name nowrap"><a href="#RenderFrameVivid:realizeTodo">RenderFrameVivid:realizeTodo (src[, lang=nil])</a></td>
 	<td class="summary">Override realization of reported data for todo.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrameVivid:realizeDescription">RenderFrameVivid:realizeDescription (src[, lang])</a></td>
+	<td class="name nowrap"><a href="#RenderFrameVivid:realizeDescription">RenderFrameVivid:realizeDescription (src[, lang=nil])</a></td>
 	<td class="summary">Override realization of reported data for description.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrameVivid:realizeHeader">RenderFrameVivid:realizeHeader (src[, lang[, counter]])</a></td>
+	<td class="name nowrap"><a href="#RenderFrameVivid:realizeHeader">RenderFrameVivid:realizeHeader (src[, lang=nil[, counter=nil]])</a></td>
 	<td class="summary">Realize reported data for header.</td>
 	</tr>
 </table>
@@ -161,7 +161,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/RenderFrame.html#RenderFrame._init">RenderFrame:_init</a>
+         forwarded to <a href="../classes/RenderFrame.html#RenderFrame._init">superclass init method</a>
         </li>
     </ul>
 
@@ -217,7 +217,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/RenderFrame.html#RenderFrame:create">RenderFrame:create</a>
+         forwarded to <a href="../classes/RenderFrame.html#RenderFrame:create">superclass create method</a>
         </li>
     </ul>
 
@@ -269,7 +269,7 @@
 </dd>
     <dt>
     <a name = "RenderFrameVivid:realizeState"></a>
-    <strong>RenderFrameVivid:realizeState (src[, lang[, counter]])</strong>
+    <strong>RenderFrameVivid:realizeState (src[, lang=nil[, counter=nil]])</strong>
     </dt>
     <dd>
     Override realization of reported data for state.
@@ -284,12 +284,12 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
         <li><span class="parameter">counter</span>
             <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -306,7 +306,7 @@
 </dd>
     <dt>
     <a name = "RenderFrameVivid:realizeSkip"></a>
-    <strong>RenderFrameVivid:realizeSkip (src[, lang])</strong>
+    <strong>RenderFrameVivid:realizeSkip (src[, lang=nil])</strong>
     </dt>
     <dd>
     Override realization of reported data for skip.
@@ -321,7 +321,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -338,7 +338,7 @@
 </dd>
     <dt>
     <a name = "RenderFrameVivid:realizeTodo"></a>
-    <strong>RenderFrameVivid:realizeTodo (src[, lang])</strong>
+    <strong>RenderFrameVivid:realizeTodo (src[, lang=nil])</strong>
     </dt>
     <dd>
     Override realization of reported data for todo.
@@ -353,7 +353,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -370,7 +370,7 @@
 </dd>
     <dt>
     <a name = "RenderFrameVivid:realizeDescription"></a>
-    <strong>RenderFrameVivid:realizeDescription (src[, lang])</strong>
+    <strong>RenderFrameVivid:realizeDescription (src[, lang=nil])</strong>
     </dt>
     <dd>
     Override realization of reported data for description.
@@ -385,7 +385,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -402,7 +402,7 @@
 </dd>
     <dt>
     <a name = "RenderFrameVivid:realizeHeader"></a>
-    <strong>RenderFrameVivid:realizeHeader (src[, lang[, counter]])</strong>
+    <strong>RenderFrameVivid:realizeHeader (src[, lang=nil[, counter=nil]])</strong>
     </dt>
     <dd>
     Realize reported data for header.
@@ -418,12 +418,12 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
         <li><span class="parameter">counter</span>
             <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 

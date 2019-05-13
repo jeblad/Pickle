@@ -121,27 +121,27 @@
 	<td class="summary">Override key construction.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrame:realizeState">RenderFrame:realizeState (src[, lang[, counter]])</a></td>
+	<td class="name nowrap"><a href="#RenderFrame:realizeState">RenderFrame:realizeState (src[, lang=nil[, counter=nil]])</a></td>
 	<td class="summary">Realize reported data for state.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrame:realizeSkip">RenderFrame:realizeSkip (src[, lang])</a></td>
+	<td class="name nowrap"><a href="#RenderFrame:realizeSkip">RenderFrame:realizeSkip (src[, lang=nil])</a></td>
 	<td class="summary">Realize reported data for skip.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrame:realizeTodo">RenderFrame:realizeTodo (src[, lang])</a></td>
+	<td class="name nowrap"><a href="#RenderFrame:realizeTodo">RenderFrame:realizeTodo (src[, lang=nil])</a></td>
 	<td class="summary">Realize reported data for todo.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrame:realizeDescription">RenderFrame:realizeDescription (src[, lang])</a></td>
+	<td class="name nowrap"><a href="#RenderFrame:realizeDescription">RenderFrame:realizeDescription (src[, lang=nil])</a></td>
 	<td class="summary">Realize reported data for description.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrame:realizeHeader">RenderFrame:realizeHeader (src[, lang[, counter]])</a></td>
+	<td class="name nowrap"><a href="#RenderFrame:realizeHeader">RenderFrame:realizeHeader (src[, lang=nil[, counter=nil]])</a></td>
 	<td class="summary">Realize reported data for header.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrame:realizeBody">RenderFrame:realizeBody (src[, lang])</a></td>
+	<td class="name nowrap"><a href="#RenderFrame:realizeBody">RenderFrame:realizeBody (src[, lang=nil])</a></td>
 	<td class="summary">Realize reported data for body.</td>
 	</tr>
 </table>
@@ -165,7 +165,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/Render.html#Render._init">Render:_init</a>
+         forwarded to <a href="../classes/Render.html#Render._init">superclass init method</a>
         </li>
     </ul>
 
@@ -221,7 +221,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/Render.html#Render:create">Render:create</a>
+         forwarded to <a href="../classes/Render.html#Render:create">superclass create method</a>
         </li>
     </ul>
 
@@ -269,7 +269,7 @@
 </dd>
     <dt>
     <a name = "RenderFrame:realizeState"></a>
-    <strong>RenderFrame:realizeState (src[, lang[, counter]])</strong>
+    <strong>RenderFrame:realizeState (src[, lang=nil[, counter=nil]])</strong>
     </dt>
     <dd>
     Realize reported data for state.
@@ -284,12 +284,12 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
         <li><span class="parameter">counter</span>
             <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -306,7 +306,7 @@
 </dd>
     <dt>
     <a name = "RenderFrame:realizeSkip"></a>
-    <strong>RenderFrame:realizeSkip (src[, lang])</strong>
+    <strong>RenderFrame:realizeSkip (src[, lang=nil])</strong>
     </dt>
     <dd>
     Realize reported data for skip.
@@ -322,7 +322,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -339,7 +339,7 @@
 </dd>
     <dt>
     <a name = "RenderFrame:realizeTodo"></a>
-    <strong>RenderFrame:realizeTodo (src[, lang])</strong>
+    <strong>RenderFrame:realizeTodo (src[, lang=nil])</strong>
     </dt>
     <dd>
     Realize reported data for todo.
@@ -355,7 +355,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -372,7 +372,7 @@
 </dd>
     <dt>
     <a name = "RenderFrame:realizeDescription"></a>
-    <strong>RenderFrame:realizeDescription (src[, lang])</strong>
+    <strong>RenderFrame:realizeDescription (src[, lang=nil])</strong>
     </dt>
     <dd>
     Realize reported data for description.
@@ -388,7 +388,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -405,7 +405,7 @@
 </dd>
     <dt>
     <a name = "RenderFrame:realizeHeader"></a>
-    <strong>RenderFrame:realizeHeader (src[, lang[, counter]])</strong>
+    <strong>RenderFrame:realizeHeader (src[, lang=nil[, counter=nil]])</strong>
     </dt>
     <dd>
     Realize reported data for header.
@@ -421,12 +421,12 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
         <li><span class="parameter">counter</span>
             <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -443,7 +443,7 @@
 </dd>
     <dt>
     <a name = "RenderFrame:realizeBody"></a>
-    <strong>RenderFrame:realizeBody (src[, lang])</strong>
+    <strong>RenderFrame:realizeBody (src[, lang=nil])</strong>
     </dt>
     <dd>
     Realize reported data for body.
@@ -459,7 +459,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 

@@ -143,15 +143,15 @@
 	<td class="summary">Push a value on the stack.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stack:pop">Stack:pop (num)</a></td>
+	<td class="name nowrap"><a href="#Stack:pop">Stack:pop ([num=1])</a></td>
 	<td class="summary">Pop the last value of the stack.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stack:drop">Stack:drop (num)</a></td>
+	<td class="name nowrap"><a href="#Stack:drop">Stack:drop ([num=1])</a></td>
 	<td class="summary">Drop the last n values of the stack.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stack:get">Stack:get (num)</a></td>
+	<td class="name nowrap"><a href="#Stack:get">Stack:get ([num=1])</a></td>
 	<td class="summary">Get the indexed entry.</td>
 	</tr>
 	<tr>
@@ -392,7 +392,7 @@
 </dd>
     <dt>
     <a name = "Stack:pop"></a>
-    <strong>Stack:pop (num)</strong>
+    <strong>Stack:pop ([num=1])</strong>
     </dt>
     <dd>
     Pop the last value of the stack.
@@ -404,6 +404,7 @@
         <li><span class="parameter">num</span>
             <span class="types"><span class="type">number</span></span>
          items to drop
+         (<em>default</em> 1)
         </li>
     </ul>
 
@@ -418,7 +419,7 @@
 </dd>
     <dt>
     <a name = "Stack:drop"></a>
-    <strong>Stack:drop (num)</strong>
+    <strong>Stack:drop ([num=1])</strong>
     </dt>
     <dd>
     Drop the last n values of the stack.
@@ -430,6 +431,7 @@
         <li><span class="parameter">num</span>
             <span class="types"><span class="type">number</span></span>
          items to drop
+         (<em>default</em> 1)
         </li>
     </ul>
 
@@ -444,7 +446,7 @@
 </dd>
     <dt>
     <a name = "Stack:get"></a>
-    <strong>Stack:get (num)</strong>
+    <strong>Stack:get ([num=1])</strong>
     </dt>
     <dd>
     Get the indexed entry.
@@ -456,6 +458,7 @@
         <li><span class="parameter">num</span>
             <span class="types"><span class="type">number</span></span>
          entry, negative numbers count backwards
+         (<em>default</em> 1)
         </li>
     </ul>
 

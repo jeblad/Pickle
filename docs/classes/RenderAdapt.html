@@ -121,19 +121,19 @@
 	<td class="summary">Override key construction.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdapt:realizeState">RenderAdapt:realizeState (src[, lang[, counter]])</a></td>
+	<td class="name nowrap"><a href="#RenderAdapt:realizeState">RenderAdapt:realizeState (src[, lang=nil[, counter=nil]])</a></td>
 	<td class="summary">Realize reported data for state.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdapt:realizeHeader">RenderAdapt:realizeHeader (src[, lang[, counter]])</a></td>
+	<td class="name nowrap"><a href="#RenderAdapt:realizeHeader">RenderAdapt:realizeHeader (src[, lang=nil[, counter=nil]])</a></td>
 	<td class="summary">Realize reported data for header.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdapt:realizeLine">RenderAdapt:realizeLine (param[, lang])</a></td>
+	<td class="name nowrap"><a href="#RenderAdapt:realizeLine">RenderAdapt:realizeLine (param[, lang=nil])</a></td>
 	<td class="summary">Realize reported data for a line.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdapt:realizeBody">RenderAdapt:realizeBody (src[, lang])</a></td>
+	<td class="name nowrap"><a href="#RenderAdapt:realizeBody">RenderAdapt:realizeBody (src[, lang=nil])</a></td>
 	<td class="summary">Realize reported data for body.</td>
 	</tr>
 </table>
@@ -157,7 +157,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/Render.html#Render._init">Render:_init</a>
+         forwarded to <a href="../classes/Render.html#Render._init">superclass init method</a>
         </li>
     </ul>
 
@@ -213,7 +213,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/Render.html#Render:create">Render:create</a>
+         forwarded to <a href="../classes/Render.html#Render:create">superclass create method</a>
         </li>
     </ul>
 
@@ -261,7 +261,7 @@
 </dd>
     <dt>
     <a name = "RenderAdapt:realizeState"></a>
-    <strong>RenderAdapt:realizeState (src[, lang[, counter]])</strong>
+    <strong>RenderAdapt:realizeState (src[, lang=nil[, counter=nil]])</strong>
     </dt>
     <dd>
     Realize reported data for state.
@@ -276,12 +276,12 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
         <li><span class="parameter">counter</span>
             <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -298,7 +298,7 @@
 </dd>
     <dt>
     <a name = "RenderAdapt:realizeHeader"></a>
-    <strong>RenderAdapt:realizeHeader (src[, lang[, counter]])</strong>
+    <strong>RenderAdapt:realizeHeader (src[, lang=nil[, counter=nil]])</strong>
     </dt>
     <dd>
     Realize reported data for header.
@@ -314,12 +314,12 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
         <li><span class="parameter">counter</span>
             <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -336,7 +336,7 @@
 </dd>
     <dt>
     <a name = "RenderAdapt:realizeLine"></a>
-    <strong>RenderAdapt:realizeLine (param[, lang])</strong>
+    <strong>RenderAdapt:realizeLine (param[, lang=nil])</strong>
     </dt>
     <dd>
     Realize reported data for a line.
@@ -351,7 +351,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -368,7 +368,7 @@
 </dd>
     <dt>
     <a name = "RenderAdapt:realizeBody"></a>
-    <strong>RenderAdapt:realizeBody (src[, lang])</strong>
+    <strong>RenderAdapt:realizeBody (src[, lang=nil])</strong>
     </dt>
     <dd>
     Realize reported data for body.
@@ -384,7 +384,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 

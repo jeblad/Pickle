@@ -133,11 +133,11 @@
 	<td class="summary">Append same type to first.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Render:realizeClarification">Render:realizeClarification (keyPart[, lang[, counter]])</a></td>
+	<td class="name nowrap"><a href="#Render:realizeClarification">Render:realizeClarification (keyPart[, lang=nil[, counter=nil]])</a></td>
 	<td class="summary">Realize clarification.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Render:realizeComment">Render:realizeComment (src, keyPart[, lang])</a></td>
+	<td class="name nowrap"><a href="#Render:realizeComment">Render:realizeComment (src, keyPart[, lang=nil])</a></td>
 	<td class="summary">Realize comment.</td>
 	</tr>
 </table>
@@ -342,7 +342,7 @@
 </dd>
     <dt>
     <a name = "Render:realizeClarification"></a>
-    <strong>Render:realizeClarification (keyPart[, lang[, counter]])</strong>
+    <strong>Render:realizeClarification (keyPart[, lang=nil[, counter=nil]])</strong>
     </dt>
     <dd>
     Realize clarification.
@@ -357,12 +357,12 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
         <li><span class="parameter">counter</span>
             <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -379,7 +379,7 @@
 </dd>
     <dt>
     <a name = "Render:realizeComment"></a>
-    <strong>Render:realizeComment (src, keyPart[, lang])</strong>
+    <strong>Render:realizeComment (src, keyPart[, lang=nil])</strong>
     </dt>
     <dd>
     Realize comment.
@@ -398,7 +398,7 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 

@@ -159,7 +159,7 @@
 	<td class="summary">Check if the instance has any description member.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#ReportFrame:realize">ReportFrame:realize (renders[, lang[, counter]])</a></td>
+	<td class="name nowrap"><a href="#ReportFrame:realize">ReportFrame:realize (renders[, lang=nil[, counter=nil]])</a></td>
 	<td class="summary">Realize the data by applying a render.</td>
 	</tr>
 </table>
@@ -242,7 +242,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/Report.html#Report:create">Report:create</a>
+         forwarded to <a href="../classes/Report.html#Report:create">superclass create method</a>
         </li>
     </ul>
 
@@ -476,7 +476,7 @@
 </dd>
     <dt>
     <a name = "ReportFrame:realize"></a>
-    <strong>ReportFrame:realize (renders[, lang[, counter]])</strong>
+    <strong>ReportFrame:realize (renders[, lang=nil[, counter=nil]])</strong>
     </dt>
     <dd>
     Realize the data by applying a render.
@@ -491,12 +491,12 @@
         <li><span class="parameter">lang</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          holding the language code
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
         <li><span class="parameter">counter</span>
             <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
-         (<em>optional</em>)
+         (<em>default</em> nil)
         </li>
     </ul>
 
