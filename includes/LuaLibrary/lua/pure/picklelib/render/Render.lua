@@ -73,8 +73,8 @@ end
 
 --- Realize clarification.
 -- @tparam string keyPart of a message key
--- @tparam[opt] string lang code
--- @tparam[opt] Counter counter holding the running count
+-- @tparam[opt=nil] string lang code
+-- @tparam[opt=nil] Counter counter holding the running count
 -- @treturn string
 function Baseclass:realizeClarification( keyPart, lang, counter )
 	assert( keyPart, 'Failed to provide a key part' )
@@ -104,7 +104,7 @@ end
 --- Realize comment.
 -- @tparam Report src that shall be realized
 -- @tparam string keyPart of a message key
--- @tparam[opt] string lang code
+-- @tparam[opt=nil] string lang code
 -- @treturn string
 function Baseclass:realizeComment( src, keyPart, lang )
 	assert( src, 'Failed to provide a source' )

@@ -13,7 +13,7 @@ end
 
 --- Call on instance.
 -- Update value, but return the old value.
--- @tparam[opt] number num increment value
+-- @tparam[opt=1] number num increment value
 -- @treturn number previous value
 function Counter:__call( num ) -- luacheck: no self
 	local prev = self:num() or 0
@@ -22,7 +22,7 @@ function Counter:__call( num ) -- luacheck: no self
 end
 
 --- Create a new instance.
--- @tparam[opt] number num initial value
+-- @tparam[opt=false] number num initial value
 -- @treturn self
 function Counter:create( num )
 	local meta = rawget( self, 'create' ) and self or getmetatable( self )
@@ -32,7 +32,7 @@ end
 
 --- Initialize a new instance.
 -- @local
--- @tparam[opt] number num initial value
+-- @tparam[opt=false] number num initial value
 -- @treturn self
 function Counter:_init( num )
 	self._num = num or false
@@ -53,7 +53,7 @@ end
 
 --- Increment the value.
 -- This method will always increment in positive direction.
--- @tparam[opt] number num increment value
+-- @tparam[opt=1] number num increment value
 -- @treturn number incremented value
 function Counter:inc( num )
 	if not self._num then
@@ -65,7 +65,7 @@ end
 
 --- Decrement the value.
 -- This method will always decrement in negative direction.
--- @tparam[opt] number num decrement value
+-- @tparam[opt=1] number num decrement value
 -- @treturn number incremented value
 function Counter:dec( num )
 	if not self._num then

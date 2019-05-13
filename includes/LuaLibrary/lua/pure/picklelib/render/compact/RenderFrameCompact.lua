@@ -21,7 +21,7 @@ setmetatable( Subclass, { __index = Super } )
 
 --- Create a new instance.
 -- @see RenderFrame:create
--- @tparam vararg ... forwarded to @{RenderFrame:create}
+-- @tparam vararg ... forwarded to @{RenderFrame:create|superclass create method}
 -- @treturn self
 function Subclass:create( ... )
 	return Super.create( self, ... )
@@ -29,7 +29,7 @@ end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... forwarded to @{RenderFrame:_init}
+-- @tparam vararg ... forwarded to @{RenderFrame:_init|superclass init method}
 -- @return self
 function Subclass:_init( ... )
 	Super._init( self, ... )

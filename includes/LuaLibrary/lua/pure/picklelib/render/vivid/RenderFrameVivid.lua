@@ -21,7 +21,7 @@ setmetatable( Subclass, { __index = Super } )
 
 --- Create a new instance.
 -- @see RenderFrame:create
--- @tparam vararg ... forwarded to @{RenderFrame:create}
+-- @tparam vararg ... forwarded to @{RenderFrame:create|superclass create method}
 -- @treturn self
 function Subclass:create( ... )
 	return Super.create( self, ... )
@@ -29,7 +29,7 @@ end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... forwarded to @{RenderFrame:_init}
+-- @tparam vararg ... forwarded to @{RenderFrame:_init|superclass init method}
 -- @return self
 function Subclass:_init( ... )
 	Super._init( self, ... )
@@ -50,8 +50,8 @@ end
 
 --- Override realization of reported data for state.
 -- @tparam Report src that shall be realized
--- @tparam[opt] string lang code used for realization
--- @tparam[opt] Counter counter holding the running count
+-- @tparam[opt=nil] string lang code used for realization
+-- @tparam[opt=nil] Counter counter holding the running count
 -- @treturn html
 function Subclass:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
@@ -70,7 +70,7 @@ end
 
 --- Override realization of reported data for skip.
 -- @tparam Report src that shall be realized
--- @tparam[opt] string lang code used for realization
+-- @tparam[opt=nil] string lang code used for realization
 -- @treturn html
 function Subclass:realizeSkip( src, lang )
 	assert( src, 'Failed to provide a source' )
@@ -89,7 +89,7 @@ end
 
 --- Override realization of reported data for todo.
 -- @tparam Report src that shall be realized
--- @tparam[opt] string lang code used for realization
+-- @tparam[opt=nil] string lang code used for realization
 -- @treturn html
 function Subclass:realizeTodo( src, lang )
 	assert( src, 'Failed to provide a source' )
@@ -108,7 +108,7 @@ end
 
 --- Override realization of reported data for description.
 -- @tparam Report src that shall be realized
--- @tparam[opt] string lang code used for realization
+-- @tparam[opt=nil] string lang code used for realization
 -- @treturn html
 function Subclass:realizeDescription( src, lang )
 	assert( src, 'Failed to provide a source' )
@@ -128,8 +128,8 @@ end
 --- Realize reported data for header.
 -- The "header" is a composite.
 -- @tparam Report src that shall be realized
--- @tparam[opt] string lang code used for realization
--- @tparam[opt] Counter counter holding the running count
+-- @tparam[opt=nil] string lang code used for realization
+-- @tparam[opt=nil] Counter counter holding the running count
 -- @treturn html
 function Subclass:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )

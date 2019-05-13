@@ -21,7 +21,7 @@ setmetatable( Subclass, { __index = Super } )
 
 --- Create a new instance.
 -- @see Render:create
--- @tparam vararg ... forwarded to @{Render:create}
+-- @tparam vararg ... forwarded to @{Render:create|superclass create method}
 -- @treturn self
 function Subclass:create( ... )
 	return Super.create( self, ... )
@@ -29,7 +29,7 @@ end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... forwarded to @{Render:_init}
+-- @tparam vararg ... forwarded to @{Render:_init|superclass init method}
 -- @return self
 function Subclass:_init( ... )
 	Super._init( self, ... )
@@ -46,8 +46,8 @@ end
 
 --- Realize reported data for state.
 -- @tparam Report src that shall be realized
--- @tparam[opt] string lang code used for realization
--- @tparam[opt] Counter counter holding the running count
+-- @tparam[opt=nil] string lang code used for realization
+-- @tparam[opt=nil] Counter counter holding the running count
 -- @treturn string
 function Subclass:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
@@ -58,8 +58,8 @@ end
 --- Realize reported data for header.
 -- The "header" is a composite.
 -- @tparam Report src that shall be realized
--- @tparam[opt] string lang code used for realization
--- @tparam[opt] Counter counter holding the running count
+-- @tparam[opt=nil] string lang code used for realization
+-- @tparam[opt=nil] Counter counter holding the running count
 -- @treturn string
 function Subclass:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
@@ -81,7 +81,7 @@ end
 
 --- Realize reported data for a line.
 -- @tparam any param that shall be realized
--- @tparam[opt] string lang code used for realization
+-- @tparam[opt=nil] string lang code used for realization
 -- @treturn string
 function Subclass:realizeLine( param, lang ) -- luacheck: no self
 	assert( param, 'Failed to provide a parameter' )
@@ -102,7 +102,7 @@ end
 --- Realize reported data for body.
 -- The "body" is a composite.
 -- @tparam Report src that shall be realized
--- @tparam[opt] string lang code used for realization
+-- @tparam[opt=nil] string lang code used for realization
 -- @treturn string
 function Subclass:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )

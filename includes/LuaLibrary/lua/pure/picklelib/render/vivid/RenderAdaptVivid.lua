@@ -21,7 +21,7 @@ setmetatable( Subclass, { __index = Super } )
 
 --- Create a new instance.
 -- @see RenderAdapt:create
--- @tparam vararg ... forwarded to @{RenderAdapt:create}
+-- @tparam vararg ... forwarded to @{RenderAdapt:create|superclass create method}
 -- @treturn self
 function Subclass:create( ... )
 	return Super.create( self, ... )
@@ -29,7 +29,7 @@ end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... forwarded to @{RenderAdapt:_init}
+-- @tparam vararg ... forwarded to @{RenderAdapt:_init|superclass init method}
 -- @return self
 function Subclass:_init( ... )
 	Super._init( self, ... )
@@ -39,8 +39,8 @@ end
 
 --- Override realization of reported data for state.
 -- @tparam Report src that shall be realized
--- @tparam[opt] string lang code used for realization
--- @tparam[opt] Counter counter holding the running count
+-- @tparam[opt=nil] string lang code used for realization
+-- @tparam[opt=nil] Counter counter holding the running count
 -- @treturn html
 function Subclass:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
@@ -59,8 +59,8 @@ end
 
 --- Override realization of reported data for header.
 -- @tparam Report src that shall be realized
--- @tparam[opt] string lang code used for realization
--- @tparam[opt] Counter counter holding the running count
+-- @tparam[opt=nil] string lang code used for realization
+-- @tparam[opt=nil] Counter counter holding the running count
 -- @treturn html
 function Subclass:realizeHeader( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
@@ -91,7 +91,7 @@ end
 
 --- Override realization of reported data for line.
 -- @tparam any param that shall be realized
--- @tparam[opt] string lang code used for realization
+-- @tparam[opt=nil] string lang code used for realization
 -- @return html
 function Subclass:realizeLine( param, lang )
 	assert( param, 'Failed to provide a parameter' )
@@ -113,7 +113,7 @@ end
 -- @todo this should probably be realize() as it should contain
 -- the header as a "dt".
 -- @tparam Report src that shall be realized
--- @tparam[opt] string lang code used for realization
+-- @tparam[opt=nil] string lang code used for realization
 -- @treturn html
 function Subclass:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )

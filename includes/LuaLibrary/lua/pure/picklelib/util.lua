@@ -27,7 +27,7 @@ end
 
 --- Size based on the raw count.
 -- Variant of 'function _.size(...)' from "Moses"
--- @tparam[opt] table|any count entries if table, count all args otherwise
+-- @tparam[opt] table|any count entries if table, count varargs otherwise
 -- @treturn number counted entries
 function util.size( ... )
 	local v = select( 1, ... )
@@ -88,7 +88,7 @@ end
 -- and 'function _.isEqual(objA, objB, useMt)' from "Moses"
 -- @param a any type of object
 -- @param b any type of object
--- @tparam[opt] boolean useMt indicator for whether to include the meta table
+-- @tparam[opt=false] boolean useMt indicator for whether to include the meta table
 -- @treturn boolean result of comparison
 function util.deepEqual( a, b, useMt )
 	local typeEqual = util.isTypeEqual( a, b )

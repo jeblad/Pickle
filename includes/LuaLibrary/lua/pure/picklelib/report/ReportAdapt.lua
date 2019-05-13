@@ -24,7 +24,7 @@ setmetatable( Subclass, { __index = Super } )
 
 --- Create a new instance.
 -- @see Report:create
--- @tparam vararg ... forwarded to @{Report:create}
+-- @tparam vararg ... forwarded to @{Report:create|superclass create method}
 -- @treturn self
 function Subclass:create( ... )
 	return Super.create( self or Subclass, ... )
@@ -82,8 +82,8 @@ end
 
 --- Realize the data by applying a render.
 -- @tparam Renders renders to use while realizing the reports
--- @tparam[opt] string lang holding the language code
--- @tparam[opt] Counter counter holding the running count
+-- @tparam[opt=nil] string lang holding the language code
+-- @tparam[opt=nil] Counter counter holding the running count
 -- @treturn string
 function Subclass:realize( renders, lang, counter )
 	assert( renders, 'Failed to provide renders' )

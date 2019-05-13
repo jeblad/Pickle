@@ -21,7 +21,7 @@ setmetatable( Subclass, { __index = Super } )
 
 --- Create a new instance.
 -- @see RenderAdapt:create
--- @tparam vararg ... forwarded to @{RenderAdapt:create}
+-- @tparam vararg ... forwarded to @{RenderAdapt:create|superclass create method}
 -- @treturn self
 function Subclass:create( ... )
 	return Super.create( self, ... )
@@ -29,7 +29,7 @@ end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... forwarded to @{RenderAdapt:_init}
+-- @tparam vararg ... forwarded to @{RenderAdapt:_init|superclass init method}
 -- @return self
 function Subclass:_init( ... )
 	Super._init( self, ... )
@@ -40,7 +40,7 @@ end
 --- Override realization of reported data for body.
 -- @todo is this correct?
 -- @tparam Report src that shall be realized
--- @tparam[opt] string lang code used for realization
+-- @tparam[opt=nil] string lang code used for realization
 -- @treturn string
 function Subclass:realizeBody( src, lang )
 	assert( src, 'Failed to provide a source' )
