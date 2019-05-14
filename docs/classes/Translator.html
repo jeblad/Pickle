@@ -32,6 +32,7 @@
 
 <h2>Contents</h2>
 <ul>
+<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -43,7 +44,7 @@
   <li><a href="../classes/Stack.html">Stack</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
-  <li><strong>Spy</strong></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
   <li><a href="../classes/ExtractorBase.html">ExtractorBase</a></li>
   <li><a href="../classes/Extractors.html">Extractors</a></li>
   <li><a href="../classes/FalseExtractor.html">FalseExtractor</a></li>
@@ -65,7 +66,7 @@
   <li><a href="../classes/Report.html">Report</a></li>
   <li><a href="../classes/ReportAdapt.html">ReportAdapt</a></li>
   <li><a href="../classes/ReportFrame.html">ReportFrame</a></li>
-  <li><a href="../classes/Translator.html">Translator</a></li>
+  <li><strong>Translator</strong></li>
   <li><a href="../classes/Translators.html">Translators</a></li>
 </ul>
 <h2>Modules</h2>
@@ -90,53 +91,46 @@
 
 <div id="content">
 
-<h1>Class <code>Spy</code></h1>
-<p>Baseclass for Spy.</p>
-<p>
-
-</p>
+<h1>Class <code>Translator</code></h1>
+<p>BaseClass for an translator strategy.</p>
+<p> This should be a strategy pattern.</p>
 
 
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#Translator._init">Translator._init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#Spy:__index">Spy:__index (key)</a></td>
+	<td class="name nowrap"><a href="#Translator:__index">Translator:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#Spy:create">Spy:create (...)</a></td>
+	<td class="name nowrap"><a href="#Translator:create">Translator:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Spy:setReport">Spy:setReport (obj)</a></td>
-	<td class="summary">Set the reference to the report.</td>
+	<td class="name nowrap"><a href="#Translator:type">Translator:type ()</a></td>
+	<td class="summary">Get the type of the strategy.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Spy:report">Spy:report ()</a></td>
-	<td class="summary">Expose reference to report.</td>
+	<td class="name nowrap"><a href="#Translator:find">Translator:find (str, pos)</a></td>
+	<td class="summary">Try to find the string for this strategy.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Spy:setReports">Spy:setReports (obj)</a></td>
-	<td class="summary">Set the reference to the reports collection.</td>
+	<td class="name nowrap"><a href="#Translator:cast">Translator:cast (str, start, finish)</a></td>
+	<td class="summary">Cast the string into the correct type for this strategy.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Spy:reports">Spy:reports ()</a></td>
-	<td class="summary">Expose reference to reports.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Spy:traceback">Spy:traceback (...)</a></td>
-	<td class="summary">Traceback function calls.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Spy:todo">Spy:todo (key, str)</a></td>
-	<td class="summary">Short report.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Spy:skip">Spy:skip (key, str)</a></td>
-	<td class="summary">Long report.</td>
+	<td class="name nowrap"><a href="#Translator:placeholder">Translator:placeholder ()</a></td>
+	<td class="summary">Get the placeholder for this strategy.</td>
 	</tr>
 </table>
 
@@ -144,12 +138,43 @@
 <br/>
 
 
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Translator._init"></a>
+    <strong>Translator._init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         list of patterns
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+</dl>
     <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
     <dt>
-    <a name = "Spy:__index"></a>
-    <strong>Spy:__index (key)</strong>
+    <a name = "Translator:__index"></a>
+    <strong>Translator:__index (key)</strong>
     </dt>
     <dd>
     Lookup of missing class members.
@@ -176,8 +201,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "Spy:create"></a>
-    <strong>Spy:create (...)</strong>
+    <a name = "Translator:create"></a>
+    <strong>Translator:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
@@ -187,7 +212,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         set to temporal (unused)
+         list of patterns
         </li>
     </ul>
 
@@ -203,146 +228,51 @@
 
 </dd>
     <dt>
-    <a name = "Spy:setReport"></a>
-    <strong>Spy:setReport (obj)</strong>
+    <a name = "Translator:type"></a>
+    <strong>Translator:type ()</strong>
     </dt>
     <dd>
-    Set the reference to the report.
- This keeps a reference, the object is not cloned.
+    Get the type of the strategy.
+ All translator strategies have an explicit type name.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Translator:find"></a>
+    <strong>Translator:find (str, pos)</strong>
+    </dt>
+    <dd>
+    Try to find the string for this strategy.
+ The goodness of the match is given by the returned position.
+ If found it should return a position and the found string.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">obj</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-         that somehow maintain a collection
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">self</span></span>
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Spy:report"></a>
-    <strong>Spy:report ()</strong>
-    </dt>
-    <dd>
-    Expose reference to report.
-
-
-
-    <h3>Returns:</h3>
-
-        Report
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Spy:setReports"></a>
-    <strong>Spy:setReports (obj)</strong>
-    </dt>
-    <dd>
-    Set the reference to the reports collection.
- This keeps a reference, the object is not cloned.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">obj</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-         that somehow maintain a collection
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">self</span></span>
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Spy:reports"></a>
-    <strong>Spy:reports ()</strong>
-    </dt>
-    <dd>
-    Expose reference to reports.
-
-
-
-    <h3>Returns:</h3>
-
-        Reports
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Spy:traceback"></a>
-    <strong>Spy:traceback (...)</strong>
-    </dt>
-    <dd>
-    Traceback function calls.
- This is a reformatted version.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">...</span>
-            <span class="types"><span class="type">vararg</span></span>
-         passed to debug.traceback
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">self</span></span>
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Spy:todo"></a>
-    <strong>Spy:todo (key, str)</strong>
-    </dt>
-    <dd>
-    Short report.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">key</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         used to identify a message
-        </li>
         <li><span class="parameter">str</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         alternate free form
+         the extraction source
+        </li>
+        <li><span class="parameter">pos</span>
+            <span class="types"><span class="type">number</span></span>
+         of the inclusive index where extraction starts
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-           <span class="types"><a class="type" href="../classes/Report.html#">Report</a></span>
+           <span class="types"><span class="type">nil</span> or <span class="type">number,number</span></span>
 
 
 
@@ -352,32 +282,60 @@
 
 </dd>
     <dt>
-    <a name = "Spy:skip"></a>
-    <strong>Spy:skip (key, str)</strong>
+    <a name = "Translator:cast"></a>
+    <strong>Translator:cast (str, start, finish)</strong>
     </dt>
     <dd>
-    Long report.
+    Cast the string into the correct type for this strategy.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">key</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         used to identify a message
-        </li>
         <li><span class="parameter">str</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         alternate free form
+         the extraction source (unused)
+        </li>
+        <li><span class="parameter">start</span>
+            <span class="types"><span class="type">number</span></span>
+         of the inclusive index where extraction starts (unused)
+        </li>
+        <li><span class="parameter">finish</span>
+            <span class="types"><span class="type">number</span></span>
+         of the inclusive index where extraction finishes (unused)
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-           <span class="types"><a class="type" href="../classes/Report.html#">Report</a></span>
+           <span class="types"><span class="type">nil</span></span>
 
 
 
 
+    <h3>Raises:</h3>
+    Unconditional unless overridden
+
+
+
+</dd>
+    <dt>
+    <a name = "Translator:placeholder"></a>
+    <strong>Translator:placeholder ()</strong>
+    </dt>
+    <dd>
+    Get the placeholder for this strategy.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+
+    <h3>Raises:</h3>
+    Unconditional unless overridden
 
 
 
