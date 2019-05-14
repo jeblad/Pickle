@@ -29,7 +29,7 @@ end
 -- @tparam vararg ... unused
 -- @return self
 function Baseclass:_init( ... ) -- luacheck: no unused args
-	self._type = 'render-base'
+	self._type = 'render'
 	return self
 end
 

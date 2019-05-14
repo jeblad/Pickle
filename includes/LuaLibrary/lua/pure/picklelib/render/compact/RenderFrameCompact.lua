@@ -33,7 +33,7 @@ end
 -- @return self
 function Subclass:_init( ... )
 	Super._init( self, ... )
-	self._type = 'render-frame-compact'
+	self._type = self._type .. '-compact'
 	return self
 end
 

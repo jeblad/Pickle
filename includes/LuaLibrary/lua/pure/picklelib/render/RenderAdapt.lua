@@ -33,7 +33,7 @@ end
 -- @return self
 function Subclass:_init( ... )
 	Super._init( self, ... )
-	self._type = 'render-adapt'
+	self._type = self._type .. '-adapt'
 	return self
 end
 
