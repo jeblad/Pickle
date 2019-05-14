@@ -10,7 +10,7 @@ local lib = require 'picklelib/render/Render'
 assert( lib )
 
 local name = 'base'
-local class = 'render-base'
+local class = 'render'
 
 local counter = require 'picklelib/Counter'
 assert( counter )
