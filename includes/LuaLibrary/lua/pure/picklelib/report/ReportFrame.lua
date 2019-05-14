@@ -46,7 +46,7 @@ end
 -- @treturn self
 function Subclass:_init( ... )
 	Super._init( self )
-	self._type = 'report-frame'
+	self._type = self._type .. '-frame'
 	if select('#',...) then
 		self:constituents():push( ... )
 	end

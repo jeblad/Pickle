@@ -32,7 +32,7 @@ function Baseclass:_init( ... ) -- luacheck: no unused args
 	self._skip = false
 	self._todo = false
 	self._state = true
-	self._type = 'report-base'
+	self._type = 'report'
 	return self
 end
 

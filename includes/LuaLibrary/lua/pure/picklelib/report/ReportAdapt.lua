@@ -39,7 +39,7 @@ function Subclass:_init( ... )
 	self._description = false
 	self._state = false
 	self._lang = false -- @todo is this correct?
-	self._type = 'report-adapt'
+	self._type = self._type .. '-adapt'
 	if select('#',...) then
 		self:lines():push( ... )
 	end
