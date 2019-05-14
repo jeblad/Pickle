@@ -1,7 +1,6 @@
 --- BaseClass for an translator strategy.
 -- This should be a strategy pattern.
--- @classmod TranslatorBase
--- @alias Translator
+-- @classmod Translator
 
 -- @var class var for lib
 local Translator = {}
@@ -16,10 +15,10 @@ end
 --- Create a new instance.
 -- @tparam vararg ... list of patterns
 -- @treturn self
-function Translator.create( ... )
-	local self = setmetatable( {}, Translator )
-	self:_init( ... )
-	return self
+function Translator:create( ... )
+	local meta = rawget( self, 'create' ) and self or getmetatable( self )
+	local new = setmetatable( {}, meta )
+	return new:_init( ... )
 end
 
 --- Initialize a new instance.
@@ -31,7 +30,7 @@ function Translator:_init( ... )
 	for _,v in ipairs( { ... } ) do
 		self._patterns:push( v )
 	end
-	self._type = 'base'
+	self._type = 'translator'
 	return self
 end
 
