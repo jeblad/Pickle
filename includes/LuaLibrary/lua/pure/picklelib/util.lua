@@ -83,7 +83,8 @@ function util.isMetatableEqual( a, b )
 end
 
 --- Deep equal of two objects.
--- Variant of ['function _.isEqual(objA, objB, useMt)'](https://github.com/Yonaba/Moses/blob/master/moses.lua#L2775-L2815)
+-- Variant of
+-- ['function _.isEqual(objA, objB, useMt)'](https://github.com/Yonaba/Moses/blob/master/moses.lua#L2775-L2815)
 -- from [Yonaba/Moses](https://github.com/Yonaba/Moses).
 -- @param a any type of object
 -- @param b any type of object
