@@ -1,5 +1,4 @@
 --- Utils to support Pickle.
--- Ideas from [Github: Yonaba/moses Moses](https://github.com/Yonaba/Moses/blob/master/moses.lua).
 -- @module util
 -- @author John Erling Blad < jeblad@gmail.com >
 
@@ -84,8 +83,8 @@ function util.isMetatableEqual( a, b )
 end
 
 --- Deep equal of two objects.
--- Variant of 'UnitTester:equals_deep(name, actual, expected, options)'
--- and 'function _.isEqual(objA, objB, useMt)' from "Moses"
+-- Variant of ['function _.isEqual(objA, objB, useMt)'](https://github.com/Yonaba/Moses/blob/master/moses.lua#L2775-L2815)
+-- from [Yonaba/Moses](https://github.com/Yonaba/Moses).
 -- @param a any type of object
 -- @param b any type of object
 -- @tparam[opt=false] boolean useMt indicator for whether to include the meta table
