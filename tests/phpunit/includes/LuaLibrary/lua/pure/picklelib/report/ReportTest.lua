@@ -10,7 +10,7 @@ local lib = require 'picklelib/report/Report'
 assert( lib )
 
 local name = 'base'
-local class = 'report-base'
+local class = 'report'
 
 local function makeTest( ... )
 	return lib:create( ... )
