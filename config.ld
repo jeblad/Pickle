@@ -30,9 +30,14 @@ readme = {
 	'topics/change-log.md',
 	'topics/databases.md',
 	'topics/dataflow.md',
+	'topics/hello-world.md',
 	'topics/lua-classes.md',
 	'topics/musings.md',
 	'topics/vscode-snippets.md'
+}
+
+examples = {
+	'examples'
 }
 
 -- new_type( 'macro', 'Macros' )

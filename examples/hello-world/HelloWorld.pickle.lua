@@ -1,0 +1,17 @@
+
+--- Pickle for HelloWorld pickle.
+return describe (function()
+	it "calls `merge` with 'foo'" (function()
+		expect( "foo" ) :first() :toBeEqual()
+	end)
+	it "calls `merge` with 'foo' and 'bar'" (function()
+		expect( "foo bar" ) :first() :toBeEqual()
+	end)
+	it "calls `merge` with 'foo', 'bar', and 'baz'" (function()
+		expect( "foo bar baz" ) :first() :toBeEqual()
+	end)
+	it "calls `merge` with 1 and 2" (function()
+		expect( 'nil' ) :first() :asType() :toBeEqual()
+		expect( 'string' ) :second() :asType() :toBeEqual()
+	end)
+end)
