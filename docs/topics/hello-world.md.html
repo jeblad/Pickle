@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Pickle documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Pickle</h1>
+
+<ul>
+  <li><a href="../mw.pickle.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Implicit_subject">Implicit subject </a></li>
+<li><a href="#Explicit_subject">Explicit subject </a></li>
+<li><a href="#Notes">Notes </a></li>
+</ul>
+
+
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/activities.md.html">Activities</a></li>
+  <li><a href="../topics/adapt.md.html">Adapt</a></li>
+  <li><a href="../topics/call-style.md.html">Call style</a></li>
+  <li><a href="../topics/change-log.md.html">Log</a></li>
+  <li><a href="../topics/databases.md.html">Databases</a></li>
+  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
+  <li><strong>Hello World</strong></li>
+  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
+  <li><a href="../topics/musings.md.html">Musings</a></li>
+  <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/util.html">util</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Stack.html">Stack</a></li>
+  <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Frame.html">Frame</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/Extractor.html">Extractor</a></li>
+  <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
+  <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
+  <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
+  <li><a href="../classes/ExtractorNumber.html">ExtractorNumber</a></li>
+  <li><a href="../classes/ExtractorString.html">ExtractorString</a></li>
+  <li><a href="../classes/ExtractorTrue.html">ExtractorTrue</a></li>
+  <li><a href="../classes/Extractors.html">Extractors</a></li>
+  <li><a href="../classes/Render.html">Render</a></li>
+  <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
+  <li><a href="../classes/RenderFrame.html">RenderFrame</a></li>
+  <li><a href="../classes/Renders.html">Renders</a></li>
+  <li><a href="../classes/RenderAdaptCompact.html">RenderAdaptCompact</a></li>
+  <li><a href="../classes/RenderFrameCompact.html">RenderFrameCompact</a></li>
+  <li><a href="../classes/RenderAdaptFull.html">RenderAdaptFull</a></li>
+  <li><a href="../classes/RenderFrameFull.html">RenderFrameFull</a></li>
+  <li><a href="../classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
+  <li><a href="../classes/RenderFrameVivid.html">RenderFrameVivid</a></li>
+  <li><a href="../classes/Report.html">Report</a></li>
+  <li><a href="../classes/ReportAdapt.html">ReportAdapt</a></li>
+  <li><a href="../classes/ReportFrame.html">ReportFrame</a></li>
+  <li><a href="../classes/Translator.html">Translator</a></li>
+  <li><a href="../classes/Translators.html">Translators</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/HelloWorld.lua.html">HelloWorld.lua</a></li>
+  <li><a href="../examples/HelloWorld.pickle.lua.html">HelloWorld.pickle.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>Hello World</h1>
+
+<p>The <a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">Hello World</a> is a customary small snippet of code for familiarizing yourself with a new system. Such a module could be something like the following</p>
+
+
+<pre>
+<span class="keyword">local</span> lib = {}
+
+<span class="keyword">function</span> lib.say()
+  <span class="keyword">return</span> <span class="string">"Hello"</span>
+<span class="keyword">end</span>
+
+<span class="keyword">return</span> lib
+</pre>
+
+
+<p>A similar but slightly more complex Lua module is available as <a href="../examples/HelloWorld.lua.html#">HelloWorld.lua</a> in the example section, and with a test module <a href="../examples/HelloWorld.pickle.lua.html#">HelloWorld.pickle.lua</a>.</p>
+
+<p>A few slightly different test modules (“pickles”) can be made. The first one use an implicit subject, while the second use an explicit subject.</p>
+
+<p><a name="Implicit_subject"></a></p>
+<h2>Implicit subject</h2>
+
+<p>The simplest form will use implicit transfer of test subjects, that is the parent module above this one with the correct content model will be used as the test subject. If the pickle page is named as <code>Module:Hello World/testcase</code> then the module at <code>Module:Hello World</code> will be used.</p>
+
+<p>This gives the absolute simplest form as the following, given that the configuration is set to allow the common require to be stripped off</p>
+
+
+<pre>
+<span class="keyword">return</span> describe (<span class="keyword">function</span>()
+  it <span class="string">'say'</span> (<span class="keyword">function</span>()
+    expect :toBe( <span class="string">"Hello"</span> )
+  <span class="keyword">end</span>)
+<span class="keyword">end</span>)
+</pre>
+
+
+<p><strong>Code 1</strong>: <em>Implicit subject.</em></p>
+
+<p>This form is what we use most of the time, as it nicely avoids a few lines of template code. </p>
+
+<p>If we write out the code, with all extra statements, then it will be </p>
+
+
+<pre>
+<span class="keyword">local</span> lib = <span class="global">require</span> <span class="string">'Module:Hello World'</span>
+describe (lib) (<span class="keyword">function</span>()
+  it <span class="string">'say'</span> (<span class="keyword">function</span>()
+    expect :toBe( <span class="string">"Hello"</span> )
+  <span class="keyword">end</span>)
+<span class="keyword">end</span>)
+<span class="keyword">return</span> result()
+</pre>
+
+
+<p><strong>Code 2</strong>: <em>Implicit subject written out.</em></p>
+
+<p><a name="Explicit_subject"></a></p>
+<h2>Explicit subject</h2>
+
+<p>Sometimes we can't use the implicit form, usually because the subject isn't properly identified. This could happen if the subject must be built before it can be tested. In this case we must do an explicit transfer of test subjects, and that is usually done by a call inside a <code>subject</code> function. This function should return an instance of something that has or can be given a metatable. The <code>subject</code> is tucked away on a stack, and the top value reused whenever a frame (the <code>description</code> is a frame) lacks a subject.</p>
+
+<p>This gives a form as the following</p>
+
+
+<pre>
+subject (<span class="keyword">function</span>()
+  <span class="keyword">return</span> <span class="global">require</span> <span class="string">'Module:Hello World'</span>
+<span class="keyword">end</span>)
+describe (<span class="keyword">function</span>()
+  it <span class="string">'say'</span> (<span class="keyword">function</span>()
+    expect :toBe( <span class="string">"Hello"</span> )
+  <span class="keyword">end</span>)
+<span class="keyword">end</span>)
+</pre>
+
+
+<p><strong>Code 3</strong>: <em>Explicit subject.</em></p>
+
+<p>This form can be simplified into the following</p>
+
+
+<pre>
+describe :subject(<span class="global">require</span> <span class="string">'Module:Hello World'</span>) (<span class="keyword">function</span>()
+  it <span class="string">'say'</span> (<span class="keyword">function</span>()
+    expect :toBe( <span class="string">"Hello"</span> )
+  <span class="keyword">end</span>)
+<span class="keyword">end</span>)
+</pre>
+
+
+<p><strong>Code 4</strong>: <em>Explicit subject simplified.</em></p>
+
+<p>And even further simplified, given that a table is recognized as a subject, as the following</p>
+
+
+<pre>
+describe (<span class="global">require</span> <span class="string">'Module:Hello World'</span>) (<span class="keyword">function</span>()
+  it <span class="string">'say'</span> (<span class="keyword">function</span>()
+    expect :toBe( <span class="string">"Hello"</span> )
+  <span class="keyword">end</span>)
+<span class="keyword">end</span>)
+</pre>
+
+
+<p><strong>Code 5</strong>: <em>Explicit subject simplified and rewritten.</em></p>
+
+<p>Which is virtually the same as the form in code 2.</p>
+
+<p><a name="Notes"></a></p>
+<h2>Notes</h2>
+
+<ul>
+    <li><a href="call-style">call style</a> – how to make the MediaWiki linter accept the chained style</li>
+</ul>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
+

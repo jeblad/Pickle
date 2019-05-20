@@ -32,18 +32,9 @@
 
 
 
-<h2>Topics</h2>
-<ul class="">
-  <li><a href="../topics/activities.md.html">Activities</a></li>
-  <li><a href="../topics/adapt.md.html">Adapt</a></li>
-  <li><a href="../topics/call-style.md.html">Call style</a></li>
-  <li><a href="../topics/change-log.md.html">Log</a></li>
-  <li><a href="../topics/databases.md.html">Databases</a></li>
-  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
-  <li><a href="../topics/hello-world.md.html">Hello World</a></li>
-  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
-  <li><a href="../topics/musings.md.html">Musings</a></li>
-  <li><strong>VScode snippets</strong></li>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><strong>hello-world.lua</strong></li>
 </ul>
 <h2>Modules</h2>
 <ul class="nowrap">
@@ -81,26 +72,37 @@
   <li><a href="../classes/Translator.html">Translator</a></li>
   <li><a href="../classes/Translators.html">Translators</a></li>
 </ul>
-<h2>Examples</h2>
-<ul class="nowrap">
-  <li><a href="../examples/HelloWorld.lua.html">HelloWorld.lua</a></li>
-  <li><a href="../examples/HelloWorld.pickle.lua.html">HelloWorld.pickle.lua</a></li>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/activities.md.html">Activities</a></li>
+  <li><a href="../topics/adapt.md.html">Adapt</a></li>
+  <li><a href="../topics/call-style.md.html">Call style</a></li>
+  <li><a href="../topics/change-log.md.html">Log</a></li>
+  <li><a href="../topics/databases.md.html">Databases</a></li>
+  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
+  <li><a href="../topics/hello-world.md.html">Hello World</a></li>
+  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
+  <li><a href="../topics/musings.md.html">Musings</a></li>
+  <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
 </ul>
 
 </div>
 
 <div id="content">
 
+    <h2>hello-world.lua</h2>
+<pre>
+<span class="keyword">local</span> lib = {}
 
-<h1>VScode snippets</h1>
+<span class="keyword">function</span> lib._hello( name )
+	<span class="keyword">return</span> <span class="string">'Hello '</span> .. name
+<span class="keyword">end</span>
 
-<p>Development of this extension is done in <a href="https://e.wikipedia.org/wiki/Visual_Studio_Code">Visual Studio Code</a>. To make it slightly easier and faster to type the Lua calls a set of code snippets are made available. They can be downloaded from <a href="https://marketplace.visualstudio.com/items?itemName=jeblad-3.WMFsnippets">Visual Studio Marketplace: Lua snippets for Wikimedia</a> or from <a href="https://github.com/jeblad/vscode-wikimediafunctions-snippets">GitHub: jeblad/vscode-wikimediafunctions-snippets</a>. It is also possible to do a direct install from inside VScode</p>
+<span class="keyword">function</span> lib.hello( frame )
+	<span class="keyword">return</span> lib._hello( frame.getArgument( <span class="number">1</span> ) )
+<span class="keyword">end</span>
 
-<pre><code> ext install jeblad-3.WMFsnippets
-</code></pre>
-
-
-<p>Due to lack of a proper Lua intellisense it only works sort of halfway.</p>
+<span class="keyword">return</span> lib</pre>
 
 
 </div> <!-- id="content" -->

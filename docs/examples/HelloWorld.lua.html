@@ -32,18 +32,10 @@
 
 
 
-<h2>Topics</h2>
-<ul class="">
-  <li><a href="../topics/activities.md.html">Activities</a></li>
-  <li><a href="../topics/adapt.md.html">Adapt</a></li>
-  <li><a href="../topics/call-style.md.html">Call style</a></li>
-  <li><a href="../topics/change-log.md.html">Log</a></li>
-  <li><a href="../topics/databases.md.html">Databases</a></li>
-  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
-  <li><a href="../topics/hello-world.md.html">Hello World</a></li>
-  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
-  <li><a href="../topics/musings.md.html">Musings</a></li>
-  <li><strong>VScode snippets</strong></li>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><strong>HelloWorld.lua</strong></li>
+  <li><a href="../examples/HelloWorld.pickle.lua.html">HelloWorld.pickle.lua</a></li>
 </ul>
 <h2>Modules</h2>
 <ul class="nowrap">
@@ -81,26 +73,58 @@
   <li><a href="../classes/Translator.html">Translator</a></li>
   <li><a href="../classes/Translators.html">Translators</a></li>
 </ul>
-<h2>Examples</h2>
-<ul class="nowrap">
-  <li><a href="../examples/HelloWorld.lua.html">HelloWorld.lua</a></li>
-  <li><a href="../examples/HelloWorld.pickle.lua.html">HelloWorld.pickle.lua</a></li>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/activities.md.html">Activities</a></li>
+  <li><a href="../topics/adapt.md.html">Adapt</a></li>
+  <li><a href="../topics/call-style.md.html">Call style</a></li>
+  <li><a href="../topics/change-log.md.html">Log</a></li>
+  <li><a href="../topics/databases.md.html">Databases</a></li>
+  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
+  <li><a href="../topics/hello-world.md.html">Hello World</a></li>
+  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
+  <li><a href="../topics/musings.md.html">Musings</a></li>
+  <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
 </ul>
 
 </div>
 
 <div id="content">
 
+    <h2>HelloWorld.lua</h2>
+<pre>
+<span class="comment">--- Module for HelloWorld.
+</span><span class="comment">-- Example module to familiarize yourself with the system.
+</span><span class="comment">-- Purpose of this module is to provide a basic module for testing.
+</span><span class="comment">-- @module HelloWorld
+</span><span class="comment">-- @see hello-world.md
+</span><span class="keyword">local</span> HelloWorld = {}
 
-<h1>VScode snippets</h1>
+<span class="comment">--- Merge text fragments
+</span><span class="comment">-- This will interact with the method arguments.
+</span><span class="comment">-- @tparam string ... text fragments
+</span><span class="comment">-- @treturn string|nil
+</span><span class="comment">-- @return string error message
+</span><span class="keyword">function</span> HelloWorld.merge( ... )
+	<span class="keyword">for</span> i,v <span class="keyword">in</span> <span class="global">ipairs</span>( { ... } ) <span class="keyword">do</span>
+		<span class="keyword">if</span> <span class="global">type</span>( v ) ~= <span class="string">'string'</span> <span class="keyword">then</span>
+			<span class="keyword">return</span> <span class="keyword">nil</span>, <span class="string">"Made a boo-boo!"</span>
+		<span class="keyword">end</span>
+	<span class="keyword">end</span>
+	<span class="keyword">return</span> <span class="global">table</span>.concat( { ... }, <span class="string">' '</span> )
+<span class="keyword">end</span>
 
-<p>Development of this extension is done in <a href="https://e.wikipedia.org/wiki/Visual_Studio_Code">Visual Studio Code</a>. To make it slightly easier and faster to type the Lua calls a set of code snippets are made available. They can be downloaded from <a href="https://marketplace.visualstudio.com/items?itemName=jeblad-3.WMFsnippets">Visual Studio Marketplace: Lua snippets for Wikimedia</a> or from <a href="https://github.com/jeblad/vscode-wikimediafunctions-snippets">GitHub: jeblad/vscode-wikimediafunctions-snippets</a>. It is also possible to do a direct install from inside VScode</p>
+<span class="comment">--- Outer hello function.
+</span><span class="comment">-- This will interact with the frame stack. Without additional tools
+</span><span class="comment">-- to create a mock for the frame instance it is better left alone.
+</span><span class="comment">-- @param frame instance
+</span><span class="comment">-- @return string
+</span><span class="keyword">function</span> HelloWorld.hello( frame )
+	<span class="keyword">local</span> text, err = HelloWorld._hello( <span class="global">unpack</span>( frame.args ) )
+	<span class="keyword">return</span> text <span class="keyword">or</span> err
+<span class="keyword">end</span>
 
-<pre><code> ext install jeblad-3.WMFsnippets
-</code></pre>
-
-
-<p>Due to lack of a proper Lua intellisense it only works sort of halfway.</p>
+<span class="keyword">return</span> HelloWorld</pre>
 
 
 </div> <!-- id="content" -->
