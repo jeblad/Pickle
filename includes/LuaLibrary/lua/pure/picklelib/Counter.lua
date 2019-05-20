@@ -1,4 +1,5 @@
 --- Counter for a continuous incrementing number.
+-- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Counter
 
 -- @var class for the lib
