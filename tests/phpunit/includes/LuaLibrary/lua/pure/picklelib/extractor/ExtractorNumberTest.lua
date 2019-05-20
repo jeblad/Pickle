@@ -1,4 +1,4 @@
---- Tests for the string extractor module.
+--- Tests for the number extractor module.
 -- This is a preliminary solution.
 -- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
@@ -6,16 +6,16 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/extractor/StringExtractor'
-assert( lib )
 local name = 'extractor'
 
 local function makeTest( ... )
-	return lib.create( ... )
+	local lib = require 'picklelib/extractor/ExtractorNumber'
+	assert( lib )
+	return lib:create( ... )
 end
 
 local function testExists()
-	return type( lib )
+	return type( makeTest() )
 end
 
 local function testCreate( ... )
@@ -69,7 +69,7 @@ local tests = {
 	{
 		name = name .. '.type ()',
 		func = testType,
-		expect = { 'string' }
+		expect = { 'number' }
 	},
 	{
 		name = name .. '.find (not matched)',
@@ -80,38 +80,62 @@ local tests = {
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { '"test"' },
-		expect = { 2, 5 }
+		args = { '42' },
+		expect = { 1, 2 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { '"test" bar baz' },
-		expect = { 2, 5 }
+		args = { '-42.5' },
+		expect = { 1, 5 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'foo "test" baz' },
-		expect = { 6, 9 }
+		args = { '42 bar baz' },
+		expect = { 1, 2 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'foo bar "test"' },
-		expect = { 10, 13 }
+		args = { '-42.5 bar baz' },
+		expect = { 1, 5 }
+	},
+	{
+		name = name .. '.find (matched)',
+		func = testFind,
+		args = { 'foo 42 baz' },
+		expect = { 5, 6 }
+	},
+	{
+		name = name .. '.find (matched)',
+		func = testFind,
+		args = { 'foo -42.5 baz' },
+		expect = { 5, 9 }
+	},
+	{
+		name = name .. '.find (matched)',
+		func = testFind,
+		args = { 'foo bar 42' },
+		expect = { 9, 10 }
+	},
+	{
+		name = name .. '.find (matched)',
+		func = testFind,
+		args = { 'foo bar -42.5' },
+		expect = { 9, 13 }
 	},
 	{
 		name = name .. '.cast (empty)',
 		func = testCast,
-		args = { 'foo bar "test"', 10, 13 },
-		expect = { "test" }
+		args = { 'foo bar 42', 9, 10 },
+		expect = { 42 }
 	},
 	{
 		name = name .. '.placeholder ()',
 		func = testPlaceholder,
 		args = {},
-		expect = { 'string' }
+		expect = { 'number' }
 	},
 }
 

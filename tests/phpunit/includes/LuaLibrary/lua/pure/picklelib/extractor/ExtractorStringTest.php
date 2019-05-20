@@ -11,16 +11,16 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class ExtractorBaseTest extends Scribunto_LuaEngineTestBase {
+class ExtractorStringTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'ExtractorBaseTest';
+	protected static $moduleName = 'ExtractorStringTest';
 
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {
 		return parent::getTestModules() + [
-			'ExtractorBaseTest' => __DIR__ . '/ExtractorBaseTest.lua'
+			'ExtractorStringTest' => __DIR__ . '/ExtractorStringTest.lua'
 		];
 	}
 }

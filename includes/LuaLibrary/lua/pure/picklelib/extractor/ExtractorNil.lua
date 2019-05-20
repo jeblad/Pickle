@@ -1,37 +1,36 @@
 --- Subclass to do specialization of the extractor strategy class.
 -- This is the spesialization to do casting into a nil type
--- @classmod NilExtractor
--- @alias Extractor
+-- @classmod ExtractorNil
+-- @alias Subclass
 
 -- pure libs
-local Base = require 'picklelib/extractor/ExtractorBase'
+local Super = require 'picklelib/extractor/Extractor'
 
 -- @var class var for lib
-local Extractor = {}
+local Subclass = {}
 
 --- Lookup of missing class members.
 -- @tparam string key lookup of member
 -- @return any
-function Extractor:__index( key ) -- luacheck: no self
-	return Extractor[key]
+function Subclass:__index( key ) -- luacheck: no self
+	return Subclass[key]
 end
 
 -- @var metatable for the class
-setmetatable( Extractor, { __index = Base } )
+setmetatable( Subclass, { __index = Super } )
 
 --- Create a new instance.
+-- @tparam vararg ... forwarded to @{Extractor:create|superclass create method}
 -- @treturn self
-function Extractor.create()
-	local self = setmetatable( {}, Extractor )
-	self:_init()
-	return self
+function Subclass:create( ... )
+	return Super.create( self or Subclass, ... )
 end
 
 --- Initialize a new instance.
 -- @local
 -- @treturn self
-function Extractor:_init()
-	Base._init( self,
+function Subclass:_init()
+	Super._init( self,
 		{ '^nil$', 0, 0 },
 		{ '^nil[%s%p]', 0, -1 },
 		{ '[%s%p]nil$', 1, 0 },
@@ -42,17 +41,17 @@ end
 
 --- Cast the string into the correct type for this strategy.
 -- There are no safeguards for erroneous casts.
--- @see ExtractorBase:cast
+-- @see Extractor:cast
 -- @treturn nil
-function Extractor:cast() -- luacheck: no self
+function Subclass:cast() -- luacheck: no self
 	return nil
 end
 
 --- Get the placeholder for this strategy.
 -- @treturn string
-function Extractor:placeholder() -- luacheck: no self
+function Subclass:placeholder() -- luacheck: no self
 	return 'nil'
 end
 
 -- Return the final class.
-return Extractor
+return Subclass

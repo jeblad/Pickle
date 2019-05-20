@@ -1,4 +1,4 @@
---- Tests for the json extractor module.
+--- Tests for the string extractor module.
 -- This is a preliminary solution.
 -- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
@@ -6,16 +6,16 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/extractor/JsonExtractor'
-assert( lib )
 local name = 'extractor'
 
 local function makeTest( ... )
-	return lib.create( ... )
+	local lib = require 'picklelib/extractor/ExtractorString'
+	assert( lib )
+	return lib:create( ... )
 end
 
 local function testExists()
-	return type( lib )
+	return type( makeTest() )
 end
 
 local function testCreate( ... )
@@ -69,7 +69,7 @@ local tests = {
 	{
 		name = name .. '.type ()',
 		func = testType,
-		expect = { 'json' }
+		expect = { 'string' }
 	},
 	{
 		name = name .. '.find (not matched)',
@@ -80,56 +80,38 @@ local tests = {
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { '{}' },
-		expect = { 1, 2 }
+		args = { '"test"' },
+		expect = { 2, 5 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { '[]' },
-		expect = { 1, 2 }
+		args = { '"test" bar baz' },
+		expect = { 2, 5 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { '["test"] bar baz' },
-		expect = { 1, 8 }
+		args = { 'foo "test" baz' },
+		expect = { 6, 9 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'foo ["test"] baz' },
-		expect = { 5, 12 }
-	},
-	{
-		name = name .. '.find (matched)',
-		func = testFind,
-		args = { 'foo bar ["test"]' },
-		expect = { 9, 16 }
-	},
-	{
-		name = name .. '.find (matched)',
-		func = testFind,
-		args = { 'foo {"test":["ping","pong"],"test2":42} baz' },
-		expect = { 5, 39 }
+		args = { 'foo bar "test"' },
+		expect = { 10, 13 }
 	},
 	{
 		name = name .. '.cast (empty)',
 		func = testCast,
-		args = { 'foo bar ["test"]', 9, 16 },
-		expect = { {"test"} }
-	},
-	{
-		name = name .. '.cast (empty)',
-		func = testCast,
-		args = { 'foo {"test":["ping","pong"],"test2":42} baz', 5, 39 },
-		expect = { { ["test"] = { "ping", "pong" }, ["test2"] = 42 } }
+		args = { 'foo bar "test"', 10, 13 },
+		expect = { "test" }
 	},
 	{
 		name = name .. '.placeholder ()',
 		func = testPlaceholder,
 		args = {},
-		expect = { 'json' }
+		expect = { 'string' }
 	},
 }
 

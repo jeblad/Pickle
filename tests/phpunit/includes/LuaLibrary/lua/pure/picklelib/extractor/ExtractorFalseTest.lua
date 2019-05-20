@@ -1,4 +1,4 @@
---- Tests for the base extractor module.
+--- Tests for the boolean false extractor module.
 -- This is a preliminary solution.
 -- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
@@ -6,16 +6,16 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/extractor/ExtractorBase'
-assert( lib )
 local name = 'extractor'
 
 local function makeTest( ... )
-	return lib.create( ... )
+	local lib = require 'picklelib/extractor/ExtractorFalse'
+	assert( lib )
+	return lib:create( ... )
 end
 
 local function testExists()
-	return type( lib )
+	return type( makeTest() )
 end
 
 local function testCreate( ... )
@@ -30,14 +30,12 @@ local function testFind( str, ... )
 	return makeTest( ... ):find( str, 1 )
 end
 
-local function testCast()
-	local val, err = pcall( function() makeTest():cast() end )
-	return val, string.match( err, 'Method should be overridden' )
+local function testCast( ... )
+	return makeTest():cast( ... )
 end
 
 local function testPlaceholder()
-	local val, err = pcall( function() makeTest():placeholder() end )
-	return val, string.match( err, 'Method should be overridden' )
+	return makeTest():placeholder()
 end
 
 local tests = {
@@ -71,43 +69,48 @@ local tests = {
 	{
 		name = name .. '.type ()',
 		func = testType,
-		expect = { 'base' }
+		expect = { 'false' }
 	},
 	{
 		name = name .. '.find (not matched)',
 		func = testFind,
-		args = { 'foo bar baz', { 'test', 0, 0 } },
+		args = { 'foo bar baz' },
 		expect = {}
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'foo bar baz', { '^foo', 0, 0 } },
-		expect = { 1, 3 }
+		args = { 'false' },
+		expect = { 1, 5 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'foo bar baz', { 'bar', 0, 0 } },
-		expect = { 5, 7 }
+		args = { 'false bar baz' },
+		expect = { 1, 5 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'foo bar baz', { 'baz$', 0, 0 } },
-		expect = { 9, 11 }
+		args = { 'foo false baz' },
+		expect = { 5, 9 }
 	},
 	{
-		name = name .. '.cast ()',
+		name = name .. '.find (matched)',
+		func = testFind,
+		args = { 'foo bar false' },
+		expect = { 9, 13 }
+	},
+	{
+		name = name .. '.cast (empty)',
 		func = testCast,
-		args = {},
-		expect = { false, "Method should be overridden" }
+		expect = { false }
 	},
 	{
 		name = name .. '.placeholder ()',
 		func = testPlaceholder,
 		args = {},
-		expect = { false, "Method should be overridden" }
+		expect = { 'boolean' }
 	},
 }
 

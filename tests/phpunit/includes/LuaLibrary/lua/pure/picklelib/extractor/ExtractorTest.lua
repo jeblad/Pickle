@@ -1,4 +1,4 @@
---- Tests for the nil extractor module.
+--- Tests for the base extractor module.
 -- This is a preliminary solution.
 -- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
@@ -6,16 +6,16 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/extractor/NilExtractor'
-assert( lib )
 local name = 'extractor'
 
 local function makeTest( ... )
-	return lib.create( ... )
+	local lib = require 'picklelib/extractor/Extractor'
+	assert( lib )
+	return lib:create( ... )
 end
 
 local function testExists()
-	return type( lib )
+	return type( makeTest() )
 end
 
 local function testCreate( ... )
@@ -30,87 +30,84 @@ local function testFind( str, ... )
 	return makeTest( ... ):find( str, 1 )
 end
 
-local function testCast( ... )
-	return makeTest():cast( ... )
+local function testCast()
+	local val, err = pcall( function() makeTest():cast() end )
+	return val, string.match( err, 'Method should be overridden' )
 end
 
 local function testPlaceholder()
-	return makeTest():placeholder()
+	local val, err = pcall( function() makeTest():placeholder() end )
+	return val, string.match( err, 'Method should be overridden' )
 end
 
 local tests = {
 	{
 		name = name .. ' exists',
 		func = testExists,
-		type ='ToString',
+		type = 'ToString',
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.create (nil value type)',
 		func = testCreate,
-		type ='ToString',
+		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.create (single value type)',
 		func = testCreate,
-		type ='ToString',
+		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.create (multiple value type)',
 		func = testCreate,
-		type ='ToString',
+		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
 	{
 		name = name .. '.type ()',
 		func = testType,
-		expect = { 'nil' }
+		expect = { 'base' }
 	},
 	{
 		name = name .. '.find (not matched)',
 		func = testFind,
-		args = { 'foo bar baz' },
+		args = { 'foo bar baz', { 'test', 0, 0 } },
 		expect = {}
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'nil' },
+		args = { 'foo bar baz', { '^foo', 0, 0 } },
 		expect = { 1, 3 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'nil bar baz' },
-		expect = { 1, 3 }
-	},
-	{
-		name = name .. '.find (matched)',
-		func = testFind,
-		args = { 'foo nil baz' },
+		args = { 'foo bar baz', { 'bar', 0, 0 } },
 		expect = { 5, 7 }
 	},
 	{
 		name = name .. '.find (matched)',
 		func = testFind,
-		args = { 'foo bar nil' },
+		args = { 'foo bar baz', { 'baz$', 0, 0 } },
 		expect = { 9, 11 }
 	},
 	{
-		name = name .. '.cast (empty)',
+		name = name .. '.cast ()',
 		func = testCast,
-		expect = { nil }
+		args = {},
+		expect = { false, "Method should be overridden" }
 	},
 	{
 		name = name .. '.placeholder ()',
 		func = testPlaceholder,
 		args = {},
-		expect = { 'nil' }
+		expect = { false, "Method should be overridden" }
 	},
 }
 

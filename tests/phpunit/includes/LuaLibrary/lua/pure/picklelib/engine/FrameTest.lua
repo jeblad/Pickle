@@ -216,8 +216,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			}
 		},
 		expect = {
@@ -229,8 +229,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			},
 			'foo "bar" baz'
 		},
@@ -243,8 +243,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			},
 			'foo "bar" baz',
 			'ping 42 pong'
@@ -258,8 +258,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			},
 			function() assert( false, 'go zip' ) end
 		},
@@ -274,8 +274,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			},
 			function() assert( false, 'go zip' ) end
 		},
@@ -291,8 +291,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			},
 			'foo "bar" baz',
 			'ping 42 pong',
@@ -312,8 +312,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			},
 			function() end
 		},
@@ -327,8 +327,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			},
 			'foo "bar" baz',
 			function() end
@@ -343,8 +343,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			},
 			'foo "bar" baz',
 			'ping 42 pong',
@@ -362,8 +362,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			},
 			function() error( 'this is borken' ) end
 		},
@@ -378,8 +378,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			},
 			'foo "bar" baz',
 			function() error( 'this is borken' ) end
@@ -395,8 +395,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			},
 			"foo \"bar\" baz",
 			'ping 42 pong',
@@ -416,8 +416,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			},
 			-- pass as subject through return value
 			function(...) return ... end
@@ -434,8 +434,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			},
 			'foo "bar" baz',
 			-- pass as subject through return value
@@ -453,8 +453,8 @@ local tests = {
 		func = testEval,
 		args = {
 			{
-				"picklelib/extractor/StringExtractor",
-				"picklelib/extractor/NumberExtractor"
+				"picklelib/extractor/ExtractorString",
+				"picklelib/extractor/ExtractorNumber"
 			},
 			'foo "bar" baz',
 			'ping 42 pong',

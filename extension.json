@@ -130,12 +130,12 @@
 			"report-frame": "Frame"
 		},
 		"Extractor": [
-			"picklelib/extractor/NilExtractor",
-			"picklelib/extractor/FalseExtractor",
-			"picklelib/extractor/TrueExtractor",
-			"picklelib/extractor/StringExtractor",
-			"picklelib/extractor/NumberExtractor",
-			"picklelib/extractor/JsonExtractor"
+			"picklelib/extractor/ExtractorNil",
+			"picklelib/extractor/ExtractorFalse",
+			"picklelib/extractor/ExtractorTrue",
+			"picklelib/extractor/ExtractorString",
+			"picklelib/extractor/ExtractorNumber",
+			"picklelib/extractor/ExtractorJson"
 		],
 		"NeglectSubpages": [
 			"/^(?:.*?\\.)?doc$/",
