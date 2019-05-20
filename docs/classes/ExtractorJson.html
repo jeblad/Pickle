@@ -46,13 +46,13 @@
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
   <li><a href="../classes/Extractor.html">Extractor</a></li>
+  <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
+  <li><strong>ExtractorJson</strong></li>
+  <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
+  <li><a href="../classes/ExtractorNumber.html">ExtractorNumber</a></li>
+  <li><a href="../classes/ExtractorString.html">ExtractorString</a></li>
+  <li><a href="../classes/ExtractorTrue.html">ExtractorTrue</a></li>
   <li><a href="../classes/Extractors.html">Extractors</a></li>
-  <li><a href="../classes/FalseExtractor.html">FalseExtractor</a></li>
-  <li><a href="../classes/JsonExtractor.html">JsonExtractor</a></li>
-  <li><a href="../classes/NilExtractor.html">NilExtractor</a></li>
-  <li><a href="../classes/NumberExtractor.html">NumberExtractor</a></li>
-  <li><strong>StringExtractor</strong></li>
-  <li><a href="../classes/TrueExtractor.html">TrueExtractor</a></li>
   <li><a href="../classes/Render.html">Render</a></li>
   <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
   <li><a href="../classes/RenderFrame.html">RenderFrame</a></li>
@@ -91,7 +91,7 @@
 
 <div id="content">
 
-<h1>Class <code>StringExtractor</code></h1>
+<h1>Class <code>ExtractorJson</code></h1>
 <p>Subclass to do specialization of the extractor strategy class.</p>
 <p> This is the spesialization to do casting into a string type</p>
 
@@ -99,30 +99,30 @@
 <h2><a href="#Local_Functions">Local Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#StringExtractor._init">StringExtractor._init ()</a></td>
+	<td class="name nowrap"><a href="#ExtractorJson._init">ExtractorJson._init ()</a></td>
 	<td class="summary">Initialize a new instance.</td>
 	</tr>
 </table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#StringExtractor:__index">StringExtractor:__index (key)</a></td>
+	<td class="name nowrap"><a href="#ExtractorJson:__index">ExtractorJson:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#StringExtractor:create">StringExtractor:create (...)</a></td>
+	<td class="name nowrap"><a href="#ExtractorJson:create">ExtractorJson:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#StringExtractor:cast">StringExtractor:cast (str, start, finish)</a></td>
+	<td class="name nowrap"><a href="#ExtractorJson:cast">ExtractorJson:cast (str, start, finish)</a></td>
 	<td class="summary">Cast the string into the correct type for this strategy.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#StringExtractor:placeholder">StringExtractor:placeholder ()</a></td>
-	<td class="summary">Get the placeholder for this strategy.</td>
+	<td class="name nowrap"><a href="#ExtractorJson:placeholder">ExtractorJson:placeholder ()</a></td>
+	<td class="summary">Get the placeholder for this strategy</td>
 	</tr>
 </table>
 
@@ -134,8 +134,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "StringExtractor._init"></a>
-    <strong>StringExtractor._init ()</strong>
+    <a name = "ExtractorJson._init"></a>
+    <strong>ExtractorJson._init ()</strong>
     </dt>
     <dd>
     Initialize a new instance.
@@ -158,8 +158,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "StringExtractor:__index"></a>
-    <strong>StringExtractor:__index (key)</strong>
+    <a name = "ExtractorJson:__index"></a>
+    <strong>ExtractorJson:__index (key)</strong>
     </dt>
     <dd>
     Lookup of missing class members.
@@ -186,8 +186,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "StringExtractor:create"></a>
-    <strong>StringExtractor:create (...)</strong>
+    <a name = "ExtractorJson:create"></a>
+    <strong>ExtractorJson:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
@@ -213,8 +213,8 @@
 
 </dd>
     <dt>
-    <a name = "StringExtractor:cast"></a>
-    <strong>StringExtractor:cast (str, start, finish)</strong>
+    <a name = "ExtractorJson:cast"></a>
+    <strong>ExtractorJson:cast (str, start, finish)</strong>
     </dt>
     <dd>
     Cast the string into the correct type for this strategy.
@@ -239,7 +239,7 @@
 
     <h3>Returns:</h3>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><span class="type">JSON</span></span>
 
 
 
@@ -253,11 +253,11 @@
 
 </dd>
     <dt>
-    <a name = "StringExtractor:placeholder"></a>
-    <strong>StringExtractor:placeholder ()</strong>
+    <a name = "ExtractorJson:placeholder"></a>
+    <strong>ExtractorJson:placeholder ()</strong>
     </dt>
     <dd>
-    Get the placeholder for this strategy.
+    Get the placeholder for this strategy
 
 
 

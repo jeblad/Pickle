@@ -45,14 +45,14 @@
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
-  <li><a href="../classes/Extractor.html">Extractor</a></li>
+  <li><strong>Extractor</strong></li>
+  <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
+  <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
+  <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
+  <li><a href="../classes/ExtractorNumber.html">ExtractorNumber</a></li>
+  <li><a href="../classes/ExtractorString.html">ExtractorString</a></li>
+  <li><a href="../classes/ExtractorTrue.html">ExtractorTrue</a></li>
   <li><a href="../classes/Extractors.html">Extractors</a></li>
-  <li><a href="../classes/FalseExtractor.html">FalseExtractor</a></li>
-  <li><a href="../classes/JsonExtractor.html">JsonExtractor</a></li>
-  <li><a href="../classes/NilExtractor.html">NilExtractor</a></li>
-  <li><a href="../classes/NumberExtractor.html">NumberExtractor</a></li>
-  <li><strong>StringExtractor</strong></li>
-  <li><a href="../classes/TrueExtractor.html">TrueExtractor</a></li>
   <li><a href="../classes/Render.html">Render</a></li>
   <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
   <li><a href="../classes/RenderFrame.html">RenderFrame</a></li>
@@ -91,37 +91,45 @@
 
 <div id="content">
 
-<h1>Class <code>StringExtractor</code></h1>
-<p>Subclass to do specialization of the extractor strategy class.</p>
-<p> This is the spesialization to do casting into a string type</p>
+<h1>Class <code>Extractor</code></h1>
+<p>BaseClass for an extractor strategy.</p>
+<p> This class follows the pattern from <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
 <h2><a href="#Local_Functions">Local Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#StringExtractor._init">StringExtractor._init ()</a></td>
+	<td class="name nowrap"><a href="#Extractor._init">Extractor._init (...)</a></td>
 	<td class="summary">Initialize a new instance.</td>
 	</tr>
 </table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#StringExtractor:__index">StringExtractor:__index (key)</a></td>
+	<td class="name nowrap"><a href="#Extractor:__index">Extractor:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#StringExtractor:create">StringExtractor:create (...)</a></td>
+	<td class="name nowrap"><a href="#Extractor:create">Extractor:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#StringExtractor:cast">StringExtractor:cast (str, start, finish)</a></td>
+	<td class="name nowrap"><a href="#Extractor:type">Extractor:type ()</a></td>
+	<td class="summary">Get the type of the strategy.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Extractor:find">Extractor:find (str, pos)</a></td>
+	<td class="summary">Try to find the string for this strategy.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Extractor:cast">Extractor:cast (str, start, finish)</a></td>
 	<td class="summary">Cast the string into the correct type for this strategy.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#StringExtractor:placeholder">StringExtractor:placeholder ()</a></td>
+	<td class="name nowrap"><a href="#Extractor:placeholder">Extractor:placeholder ()</a></td>
 	<td class="summary">Get the placeholder for this strategy.</td>
 	</tr>
 </table>
@@ -134,13 +142,20 @@
 
     <dl class="function">
     <dt>
-    <a name = "StringExtractor._init"></a>
-    <strong>StringExtractor._init ()</strong>
+    <a name = "Extractor._init"></a>
+    <strong>Extractor._init (...)</strong>
     </dt>
     <dd>
     Initialize a new instance.
 
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         list of patterns
+        </li>
+    </ul>
 
     <h3>Returns:</h3>
 
@@ -158,8 +173,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "StringExtractor:__index"></a>
-    <strong>StringExtractor:__index (key)</strong>
+    <a name = "Extractor:__index"></a>
+    <strong>Extractor:__index (key)</strong>
     </dt>
     <dd>
     Lookup of missing class members.
@@ -186,8 +201,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "StringExtractor:create"></a>
-    <strong>StringExtractor:create (...)</strong>
+    <a name = "Extractor:create"></a>
+    <strong>Extractor:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
@@ -197,7 +212,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/Extractor.html#Extractor:create">superclass create method</a>
+         forwarded to <a href="../classes/Extractor.html#Extractor._init">Extractor:_init</a>
         </li>
     </ul>
 
@@ -213,29 +228,14 @@
 
 </dd>
     <dt>
-    <a name = "StringExtractor:cast"></a>
-    <strong>StringExtractor:cast (str, start, finish)</strong>
+    <a name = "Extractor:type"></a>
+    <strong>Extractor:type ()</strong>
     </dt>
     <dd>
-    Cast the string into the correct type for this strategy.
- There are no safeguards for erroneous casts.
+    Get the type of the strategy.
+ All extractor strategies have an explicit type name.
 
 
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">str</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         used as the extraction source
-        </li>
-        <li><span class="parameter">start</span>
-            <span class="types"><span class="type">number</span></span>
-         for an inclusive index where extraction starts
-        </li>
-        <li><span class="parameter">finish</span>
-            <span class="types"><span class="type">number</span></span>
-         for an inclusive index where extraction finishes
-        </li>
-    </ul>
 
     <h3>Returns:</h3>
 
@@ -245,16 +245,82 @@
 
 
 
-    <h3>See also:</h3>
-    <ul>
-         <a href="../classes/Extractor.html#Extractor:cast">Extractor:cast</a>
-    </ul>
 
 
 </dd>
     <dt>
-    <a name = "StringExtractor:placeholder"></a>
-    <strong>StringExtractor:placeholder ()</strong>
+    <a name = "Extractor:find"></a>
+    <strong>Extractor:find (str, pos)</strong>
+    </dt>
+    <dd>
+    Try to find the string for this strategy.
+ The goodness of the match is given by the returned position.
+ If found it should return a position and the found string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         used as the extraction source
+        </li>
+        <li><span class="parameter">pos</span>
+            <span class="types"><span class="type">number</span></span>
+         for an inclusive index where extraction starts
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">number,number</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Extractor:cast"></a>
+    <strong>Extractor:cast (str, start, finish)</strong>
+    </dt>
+    <dd>
+    Cast the string into the correct type for this strategy.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         used as the extraction source (unused)
+        </li>
+        <li><span class="parameter">start</span>
+            <span class="types"><span class="type">number</span></span>
+         for an inclusive index where extraction starts (unused)
+        </li>
+        <li><span class="parameter">finish</span>
+            <span class="types"><span class="type">number</span></span>
+         for an inclusive index where extraction finishes (unused)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    Unconditional error unless overridden
+
+
+
+</dd>
+    <dt>
+    <a name = "Extractor:placeholder"></a>
+    <strong>Extractor:placeholder ()</strong>
     </dt>
     <dd>
     Get the placeholder for this strategy.
@@ -268,6 +334,8 @@
 
 
 
+    <h3>Raises:</h3>
+    Unconditional error unless overridden
 
 
 
