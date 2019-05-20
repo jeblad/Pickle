@@ -1,4 +1,5 @@
 --- Stack for managing values.
+-- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Stack
 
 -- @var class
