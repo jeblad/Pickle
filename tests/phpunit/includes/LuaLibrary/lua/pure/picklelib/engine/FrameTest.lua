@@ -22,7 +22,7 @@ local function makeFrame( ... )
 	return Frame.create( ... )
 		:setSubjects( subjects:create() )
 		:setReports( reports:create() )
-		:setExtractors( extractors.create() )
+		:setExtractors( extractors:create() )
 end
 
 local function testExists()

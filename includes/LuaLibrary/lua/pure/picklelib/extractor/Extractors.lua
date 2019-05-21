@@ -1,5 +1,5 @@
 --- Baseclass for extractor strategies.
--- This should be a strategy pattern
+-- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Extractors
 
 -- pure libs
@@ -19,12 +19,12 @@ end
 Extractors.strategies = Stack:create()
 
 --- Create a new instance.
--- @tparam vararg ... list of strategies
+-- @tparam vararg ... forwarded to @{Extractor:_init}
 -- @treturn self
-function Extractors.create( ... )
-	local self = setmetatable( {}, Extractors )
-	self:_init( ... )
-	return self
+function Extractors:create( ... )
+	local meta = rawget( self, 'create' ) and self or getmetatable( self )
+	local new = setmetatable( {}, meta )
+	return new:_init( ... )
 end
 
 --- Initialize a new instance.

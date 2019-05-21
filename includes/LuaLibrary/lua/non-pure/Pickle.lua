@@ -145,11 +145,11 @@ end
 local function registerExtractors()
 
 	-- require libs
-	local extractors = require( 'picklelib/extractor/Extractors' ).create()
+	local extractors = require( 'picklelib/extractor/Extractors' ):create()
 
 	-- register extractor types
 	for _,v in ipairs( mw.pickle._extractors ) do
-		extractors:register( require( v ).create() )
+		extractors:register( require( v ):create() )
 	end
 
 	return extractors
