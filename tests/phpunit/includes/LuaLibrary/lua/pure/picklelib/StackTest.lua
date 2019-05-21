@@ -82,21 +82,21 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
-		name = 'stack.create (nil value type)',
+		name = 'stack:create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
 	{
-		name = 'stack.create (single value type)',
+		name = 'stack:create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
 	{
-		name = 'stack.create (multiple value type)',
+		name = 'stack:create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },

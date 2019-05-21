@@ -50,7 +50,7 @@ local tests = {
 	},
 	-- RenderAdaptCompactTest[2]
 	{
-		name = name .. '.create (nil value type)',
+		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
@@ -58,7 +58,7 @@ local tests = {
 	},
 	-- RenderAdaptCompactTest[3]
 	{
-		name = name .. '.create (single value type)',
+		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
@@ -66,7 +66,7 @@ local tests = {
 	},
 	-- RenderAdaptCompactTest[4]
 	{
-		name = name .. '.create (multiple value type)',
+		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
@@ -74,20 +74,20 @@ local tests = {
 	},
 	-- RenderAdaptCompactTest[5]
 	{
-		name = name .. '.key ()',
+		name = name .. ':key ()',
 		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-adapt-foo' }
 	},
 	-- RenderAdaptCompactTest[6]
 	{
-		name = name .. '.body ok ()',
+		name = name .. ':body ok ()',
 		func = testBodyOk,
 		expect = { '' }
 	},
 	-- RenderAdaptCompactTest[7]
 	{
-		name = name .. '.body not ok ()',
+		name = name .. ':body not ok ()',
 		func = testBodyNotOk,
 		expect = { "\n"
 			.. '(foo)' .. "\n"

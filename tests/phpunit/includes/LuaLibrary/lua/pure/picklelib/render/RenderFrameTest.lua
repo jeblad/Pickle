@@ -87,7 +87,7 @@ local tests = {
 	},
 	-- RenderFrameTest[2]
 	{
-		name = name .. '.create (nil value type)',
+		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
@@ -95,7 +95,7 @@ local tests = {
 	},
 	-- RenderFrameTest[3]
 	{
-		name = name .. '.create (single value type)',
+		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
@@ -103,7 +103,7 @@ local tests = {
 	},
 	-- RenderFrameTest[4]
 	{
-		name = name .. '.create (multiple value type)',
+		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
@@ -111,14 +111,14 @@ local tests = {
 	},
 	-- RenderFrameTest[5]
 	{
-		name = name .. '.clarification ("skip", "qqx")',
+		name = name .. ':clarification ("skip", "qqx")',
 		func = testClarification,
 		args = { "is-skip", 'qqx' },
 		expect = { 'skip (parentheses: (pickle-report-frame-is-skip-keyword))' }
 	},
 	-- RenderFrameTest[6]
 	{
-		name = name .. '.clarification ("skip", "nb")',
+		name = name .. ':clarification ("skip", "nb")',
 		func = testClarification,
 		-- scary, it uses a language code, but only the clarification should be translated
 		args = { "is-skip", 'nb' },
@@ -126,14 +126,14 @@ local tests = {
 	},
 	-- RenderFrameTest[7]
 	{
-		name = name .. '.clarification ("todo", "qqx")',
+		name = name .. ':clarification ("todo", "qqx")',
 		func = testClarification,
 		args = { "is-todo", 'qqx' },
 		expect = { 'todo (parentheses: (pickle-report-frame-is-todo-keyword))' }
 	},
 	-- RenderFrameTest[8]
 	{
-		name = name .. '.clarification ("todo", "nb")',
+		name = name .. ':clarification ("todo", "nb")',
 		func = testClarification,
 		-- scary, it uses a language code, but only the clarification should be translated
 		args = { "is-todo", 'nb' },
@@ -141,42 +141,42 @@ local tests = {
 	},
 	-- RenderFrameTest[9]
 	{
-		name = name .. '.state ()',
+		name = name .. ':state ()',
 		func = testState,
 		args = { false },
 		expect = { 'not ok 0 (parentheses: (pickle-report-frame-is-not-ok-keyword))' }
 	},
 	-- RenderFrameTest[10]
 	{
-		name = name .. '.state ()',
+		name = name .. ':state ()',
 		func = testState,
 		args = { true },
 		expect = { 'ok 0 (parentheses: (pickle-report-frame-is-ok-keyword))' }
 	},
 	-- RenderFrameTest[11]
 	{
-		name = name .. '.skip ()',
+		name = name .. ':skip ()',
 		func = testSkip,
 		args = { 'foo' },
 		expect = { 'skip (parentheses: (pickle-report-frame-is-skip-keyword)) foo' }
 	},
 	-- RenderFrameTest[12]
 	{
-		name = name .. '.todo ()',
+		name = name .. ':todo ()',
 		func = testTodo,
 		args = { 'bar' },
 		expect = { 'todo (parentheses: (pickle-report-frame-is-todo-keyword)) bar' }
 	},
 	-- RenderFrameTest[13]
 	{
-		name = name .. '.description ()',
+		name = name .. ':description ()',
 		func = testDescription,
 		args = { 'baz' },
 		expect = { 'baz' }
 	},
 	-- RenderFrameTest[14]
 	{
-		name = name .. '.header ()',
+		name = name .. ':header ()',
 		func = testHeaderSkip,
 		args = { 'baz' },
 		expect = { 'not ok 0 (parentheses: (pickle-report-frame-is-not-ok-keyword))'
@@ -184,7 +184,7 @@ local tests = {
 	},
 	-- RenderFrameTest[15]
 	{
-		name = name .. '.header ()',
+		name = name .. ':header ()',
 		func = testHeaderTodo,
 		args = { 'baz' },
 		expect = { 'ok 0 (parentheses: (pickle-report-frame-is-ok-keyword))'
@@ -193,7 +193,7 @@ local tests = {
 	--[[
 	-- RenderFrameTest[16]
 	{
-		name = name .. '.body ()',
+		name = name .. ':body ()',
 		func = testBody,
 		expect = { "\n"
 			.. '(foo)' .. "\n"

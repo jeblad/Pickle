@@ -50,7 +50,7 @@ local tests = {
 	},
 	-- RenderAdaptVividTest[2]
 	{
-		name = name .. '.create (nil value type)',
+		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
@@ -58,7 +58,7 @@ local tests = {
 	},
 	-- RenderAdaptVividTest[3]
 	{
-		name = name .. '.create (single value type)',
+		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
@@ -66,7 +66,7 @@ local tests = {
 	},
 	-- RenderAdaptVividTest[4]
 	{
-		name = name .. '.create (multiple value type)',
+		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
@@ -74,14 +74,14 @@ local tests = {
 	},
 	-- RenderAdaptVividTest[5]
 	{
-		name = name .. '.key ()',
+		name = name .. ':key ()',
 		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-adapt-foo' }
 	},
 	-- RenderAdaptVividTest[6]
 	{
-		name = name .. '.body ()',
+		name = name .. ':body ()',
 		func = testBodyOk,
 		expect = { '<dl class="mw-pickle-body">'
 			.. '<dd class="mw-pickle-line" lang="qqx">(foo)</dd>'
@@ -91,7 +91,7 @@ local tests = {
 	},
 	-- RenderAdaptVividTest[7]
 	{
-		name = name .. '.body ()',
+		name = name .. ':body ()',
 		func = testBodyNotOk,
 		expect = { '<dl class="mw-pickle-body" style="display:none">'
 			.. '<dd class="mw-pickle-line" lang="qqx">(foo)</dd>'

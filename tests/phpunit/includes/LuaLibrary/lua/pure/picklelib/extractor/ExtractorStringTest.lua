@@ -46,69 +46,69 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.create (nil value type)',
+		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.create (single value type)',
+		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.create (multiple value type)',
+		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.type ()',
+		name = name .. ':type ()',
 		func = testType,
 		expect = { 'string' }
 	},
 	{
-		name = name .. '.find (not matched)',
+		name = name .. ':find (not matched)',
 		func = testFind,
 		args = { 'foo bar baz' },
 		expect = {}
 	},
 	{
-		name = name .. '.find (matched)',
+		name = name .. ':find (matched)',
 		func = testFind,
 		args = { '"test"' },
 		expect = { 2, 5 }
 	},
 	{
-		name = name .. '.find (matched)',
+		name = name .. ':find (matched)',
 		func = testFind,
 		args = { '"test" bar baz' },
 		expect = { 2, 5 }
 	},
 	{
-		name = name .. '.find (matched)',
+		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo "test" baz' },
 		expect = { 6, 9 }
 	},
 	{
-		name = name .. '.find (matched)',
+		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo bar "test"' },
 		expect = { 10, 13 }
 	},
 	{
-		name = name .. '.cast (empty)',
+		name = name .. ':cast (empty)',
 		func = testCast,
 		args = { 'foo bar "test"', 10, 13 },
 		expect = { "test" }
 	},
 	{
-		name = name .. '.placeholder ()',
+		name = name .. ':placeholder ()',
 		func = testPlaceholder,
 		args = {},
 		expect = { 'string' }

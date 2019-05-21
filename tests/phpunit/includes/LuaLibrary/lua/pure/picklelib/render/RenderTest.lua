@@ -56,7 +56,7 @@ local tests = {
 	},
 	-- RenderTest[2]
 	{
-		name = name .. '.create (nil value type)',
+		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
@@ -64,7 +64,7 @@ local tests = {
 	},
 	-- RenderTest[3]
 	{
-		name = name .. '.create (single value type)',
+		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
@@ -72,7 +72,7 @@ local tests = {
 	},
 	-- RenderTest[4]
 	{
-		name = name .. '.create (multiple value type)',
+		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
@@ -80,20 +80,20 @@ local tests = {
 	},
 	-- RenderTest[5]
 	{
-		name = name .. '.type ()',
+		name = name .. ':type ()',
 		func = testType,
 		expect = { class }
 	},
 	-- RenderTest[6]
 	{
-		name = name .. '.key ("foo-bar")',
+		name = name .. ':key ("foo-bar")',
 		func = testKey,
 		args = { "foo-bar" },
 		expect = { "pickle-report-base-foo-bar" }
 	},
 	-- RenderTest[7]
 	{
-		name = name .. '.clarification ("skip")',
+		name = name .. ':clarification ("skip")',
 		func = testClarification,
 		args = { "skip" },
 		expect = { '⧼pickle-report-base-skip-keyword⧽'
@@ -101,7 +101,7 @@ local tests = {
 	},
 	-- RenderTest[8]
 	{
-		name = name .. '.clarification ("todo")',
+		name = name .. ':clarification ("todo")',
 		func = testClarification,
 		args = { "todo" },
 		expect = { '⧼pickle-report-base-todo-keyword⧽'
@@ -110,7 +110,7 @@ local tests = {
 	--[[
 	-- RenderTest[9]
 	{
-		name = name .. '.comment ("foobar")',
+		name = name .. ':comment ("foobar")',
 		func = testComment,
 		args = { "foobar" },
 		expect = { "⧼pickle-report-base-wrap-untranslated⧽" }

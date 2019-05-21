@@ -67,7 +67,7 @@ local tests = {
 	},
 	-- RenderAdaptTest[2]
 	{
-		name = name .. '.create (nil value type)',
+		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
@@ -75,7 +75,7 @@ local tests = {
 	},
 	-- RenderAdaptTest[3]
 	{
-		name = name .. '.create (single value type)',
+		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
@@ -83,7 +83,7 @@ local tests = {
 	},
 	-- RenderAdaptTest[4]
 	{
-		name = name .. '.create (multiple value type)',
+		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
@@ -91,14 +91,14 @@ local tests = {
 	},
 	-- RenderAdaptTest[5]
 	{
-		name = name .. '.clarification ("skip", "qqx")',
+		name = name .. ':clarification ("skip", "qqx")',
 		func = testClarification,
 		args = { "is-skip", 'qqx' },
 		expect = {'skip (parentheses: (pickle-report-adapt-is-skip-keyword))' }
 	},
 	-- RenderAdaptTest[6]
 	{
-		name = name .. '.clarification ("skip", "nb")',
+		name = name .. ':clarification ("skip", "nb")',
 		func = testClarification,
 		-- scary, it uses a language code, but only the clarification should be translated
 		args = { "is-skip", 'nb' },
@@ -106,14 +106,14 @@ local tests = {
 	},
 	-- RenderAdaptTest[7]
 	{
-		name = name .. '.clarification ("todo", "qqx")',
+		name = name .. ':clarification ("todo", "qqx")',
 		func = testClarification,
 		args = { "is-todo", 'qqx' },
 		expect = { 'todo (parentheses: (pickle-report-adapt-is-todo-keyword))' }
 	},
 	-- RenderAdaptTest[8]
 	{
-		name = name .. '.clarification ("todo", "nb")',
+		name = name .. ':clarification ("todo", "nb")',
 		func = testClarification,
 		-- scary, it uses a language code, but only the clarification should be translated
 		args = { "is-todo", 'nb' },
@@ -121,28 +121,28 @@ local tests = {
 	},
 	-- RenderAdaptTest[9]
 	{
-		name = name .. '.state ()',
+		name = name .. ':state ()',
 		func = testState,
 		args = { false },
 		expect = { 'not ok 0 (parentheses: (pickle-report-adapt-is-not-ok-keyword))' }
 	},
 	-- RenderAdaptTest[10]
 	{
-		name = name .. '.state ()',
+		name = name .. ':state ()',
 		func = testState,
 		args = { true },
 		expect = { 'ok 0 (parentheses: (pickle-report-adapt-is-ok-keyword))' }
 	},
 	-- RenderAdaptTest[11]
 	{
-		name = name .. '.header ()',
+		name = name .. ':header ()',
 		func = testHeader,
 		args = { 'baz' },
 		expect = { 'ok 0 (parentheses: (pickle-report-adapt-is-ok-keyword))' }
 	},
 	-- RenderAdaptTest[12]
 	{
-		name = name .. '.body ()',
+		name = name .. ':body ()',
 		func = testBody,
 		expect = { "\n"
 			.. '(foo)' .. "\n"

@@ -82,93 +82,93 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.create (nil value type)',
+		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.create (single value type)',
+		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.create (multiple value type)',
+		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.realize (nil)',
+		name = name .. ':realize (nil)',
 		func = testRealize,
 		args = { nil },
 		expect = { '' }
 	},
 	{
-		name = name .. '.type ()',
+		name = name .. ':type ()',
 		func = testType,
 		expect = { class }
 	},
 	{
-		name = name .. '.notOk (single value)',
+		name = name .. ':notOk (single value)',
 		func = testState,
 		args = { false },
 		expect = { false }
 	},
 	{
-		name = name .. '.ok (single value)',
+		name = name .. ':ok (single value)',
 		func = testState,
 		args = { true },
 		expect = { true }
 	},
 	{
-		name = name .. '.isSkip ()',
+		name = name .. ':isSkip ()',
 		func = testIsSkip,
 		args = {},
 		expect = { false }
 	},
 	{
-		name = name .. '.isSkip ()',
+		name = name .. ':isSkip ()',
 		func = testIsSkip,
 		args = { 'ping' },
 		expect = { true }
 	},
 	{
-		name = name .. '.isTodo ()',
+		name = name .. ':isTodo ()',
 		func = testIsTodo,
 		args = {},
 		expect = { false }
 	},
 	{
-		name = name .. '.isTodo ()',
+		name = name .. ':isTodo ()',
 		func = testIsTodo,
 		args = { 'pong' },
 		expect = { true }
 	},
 	{
-		name = name .. '.skip ()',
+		name = name .. ':skip ()',
 		func = testGetSetSkip,
 		args = {},
 		expect = { false }
 	},
 	{
-		name = name .. '.skip ()',
+		name = name .. ':skip ()',
 		func = testGetSetSkip,
 		args = { 'foo' },
 		expect = { 'foo' }
 	},
 	{
-		name = name .. '.todo ()',
+		name = name .. ':todo ()',
 		func = testGetSetTodo,
 		args = {},
 		expect = { false }
 	},
 	{
-		name = name .. '.todo ()',
+		name = name .. ':todo ()',
 		func = testGetSetTodo,
 		args = { 'bar' },
 		expect = { 'bar' }

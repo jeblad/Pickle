@@ -71,21 +71,21 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.create (nil value type)',
+		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.create (single value type)',
+		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.create (multiple value type)',
+		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
@@ -93,14 +93,14 @@ local tests = {
 	},
 	--[[
 	{
-		name = name .. '.render (nil)',
+		name = name .. ':render (nil)',
 		func = testRender,
 		args = { nil },
 		expect = { '' }
 	},
 	--]]
 	{
-		name = name .. '.type ()',
+		name = name .. ':type ()',
 		func = testType,
 		expect = { class }
 	},
@@ -117,25 +117,25 @@ local tests = {
 		expect = { { 'foo', 'bar', 'baz' } }
 	},
 	{
-		name = name .. '.hasSkip ()',
+		name = name .. ':hasSkip ()',
 		func = testHasSkip,
 		args = {},
 		expect = { false }
 	},
 	{
-		name = name .. '.hasSkip ()',
+		name = name .. ':hasSkip ()',
 		func = testHasSkip,
 		args = { 'test' },
 		expect = { true }
 	},
 	{
-		name = name .. '.hasTodo ()',
+		name = name .. ':hasTodo ()',
 		func = testHasTodo,
 		args = {},
 		expect = { false }
 	},
 	{
-		name = name .. '.hasTodo ()',
+		name = name .. ':hasTodo ()',
 		func = testHasTodo,
 		args = { 'ping' },
 		expect = { false }

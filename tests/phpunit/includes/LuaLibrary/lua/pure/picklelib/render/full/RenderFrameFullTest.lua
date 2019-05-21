@@ -52,7 +52,7 @@ local tests = {
 	},
 	-- RenderFrameFullTest[2]
 	{
-		name = name .. '.create (nil value type)',
+		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
@@ -60,7 +60,7 @@ local tests = {
 	},
 	-- RenderFrameFullTest[3]
 	{
-		name = name .. '.create (single value type)',
+		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
@@ -68,7 +68,7 @@ local tests = {
 	},
 	-- RenderFrameFullTest[4]
 	{
-		name = name .. '.create (multiple value type)',
+		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
@@ -76,20 +76,20 @@ local tests = {
 	},
 	-- RenderFrameFullTest[5]
 	{
-		name = name .. '.key ()',
+		name = name .. ':key ()',
 		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-frame-foo' }
 	},
 	-- RenderFrameFullTest[6]
 	{
-		name = name .. '.header ok ()',
+		name = name .. ':header ok ()',
 		func = testHeaderOk,
 		expect = { 'ok (parentheses: (pickle-report-frame-is-ok-keyword))' }
 	},
 	-- RenderFrameFullTest[7]
 	{
-		name = name .. '.header not ok ()',
+		name = name .. ':header not ok ()',
 		func = testHeaderNotOk,
 		expect = { 'not ok (parentheses: (pickle-report-frame-is-not-ok-keyword))' }
 	},

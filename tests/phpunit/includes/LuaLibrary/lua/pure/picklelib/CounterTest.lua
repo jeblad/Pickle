@@ -54,21 +54,21 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
-		name = 'counter.create (nil value type)',
+		name = 'counter:create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
 	{
-		name = 'counter.create (single value type)',
+		name = 'counter:create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
 	{
-		name = 'counter.create (multiple value type)',
+		name = 'counter:create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },

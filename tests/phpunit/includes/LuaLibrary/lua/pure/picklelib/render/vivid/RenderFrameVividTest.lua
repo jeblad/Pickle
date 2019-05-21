@@ -86,7 +86,7 @@ local tests = {
 	},
 	-- RenderFrameVividTest[2]
 	{
-		name = name .. '.create (nil value type)',
+		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
@@ -94,7 +94,7 @@ local tests = {
 	},
 	-- RenderFrameVividTest[3]
 	{
-		name = name .. '.create (single value type)',
+		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
@@ -102,7 +102,7 @@ local tests = {
 	},
 	-- RenderFrameVividTest[4]
 	{
-		name = name .. '.create (multiple value type)',
+		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
@@ -110,7 +110,7 @@ local tests = {
 	},
 	-- RenderFrameVividTest[5]
 	{
-		name = name .. '.key ()',
+		name = name .. ':key ()',
 		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-frame-foo' }
@@ -118,7 +118,7 @@ local tests = {
 	--[[
 	-- RenderFrameVividTest[]
 	{
-		name = name .. '.state ()',
+		name = name .. ':state ()',
 		func = testState,
 		args = { false },
 		expect = { '<span class="mw-pickle-state" lang="qqx">'
@@ -127,7 +127,7 @@ local tests = {
 	},
 	-- RenderFrameVividTest[]
 	{
-		name = name .. '.state ()',
+		name = name .. ':state ()',
 		func = testState,
 		args = { true },
 		expect = { '<span class="mw-pickle-state" lang="qqx">'
@@ -137,7 +137,7 @@ local tests = {
 	]]
 	-- RenderFrameVividTest[6]
 	{
-		name = name .. '.skip ()',
+		name = name .. ':skip ()',
 		func = testSkip,
 		args = { 'foo' },
 		expect = { '<span class="mw-pickle-skip" lang="qqx">'
@@ -146,7 +146,7 @@ local tests = {
 	},
 	-- RenderFrameVividTest[7]
 	{
-		name = name .. '.todo ()',
+		name = name .. ':todo ()',
 		func = testTodo,
 		args = { 'bar' },
 		expect = { '<span class="mw-pickle-todo" lang="qqx">'
@@ -155,7 +155,7 @@ local tests = {
 	},
 	-- RenderFrameVividTest[8]
 	{
-		name = name .. '.description ()',
+		name = name .. ':description ()',
 		func = testDescription,
 		args = { 'baz' },
 		expect = { '<span class="mw-pickle-description" lang="qqx">'
@@ -164,7 +164,7 @@ local tests = {
 	},
 	-- RenderFrameVividTest[9]
 	{
-		name = name .. '.header skip ()',
+		name = name .. ':header skip ()',
 		func = testHeaderSkip,
 		args = { 'baz' },
 		expect = { '<div class="mw-pickle-header">'
@@ -184,7 +184,7 @@ local tests = {
 	},
 	-- RenderFrameVividTest[10]
 	{
-		name = name .. '.header todo ()',
+		name = name .. ':header todo ()',
 		func = testHeaderTodo,
 		args = { 'baz' },
 		expect = { '<div class="mw-pickle-header">'
@@ -204,7 +204,7 @@ local tests = {
 	},
 	-- RenderFrameVividTest[11]
 	{
-		name = name .. '.header ok ()',
+		name = name .. ':header ok ()',
 		func = testHeaderOk,
 		expect = { '<div class=\"mw-pickle-header\">'
 			.. '<span class=\"mw-pickle-state\" lang=\"qqx\">'
@@ -214,7 +214,7 @@ local tests = {
 	},
 	-- RenderFrameVividTest[12]
 	{
-		name = name .. '.header not ok ()',
+		name = name .. ':header not ok ()',
 		func = testHeaderNotOk,
 		expect = { '<div class=\"mw-pickle-header\">'
 			.. '<span class=\"mw-pickle-state\" lang=\"qqx\">'

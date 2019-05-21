@@ -50,81 +50,81 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.create (nil value type)',
+		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.create (single value type)',
+		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.create (multiple value type)',
+		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.type ()',
+		name = name .. ':type ()',
 		func = testType,
 		expect = { class }
 	},
 	{
-		name = name .. '.lines (nil value)',
+		name = name .. ':lines (nil value)',
 		func = testLines,
 		args = { nil, 0 },
 		expect = { {}, 0 }
 	},
 	{
-		name = name .. '.lines (single value)',
+		name = name .. ':lines (single value)',
 		func = testLines,
 		args = { 'a' },
 		expect = { { 'a' }, 1 }
 	},
 	{
-		name = name .. '.lines (multiple value)',
+		name = name .. ':lines (multiple value)',
 		func = testLines,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' }, 3 }
 	},
 	{
-		name = name .. '.addLine (nil value)',
+		name = name .. ':addLine (nil value)',
 		func = testAddLine,
 		args = { nil },
 		expect = {{}}
 	},
 	{
-		name = name .. '.addLine (single value)',
+		name = name .. ':addLine (single value)',
 		func = testAddLine,
 		args = { 'a' },
 		expect = { { 'a' } }
 	},
 	{
-		name = name .. '.addLine (multiple value)',
+		name = name .. ':addLine (multiple value)',
 		func = testAddLine,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' } }
 	},
 	{
-		name = name .. '.getLine (nil value)',
+		name = name .. ':getLine (nil value)',
 		func = testGetLine,
 		args = { 1, nil, 0 },
 		expect = { }
 	},
 	{
-		name = name .. '.getLine (single value)',
+		name = name .. ':getLine (single value)',
 		func = testGetLine,
 		args = { 1, 'a' },
 		expect = { 'a' }
 	},
 	{
-		name = name .. '.getLine (multiple value)',
+		name = name .. ':getLine (multiple value)',
 		func = testGetLine,
 		args = { 2, 'a', 'b', 'c' },
 		expect = { 'b' }
