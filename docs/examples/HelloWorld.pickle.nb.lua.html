@@ -34,9 +34,9 @@
 
 <h2>Examples</h2>
 <ul class="nowrap">
-  <li><a href="../examples/HelloWorld.pickle.nb.lua.html">HelloWorld.pickle.nb.lua</a></li>
+  <li><strong>HelloWorld.pickle.nb.lua</strong></li>
   <li><a href="../examples/HelloWorld.lua.html">HelloWorld.lua</a></li>
-  <li><strong>HelloWorld.pickle.lua</strong></li>
+  <li><a href="../examples/HelloWorld.pickle.lua.html">HelloWorld.pickle.lua</a></li>
 </ul>
 <h2>Modules</h2>
 <ul class="nowrap">
@@ -92,25 +92,18 @@
 
 <div id="content">
 
-    <h2>HelloWorld.pickle.lua</h2>
+    <h2>HelloWorld.pickle.nb.lua</h2>
 <pre>
-
-<span class="comment">--- Pickle for HelloWorld pickle.
-</span><span class="keyword">return</span> describe (<span class="keyword">function</span>()
-	it <span class="string">"calls `merge` with 'foo'"</span> (<span class="keyword">function</span>()
-		expect( <span class="string">"foo"</span> ) :first() :toBeEqual()
-	<span class="keyword">end</span>)
-	it <span class="string">"calls `merge` with 'foo' and 'bar'"</span> (<span class="keyword">function</span>()
-		expect( <span class="string">"foo bar"</span> ) :first() :toBeEqual()
-	<span class="keyword">end</span>)
-	it <span class="string">"calls `merge` with 'foo', 'bar', and 'baz'"</span> (<span class="keyword">function</span>()
-		expect( <span class="string">"foo bar baz"</span> ) :first() :toBeEqual()
-	<span class="keyword">end</span>)
-	it <span class="string">"calls `merge` with 1 and 2"</span> (<span class="keyword">function</span>()
-		expect( <span class="string">'nil'</span> ) :first() :asType() :toBeEqual()
-		expect( <span class="string">'string'</span> ) :second() :asType() :toBeEqual()
-	<span class="keyword">end</span>)
-<span class="keyword">end</span>)</pre>
+<span class="keyword">return</span> {
+	[<span class="string">"@metadata"</span>] = {
+		[<span class="string">"authors"</span>] = {
+			<span class="string">"Jeblad"</span>
+		}
+	},
+	[<span class="string">"called-method-with-string"</span>] = <span class="string">"kalte `$1` med $2"</span>,
+	[<span class="string">"called-method-with-string-and-string"</span>] = <span class="string">"kalte `$1` med $2 og $3"</span>,
+	[<span class="string">"called-method-with-string-string-and-string"</span>] = <span class="string">"kalte `$1` med $2, $3, og $4"</span>
+}</pre>
 
 
 </div> <!-- id="content" -->
