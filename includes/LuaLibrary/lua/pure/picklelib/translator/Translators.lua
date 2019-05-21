@@ -1,5 +1,5 @@
 --- Class for extractor strategies.
--- This should be a strategy pattern.
+-- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Translators
 
 -- @var class var for lib
@@ -15,10 +15,10 @@ end
 --- Create a new instance.
 -- @tparam vararg ... list of strategies
 -- @treturn self
-function Translators.create( ... )
-	local self = setmetatable( {}, Translators )
-	self:_init( ... )
-	return self
+function Translators:create( ... )
+	local meta = rawget( self, 'create' ) and self or getmetatable( self )
+	local new = setmetatable( {}, meta )
+	return new:_init( ... )
 end
 
 --- Initialize a new instance.

@@ -6,16 +6,16 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/translator/Translators'
-assert( lib )
 local name = 'translator'
 
 local function makeTest( ... )
-	return lib.create( ... )
+	local lib = require 'picklelib/translator/Translators'
+	assert( lib )
+	return lib:create( ... )
 end
 
 local function testExists()
-	return type( lib )
+	return type( makeTest() )
 end
 
 local function testCreate( ... )
@@ -30,7 +30,7 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
-		name = name .. '.create (nil value type)',
+		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },

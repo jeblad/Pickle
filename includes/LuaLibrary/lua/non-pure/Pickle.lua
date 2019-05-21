@@ -162,7 +162,7 @@ local function registerTranslators( subpage )
 	assert( subpage )
 
 	-- require libs
-	local translators = require( 'picklelib/translator/Translators' ).create()
+	local translators = require( 'picklelib/translator/Translators' ):create()
 
 	-- register translation data
 	local translationData = {}
