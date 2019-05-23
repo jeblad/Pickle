@@ -39,6 +39,14 @@ Core documents
 * [Mediawiki: Extension:Pickle](https://www.mediawiki.org/wiki/Extension:Pickle)
 * [Phabricator: MediaWiki-extensions-Pickle](https://phabricator.wikimedia.org/tag/mediawiki-extensions-pickle/)
 
+Related documents
+
+* [Wikitech-l: New policy: Wikimedia Engineering Architecture Principles](https://lists.wikimedia.org/pipermail/wikitech-l/2019-May/092049.html)
+* [Mediawiki: Wikimedia Technical Committee](https://www.mediawiki.org/wiki/Wikimedia_Technical_Committee)
+* [Mediawiki: Wikimedia Engineering Architecture Principles](https://www.mediawiki.org/wiki/Wikimedia_Engineering_Architecture_Principles)
+* [Phabricator: Establish Architecture Principles as a policy](https://phabricator.wikimedia.org/T220657)
+* [RFC2119: Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119)
+
 Additional documents
 
 * [Wikipedia: Continous testing](https://en.wikipedia.org/wiki/Continuous_testing)
