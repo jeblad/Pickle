@@ -23,11 +23,11 @@ A help portal for users are available at [Mediawiki](https://www.mediawiki.org/w
 
 ### System overview
 
-The purpose of this extension is to make it possible to do efficient [continous testing](https://en.wikipedia.org/wiki/Continuous_testing) by detecting whether Lua modules (pages) are holding a “Pickle”, whereby the Lua code on those pages can run both in an automatic and a manual mode to verify correct operation of some other related module. This makes it possible to do continuous testing in an environment where new code are not only added as part of [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration), but even developed in the production environment itself.
+The purpose of this extension is to make it possible to do efficient [continuous testing](https://en.wikipedia.org/wiki/Continuous_testing) by detecting whether Lua modules (pages) are holding a “Pickle”, whereby the Lua code on those pages can run both in an automatic and a manual mode to verify correct operation of some other related module. This makes it possible to do continuous testing in an environment where new code are not only added as part of [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration), but even developed in the production environment itself.
 
 ### Document overview
 
-The document is targeted to those that need a quick overview of the extension at a system level. That is a developer or system maintainer with technical experience. It is not ment as a documentation for the casual user. An end user documentation is available at [Help:Pickle](https://www.mediawiki.org/wiki/Help:Pickle)
+The document is targeted to those that need a quick overview of the extension at a system level. That is a developer or system maintainer with technical experience. It is not meant as documentation for the casual user. An end user documentation is available at [Help:Pickle](https://www.mediawiki.org/wiki/Help:Pickle)
 
 For a full install procedure check out [Extension:Pickle](https://www.mediawiki.org/wiki/Extension:Pickle)
 
@@ -49,8 +49,8 @@ Related documents
 
 Additional documents
 
-* [Wikipedia: Continous testing](https://en.wikipedia.org/wiki/Continuous_testing)
-* [Wikipedia: Continous integration](https://en.wikipedia.org/wiki/Continuous_integration)
+* [Wikipedia: Continuous testing](https://en.wikipedia.org/wiki/Continuous_testing)
+* [Wikipedia: Continuous integration](https://en.wikipedia.org/wiki/Continuous_integration)
 * [Wikipedia: Continuous delivery](https://en.wikipedia.org/wiki/Continuous_delivery)
 * [Wikipedia: Unit testing](https://en.wikipedia.org/wiki/Unit_testing)
 * [The RSpec Book](https://pragprog.com/book/achbd/the-rspec-book)
@@ -110,13 +110,13 @@ Support libraries
 
 The extension interact with the core system through hooks registered in [Hooks.php](https://github.com/jeblad/pickle/blob/master/includes/Hooks.php) especially `Pickle\Hooks::onContentAlterParserOutput()`. This function will track state changes, and set [page properties](https://www.mediawiki.org/wiki/Manual:Page_props_table) and extension data accordingly. Other hooks will then pick up the extension data and act on them, thereby setting [page indicators](https://www.mediawiki.org/wiki/Help:Page_status_indicators), [tracking categories](https://www.mediawiki.org/wiki/Help:Tracking_categories), and do [public logging](https://www.mediawiki.org/wiki/Manual:Logging_to_Special:Log).
 
-Calling `Pickle\Hooks::onContentAlterParserOutput()` will also run a call to identify a strategy to invoke the proper subpage ([InvokeSuppage](https://github.com/jeblad/pickle/tree/master/includes/InvokeSubpage)), process the result from that page ([TAP](https://github.com/jeblad/pickle/tree/master/includes/TAP)), and then identify the status from the remaining data ([ExtractStatus](https://github.com/jeblad/pickle/tree/master/includes/ExtractStatus)). The call is set up so it can handle both calls made for the tester (aka the pickle-page) and the testee (aka the ordinary module).
+Calling `Pickle\Hooks::onContentAlterParserOutput()` will also run a call to identify a strategy to invoke the proper subpage ([InvokeSubpage](https://github.com/jeblad/pickle/tree/master/includes/InvokeSubpage)), process the result from that page ([TAP](https://github.com/jeblad/pickle/tree/master/includes/TAP)), and then identify the status from the remaining data ([ExtractStatus](https://github.com/jeblad/pickle/tree/master/includes/ExtractStatus)). The call is set up so it can handle both calls made for the tester (aka the pickle-page) and the testee (aka the ordinary module).
 
 The test itself is run as Lua, and is set up in the `Pickle.setupInterface()` call ([Pickle.lua](https://github.com/jeblad/pickle/blob/master/includes/LuaLibrary/lua/non-pure/Pickle.lua)) by a call from `Pickle\LuaLibrary::register()` ([LuaLibrary.php](https://github.com/jeblad/pickle/blob/master/includes/LuaLibrary/LuaLibrary.php)).
 
 Tests follow an adaptation of spec-style, with “describe”, “context”, and “it”. Those will then encapsulate tests, which use _subject_ and _expect_ to verify correct behavior of the module under test. The code for those modules can be found in [engine](https://github.com/jeblad/pickle/tree/master/includes/LuaLibrary/lua/pure/picklelib/engine). The engine will produce [reports](https://github.com/jeblad/pickle/tree/master/includes/LuaLibrary/lua/pure/picklelib/report) which are pure data about the tests. Those reports are then [rendered](https://github.com/jeblad/pickle/tree/master/includes/LuaLibrary/lua/pure/picklelib/render). As of this writing there are three different types of renders. Two of them are plain text renders, one giving a compact style layout and one that giving a full style. The third render creates a web style layout.
 
-Test data can be provided to “describe”, “context”, and “it” as nearly free-form text. The data from the text is [extracted](https://github.com/jeblad/pickle/tree/master/includes/LuaLibrary/lua/pure/picklelib/extractor) and casted into the correct type. The present set of extractors are far from comprehensive, but assumed to be sufficient to make the system functional.
+Test data can be provided to “describe”, “context”, and “it” as nearly free-form text. Data from the text is [extracted](https://github.com/jeblad/pickle/tree/master/includes/LuaLibrary/lua/pure/picklelib/extractor) and cast into the correct type. The present set of extractors are far from comprehensive, but assumed to be sufficient to make the system functional.
 
 ### Interface design
 
@@ -142,7 +142,7 @@ The unit finds a strategy for interpreting the report from a subpage, where the 
 
 The strategies use options from the section `ExtractStatus` in the extensions own [extension.json](https://github.com/jeblad/pickle/blob/master/extension.json). It is possible to adapt this section to additional entries, typically new states.
 
-The strategy classes are divided into a common [interface](https://github.com/jeblad/pickle/blob/master/includes/ExtractStatus/ExtractStatus.php) and a [singleton](https://github.com/jeblad/pickle/blob/master/includes/ExtractStatus/ExtractStatusStrategies.php), where the singleton is the accesspoint for higher level code. All PHP classes that implements the strategy are implementations of the interface.
+The strategy classes are divided into a common [interface](https://github.com/jeblad/pickle/blob/master/includes/ExtractStatus/ExtractStatus.php) and a [singleton](https://github.com/jeblad/pickle/blob/master/includes/ExtractStatus/ExtractStatusStrategies.php), where the singleton is the access point for higher level code. All PHP classes that implements the strategy are implementations of the interface.
 
 ### PHP class LuaLibrary
 
@@ -154,7 +154,7 @@ This subsystem is central to proper operation of the extension.
 
 ### Lua module engine
 
-This is a set of classes for setting up and running tests. It contains the main rutines to make the frames for “describe”, “context”, and “it”, and the same for “subject” and “expect”. The first three forms the nouns (the frames) in pickle definitions, while the two last forms the access points for further verification.
+This is a set of classes for setting up and running tests. It contains the main routines to make the frames for “describe”, “context”, and “it”, and the same for “subject” and “expect”. The first three forms the nouns (the frames) in pickle definitions, while the two last forms the access points for further verification.
 
 Routines for this subsystem has a path from source to sink. This should not create any security issue server side, as data is not passed back without proper filtering. Proper escaping should still be done to avoid messing up the output.
 
@@ -162,19 +162,19 @@ This subsystem is central to proper operation of the extension.
 
 ### Lua module extractor
 
-This is a set of classes for extracting and casting strings to correct type. It contains a limited set of cast operations, only scalar data types and a Json type that will be casted into a table. It is used for extracting data from descriptions provided to the frames, that is “describe”, “context”, and “it”, and the casted strings will then be provided to the functions used by the frames.
+This is a set of classes for extracting and casting strings to correct type. It contains a limited set of cast operations, only scalar data types, and a Json type that will be cast into a table. It is used for extracting data from descriptions provided to the frames, that is “describe”, “context”, and “it”, and the strings will then be cast and provided to the functions used by the frames.
 
 This subsystem is a possible security risk because it casts strings into data, as it does not create functions the risk should be limited. If an extractor is made that casts strings into functions the risk could be higher, but note that this only happens in Lua.
 
-The cast methods does not check for valid boundraries before the cast operation is performed, and it will fail if they are wrong.
+The cast methods does not check for valid boundaries before the cast operation is performed, and it will fail if they are wrong.
 
 This subsystem is central to proper operation of the extension.
 
 ### Lua module render
 
-This is a set of classes for rendering reports in the proper format. It contains sets of renderers for a specific _style_ and for each _type_ of report. Each style is in a different named folder, with libraries for rendering a specific report (a type) being called the same in all folders. There are three types that covers most of the use cases; [compact](https://github.com/jeblad/pickle/tree/master/includes/LuaLibrary/lua/pure/picklelib/render/compact), [full](https://github.com/jeblad/pickle/tree/master/includes/LuaLibrary/lua/pure/picklelib/render/full), and [vivid](https://github.com/jeblad/pickle/tree/master/includes/LuaLibrary/lua/pure/picklelib/render/vivid). Compact style is for interactive use in the test console. Full style is for text views where it is necessary to include all details, typically for integration with other systems. Vivid style is for use in the parser function.
+This is a set of classes for rendering reports in the proper format. It contains sets of renders for a specific _style_ and for each _type_ of report. Each style is in a different named folder, with libraries for rendering a specific report (a type) being called the same in all folders. There are three types that covers most of the use cases; [compact](https://github.com/jeblad/pickle/tree/master/includes/LuaLibrary/lua/pure/picklelib/render/compact), [full](https://github.com/jeblad/pickle/tree/master/includes/LuaLibrary/lua/pure/picklelib/render/full), and [vivid](https://github.com/jeblad/pickle/tree/master/includes/LuaLibrary/lua/pure/picklelib/render/vivid). Compact style is for interactive use in the test console. Full style is for text views where it is necessary to include all details, typically for integration with other systems. Vivid style is for use in the parser function.
 
-Routines for this subsystem has paths from source to sink, and should escape text if necessary before it is returned. Still note that this subsystem will only be able to display its output after sanitizion, so there isn't any real security risk only a need to aoid messing up the output.
+Routines for this subsystem has paths from source to sink, and should escape text if necessary before it is returned. Still note that this subsystem will only be able to display its output after sanitation, so there isn't any real security risk only a need to avoid messing up the output.
 
 This subsystem is central to proper operation of the extension.
 
@@ -188,7 +188,7 @@ This subsystem is central to proper operation of the extension.
 
 ### PHP class Strategies
 
-This is a utility class that holds a number of strategies. Main purpose is to replace the pesky singletons with something that can be easilly tested. Most of the strategies use this as a base class.
+This is a utility class that holds a number of strategies. Main purpose is to replace the pesky singletons with something that can be easily tested. Most of the strategies use this as a base class.
 
 This subsystem is central to proper operation of the extension.
 
@@ -198,11 +198,11 @@ If `pickle-status-current` is set, then a link will be created as a _subtitle_ t
 
 No values should be passed directly from source to sink in this subsystem.
 
-This subsystem is decoupled from the rest of the system, and only respond on messages passed as extension data. The subsystem can be completly removed if necessary.
+This subsystem is decoupled from the rest of the system, and only respond on messages passed as extension data. The subsystem can be completely removed if necessary.
 
 ### PHP class TAP
 
-A parser to compact a messy and large TAP report into something that is easier to parse repeatedly. This compacted report will maintain the fallback chain, but in its present form it is hardcoded. It could be wise to generalize the form.
+A parser to compact a messy and large TAP report into something that is easier to parse repeatedly. This compacted report will maintain the fallback chain, but in its present form it is hard coded. It could be wise to generalize the form.
 
 No values should be passed directly from source to sink in this subsystem.
 
@@ -224,7 +224,7 @@ The categories are defined trough entries in `Category` from [extension.json](ht
 
 There is no direct path from source to sink in the code except for the title object, but this object should be properly handled by the existing system.
 
-This subsystem is decoupled from the rest of the system, and only respond on messages passed as extension data. The subsystem can be completly removed if necessary.
+This subsystem is decoupled from the rest of the system, and only respond on messages passed as extension data. The subsystem can be completely removed if necessary.
 
 ### PHP class Indicator
 
@@ -234,7 +234,7 @@ The indicators are defined trough entries in `Indicator` from [extension.json](h
 
 There is no direct path from source to sink in the code except for some fully parsed messages, but that is part of the unprotected and sanitized output and should be properly handled by the existing system.
 
-This subsystem is decoupled from the rest of the system, and only respond on messages passed as extension data. The subsystem can be completly removed if necessary.
+This subsystem is decoupled from the rest of the system, and only respond on messages passed as extension data. The subsystem can be completely removed if necessary.
 
 ### PHP class LogEntry
 
