@@ -64,14 +64,14 @@ local tests = {
 		name = 'counter:create (single value type)',
 		func = testCreate,
 		type = 'ToString',
-		args = { 'a' },
+		args = { 1 },
 		expect = { 'table' }
 	},
 	{
 		name = 'counter:create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
-		args = { 'a', 'b', 'c' },
+		args = { 1, 2, 3 },
 		expect = { 'table' }
 	},
 	{

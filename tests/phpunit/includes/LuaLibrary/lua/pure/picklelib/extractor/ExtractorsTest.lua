@@ -95,13 +95,13 @@ local tests = {
 	{
 		name = name .. ':num-flush (single value)',
 		func = testNumFlush,
-		args = { 'foo' },
+		args = { { 'foo' } },
 		expect = { 1, 0 }
 	},
 	{
 		name = name .. ':num-flush (multiple value)',
 		func = testNumFlush,
-		args = { 'foo', 'bar', 'baz' },
+		args = { { 'foo' }, { 'bar' }, { 'baz' } },
 		expect = { 3, 0 }
 	},
 	{

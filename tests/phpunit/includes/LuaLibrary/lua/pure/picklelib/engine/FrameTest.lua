@@ -89,6 +89,12 @@ local function testEval( libs, ... )
 	return unpack( result )
 end
 
+local function testRef( ref, ... )
+	local obj = makeFrame()
+	obj[ 'set' .. string.upper( string.sub( ref, 1, 1 ) ) .. string.sub( ref, 2 ) ]( obj, ... )
+	return obj[ref]( obj )
+end
+
 local tests = {
 	{
 		name = name .. ' exists',
@@ -472,6 +478,9 @@ local tests = {
 			{ { '42' } },
 		}
 	},
+--	{
+--		name = name .. ':evalSubject (multiple string, fixture push subject)',
+--	}
 }
 
 return testframework.getTestProvider( tests )
