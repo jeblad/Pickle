@@ -1,5 +1,7 @@
 --- Stack for managing values.
--- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
+-- The semantics of a stack is to pop the last entry to be pushed on the stack.
+-- This class follows the pattern from
+-- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Stack
 
 -- pure libs
@@ -27,7 +29,6 @@ function Stack:create( ... )
 end
 
 --- Initialize a new instance.
--- @local
 -- @tparam vararg ... pushed on the stack
 -- @treturn self
 function Stack:_init( ... )
@@ -53,7 +54,7 @@ function Stack:depth()
 end
 
 --- Get the layout of the stack.
--- This method is used for testing to inspect which types of objects.
+-- This method is used for testing to inspect which types of objects exists in the stack.
 -- @treturn table description of the stack
 function Stack:layout()
 	local t = {}
@@ -71,7 +72,7 @@ end
 function Stack:bottom()
 	return self._stack[1]
 end
-Stack.first = Stack.bottom
+Stack.first = Stack.bottom -- first item to be pushed
 
 --- Get a reference to the topmost item in the stack.
 -- The topmost item can also be described as the last item.
@@ -81,7 +82,7 @@ Stack.first = Stack.bottom
 function Stack:top()
 	return self._stack[#self._stack]
 end
-Stack.last = Stack.top
+Stack.last = Stack.top -- last item to be pushed
 
 --- Push a value on the stack.
 -- @treturn self facilitate chaining
@@ -91,6 +92,7 @@ function Stack:push( ... )
 	end
 	return self
 end
+Stack.shift = Stack.push
 
 --- Pop the last value of the stack.
 -- Note that this will remove the last (topmost) value.
@@ -103,6 +105,7 @@ function Stack:pop( num )
 	end
 	return unpack( t )
 end
+Stack.unshift = Stack.pop
 
 --- Drop the last n values of the stack.
 -- Note that this will remove the last (topmost) values.
