@@ -1,4 +1,6 @@
 --- Baseclass for Describe, Context, and It.
+-- This class follows the pattern from
+-- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Frame
 
 -- pure libs
@@ -65,7 +67,6 @@ function Frame.create( ... )
 end
 
 --- Initialize a new instance.
--- @local
 -- @tparam vararg ... list to be dispatched (unused)
 -- @return Frame
 function Frame:_init()
