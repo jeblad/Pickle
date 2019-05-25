@@ -1,5 +1,7 @@
 --- Subclass to do specialization of the extractor strategy class.
--- This is the spesialization to do casting into a number type
+-- This spesialization do casting into a number type.
+-- This class follows the pattern with inheritance from
+-- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod ExtractorNumber
 -- @alias Subclass
 
@@ -30,7 +32,6 @@ function Subclass:create( ... )
 end
 
 --- Initialize a new instance.
--- @local
 -- @treturn self
 function Subclass:_init()
 	Super._init( self,

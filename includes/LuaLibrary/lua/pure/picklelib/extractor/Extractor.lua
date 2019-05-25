@@ -1,5 +1,6 @@
 --- BaseClass for an extractor strategy.
--- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
+-- This class follows the pattern with inheritance from
+-- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Extractor
 -- @alias Baseclass
 
@@ -29,7 +30,6 @@ function Baseclass:create( ... )
 end
 
 --- Initialize a new instance.
--- @local
 -- @tparam vararg ... list of patterns
 -- @treturn self
 function Baseclass:_init( ... )

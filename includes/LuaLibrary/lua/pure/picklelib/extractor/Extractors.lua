@@ -1,5 +1,6 @@
 --- Baseclass for extractor strategies.
--- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
+-- This class follows the pattern from
+-- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Extractors
 
 -- pure libs
@@ -31,7 +32,6 @@ function Extractors:create( ... )
 end
 
 --- Initialize a new instance.
--- @local
 -- @tparam vararg ... list of strategies
 -- @treturn self
 function Extractors:_init( ... )
