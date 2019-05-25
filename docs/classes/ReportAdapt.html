@@ -32,7 +32,6 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -41,6 +40,7 @@
 <h2>Classes</h2>
 <ul class="nowrap">
   <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Queue.html">Queue</a></li>
   <li><a href="../classes/Stack.html">Stack</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
@@ -72,6 +72,7 @@
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/Stub.html">Stub</a></li>
   <li><a href="../modules/util.html">util</a></li>
 </ul>
 <h2>Topics</h2>
@@ -100,16 +101,10 @@
 
 <h1>Class <code>ReportAdapt</code></h1>
 <p>Subclass for adapt report.</p>
-<p> This class follows the pattern from <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
+<p> This class follows the pattern with inheritance from
+ <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
-<h2><a href="#Local_Functions">Local Functions</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name nowrap"><a href="#ReportAdapt._init">ReportAdapt._init (...)</a></td>
-	<td class="summary">Initialize a new instance.</td>
-	</tr>
-</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
@@ -124,6 +119,10 @@
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
+	<td class="name nowrap"><a href="#ReportAdapt:_init">ReportAdapt:_init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+	<tr>
 	<td class="name nowrap"><a href="#ReportAdapt:lines">ReportAdapt:lines ()</a></td>
 	<td class="summary">Export the lines as an multivalue return.</td>
 	</tr>
@@ -136,11 +135,11 @@
 	<td class="summary">Add a line.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#ReportAdapt:getLine">ReportAdapt:getLine (idx)</a></td>
+	<td class="name nowrap"><a href="#ReportAdapt:getLine">ReportAdapt:getLine ([idx=1])</a></td>
 	<td class="summary">Get a line.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#ReportAdapt:realize">ReportAdapt:realize (renders[, lang=nil[, counter=nil]])</a></td>
+	<td class="name nowrap"><a href="#ReportAdapt:realize">ReportAdapt:realize (renders, lang, counter)</a></td>
 	<td class="summary">Realize the data by applying a render.</td>
 	</tr>
 </table>
@@ -149,37 +148,6 @@
 <br/>
 
 
-    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "ReportAdapt._init"></a>
-    <strong>ReportAdapt._init (...)</strong>
-    </dt>
-    <dd>
-    Initialize a new instance.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">...</span>
-            <span class="types"><span class="type">vararg</span></span>
-         pushed to lines
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">self</span></span>
-
-
-
-
-
-
-
-</dd>
-</dl>
     <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
@@ -203,6 +171,8 @@
 
         any
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -239,6 +209,33 @@
     <ul>
          <a href="../classes/Report.html#Report:create">Report:create</a>
     </ul>
+
+
+</dd>
+    <dt>
+    <a name = "ReportAdapt:_init"></a>
+    <strong>ReportAdapt:_init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         pushed to lines
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
 
 
 </dd>
@@ -308,7 +305,7 @@
 </dd>
     <dt>
     <a name = "ReportAdapt:getLine"></a>
-    <strong>ReportAdapt:getLine (idx)</strong>
+    <strong>ReportAdapt:getLine ([idx=1])</strong>
     </dt>
     <dd>
     Get a line.
@@ -318,8 +315,9 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">idx</span>
-            <span class="types"><span class="type">number</span></span>
+            <span class="types"><span class="type">nil</span> or <span class="type">number</span></span>
          line number
+         (<em>default</em> 1)
         </li>
     </ul>
 
@@ -328,13 +326,15 @@
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         containing list of parts
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
 </dd>
     <dt>
     <a name = "ReportAdapt:realize"></a>
-    <strong>ReportAdapt:realize (renders[, lang=nil[, counter=nil]])</strong>
+    <strong>ReportAdapt:realize (renders, lang, counter)</strong>
     </dt>
     <dd>
     Realize the data by applying a render.
@@ -347,14 +347,12 @@
          to use while realizing the reports
         </li>
         <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          holding the language code
-         (<em>default</em> nil)
         </li>
         <li><span class="parameter">counter</span>
-            <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
-         (<em>default</em> nil)
         </li>
     </ul>
 

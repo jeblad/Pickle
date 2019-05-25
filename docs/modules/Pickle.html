@@ -34,18 +34,19 @@
 <ul>
 <li><a href="#Functions">Functions</a></li>
 <li><a href="#Fields">Fields</a></li>
-<li><a href="#Local_Functions">Local Functions</a></li>
 </ul>
 
 
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><strong>Pickle</strong></li>
+  <li><a href="../modules/Stub.html">Stub</a></li>
   <li><a href="../modules/util.html">util</a></li>
 </ul>
 <h2>Classes</h2>
 <ul class="nowrap">
   <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Queue.html">Queue</a></li>
   <li><a href="../classes/Stack.html">Stack</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
@@ -165,45 +166,6 @@
 	<tr>
 	<td class="name nowrap"><a href="#env.it">env.it</a></td>
 	<td class="summary">It is the actual test for each metod.</td>
-	</tr>
-</table>
-<h2><a href="#Local_Functions">Local Functions</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name nowrap"><a href="#registerSpies">registerSpies (env, reports)</a></td>
-	<td class="summary">Register spies.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#registerComments">registerComments (env, reports)</a></td>
-	<td class="summary">Register comments.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#registerReports">registerReports (env)</a></td>
-	<td class="summary">Register reports.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#registerRenders">registerRenders (env)</a></td>
-	<td class="summary">Register renders.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#registerExtractors">registerExtractors ()</a></td>
-	<td class="summary">Register extractors.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#registerTranslators">registerTranslators (subpage)</a></td>
-	<td class="summary">Register translators.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#registerAdaptations">registerAdaptations (env, reports)</a></td>
-	<td class="summary">Register adaptations.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#findStyle">findStyle (frame)</a></td>
-	<td class="summary">Helper to get the named style</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#findLang">findLang (frame)</a></td>
-	<td class="summary">Helper to get the identified language</td>
 	</tr>
 </table>
 
@@ -554,227 +516,6 @@ function obj.tap( name )
          passed on to Adapt.create
         </li>
     </ul>
-
-
-
-
-
-</dd>
-</dl>
-    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "registerSpies"></a>
-    <strong>registerSpies (env, reports)</strong>
-    </dt>
-    <dd>
-    Register spies.
- This needs a valid environment, for example from getfenv()
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">env</span>
-         table for the environment
-        </li>
-        <li><span class="parameter">reports</span>
-         ref to objects holding set of reports
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "registerComments"></a>
-    <strong>registerComments (env, reports)</strong>
-    </dt>
-    <dd>
-    Register comments.
- This needs a valid environment, for example from getfenv()
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">env</span>
-         table for the environment
-        </li>
-        <li><span class="parameter">reports</span>
-         ref to objects holding set of reports
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "registerReports"></a>
-    <strong>registerReports (env)</strong>
-    </dt>
-    <dd>
-    Register reports.
- This needs a valid environment, for example from getfenv()
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">env</span>
-         table for the environment
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-        Stack of reports
-
-
-
-
-</dd>
-    <dt>
-    <a name = "registerRenders"></a>
-    <strong>registerRenders (env)</strong>
-    </dt>
-    <dd>
-    Register renders.
- This needs a valid environment, for example from getfenv()
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">env</span>
-         table for the environment
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-        Renders
-
-
-
-
-</dd>
-    <dt>
-    <a name = "registerExtractors"></a>
-    <strong>registerExtractors ()</strong>
-    </dt>
-    <dd>
-    Register extractors.
-
-
-
-    <h3>Returns:</h3>
-
-        ExtractorStrategies
-
-
-
-
-</dd>
-    <dt>
-    <a name = "registerTranslators"></a>
-    <strong>registerTranslators (subpage)</strong>
-    </dt>
-    <dd>
-    Register translators.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">subpage</span>
-         name of page
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-        TranslatorStrategies
-
-
-
-
-</dd>
-    <dt>
-    <a name = "registerAdaptations"></a>
-    <strong>registerAdaptations (env, reports)</strong>
-    </dt>
-    <dd>
-    Register adaptations.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">env</span>
-         table for the environment
-        </li>
-        <li><span class="parameter">reports</span>
-         ref to objects holding set of reports
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "findStyle"></a>
-    <strong>findStyle (frame)</strong>
-    </dt>
-    <dd>
-    Helper to get the named style
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">frame</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#">Frame</a></span>
-
-
-
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "findLang"></a>
-    <strong>findLang (frame)</strong>
-    </dt>
-    <dd>
-    Helper to get the identified language
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">frame</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#">Frame</a></span>
-
-
-
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-
-
 
 
 

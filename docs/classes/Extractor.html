@@ -32,7 +32,6 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -41,6 +40,7 @@
 <h2>Classes</h2>
 <ul class="nowrap">
   <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Queue.html">Queue</a></li>
   <li><a href="../classes/Stack.html">Stack</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
@@ -72,6 +72,7 @@
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/Stub.html">Stub</a></li>
   <li><a href="../modules/util.html">util</a></li>
 </ul>
 <h2>Topics</h2>
@@ -100,16 +101,10 @@
 
 <h1>Class <code>Extractor</code></h1>
 <p>BaseClass for an extractor strategy.</p>
-<p> This class follows the pattern from <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
+<p> This class follows the pattern with inheritance from
+ <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
-<h2><a href="#Local_Functions">Local Functions</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name nowrap"><a href="#Extractor._init">Extractor._init (...)</a></td>
-	<td class="summary">Initialize a new instance.</td>
-	</tr>
-</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
@@ -122,6 +117,10 @@
 	<tr>
 	<td class="name nowrap"><a href="#Extractor:create">Extractor:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Extractor:_init">Extractor:_init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Extractor:type">Extractor:type ()</a></td>
@@ -145,37 +144,6 @@
 <br/>
 
 
-    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "Extractor._init"></a>
-    <strong>Extractor._init (...)</strong>
-    </dt>
-    <dd>
-    Initialize a new instance.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">...</span>
-            <span class="types"><span class="type">vararg</span></span>
-         list of patterns
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">self</span></span>
-
-
-
-
-
-
-
-</dd>
-</dl>
     <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
@@ -199,6 +167,8 @@
 
         any
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -219,7 +189,34 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/Extractor.html#Extractor._init">Extractor:_init</a>
+         forwarded to <a href="../classes/Extractor.html#Extractor:_init">Extractor:_init</a>
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Extractor:_init"></a>
+    <strong>Extractor:_init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         list of patterns
         </li>
     </ul>
 
@@ -284,6 +281,8 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 

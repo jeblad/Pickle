@@ -32,7 +32,6 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -41,6 +40,7 @@
 <h2>Classes</h2>
 <ul class="nowrap">
   <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Queue.html">Queue</a></li>
   <li><a href="../classes/Stack.html">Stack</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
@@ -72,6 +72,7 @@
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/Stub.html">Stub</a></li>
   <li><a href="../modules/util.html">util</a></li>
 </ul>
 <h2>Topics</h2>
@@ -100,16 +101,10 @@
 
 <h1>Class <code>RenderAdaptVivid</code></h1>
 <p>Final class for vivid report renderer.</p>
-<p> This class follows the pattern from <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
+<p> This class follows the pattern with inheritance from
+ <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
-<h2><a href="#Local_Functions">Local Functions</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name nowrap"><a href="#RenderAdaptVivid._init">RenderAdaptVivid._init (...)</a></td>
-	<td class="summary">Initialize a new instance.</td>
-	</tr>
-</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
@@ -124,19 +119,23 @@
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdaptVivid:realizeState">RenderAdaptVivid:realizeState (src[, lang=nil[, counter=nil]])</a></td>
+	<td class="name nowrap"><a href="#RenderAdaptVivid:_init">RenderAdaptVivid:_init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#RenderAdaptVivid:realizeState">RenderAdaptVivid:realizeState (src, lang, counter)</a></td>
 	<td class="summary">Override realization of reported data for state.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdaptVivid:realizeHeader">RenderAdaptVivid:realizeHeader (src[, lang=nil[, counter=nil]])</a></td>
+	<td class="name nowrap"><a href="#RenderAdaptVivid:realizeHeader">RenderAdaptVivid:realizeHeader (src, lang, counter)</a></td>
 	<td class="summary">Override realization of reported data for header.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdaptVivid:realizeLine">RenderAdaptVivid:realizeLine (param[, lang=nil])</a></td>
+	<td class="name nowrap"><a href="#RenderAdaptVivid:realizeLine">RenderAdaptVivid:realizeLine (param, lang)</a></td>
 	<td class="summary">Override realization of reported data for line.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdaptVivid:realizeBody">RenderAdaptVivid:realizeBody (src[, lang=nil])</a></td>
+	<td class="name nowrap"><a href="#RenderAdaptVivid:realizeBody">RenderAdaptVivid:realizeBody (src, lang)</a></td>
 	<td class="summary">Override realization of reported data for body.</td>
 	</tr>
 </table>
@@ -145,34 +144,6 @@
 <br/>
 
 
-    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "RenderAdaptVivid._init"></a>
-    <strong>RenderAdaptVivid._init (...)</strong>
-    </dt>
-    <dd>
-    Initialize a new instance.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">...</span>
-            <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/RenderAdapt.html#RenderAdapt._init">superclass init method</a>
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-        self
-
-
-
-
-</dd>
-</dl>
     <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
@@ -196,6 +167,8 @@
 
         any
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -236,8 +209,32 @@
 
 </dd>
     <dt>
+    <a name = "RenderAdaptVivid:_init"></a>
+    <strong>RenderAdaptVivid:_init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         forwarded to <a href="../classes/RenderAdapt.html#RenderAdapt:_init">superclass init method</a>
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        self
+
+
+
+
+</dd>
+    <dt>
     <a name = "RenderAdaptVivid:realizeState"></a>
-    <strong>RenderAdaptVivid:realizeState (src[, lang=nil[, counter=nil]])</strong>
+    <strong>RenderAdaptVivid:realizeState (src, lang, counter)</strong>
     </dt>
     <dd>
     Override realization of reported data for state.
@@ -250,14 +247,12 @@
          that shall be realized
         </li>
         <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>default</em> nil)
         </li>
         <li><span class="parameter">counter</span>
-            <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
-         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -268,13 +263,15 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
 </dd>
     <dt>
     <a name = "RenderAdaptVivid:realizeHeader"></a>
-    <strong>RenderAdaptVivid:realizeHeader (src[, lang=nil[, counter=nil]])</strong>
+    <strong>RenderAdaptVivid:realizeHeader (src, lang, counter)</strong>
     </dt>
     <dd>
     Override realization of reported data for header.
@@ -287,14 +284,12 @@
          that shall be realized
         </li>
         <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>default</em> nil)
         </li>
         <li><span class="parameter">counter</span>
-            <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
-         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -305,13 +300,15 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
 </dd>
     <dt>
     <a name = "RenderAdaptVivid:realizeLine"></a>
-    <strong>RenderAdaptVivid:realizeLine (param[, lang=nil])</strong>
+    <strong>RenderAdaptVivid:realizeLine (param, lang)</strong>
     </dt>
     <dd>
     Override realization of reported data for line.
@@ -324,9 +321,8 @@
          that shall be realized
         </li>
         <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -334,13 +330,15 @@
 
         html
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
 </dd>
     <dt>
     <a name = "RenderAdaptVivid:realizeBody"></a>
-    <strong>RenderAdaptVivid:realizeBody (src[, lang=nil])</strong>
+    <strong>RenderAdaptVivid:realizeBody (src, lang)</strong>
     </dt>
     <dd>
     Override realization of reported data for body.
@@ -354,9 +352,8 @@
          that shall be realized
         </li>
         <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -367,6 +364,8 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 

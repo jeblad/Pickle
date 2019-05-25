@@ -40,7 +40,7 @@
 <h2>Classes</h2>
 <ul class="nowrap">
   <li><a href="../classes/Counter.html">Counter</a></li>
-  <li><a href="../classes/Queue.html">Queue</a></li>
+  <li><strong>Queue</strong></li>
   <li><a href="../classes/Stack.html">Stack</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
@@ -63,7 +63,7 @@
   <li><a href="../classes/RenderFrameFull.html">RenderFrameFull</a></li>
   <li><a href="../classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
   <li><a href="../classes/RenderFrameVivid.html">RenderFrameVivid</a></li>
-  <li><strong>Report</strong></li>
+  <li><a href="../classes/Report.html">Report</a></li>
   <li><a href="../classes/ReportAdapt.html">ReportAdapt</a></li>
   <li><a href="../classes/ReportFrame.html">ReportFrame</a></li>
   <li><a href="../classes/Translator.html">Translator</a></li>
@@ -99,72 +99,73 @@
 
 <div id="content">
 
-<h1>Class <code>Report</code></h1>
-<p>Baseclass for reports.</p>
-<p> This class follows the pattern with inheritance from
+<h1>Class <code>Queue</code></h1>
+<p>Queue for managing values.</p>
+<p> The semantics of a queue is to pop the oldest entry pushed into the queue.
+ This class follows the pattern from
  <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#Report:__index">Report:__index (key)</a></td>
+	<td class="name nowrap"><a href="#Queue:__index">Queue:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#Report:create">Report:create (...)</a></td>
+	<td class="name nowrap"><a href="#Queue:create">Queue:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Report:_init">Report:_init (...)</a></td>
+	<td class="name nowrap"><a href="#Queue:_init">Queue:_init (...)</a></td>
 	<td class="summary">Initialize a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Report:notOk">Report:notOk ()</a></td>
-	<td class="summary">Set the state unconditionally as "not ok"".</td>
+	<td class="name nowrap"><a href="#Queue:isEmpty">Queue:isEmpty ()</a></td>
+	<td class="summary">Is the queue empty.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Report:ok">Report:ok ()</a></td>
-	<td class="summary">Set the state unconditionally as "ok"".</td>
+	<td class="name nowrap"><a href="#Queue:depth">Queue:depth ()</a></td>
+	<td class="summary">What is the depth of the internal structure.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Report:isOk">Report:isOk ()</a></td>
-	<td class="summary">Check if the instance state is "ok"".</td>
+	<td class="name nowrap"><a href="#Queue:layout">Queue:layout ()</a></td>
+	<td class="summary">Get the layout of the queue.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Report:setSkip">Report:setSkip ([str=''])</a></td>
-	<td class="summary">Set the skip.</td>
+	<td class="name nowrap"><a href="#Queue:bottom">Queue:bottom ()</a></td>
+	<td class="summary">Get a reference to the bottommost item in the queue.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Report:getSkip">Report:getSkip ()</a></td>
-	<td class="summary">Get the skip.</td>
+	<td class="name nowrap"><a href="#Queue:top">Queue:top ()</a></td>
+	<td class="summary">Get a reference to the topmost item in the queue.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Report:isSkip">Report:isSkip ()</a></td>
-	<td class="summary">Check if the instance is itself in a skip state.</td>
+	<td class="name nowrap"><a href="#Queue:push">Queue:push (...)</a></td>
+	<td class="summary">Push a value on the queue.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Report:setTodo">Report:setTodo ([str=''])</a></td>
-	<td class="summary">Set the todo.</td>
+	<td class="name nowrap"><a href="#Queue:pop">Queue:pop ([num=1])</a></td>
+	<td class="summary">Pop the last value of the queue.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Report:getTodo">Report:getTodo ()</a></td>
-	<td class="summary">Get the todo.</td>
+	<td class="name nowrap"><a href="#Queue:drop">Queue:drop ([num=1])</a></td>
+	<td class="summary">Drop the last n values of the Queue.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Report:isTodo">Report:isTodo ()</a></td>
-	<td class="summary">Check if the instance is itself in a todo state.</td>
+	<td class="name nowrap"><a href="#Queue:get">Queue:get ([num=1])</a></td>
+	<td class="summary">Get the indexed entry.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Report:realize">Report:realize (renders, lang, counter)</a></td>
-	<td class="summary">Realize the data by applying a render.</td>
+	<td class="name nowrap"><a href="#Queue:export">Queue:export ()</a></td>
+	<td class="summary">Export a list of all the contents.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Report:type">Report:type ()</a></td>
-	<td class="summary">Get the type of report.</td>
+	<td class="name nowrap"><a href="#Queue:flush">Queue:flush ()</a></td>
+	<td class="summary">Flush all the contents.</td>
 	</tr>
 </table>
 
@@ -176,8 +177,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "Report:__index"></a>
-    <strong>Report:__index (key)</strong>
+    <a name = "Queue:__index"></a>
+    <strong>Queue:__index (key)</strong>
     </dt>
     <dd>
     Lookup of missing class members.
@@ -206,13 +207,11 @@
 
     <dl class="function">
     <dt>
-    <a name = "Report:create"></a>
-    <strong>Report:create (...)</strong>
+    <a name = "Queue:create"></a>
+    <strong>Queue:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
- Assumption is either to create a new instance from an existing class,
- or from a previous instance of some kind.
 
 
     <h3>Parameters:</h3>
@@ -235,8 +234,8 @@
 
 </dd>
     <dt>
-    <a name = "Report:_init"></a>
-    <strong>Report:_init (...)</strong>
+    <a name = "Queue:_init"></a>
+    <strong>Queue:_init (...)</strong>
     </dt>
     <dd>
     Initialize a new instance.
@@ -246,7 +245,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         unused
+         pushed on the queue
         </li>
     </ul>
 
@@ -262,254 +261,251 @@
 
 </dd>
     <dt>
-    <a name = "Report:notOk"></a>
-    <strong>Report:notOk ()</strong>
+    <a name = "Queue:isEmpty"></a>
+    <strong>Queue:isEmpty ()</strong>
     </dt>
     <dd>
-    Set the state unconditionally as "not ok"".
- Note that initial state is not ok.
-
-
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">self</span></span>
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Report:ok"></a>
-    <strong>Report:ok ()</strong>
-    </dt>
-    <dd>
-    Set the state unconditionally as "ok"".
- Note that initial state is not ok.
-
-
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">self</span></span>
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Report:isOk"></a>
-    <strong>Report:isOk ()</strong>
-    </dt>
-    <dd>
-    Check if the instance state is "ok"".
- Note that initial state is not ok.
+    Is the queue empty.
+ Note that the internal structure is non-empty even if a nil
+ is pushed on the queue.
 
 
 
     <h3>Returns:</h3>
 
            <span class="types"><span class="type">boolean</span></span>
-        the existing state
+        whether the internal structure has length zero
 
 
 
 
 </dd>
     <dt>
-    <a name = "Report:setSkip"></a>
-    <strong>Report:setSkip ([str=''])</strong>
+    <a name = "Queue:depth"></a>
+    <strong>Queue:depth ()</strong>
     </dt>
     <dd>
-    Set the skip.
- This is an accessor to set the member.
+    What is the depth of the internal structure.
+ Note that the internal structure has a depth even if a nil
+ is pushed on the queue.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">number</span></span>
+        how deep is the internal structure
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Queue:layout"></a>
+    <strong>Queue:layout ()</strong>
+    </dt>
+    <dd>
+    Get the layout of the queue.
+ This method is used for testing to inspect which types of objects exists in the queue.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        description of the queue
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Queue:bottom"></a>
+    <strong>Queue:bottom ()</strong>
+    </dt>
+    <dd>
+    Get a reference to the bottommost item in the queue.
+ The bottommost item can also be described as the first item.
+ This method leaves the item on the queue.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         first
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">any</span></span>
+        item that can be put on the queue
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Queue:top"></a>
+    <strong>Queue:top ()</strong>
+    </dt>
+    <dd>
+    Get a reference to the topmost item in the queue.
+ The topmost item can also be described as the last item.
+ This method leaves the item on the queue.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         last
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">any</span></span>
+        item that can be put on the queue
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Queue:push"></a>
+    <strong>Queue:push (...)</strong>
+    </dt>
+    <dd>
+    Push a value on the queue.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">str</span>
-            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         that will be used as the skip note
-         (<em>default</em> '')
+        <li><span class="parameter">...</span>
+
+
+
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
            <span class="types"><span class="type">self</span></span>
-
-
-
-
-    <h3>Raises:</h3>
-    on wrong arguments
-
-
-
-</dd>
-    <dt>
-    <a name = "Report:getSkip"></a>
-    <strong>Report:getSkip ()</strong>
-    </dt>
-    <dd>
-    Get the skip.
- This is an accessor to get the member.
- Note that the saved structure will be unpacked before being returned.
-
-
-
-    <h3>Returns:</h3>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-        the skip note
+        facilitate chaining
 
 
 
 
 </dd>
     <dt>
-    <a name = "Report:isSkip"></a>
-    <strong>Report:isSkip ()</strong>
+    <a name = "Queue:pop"></a>
+    <strong>Queue:pop ([num=1])</strong>
     </dt>
     <dd>
-    Check if the instance is itself in a skip state.
-
-
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">boolean</span></span>
-        does the skip note exist
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Report:setTodo"></a>
-    <strong>Report:setTodo ([str=''])</strong>
-    </dt>
-    <dd>
-    Set the todo.
- This is an accessor to set the member.
+    Pop the last value of the queue.
+ Note that this will remove the last (topmost) value.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">str</span>
-            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         that will be used as the todo note
-         (<em>default</em> '')
+        <li><span class="parameter">num</span>
+            <span class="types"><span class="type">number</span></span>
+         items to drop
+         (<em>default</em> 1)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">any</span></span>
+        item that can be put on the queue
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Queue:drop"></a>
+    <strong>Queue:drop ([num=1])</strong>
+    </dt>
+    <dd>
+    Drop the last n values of the Queue.
+ Note that this will remove the last (topmost) values.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">num</span>
+            <span class="types"><span class="type">number</span></span>
+         items to drop
+         (<em>default</em> 1)
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
            <span class="types"><span class="type">self</span></span>
-
-
-
-
-    <h3>Raises:</h3>
-    on wrong arguments
-
-
-
-</dd>
-    <dt>
-    <a name = "Report:getTodo"></a>
-    <strong>Report:getTodo ()</strong>
-    </dt>
-    <dd>
-    Get the todo.
- This is an accessor to get the member.
-
-
-
-    <h3>Returns:</h3>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-        the todo note
+        facilitate chaining
 
 
 
 
 </dd>
     <dt>
-    <a name = "Report:isTodo"></a>
-    <strong>Report:isTodo ()</strong>
+    <a name = "Queue:get"></a>
+    <strong>Queue:get ([num=1])</strong>
     </dt>
     <dd>
-    Check if the instance is itself in a todo state.
-
-
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">boolean</span></span>
-        does the todo note exist
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Report:realize"></a>
-    <strong>Report:realize (renders, lang, counter)</strong>
-    </dt>
-    <dd>
-    Realize the data by applying a render.
+    Get the indexed entry.
+ Accessing this will not change stored values.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">renders</span>
-            <span class="types"><a class="type" href="../classes/Renders.html#">Renders</a></span>
-         to use while realizing the Baseclasss (unused)
-        </li>
-        <li><span class="parameter">lang</span>
-            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         holding the language code (unused)
-        </li>
-        <li><span class="parameter">counter</span>
-            <span class="types"><span class="type">nil</span> or <a class="type" href="../classes/Counter.html#">Counter</a></span>
-         holding the running count (unused)
+        <li><span class="parameter">num</span>
+            <span class="types"><span class="type">number</span></span>
+         entry, negative numbers count backwards
+         (<em>default</em> 1)
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-
-
-
+           <span class="types"><span class="type">any</span></span>
+        item that can be put on the queue
 
 
 
 
 </dd>
     <dt>
-    <a name = "Report:type"></a>
-    <strong>Report:type ()</strong>
+    <a name = "Queue:export"></a>
+    <strong>Queue:export ()</strong>
     </dt>
     <dd>
-    Get the type of report.
- All reports has an explicit type name.
+    Export a list of all the contents.
 
 
 
     <h3>Returns:</h3>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        list of values
 
 
 
+
+</dd>
+    <dt>
+    <a name = "Queue:flush"></a>
+    <strong>Queue:flush ()</strong>
+    </dt>
+    <dd>
+    Flush all the contents.
+ Note that this clears the internal storage.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        list of values
 
 
 

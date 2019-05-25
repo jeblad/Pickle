@@ -32,7 +32,6 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -41,6 +40,7 @@
 <h2>Classes</h2>
 <ul class="nowrap">
   <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Queue.html">Queue</a></li>
   <li><a href="../classes/Stack.html">Stack</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
@@ -72,6 +72,7 @@
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/Stub.html">Stub</a></li>
   <li><a href="../modules/util.html">util</a></li>
 </ul>
 <h2>Topics</h2>
@@ -100,16 +101,10 @@
 
 <h1>Class <code>Render</code></h1>
 <p>Baseclass for renders.</p>
-<p> This class follows the pattern from <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
+<p> This class follows the pattern with inheritance from
+ <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
-<h2><a href="#Local_Functions">Local Functions</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name nowrap"><a href="#Render._init">Render._init (...)</a></td>
-	<td class="summary">Initialize a new instance.</td>
-	</tr>
-</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
@@ -122,6 +117,10 @@
 	<tr>
 	<td class="name nowrap"><a href="#Render:create">Render:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Render:_init">Render:_init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Render:cleanKey">Render:cleanKey (str)</a></td>
@@ -140,11 +139,11 @@
 	<td class="summary">Append same type to first.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Render:realizeClarification">Render:realizeClarification (keyPart[, lang=nil[, counter=nil]])</a></td>
+	<td class="name nowrap"><a href="#Render:realizeClarification">Render:realizeClarification (keyPart, lang, counter)</a></td>
 	<td class="summary">Realize clarification.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Render:realizeComment">Render:realizeComment (src, keyPart[, lang=nil])</a></td>
+	<td class="name nowrap"><a href="#Render:realizeComment">Render:realizeComment (src, keyPart, lang)</a></td>
 	<td class="summary">Realize comment.</td>
 	</tr>
 </table>
@@ -153,34 +152,6 @@
 <br/>
 
 
-    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "Render._init"></a>
-    <strong>Render._init (...)</strong>
-    </dt>
-    <dd>
-    Initialize a new instance.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">...</span>
-            <span class="types"><span class="type">vararg</span></span>
-         unused
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-        self
-
-
-
-
-</dd>
-</dl>
     <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
@@ -204,6 +175,8 @@
 
         any
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -242,6 +215,30 @@
 
 </dd>
     <dt>
+    <a name = "Render:_init"></a>
+    <strong>Render:_init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         unused
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        self
+
+
+
+
+</dd>
+    <dt>
     <a name = "Render:cleanKey"></a>
     <strong>Render:cleanKey (str)</strong>
     </dt>
@@ -265,6 +262,8 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -293,6 +292,8 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -343,13 +344,15 @@
 
         any
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
 </dd>
     <dt>
     <a name = "Render:realizeClarification"></a>
-    <strong>Render:realizeClarification (keyPart[, lang=nil[, counter=nil]])</strong>
+    <strong>Render:realizeClarification (keyPart, lang, counter)</strong>
     </dt>
     <dd>
     Realize clarification.
@@ -362,14 +365,12 @@
          of a message key
         </li>
         <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code
-         (<em>default</em> nil)
         </li>
         <li><span class="parameter">counter</span>
-            <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
-         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -380,13 +381,15 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
 </dd>
     <dt>
     <a name = "Render:realizeComment"></a>
-    <strong>Render:realizeComment (src, keyPart[, lang=nil])</strong>
+    <strong>Render:realizeComment (src, keyPart, lang)</strong>
     </dt>
     <dd>
     Realize comment.
@@ -403,9 +406,8 @@
          of a message key
         </li>
         <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code
-         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -416,6 +418,8 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 

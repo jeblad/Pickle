@@ -33,18 +33,19 @@
 <h2>Contents</h2>
 <ul>
 <li><a href="#Functions">Functions</a></li>
-<li><a href="#Local_Functions">Local Functions</a></li>
 </ul>
 
 
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/Stub.html">Stub</a></li>
   <li><strong>util</strong></li>
 </ul>
 <h2>Classes</h2>
 <ul class="nowrap">
   <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Queue.html">Queue</a></li>
   <li><a href="../classes/Stack.html">Stack</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
@@ -133,17 +134,6 @@
 	<tr>
 	<td class="name nowrap"><a href="#contains">contains (t, arg)</a></td>
 	<td class="summary">Checks if a table contains the arg.</td>
-	</tr>
-</table>
-<h2><a href="#Local_Functions">Local Functions</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name nowrap"><a href="#isTypeEqual">isTypeEqual (a, b)</a></td>
-	<td class="summary">Test whether two objects are of equal type.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#isMetatableEqual">isMetatableEqual (a, b)</a></td>
-	<td class="summary">Test whether two objects are mt equal.</td>
 	</tr>
 </table>
 
@@ -316,69 +306,6 @@
 
            <span class="types"><span class="type">boolean</span></span>
         result of the operation
-
-
-
-
-</dd>
-</dl>
-    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "isTypeEqual"></a>
-    <strong>isTypeEqual (a, b)</strong>
-    </dt>
-    <dd>
-    Test whether two objects are of equal type.
- If the objects are of different type, return 'false'.
- Unless type is 'table', compare the objects.
- Otherwise return 'nil'.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">a</span>
-         any type of object
-        </li>
-        <li><span class="parameter">b</span>
-         any type of object
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
-        result of comparison
-
-
-
-
-</dd>
-    <dt>
-    <a name = "isMetatableEqual"></a>
-    <strong>isMetatableEqual (a, b)</strong>
-    </dt>
-    <dd>
-    Test whether two objects are mt equal.
- If any of the objects have an <code>__eq</code> method, then compare the objects with it.
- Otherwise return 'nil'.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">a</span>
-         any type of object
-        </li>
-        <li><span class="parameter">b</span>
-         any type of object
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
-        result of comparison
 
 
 

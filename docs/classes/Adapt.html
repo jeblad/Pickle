@@ -32,8 +32,6 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Functions">Functions</a></li>
-<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -42,6 +40,7 @@
 <h2>Classes</h2>
 <ul class="nowrap">
   <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Queue.html">Queue</a></li>
   <li><a href="../classes/Stack.html">Stack</a></li>
   <li><strong>Adapt</strong></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
@@ -73,6 +72,7 @@
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/Stub.html">Stub</a></li>
   <li><a href="../modules/util.html">util</a></li>
 </ul>
 <h2>Topics</h2>
@@ -101,42 +101,19 @@
 
 <h1>Class <code>Adapt</code></h1>
 <p>Base class for Expect and Subject.</p>
-<p>
+<p> This class follows the pattern from
+ <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
-</p>
 
-
-<h2><a href="#Functions">Functions</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name nowrap"><a href="#mt:__call">mt:__call (...)</a></td>
-	<td class="summary">Get a clone or create a new instance.</td>
-	</tr>
-</table>
-<h2><a href="#Local_Functions">Local Functions</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name nowrap"><a href="#Adapt._init">Adapt._init (...)</a></td>
-	<td class="summary">Initialize a new instance.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Adapt._makePickProcess">Adapt._makePickProcess () [<a href="#delayed">delayed</a>]</a></td>
-	<td class="summary">Make a delayed process for the pick functions.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Adapt._makeTransformProcess">Adapt._makeTransformProcess () [<a href="#delayed">delayed</a>]</a></td>
-	<td class="summary">Make a delayed process for the transform functions.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Adapt._makeConditionProcess">Adapt._makeConditionProcess () [<a href="#delayed">delayed</a>]</a></td>
-	<td class="summary">Make a delayed process for the condition functions.</td>
-	</tr>
-</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
 	<td class="name nowrap"><a href="#Adapt:__index">Adapt:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Adapt:__call">Adapt:__call (...)</a></td>
+	<td class="summary">Get a clone or create a new instance.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
@@ -144,6 +121,10 @@
 	<tr>
 	<td class="name nowrap"><a href="#Adapt:create">Adapt:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Adapt:_init">Adapt:_init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Adapt:setAdaptations">Adapt:setAdaptations (obj)</a></td>
@@ -363,12 +344,38 @@
 <br/>
 
 
-    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
     <dt>
-    <a name = "mt:__call"></a>
-    <strong>mt:__call (...)</strong>
+    <a name = "Adapt:__index"></a>
+    <strong>Adapt:__index (key)</strong>
+    </dt>
+    <dd>
+    Lookup of missing class members.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         lookup of member
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        any
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Adapt:__call"></a>
+    <strong>Adapt:__call (...)</strong>
     </dt>
     <dd>
     Get a clone or create a new instance.
@@ -394,15 +401,15 @@
 
 </dd>
 </dl>
-    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
 
     <dl class="function">
     <dt>
-    <a name = "Adapt._init"></a>
-    <strong>Adapt._init (...)</strong>
+    <a name = "Adapt:create"></a>
+    <strong>Adapt:create (...)</strong>
     </dt>
     <dd>
-    Initialize a new instance.
+    Create a new instance.
 
 
     <h3>Parameters:</h3>
@@ -425,146 +432,11 @@
 
 </dd>
     <dt>
-    <a name = "Adapt._makePickProcess"></a>
-    <strong>Adapt._makePickProcess () [<a href="#delayed">delayed</a>]</strong>
+    <a name = "Adapt:_init"></a>
+    <strong>Adapt:_init (...)</strong>
     </dt>
     <dd>
-    Make a delayed process for the pick functions.
- This is a private function that will create a function with a closure.
- It will create an additional delayed function for the provided definition.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         of the constructed created method
-        </li>
-        <li><span class="parameter">idx</span>
-            <span class="types"><span class="type">number</span></span>
-         of the extracted item
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">function</span></span>
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Adapt._makeTransformProcess"></a>
-    <strong>Adapt._makeTransformProcess () [<a href="#delayed">delayed</a>]</strong>
-    </dt>
-    <dd>
-    Make a delayed process for the transform functions.
- This is a private function that will create a function with a closure.
- The delayed function comes from the provided definition.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         of the constructed created method
-        </li>
-        <li><span class="parameter">func</span>
-            <span class="types"><span class="type">function</span></span>
-         to adjust the process
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">function</span></span>
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Adapt._makeConditionProcess"></a>
-    <strong>Adapt._makeConditionProcess () [<a href="#delayed">delayed</a>]</strong>
-    </dt>
-    <dd>
-    Make a delayed process for the condition functions.
- This is a private function that will create a function with a closure.
- The delayed function comes from the provided definition.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         of the constructed created method
-        </li>
-        <li><span class="parameter">func</span>
-            <span class="types"><span class="type">function</span></span>
-         to adjust the process
-        </li>
-        <li><span class="parameter">other</span>
-            <span class="types"><span class="type">boolean</span></span>
-         to swap the comparation
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">function</span></span>
-
-
-
-
-
-
-
-</dd>
-</dl>
-    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "Adapt:__index"></a>
-    <strong>Adapt:__index (key)</strong>
-    </dt>
-    <dd>
-    Lookup of missing class members.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">key</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         lookup of member
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-        any
-
-
-
-
-</dd>
-</dl>
-    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "Adapt:create"></a>
-    <strong>Adapt:create (...)</strong>
-    </dt>
-    <dd>
-    Create a new instance.
+    Initialize a new instance.
 
 
     <h3>Parameters:</h3>
@@ -610,6 +482,8 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -656,6 +530,8 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -1291,7 +1167,15 @@
         </li>
     </ul>
 
+    <h3>Returns:</h3>
 
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 

@@ -32,7 +32,6 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -41,6 +40,7 @@
 <h2>Classes</h2>
 <ul class="nowrap">
   <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Queue.html">Queue</a></li>
   <li><a href="../classes/Stack.html">Stack</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><strong>Frame</strong></li>
@@ -72,6 +72,7 @@
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/Stub.html">Stub</a></li>
   <li><a href="../modules/util.html">util</a></li>
 </ul>
 <h2>Topics</h2>
@@ -100,34 +101,10 @@
 
 <h1>Class <code>Frame</code></h1>
 <p>Baseclass for Describe, Context, and It.</p>
-<p>
+<p> This class follows the pattern from
+ <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
-</p>
 
-
-<h2><a href="#Local_Functions">Local Functions</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name nowrap"><a href="#mt:__call">mt:__call (...)</a></td>
-	<td class="summary">Get arguments for a class call.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Frame._init">Frame._init (...)</a></td>
-	<td class="summary">Initialize a new instance.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Frame.types:string">Frame.types:string (self, val)</a></td>
-	<td class="summary">Push a string.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Frame.types:function">Frame.types:function (self, func)</a></td>
-	<td class="summary">Push a function.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Frame.types:table">Frame.types:table (self, tbl)</a></td>
-	<td class="summary">Push a table.</td>
-	</tr>
-</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
@@ -144,6 +121,10 @@
 	<tr>
 	<td class="name nowrap"><a href="#Frame:create">Frame:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Frame:_init">Frame:_init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Frame:dispatch">Frame:dispatch (...)</a></td>
@@ -227,134 +208,6 @@
 <br/>
 
 
-    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "mt:__call"></a>
-    <strong>mt:__call (...)</strong>
-    </dt>
-    <dd>
-    Get arguments for a class call.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">...</span>
-            <span class="types"><span class="type">vararg</span></span>
-         pass on to dispatch
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">self</span></span>
-        -ish
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Frame._init"></a>
-    <strong>Frame._init (...)</strong>
-    </dt>
-    <dd>
-    Initialize a new instance.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">...</span>
-            <span class="types"><span class="type">vararg</span></span>
-         list to be dispatched (unused)
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-        Frame
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Frame.types:string"></a>
-    <strong>Frame.types:string (self, val)</strong>
-    </dt>
-    <dd>
-    Push a string.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">self</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
-         place to store value
-        </li>
-        <li><span class="parameter">val</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:string">string</a></span>
-         that should be stored
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Frame.types:function"></a>
-    <strong>Frame.types:function (self, func)</strong>
-    </dt>
-    <dd>
-    Push a function.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">self</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
-         place to store value
-        </li>
-        <li><span class="parameter">func</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:function">function</a></span>
-         that should be stored
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "Frame.types:table"></a>
-    <strong>Frame.types:table (self, tbl)</strong>
-    </dt>
-    <dd>
-    Push a table.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">self</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
-         place to store value
-        </li>
-        <li><span class="parameter">tbl</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
-         that should be stored
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-</dl>
     <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
@@ -369,7 +222,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">key</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:string">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          lookup of member
         </li>
     </ul>
@@ -378,6 +231,8 @@
 
         any
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -426,6 +281,30 @@
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
          list to be dispatched
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        Frame
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Frame:_init"></a>
+    <strong>Frame:_init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         list to be dispatched (unused)
         </li>
     </ul>
 
@@ -593,7 +472,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">obj</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
          somehow maintain a collection
         </li>
     </ul>
@@ -605,6 +484,8 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -638,7 +519,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">obj</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
          somehow maintain a collection
         </li>
     </ul>
@@ -650,6 +531,8 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -683,7 +566,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">obj</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
          somehow maintain a collection
         </li>
     </ul>
@@ -695,6 +578,8 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -728,7 +613,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">obj</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
          somehow maintain a collection
         </li>
     </ul>
@@ -740,6 +625,8 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -773,7 +660,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">obj</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
          somehow maintain a collection
         </li>
     </ul>
@@ -785,6 +672,8 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -817,19 +706,19 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">description</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:string">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
         </li>
         <li><span class="parameter">fixture</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:function">function</a></span>
+            <span class="types"><span class="type">function</span></span>
 
 
 
         </li>
         <li><span class="parameter">environment</span>
-            <span class="types"><a class="type" href="../classes/Frame.html#Frame.types:table">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
 
 
 
@@ -842,6 +731,8 @@
     </ul>
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 

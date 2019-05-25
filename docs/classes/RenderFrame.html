@@ -32,7 +32,6 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Local_Functions">Local Functions</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
 <li><a href="#Methods">Methods</a></li>
 </ul>
@@ -41,6 +40,7 @@
 <h2>Classes</h2>
 <ul class="nowrap">
   <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Queue.html">Queue</a></li>
   <li><a href="../classes/Stack.html">Stack</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
@@ -72,6 +72,7 @@
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/Stub.html">Stub</a></li>
   <li><a href="../modules/util.html">util</a></li>
 </ul>
 <h2>Topics</h2>
@@ -100,16 +101,10 @@
 
 <h1>Class <code>RenderFrame</code></h1>
 <p>Intermediate class for frame report renderer.</p>
-<p> This class follows the pattern from <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
+<p> This class follows the pattern with inheritance from
+ <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
-<h2><a href="#Local_Functions">Local Functions</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name nowrap"><a href="#RenderFrame._init">RenderFrame._init (...)</a></td>
-	<td class="summary">Initialize a new instance.</td>
-	</tr>
-</table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
@@ -124,31 +119,35 @@
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
+	<td class="name nowrap"><a href="#RenderFrame:_init">RenderFrame:_init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+	<tr>
 	<td class="name nowrap"><a href="#RenderFrame:key">RenderFrame:key (str)</a></td>
 	<td class="summary">Override key construction.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrame:realizeState">RenderFrame:realizeState (src[, lang=nil[, counter=nil]])</a></td>
+	<td class="name nowrap"><a href="#RenderFrame:realizeState">RenderFrame:realizeState (src, lang, counter)</a></td>
 	<td class="summary">Realize reported data for state.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrame:realizeSkip">RenderFrame:realizeSkip (src[, lang=nil])</a></td>
+	<td class="name nowrap"><a href="#RenderFrame:realizeSkip">RenderFrame:realizeSkip (src, lang)</a></td>
 	<td class="summary">Realize reported data for skip.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrame:realizeTodo">RenderFrame:realizeTodo (src[, lang=nil])</a></td>
+	<td class="name nowrap"><a href="#RenderFrame:realizeTodo">RenderFrame:realizeTodo (src, lang)</a></td>
 	<td class="summary">Realize reported data for todo.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrame:realizeDescription">RenderFrame:realizeDescription (src[, lang=nil])</a></td>
+	<td class="name nowrap"><a href="#RenderFrame:realizeDescription">RenderFrame:realizeDescription (src, lang)</a></td>
 	<td class="summary">Realize reported data for description.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrame:realizeHeader">RenderFrame:realizeHeader (src[, lang=nil[, counter=nil]])</a></td>
+	<td class="name nowrap"><a href="#RenderFrame:realizeHeader">RenderFrame:realizeHeader (src, lang, counter)</a></td>
 	<td class="summary">Realize reported data for header.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderFrame:realizeBody">RenderFrame:realizeBody (src[, lang=nil])</a></td>
+	<td class="name nowrap"><a href="#RenderFrame:realizeBody">RenderFrame:realizeBody (src, lang)</a></td>
 	<td class="summary">Realize reported data for body.</td>
 	</tr>
 </table>
@@ -157,34 +156,6 @@
 <br/>
 
 
-    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "RenderFrame._init"></a>
-    <strong>RenderFrame._init (...)</strong>
-    </dt>
-    <dd>
-    Initialize a new instance.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">...</span>
-            <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/Render.html#Render._init">superclass init method</a>
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-        self
-
-
-
-
-</dd>
-</dl>
     <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
@@ -208,6 +179,8 @@
 
         any
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -248,6 +221,30 @@
 
 </dd>
     <dt>
+    <a name = "RenderFrame:_init"></a>
+    <strong>RenderFrame:_init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         forwarded to <a href="../classes/Render.html#Render:_init">superclass init method</a>
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        self
+
+
+
+
+</dd>
+    <dt>
     <a name = "RenderFrame:key"></a>
     <strong>RenderFrame:key (str)</strong>
     </dt>
@@ -276,7 +273,7 @@
 </dd>
     <dt>
     <a name = "RenderFrame:realizeState"></a>
-    <strong>RenderFrame:realizeState (src[, lang=nil[, counter=nil]])</strong>
+    <strong>RenderFrame:realizeState (src, lang, counter)</strong>
     </dt>
     <dd>
     Realize reported data for state.
@@ -289,14 +286,12 @@
          that shall be realized
         </li>
         <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>default</em> nil)
         </li>
         <li><span class="parameter">counter</span>
-            <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
-         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -313,7 +308,7 @@
 </dd>
     <dt>
     <a name = "RenderFrame:realizeSkip"></a>
-    <strong>RenderFrame:realizeSkip (src[, lang=nil])</strong>
+    <strong>RenderFrame:realizeSkip (src, lang)</strong>
     </dt>
     <dd>
     Realize reported data for skip.
@@ -327,9 +322,8 @@
          that shall be realized
         </li>
         <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -340,13 +334,15 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
 </dd>
     <dt>
     <a name = "RenderFrame:realizeTodo"></a>
-    <strong>RenderFrame:realizeTodo (src[, lang=nil])</strong>
+    <strong>RenderFrame:realizeTodo (src, lang)</strong>
     </dt>
     <dd>
     Realize reported data for todo.
@@ -360,9 +356,8 @@
          that shall be realized
         </li>
         <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -373,13 +368,15 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
 </dd>
     <dt>
     <a name = "RenderFrame:realizeDescription"></a>
-    <strong>RenderFrame:realizeDescription (src[, lang=nil])</strong>
+    <strong>RenderFrame:realizeDescription (src, lang)</strong>
     </dt>
     <dd>
     Realize reported data for description.
@@ -393,9 +390,8 @@
          that shall be realized
         </li>
         <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         code used for realization
-         (<em>default</em> nil)
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         code used for realization (unused)
         </li>
     </ul>
 
@@ -406,13 +402,15 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
 </dd>
     <dt>
     <a name = "RenderFrame:realizeHeader"></a>
-    <strong>RenderFrame:realizeHeader (src[, lang=nil[, counter=nil]])</strong>
+    <strong>RenderFrame:realizeHeader (src, lang, counter)</strong>
     </dt>
     <dd>
     Realize reported data for header.
@@ -426,14 +424,12 @@
          that shall be realized
         </li>
         <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          code used for realization
-         (<em>default</em> nil)
         </li>
         <li><span class="parameter">counter</span>
-            <span class="types"><a class="type" href="../classes/Counter.html#">Counter</a></span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="../classes/Counter.html#">Counter</a></span>
          holding the running count
-         (<em>default</em> nil)
         </li>
     </ul>
 
@@ -444,13 +440,15 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
 </dd>
     <dt>
     <a name = "RenderFrame:realizeBody"></a>
-    <strong>RenderFrame:realizeBody (src[, lang=nil])</strong>
+    <strong>RenderFrame:realizeBody (src, lang)</strong>
     </dt>
     <dd>
     Realize reported data for body.
@@ -464,9 +462,8 @@
          that shall be realized
         </li>
         <li><span class="parameter">lang</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         code used for realization
-         (<em>default</em> nil)
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         code used for realization (unused)
         </li>
     </ul>
 
@@ -477,6 +474,8 @@
 
 
 
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
