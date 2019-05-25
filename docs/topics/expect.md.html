@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Pickle documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Pickle</h1>
+
+<ul>
+  <li><a href="../mw.pickle.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Core_idea">Core idea </a></li>
+<li><a href="#Library">Library </a></li>
+</ul>
+
+
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/activities.md.html">Activities</a></li>
+  <li><a href="../topics/adapt.md.html">Adapt</a></li>
+  <li><strong>Expect</strong></li>
+  <li><a href="../topics/call-style.md.html">Call style</a></li>
+  <li><a href="../topics/change-log.md.html">Log</a></li>
+  <li><a href="../topics/databases.md.html">Databases</a></li>
+  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
+  <li><a href="../topics/hello-world.md.html">Hello World</a></li>
+  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
+  <li><a href="../topics/musings.md.html">Musings</a></li>
+  <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/util.html">util</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Stack.html">Stack</a></li>
+  <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Frame.html">Frame</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/Extractor.html">Extractor</a></li>
+  <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
+  <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
+  <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
+  <li><a href="../classes/ExtractorNumber.html">ExtractorNumber</a></li>
+  <li><a href="../classes/ExtractorString.html">ExtractorString</a></li>
+  <li><a href="../classes/ExtractorTrue.html">ExtractorTrue</a></li>
+  <li><a href="../classes/Extractors.html">Extractors</a></li>
+  <li><a href="../classes/Render.html">Render</a></li>
+  <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
+  <li><a href="../classes/RenderFrame.html">RenderFrame</a></li>
+  <li><a href="../classes/Renders.html">Renders</a></li>
+  <li><a href="../classes/RenderAdaptCompact.html">RenderAdaptCompact</a></li>
+  <li><a href="../classes/RenderFrameCompact.html">RenderFrameCompact</a></li>
+  <li><a href="../classes/RenderAdaptFull.html">RenderAdaptFull</a></li>
+  <li><a href="../classes/RenderFrameFull.html">RenderFrameFull</a></li>
+  <li><a href="../classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
+  <li><a href="../classes/RenderFrameVivid.html">RenderFrameVivid</a></li>
+  <li><a href="../classes/Report.html">Report</a></li>
+  <li><a href="../classes/ReportAdapt.html">ReportAdapt</a></li>
+  <li><a href="../classes/ReportFrame.html">ReportFrame</a></li>
+  <li><a href="../classes/Translator.html">Translator</a></li>
+  <li><a href="../classes/Translators.html">Translators</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/HelloWorld.pickle.nb.lua.html">HelloWorld.pickle.nb.lua</a></li>
+  <li><a href="../examples/HelloWorld.lua.html">HelloWorld.lua</a></li>
+  <li><a href="../examples/HelloWorld.pickle.lua.html">HelloWorld.pickle.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>Expect</h1>
+
+<p>This is a test-lib based on <em>expectations</em>, that is we say what the subject is expected to do. This is slightly different from the typical <a href="https://en.wikipedia.org/wiki/Assertion_(software_development">assertion</a> style testing libs. Expectations are common in several testing frameworks, but the style implemented has its own quirks to make it work in our environment.</p>
+
+<p>The main difference is that an assertion says what is wrong and stops executing, but an expectation says what is right and continue execution. In addition there are some magic behind the scenes to allow the subjects and expectations to be set up for repeated testing.</p>
+
+<p>It will also create way better error messages than the usual assert-style testing, and in this respect it is more like <a href="https://en.wikipedia.org/wiki/Hamcrest">Hamcrest</a> frameworks.</p>
+
+<p><a name="Core_idea"></a></p>
+<h2>Core idea</h2>
+
+<p>There are three access functions; <code>subject()</code>, <code>expect()</code>, and <code>reports()</code>. They all act as accessors to several internal structures, but in particular the first two acts as accessors to a <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine/Adapt.lua">Adapt.lua</a> object. The first two also has their own stacks for storing objects assigned to them. That makes it possible to keep subjects and expectations for later testing, and especially to set up partial fixtures for repeated testing.</p>
+
+<p>The call <code>expect()</code> is implemented as a variation of <em>Adapt</em>, where the variation allows calling this with any argument. This variation defines a test value given as an explicit argument, and run conditions against this value. We may say this is the closest we have to a plain assertion.</p>
+
+<p>This call has a twin <code>subject()</code> which is nearly identical, but it is automatically set within calls to <code>describe()</code>, <code>context()</code>, and <code>it()</code> to be the same as the <em>subject</em> argument. As the state of the <em>subject</em> argument changes, so will the outcome of the <code>subject()</code> change.</p>
+
+<p>There are several ways to implement objects in Lua, but we can safely assume that most objects we want to test will be based on tables. By implementing additional accessors we can test other types of objects too, but most of the time we will be testing tables.</p>
+
+<p>Assume we have a rather simple library <code>foo</code> on the form</p>
+
+
+<pre>
+<span class="keyword">local</span> h = {
+  bar = <span class="keyword">function</span>() <span class="keyword">return</span> <span class="string">'baz'</span> <span class="keyword">end</span>
+}
+<span class="keyword">return</span> h
+</pre>
+
+
+<p>This is a typical form for most libraries, and we can include it in other libraries as</p>
+
+
+<pre>
+<span class="keyword">local</span> foo = <span class="global">require</span> <span class="string">'foo'</span>
+</pre>
+
+
+<p>and this can be used in our test fixtures as</p>
+
+
+<pre>
+subject = <span class="global">require</span> <span class="string">'foo'</span>
+</pre>
+
+
+<p>The form <code>local subject = require &apos;foo&apos;</code> should not be used inside our tests, as this will not work as expected. This creates a local variable, while we want to assign the required lib to a pre-existing variable. Or really we want to assign the required library to a pre-existing table by use of overloaded operators.</p>
+
+<p>It is also possible to set the testee as a temporal, by instead use a call syntax, like <code>subject( require &apos;foo&apos; )</code>. This will place the object in a temporary store in the condition object created by the access method. </p>
+
+<p><em>Note</em>: Testing are done on the object returned from the library, and if that object maintain a state, then it will be retained from call to call. We may say that we are testing a specific instance of the object and not the library. This can lead to bogus tests, so be careful!</p>
+
+<p>In its simple form it is already ready for testing. The instance form submerges in the <code>subject = require &apos;foo&apos;</code> line, and emerges in the <em>conditions</em> methods for <code>expect</code>. Because that is available through <code>subject</code> and <code>expect</code> we can add simple tests like</p>
+
+
+<pre>
+subject = <span class="global">require</span> <span class="string">'foo'</span>
+subject
+  :bar() <span class="comment">-- the 'bar' call is redirected
+</span>  :toBe( <span class="string">'baz'</span> ) <span class="comment">-- gives true</span>
+</pre>
+
+
+<p>or, alternatively</p>
+
+
+<pre>
+subject = <span class="global">require</span> <span class="string">'foo'</span>
+expect
+  :bar() <span class="comment">-- the 'bar' call is redirected
+</span>  :toBe( <span class="string">'baz'</span> ) <span class="comment">-- gives true</span>
+</pre>
+
+
+<p>or, in call-style</p>
+
+<pre><code> subject(require 'foo')
+   :bar() -- the 'bar' call is redirected
+   :toBe( 'baz' ) -- gives true
+</code></pre>
+
+
+<p>The final <code>toBe( &apos;baz&apos; )</code> does a little magic, it uses the opposite value of the initial access method. If the initial access method is <code>subject</code> then it sets the temporal expect, if it is <code>expect</code> then it sets the temporal subject. It will not push the value on the subject or expect stacks.</p>
+
+<p>Note in particular that the following gives the same result (here the testee <code>&apos;a&apos;</code> is not a required library and is defined inline)</p>
+
+
+<pre>
+subject = <span class="string">'a'</span>
+expect :toBe( <span class="string">'a'</span> ) <span class="comment">-- gives true
+</span>expect( <span class="string">'a'</span> ) :toBeSame() <span class="comment">-- gives true</span>
+</pre>
+
+
+<p>this is also the same</p>
+
+
+<pre>
+subject = <span class="string">'a'</span>
+expect = <span class="string">'a'</span>
+subject :toBeSame() <span class="comment">-- gives true
+</span>expect :toBeSame() <span class="comment">-- gives true</span>
+</pre>
+
+
+<p>The results from the tests are accessible through <code>reports</code>. In a Mediawiki-context the reports can be shown by calling <code>mw.log</code></p>
+
+
+<pre>
+expect( <span class="string">'baz'</span> ) :toBe( <span class="string">'baz'</span> ) <span class="comment">-- gives true
+</span>mw.log( report() ) <span class="comment">-- gives a complete report</span>
+</pre>
+
+
+<p><a name="Library"></a></p>
+<h2>Library</h2>
+
+<p>Picks and transforms are pre-processes to run before the condition (tests for similarity), which is our idea of what is a correct answer. After the tests there are additional post-processes to transform the test into our final outcome. That makes it possible to do a positive identification of a state and then negate that state, which is often easier to do than to test for the negative outcome itself.</p>
+
+<p>Pre-processes can be attached to both subjects and expectations, which gives slightly different testing styles. If the chain is started by <code>subject</code> then the pre-processes attach to the subject, while if it starts with <code>expect</code> then the pre-processes attach to the expectation. It is possible to start attaching to one of them and then shift to the other one. </p>
+
+<h3>Picks</h3>
+
+<p>Functions and methods may return multiple values, and there are a number of methods to extract a specific value from a list of values.</p>
+
+<p>A few examples on methods for picking values</p>
+
+
+<pre>
+expect(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>) :first() <span class="comment">-- gives 'a'
+</span>expect(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>) :second() <span class="comment">-- gives 'b'</span>
+</pre>
+
+
+<p><em>TODO</em>: It should be possible to give an optional type argument to the methods.</p>
+
+<p><em>TODO</em>: There should be additional <code>get(idx)</code> calls, with negative indexes counting backwards.</p>
+
+
+<h3>Transforms</h3>
+
+<p>There are methods to transform (or shift) from one form to another form. Most of them only change form and keep the same type, but some also change the type. They are more commonly called cast operators in other programming languages.</p>
+
+<p>A few examples on methods for casting types between strings and numbers</p>
+
+<p>  subject( '42' ) :asNumber() :toBe( 42 )
+  subject( 42 ) :asString() :toBe( '42' )</p>
+
+<p><em>TODO</em>: There should be methods for casting types between strings and localized numbers and dates.</p>
+
+<p><em>TODO</em>: Add description of type and reverse.</p>
+
+
+
+<h3>Conditions</h3>
+
+<p>There are methods to test for specific conditions. They can take their values from <em>subject</em> and <em>expect</em>, or given explicit values. First value masquerades as subject unless already found, while second value masquerade as expect unless already found. Found values are not counted on the argument list, so found subject would give expect as first value.</p>
+
+<p><em>TODO</em>: Verify this.
+A few examples on methods for conditions</p>
+
+<p>  subject = '42'
+  expect :toBeEqual( '42' )
+  expect( 42 ) :toBeEqual()</p>
+
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
+

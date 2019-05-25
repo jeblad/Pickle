@@ -117,12 +117,12 @@
 
 <p>To make virtual methods work properly the metamethod <code>__index()</code> is used instead of tables. This is just a plain redirect and is similar in all classes. It will also avoid problems otherwise created by memory loops in the lua environment.</p>
 
-<p>Redirection through methods like this is somewhat heavy and can probably be rewritten as table lookups if online testing is too sluggish.</p>
+<p>Redirection through methods like this is somewhat heavy and could be rewritten as a table lookup if online testing is too sluggish.</p>
 
 <p><a name="Call_style"></a></p>
 <h2>Call style</h2>
 
-<p>Some classes have a metamethod <code>__call()</code> that hides much of the instance creation process. The general idea is to minimize the burden for the reuser. <a href="https://en.wikipedia.org/wiki/Strategy_pattern">Strategies</a> uses the call style to simplify access, so <a href="../classes/Renders.html#">Renders</a> and <a href="../classes/Extractors.html#">Extractors</a> has <code>__call()</code> metamethods.</p>
+<p>Some classes have a metamethod <code>__call()</code> that hides much of the instance creation process. The general idea is to minimize the burden during reuse. <a href="https://en.wikipedia.org/wiki/Strategy_pattern">Strategies</a> uses the call style to simplify access, so <a href="../classes/Renders.html#">Renders</a> and <a href="../classes/Extractors.html#">Extractors</a> has <code>__call()</code> metamethods.</p>
 
 <p>Methods that rely on argument chaining, those that sink one argument before going after the next one, like <a href="../classes/Adapt.html#">Adapt</a> and <a href="../classes/Frame.html#">Frame</a>, use <code>__call()</code> to implement the process. They sink one argument, return an object that has a call method, and calls that to sink yet another one.</p>
 

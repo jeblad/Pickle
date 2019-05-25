@@ -101,22 +101,24 @@
 
 <h1>Dataflow</h1>
 
-<p>The software is organized as an <a href="https://www.mediawiki.org/wiki/Manual:Extensions">extension to Mediawiki</a>. During initializing of a page it will test whether the page is a Lua module, and if so whether it is a lib page (the normal code page) or a test page. If is is a lib page it will automatically run the tests, extract the result and show it through page indicators, add tracking categories and possibly log the result. If it is tests it will do nearly the same, but roles are slightly changed. The actions are triggered from <code>Pickle\Hooks::onContentAlterParserOutput()</code> (<a href="https://github.com/jeblad/Pickle/blob/master/includes/Hooks.php">Hooks.php</a>). During editing tests can be run from the edit page, but only if either the lib or the test are saved. In the current version it is not possible to do interactive testing with both lib and test is in an unsaved state. This could although be implemented.</p>
+<p>The software is organized as an <a href="https://www.mediawiki.org/wiki/Manual:Extensions">extension to Mediawiki</a>. During initializing of a page it will test whether the page is a Lua module, and if so whether it is a lib page (the normal code page) or a test page. If it is a lib page it will automatically run the tests, extract the result and show it through page indicators, add tracking categories and possibly log the result. If it is tests it will do nearly the same, but roles are slightly changed. The actions are triggered from <code>Pickle\Hooks::onContentAlterParserOutput()</code> (<a href="https://github.com/jeblad/Pickle/blob/master/includes/Hooks.php">Hooks.php</a>). During editing tests can be run from the edit page, but only if either the lib or the test are saved. In the current version it is not possible to do interactive testing with both lib and test is in an unsaved state. This could although be implemented.</p>
 
 <p>On each test page a small template with <code>{{#invoke:pickle|tap}}</code> (can be slightly different) will be evaluated during rendering. Actual call can be configured in the <em>pickle-testspec-invoke</em> message at <a href="https://github.com/jeblad/Pickle/blob/master/i18n/en.json">en.json</a>. This message is exempt from translation. The message is then used for an automatic call, and the outcome will be parsed according to the configuration. Most of this goes on in <code>Pickle\Hooks::onContentAlterParserOutput()</code> (<a href="https://github.com/jeblad/Pickle/blob/master/includes/Hooks.php">Hooks.php</a>) or is called from this hook handler.</p>
 
-<p>As rendering can be triggered by unrelated edits all logging is done by a system user, the <a href="https://github.com/jeblad/Pickle/blob/master/includes/Observer/">Observer</a>. Actual user can be configured in <a href="https://github.com/jeblad/Pickle/blob/master/extension.json">extension.json</a>, entry <em>ObserverID</em>. In some cases it is possible to identify a likely user, that is a user editing either tester or testee within a few minutes, but the editing could be unrelated to an observed failure due to changes in included libraries. Code for identifying the editing user has not been made, as it is assumed that identifying wrong user would create to much on-wiki discussion and blame-game.</p>
+<p>As rendering can be triggered by unrelated edits all logging is done by a system user, the <a href="https://github.com/jeblad/Pickle/blob/master/includes/Observer/">Observer</a>. Actual user can be configured in <a href="https://github.com/jeblad/Pickle/blob/master/extension.json">extension.json</a>, entry <em>ObserverID</em>. In some cases it is possible to identify a likely user, that is a user editing either tester or testee within a few minutes, but the editing could be unrelated to an observed failure due to changes in included libraries. Code for identifying the editing user has not been made, as it is assumed that identifying wrong user would create too much on-wiki discussion and blame-game.</p>
 
 <p><a name="Initial_rendering"></a></p>
 <h2>Initial rendering</h2>
 
 <p>The initial processing continues up to a point where it is clear whether the page is a test module. During this phase the page can be given additional items.</p>
 
+<p>It will then</p>
+
 <ul>
-    <li>figure out whether the page should be included or excluded</li>
-    <li>find a startegy for invoking the page</li>
-    <li>find a strategy for extracting the status</li>
-    <li>jsfgn</li>
+    <li>figure out whether the page should be included or excluded,</li>
+    <li>find a strategy for invoking the page,</li>
+    <li>find a strategy for extracting the status, and</li>
+    <li>jsfgn (TODO)</li>
 </ul>
 
 <h3>Include or exclude the page</h3>
@@ -145,7 +147,7 @@
 
 <h3>Additional hooks (should be moved)</h3>
 
-<p>Both the hooks <em>SpecTesterGadgets</em> and <em>SpecTesteeGadgets</em> has handlers that add the <a href="https://github.com/jeblad/Pickle/wiki/page-indicators">page indicators</a> (<a href="https://github.com/jeblad/Pickle/blob/master/includes/Indicator">Indicator</a>) for page status, in addition the hook for <em>SpecTesteeGadgets</em> has handlers for adding <a href="https://github.com/jeblad/Pickle/wiki/tracking-categories">tracking categories</a> (<a href="https://github.com/jeblad/Pickle/blob/master/includes/Category">Category</a>) and  <a href="https://github.com/jeblad/Pickle/wiki/test-log">test log</a> (<a href="https://github.com/jeblad/Pickle/blob/master/includes/LogEntry">LogEntry</a>).</p>
+<p>Both the hooks <em>SpecTesterGadgets</em> and <em>SpecTesteeGadgets</em> has handlers that add the <a href="https://github.com/jeblad/Pickle/wiki/page-indicators">page indicators</a> (<a href="https://github.com/jeblad/Pickle/blob/master/includes/Indicator">Indicator</a>) for page status, in addition the hook for <em>SpecTesteeGadgets</em> has handlers for adding <a href="https://github.com/jeblad/Pickle/wiki/tracking-categories">tracking categories</a> (<a href="https://github.com/jeblad/Pickle/blob/master/includes/Category">Category</a>) and <a href="https://github.com/jeblad/Pickle/wiki/test-log">test log</a> (<a href="https://github.com/jeblad/Pickle/blob/master/includes/LogEntry">LogEntry</a>).</p>
 
 <p><a name="Extended_processing"></a></p>
 <h2>Extended processing</h2>
@@ -154,9 +156,9 @@
 
 <h3>LuaLibrary</h3>
 
-<p>The tests are implemented as plain lua functions. These follows a spec-like layout, although with some variations. A very thin shim is called initially as <code>describe</code>, and this is used to bootstrap the rest of the system. This will as default try to set up the system to use the superpage as the initial test subject. This avoids some boilerplate code. The assumption is to use the outer <code>describe</code> in a single call, and then to use the return value from this as the returned table from the module. After the initial call the functions in this table can be used to access the various states and values.</p>
+<p>The tests are implemented as plain lua functions, and follows a spec-like layout, although with some variations. A very thin shim is called initially as <code>describe</code>, and this is used to bootstrap the rest of the system. This will as default try to set up the system to use the superpage as the initial test subject. This avoids some boilerplate code. The assumption is to use the outer <code>describe</code> in a single call, and then to use the return value from this as the returned table from the module. After the initial call the functions in this table can be used to access the various states and values.</p>
 
-<p>Without running <code>describe</code> the bootstrapped functions will not be available, which means they will not exist in the debug console. It is important to know this, as you will not have access to them from the console before this call, but it is also important because without this initial call it will not interfere with normal lua modules. It also means that the environment created inside the test will not leak out into other code. Unfortunately it als makes testing of the Pickle library itself a bit cumbersome.</p>
+<p>Without running <code>describe</code> the bootstrapped functions will not be available, which means they will not exist in the console. It is important to know this, as you will not have access to them from the console before this call, but it is also important because without this initial call it will not interfere with normal lua modules. It also means that the environment created inside the test will not leak out into other code. Unfortunately it also makes testing of the Pickle library itself a bit cumbersome.</p>
 
 <h3>LuaLibPickle</h3>
 
@@ -164,21 +166,21 @@
 
 <h3>Pickle</h3>
 
-<p>The access point for the library is <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/non-pure/Pickle.lua">Pickle.lua</a>. This bootstraps the full harness through the call <code>describe</code>. After the call all of <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine">engine</a> is available, and those parts will include other parts as necessary. In particular  <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine/Adapt.lua">Adapt.lua</a>, <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine/Frame.lua">Frame.lua</a>, and <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine/Spy.lua">Spy.lua</a> will be bootstrapped. Before this initial process is done no report will be available.</p>
+<p>The access point for the library is <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/non-pure/Pickle.lua">Pickle.lua</a>. This bootstraps the full harness through the call <code>describe</code>. After the call the <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine">engine</a> is available, and other parts will be included as necessary. In particular <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine/Adapt.lua">Adapt.lua</a>, <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine/Frame.lua">Frame.lua</a>, and <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine/Spy.lua">Spy.lua</a> will be bootstrapped. Before the initial process is done, no reports will be available.</p>
 
 <h3>Frame</h3>
 
 <p>The functions <code>describe</code>, <code>context</code>, and <code>it</code> are test harness at various levels (<a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine/Frame.lua">Frame.lua</a>), that is functions with closures holding references to frames. The functions can take a table as a subject, strings that contains data for examples, and a function acting as the test fixture.</p>
 
-<p>An alternate interpretation is that the function (the fixture) is a representation of the world, and within this world a table (the subject) should be a valid instance when it is instantiated with the example data. For now we assume we are using <a href="https://en.wikipedia.org/wiki/universal_quantifier">universal quantifier</a> (∀x) as a paradigm, all tests in a set of test cases must hold, so any any interpretation that fails will trigger a return from the world. That is we assume the test to be an approximation to a <a href="https://en.wikipedia.org/wiki/Tautology_(logic">tautology</a>.</p>
+<p>An alternate interpretation is that the function (the fixture) is a representation of the world, and within this world a table (the subject) should be a valid instance when it is instantiated with the example data. For now, we assume we are using <a href="https://en.wikipedia.org/wiki/universal_quantifier">universal quantifier</a> (∀x) as a paradigm, all tests in a set of test cases must hold, so any interpretation that fails will trigger a return from the world. That is, we assume the test to be an approximation to a <a href="https://en.wikipedia.org/wiki/Tautology_(logic">tautology</a>.</p>
 
 <p>Later on it might be interesting to add testing with <a href="https://en.wikipedia.org/wiki/existential_quantification">existential quantification</a> (∃x), that is <em>some</em> test in a set of test cases must hold.</p>
 
-<p>When <code>describe</code> returns it will return the unevaluated outer frame. It must be explicitly evaluated by calling <code>eval</code>. By using access functions it can be further manipulated, in particular reports according to the <a href="https://en.wikipedia.org/wiki/Test_Anything_Protocol">Test Anything Protocol</a> can be made. That report is used as the rendered result that is shown by the indicators and so forth. It can also be prodded by clicking the run button in the test console.</p>
+<p>When <code>describe</code> returns, it will return the unevaluated outer frame. It must be explicitly evaluated by calling <code>eval</code>. By using access functions it can be further manipulated, in particular reports according to the <a href="https://en.wikipedia.org/wiki/Test_Anything_Protocol">Test Anything Protocol</a> can be made. That report is used as the rendered result that is shown by the indicators and so forth. It can also be prodded by clicking the run button in the test console.</p>
 
 <h3>Extractor</h3>
 
-<p>An <em>extractor</em> is a mechanism to get the actual arguments out of the strings that are used as examples to a frame. There are several types of extractors for for various types of arguments(<a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/extractor/">extractor</a>). The collection of all arguments for a single example is then provided for the fixture.</p>
+<p>An <em>extractor</em> is a mechanism to get the actual arguments out of the strings that are used as examples to a frame. There are several types of extractors for various types of arguments(<a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/extractor/">extractor</a>). The collection of all arguments for a single example is then provided for the fixture.</p>
 
 <p><em>NOTE</em>: The remaining string from the example is collected as a key for identifying a translator, and also for reuse if a translator is missing.</p>
 
@@ -198,14 +200,14 @@
 
 <p>Spies can only be injected on provided code. That means code hidden away inside a module can't be tested. By including references only during testing otherwise hidden functionality can be exposed to testing, without making the code available for general use.</p>
 
-<p><em>NOTE</em>: Seems like the injection mechanism is lost, a merge gone wrong?</p>
+<p><em>NOTE</em>: Seems like the injection mechanism is lost, is it merge gone wrong?</p>
 
 <p><a name="Final_rendering"></a></p>
 <h2>Final rendering</h2>
 
-<p>The results will be used during automated processing and will also be provided to the end user. </p>
+<p>The results will be used during automated processing and will also be provided to the end user.</p>
 
-<h3>Reports and renderers</h3>
+<h3>Reports and renders</h3>
 
 <p>Reports holds a trace of what goes on inside the fixtures, and the final outcome of each interpretation. The reports are rendered in a specific style, and can be one of <em>vivid</em>, <em>full</em>, or <em>compact</em>. Compact is sufficient for creation of the indicator, and does not include the trace. Full is used as default, and includes the trace. Vivid is for the console and is strictly speaking not valid TAP.</p>
 
@@ -213,11 +215,11 @@
 
 <h3>Translators</h3>
 
-<p>The test results can be translated into other languages. To facilitate this the parsed examples are split into a reusable string and its arguments. The string can be used as a key for lookup in a table with translations, and the arguments can then be reinserted into the translated string. If the arguments can be adjusted to the new language it works quiite well, but for a lot of languages there are no way to translate the arguments properly.</p>
+<p>The test results can be translated into other languages. To facilitate this the parsed examples are split into a reusable string and its arguments. The string can be used as a key for lookup in a table with translations, and the arguments can then be reinserted into the translated string. If the arguments can be adjusted to the new language it works quite well, but for a lot of languages there are no way to translate the arguments properly.</p>
 
 <p>Translations are only provided as a help for the end users, the non-programmers, so they can get a grasp on why something is failing. The translations are not ment as a tool for the programmers, and it is not ment to be used in the tests. In particular, the translations are not used for automated processing.</p>
 
-<p><em>NOTE</em>: This is only rudimentarly implemented.</p>
+<p><em>NOTE</em>: This is only rudimentary implemented.</p>
 
 
 </div> <!-- id="content" -->

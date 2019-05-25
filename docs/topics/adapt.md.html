@@ -100,13 +100,15 @@
 
 <h1>Adapt</h1>
 
+<p><em>TODO</em>: Merge in <a href="expect.md.html">expect</a>.</p>
+
 <p>The <a href="../classes/Adapt.html#">Adapt</a> class (<code>subject</code>, <code>expect</code>) defines an <a href="https://en.wikipedia.org/wiki/Assertion_definition_language">assertion definition language</a> used in Pickle, which provides methods that are easy to use and fast to declare as long as the tests has a clearly defined structure. That is, it is a “pickle”.</p>
 
-<p>Tests can be described as series of <a href="https://en.wikipedia.org/wiki/Premise">premises</a>, that must evaluate to a true state. The outcome of a test can be viewed as a sequence of statements that are conjoined together. Because of the <a href="https://en.wikipedia.org/wiki/Logical_conjunction">logical conjunction</a>, the first <a href="https://en.wiktionary.org/wiki/falsy">falsy</a> in the sequence will then imply that any further tests can be dismissed. This is the default case.</p>
+<p>Tests can be described as series of <a href="https://en.wikipedia.org/wiki/Premise">premises</a>, that must evaluate to a true state. The outcome of a test can be viewed as a sequence of statements that are conjoined together with an <code>and</code>. Because of the <a href="https://en.wikipedia.org/wiki/Logical_conjunction">logical conjunction</a>, the first <a href="https://en.wiktionary.org/wiki/falsy">falsy</a> in the sequence will then imply that any further tests can be dismissed. This is the default case.</p>
 
 <p>In some cases it is only necessary that one of a few tests has a true state. Because of the <a href="https://en.wikipedia.org/wiki/Logical_disjunction">logical disjunction</a>, the first <a href="https://en.wiktionary.org/wiki/truthy">truthy</a> in the sequence will then imply that any further tests can be dismissed.</p>
 
-<p><em>NOTE</em>: It is not clear how the <a href="https://en.wikipedia.org/wiki/Logical_connective">logical connectives</a> should be set, and if a full description (statement, declaration) of the graph is necessary.</p>
+<p><em>NOTE</em>: It is not clear how the <a href="https://en.wikipedia.org/wiki/Logical_connective">logical connectives</a> should be set for a logical disjunction of assertions, and if a full description (statement, declaration) of the graph is necessary.</p>
 
 <p>The <a href="../classes/Frame.html#">Frame</a> class (<code>describe</code>, <code>context</code>, <code>it</code>) will put data on a <a href="../classes/Stack.html#">stack</a> <code>subject</code>, with last frame on top. This will then be available to <code>expect</code> for inspection.</p>
 
@@ -156,16 +158,15 @@ subject( obj ) <span class="comment">-- call as part of frame setup
 
 <h3><a id="pick">Pick</a></h3>
 
-<p>A delayed action to chose one of several returned values.</p>
+<p>This is delayed actions to chose one of several returned values.</p>
 
 <h3><a id="transform">Transform</a></h3>
 
-<p>A delayed action to somehow transform a value.</p>
+<p>This is delayed actions to somehow transform a value.</p>
 
 <h3><a id="condition">Condition</a></h3>
 
-<p>A delayed action to compare the values.### Pick value</p>
-
+<p>This is delayed actions to compare the values.</p>
 
 
 </div> <!-- id="content" -->

@@ -119,7 +119,7 @@
 <p><a name="Import_of_module_under_test"></a></p>
 <h2>Import of module under test</h2>
 
-<p>At present the module under test is imported by a require. This is not a good solution, it is like using a global var for the module. Instead the modules should be injected into the tests. This imply that the test callbacks are held in an unevaluated state until the tested module is injected.</p>
+<p>At present the module under test is imported by a <a href="https://www.lua.org/manual/5.1/manual.html#pdf-require">require</a>. This is not a good solution, it is like using a global var for the module. Instead, the modules should be injected into the tests. This imply that the test callbacks are held in an unevaluated state until the tested module is injected.</p>
 
 <p>Present call is like this at the top of the pickle page <code>Module:Foo</code> (This is according to <a href="https://no.wikipedia.org/wiki/User:Jeblad/Module:BDD/dok">w:no:User:Jeblad/Module:BDD/dok</a>)</p>
 
