@@ -3,15 +3,18 @@
 -- @classmod Extractors
 
 -- pure libs
+local libUtil = require 'libraryUtil'
 local Stack = require 'picklelib/Stack'
 
 -- @var class var for lib
 local Extractors = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Extractors:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'Extractors:__index', 1, key, 'string', false )
 	return Extractors[key]
 end
 
@@ -40,9 +43,11 @@ function Extractors:_init( ... )
 end
 
 --- Register a new strategy.
+-- @raise on wrong arguments
 -- @param strategy to be registered
 -- @treturn self
 function Extractors:register( strategy )
+	libUtil.checkType( 'Extractors:register', 1, strategy, 'table', false )
 	self._strategies:push( strategy )
 	return self
 end
@@ -62,13 +67,15 @@ end
 
 --- Find a matching extractor.
 -- @todo fix pos
--- @raise On missing source
+-- @raise on wrong arguments
 -- @tparam string str used as the extraction source
 -- @tparam number pos for an inclusive index where extraction starts
 -- @treturn strategy,first,last
 function Extractors:find( str, pos )
 	-- @todo figure out if it should be valid to not provide a string
-	assert( str, 'Failed to provide a string' )
+	libUtil.checkType( 'Extractors:find', 1, str, 'string', false )
+	libUtil.checkType( 'Extractors:find', 2, pos, 'number', false )
+
 	local first = mw.ustring.len( str ) + 1
 	local last
 	local strategy = nil

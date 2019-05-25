@@ -2,6 +2,7 @@
 -- @classmod Spy
 
 -- pure libs
+local libUtil = require 'libraryUtil'
 local Stack = require 'picklelib/Stack'
 local ReportAdapt = require 'picklelib/report/ReportAdapt'
 
@@ -9,9 +10,11 @@ local ReportAdapt = require 'picklelib/report/ReportAdapt'
 local Spy = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Spy:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'Spy:__index', 1, key, 'string', false )
 	return Spy[key]
 end
 
@@ -25,10 +28,11 @@ end
 
 --- Set the reference to the report.
 -- This keeps a reference, the object is not cloned.
+-- @raise on wrong arguments
 -- @tparam table obj that somehow maintain a collection
 -- @treturn self
 function Spy:setReport( obj )
-	assert( type( obj ) == 'table' )
+	libUtil.checkType( 'Spy:setReport', 1, obj, 'table', false )
 	self._report = obj
 	return self
 end
@@ -44,10 +48,11 @@ end
 
 --- Set the reference to the reports collection.
 -- This keeps a reference, the object is not cloned.
+-- @raise on wrong arguments
 -- @tparam table obj that somehow maintain a collection
 -- @treturn self
 function Spy:setReports( obj )
-	assert( type( obj ) == 'table' )
+	libUtil.checkType( 'Spy:setReport', 1, obj, 'table', false )
 	self._reports = obj
 	return self
 end
@@ -79,18 +84,24 @@ function Spy:traceback( ... )
 end
 
 --- Short report.
+-- @raise on wrong arguments
 -- @tparam string key used to identify a message
--- @tparam string str alternate free form
+-- @tparam nil|string str alternate free form
 -- @treturn Report
 function Spy:todo( key, str )
+	libUtil.checkType( 'Spy:todo', 1, key, 'string', false )
+	libUtil.checkType( 'Spy:todo', 2, str, 'string', true )
 	return self:report():setTodo( str or mw.message.new( key ):plain() )
 end
 
 --- Long report.
+-- @raise on wrong arguments
 -- @tparam string key used to identify a message
--- @tparam string str alternate free form
+-- @tparam nil|string str alternate free form
 -- @treturn Report
 function Spy:skip( key, str )
+	libUtil.checkType( 'Spy:todo', 1, key, 'string', false )
+	libUtil.checkType( 'Spy:todo', 2, str, 'string', true )
 	return self:report():setSkip( str or mw.message.new( key ):plain() )
 end
 

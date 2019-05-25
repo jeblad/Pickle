@@ -4,15 +4,20 @@
 -- @alias Subclass
 
 -- pure libs
+local libUtil = require 'libraryUtil'
+
+-- @var super class
 local Super = require 'picklelib/render/RenderFrame'
 
 -- @var final class
 local Subclass = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Subclass:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'RenderFrameFull:__index', 1, key, 'string', false )
 	return Subclass[key]
 end
 

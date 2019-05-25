@@ -3,13 +3,18 @@
 -- @classmod Report
 -- @alias Baseclass
 
+-- pure libs
+local libUtil = require 'libraryUtil'
+
 -- @var base class
 local Baseclass = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Baseclass:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'Report:__index', 1, key, 'string', false )
 	return Baseclass[key]
 end
 
@@ -61,12 +66,12 @@ end
 
 --- Set the skip.
 -- This is an accessor to set the member.
--- Note that all arguments will be wrapped up in a table before saving.
--- @tparam string str that will be used as the skip note
+-- @raise on wrong arguments
+-- @tparam[opt=''] nil|string str that will be used as the skip note
 -- @treturn self
 function Baseclass:setSkip( str )
-	assert( str, 'Failed to provide a skip' )
-	self._skip = str
+	libUtil.checkType( 'Report:setSkip', 1, str, 'string', true )
+	self._skip = str or ''
 	return self
 end
 
@@ -86,11 +91,12 @@ end
 
 --- Set the todo.
 -- This is an accessor to set the member.
--- @tparam string str that will be used as the todo note
+-- @raise on wrong arguments
+-- @tparam[opt=''] nil|string str that will be used as the todo note
 -- @treturn self
 function Baseclass:setTodo( str )
-	assert( str, 'Failed to provide a todo' )
-	self._todo = str
+	libUtil.checkType( 'Report:setTodo', 1, str, 'string', true )
+	self._todo = str or ''
 	return self
 end
 
@@ -109,8 +115,8 @@ end
 
 --- Realize the data by applying a render.
 -- @tparam Renders renders to use while realizing the Baseclasss (unused)
--- @tparam string lang holding the language code (unused)
--- @tparam Counter counter holding the running count (unused)
+-- @tparam nil|string lang holding the language code (unused)
+-- @tparam nil|Counter counter holding the running count (unused)
 -- @treturn string
 function Baseclass:realize() -- luacheck: no self
 	-- @todo this should probably return an error

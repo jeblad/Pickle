@@ -9,7 +9,25 @@ local util = {}
 -- @tparam string name in camel case
 -- @treturn string hyphenated name
 function util.buildName( name )
-	return name:gsub("([A-Z])", function(s) return '-'..string.lower(s) end )
+	return name:gsub( "([A-Z])", function(s) return '-'..string.lower(s) end )
+end
+
+--- Transform names in camel case into hyphen separated keys.
+-- @tparam vararg ... strings for the key
+-- @treturn string hyphenated name
+function util.builKey( ... )
+	local t = {}
+	for _,v in ipairs( { ... } ) do
+		if not v:match( "%[%a+%]" ) then
+			v = v:gsub( "([A-Z])", function(s) return '-'..string.lower(s) end )
+			v = v:gsub( "(%A)", function() return '-' end )
+			v = v:gsub( "([-]+)", function() return '-' end )
+			v = v:gsub( "^([-]+)", function() return '' end )
+			v = v:gsub( "([-]+)$", function() return '' end )
+		end
+		table.insert( t, v )
+	end
+	return table.concat( t, '-' )
 end
 
 --- Raw count of all the items in the provided table.

@@ -2,13 +2,18 @@
 -- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Stack
 
+-- pure libs
+local libUtil = require 'libraryUtil'
+
 -- @var class
 local Stack = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Stack:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'Stack:__index', 1, key, 'string', false )
 	return Stack[key]
 end
 

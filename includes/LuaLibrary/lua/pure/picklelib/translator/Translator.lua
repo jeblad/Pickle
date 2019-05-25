@@ -26,9 +26,9 @@ end
 -- @tparam vararg ... list of patterns
 -- @treturn self
 function Translator:_init( ... )
-	--self._patterns = Stack:create()
+	self._fragments = Stack:create()
 	for _,v in ipairs( { ... } ) do
-		self._patterns:push( v )
+		self._fragments:push( v )
 	end
 	self._type = 'translator'
 	return self

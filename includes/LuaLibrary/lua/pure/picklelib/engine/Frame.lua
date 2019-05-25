@@ -2,6 +2,7 @@
 -- @classmod Frame
 
 -- pure libs
+local libUtil = require 'libraryUtil'
 local Stack = require 'picklelib/Stack'
 local ReportAdapt = require 'picklelib/report/ReportAdapt'
 local ReportFrame = require 'picklelib/report/ReportFrame'
@@ -10,9 +11,11 @@ local ReportFrame = require 'picklelib/report/ReportFrame'
 local Frame = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Frame:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'Frame:__index', 1, key, 'string', false )
 	return Frame[key]
 end
 
@@ -27,7 +30,9 @@ local mt = { types = {} }
 function mt:__call( ... ) -- luacheck: no self
 	local obj = Frame.create()
 	obj:dispatch( ... )
-	assert( not obj:isDone(), 'Failed, got a done instance' )
+	if obj:isDone() then
+		return nil, 'Failed, got a done instance'
+	end
 	if obj:hasFixtures( obj ) then
 		obj:eval()
 	end
@@ -39,8 +44,9 @@ end
 -- @treturn self
 function Frame:__call( ... )
 	self:dispatch( ... )
-	assert( not self:isDone(),
-		'Failed, got a done instance. Is it run repeatedly in the debug console?' )
+	if self:isDone() then
+		return nil, 'Failed, got a done instance. Is it run repeatedly in the debug console?'
+	end
 	if self:hasFixtures() then
 		self:eval()
 	end
@@ -75,7 +81,9 @@ end
 function Frame:dispatch( ... )
 	for _,v in ipairs( { ... } ) do
 		local tname = type( v )
-		assert( mt.types[tname], 'Failed to find a type handler' )
+		if not mt.types[tname] then
+			return nil, 'Failed to find a type handler'
+		end
 		mt.types[tname]( self, v )
 	end
 	return self
@@ -150,10 +158,11 @@ end
 
 --- Set the reference to the subjects collection.
 -- This keeps a reference, the object is not cloned.
+-- @raise on wrong arguments
 -- @tparam table obj somehow maintain a collection
 -- @treturn self
 function Frame:setSubjects( obj )
-	assert( type( obj ) == 'table' )
+	libUtil.checkType( 'Frame:setSubjects', 1, obj, 'table', false )
 	self._subjects = obj
 	return self
 end
@@ -166,10 +175,11 @@ end
 
 --- Set the reference to the reports collection.
 -- This keeps a reference, the object is not cloned.
+-- @raise on wrong arguments
 -- @tparam table obj somehow maintain a collection
 -- @treturn self
 function Frame:setReports( obj )
-	assert( type( obj ) == 'table' )
+	libUtil.checkType( 'Frame:setReports', 1, obj, 'table', false )
 	self._reports = obj
 	return self
 end
@@ -182,10 +192,11 @@ end
 
 --- Set the reference to the extractors.
 -- This keeps a reference, the object is not cloned.
+-- @raise on wrong arguments
 -- @tparam table obj somehow maintain a collection
 -- @treturn self
 function Frame:setExtractors( obj )
-	assert( type( obj ) == 'table' )
+	libUtil.checkType( 'Frame:setExtractors', 1, obj, 'table', false )
 	self._extractors = obj
 	return self
 end
@@ -196,12 +207,30 @@ function Frame:extractors()
 	return self._extractors
 end
 
+--- Set the reference to the translators.
+-- This keeps a reference, the object is not cloned.
+-- @raise on wrong arguments
+-- @tparam table obj somehow maintain a collection
+-- @treturn self
+function Frame:setTranslators( obj )
+	libUtil.checkType( 'Frame:setTranslators', 1, obj, 'table', false )
+	self._translators = obj
+	return self
+end
+
+--- Expose reference to translators.
+-- @return list of translators
+function Frame:translators()
+	return self._translators
+end
+
 --- Set the reference to the renders.
 -- This keeps a reference, the object is not cloned.
+-- @raise on wrong arguments
 -- @tparam table obj somehow maintain a collection
 -- @treturn self
 function Frame:setRenders( obj )
-	assert( type( obj ) == 'table' )
+	libUtil.checkType( 'Frame:setRenders', 1, obj, 'table', false )
 	self._renders = obj
 	return self
 end
@@ -213,11 +242,16 @@ function Frame:renders()
 end
 
 --- Eval a single fixture.
+-- @raise on wrong arguments
 -- @tparam string description
 -- @tparam function fixture
 -- @tparam table environment
 -- @param ...
 function Frame:evalFixture( description, fixture, environment, ... )
+	libUtil.checkType( 'Frame:evalFixture', 1, description, 'string', false )
+	libUtil.checkType( 'Frame:evalFixture', 2, fixture, 'function', false )
+	libUtil.checkType( 'Frame:evalFixture', 3, environment, 'table', false )
+
 	local depth = self:reports():depth()
 	local t= { pcall( mw.pickle._implicit and setfenv( fixture, environment ) or fixture, ... ) }
 	if ( not t[1] ) and (not not t[2]) then
@@ -255,14 +289,23 @@ function Frame:eval()
 			or { '' } ) do
 		local pos = 1
 		local args = {}
+		local keyFrags = {}
+		local descFrags = {}
 
 		repeat
 			local strategy, first, last = self:extractors():find( v, pos )
 			if strategy then
+				-- table.insert( keyFrags, v:sub( first, last ) )
+				-- table.insert( descFrags, v:sub( first, last ) )
 				table.insert( args, strategy:cast( v, first, last ) )
+				-- table.insert( keyFrags, strategy:placeholder() )
 				pos = 1 + last
+			else
+				-- table.insert( keyFrags, v:sub( pos ) )
+				-- table.insert( descFrags, v:sub( pos ) )
 			end
 		until( not strategy )
+
 
 		for _,w in ipairs( { self._fixtures:export() } ) do
 			self:evalFixture( v, w, env, unpack{ args } )

@@ -4,15 +4,18 @@
 -- @alias Subclass
 
 -- pure libs
+local libUtil = require 'libraryUtil'
 local Super = require 'picklelib/extractor/Extractor'
 
 -- @var class var for lib
 local Subclass = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Subclass:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'ExtractorString:__index', 1, key, 'string', false )
 	return Subclass[key]
 end
 
@@ -39,11 +42,16 @@ end
 --- Cast the string into the correct type for this strategy.
 -- There are no safeguards for erroneous casts.
 -- @see Extractor:cast
+-- @raise on wrong arguments
 -- @tparam string str used as the extraction source
 -- @tparam number start for an inclusive index where extraction starts
 -- @tparam number finish for an inclusive index where extraction finishes
 -- @treturn string
 function Subclass:cast( str, start, finish )
+	libUtil.checkType( 'ExtractorString:cast', 1, str, 'string', false )
+	libUtil.checkType( 'ExtractorString:cast', 2, start, 'number', false )
+	libUtil.checkType( 'ExtractorString:cast', 3, finish, 'number', false )
+
 	if not finish then
 		start, finish = self:find( str, (start or 2) -1 )
 	end

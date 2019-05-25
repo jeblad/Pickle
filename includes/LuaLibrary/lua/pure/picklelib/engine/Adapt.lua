@@ -2,6 +2,7 @@
 -- @classmod Adapt
 
 -- pure libs
+local libUtil = require 'libraryUtil'
 local Stack = require 'picklelib/Stack'
 local util = require 'picklelib/util'
 local ReportAdapt = require 'picklelib/report/ReportAdapt' -- @todo might be skipped
@@ -10,9 +11,11 @@ local ReportAdapt = require 'picklelib/report/ReportAdapt' -- @todo might be ski
 local Adapt = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Adapt:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'Adapt:__index', 1, key, 'string', false )
 	return Adapt[key]
 end
 
@@ -54,18 +57,20 @@ function Adapt:_init( ... )
 	return self
 end
 
+-- @raise on wrong arguments
 function Adapt:addProcess( func )
-	assert( type( func ) == 'function' )
+	libUtil.checkType( 'Adapt:addProcess', 1, func, 'function', false )
 	self._processes:push( func )
 	return self
 end
 
 --- Set the reference to the adaptations collection.
 -- This keeps a reference, the object is not cloned.
+-- @raise on wrong arguments
 -- @tparam table obj that somehow maintain a collection
 -- @treturn self
 function Adapt:setAdaptations( obj )
-	assert( type( obj ) == 'table' )
+	libUtil.checkType( 'Adapt:setAdaptations', 1, obj, 'table', false )
 	self._adaptations = obj
 	return self
 end
@@ -82,10 +87,11 @@ end
 
 --- Set the reference to the reports collection.
 -- This keeps a reference, the object is not cloned.
+-- @raise on wrong arguments
 -- @tparam table obj that somehow maintain a collection
 -- @treturn self
 function Adapt:setReports( obj )
-	assert( type( obj ) == 'table' )
+	libUtil.checkType( 'Adapt:setReports', 1, obj, 'table', false )
 	self._reports = obj
 	return self
 end
@@ -134,12 +140,15 @@ end
 --- Make a delayed process for the pick functions.
 -- This is a private function that will create a function with a closure.
 -- It will create an additional delayed function for the provided definition.
+-- @raise on wrong arguments
 -- @local
 -- @delayed
 -- @tparam string name of the constructed created method
 -- @tparam number idx of the extracted item
 -- @treturn function
 local function _makePickProcess( name, idx )
+	libUtil.checkType( '_makePickProcess', 1, name, 'string', false )
+	libUtil.checkType( '_makePickProcess', 2, idx, 'number', false )
 	local g = function( ... )
 		local t = { ... }
 		return t[idx]
@@ -226,12 +235,15 @@ end
 --- Make a delayed process for the transform functions.
 -- This is a private function that will create a function with a closure.
 -- The delayed function comes from the provided definition.
+-- @raise on wrong arguments
 -- @local
 -- @delayed
 -- @tparam string name of the constructed created method
 -- @tparam function func to adjust the process
 -- @treturn function
 local function _makeTransformProcess( name, func )
+	libUtil.checkType( '_makeTransformProcess', 1, name, 'string', false )
+	libUtil.checkType( '_makeTransformProcess', 2, func, 'function', false )
 	local f = function( self )
 		self:report()
 			:addLine( 'pickle-adapt-process-'..util.buildName( name ) )
@@ -480,10 +492,13 @@ end
 --- Set the accessor for the other party.
 -- For a subject the other part will be the expect, and for expect it will
 -- be the subject.
+-- @raise on wrong arguments
 -- @tparam function func that points to the other party in a comparation
+-- @treturn self
 function Adapt:setOther( func )
-	assert( type( func ) == 'function' )
+	libUtil.checkType( 'Adapt:setOther', 1, func, 'function', false )
 	self._other = func
+	return self
 end
 
 --- Get the other part.
@@ -508,13 +523,17 @@ end
 --- Make a delayed process for the condition functions.
 -- This is a private function that will create a function with a closure.
 -- The delayed function comes from the provided definition.
+-- @raise on wrong arguments
 -- @local
 -- @delayed
 -- @tparam string name of the constructed created method
 -- @tparam function func to adjust the process
--- @tparam boolean other to swap the comparation
+-- @tparam nil|boolean other to swap the comparation
 -- @treturn function
 local function _makeConditionProcess( name, func, other )
+	libUtil.checkType( '_makeConditionProcess', 1, name, 'string', false )
+	libUtil.checkType( '_makeConditionProcess', 2, func, 'function', false )
+		libUtil.checkType( '_makeConditionProcess', 3, other, 'boolean', true )
 	local f = function( self )
 		local report = self:report()
 		self:report()

@@ -4,15 +4,18 @@
 -- @alias Subclass
 
 -- pure libs
+local libUtil = require 'libraryUtil'
 local Super = require 'picklelib/extractor/Extractor'
 
 -- @var class var for lib
 local Subclass = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Subclass:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'ExtractorTrue:__index', 1, key, 'string', false )
 	return Subclass[key]
 end
 

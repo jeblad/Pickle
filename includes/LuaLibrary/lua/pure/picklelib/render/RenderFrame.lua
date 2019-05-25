@@ -3,6 +3,9 @@
 -- @classmod RenderFrame
 -- @alias Subclass
 
+-- pure libs
+local libUtil = require 'libraryUtil'
+
 -- @var super class
 local Super = require 'picklelib/render/Render'
 
@@ -10,9 +13,11 @@ local Super = require 'picklelib/render/Render'
 local Subclass = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Subclass:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'RenderFrame:__index', 1, key, 'string', false )
 	return Subclass[key]
 end
 
@@ -46,8 +51,8 @@ end
 
 --- Realize reported data for state.
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
--- @tparam[opt=nil] Counter counter holding the running count
+-- @tparam nil|string lang code used for realization
+-- @tparam nil|Counter counter holding the running count
 -- @treturn string
 function Subclass:realizeState( src, lang, counter )
 	assert( src, 'Failed to provide a source' )
@@ -57,33 +62,38 @@ end
 
 --- Realize reported data for skip.
 -- The "skip" is a message identified by a key.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
+-- @tparam nil|string lang code used for realization
 -- @treturn string
 function Subclass:realizeSkip( src, lang )
-	assert( src, 'Failed to provide a source' )
+	-- src tested in later call
+	-- lang tested in later call
 
 	return self:realizeComment( src, 'skip', lang )
 end
 
 --- Realize reported data for todo.
 -- The "todo" is a text string.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
+-- @tparam nil|string lang code used for realization
 -- @treturn string
 function Subclass:realizeTodo( src, lang )
-	assert( src, 'Failed to provide a source' )
+	-- src tested in later call
+	-- lang tested in later call
 
 	return self:realizeComment( src, 'todo', lang )
 end
 
 --- Realize reported data for description.
 -- The "description" is a text string.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
+-- @tparam nil|string lang code used for realization (unused)
 -- @treturn string
 function Subclass:realizeDescription( src, lang ) -- luacheck: no unused args
-	assert( src, 'Failed to provide a source' )
+	libUtil.checkType( 'RenderFrame:realizeDescription', 1, src, 'table', false )
 
 	if not src:hasDescription() then
 		return ''
@@ -94,12 +104,15 @@ end
 
 --- Realize reported data for header.
 -- The "header" is a composite.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
--- @tparam[opt=nil] Counter counter holding the running count
+-- @tparam nil|string lang code used for realization
+-- @tparam nil|Counter counter holding the running count
 -- @treturn string
 function Subclass:realizeHeader( src, lang, counter )
-	assert( src, 'Failed to provide a source' )
+	libUtil.checkType( 'RenderFrame:realizeHeader', 1, src, 'table', false )
+	-- lang tested in later call
+	-- counter tested in later call
 
 	local t = { self:realizeState( src, lang, counter ) }
 
@@ -124,11 +137,12 @@ end
 
 --- Realize reported data for body.
 -- The "body" is a composite.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
+-- @tparam nil|string lang code used for realization (unused)
 -- @treturn string
 function Subclass:realizeBody( src, lang ) -- luacheck: ignore self lang
-	assert( src, 'Failed to provide a source' )
+	libUtil.checkType( 'RenderFrame:realizeBody', 1, src, 'table', false )
 
 	local t = {}
 

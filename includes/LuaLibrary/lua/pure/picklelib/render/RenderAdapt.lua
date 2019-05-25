@@ -3,6 +3,9 @@
 -- @classmod RenderAdapt
 -- @alias Subclass
 
+-- pure libs
+local libUtil = require 'libraryUtil'
+
 -- @var super class
 local Super = require 'picklelib/render/Render'
 
@@ -10,9 +13,11 @@ local Super = require 'picklelib/render/Render'
 local Subclass = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Subclass:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'RenderAdapt:__index', 1, key, 'string', false )
 	return Subclass[key]
 end
 
@@ -38,6 +43,7 @@ function Subclass:_init( ... )
 end
 
 --- Override key construction.
+-- @raise on wrong arguments
 -- @tparam string str to be appended to a base string
 -- @treturn string
 function Subclass:key( str )
@@ -45,24 +51,30 @@ function Subclass:key( str )
 end
 
 --- Realize reported data for state.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
--- @tparam[opt=nil] Counter counter holding the running count
+-- @tparam nil|string lang code used for realization
+-- @tparam nil|Counter counter holding the running count
 -- @treturn string
 function Subclass:realizeState( src, lang, counter )
-	assert( src, 'Failed to provide a source' )
+	libUtil.checkType( 'RenderAdapt:realizeState', 1, src, 'table', false )
+	-- lang tested in later call
+	-- counter tested in later call
 
 	return self:realizeClarification( src:isOk() and 'is-ok' or 'is-not-ok', lang, counter )
 end
 
 --- Realize reported data for header.
 -- The "header" is a composite.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
--- @tparam[opt=nil] Counter counter holding the running count
+-- @tparam nil|string lang code used for realization
+-- @tparam nil|Counter counter holding the running count
 -- @treturn string
 function Subclass:realizeHeader( src, lang, counter )
-	assert( src, 'Failed to provide a source' )
+	-- src tested in later call
+	-- lang tested in later call
+	-- counter tested in later call
 
 	local t = { self:realizeState( src, lang, counter ) }
 --[[
@@ -80,11 +92,13 @@ function Subclass:realizeHeader( src, lang, counter )
 end
 
 --- Realize reported data for a line.
+-- @raise on wrong arguments
 -- @tparam any param that shall be realized
--- @tparam[opt=nil] string lang code used for realization
+-- @tparam nil|string lang code used for realization
 -- @treturn string
 function Subclass:realizeLine( param, lang ) -- luacheck: no self
-	assert( param, 'Failed to provide a parameter' )
+	libUtil.checkType( 'RenderAdapt:realizeLine', 1, param, 'table', false )
+	libUtil.checkType( 'RenderAdapt:realizeLine', 2, lang, 'string', true )
 
 	local line = mw.message.new( unpack( param ) )
 
@@ -101,11 +115,13 @@ end
 
 --- Realize reported data for body.
 -- The "body" is a composite.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
+-- @tparam nil|string lang code used for realization
 -- @treturn string
 function Subclass:realizeBody( src, lang )
-	assert( src, 'Failed to provide a source' )
+	libUtil.checkType( 'RenderAdapt:realizeBody', 1, src, 'table', false )
+	libUtil.checkType( 'RenderAdapt:realizeBody', 2, lang, 'string', true )
 
 	local t = {}
 

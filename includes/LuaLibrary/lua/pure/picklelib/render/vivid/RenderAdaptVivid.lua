@@ -4,15 +4,20 @@
 -- @alias Subclass
 
 -- pure libs
+local libUtil = require 'libraryUtil'
+
+-- @var super class
 local Super = require 'picklelib/render/RenderAdapt'
 
 -- @var final class
 local Subclass = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Subclass:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'RenderAdaptVivid:__index', 1, key, 'string', false )
 	return Subclass[key]
 end
 
@@ -38,12 +43,15 @@ function Subclass:_init( ... )
 end
 
 --- Override realization of reported data for state.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
--- @tparam[opt=nil] Counter counter holding the running count
+-- @tparam nil|string lang code used for realization
+-- @tparam nil|Counter counter holding the running count
 -- @treturn html
 function Subclass:realizeState( src, lang, counter )
-	assert( src, 'Failed to provide a source' )
+	-- src tested in later call
+	libUtil.checkType( 'RenderAdaptVivid:realizeState', 2, lang, 'string', true )
+	-- counter tested in later call
 
 	local html = mw.html.create( 'span' )
 		:addClass( 'mw-pickle-state' )
@@ -58,12 +66,15 @@ function Subclass:realizeState( src, lang, counter )
 end
 
 --- Override realization of reported data for header.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
--- @tparam[opt=nil] Counter counter holding the running count
+-- @tparam nil|string lang code used for realization
+-- @tparam nil|Counter counter holding the running count
 -- @treturn html
 function Subclass:realizeHeader( src, lang, counter )
-	assert( src, 'Failed to provide a source' )
+	-- src tested in later call
+	-- lang tested in later call
+	-- counter tested in later call
 
 	local html = mw.html.create( 'div' )
 		:addClass( 'mw-pickle-header' )
@@ -90,11 +101,13 @@ function Subclass:realizeHeader( src, lang, counter )
 end
 
 --- Override realization of reported data for line.
+-- @raise on wrong arguments
 -- @tparam any param that shall be realized
--- @tparam[opt=nil] string lang code used for realization
+-- @tparam nil|string lang code used for realization
 -- @return html
 function Subclass:realizeLine( param, lang )
-	assert( param, 'Failed to provide a parameter' )
+	-- param tested in later call
+	-- lang tested in later call
 
 	local html = mw.html.create( 'dd' )
 		:addClass( 'mw-pickle-line' )
@@ -112,11 +125,13 @@ end
 -- The "body" is a composite.
 -- @todo this should probably be realize() as it should contain
 -- the header as a "dt".
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
+-- @tparam nil|string lang code used for realization
 -- @treturn html
 function Subclass:realizeBody( src, lang )
-	assert( src, 'Failed to provide a source' )
+	libUtil.checkType( 'RenderAdaptVivid:realizeBody', 1, src, 'table', false )
+	-- lang tested in later call
 
 	if src:numLines() > 0 then
 		local html = mw.html.create( 'dl' )

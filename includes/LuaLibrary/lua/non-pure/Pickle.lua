@@ -5,6 +5,9 @@
 local php		-- luacheck: ignore
 local options	-- luacheck: ignore
 
+-- pure libs
+local libUtil = require 'libraryUtil'
+
 -- @var structure for storage of the lib
 local pickle = {
 	_types = {},		-- holds type methods
@@ -14,10 +17,12 @@ local pickle = {
 
 --- Register spies.
 -- This needs a valid environment, for example from getfenv()
--- @param env table for the environment
--- @param reports ref to objects holding set of reports
+-- @raise on wrong arguments
+-- @tparam table env for the environment
+-- @tparam Reports ref to objects holding set of reports
 local function registerSpies( env, reports )
-	assert( env )
+	libUtil.checkType( 'Pickle:registerSpies', 1, env, 'table', false )
+	libUtil.checkType( 'Pickle:registerSpies', 2, reports, 'table', false )
 
 	-- require libs
 	local Spy = require 'picklelib/engine/Spy'
@@ -79,10 +84,12 @@ end
 
 --- Register comments.
 -- This needs a valid environment, for example from getfenv()
--- @param env table for the environment
--- @param reports ref to objects holding set of reports
+-- @raise on wrong arguments
+-- @tparam table env for the environment
+-- @tparam Reports ref to objects holding set of reports
 local function registerComments( env, reports )
-	assert( env )
+	libUtil.checkType( 'Pickle:registerComments', 1, env, 'table', false )
+	libUtil.checkType( 'Pickle:registerComments', 2, reports, 'table', false )
 
 	--- skip, comment on the current reports.
 	-- This will not terminate current run.
@@ -104,10 +111,11 @@ end
 
 --- Register reports.
 -- This needs a valid environment, for example from getfenv()
--- @param env table for the environment
+-- @raise on wrong arguments
+-- @tparam table env for the environment
 -- @return Stack of reports
 local function registerReports( env )
-	assert( env )
+	libUtil.checkType( 'Pickle:registerComments', 1, env, 'table', false )
 
 	-- require libs
 	local reports = require( 'picklelib/Stack' ):create()
@@ -117,13 +125,8 @@ local function registerReports( env )
 end
 
 --- Register renders.
--- This needs a valid environment, for example from getfenv()
--- @param env table for the environment
 -- @return Renders
-local function registerRenders( env )
-	assert( env )
-
-	-- require libs
+local function registerRenders()	-- require libs
 	local renders = require 'picklelib/render/Renders'
 
 	-- register render styles
@@ -156,16 +159,17 @@ local function registerExtractors()
 end
 
 --- Register translators.
--- @param subpage name of page
+-- @raise on wrong arguments
+-- @tparam string subpage name of page
 -- @return TranslatorStrategies
 local function registerTranslators( subpage )
-	assert( subpage )
+	libUtil.checkType( 'Pickle:registerTranslators', 1, subpage, 'string', false )
 
 	-- require libs
 	local translators = require( 'picklelib/translator/Translators' ):create()
 
 	-- register translation data
-	local translationData = {}
+	local translationData = nil
 	local prefixedText = mw.getCurrentFrame():getTitle()
 	if prefixedText then
 		pcall( function()
@@ -173,18 +177,21 @@ local function registerTranslators( subpage )
 		end )
 	end
 
-	for k,v in pairs( translationData ) do
-		translators:register( k, v )
+	for k,v in pairs( translationData or {} ) do
+		if not string.match( k, '^@' ) then
+			translators:register( k, v )
+		end
 	end
 
 	return translators
 end
 
 --- Register adaptations.
--- @param env table for the environment
--- @param reports ref to objects holding set of reports
+-- @tparam table env for the environment
+-- @tparam Reports ref to objects holding set of reports
 local function registerAdaptations( env, reports )
-	assert( env )
+	libUtil.checkType( 'Pickle:registerAdaptations', 1, env, 'table', false )
+	libUtil.checkType( 'Pickle:registerAdaptations', 2, reports, 'table', false )
 
 	-- require libs
 	local Adapt = require 'picklelib/engine/Adapt'
@@ -269,9 +276,10 @@ function pickle.implicitDescribe( ... )
 	-- @return Frame
 	env.context = function( ... )
 		local obj = Frame.create()
-			:setExtractors( extractors )
 			:setReports( reports )
 			:setSubjects( subjects )
+			:setExtractors( extractors )
+			:setTranslators( translators )
 			:dispatch( ... )
 		return obj
 	end
@@ -290,6 +298,7 @@ function pickle.implicitDescribe( ... )
 		:setReports( reports )
 		:setSubjects( subjects )
 		:setExtractors( extractors )
+		:setTranslators( translators )
 		:dispatch( ... )
 
 	--- Helper to get the named style
@@ -331,9 +340,18 @@ function pickle.implicitDescribe( ... )
 	--function obj.tap( name )
 	function obj:tap( ... )
 		self:eval()
-		assert(self:reports(), 'Frame: tap: reports')
-		assert(self:reports():top(), 'Frame: tap: top')
-		assert(self:renders(), 'Frame: tap: renders')
+
+		if self:reports() then
+			return nil, 'Pickle: Can not find reports'
+		end
+
+		if self:reports():top() then 
+			return nil, 'Pickle: Can not find top'
+		end
+
+		if self:renders() then
+			return nil, 'Pickle: Can not find renders'
+		end
 
 		local styleName = nil
 		local langCode = nil

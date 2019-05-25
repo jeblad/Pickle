@@ -4,15 +4,20 @@
 -- @alias Subclass
 
 -- pure libs
+local libUtil = require 'libraryUtil'
+
+-- @var super class
 local Super = require 'picklelib/render/RenderAdapt'
 
 -- @var final class
 local Subclass = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Subclass:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'RenderAdaptCompact:__index', 1, key, 'string', false )
 	return Subclass[key]
 end
 
@@ -39,11 +44,13 @@ end
 
 --- Override realization of reported data for body.
 -- @todo is this correct?
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
+-- @tparam nil|string lang code used for realization
 -- @treturn string
 function Subclass:realizeBody( src, lang )
-	assert( src, 'Failed to provide a source' )
+	libUtil.checkType( 'RenderAdaptCompact:realizeBody', 1, src, 'table', false )
+	libUtil.checkType( 'RenderAdaptCompact:realizeBody', 2, lang, 'string', true )
 
 	if src:isOk() then
 		return ''

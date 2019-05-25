@@ -23,10 +23,13 @@ end
 
 --- Initialize a new instance.
 -- @local
--- @tparam vararg ... list of strategies
+-- @tparam vararg ... list of packaged strategies
 -- @treturn self
-function Translators:_init()
+function Translators:_init( ... )
 	self._strategies = {}
+	for _,v in ipairs( { ... } ) do
+		self:register( v[1], v[2] )
+	end
 	return self
 end
 

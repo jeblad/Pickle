@@ -3,6 +3,7 @@
 -- @alias Subclass
 
 -- pure libs
+local libUtil = require 'libraryUtil'
 local Stack = require 'picklelib/Stack'
 
 -- @var super class
@@ -12,9 +13,11 @@ local Super = require 'picklelib/report/Report'
 local Subclass = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Subclass:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'ReportFrame:__index', 1, key, 'string', false )
 	return Subclass[key]
 end
 
@@ -70,15 +73,16 @@ function Subclass:numConstituents()
 end
 
 --- Add a constituent.
+-- Note: there are no checking of arguments!
 -- @tparam any part that can be a constituent
 -- @treturn self
 function Subclass:addConstituent( part )
-	assert( part, 'Failed to provide a constituent' )
 	self:constituents():push( part )
 	return self
 end
 
 --- Add several constituents.
+-- Note: there are no checking of arguments!
 -- @tparam vararg ... list of parts that can be constituents
 -- @treturn self
 function Subclass:addConstituents( ... )
@@ -143,11 +147,12 @@ end
 --- Set the description.
 -- This is an accessor to set the member.
 -- Note that all arguments will be wrapped up in a table before saving.
--- @tparam string str that will be used as the description
+-- @raise on wrong arguments
+-- @tparam[opt=''] nil|string str that will be used as the description
 -- @treturn self
 function Subclass:setDescription( str )
-	assert( str, 'Failed to provide a description' )
-	self._description = str
+	libUtil.checkType( 'ReportFrame:setDescription', 1, str, 'string', true )
+	self._description = str or ''
 	return self
 end
 
@@ -167,11 +172,13 @@ end
 
 --- Realize the data by applying a render.
 -- @tparam Renders renders to use while realizing the reports
--- @tparam[opt=nil] string lang holding the language code
--- @tparam[opt=nil] Counter counter holding the running count
+-- @tparam nil|string lang holding the language code
+-- @tparam nil|Counter counter holding the running count
 -- @treturn string
 function Subclass:realize( renders, lang, counter )
-	assert( renders, 'Failed to provide renders' )
+	libUtil.checkType( 'ReportFrame:realize', 1, renders, 'table', false )
+	libUtil.checkType( 'ReportFrame:realize', 2, lang, 'string', true )
+	libUtil.checkType( 'ReportFrame:realize', 3, counter, 'table', true )
 
 	local styles = renders:find( self:type() )
 	local init = counter and not counter:isInitialized()

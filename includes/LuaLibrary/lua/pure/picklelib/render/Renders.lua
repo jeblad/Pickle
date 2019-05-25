@@ -2,13 +2,18 @@
 -- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Renders
 
+-- pure libs
+local libUtil = require 'libraryUtil'
+
 -- @var class var for lib
 local Renders = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Renders:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'Renders:__index', 1, key, 'string', false )
 	return Renders[key]
 end
 
@@ -17,20 +22,22 @@ Renders._styles = {}
 
 --- Convenience function to access a specific named style.
 -- This will try to create the style if it isn't created yet.
+-- @raise on wrong arguments
 -- @tparam string name  style of rendering
 -- @treturn self
 function Renders:__call( name ) -- luacheck: no self
-	assert( name, 'Renders: __call: Failed to provide a name' )
+	libUtil.checkType( 'Renders:__call', 1, name, 'string', false )
 	assert( Renders._styles[name], 'Failed to provide a previously registered style' )
 	return Renders._styles[name]
 end
 
 --- Initialize a new instance.
+-- @raise on wrong arguments
 -- @local
 -- @tparam string name style of rendering
 -- @treturn self
 function Renders:_init( name )
-	assert( name, 'Renders: _init: Failed to provide a name' )
+	libUtil.checkType( 'Renders:__name', 1, name, 'string', false )
 	self._version = 'TAP version 13'
 	self._style = name
 	self._types = {}
@@ -54,11 +61,12 @@ function Renders:realizeVersion() -- luacheck: no unused args
 end
 
 --- Convenience function to access a specific named style.
--- This will try to create the style if it isn't created yet.
+-- This will not create the style if it isn't created yet.
+-- @raise on wrong arguments
 -- @tparam string name style of rendering
 -- @treturn nil|Render
 function Renders.style( name ) -- luacheck: no self
-	assert( name, 'Renders: style: Failed to provide a name' )
+	libUtil.checkType( 'Renders:style', 1, name, 'string', false )
 	assert( Renders._styles[name], 'Failed to provide a previously registered style' )
 	return Renders._styles[name]
 end
@@ -66,9 +74,11 @@ end
 --- Register named style.
 -- This is at class level. It is really a two level strategy, but we're lazy
 -- and skip one of the levels.
+-- @raise on wrong arguments
 -- @tparam string name style of rendering
--- @treturn nil|Render
+-- @treturn Render
 function Renders.registerStyle( name )
+	libUtil.checkType( 'Renders:registerStyle', 1, name, 'string', false )
 	if not Renders._styles[name] then
 		Renders._styles[name] = Renders.create( name )
 	end
@@ -77,11 +87,13 @@ end
 
 --- Register a render of given named type.
 -- This will typically be "Result" or "Report".
+-- @raise on wrong arguments
 -- @tparam string name style of rendering
 -- @tparam Render lib for the specific kind of rendering
--- @treturn nil|Render
+-- @treturn Render
 function Renders:registerType( name, lib )
-	assert( name, 'Renders: registerType: Failed to provide a name' )
+	libUtil.checkType( 'Renders:registerType', 1, name, 'string', false )
+	libUtil.checkType( 'Renders:registerType', 2, lib, 'table', false )
 	self._types[name] = lib
 	return self._types[name]
 end
@@ -90,9 +102,9 @@ end
 -- This will typically be "Result" or "Report".
 -- @todo check if this has tests
 -- @tparam string name style of rendering
--- @treturn nil|Render
+-- @treturn Render
 function Renders:find( name )
-	assert( name, 'Renders: find: Failed to provide a name' )
+	libUtil.checkType( 'Renders:find', 1, name, 'string', false )
 	assert( self._types[name], 'Renderers: find: Failed to provide a type for "' .. name .. '"')
 	return self._types[name]
 end

@@ -4,6 +4,7 @@
 -- @alias Subclass
 
 -- pure libs
+local libUtil = require 'libraryUtil'
 local Stack = require 'picklelib/Stack'
 
 -- @var base class
@@ -13,9 +14,11 @@ local Super = require 'picklelib/report/Report'
 local Subclass = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Subclass:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'ReportAdapt:__index', 1, key, 'string', false )
 	return Subclass[key]
 end
 
@@ -74,19 +77,23 @@ end
 
 --- Get a line.
 -- Note that all parts will be returned wrapped up in a table.
--- @tparam number idx line number
+-- @raise on wrong arguments
+-- @tparam[opt=1] nil|number idx line number
 -- @treturn table containing list of parts
 function Subclass:getLine( idx )
-	return self:lines():get( idx )
+	libUtil.checkType( 'ReportAdapt:getLine', 1, idx, 'number', true )
+	return self:lines():get( idx or 1 )
 end
 
 --- Realize the data by applying a render.
 -- @tparam Renders renders to use while realizing the reports
--- @tparam[opt=nil] string lang holding the language code
--- @tparam[opt=nil] Counter counter holding the running count
+-- @tparam nil|string lang holding the language code
+-- @tparam nil|Counter counter holding the running count
 -- @treturn string
 function Subclass:realize( renders, lang, counter )
-	assert( renders, 'Failed to provide renders' )
+	libUtil.checkType( 'ReportAdapt:realize', 1, renders, 'table', false )
+	libUtil.checkType( 'ReportAdapt:realize', 2, lang, 'string', true )
+	libUtil.checkType( 'ReportAdapt:realize', 3, counter, 'table', true )
 	return ''
 		.. (renders.realizeHeader and renders:realizeHeader( self, lang, counter ) or '')
 		.. (renders.realizeBody and renders:realizeBody( self, lang, counter ) or '')

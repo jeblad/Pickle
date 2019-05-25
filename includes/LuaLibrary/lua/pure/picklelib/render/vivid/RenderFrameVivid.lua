@@ -4,15 +4,20 @@
 -- @alias Subclass
 
 -- pure libs
+local libUtil = require 'libraryUtil'
+
+-- @var super class
 local Super = require 'picklelib/render/RenderFrame'
 
 -- @var final class
 local Subclass = {}
 
 --- Lookup of missing class members.
+-- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
 function Subclass:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'RenderFrameVivid:__index', 1, key, 'string', false )
 	return Subclass[key]
 end
 
@@ -38,23 +43,27 @@ function Subclass:_init( ... )
 end
 
 --- Append same type to first.
+-- @raise on wrong arguments
 -- @tparam any head to act as the head
 -- @tparam any tail to act as the tail
 -- @treturn self
 function Subclass:append( head, tail ) -- luacheck: no self
-	assert( head )
-	assert( tail )
+	libUtil.checkType( 'RenderFrameVivid:append', 1, head, 'table', false )
+	libUtil.checkType( 'RenderFrameVivid:append', 2, tail, 'string', false )
 	head:node( tail )
 	return self
 end
 
 --- Override realization of reported data for state.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
--- @tparam[opt=nil] Counter counter holding the running count
+-- @tparam nil|string lang code used for realization
+-- @tparam nil|Counter counter holding the running count
 -- @treturn html
 function Subclass:realizeState( src, lang, counter )
-	assert( src, 'Failed to provide a source' )
+	-- src tested in later call
+	libUtil.checkType( 'RenderFrameVivid:realizeState', 2, lang, 'string', true )
+	-- counter tested in later call
 
 	local html = mw.html.create( 'span' )
 		:addClass( 'mw-pickle-state' )
@@ -69,11 +78,14 @@ function Subclass:realizeState( src, lang, counter )
 end
 
 --- Override realization of reported data for skip.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
+-- @tparam nil|string lang code used for realization
 -- @treturn html
 function Subclass:realizeSkip( src, lang )
-	assert( src, 'Failed to provide a source' )
+	-- src tested in later call
+	-- lang tested in later call
+	-- counter tested in later call
 
 	local html = mw.html.create( 'span' )
 		:addClass( 'mw-pickle-skip' )
@@ -88,11 +100,14 @@ function Subclass:realizeSkip( src, lang )
 end
 
 --- Override realization of reported data for todo.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
+-- @tparam nil|string lang code used for realization
 -- @treturn html
 function Subclass:realizeTodo( src, lang )
-	assert( src, 'Failed to provide a source' )
+	-- src tested in later call
+	-- lang tested in later call
+	-- counter tested in later call
 
 	local html = mw.html.create( 'span' )
 		:addClass( 'mw-pickle-todo' )
@@ -107,11 +122,14 @@ function Subclass:realizeTodo( src, lang )
 end
 
 --- Override realization of reported data for description.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
+-- @tparam nil|string lang code used for realization
 -- @treturn html
 function Subclass:realizeDescription( src, lang )
-	assert( src, 'Failed to provide a source' )
+	-- src tested in later call
+	-- lang tested in later call
+	-- counter tested in later call
 
 	local html = mw.html.create( 'span' )
 		:addClass( 'mw-pickle-description' )
@@ -127,12 +145,15 @@ end
 
 --- Realize reported data for header.
 -- The "header" is a composite.
+-- @raise on wrong arguments
 -- @tparam Report src that shall be realized
--- @tparam[opt=nil] string lang code used for realization
--- @tparam[opt=nil] Counter counter holding the running count
+-- @tparam nil|string lang code used for realization
+-- @tparam nil|Counter counter holding the running count
 -- @treturn html
 function Subclass:realizeHeader( src, lang, counter )
-	assert( src, 'Failed to provide a source' )
+	libUtil.checkType( 'RenderFrameVivid:realizeHeader', 1, src, 'table', false )
+	-- lang tested in later call
+	-- counter tested in later call
 
 	local html = mw.html.create( 'div' )
 		:addClass( 'mw-pickle-header' )
