@@ -1,4 +1,6 @@
 --- Base class for Expect and Subject.
+-- This class follows the pattern from
+-- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Adapt
 
 -- pure libs
@@ -23,6 +25,7 @@ end
 local mt = {}
 
 --- Get a clone or create a new instance.
+-- @function Adapt:__call
 -- @tparam vararg ... conditionally passed to create
 -- @treturn self
 function mt:__call( ... )
@@ -44,7 +47,6 @@ function Adapt.create( ... )
 end
 
 --- Initialize a new instance.
--- @local
 -- @tparam vararg ... set to temporal
 -- @treturn self
 function Adapt:_init( ... )
@@ -140,9 +142,9 @@ end
 --- Make a delayed process for the pick functions.
 -- This is a private function that will create a function with a closure.
 -- It will create an additional delayed function for the provided definition.
--- @raise on wrong arguments
 -- @local
 -- @delayed
+-- @raise on wrong arguments
 -- @tparam string name of the constructed created method
 -- @tparam number idx of the extracted item
 -- @treturn function
