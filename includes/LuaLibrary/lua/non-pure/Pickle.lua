@@ -19,7 +19,7 @@ local pickle = {
 -- This needs a valid environment, for example from getfenv()
 -- @raise on wrong arguments
 -- @tparam table env for the environment
--- @tparam Reports ref to objects holding set of reports
+-- @tparam Reports reports ref to objects holding set of reports
 local function registerSpies( env, reports )
 	libUtil.checkType( 'Pickle:registerSpies', 1, env, 'table', false )
 	libUtil.checkType( 'Pickle:registerSpies', 2, reports, 'table', false )
@@ -33,7 +33,7 @@ local function registerSpies( env, reports )
 	-- @param str message to be passed on
 	-- @return Spy
 	env.carp = function( str )
-		local obj = Spy.create():setReports( reports )
+		local obj = Spy:create():setReports( reports )
 		obj:todo( 'todo', 'pickle-spies-carp-todo', str ) -- @todo not sure why this must use 'obj'
 		obj:reports():push( obj:report() )
 		return obj
@@ -45,7 +45,7 @@ local function registerSpies( env, reports )
 	-- @param str message to be passed on
 	-- @return Spy
 	env.cluck = function( str )
-		local obj = Spy.create():setReports( reports )
+		local obj = Spy:create():setReports( reports )
 		obj:todo( 'pickle-spies-cluck-todo', str )
 		obj:traceback()
 		obj:reports():push( obj:report() )
@@ -59,7 +59,7 @@ local function registerSpies( env, reports )
 	-- @param str message to be passed on
 	-- @return Spy
 	env.croak = function( str )
-		local obj = Spy.create():setReports( reports )
+		local obj = Spy:create():setReports( reports )
 		obj:skip( 'pickle-spies-croak-skip', str )
 		obj:reports():push( obj:report() )
 		error( mw.message.new( 'pickle-spies-croak-exits' ) )
@@ -73,7 +73,7 @@ local function registerSpies( env, reports )
 	-- @param str message to be passed on
 	-- @return Spy
 	env.confess = function( str )
-		local obj = Spy.create():setReports( reports )
+		local obj = Spy:create():setReports( reports )
 		obj:skip( 'pickle-spies-confess-skip', str )
 		obj:traceback()
 		obj:reports():push( obj:report() )
@@ -86,7 +86,7 @@ end
 -- This needs a valid environment, for example from getfenv()
 -- @raise on wrong arguments
 -- @tparam table env for the environment
--- @tparam Reports ref to objects holding set of reports
+-- @tparam Reports reports ref to objects holding set of reports
 local function registerComments( env, reports )
 	libUtil.checkType( 'Pickle:registerComments', 1, env, 'table', false )
 	libUtil.checkType( 'Pickle:registerComments', 2, reports, 'table', false )
@@ -188,7 +188,7 @@ end
 
 --- Register adaptations.
 -- @tparam table env for the environment
--- @tparam Reports ref to objects holding set of reports
+-- @tparam Reports reports ref to objects holding set of reports
 local function registerAdaptations( env, reports )
 	libUtil.checkType( 'Pickle:registerAdaptations', 1, env, 'table', false )
 	libUtil.checkType( 'Pickle:registerAdaptations', 2, reports, 'table', false )
