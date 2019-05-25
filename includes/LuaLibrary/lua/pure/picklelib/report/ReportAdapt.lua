@@ -1,5 +1,6 @@
 --- Subclass for adapt report.
--- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
+-- This class follows the pattern with inheritance from
+-- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod ReportAdapt
 -- @alias Subclass
 
@@ -34,7 +35,6 @@ function Subclass:create( ... )
 end
 
 --- Initialize a new instance.
--- @local
 -- @tparam vararg ... pushed to lines
 -- @treturn self
 function Subclass:_init( ... )

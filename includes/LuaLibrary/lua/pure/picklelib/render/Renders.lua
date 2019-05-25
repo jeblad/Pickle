@@ -1,5 +1,6 @@
 --- Class for render strategies.
--- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
+-- This class follows the pattern from
+-- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Renders
 
 -- pure libs
@@ -31,9 +32,21 @@ function Renders:__call( name ) -- luacheck: no self
 	return Renders._styles[name]
 end
 
+--- Create a new instance.
+-- Assumption is either to create a new instance from an existing class,
+-- or from a previous instance of some kind.
+-- @raise on wrong arguments
+-- @tparam string name style of rendering
+-- @treturn self
+function Renders:create( name )
+	-- name tested in later call
+	local meta = rawget( self, 'create' ) and self or getmetatable( self )
+	local new = setmetatable( {}, meta )
+	return new:_init( name )
+end
+
 --- Initialize a new instance.
 -- @raise on wrong arguments
--- @local
 -- @tparam string name style of rendering
 -- @treturn self
 function Renders:_init( name )
@@ -41,15 +54,6 @@ function Renders:_init( name )
 	self._version = 'TAP version 13'
 	self._style = name
 	self._types = {}
-	return self
-end
-
---- Create a new instance.
--- @tparam string name style of rendering
--- @treturn self
-function Renders.create( name )
-	local self = setmetatable( {}, Renders )
-	self:_init( name )
 	return self
 end
 
@@ -80,7 +84,7 @@ end
 function Renders.registerStyle( name )
 	libUtil.checkType( 'Renders:registerStyle', 1, name, 'string', false )
 	if not Renders._styles[name] then
-		Renders._styles[name] = Renders.create( name )
+		Renders._styles[name] = Renders:create( name )
 	end
 	return Renders._styles[name]
 end

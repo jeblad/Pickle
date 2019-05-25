@@ -1,5 +1,6 @@
 --- BaseClass for an translator strategy.
--- This should be a strategy pattern.
+-- This class follows the pattern with inheritance from
+-- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Translator
 
 -- @var class var for lib
@@ -22,7 +23,6 @@ function Translator:create( ... )
 end
 
 --- Initialize a new instance.
--- @local
 -- @tparam vararg ... list of patterns
 -- @treturn self
 function Translator:_init( ... )

@@ -1,5 +1,6 @@
 --- Class for extractor strategies.
--- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
+-- This class follows the pattern from
+-- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Translators
 
 -- @var class var for lib
@@ -22,7 +23,6 @@ function Translators:create( ... )
 end
 
 --- Initialize a new instance.
--- @local
 -- @tparam vararg ... list of packaged strategies
 -- @treturn self
 function Translators:_init( ... )

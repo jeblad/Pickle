@@ -1,4 +1,6 @@
 --- Subclass for reports.
+-- This class follows the pattern with inheritance from
+-- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod ReportFrame
 -- @alias Subclass
 
@@ -44,7 +46,6 @@ function Subclass:create( ... )
 end
 
 --- Initialize a new instance.
--- @local
 -- @tparam vararg ... pushed to constituents
 -- @treturn self
 function Subclass:_init( ... )

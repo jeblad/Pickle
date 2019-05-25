@@ -1,5 +1,6 @@
 --- Final class for frame report renderer.
--- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
+-- This class follows the pattern with inheritance from
+-- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod RenderFrameFull
 -- @alias Subclass
 
@@ -33,7 +34,6 @@ function Subclass:create( ... )
 end
 
 --- Initialize a new instance.
--- @local
 -- @tparam vararg ... forwarded to @{RenderFrame:_init|superclass init method}
 -- @return self
 function Subclass:_init( ... )
