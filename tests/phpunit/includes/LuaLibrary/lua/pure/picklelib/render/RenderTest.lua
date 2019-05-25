@@ -41,7 +41,7 @@ end
 
 --[[
 local function testComment( keyPart )
-	local p = require('picklelib/report/Report').create()
+	local p = require('picklelib/report/Report'):create()
 	return makeTest():realizeComment( p, keyPart )
 end
 ]]

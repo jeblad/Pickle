@@ -30,7 +30,7 @@ local function testKey( ... )
 end
 --[[
 local function testState( bool )
-	local p = fix.create()
+	local p = fix:create()
 	if bool then
 		p:ok()
 	else
