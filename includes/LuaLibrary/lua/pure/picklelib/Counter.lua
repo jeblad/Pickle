@@ -1,5 +1,6 @@
 --- Counter for a continuous incrementing number.
--- This class follows the pattern from [Lua classes](../topics/lua-classes.md.html).
+-- This class follows the pattern from
+-- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Counter
 
 -- pure libs
@@ -41,7 +42,6 @@ end
 
 --- Initialize a new instance.
 -- @raise on wrong arguments
--- @local
 -- @tparam[opt=0] nil|number num initial value
 -- @treturn self
 function Counter:_init( num )
