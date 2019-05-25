@@ -1,4 +1,6 @@
 --- Baseclass for Spy.
+-- This class follows the pattern with from
+-- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Spy
 
 -- pure libs
@@ -19,11 +21,12 @@ function Spy:__index( key ) -- luacheck: no self
 end
 
 --- Create a new instance.
--- @tparam vararg ... set to temporal (unused)
+-- Assumption is either to create a new instance from an existing class,
+-- or from a previous instance of some kind.
 -- @treturn self
-function Spy.create()
-	local self = setmetatable( {}, Spy )
-	return self
+function Spy:create()
+	local meta = rawget( self, 'create' ) and self or getmetatable( self )
+	return setmetatable( {}, meta )
 end
 
 --- Set the reference to the report.
