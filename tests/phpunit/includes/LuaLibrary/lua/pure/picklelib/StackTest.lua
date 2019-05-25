@@ -177,6 +177,12 @@ local tests = {
 	{
 		name = 'stack.push (multiple value)',
 		func = testPush,
+		args = { 'a', 'b' },
+		expect = { 'b' }
+	},
+	{
+		name = 'stack.push (multiple value)',
+		func = testPush,
 		args = { 'a', 'b', 'c' },
 		expect = { 'c' }
 	},
