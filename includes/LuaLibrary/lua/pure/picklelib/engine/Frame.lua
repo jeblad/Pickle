@@ -13,19 +13,15 @@ local ReportFrame = require 'picklelib/report/ReportFrame'
 local Frame = {}
 
 --- Lookup of missing class members.
--- @raise on wrong arguments
--- @tparam string key lookup of member
--- @return any
-function Frame:__index( key ) -- luacheck: no self
-	libUtil.checkType( 'Frame:__index', 1, key, 'string', false )
-	return Frame[key]
-end
+-- @var class index
+Frame.__index = Frame
 
 -- @var metatable for the class
 local mt = { types = {} }
 
 --- Get arguments for a class call.
 -- @todo Verify if this ever get called
+-- @todo Verify whether Frame.__index creates problems with this metamethod
 -- @local
 -- @tparam vararg ... pass on to dispatch
 -- @treturn self -ish

@@ -7,11 +7,8 @@
 local Translators = {}
 
 --- Lookup of missing class members.
--- @tparam string key lookup of member
--- @return any
-function Translators:__index( key ) -- luacheck: no self
-	return Translators[key]
-end
+-- @var class index
+Translators.__index = Translators
 
 --- Create a new instance.
 -- @tparam vararg ... list of strategies

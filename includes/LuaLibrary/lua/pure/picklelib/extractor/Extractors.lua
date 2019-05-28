@@ -11,13 +11,8 @@ local Bag = require 'picklelib/Bag'
 local Extractors = {}
 
 --- Lookup of missing class members.
--- @raise on wrong arguments
--- @tparam string key lookup of member
--- @return any
-function Extractors:__index( key ) -- luacheck: no self
-	libUtil.checkType( 'Extractors:__index', 1, key, 'string', false )
-	return Extractors[key]
-end
+-- @var class index
+Extractors.__index = Extractors
 
 -- @var class var for strategies, holding reference to defined extractor strategies
 Extractors.strategies = Bag:create()

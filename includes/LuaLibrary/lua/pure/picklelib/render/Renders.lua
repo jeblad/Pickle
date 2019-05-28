@@ -10,13 +10,8 @@ local libUtil = require 'libraryUtil'
 local Renders = {}
 
 --- Lookup of missing class members.
--- @raise on wrong arguments
--- @tparam string key lookup of member
--- @return any
-function Renders:__index( key ) -- luacheck: no self
-	libUtil.checkType( 'Renders:__index', 1, key, 'string', false )
-	return Renders[key]
-end
+-- @var class index
+Renders.__index = Renders
 
 -- @var class var for styles, holding references to created renders
 Renders._styles = {}
