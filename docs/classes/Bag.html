@@ -1,0 +1,598 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Pickle documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Pickle</h1>
+
+<ul>
+  <li><a href="../mw.pickle.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Metamethods">Metamethods</a></li>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><strong>Bag</strong></li>
+  <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Frame.html">Frame</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/Extractor.html">Extractor</a></li>
+  <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
+  <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
+  <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
+  <li><a href="../classes/ExtractorNumber.html">ExtractorNumber</a></li>
+  <li><a href="../classes/ExtractorString.html">ExtractorString</a></li>
+  <li><a href="../classes/ExtractorTrue.html">ExtractorTrue</a></li>
+  <li><a href="../classes/Extractors.html">Extractors</a></li>
+  <li><a href="../classes/Render.html">Render</a></li>
+  <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
+  <li><a href="../classes/RenderFrame.html">RenderFrame</a></li>
+  <li><a href="../classes/Renders.html">Renders</a></li>
+  <li><a href="../classes/RenderAdaptCompact.html">RenderAdaptCompact</a></li>
+  <li><a href="../classes/RenderFrameCompact.html">RenderFrameCompact</a></li>
+  <li><a href="../classes/RenderAdaptFull.html">RenderAdaptFull</a></li>
+  <li><a href="../classes/RenderFrameFull.html">RenderFrameFull</a></li>
+  <li><a href="../classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
+  <li><a href="../classes/RenderFrameVivid.html">RenderFrameVivid</a></li>
+  <li><a href="../classes/Report.html">Report</a></li>
+  <li><a href="../classes/ReportAdapt.html">ReportAdapt</a></li>
+  <li><a href="../classes/ReportFrame.html">ReportFrame</a></li>
+  <li><a href="../classes/Translator.html">Translator</a></li>
+  <li><a href="../classes/Translators.html">Translators</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/Stub.html">Stub</a></li>
+  <li><a href="../modules/util.html">util</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/activities.md.html">Activities</a></li>
+  <li><a href="../topics/adapt.md.html">Adapt</a></li>
+  <li><a href="../topics/call-style.md.html">Call style</a></li>
+  <li><a href="../topics/change-log.md.html">Log</a></li>
+  <li><a href="../topics/databases.md.html">Databases</a></li>
+  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
+  <li><a href="../topics/hello-world.md.html">Hello World</a></li>
+  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
+  <li><a href="../topics/musings.md.html">Musings</a></li>
+  <li><a href="../topics/test-fakes.md.html">Fakes</a></li>
+  <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/HelloWorld.pickle.nb.lua.html">HelloWorld.pickle.nb.lua</a></li>
+  <li><a href="../examples/HelloWorld.lua.html">HelloWorld.lua</a></li>
+  <li><a href="../examples/HelloWorld.pickle.lua.html">HelloWorld.pickle.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>Bag</code></h1>
+<p>Bag for managing values.</p>
+<p> The semantics of a bag is to pop the oldest entry pushed into the bag.
+ This class follows the pattern from
+ <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
+
+
+<h2><a href="#Metamethods">Metamethods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#Bag:__index">Bag:__index (key)</a></td>
+	<td class="summary">Lookup of missing class members.</td>
+	</tr>
+</table>
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#Bag:create">Bag:create (...)</a></td>
+	<td class="summary">Create a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Bag:_init">Bag:_init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Bag:isEmpty">Bag:isEmpty ()</a></td>
+	<td class="summary">Is the bag empty.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Bag:depth">Bag:depth ()</a></td>
+	<td class="summary">What is the depth of the internal structure.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Bag:layout">Bag:layout ()</a></td>
+	<td class="summary">Get the layout of the bag.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Bag:bottom">Bag:bottom ()</a></td>
+	<td class="summary">Get a reference to the bottommost item in the bag.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Bag:top">Bag:top ()</a></td>
+	<td class="summary">Get a reference to the topmost item in the bag.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Bag:push">Bag:push (...)</a></td>
+	<td class="summary">Push a value on the bag.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Bag:shift">Bag:shift (...)</a></td>
+	<td class="summary">shift a value out of the bag.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Bag:pop">Bag:pop ([num=1])</a></td>
+	<td class="summary">Pop the first num values pushed on the bag.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Bag:unshift">Bag:unshift ([num=1])</a></td>
+	<td class="summary">unshift the first num values shifted into the bag.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Bag:drop">Bag:drop ([num=1])</a></td>
+	<td class="summary">Drop the topmost num values of the Bag.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Bag:get">Bag:get ([num=1])</a></td>
+	<td class="summary">Get the indexed entry.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Bag:export">Bag:export ()</a></td>
+	<td class="summary">Export a list of all the contents.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Bag:flush">Bag:flush ()</a></td>
+	<td class="summary">Flush all the contents.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Bag:__index"></a>
+    <strong>Bag:__index (key)</strong>
+    </dt>
+    <dd>
+    Lookup of missing class members.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         lookup of member
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        any
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Bag:create"></a>
+    <strong>Bag:create (...)</strong>
+    </dt>
+    <dd>
+    Create a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         forwarded to <code>_init()</code>
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:_init"></a>
+    <strong>Bag:_init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         pushed on the bag
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:isEmpty"></a>
+    <strong>Bag:isEmpty ()</strong>
+    </dt>
+    <dd>
+    Is the bag empty.
+ Note that the internal structure is non-empty even if a nil
+ is pushed on the bag.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean</span></span>
+        whether the internal structure has length zero
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:depth"></a>
+    <strong>Bag:depth ()</strong>
+    </dt>
+    <dd>
+    What is the depth of the internal structure.
+ Note that the internal structure has a depth even if a nil
+ is pushed on the bag.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">number</span></span>
+        how deep is the internal structure
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:layout"></a>
+    <strong>Bag:layout ()</strong>
+    </dt>
+    <dd>
+    Get the layout of the bag.
+ This method is used for testing to inspect which types of objects exists in the bag.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        description of the bag
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:bottom"></a>
+    <strong>Bag:bottom ()</strong>
+    </dt>
+    <dd>
+    Get a reference to the bottommost item in the bag.
+ The bottommost item can also be described as the first item to be handled.
+ This method leaves the item on the bag.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         first
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">any</span></span>
+        item that can be put on the bag
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:top"></a>
+    <strong>Bag:top ()</strong>
+    </dt>
+    <dd>
+    Get a reference to the topmost item in the bag.
+ The topmost item can also be described as the last item to be handled.
+ This method leaves the item on the bag.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         last
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">any</span></span>
+        item that can be put on the bag
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:push"></a>
+    <strong>Bag:push (...)</strong>
+    </dt>
+    <dd>
+    Push a value on the bag.
+ This is stack-like semantics.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+        facilitate chaining
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:shift"></a>
+    <strong>Bag:shift (...)</strong>
+    </dt>
+    <dd>
+    shift a value out of the bag.
+ This is queue-like semantics.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+        facilitate chaining
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:pop"></a>
+    <strong>Bag:pop ([num=1])</strong>
+    </dt>
+    <dd>
+    Pop the first num values pushed on the bag.
+ This is stack-like semantics.
+ Note that this will remove the last pushed (topmost) value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">num</span>
+            <span class="types"><span class="type">nil</span> or <span class="type">number</span></span>
+         items to drop
+         (<em>default</em> 1)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">any</span></span>
+        item that can be put on the bag
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:unshift"></a>
+    <strong>Bag:unshift ([num=1])</strong>
+    </dt>
+    <dd>
+    unshift the first num values shifted into the bag.
+ This is queue-like semantics.
+ Note that this will remove the first shifted (topmost) value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">num</span>
+            <span class="types"><span class="type">nil</span> or <span class="type">number</span></span>
+         items to drop
+         (<em>default</em> 1)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">any</span></span>
+        item that can be put on the bag
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:drop"></a>
+    <strong>Bag:drop ([num=1])</strong>
+    </dt>
+    <dd>
+    Drop the topmost num values of the Bag.
+ Note that this will remove the topmost values.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">num</span>
+            <span class="types"><span class="type">nil</span> or <span class="type">number</span></span>
+         items to drop
+         (<em>default</em> 1)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+        facilitate chaining
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:get"></a>
+    <strong>Bag:get ([num=1])</strong>
+    </dt>
+    <dd>
+    Get the indexed entry.
+ Accessing this will not change stored values.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">num</span>
+            <span class="types"><span class="type">nil</span> or <span class="type">number</span></span>
+         entry from top, negative count from bottom
+         (<em>default</em> 1)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">any</span></span>
+        item that can be put on the bag
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:export"></a>
+    <strong>Bag:export ()</strong>
+    </dt>
+    <dd>
+    Export a list of all the contents.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        list of values
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:flush"></a>
+    <strong>Bag:flush ()</strong>
+    </dt>
+    <dd>
+    Flush all the contents.
+ Note that this clears the internal storage.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        list of values
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
+

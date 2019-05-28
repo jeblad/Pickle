@@ -30,6 +30,11 @@
   <li><a href="../mw.pickle.html">Index</a></li>
 </ul>
 
+<h2>Contents</h2>
+<ul>
+<li><a href="#Stub_function">Stub function </a></li>
+<li><a href="#Mock_object">Mock object </a></li>
+</ul>
 
 
 <h2>Topics</h2>
@@ -38,12 +43,12 @@
   <li><a href="../topics/adapt.md.html">Adapt</a></li>
   <li><a href="../topics/call-style.md.html">Call style</a></li>
   <li><a href="../topics/change-log.md.html">Log</a></li>
-  <li><strong>Databases</strong></li>
+  <li><a href="../topics/databases.md.html">Databases</a></li>
   <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
   <li><a href="../topics/hello-world.md.html">Hello World</a></li>
   <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
   <li><a href="../topics/musings.md.html">Musings</a></li>
-  <li><a href="../topics/test-fakes.md.html">Fakes</a></li>
+  <li><strong>Fakes</strong></li>
   <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
 </ul>
 <h2>Modules</h2>
@@ -95,9 +100,46 @@
 <div id="content">
 
 
-<h1>Databases</h1>
+<h1>Fakes</h1>
 
-<p>The extension creates no additional databases or tables.</p>
+<p>There are two types of test fakes provided; a stub function and a mock object. The stub function is a function that play back a sequence of provided values, and the the mock object does the same with addition of verifying the method call.</p>
+
+<p><a name="Stub_function"></a></p>
+<h2>Stub function</h2>
+
+<p>The <a href="../modules/Stub.html#">stub function</a> is closure holding references to provided values. For each call the next set of values will be returned. The function will thus return a list of values. The values are wrapped up when the stub is made</p>
+
+
+<pre>
+<span class="keyword">local</span> func = mw.pickle.stub( { <span class="number">1</span>, <span class="string">'foo'</span> }, { <span class="number">2</span>, <span class="string">'bar'</span> }, { <span class="number">3</span>, <span class="string">'baz'</span> } )
+func() <span class="comment">-- returns 1, 'foo'
+</span>func() <span class="comment">-- returns 2, 'bar'
+</span>func() <span class="comment">-- returns 3, 'baz'
+</span>func() <span class="comment">-- the sequence is exhaused, and a call will rise an error</span>
+</pre>
+
+
+<p>It is not an error in the tested code when the sequence is exhausted. It is an error from the fixture.</p>
+
+<p>A stub can hold a reference to a creator function, and when called return a mock object. For example, this could be done to override the <a href="https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual#mw.getCurrentFrame"><code>mw.getCurrentFrame</code></a> and get a mock insted of the usual frame, thus making it possible to do deep code test. Such overrides must be done before the tested lib is loaded.</p>
+
+
+<pre>
+mw.pickle.install()
+<span class="keyword">local</span> currentFunc = stub( mock( … ) )
+mw.getCurrentFrame = currentFunc
+describe( …
+</pre>
+
+
+<p>Leaving a stub on a system call like that can create unexpected errors. If several code snippets call `mw.getCurrentFrame, then the sequence will ultimately go empty and the stub rise an error.</p>
+
+<p>Usually the construct work quite well, as the code in debug console is completely rerun on each invocation.</p>
+
+<p><a name="Mock_object"></a></p>
+<h2>Mock object</h2>
+
+<p>The mock object…</p>
 
 
 </div> <!-- id="content" -->

@@ -48,6 +48,7 @@
   <li><a href="../topics/hello-world.md.html">Hello World</a></li>
   <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
   <li><a href="../topics/musings.md.html">Musings</a></li>
+  <li><a href="../topics/test-fakes.md.html">Fakes</a></li>
   <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
 </ul>
 <h2>Modules</h2>
@@ -58,9 +59,8 @@
 </ul>
 <h2>Classes</h2>
 <ul class="nowrap">
+  <li><a href="../classes/Bag.html">Bag</a></li>
   <li><a href="../classes/Counter.html">Counter</a></li>
-  <li><a href="../classes/Queue.html">Queue</a></li>
-  <li><a href="../classes/Stack.html">Stack</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
@@ -112,7 +112,7 @@
 
 <p><em>NOTE</em>: It is not clear how the <a href="https://en.wikipedia.org/wiki/Logical_connective">logical connectives</a> should be set for a logical disjunction of assertions, and if a full description (statement, declaration) of the graph is necessary.</p>
 
-<p>The <a href="../classes/Frame.html#">Frame</a> class (<code>describe</code>, <code>context</code>, <code>it</code>) will put data on a <a href="../classes/Stack.html#">stack</a> <code>subject</code>, with last frame on top. This will then be available to <code>expect</code> for inspection.</p>
+<p>The <a href="../classes/Frame.html#">Frame</a> class (<code>describe</code>, <code>context</code>, <code>it</code>) will put data in a <a href="../classes/Bag.html#">bag</a> <code>subject</code>, with last frame on top. This will then be available to <code>expect</code> for inspection.</p>
 
 <p><em>NOTE</em>: This method of cross-referencing Adapt instances could be dropped in favor of simply accessing the <code>subject</code>, leaving <code>expect</code> for other out-of-order tests.</p>
 
