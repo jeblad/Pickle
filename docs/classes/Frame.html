@@ -32,8 +32,9 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Metamethods">Metamethods</a></li>
+<li><a href="#Fields">Fields</a></li>
 <li><a href="#Methods">Methods</a></li>
+<li><a href="#Metamethods">Metamethods</a></li>
 </ul>
 
 
@@ -105,15 +106,11 @@
  <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
-<h2><a href="#Metamethods">Metamethods</a></h2>
+<h2><a href="#Fields">Fields</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#Frame:__index">Frame:__index (key)</a></td>
+	<td class="name nowrap"><a href="#Frame.__index">Frame.__index</a></td>
 	<td class="summary">Lookup of missing class members.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Frame:__call">Frame:__call (...)</a></td>
-	<td class="summary">Get arguments for a instance call.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
@@ -203,61 +200,34 @@
 	<td class="summary">Eval the fixtures over previous dispatched strings.</td>
 	</tr>
 </table>
+<h2><a href="#Metamethods">Metamethods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#Frame:__call">Frame:__call (...)</a></td>
+	<td class="summary">Get arguments for a instance call.</td>
+	</tr>
+</table>
 
 <br/>
 <br/>
 
 
-    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
 
     <dl class="function">
     <dt>
-    <a name = "Frame:__index"></a>
-    <strong>Frame:__index (key)</strong>
+    <a name = "Frame.__index"></a>
+    <strong>Frame.__index</strong>
     </dt>
     <dd>
     Lookup of missing class members.
 
 
-    <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">key</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         lookup of member
+        <li><span class="parameter">class</span>
+         index
         </li>
     </ul>
-
-    <h3>Returns:</h3>
-
-        any
-
-    <h3>Raises:</h3>
-    on wrong arguments
-
-
-
-</dd>
-    <dt>
-    <a name = "Frame:__call"></a>
-    <strong>Frame:__call (...)</strong>
-    </dt>
-    <dd>
-    Get arguments for a instance call.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">...</span>
-            <span class="types"><span class="type">vararg</span></span>
-         pass on to dispatch
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">self</span></span>
-
-
 
 
 
@@ -745,6 +715,37 @@
     Eval the fixtures over previous dispatched strings.
 
 
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Frame:__call"></a>
+    <strong>Frame:__call (...)</strong>
+    </dt>
+    <dd>
+    Get arguments for a instance call.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         pass on to dispatch
+        </li>
+    </ul>
 
     <h3>Returns:</h3>
 
