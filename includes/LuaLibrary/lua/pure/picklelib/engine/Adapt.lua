@@ -13,7 +13,7 @@ local ReportAdapt = require 'picklelib/report/ReportAdapt' -- @todo might be ski
 local Adapt = {}
 
 --- Lookup of missing class members.
--- @var class index
+-- @field class index
 Adapt.__index = Adapt
 
 -- @var metatable for the class

@@ -11,10 +11,10 @@ local Bag = require 'picklelib/Bag'
 local Extractors = {}
 
 --- Lookup of missing class members.
--- @var class index
+-- @field class index
 Extractors.__index = Extractors
 
--- @var class var for strategies, holding reference to defined extractor strategies
+-- @field class var for strategies, holding reference to defined extractor strategies
 Extractors.strategies = Bag:create()
 
 --- Create a new instance.

@@ -11,7 +11,7 @@ local libUtil = require 'libraryUtil'
 local Bag = {}
 
 --- Lookup of missing class members.
--- @var class index
+-- @field class index
 Bag.__index = Bag
 
 --- Create a new instance.

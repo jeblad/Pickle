@@ -10,7 +10,7 @@ local libUtil = require 'libraryUtil'
 local Counter = {}
 
 --- Lookup of missing class members.
--- @var class index
+-- @field class index
 Counter.__index = Counter
 
 --- Call on instance.

@@ -10,10 +10,10 @@ local libUtil = require 'libraryUtil'
 local Renders = {}
 
 --- Lookup of missing class members.
--- @var class index
+-- @field class index
 Renders.__index = Renders
 
--- @var class var for styles, holding references to created renders
+-- @field class var for styles, holding references to created renders
 Renders._styles = {}
 
 --- Convenience function to access a specific named style.

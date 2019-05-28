@@ -12,7 +12,7 @@ local ReportAdapt = require 'picklelib/report/ReportAdapt'
 local Spy = {}
 
 --- Lookup of missing class members.
--- @var class index
+-- @field class index
 Spy.__index = Spy
 
 --- Create a new instance.

@@ -13,7 +13,7 @@ local ReportFrame = require 'picklelib/report/ReportFrame'
 local Frame = {}
 
 --- Lookup of missing class members.
--- @var class index
+-- @field class index
 Frame.__index = Frame
 
 -- @var metatable for the class

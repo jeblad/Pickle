@@ -7,7 +7,7 @@
 local Translators = {}
 
 --- Lookup of missing class members.
--- @var class index
+-- @field class index
 Translators.__index = Translators
 
 --- Create a new instance.
