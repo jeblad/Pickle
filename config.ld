@@ -33,6 +33,7 @@ readme = {
 	'topics/hello-world.md',
 	'topics/lua-classes.md',
 	'topics/musings.md',
+	'topics/test-fakes.md',
 	'topics/vscode-snippets.md'
 }
 
