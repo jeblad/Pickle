@@ -12,14 +12,14 @@ local Stub = {}
 local mt = {}
 
 --- Create a new stub.
--- @function Stubt:__call
--- @tparam vararg ... passed on to created closure
+-- @function Stub:__call
+-- @tparam vararg ... passed on and bound to the created closure
 -- @treturn closure
 function mt:__call( ... ) -- luacheck: no self
 	local bag = Bag:create():shift( ... )
 
 	local anon = function()
-		assert( not bag:isEmpty(), 'Stub:anon; no more frames')
+		assert( not bag:isEmpty(), 'anon: no more frames')
 		return unpack( bag:unshift() )
 	end
 
