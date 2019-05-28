@@ -40,5 +40,14 @@
 	},
 
 	// PHP Mess Detector
-	"phpmd.rules": "phpmd.xml"
+	"phpmd.rules": "phpmd.xml",
+	"spellright.language": [
+		"Norwegian (Bokmal)",
+		"en_US"
+	],
+	"spellright.documentTypes": [
+		"markdown",
+		"latex",
+		"plaintext"
+	]
 }
