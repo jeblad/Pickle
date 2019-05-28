@@ -5,7 +5,7 @@
 
 -- pure libs
 local libUtil = require 'libraryUtil'
-local Stack = require 'picklelib/Stack'
+local Bag = require 'picklelib/Bag'
 
 -- @var class var for lib
 local Extractors = {}
@@ -20,7 +20,7 @@ function Extractors:__index( key ) -- luacheck: no self
 end
 
 -- @var class var for strategies, holding reference to defined extractor strategies
-Extractors.strategies = Stack:create()
+Extractors.strategies = Bag:create()
 
 --- Create a new instance.
 -- @tparam vararg ... forwarded to @{Extractor:_init}
@@ -35,7 +35,7 @@ end
 -- @tparam vararg ... list of strategies
 -- @treturn self
 function Extractors:_init( ... )
-	self._strategies = Stack:create()
+	self._strategies = Bag:create()
 	for _,v in ipairs( { ... } ) do
 		self:register( v )
 	end

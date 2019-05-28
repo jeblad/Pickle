@@ -6,7 +6,7 @@
 
 -- pure libs
 local libUtil = require 'libraryUtil'
-local Stack = require 'picklelib/Stack'
+local Bag = require 'picklelib/Bag'
 
 -- @var base class
 local Super = require 'picklelib/report/Report'
@@ -54,7 +54,7 @@ end
 -- @treturn table list of lines
 function Subclass:lines()
 	if not self._lines then
-		self._lines = Stack:create()
+		self._lines = Bag:create()
 	end
 	return self._lines
 end

@@ -3,6 +3,9 @@
 -- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Translator
 
+-- pure libs
+local Bag = require 'picklelib/Bag'
+
 -- @var class var for lib
 local Translator = {}
 
@@ -26,7 +29,7 @@ end
 -- @tparam vararg ... list of patterns
 -- @treturn self
 function Translator:_init( ... )
-	self._fragments = Stack:create()
+	self._fragments = Bag:create()
 	for _,v in ipairs( { ... } ) do
 		self._fragments:push( v )
 	end

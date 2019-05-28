@@ -6,7 +6,7 @@
 
 -- pure libs
 local libUtil = require 'libraryUtil'
-local Stack = require 'picklelib/Stack'
+local Bag = require 'picklelib/Bag'
 
 -- @var super class
 local Super = require 'picklelib/report/Report'
@@ -62,7 +62,7 @@ end
 -- @return list of constituents
 function Subclass:constituents()
 	if not self._constituents then
-		self._constituents = Stack:create()
+		self._constituents = Bag:create()
 	end
 	return self._constituents
 end

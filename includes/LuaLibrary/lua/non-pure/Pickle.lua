@@ -113,12 +113,12 @@ end
 -- This needs a valid environment, for example from getfenv()
 -- @raise on wrong arguments
 -- @tparam table env for the environment
--- @return Stack of reports
+-- @return Bag of reports
 local function registerReports( env )
 	libUtil.checkType( 'Pickle:registerComments', 1, env, 'table', false )
 
 	-- require libs
-	local reports = require( 'picklelib/Stack' ):create()
+	local reports = require( 'picklelib/Bag' ):create()
 	env._reports = reports
 
 	return reports
@@ -195,8 +195,8 @@ local function registerAdaptations( env, reports )
 
 	-- require libs
 	local Adapt = require 'picklelib/engine/Adapt'
-	local expects = require( 'picklelib/Stack' ):create()
-	local subjects = require( 'picklelib/Stack' ):create()
+	local expects = require( 'picklelib/Bag' ):create()
+	local subjects = require( 'picklelib/Bag' ):create()
 
 	--- Expect whatever to be compared to the subject.
 	-- The expected value is the assumed outcome,

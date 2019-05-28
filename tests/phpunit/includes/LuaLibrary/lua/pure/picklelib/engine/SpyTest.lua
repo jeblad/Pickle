@@ -16,52 +16,52 @@ end
 
 -- @todo lots of failing stuff here
 local tests = {
-	{
+	{ -- 1
 		name = 'tracebackFirst()',
 		func = testTraceback,
-		args = { "([%a%s]*)", 1 },
+		args = { "([%a%s]*)", -1 },
 		expect = { 'stack traceback' }
 	},
-	{
+	{ -- 2
 		name = 'tracebacFirstk()',
 		func = testTraceback,
-		args = { "([%a%s]*)", 1, 'foo bar baz' },
+		args = { "([%a%s]*)", -1, 'foo bar baz' },
 		expect = { 'foo bar baz' }
 	},
-	{
+	{ -- 3
 		name = 'tracebackRest()',
 		func = testTraceback,
-		args = { "/(%a+).lua.*'(.-)'", 2 },
+		args = { "/(%a+).lua.*'(.-)'", -2 },
 		expect = { 'Spy', 'traceback' }
 	},
-	{
+	{ -- 4
 		name = 'tracebackRest()',
 		func = testTraceback,
-		args = { "([%a%s]*)", 2, 'foo bar baz' },
+		args = { "([%a%s]*)", -2, 'foo bar baz' },
 		expect = { 'stack traceback' }
 	},
-	{
+	{ -- 5
 		name = 'tracebackRest()',
 		func = testTraceback,
-		args = { "/(%a+).lua.*'(.-)'", 3, 'foo bar baz' },
+		args = { "/(%a+).lua.*'(.-)'", -3, 'foo bar baz' },
 		expect = { 'Spy', 'traceback' }
 	},
-	{
+	{ -- 6
 		name = 'tracebackRest()',
 		func = testTraceback,
-		args = { "function[^%a]+Module[^%a]+(%a+)", 3, 'foo bar baz', 2 },
+		args = { "function[^%a]+Module[^%a]+(%a+)", -3, 'foo bar baz', 2 },
 		expect = { 'SpyTest' }
 	},
 	{
 		name = 'tracebackRest()',
 		func = testTraceback,
-		args = { "([%a%s]*)", 2, 'foo bar baz', 2 },
+		args = { "([%a%s]*)", -2, 'foo bar baz', 2 },
 		expect = { 'stack traceback' }
 	},
 	{
 		name = 'tracebackRest()',
 		func = testTraceback,
-		args = { "function[^%a]+Module[^%a]+(%a+)", 3, 'foo bar baz', 2 },
+		args = { "function[^%a]+Module[^%a]+(%a+)", -3, 'foo bar baz', 2 },
 		expect = { 'SpyTest' }
 	},
 }

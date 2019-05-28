@@ -21,7 +21,7 @@ use_markdown_titles = true
 format = 'markdown'
 dir = 'docs'
 output = 'mw.pickle'
-all = true
+-- all = true
 
 readme = {
 	'topics/activities.md',
@@ -55,7 +55,7 @@ custom_display_name_handler = function(item, default_handler)
 	if item.type == 'lfunction' or item.type == 'function' then
 		-- show a label beside functions tagged with @delayed.
 		if item.tags.delayed then
-			tagged = ( tagged or '' ) .. '[<a href="#delayed">delayed</a>]'
+			tagged = ( tagged or '' ) .. '[<a href="../topics/adapt.md.html#delayed">delayed</a>]'
 		end
 		-- show a label beside functions tagged with @pick.
 		if item.type == 'function' and item.tags.pick then

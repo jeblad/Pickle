@@ -5,7 +5,7 @@
 
 -- pure libs
 local libUtil = require 'libraryUtil'
-local Stack = require 'picklelib/Stack'
+local Bag = require 'picklelib/Bag'
 local ReportAdapt = require 'picklelib/report/ReportAdapt'
 local ReportFrame = require 'picklelib/report/ReportFrame'
 
@@ -70,8 +70,8 @@ end
 -- @tparam vararg ... list to be dispatched (unused)
 -- @return Frame
 function Frame:_init()
-	self._descriptions = Stack:create()
-	self._fixtures = Stack:create()
+	self._descriptions = Bag:create()
+	self._fixtures = Bag:create()
 	self._done = false
 	return self
 end
@@ -261,6 +261,7 @@ function Frame:evalFixture( description, fixture, environment, ... )
 	end
 	local report = ReportFrame:create():setDescription( description )
 	local added = self:reports():depth() - depth
+	assert( added >= 0, 'Frame:avalFixture; depth less than zero ')
 	if added == 0 then
 		report:setTodo( 'pickle-frame-no-tests' )
 	end

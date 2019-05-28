@@ -5,7 +5,7 @@
 
 -- pure libs
 local libUtil = require 'libraryUtil'
-local Stack = require 'picklelib/Stack'
+local Bag = require 'picklelib/Bag'
 local ReportAdapt = require 'picklelib/report/ReportAdapt'
 
 -- @var lib var
@@ -64,7 +64,7 @@ end
 -- @return Reports
 function Spy:reports()
 	if not self._reports then
-		self._reports = Stack:create()
+		self._reports = Bag:create()
 	end
 	return self._reports
 end

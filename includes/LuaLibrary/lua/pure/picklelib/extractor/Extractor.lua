@@ -6,7 +6,7 @@
 
 -- pure libs
 local libUtil = require 'libraryUtil'
-local Stack = require 'picklelib/Stack'
+local Bag = require 'picklelib/Bag'
 
 -- @var class
 local Baseclass = {}
@@ -33,7 +33,7 @@ end
 -- @tparam vararg ... list of patterns
 -- @treturn self
 function Baseclass:_init( ... )
-	self._patterns = Stack:create()
+	self._patterns = Bag:create()
 	for _,v in ipairs( { ... } ) do
 		self._patterns:push( v )
 	end

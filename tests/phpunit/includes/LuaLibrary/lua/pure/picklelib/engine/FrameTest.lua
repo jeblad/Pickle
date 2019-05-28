@@ -10,9 +10,9 @@ local extractors = require 'picklelib/extractor/Extractors'
 assert( extractors )
 local Frame = require 'picklelib/engine/Frame'
 assert( Frame )
-local subjects = require 'picklelib/Stack'
+local subjects = require 'picklelib/Bag'
 assert( subjects )
-local reports = require 'picklelib/Stack'
+local reports = require 'picklelib/Bag'
 assert( reports )
 
 local name = 'frame'

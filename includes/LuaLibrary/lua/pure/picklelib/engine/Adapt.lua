@@ -5,7 +5,7 @@
 
 -- pure libs
 local libUtil = require 'libraryUtil'
-local Stack = require 'picklelib/Stack'
+local Bag = require 'picklelib/Bag'
 local util = require 'picklelib/util'
 local ReportAdapt = require 'picklelib/report/ReportAdapt' -- @todo might be skipped
 
@@ -51,7 +51,7 @@ end
 -- @treturn self
 function Adapt:_init( ... )
 	local t = { ... }
-	self._processes = Stack:create()
+	self._processes = Bag:create()
 	self._report = nil
 	self._temporal = t
 	self._other = nil
@@ -82,7 +82,7 @@ end
 -- @return list of adaptations
 function Adapt:adaptations()
 	if not self._adaptations then
-		self._adaptations = Stack:create()
+		self._adaptations = Bag:create()
 	end
 	return self._adaptations
 end
@@ -103,7 +103,7 @@ end
 -- @return list of reports
 function Adapt:reports()
 	if not self._reports then
-		self._reports = Stack:create()
+		self._reports = Bag:create()
 	end
 	return self._reports
 end

@@ -11,16 +11,16 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class StackTest extends Scribunto_LuaEngineTestBase {
+class BagTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'StackTest';
+	protected static $moduleName = 'BagTest';
 
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {
 		return parent::getTestModules() + [
-			'StackTest' => __DIR__ . '/StackTest.lua'
+			'BagTest' => __DIR__ . '/BagTest.lua'
 		];
 	}
 }
