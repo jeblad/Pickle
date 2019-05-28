@@ -203,10 +203,10 @@ local function registerAdaptations( env, reports )
 	-- or something that can be transformed into the
 	-- assumed outcome.
 	-- @function expect
-	-- @param ... varargs passed on to Adapt.create
+	-- @param ... varargs passed on to Adapt:create
 	-- @return Adapt
 	env.expect = function( ... )
-		local obj = Adapt.create( ... )
+		local obj = Adapt:create( ... )
 			:setReports( reports )
 			:setAdaptations( expects )
 		return obj
@@ -216,10 +216,10 @@ local function registerAdaptations( env, reports )
 	-- The subject is whatever object we want to test,
 	-- usually the returned table for a module.
 	-- @function subject
-	-- @param ... varargs passed on to Adapt.create
+	-- @param ... varargs passed on to Adapt:create
 	-- @return Adapt
 	env.subject = function( ... )
-		local obj = Adapt.create( ... )
+		local obj = Adapt:create( ... )
 			:setReports( reports )
 			:setSubjects( subjects )
 		return obj
@@ -285,7 +285,7 @@ function pickle.implicitDescribe( ... )
 	end
 
 	--- It is the actual test for each metod.
-	-- @tparam vararg ... passed on to Adapt.create
+	-- @tparam vararg ... passed on to Frame.create
 	-- @treturn self newly created object
 	env.it = env.context
 

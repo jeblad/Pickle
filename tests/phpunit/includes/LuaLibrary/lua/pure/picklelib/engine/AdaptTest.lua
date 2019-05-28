@@ -13,7 +13,7 @@ local adaptations = require 'picklelib/Bag'
 assert( adaptations )
 
 local function makeAdapt( ... )
-	return Adapt.create( ... ):setReports( reports:create() ):setAdaptations( adaptations:create() )
+	return Adapt:create( ... ):setReports( reports:create() ):setAdaptations( adaptations:create() )
 end
 
 local function testExists()
@@ -111,21 +111,21 @@ local tests = {
 		expect = { 'table' }
 	},
 	{
-		name = 'adapt.create (nil value type)',
+		name = 'adapt:create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
 	{
-		name = 'adapt.create (single value type)',
+		name = 'adapt:create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
 	{
-		name = 'adapt.create (multiple value type)',
+		name = 'adapt:create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },

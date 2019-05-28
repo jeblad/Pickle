@@ -26,19 +26,21 @@ local mt = {}
 function mt:__call( ... )
 	self:adaptations():push( select( '#', ... ) == 0
 		and self:adaptations():top()
-		or Adapt.create( ... ) )
+		or Adapt:create( ... ) )
 	return self:adaptations():top()
 end
 
 setmetatable( Adapt, mt )
 
 --- Create a new instance.
+-- Assumption is either to create a new instance from an existing class,
+-- or from a previous instance of some kind.
 -- @tparam vararg ... set to temporal
 -- @treturn self
-function Adapt.create( ... )
-	local self = setmetatable( {}, Adapt )
-	self:_init( ... )
-	return self
+function Adapt:create( ... )
+	local meta = rawget( self, 'create' ) and self or getmetatable( self )
+	local new = setmetatable( {}, meta )
+	return new:_init( ... )
 end
 
 --- Initialize a new instance.
