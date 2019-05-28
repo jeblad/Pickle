@@ -26,7 +26,7 @@ local mt = { types = {} }
 -- @tparam vararg ... pass on to dispatch
 -- @treturn self -ish
 function mt:__call( ... ) -- luacheck: no self
-	local obj = Frame.create()
+	local obj = Frame:create()
 	obj:dispatch( ... )
 	if obj:isDone() then
 		return nil, 'Failed, got a done instance'
@@ -56,10 +56,10 @@ setmetatable( Frame, mt )
 --- Create a new instance.
 -- @tparam vararg ... list to be dispatched
 -- @return Frame
-function Frame.create( ... )
-	local self = setmetatable( {}, Frame )
-	self:_init( ... )
-	return self
+function Frame:create( ... )
+	local meta = rawget( self, 'create' ) and self or getmetatable( self )
+	local new = setmetatable( {}, meta )
+	return new:_init( ... )
 end
 
 --- Initialize a new instance.

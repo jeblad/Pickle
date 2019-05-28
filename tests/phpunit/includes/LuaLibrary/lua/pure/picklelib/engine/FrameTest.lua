@@ -8,8 +8,6 @@ local testframework = require 'Module:TestFramework'
 
 local extractors = require 'picklelib/extractor/Extractors'
 assert( extractors )
-local Frame = require 'picklelib/engine/Frame'
-assert( Frame )
 local subjects = require 'picklelib/Bag'
 assert( subjects )
 local reports = require 'picklelib/Bag'
@@ -19,14 +17,17 @@ local name = 'frame'
 local class = 'Frame'
 
 local function makeFrame( ... )
-	return Frame.create( ... )
+	local Frame = require 'picklelib/engine/Frame'
+	assert( Frame )
+
+	return Frame:create( ... )
 		:setSubjects( subjects:create() )
 		:setReports( reports:create() )
 		:setExtractors( extractors:create() )
 end
 
 local function testExists()
-	return type( Frame )
+	return type( makeFrame() )
 end
 
 local function testCreate( ... )
@@ -34,12 +35,12 @@ local function testCreate( ... )
 end
 
 local function testClassCall( ... )
-	local t = Frame( ... )
+	local t = makeFrame()( ... )
 	return t:descriptions()
 end
 
 local function testClassCallStrings()
-	local t = Frame 'foo' 'bar' 'baz'
+	local t = makeFrame() 'foo' 'bar' 'baz'
 	return t:descriptions()
 end
 

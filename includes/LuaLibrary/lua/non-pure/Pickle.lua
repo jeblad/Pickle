@@ -275,7 +275,7 @@ function pickle.implicitDescribe( ... )
 	-- @param ... varargs passed on to Frame:dispatch
 	-- @return Frame
 	env.context = function( ... )
-		local obj = Frame.create()
+		local obj = Frame:create()
 			:setReports( reports )
 			:setSubjects( subjects )
 			:setExtractors( extractors )
@@ -285,7 +285,7 @@ function pickle.implicitDescribe( ... )
 	end
 
 	--- It is the actual test for each metod.
-	-- @tparam vararg ... passed on to Frame.create
+	-- @tparam vararg ... passed on to Frame:create
 	-- @treturn self newly created object
 	env.it = env.context
 
@@ -293,7 +293,7 @@ function pickle.implicitDescribe( ... )
 	registerComments( env, reports )
 
 	-- then do what we should do
-	local obj = Frame.create()
+	local obj = Frame:create()
 		:setRenders( renders )
 		:setReports( reports )
 		:setSubjects( subjects )
