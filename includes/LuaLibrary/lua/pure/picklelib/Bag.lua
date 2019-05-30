@@ -162,14 +162,14 @@ end
 --- Get the indexed entry.
 -- Accessing this will not change stored values.
 -- @raise on wrong arguments
--- @tparam[opt=1] nil|number num entry from top, negative count from bottom
--- @treturn any item that can be put on the bag
-function Bag:get( num )
-	libUtil.checkType( 'Bag:get', 1, num, 'number', true )
-	num = num or 1
-	assert( num ~= 0, 'Bag:get, num equal to zero')
-	num = (num > 0) and (#self._bag - num + 1) or ( - num )
-	return self._bag[num]
+-- @tparam[opt=1] nil|number idx entry from top, negative count from bottom
+-- @treturn any item that can be put in the bag
+function Bag:get( idx )
+	libUtil.checkType( 'Bag:get', 1, idx, 'number', true )
+	idx = idx or 1
+	assert( idx ~= 0, 'Bag:get, idx equal to zero')
+	idx = (idx > 0) and (#self._bag - idx + 1) or math.abs( idx )
+	return self._bag[idx]
 end
 
 --- Export a list of all the contents.
