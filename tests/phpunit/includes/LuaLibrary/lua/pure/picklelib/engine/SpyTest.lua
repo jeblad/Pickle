@@ -2,67 +2,165 @@
 -- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
 
-
 local testframework = require 'Module:TestFramework'
 
---_G.describe()
-local Spy = require 'picklelib/engine/Spy'
-assert( Spy )
+local function makeSpy( ... )
+	local spy = require 'picklelib/engine/Spy'
+	assert( spy )
+	--local reports = require 'picklelib/Bag'
+	--assert( reports )
+	return spy:create( ... ) -- :setReports( reports:create() )
+end
+
+local function testExists()
+	return type( makeSpy() )
+end
 
 local function testTraceback( pattern, idx, ... )
-	local line = Spy:traceback( ... ):report():getLine( idx )
+	local line = makeSpy():traceback( ... ):report():getLine( idx )
 	return string.match( unpack( line ), pattern )
 end
+
+local function testTodo( str )
+	local obj = makeSpy():setTodo( str )
+	return obj:report():getTodo()
+end
+
+local function testSkip( str )
+	local obj = makeSpy():setSkip( str )
+	return obj:report():getSkip()
+end
+
+local function testCarp( str )
+	local obj = makeSpy():doCarp( str )
+	return obj:report():getTodo(), obj:report():getSkip(), obj:report():numLines()
+end
+
+local function testCluck( str, idx )
+	local obj = makeSpy():doCluck( str )
+	return obj:report():getTodo(), obj:report():getSkip(), obj:report():numLines(), obj:report():getLine( idx )
+end
+
+local function testCroak( str )
+	local obj = makeSpy():doCroak( str )
+	return obj:report():getTodo(), obj:report():getSkip(), obj:report():numLines()
+end
+
+local function testConfess( str, idx )
+	local obj = makeSpy():doConfess( str )
+	return obj:report():getTodo(), obj:report():getSkip(), obj:report():numLines(), obj:report():getLine( idx )
+end
+
 
 -- @todo lots of failing stuff here
 local tests = {
 	{ -- 1
+		name = 'spy exists',
+		func = testExists,
+		type = 'ToString',
+		expect = { 'table' }
+	},
+	{ -- 2
 		name = 'tracebackFirst()',
 		func = testTraceback,
 		args = { "([%a%s]*)", -1 },
 		expect = { 'stack traceback' }
 	},
-	{ -- 2
+	{ -- 3
 		name = 'tracebacFirstk()',
 		func = testTraceback,
 		args = { "([%a%s]*)", -1, 'foo bar baz' },
 		expect = { 'foo bar baz' }
 	},
-	{ -- 3
+	{ -- 4
 		name = 'tracebackRest()',
 		func = testTraceback,
 		args = { "/(%a+).lua.*'(.-)'", -2 },
 		expect = { 'Spy', 'traceback' }
 	},
-	{ -- 4
+	{ -- 5
 		name = 'tracebackRest()',
 		func = testTraceback,
 		args = { "([%a%s]*)", -2, 'foo bar baz' },
 		expect = { 'stack traceback' }
 	},
-	{ -- 5
+	{ -- 6
 		name = 'tracebackRest()',
 		func = testTraceback,
 		args = { "/(%a+).lua.*'(.-)'", -3, 'foo bar baz' },
 		expect = { 'Spy', 'traceback' }
 	},
-	{ -- 6
+	{ -- 7
 		name = 'tracebackRest()',
 		func = testTraceback,
 		args = { "function[^%a]+Module[^%a]+(%a+)", -3, 'foo bar baz', 2 },
 		expect = { 'SpyTest' }
 	},
-	{
+	{ -- 8
 		name = 'tracebackRest()',
 		func = testTraceback,
 		args = { "([%a%s]*)", -2, 'foo bar baz', 2 },
 		expect = { 'stack traceback' }
 	},
-	{
+	{ -- 9
 		name = 'tracebackRest()',
 		func = testTraceback,
 		args = { "function[^%a]+Module[^%a]+(%a+)", -3, 'foo bar baz', 2 },
 		expect = { 'SpyTest' }
+	},
+	{
+		name = 'testTodo()',
+		func = testTodo,
+		args = { 'foo' },
+		expect = { 'foo' }
+	},
+	{
+		name = 'testSkip()',
+		func = testSkip,
+		args = { 'foo' },
+		expect = { 'foo' }
+	},
+	{
+		name = 'testCarp()',
+		func = testCarp,
+		args = { 'foo' },
+		expect = {
+			'foo',
+			false,
+			0
+		}
+	},
+	{
+		name = 'testCluck()',
+		func = testCluck,
+		args = { 'foo', -1 },
+		expect = {
+			'foo',
+			false,
+			14,
+			{ "stack traceback:", },
+		}
+	},
+	{
+		name = 'testCroak()',
+		func = testCroak,
+		args = { 'foo' },
+		expect = {
+			false,
+			'foo',
+			0
+		}
+	},
+	{
+		name = 'testConfess()',
+		func = testConfess,
+		args = { 'foo', -1 },
+		expect = {
+			false,
+			'foo',
+			14,
+			{ "stack traceback:", },
+		}
 	},
 }
 

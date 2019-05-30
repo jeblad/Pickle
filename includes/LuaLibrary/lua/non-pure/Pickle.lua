@@ -30,55 +30,51 @@ local function registerSpies( env, reports )
 	--- Carp, warn called due to a possible error condition.
 	-- Print a message without exiting, with caller's name and arguments.
 	-- @function carp
-	-- @param str message to be passed on
+	-- @tparam nil|string str message to use for todo part of report
 	-- @return Spy
 	env.carp = function( str )
-		local obj = Spy:create():setReports( reports )
-		obj:todo( 'todo', 'pickle-spies-carp-todo', str ) -- @todo not sure why this must use 'obj'
-		obj:reports():push( obj:report() )
-		return obj
+		libUtil.checkType( 'carp', 1, str, 'string', true )
+		str = str or mw.message.new( 'pickle-spies-carp-todo' ):plain()
+		return Spy:create():setReports( reports ):doCarp( str )
 	end
 
 	--- Cluck, warn called due to a possible error condition, with a stack backtrace.
 	-- Print a message without exiting, with caller's name and arguments, and a stack trace.
 	-- @function cluck
-	-- @param str message to be passed on
+	-- @tparam nil|string str message to use for todo part of report
 	-- @return Spy
 	env.cluck = function( str )
-		local obj = Spy:create():setReports( reports )
-		obj:todo( 'pickle-spies-cluck-todo', str )
-		obj:traceback()
-		obj:reports():push( obj:report() )
-		return obj
+		libUtil.checkType( 'cluck', 1, str, 'string', true )
+		str = str or mw.message.new( 'pickle-spies-cluck-todo' ):plain()
+		return Spy:create():setReports( reports ):doCluck( str )
 	end
 
 	--- Croak, die called due to a possible error condition.
 	-- Print a message then exits, with caller's name and arguments.
 	-- @function croak
-	-- @raise error called unconditionally
-	-- @param str message to be passed on
-	-- @return Spy
-	env.croak = function( str )
-		local obj = Spy:create():setReports( reports )
-		obj:skip( 'pickle-spies-croak-skip', str )
-		obj:reports():push( obj:report() )
-		error( mw.message.new( 'pickle-spies-croak-exits' ) )
-		return obj
+	-- @raise unconditionally
+	-- @tparam nil|string str message to use for todo part of report
+	-- @tparam[opt=0] nil|number level to report
+	env.croak = function( str, level )
+		libUtil.checkType( 'croak', 1, str, 'string', true )
+		libUtil.checkType( 'croak', 2, level, 'number', true )
+		str = str or mw.message.new( 'pickle-spies-croak-skip' ):plain()
+		Spy:create():setReports( reports ):doCroak( str )
+		error( mw.message.new( 'pickle-spies-croak-exits' ):plain(), level or 0 )
 	end
 
 	--- Confess, die called due to a possible error condition, with a stack backtrace.
-	-- Print a message then exits, with caller's name and arguments, and a stack trace.
+	-- Print a message without exiting, with caller's name and arguments, and a stack trace.
 	-- @function confess
-	-- @raise error called unconditionally
-	-- @param str message to be passed on
-	-- @return Spy
-	env.confess = function( str )
-		local obj = Spy:create():setReports( reports )
-		obj:skip( 'pickle-spies-confess-skip', str )
-		obj:traceback()
-		obj:reports():push( obj:report() )
-		error( mw.message.new( 'pickle-spies-confess-exits' ) )
-		return obj
+	-- @raise unconditionally
+	-- @tparam nil|string str message to use for todo part of report
+	-- @tparam[opt=0] nil|number level to report
+	env.confess = function( str, level )
+		libUtil.checkType( 'confess', 1, str, 'string', true )
+		libUtil.checkType( 'croak', 2, level, 'number', true )
+		str = str or mw.message.new( 'pickle-spies-confess-skip' ):plain()
+		Spy:create():setReports( reports ):doConfess( str )
+		error( mw.message.new( 'pickle-spies-confess-exits' ):plain(), level or 0 )
 	end
 end
 
@@ -345,7 +341,7 @@ function pickle.implicitDescribe( ... )
 			return nil, 'Pickle: Can not find reports'
 		end
 
-		if self:reports():top() then 
+		if self:reports():top() then
 			return nil, 'Pickle: Can not find top'
 		end
 

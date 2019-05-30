@@ -28,8 +28,8 @@ local function testComment( name, ... )
 end
 
 local function testSpy( name, ... )
-	local res,_ = pcall( _G[ name ], ... )
-	return res, _G._reports:top():getTodo(), _G._reports:top():getSkip()
+	local res,err = pcall( _G[ name ], ... )
+	return res, not( res ) and err or 'none', _G._reports:top():getTodo() or _G._reports:top():getSkip()
 end
 
 local function testSpyLines( name, idx, pattern, ... )
@@ -90,23 +90,23 @@ local tests = {
 	},
 	-- PickleTest[8]
 	{
-		name = 'table mw.carp',
+		name = 'table mw.cluck',
 		func = testType,
 		args = { 'cluck' },
 		expect = { 'function' }
 	},
 	-- PickleTest[9]
 	{
-		name = 'table mw.carp',
+		name = 'table mw.croak',
 		func = testType,
-		args = { 'confess' },
+		args = { 'croak' },
 		expect = { 'function' }
 	},
 	-- PickleTest[10]
 	{
-		name = 'table mw.carp',
+		name = 'table mw.confess',
 		func = testType,
-		args = { 'croak' },
+		args = { 'confess' },
 		expect = { 'function' }
 	},
 	-- PickleTest[11]
@@ -133,61 +133,91 @@ local tests = {
 	},
 	-- PickleTest[13]
 	{
-		name = 'carp todo ()',
+		name = 'carp ( nil )',
 		func = testSpy,
-		args = { 'carp', 'foo bar baz' },
+		args = { 'carp', nil },
 		expect = {
 			true,
-			'pickle-spies-carp-todo', -- @todo should this be 'foo bar baz'?
-			false
+			'none',
+			'Function “carp” called' -- @todo should this be 'pickle-spies-carp-todo'?
 		}
 	},
 	-- PickleTest[14]
 	{
-		name = 'cluck todo ()',
+		name = 'carp ( string )',
 		func = testSpy,
-		args = { 'cluck', 'foo bar baz' },
+		args = { 'carp', 'foo bar baz' },
 		expect = {
 			true,
-			'foo bar baz',
-			false
+			'none',
+			'foo bar baz'
 		}
 	},
 	-- PickleTest[15]
 	{
-		name = 'croak()',
+		name = 'cluck ( nil )',
 		func = testSpy,
-		args = { 'croak', 'foo bar baz' },
+		args = { 'cluck', nil },
 		expect = {
-			false,
-			false,
-			"foo bar baz"
+			true,
+			'none',
+			'Function “cluck” called' -- @todo should this be 'pickle-spies-cluck-todo'?
 		}
 	},
 	-- PickleTest[16]
 	{
-		name = 'confess()',
+		name = 'cluck ( string )',
 		func = testSpy,
-		args = { 'confess', 'foo bar baz' },
+		args = { 'cluck', 'foo bar baz' },
 		expect = {
-			false,
-			false,
-			"foo bar baz"
+			true,
+			'none',
+			'foo bar baz'
 		}
 	},
 	-- PickleTest[17]
 	{
-		name = 'lines (cluck)',
-		func = testSpyLines,
-		args = { 'cluck', 2, "/(%a+).lua.*'(.-)'" },
-		expect = { true, 'Spy', 'traceback' }
+		name = 'croak ( nil )',
+		func = testSpy,
+		args = { 'croak', nil },
+		expect = {
+			false,
+			'Function “croak” exits', -- @todo should this be 'pickle-spies-croak-skip'?
+			'Function “croak” called'
+		}
 	},
 	-- PickleTest[18]
 	{
-		name = 'lines (confess)',
-		func = testSpyLines,
-		args = { 'confess', 2, "/(%a+).lua.*'(.-)'" },
-		expect = { false, 'Spy', 'traceback' }
+		name = 'croak ( string )',
+		func = testSpy,
+		args = { 'croak', 'foo bar baz' },
+		expect = {
+			false,
+			'Function “croak” exits',
+			'foo bar baz'
+		}
+	},
+	-- PickleTest[19]
+	{
+		name = 'confess ( nil )',
+		func = testSpy,
+		args = { 'confess', nil },
+		expect = {
+			false,
+			'Function “confess” exits', -- @todo should this be 'pickle-spies-confess-skip'?
+			'Function “confess” called'
+		}
+	},
+	-- PickleTest[20]
+	{
+		name = 'confess ( string )',
+		func = testSpy,
+		args = { 'confess', 'foo bar baz' },
+		expect = {
+			false,
+			'Function “confess” exits',
+			'foo bar baz'
+		}
 	},
 }
 

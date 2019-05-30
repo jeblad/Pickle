@@ -81,26 +81,74 @@ function Spy:traceback( ... )
 	return self
 end
 
---- Short report.
+--- Set the todo to a string.
 -- @raise on wrong arguments
--- @tparam string key used to identify a message
--- @tparam nil|string str alternate free form
--- @treturn Report
-function Spy:todo( key, str )
-	libUtil.checkType( 'Spy:todo', 1, key, 'string', false )
-	libUtil.checkType( 'Spy:todo', 2, str, 'string', true )
-	return self:report():setTodo( str or mw.message.new( key ):plain() )
+-- @tparam string str alternate free form
+-- @treturn self
+function Spy:setTodo( str )
+	libUtil.checkType( 'Spy:todo', 1, str, 'string', false )
+	self:report():setTodo( str )
+	return self
 end
 
---- Long report.
+--- Set the skip to a string.
 -- @raise on wrong arguments
--- @tparam string key used to identify a message
--- @tparam nil|string str alternate free form
--- @treturn Report
-function Spy:skip( key, str )
-	libUtil.checkType( 'Spy:todo', 1, key, 'string', false )
-	libUtil.checkType( 'Spy:todo', 2, str, 'string', true )
-	return self:report():setSkip( str or mw.message.new( key ):plain() )
+-- @tparam string str alternate free form
+-- @treturn self
+function Spy:setSkip( str )
+	libUtil.checkType( 'Spy:skip', 1, str, 'string', false )
+	self:report():setSkip( str )
+	return self
+end
+
+--- Convenience method doCarp.
+-- Called to investigate a possible error condition.
+-- Make a report without exiting, add a todo, with caller's name and arguments.
+-- @function carp
+-- @param str message to be passed on
+-- @return Report
+function Spy:doCarp( str )
+	local obj = self:report():setTodo( str )
+	self:reports():push( obj )
+	return self
+end
+
+--- Convenience method doCluck.
+-- Called to investigate a possible error condition, with a stack backtrace.
+-- Make a report without exiting, add a todo, with caller's name and arguments, and a stack trace.
+-- @function carp
+-- @param str message to be passed on
+-- @return Spy
+function Spy:doCluck( str, ... )
+	local obj = self:report():setTodo( str )
+	self:traceback( ... )
+	self:reports():push( obj )
+	return self
+end
+
+--- Convenience method doCroak.
+-- Called to investigate a possible error condition.
+-- Make a report without exiting, add a skip, with caller's name and arguments.
+-- @function carp
+-- @param str message to be passed on
+-- @return Report
+function Spy:doCroak( str )
+	local obj = self:report():setSkip( str )
+	self:reports():push( obj )
+	return self
+end
+
+--- Convenience method doConfess.
+-- Called to investigate a possible error condition, with a stack backtrace.
+-- Make a report without exiting, add a skip, with caller's name and arguments, and a stack trace.
+-- @function carp
+-- @param str message to be passed on
+-- @return Report
+function Spy:doConfess( str, ... )
+	local obj = self:report():setSkip( str )
+	self:traceback( ... )
+	self:reports():push( obj )
+	return self
 end
 
 -- Return the final lib
