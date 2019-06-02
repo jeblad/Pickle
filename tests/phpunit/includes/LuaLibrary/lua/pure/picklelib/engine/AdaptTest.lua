@@ -104,76 +104,76 @@ local function makeConditionTest( name, src, otr, res )
 end
 
 local tests = {
-	{
+	{ -- 1
 		name = 'adapt exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	{
+	{ -- 2
 		name = 'adapt:create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{
+	{ -- 3
 		name = 'adapt:create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 4
 		name = 'adapt:create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 5
 		name = 'adapt.adaptations (multiple value)',
 		func = testAdaptations,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' } }
 	},
-	{
+	{ -- 6
 		name = 'adapt.call (nil value)',
 		func = testDoubleCall,
 		args = {},
 		expect = { 'foo' }
 	},
-	{
+	{ -- 7
 		name = 'adapt.call (single value)',
 		func = testDoubleCall,
 		args = { 'a' },
 		expect = { 'a' }
 	},
-	{
+	{ -- 8
 		name = 'adapt.call (multiple value)',
 		func = testDoubleCall,
 		args = { 'a', 'b', 'c' },
 		expect = { 'a', 'b', 'c' }
 	},
-	{
+	{ -- 9
 		name = 'adapt.stack (multiple value)',
 		func = testReports,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' } }
 	},
-	{
+	{ -- 10
 		name = 'adapt.eval (single string)',
 		func = testEval,
 		args = { 'a' },
 		expect = { 'a' }
 	},
-	{
+	{ -- 11
 		name = 'adapt.eval (single table)',
 		func = testEval,
 		args = { { 'a' } },
 		expect = { { 'a' } }
 	},
-	makePickTest( 'first', 1 ),
+	makePickTest( 'first', 1 ), -- 12
 	makePickTest( 'second', 2 ),
 	makePickTest( 'third', 3 ),
 	makePickTest( 'fourth', 4 ),
