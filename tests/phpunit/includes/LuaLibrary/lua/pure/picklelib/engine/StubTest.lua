@@ -33,19 +33,19 @@ local tests = {
 		type = 'ToString',
 		expect = { 'function' }
 	},
-	{
+	{ -- 2
 		name = 'Stub.call (no frame)',
 		func = testPlayback,
 		args = { },
 		expect = { 'raise' }
 	},
-	{
+	{ -- 3
 		name = 'Stub.call (single frame)',
 		func = testPlayback,
 		args = { {'a'} },
 		expect = { { 'a' }, 'raise' }
 	},
-	{
+	{ -- 4
 		name = 'Stub.call (dual frame)',
 		func = testPlayback,
 		args = { { 'a' }, { 'b' } },
