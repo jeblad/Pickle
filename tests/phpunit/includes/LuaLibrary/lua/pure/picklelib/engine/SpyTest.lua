@@ -108,19 +108,19 @@ local tests = {
 		args = { "function[^%a]+Module[^%a]+(%a+)", -3, 'foo bar baz', 2 },
 		expect = { 'SpyTest' }
 	},
-	{
+	{ -- 10
 		name = 'testTodo()',
 		func = testTodo,
 		args = { 'foo' },
 		expect = { 'foo' }
 	},
-	{
+	{ -- 11
 		name = 'testSkip()',
 		func = testSkip,
 		args = { 'foo' },
 		expect = { 'foo' }
 	},
-	{
+	{ -- 13
 		name = 'testCarp()',
 		func = testCarp,
 		args = { 'foo' },
@@ -130,7 +130,7 @@ local tests = {
 			0
 		}
 	},
-	{
+	{ -- 14
 		name = 'testCluck()',
 		func = testCluck,
 		args = { 'foo', -1 },
@@ -141,7 +141,7 @@ local tests = {
 			{ "stack traceback:", },
 		}
 	},
-	{
+	{ -- 15
 		name = 'testCroak()',
 		func = testCroak,
 		args = { 'foo' },
@@ -151,7 +151,7 @@ local tests = {
 			0
 		}
 	},
-	{
+	{ -- 16
 		name = 'testConfess()',
 		func = testConfess,
 		args = { 'foo', -1 },
