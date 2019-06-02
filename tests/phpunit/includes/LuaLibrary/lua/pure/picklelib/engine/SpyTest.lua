@@ -33,22 +33,34 @@ end
 
 local function testCarp( str )
 	local obj = makeSpy():doCarp( str )
-	return obj:report():getTodo(), obj:report():getSkip(), obj:report():numLines()
+	return obj:report():getTodo(),
+		obj:report():getSkip(),
+		obj:report():isEmpty()
 end
 
-local function testCluck( str, idx )
+local function testCluck( str, idx1, idx2 )
 	local obj = makeSpy():doCluck( str )
-	return obj:report():getTodo(), obj:report():getSkip(), obj:report():numLines(), obj:report():getLine( idx )
+	return obj:report():getTodo(),
+		obj:report():getSkip(),
+		obj:report():isEmpty(),
+		obj:report():getLine( idx1 ),
+		obj:report():getLine( idx2 )
 end
 
 local function testCroak( str )
 	local obj = makeSpy():doCroak( str )
-	return obj:report():getTodo(), obj:report():getSkip(), obj:report():numLines()
+	return obj:report():getTodo(),
+		obj:report():getSkip(),
+		obj:report():isEmpty()
 end
 
-local function testConfess( str, idx )
+local function testConfess( str, idx1, idx2 )
 	local obj = makeSpy():doConfess( str )
-	return obj:report():getTodo(), obj:report():getSkip(), obj:report():numLines(), obj:report():getLine( idx )
+	return obj:report():getTodo(),
+		obj:report():getSkip(),
+		obj:report():isEmpty(),
+		obj:report():getLine( idx1 ),
+		obj:report():getLine( idx2 )
 end
 
 
@@ -127,18 +139,19 @@ local tests = {
 		expect = {
 			'foo',
 			false,
-			0
+			true
 		}
 	},
 	{ -- 14
 		name = 'testCluck()',
 		func = testCluck,
-		args = { 'foo', -1 },
+		args = { 'foo', -1, 1 },
 		expect = {
 			'foo',
 			false,
-			14,
+			false,
 			{ "stack traceback:", },
+			{ "[C]: ?", },
 		}
 	},
 	{ -- 15
@@ -148,18 +161,19 @@ local tests = {
 		expect = {
 			false,
 			'foo',
-			0
+			true
 		}
 	},
 	{ -- 16
 		name = 'testConfess()',
 		func = testConfess,
-		args = { 'foo', -1 },
+		args = { 'foo', -1, 1 },
 		expect = {
 			false,
 			'foo',
-			14,
+			false,
 			{ "stack traceback:", },
+			{ "[C]: ?", },
 		}
 	},
 }

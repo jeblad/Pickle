@@ -65,6 +65,12 @@ function Subclass:numLines()
 	return self._lines and self._lines:depth() or 0
 end
 
+--- Is the report empty?
+-- @treturn boolean whether the report is empty
+function Subclass:isEmpty()
+	return self._lines:isEmpty()
+end
+
 --- Add a line.
 -- @todo sometimes a block of lines must be added
 -- Note that all arguments will be wrapped up in a table before saving.

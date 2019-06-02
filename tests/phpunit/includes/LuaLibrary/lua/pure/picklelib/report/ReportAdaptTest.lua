@@ -30,7 +30,7 @@ end
 
 local function testLines( ... )
 	local test = makeTest( ... )
-	return { test:lines():export() }, test:numLines()
+	return { test:lines():export() }, test:isEmpty(), test:numLines()
 end
 
 local function testAddLine( ... )
@@ -79,19 +79,19 @@ local tests = {
 		name = name .. ':lines (nil value)',
 		func = testLines,
 		args = { nil, 0 },
-		expect = { {}, 0 }
+		expect = { {}, true, 0 }
 	},
 	{
 		name = name .. ':lines (single value)',
 		func = testLines,
 		args = { 'a' },
-		expect = { { 'a' }, 1 }
+		expect = { { 'a' }, false, 1 }
 	},
 	{
 		name = name .. ':lines (multiple value)',
 		func = testLines,
 		args = { 'a', 'b', 'c' },
-		expect = { { 'a', 'b', 'c' }, 3 }
+		expect = { { 'a', 'b', 'c' }, false, 3 }
 	},
 	{
 		name = name .. ':addLine (nil value)',
