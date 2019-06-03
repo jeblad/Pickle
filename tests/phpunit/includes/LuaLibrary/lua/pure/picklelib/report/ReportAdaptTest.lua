@@ -43,87 +43,87 @@ local function testGetLine( idx, ... )
 end
 
 local tests = {
-	{
+	{ -- 1
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	{
+	{ -- 2
 		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{
+	{ -- 3
 		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 4
 		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 5
 		name = name .. ':type ()',
 		func = testType,
 		expect = { class }
 	},
-	{
+	{ -- 6
 		name = name .. ':lines (nil value)',
 		func = testLines,
 		args = { nil, 0 },
 		expect = { {}, true, 0 }
 	},
-	{
+	{ -- 7
 		name = name .. ':lines (single value)',
 		func = testLines,
 		args = { 'a' },
 		expect = { { 'a' }, false, 1 }
 	},
-	{
+	{ -- 8
 		name = name .. ':lines (multiple value)',
 		func = testLines,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' }, false, 3 }
 	},
-	{
+	{ -- 9
 		name = name .. ':addLine (nil value)',
 		func = testAddLine,
 		args = { nil },
 		expect = {{}}
 	},
-	{
+	{ -- 10
 		name = name .. ':addLine (single value)',
 		func = testAddLine,
 		args = { 'a' },
 		expect = { { 'a' } }
 	},
-	{
+	{ -- 11
 		name = name .. ':addLine (multiple value)',
 		func = testAddLine,
 		args = { 'a', 'b', 'c' },
 		expect = { { 'a', 'b', 'c' } }
 	},
-	{
+	{ -- 12
 		name = name .. ':getLine (nil value)',
 		func = testGetLine,
 		args = { 1, nil, 0 },
 		expect = { }
 	},
-	{
+	{ -- 13
 		name = name .. ':getLine (single value)',
 		func = testGetLine,
 		args = { 1, 'a' },
 		expect = { 'a' }
 	},
-	{
+	{ -- 14
 		name = name .. ':getLine (multiple value)',
 		func = testGetLine,
 		args = { 2, 'a', 'b', 'c' },
