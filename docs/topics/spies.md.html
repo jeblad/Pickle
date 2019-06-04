@@ -32,11 +32,20 @@
 
 
 
-<h2>Examples</h2>
-<ul class="nowrap">
-  <li><a href="../examples/HelloWorld.pickle.nb.lua.html">HelloWorld.pickle.nb.lua</a></li>
-  <li><a href="../examples/HelloWorld.lua.html">HelloWorld.lua</a></li>
-  <li><strong>HelloWorld.pickle.lua</strong></li>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/activities.md.html">Activities</a></li>
+  <li><a href="../topics/adapt.md.html">Adapt</a></li>
+  <li><a href="../topics/call-style.md.html">Call style</a></li>
+  <li><a href="../topics/change-log.md.html">Log</a></li>
+  <li><a href="../topics/databases.md.html">Databases</a></li>
+  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
+  <li><a href="../topics/hello-world.md.html">Hello World</a></li>
+  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
+  <li><a href="../topics/musings.md.html">Musings</a></li>
+  <li><strong>Spies</strong></li>
+  <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
+  <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
 </ul>
 <h2>Modules</h2>
 <ul class="nowrap">
@@ -51,7 +60,6 @@
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
-  <li><a href="../classes/Stub.html">Stub</a></li>
   <li><a href="../classes/Extractor.html">Extractor</a></li>
   <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
   <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
@@ -76,44 +84,29 @@
   <li><a href="../classes/Translator.html">Translator</a></li>
   <li><a href="../classes/Translators.html">Translators</a></li>
 </ul>
-<h2>Topics</h2>
-<ul class="">
-  <li><a href="../topics/activities.md.html">Activities</a></li>
-  <li><a href="../topics/adapt.md.html">Adapt</a></li>
-  <li><a href="../topics/call-style.md.html">Call style</a></li>
-  <li><a href="../topics/change-log.md.html">Log</a></li>
-  <li><a href="../topics/databases.md.html">Databases</a></li>
-  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
-  <li><a href="../topics/hello-world.md.html">Hello World</a></li>
-  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
-  <li><a href="../topics/musings.md.html">Musings</a></li>
-  <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
-  <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/HelloWorld.pickle.nb.lua.html">HelloWorld.pickle.nb.lua</a></li>
+  <li><a href="../examples/HelloWorld.lua.html">HelloWorld.lua</a></li>
+  <li><a href="../examples/HelloWorld.pickle.lua.html">HelloWorld.pickle.lua</a></li>
 </ul>
 
 </div>
 
 <div id="content">
 
-    <h2>HelloWorld.pickle.lua</h2>
-<pre>
 
-<span class="comment">--- Pickle for HelloWorld pickle.
-</span><span class="keyword">return</span> describe (<span class="keyword">function</span>()
-	it <span class="string">"calls `merge` with 'foo'"</span> (<span class="keyword">function</span>()
-		expect( <span class="string">"foo"</span> ) :first() :toBeEqual()
-	<span class="keyword">end</span>)
-	it <span class="string">"calls `merge` with 'foo' and 'bar'"</span> (<span class="keyword">function</span>()
-		expect( <span class="string">"foo bar"</span> ) :first() :toBeEqual()
-	<span class="keyword">end</span>)
-	it <span class="string">"calls `merge` with 'foo', 'bar', and 'baz'"</span> (<span class="keyword">function</span>()
-		expect( <span class="string">"foo bar baz"</span> ) :first() :toBeEqual()
-	<span class="keyword">end</span>)
-	it <span class="string">"calls `merge` with 1 and 2"</span> (<span class="keyword">function</span>()
-		expect( <span class="string">'nil'</span> ) :first() :asType() :toBeEqual()
-		expect( <span class="string">'string'</span> ) :second() :asType() :toBeEqual()
-	<span class="keyword">end</span>)
-<span class="keyword">end</span>)</pre>
+<h1>Spies</h1>
+
+<p>All of <a href="../modules/Pickle.html#carp"><code>carp</code></a>, <a href="../modules/Pickle.html#cluck"><code>cluck</code></a>, <a href="../modules/Pickle.html#croak"><code>croak</code></a>, and <a href="../modules/Pickle.html#confess"><code>confess</code></a> are “spies”, a concept borrowed from <a href="https://en.wikipedia.org/wiki/Perl">Perl</a> where it is used to mark lines in code. The functions make a report when they are reached. They can be viewed as very minimal single statement debug actions.</p>
+
+<p>A spy can be added to the code under inspection, and will then do its action when execution reaches the call, or it can be injected in place of some other library code. The later is possible if there exist some reference to the library.</p>
+
+<p>The spies can be viewed as a …</p>
+
+<p>== Usage ==</p>
+
+<p>Foo</p>
 
 
 </div> <!-- id="content" -->

@@ -32,8 +32,9 @@
 
 <h2>Contents</h2>
 <ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Fields">Fields</a></li>
 <li><a href="#Methods">Methods</a></li>
-<li><a href="#Metamethods">Metamethods</a></li>
 </ul>
 
 
@@ -44,8 +45,8 @@
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
-  <li><a href="../classes/Stub.html">Stub</a></li>
-  <li><strong>Extractor</strong></li>
+  <li><strong>Stub</strong></li>
+  <li><a href="../classes/Extractor.html">Extractor</a></li>
   <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
   <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
   <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
@@ -72,7 +73,7 @@
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/Pickle.html">Pickle</a></li>
-  <li><a href="../modules/Stub.html">Stub</a></li>
+  <li><strong>Stub</strong></li>
   <li><a href="../modules/util.html">util</a></li>
 </ul>
 <h2>Topics</h2>
@@ -100,57 +101,142 @@
 
 <div id="content">
 
-<h1>Class <code>Extractor</code></h1>
-<p>BaseClass for an extractor strategy.</p>
-<p> This class follows the pattern with inheritance from
+<h1>Class <code>Stub</code></h1>
+<p>Class with closure for creating stub functions.</p>
+<p> The full description of how to use the stub function can be found in
+ <a href="../topics/test-fakes.md.html">test fakes</a>.
+ This class follows the pattern from
  <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
-<h2><a href="#Methods">Methods</a></h2>
+<h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#Extractor:create">Extractor:create (...)</a></td>
-	<td class="summary">Create a new instance.</td>
+	<td class="name nowrap"><a href="#Bag:export">Bag:export ()</a></td>
+	<td class="summary">Export a list of all the contents.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Extractor:_init">Extractor:_init (...)</a></td>
-	<td class="summary">Initialize a new instance.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Extractor:type">Extractor:type ()</a></td>
-	<td class="summary">Get the type of the strategy.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Extractor:find">Extractor:find (str, pos)</a></td>
-	<td class="summary">Try to find the string for this strategy.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Extractor:cast">Extractor:cast (str, start, finish)</a></td>
-	<td class="summary">Cast the string into the correct type for this strategy.</td>
-	</tr>
-	<tr>
-	<td class="name nowrap"><a href="#Extractor:placeholder">Extractor:placeholder ()</a></td>
-	<td class="summary">Get the placeholder for this strategy.</td>
+	<td class="name nowrap"><a href="#Bag:flush">Bag:flush ()</a></td>
+	<td class="summary">Flush all the contents.</td>
 	</tr>
 </table>
-<h2><a href="#Metamethods">Metamethods</a></h2>
+<h2><a href="#Fields">Fields</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#Extractor:__index">Extractor:__index (key)</a></td>
+	<td class="name nowrap"><a href="#Stub.__index">Stub.__index</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#Stub:create">Stub:create (...)</a></td>
+	<td class="summary">Create a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Stub:_init">Stub:_init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Stub:isEmpty">Stub:isEmpty ()</a></td>
+	<td class="summary">Is the list of values empty.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Stub:depth">Stub:depth ()</a></td>
+	<td class="summary">What is the depth of the internal values list.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Stub:layout">Stub:layout ()</a></td>
+	<td class="summary">Get the layout of the values list.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Stub:add">Stub:add (...)</a></td>
+	<td class="summary">Add value(s) to the list of values.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Stub:remove">Stub:remove (num)</a></td>
+	<td class="summary">Remove value from the list of values.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Stub:closure">Stub:closure ()</a></td>
+	<td class="summary">Return a closure for the object.</td>
+	</tr>
+</table>
 
 <br/>
 <br/>
 
 
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Bag:export"></a>
+    <strong>Bag:export ()</strong>
+    </dt>
+    <dd>
+    Export a list of all the contents.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        list of values
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Bag:flush"></a>
+    <strong>Bag:flush ()</strong>
+    </dt>
+    <dd>
+    Flush all the contents.
+ Note that this clears the internal storage.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        list of values
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Stub.__index"></a>
+    <strong>Stub.__index</strong>
+    </dt>
+    <dd>
+    Lookup of missing class members.
+
+
+    <ul>
+        <li><span class="parameter">class</span>
+         index
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
     <h2 class="section-header "><a name="Methods"></a>Methods</h2>
 
     <dl class="function">
     <dt>
-    <a name = "Extractor:create"></a>
-    <strong>Extractor:create (...)</strong>
+    <a name = "Stub:create"></a>
+    <strong>Stub:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
@@ -160,7 +246,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/Extractor.html#Extractor:_init">Extractor:_init</a>
+         forwarded to <code>_init()</code>
         </li>
     </ul>
 
@@ -176,8 +262,8 @@
 
 </dd>
     <dt>
-    <a name = "Extractor:_init"></a>
-    <strong>Extractor:_init (...)</strong>
+    <a name = "Stub:_init"></a>
+    <strong>Stub:_init (...)</strong>
     </dt>
     <dd>
     Initialize a new instance.
@@ -187,7 +273,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         list of patterns
+         shifted into the values list
         </li>
     </ul>
 
@@ -203,146 +289,133 @@
 
 </dd>
     <dt>
-    <a name = "Extractor:type"></a>
-    <strong>Extractor:type ()</strong>
+    <a name = "Stub:isEmpty"></a>
+    <strong>Stub:isEmpty ()</strong>
     </dt>
     <dd>
-    Get the type of the strategy.
- All extractor strategies have an explicit type name.
+    Is the list of values empty.
+ Note that the internal structure is non-empty even if a nil
+ is shifted into the values list.
 
 
 
     <h3>Returns:</h3>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-
-
-
+           <span class="types"><span class="type">boolean</span></span>
+        whether the internal values list has length zero
 
 
 
 
 </dd>
     <dt>
-    <a name = "Extractor:find"></a>
-    <strong>Extractor:find (str, pos)</strong>
+    <a name = "Stub:depth"></a>
+    <strong>Stub:depth ()</strong>
     </dt>
     <dd>
-    Try to find the string for this strategy.
- The goodness of the match is given by the returned position.
- If found it should return a position and the found string.
+    What is the depth of the internal values list.
+ Note that the internal structure has a depth even if a nil
+ is shifted into the values list.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">number</span></span>
+        how deep is the internal structure
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Stub:layout"></a>
+    <strong>Stub:layout ()</strong>
+    </dt>
+    <dd>
+    Get the layout of the values list.
+ This method is used for testing to inspect which types of objects exists in the values list.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        description of the internal structure
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Stub:add"></a>
+    <strong>Stub:add (...)</strong>
+    </dt>
+    <dd>
+    Add value(s) to the list of values.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">str</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         used as the extraction source
-        </li>
-        <li><span class="parameter">pos</span>
-            <span class="types"><span class="type">number</span></span>
-         for an inclusive index where extraction starts
+        <li><span class="parameter">...</span>
+
+
+
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-           <span class="types"><span class="type">nil</span> or <span class="type">number,number</span></span>
+           <span class="types"><span class="type">self</span></span>
+        facilitate chaining
 
-
-
-
-    <h3>Raises:</h3>
-    on wrong arguments
 
 
 
 </dd>
     <dt>
-    <a name = "Extractor:cast"></a>
-    <strong>Extractor:cast (str, start, finish)</strong>
+    <a name = "Stub:remove"></a>
+    <strong>Stub:remove (num)</strong>
     </dt>
     <dd>
-    Cast the string into the correct type for this strategy.
+    Remove value from the list of values.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">str</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         used as the extraction source (unused)
-        </li>
-        <li><span class="parameter">start</span>
-            <span class="types"><span class="type">number</span></span>
-         for an inclusive index where extraction starts (unused)
-        </li>
-        <li><span class="parameter">finish</span>
-            <span class="types"><span class="type">number</span></span>
-         for an inclusive index where extraction finishes (unused)
+        <li><span class="parameter">num</span>
+
+
+
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-           <span class="types"><span class="type">nil</span></span>
+           <span class="types"><span class="type">any</span></span>
+        item that can be put on the internal structure
 
-
-
-
-    <h3>Raises:</h3>
-    Unconditional error unless overridden
 
 
 
 </dd>
     <dt>
-    <a name = "Extractor:placeholder"></a>
-    <strong>Extractor:placeholder ()</strong>
+    <a name = "Stub:closure"></a>
+    <strong>Stub:closure ()</strong>
     </dt>
     <dd>
-    Get the placeholder for this strategy.
+    Return a closure for the object.
+ Each call will remove one frame of values from the internal structure.
 
 
 
     <h3>Returns:</h3>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="../classes/Stub.html#Stub:closure">closure</a></span>
 
 
 
 
-    <h3>Raises:</h3>
-    Unconditional error unless overridden
-
-
-
-</dd>
-</dl>
-    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "Extractor:__index"></a>
-    <strong>Extractor:__index (key)</strong>
-    </dt>
-    <dd>
-    Lookup of missing class members.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">key</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         lookup of member
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-        any
-
-    <h3>Raises:</h3>
-    on wrong arguments
 
 
 

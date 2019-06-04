@@ -44,6 +44,7 @@
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/Stub.html">Stub</a></li>
   <li><a href="../classes/Extractor.html">Extractor</a></li>
   <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
   <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
@@ -85,7 +86,7 @@
   <li><a href="../topics/hello-world.md.html">Hello World</a></li>
   <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
   <li><a href="../topics/musings.md.html">Musings</a></li>
-  <li><a href="../topics/test-fakes.md.html">Fakes</a></li>
+  <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
   <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
 </ul>
 <h2>Examples</h2>
@@ -148,23 +149,23 @@
 	<td class="summary">Push a value on the bag.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Bag:shift">Bag:shift (...)</a></td>
-	<td class="summary">shift a value out of the bag.</td>
+	<td class="name nowrap"><a href="#Bag:unshift">Bag:unshift (...)</a></td>
+	<td class="summary">Unshift a value into the bag.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Bag:pop">Bag:pop ([num=1])</a></td>
-	<td class="summary">Pop the first num values pushed on the bag.</td>
+	<td class="summary">Pop the last num values pushed on the bag.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Bag:unshift">Bag:unshift ([num=1])</a></td>
-	<td class="summary">unshift the first num values shifted into the bag.</td>
+	<td class="name nowrap"><a href="#Bag:shift">Bag:shift ([num=1])</a></td>
+	<td class="summary">Shift the first num values unshifted into the bag.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Bag:drop">Bag:drop ([num=1])</a></td>
 	<td class="summary">Drop the topmost num values of the Bag.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Bag:get">Bag:get ([num=1])</a></td>
+	<td class="name nowrap"><a href="#Bag:get">Bag:get ([idx=1])</a></td>
 	<td class="summary">Get the indexed entry.</td>
 	</tr>
 	<tr>
@@ -396,11 +397,11 @@
 
 </dd>
     <dt>
-    <a name = "Bag:shift"></a>
-    <strong>Bag:shift (...)</strong>
+    <a name = "Bag:unshift"></a>
+    <strong>Bag:unshift (...)</strong>
     </dt>
     <dd>
-    shift a value out of the bag.
+    Unshift a value into the bag.
  This is queue-like semantics.
 
 
@@ -427,7 +428,7 @@
     <strong>Bag:pop ([num=1])</strong>
     </dt>
     <dd>
-    Pop the first num values pushed on the bag.
+    Pop the last num values pushed on the bag.
  This is stack-like semantics.
  Note that this will remove the last pushed (topmost) value.
 
@@ -453,13 +454,13 @@
 
 </dd>
     <dt>
-    <a name = "Bag:unshift"></a>
-    <strong>Bag:unshift ([num=1])</strong>
+    <a name = "Bag:shift"></a>
+    <strong>Bag:shift ([num=1])</strong>
     </dt>
     <dd>
-    unshift the first num values shifted into the bag.
+    Shift the first num values unshifted into the bag.
  This is queue-like semantics.
- Note that this will remove the first shifted (topmost) value.
+ Note that this will remove the first unshifted (topmost) value.
 
 
     <h3>Parameters:</h3>
@@ -513,7 +514,7 @@
 </dd>
     <dt>
     <a name = "Bag:get"></a>
-    <strong>Bag:get ([num=1])</strong>
+    <strong>Bag:get ([idx=1])</strong>
     </dt>
     <dd>
     Get the indexed entry.
@@ -522,7 +523,7 @@
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">num</span>
+        <li><span class="parameter">idx</span>
             <span class="types"><span class="type">nil</span> or <span class="type">number</span></span>
          entry from top, negative count from bottom
          (<em>default</em> 1)
@@ -532,7 +533,7 @@
     <h3>Returns:</h3>
 
            <span class="types"><span class="type">any</span></span>
-        item that can be put on the bag
+        item that can be put in the bag
 
     <h3>Raises:</h3>
     on wrong arguments

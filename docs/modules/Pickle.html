@@ -50,6 +50,7 @@
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/Stub.html">Stub</a></li>
   <li><a href="../classes/Extractor.html">Extractor</a></li>
   <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
   <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
@@ -85,7 +86,7 @@
   <li><a href="../topics/hello-world.md.html">Hello World</a></li>
   <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
   <li><a href="../topics/musings.md.html">Musings</a></li>
-  <li><a href="../topics/test-fakes.md.html">Fakes</a></li>
+  <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
   <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
 </ul>
 <h2>Examples</h2>
@@ -117,11 +118,11 @@
 	<td class="summary">Cluck, warn called due to a possible error condition, with a stack backtrace.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#croak">croak (str)</a></td>
+	<td class="name nowrap"><a href="#croak">croak (str[, level=0])</a></td>
 	<td class="summary">Croak, die called due to a possible error condition.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#confess">confess (str)</a></td>
+	<td class="name nowrap"><a href="#confess">confess (str[, level=0])</a></td>
 	<td class="summary">Confess, die called due to a possible error condition, with a stack backtrace.</td>
 	</tr>
 	<tr>
@@ -188,7 +189,8 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">str</span>
-         message to be passed on
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         message to use for todo part of report
         </li>
     </ul>
 
@@ -212,7 +214,8 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">str</span>
-         message to be passed on
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         message to use for todo part of report
         </li>
     </ul>
 
@@ -226,7 +229,7 @@
 </dd>
     <dt>
     <a name = "croak"></a>
-    <strong>croak (str)</strong>
+    <strong>croak (str[, level=0])</strong>
     </dt>
     <dd>
     Croak, die called due to a possible error condition.
@@ -236,42 +239,48 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">str</span>
-         message to be passed on
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         message to use for todo part of report
+        </li>
+        <li><span class="parameter">level</span>
+            <span class="types"><span class="type">nil</span> or <span class="type">number</span></span>
+         to report
+         (<em>default</em> 0)
         </li>
     </ul>
 
-    <h3>Returns:</h3>
-
-        Spy
 
     <h3>Raises:</h3>
-    error called unconditionally
+    unconditionally
 
 
 
 </dd>
     <dt>
     <a name = "confess"></a>
-    <strong>confess (str)</strong>
+    <strong>confess (str[, level=0])</strong>
     </dt>
     <dd>
     Confess, die called due to a possible error condition, with a stack backtrace.
- Print a message then exits, with caller's name and arguments, and a stack trace.
+ Print a message without exiting, with caller's name and arguments, and a stack trace.
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">str</span>
-         message to be passed on
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         message to use for todo part of report
+        </li>
+        <li><span class="parameter">level</span>
+            <span class="types"><span class="type">nil</span> or <span class="type">number</span></span>
+         to report
+         (<em>default</em> 0)
         </li>
     </ul>
 
-    <h3>Returns:</h3>
-
-        Spy
 
     <h3>Raises:</h3>
-    error called unconditionally
+    unconditionally
 
 
 

@@ -44,6 +44,7 @@
   <li><a href="../classes/Adapt.html">Adapt</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><strong>Spy</strong></li>
+  <li><a href="../classes/Stub.html">Stub</a></li>
   <li><a href="../classes/Extractor.html">Extractor</a></li>
   <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
   <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
@@ -85,7 +86,7 @@
   <li><a href="../topics/hello-world.md.html">Hello World</a></li>
   <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
   <li><a href="../topics/musings.md.html">Musings</a></li>
-  <li><a href="../topics/test-fakes.md.html">Fakes</a></li>
+  <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
   <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
 </ul>
 <h2>Examples</h2>
@@ -139,12 +140,28 @@
 	<td class="summary">Traceback function calls.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Spy:todo">Spy:todo (key, str)</a></td>
-	<td class="summary">Short report.</td>
+	<td class="name nowrap"><a href="#Spy:setTodo">Spy:setTodo (str)</a></td>
+	<td class="summary">Set the todo to a string.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Spy:skip">Spy:skip (key, str)</a></td>
-	<td class="summary">Long report.</td>
+	<td class="name nowrap"><a href="#Spy:setSkip">Spy:setSkip (str)</a></td>
+	<td class="summary">Set the skip to a string.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Spy:carp">Spy:carp (str)</a></td>
+	<td class="summary">Convenience method doCarp.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Spy:carp">Spy:carp (str)</a></td>
+	<td class="summary">Convenience method doCluck.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Spy:carp">Spy:carp (str)</a></td>
+	<td class="summary">Convenience method doCroak.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Spy:carp">Spy:carp (str)</a></td>
+	<td class="summary">Convenience method doConfess.</td>
 	</tr>
 </table>
 
@@ -323,28 +340,24 @@
 
 </dd>
     <dt>
-    <a name = "Spy:todo"></a>
-    <strong>Spy:todo (key, str)</strong>
+    <a name = "Spy:setTodo"></a>
+    <strong>Spy:setTodo (str)</strong>
     </dt>
     <dd>
-    Short report.
+    Set the todo to a string.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">key</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         used to identify a message
-        </li>
         <li><span class="parameter">str</span>
-            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          alternate free form
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-           <span class="types"><a class="type" href="../classes/Report.html#">Report</a></span>
+           <span class="types"><span class="type">self</span></span>
 
 
 
@@ -356,34 +369,130 @@
 
 </dd>
     <dt>
-    <a name = "Spy:skip"></a>
-    <strong>Spy:skip (key, str)</strong>
+    <a name = "Spy:setSkip"></a>
+    <strong>Spy:setSkip (str)</strong>
     </dt>
     <dd>
-    Long report.
+    Set the skip to a string.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">key</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         used to identify a message
-        </li>
         <li><span class="parameter">str</span>
-            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          alternate free form
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-           <span class="types"><a class="type" href="../classes/Report.html#">Report</a></span>
+           <span class="types"><span class="type">self</span></span>
 
 
 
 
     <h3>Raises:</h3>
     on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Spy:carp"></a>
+    <strong>Spy:carp (str)</strong>
+    </dt>
+    <dd>
+    Convenience method doCarp.
+ Called to investigate a possible error condition.
+ Make a report without exiting, add a todo, with caller's name and arguments.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         message to be passed on
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        Report
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spy:carp"></a>
+    <strong>Spy:carp (str)</strong>
+    </dt>
+    <dd>
+    Convenience method doCluck.
+ Called to investigate a possible error condition, with a stack backtrace.
+ Make a report without exiting, add a todo, with caller's name and arguments, and a stack trace.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         message to be passed on
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        Spy
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spy:carp"></a>
+    <strong>Spy:carp (str)</strong>
+    </dt>
+    <dd>
+    Convenience method doCroak.
+ Called to investigate a possible error condition.
+ Make a report without exiting, add a skip, with caller's name and arguments.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         message to be passed on
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        Report
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spy:carp"></a>
+    <strong>Spy:carp (str)</strong>
+    </dt>
+    <dd>
+    Convenience method doConfess.
+ Called to investigate a possible error condition, with a stack backtrace.
+ Make a report without exiting, add a skip, with caller's name and arguments, and a stack trace.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         message to be passed on
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        Report
+
 
 
 
