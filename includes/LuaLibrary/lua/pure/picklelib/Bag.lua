@@ -91,17 +91,17 @@ function Bag:push( ... )
 	return self
 end
 
---- shift a value out of the bag.
+--- Unshift a value into the bag.
 -- This is queue-like semantics.
 -- @treturn self facilitate chaining
-function Bag:shift( ... )
+function Bag:unshift( ... )
 	for _,v in ipairs( { ... } ) do
 		table.insert( self._bag, 1, v )
 	end
 	return self
 end
 
---- Pop the first num values pushed on the bag.
+--- Pop the last num values pushed on the bag.
 -- This is stack-like semantics.
 -- Note that this will remove the last pushed (topmost) value.
 -- @raise on wrong arguments
@@ -121,16 +121,16 @@ function Bag:pop( num )
 	return unpack( t )
 end
 
---- unshift the first num values shifted into the bag.
+--- Shift the first num values unshifted into the bag.
 -- This is queue-like semantics.
--- Note that this will remove the first shifted (topmost) value.
+-- Note that this will remove the first unshifted (topmost) value.
 -- @raise on wrong arguments
 -- @tparam[opt=1] nil|number num items to drop
 -- @treturn any item that can be put on the bag
-function Bag:unshift( num )
-	libUtil.checkType( 'Bag:unshift', 1, num, 'number', true )
+function Bag:shift( num )
+	libUtil.checkType( 'Bag:shift', 1, num, 'number', true )
 	num = num or 1
-	assert( num >= 0, 'Bag:unshift; num less than zero')
+	assert( num >= 0, 'Bag:shift; num less than zero')
 	if num == 0 then
 		return
 	end

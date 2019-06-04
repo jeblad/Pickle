@@ -16,11 +16,11 @@ local mt = {}
 -- @tparam vararg ... passed on and bound to the created closure
 -- @treturn closure
 function mt:__call( ... ) -- luacheck: no self
-	local bag = Bag:create():shift( ... )
+	local bag = Bag:create():unshift( ... )
 
 	local anon = function()
 		assert( not bag:isEmpty(), 'anon: no more frames')
-		return unpack( bag:unshift() )
+		return unpack( bag:shift() )
 	end
 
 	return anon

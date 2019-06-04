@@ -44,8 +44,8 @@ local function testPush( ... )
 	return test:top()
 end
 
-local function testShift( ... )
-	local test = makeBag():shift( ... )
+local function testUnshift( ... )
+	local test = makeBag():unshift( ... )
 	return test:top()
 end
 
@@ -53,16 +53,16 @@ local function testPop( num, ... )
 	return makeBag( ... ):pop( num )
 end
 
-local function testUnshift( num, ... )
-	return makeBag( ... ):unshift( num )
+local function testShift( num, ... )
+	return makeBag( ... ):shift( num )
 end
 
 local function testPushPop( num, ... )
 	return makeBag():push( ... ):pop( num )
 end
 
-local function testShiftUnshift( num, ... )
-	return makeBag():shift( ... ):unshift( num )
+local function testUnshiftShift( num, ... )
+	return makeBag():unshift( ... ):shift( num )
 end
 
 local function testDrop( num, ... )
@@ -196,26 +196,26 @@ local tests = {
 		expect = { 'c' }
 	},
 	{ -- 19
-		name = 'bag.shift (nil value)',
-		func = testShift,
+		name = 'bag.unshift (nil value)',
+		func = testUnshift,
 		args = { nil },
 		expect = { nil }
 	},
 	{ -- 20
-		name = 'bag.shift (single value)',
-		func = testShift,
+		name = 'bag.unshift (single value)',
+		func = testUnshift,
 		args = { 'a' },
 		expect = { 'a' }
 	},
 	{ -- 21
-		name = 'bag.shift (multiple value)',
-		func = testShift,
+		name = 'bag.unshift (multiple value)',
+		func = testUnshift,
 		args = { 'a', 'b' },
 		expect = { 'a' }
 	},
 	{ -- 22
-		name = 'bag.shift (multiple value)',
-		func = testShift,
+		name = 'bag.unshift (multiple value)',
+		func = testUnshift,
 		args = { 'a', 'b', 'c' },
 		expect = { 'a' }
 	},
@@ -292,74 +292,74 @@ local tests = {
 		expect = { 'b', 'c' }
 	},
 	{ -- 35
-		name = 'bag.unshift (nil, nil value)',
-		func = testUnshift,
+		name = 'bag.shift (nil, nil value)',
+		func = testShift,
 		args = { nil, nil },
 		expect = { nil }
 	},
 	{ -- 36
-		name = 'bag.unshift (nil, single value)',
-		func = testUnshift,
+		name = 'bag.shift (nil, single value)',
+		func = testShift,
 		args = { nil, 'a' },
 		expect = { 'a' }
 	},
 	{ -- 37
-		name = 'bag.unshift (nil, dual value)',
-		func = testUnshift,
+		name = 'bag.shift (nil, dual value)',
+		func = testShift,
 		args = { nil, 'a', 'b' },
 		expect = { 'b' }
 	},
 	{ -- 38
-		name = 'bag.unshift (nil, multiple value)',
-		func = testUnshift,
+		name = 'bag.shift (nil, multiple value)',
+		func = testShift,
 		args = { nil, 'a', 'b', 'c' },
 		expect = { 'c' }
 	},
 	{ -- 39
-		name = 'bag.unshift (2, nil value)',
-		func = testUnshift,
+		name = 'bag.shift (2, nil value)',
+		func = testShift,
 		args = { 2, nil },
 		expect = { nil }
 	},
 	{ -- 40
-		name = 'bag.unshift (2, single value)',
-		func = testUnshift,
+		name = 'bag.shift (2, single value)',
+		func = testShift,
 		args = { 2, 'a' },
 		expect = { 'a' }
 	},
 	{ -- 41
-		name = 'bag.unshift (2, dual value)',
-		func = testUnshift,
+		name = 'bag.shift (2, dual value)',
+		func = testShift,
 		args = { 2, 'a', 'b' },
 		expect = { 'b', 'a' }
 	},
 	{ -- 42
-		name = 'bag.unshift (2, multiple value)',
-		func = testUnshift,
+		name = 'bag.shift (2, multiple value)',
+		func = testShift,
 		args = { 2, 'a', 'b', 'c' },
 		expect = { 'c', 'b' }
 	},
 	{ --43
-		name = 'bag.shift-unshift (2, nil value)',
-		func = testShiftUnshift,
+		name = 'bag.unshift-shift (2, nil value)',
+		func = testUnshiftShift,
 		args = { 2, nil },
 		expect = { nil }
 	},
 	{ -- 44
-		name = 'bag.shift-unshift (2, single value)',
-		func = testShiftUnshift,
+		name = 'bag.unshift-shift (2, single value)',
+		func = testUnshiftShift,
 		args = { 2, 'a' },
 		expect = { 'a' }
 	},
 	{ -- 45
-		name = 'bag.shift-unshift (2, dual value)',
-		func = testShiftUnshift,
+		name = 'bag.unshift-shift (2, dual value)',
+		func = testUnshiftShift,
 		args = { 2, 'a', 'b' },
 		expect = { 'a', 'b' }
 	},
 	{ -- 46
-		name = 'bag.shift-unshift (2, multiple value)',
-		func = testShiftUnshift,
+		name = 'bag.unshift-shift (2, multiple value)',
+		func = testUnshiftShift,
 		args = { 2, 'a', 'b', 'c' },
 		expect = { 'a', 'b' }
 	},
