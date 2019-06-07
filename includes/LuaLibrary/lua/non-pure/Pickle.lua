@@ -15,6 +15,25 @@ local pickle = {
 	_extractors = {},	-- holds extractor methods
 }
 
+pickle.double = require 'picklelib/engine/Double'
+
+-- Register doubles.
+-- This needs a valid environment, for example from getfenv()
+-- @raise on wrong arguments
+-- @tparam table env for the environment
+local function registerDoubles( env )
+	libUtil.checkType( 'Pickle:registerDoubles', 1, env, 'table', false )
+
+	--- Test double for mimickin general behavior.
+	-- Returns precomputed values or compute them on the fly.
+	-- @function stub
+	-- @tparam table|string|boolean|number|function ... arguments to be parsed
+	-- @treturn function
+	env.stub = function( ... )
+		return pickle.double:create():setLevel(2):setName('stub'):dispatch( ... ):stub()
+	end
+end
+
 --- Register spies.
 -- This needs a valid environment, for example from getfenv()
 -- @raise on wrong arguments
@@ -285,6 +304,7 @@ function pickle.implicitDescribe( ... )
 	-- @treturn self newly created object
 	env.it = env.context
 
+	registerDoubles( env )
 	registerSpies( env, reports )
 	registerComments( env, reports )
 

@@ -11,16 +11,16 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class StubTest extends Scribunto_LuaEngineTestBase {
+class DoubleTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'StubTest';
+	protected static $moduleName = 'DoubleTest';
 
 	/**
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {
 		return parent::getTestModules() + [
-			'StubTest' => __DIR__ . '/StubTest.lua'
+			'DoubleTest' => __DIR__ . '/DoubleTest.lua'
 		];
 	}
 }
