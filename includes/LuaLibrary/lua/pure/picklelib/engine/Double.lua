@@ -20,7 +20,6 @@ function Double:__index( key ) -- luacheck: no self
 	return Double[key]
 end
 
-
 --- Get arguments for a functionlike call.
 -- @tparam vararg ... pass on to dispatch
 -- @treturn self

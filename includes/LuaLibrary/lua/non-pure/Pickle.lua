@@ -12,18 +12,17 @@ local Bag = require 'picklelib/Bag'
 
 -- @var structure for storage of the lib
 local pickle = {
---	_types = {},		-- holds type methods
---	_styles = {},		-- holds style methods
 	_extractors = {},	-- holds extractor methods
 }
 
 -- @var structure for delayed render styles
 local renderStyleNames = nil
 
--- @var structure for delayed render stypes
-local renderTypeNames = nil
+-- @var structure for delayed render libs
+local renderLibs = {}
 
 pickle.double = require 'picklelib/engine/Double'
+pickle.renders = require 'picklelib/render/Renders'
 
 -- Register doubles.
 -- This needs a valid environment, for example from getfenv()
@@ -149,18 +148,25 @@ end
 
 --- Register renders.
 -- @return Renders
-local function registerRenders()	-- require libs
+local function registerRenders( env )	-- require libs
+	libUtil.checkType( 'Pickle:registerRenders', 1, env, 'table', false )
+
 	local renders = require 'picklelib/render/Renders'
 
 	-- register render styles
-	for k,v in pairs( renderStyleNames ) do
-		local style = renders.registerStyle( k )
-		for l,w in pairs( renderTypeNames ) do
-			local lib = mw.pickle._renderPrefix
-				.. k .. mw.pickle._renderInfix
-				.. w .. v .. mw.pickle._renderPostfix
-			style:registerType( l, require( lib ) )
-		end
+	for _,v in pairs( renderLibs ) do
+		local style = renders.registerStyle( v[1] )
+		assert( style )
+		style:registerType( v[2], require( v[3] ) )
+	end
+
+	--- Renders, the access .
+	-- Print a message without exiting, with caller's name and arguments.
+	-- @function carp
+	-- @tparam nil|string str message to use for todo part of report
+	-- @return Spy
+	env.renders = function( ... )
+		return renders( ... )
 	end
 
 	return renders
@@ -423,16 +429,13 @@ function pickle.setupInterface( opts )
 	-- keep subpage name for later, newer mind requiring anything now
 	pickle._translationSubpage = opts.translationSubpage
 
-	-- keep affix for later
-	pickle._renderPrefix = opts.renderPrefix
-	pickle._renderInfix = opts.renderInfix
-	pickle._renderPostfix = opts.renderPostfix;
-
-	-- keep render styles for later, newer mind requiring them now
-	renderStyleNames = mw.clone( opts.renderStyles )
-
-	-- keep render types for later, newer mind requiring them now
-	renderTypeNames = mw.clone( opts.renderTypes )
+	-- keep render libs for later
+	for k,v in pairs( opts.renderStyles ) do
+		for l,w in pairs( opts.renderTypes ) do
+			local lib = opts.renderPrefix .. k .. opts.renderInfix .. w .. v .. opts.renderPostfix
+			table.insert( renderLibs, { k, l, lib } )
+		end
+	end
 
 	-- keep extractors for later, newer mind requiring them now
 	for i,v in ipairs( opts.extractors ) do
