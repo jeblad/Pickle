@@ -22,6 +22,7 @@ local extractorLibs = {}
 
 pickle.bag = require 'picklelib/Bag'
 pickle.counter = require 'picklelib/Counter'
+pickle.spy = require 'picklelib/engine/Spy'
 pickle.double = require 'picklelib/engine/Double'
 pickle.renders = require 'picklelib/render/Renders'
 pickle.extractors = require 'picklelib/extractor/Extractors'
@@ -52,9 +53,6 @@ local function registerSpies( env, reports )
 	libUtil.checkType( 'Pickle:registerSpies', 1, env, 'table', false )
 	libUtil.checkType( 'Pickle:registerSpies', 2, reports, 'table', false )
 
-	-- require libs
-	local Spy = require 'picklelib/engine/Spy'
-
 	--- Carp, warn called due to a possible error condition.
 	-- Print a message without exiting, with caller's name and arguments.
 	-- @function carp
@@ -63,7 +61,7 @@ local function registerSpies( env, reports )
 	env.carp = function( str )
 		libUtil.checkType( 'carp', 1, str, 'string', true )
 		str = str or mw.message.new( 'pickle-spies-carp-todo' ):plain()
-		return Spy:create():setReports( reports ):doCarp( str )
+		return pickle.spy:create():setReports( reports ):doCarp( str )
 	end
 
 	--- Cluck, warn called due to a possible error condition, with a stack backtrace.
@@ -74,7 +72,7 @@ local function registerSpies( env, reports )
 	env.cluck = function( str )
 		libUtil.checkType( 'cluck', 1, str, 'string', true )
 		str = str or mw.message.new( 'pickle-spies-cluck-todo' ):plain()
-		return Spy:create():setReports( reports ):doCluck( str )
+		return pickle.spy:create():setReports( reports ):doCluck( str )
 	end
 
 	--- Croak, die called due to a possible error condition.
@@ -87,7 +85,7 @@ local function registerSpies( env, reports )
 		libUtil.checkType( 'croak', 1, str, 'string', true )
 		libUtil.checkType( 'croak', 2, level, 'number', true )
 		str = str or mw.message.new( 'pickle-spies-croak-skip' ):plain()
-		Spy:create():setReports( reports ):doCroak( str )
+		pickle.spy:create():setReports( reports ):doCroak( str )
 		error( mw.message.new( 'pickle-spies-croak-exits' ):plain(), level or 0 )
 	end
 
@@ -101,7 +99,7 @@ local function registerSpies( env, reports )
 		libUtil.checkType( 'confess', 1, str, 'string', true )
 		libUtil.checkType( 'croak', 2, level, 'number', true )
 		str = str or mw.message.new( 'pickle-spies-confess-skip' ):plain()
-		Spy:create():setReports( reports ):doConfess( str )
+		pickle.spy:create():setReports( reports ):doConfess( str )
 		error( mw.message.new( 'pickle-spies-confess-exits' ):plain(), level or 0 )
 	end
 end

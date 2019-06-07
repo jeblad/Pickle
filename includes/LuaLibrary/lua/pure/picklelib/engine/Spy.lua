@@ -12,8 +12,13 @@ local ReportAdapt = require 'picklelib/report/ReportAdapt'
 local Spy = {}
 
 --- Lookup of missing class members.
--- @field class index
-Spy.__index = Spy
+-- @raise on wrong arguments
+-- @tparam string key lookup of member
+-- @return any
+function Spy:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'Spy:__index', 1, key, 'string', false )
+	return Spy[key]
+end
 
 --- Create a new instance.
 -- Assumption is either to create a new instance from an existing class,
