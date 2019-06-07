@@ -115,7 +115,7 @@ local function registerComments( env, reports )
 	libUtil.checkType( 'Pickle:registerComments', 1, env, 'table', false )
 	libUtil.checkType( 'Pickle:registerComments', 2, reports, 'table', false )
 
-	--- skip, comment on the current reports.
+	--- Make a skip comment on the current reports.
 	-- This will not terminate current run.
 	-- @function skip
 	-- @param str message to be passed on
@@ -124,7 +124,8 @@ local function registerComments( env, reports )
 			or mw.message.new( 'pickle-report-frame-skip-no-description' ):plain() )
 	end
 
-	--- todo, comment on the current reports.
+	--- Make a todo comment on the current reports.
+	-- This will not terminate current run.
 	-- @function todo
 	-- @param str message to be passed on
 	env.todo = function( str )
