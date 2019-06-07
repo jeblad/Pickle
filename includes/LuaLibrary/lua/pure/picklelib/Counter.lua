@@ -10,8 +10,13 @@ local libUtil = require 'libraryUtil'
 local Counter = {}
 
 --- Lookup of missing class members.
--- @field class index
-Counter.__index = Counter
+-- @raise on wrong arguments
+-- @tparam string key lookup of member
+-- @return any
+function Counter:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'Counter:__index', 1, key, 'string', false )
+	return Counter[key]
+end
 
 --- Call on instance.
 -- Update value, but return the old value.

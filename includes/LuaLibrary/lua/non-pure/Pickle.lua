@@ -7,13 +7,21 @@ local options	-- luacheck: ignore
 
 -- pure libs
 local libUtil = require 'libraryUtil'
+local Counter = require 'picklelib/Counter'
+local Bag = require 'picklelib/Bag'
 
 -- @var structure for storage of the lib
 local pickle = {
-	_types = {},		-- holds type methods
-	_styles = {},		-- holds style methods
+--	_types = {},		-- holds type methods
+--	_styles = {},		-- holds style methods
 	_extractors = {},	-- holds extractor methods
 }
+
+-- @var structure for delayed render styles
+local renderStyleNames = nil
+
+-- @var structure for delayed render stypes
+local renderTypeNames = nil
 
 pickle.double = require 'picklelib/engine/Double'
 
@@ -133,7 +141,7 @@ local function registerReports( env )
 	libUtil.checkType( 'Pickle:registerComments', 1, env, 'table', false )
 
 	-- require libs
-	local reports = require( 'picklelib/Bag' ):create()
+	local reports = Bag:create()
 	env._reports = reports
 
 	return reports
@@ -145,9 +153,9 @@ local function registerRenders()	-- require libs
 	local renders = require 'picklelib/render/Renders'
 
 	-- register render styles
-	for k,v in pairs( mw.pickle._styles ) do
+	for k,v in pairs( renderStyleNames ) do
 		local style = renders.registerStyle( k )
-		for l,w in pairs( mw.pickle._types ) do
+		for l,w in pairs( renderTypeNames ) do
 			local lib = mw.pickle._renderPrefix
 				.. k .. mw.pickle._renderInfix
 				.. w .. v .. mw.pickle._renderPostfix
@@ -210,8 +218,8 @@ local function registerAdaptations( env, reports )
 
 	-- require libs
 	local Adapt = require 'picklelib/engine/Adapt'
-	local expects = require( 'picklelib/Bag' ):create()
-	local subjects = require( 'picklelib/Bag' ):create()
+	local expects = Bag:create()
+	local subjects = Bag:create()
 
 	--- Expect whatever to be compared to the subject.
 	-- The expected value is the assumed outcome,
@@ -243,6 +251,36 @@ local function registerAdaptations( env, reports )
 	return expects, subjects
 end
 
+--- Helper to get the named style
+-- @param frame
+-- @treturn string
+local function findStyle( frame )
+	if frame.args['style'] then
+		return frame.args['style']
+	end
+	for _,v in ipairs( frame.args ) do
+		if renderStyleNames[v] then
+			return v
+		end
+	end
+	return nil
+end
+
+--- Helper to get the identified language
+-- @param frame
+-- @treturn string
+local function findLang( frame )
+	if frame.args['lang'] then
+		return frame.args['lang']
+	end
+	for _,v in ipairs( frame.args ) do
+		if mw.language.isValidCode( v ) then
+			return v
+		end
+	end
+	return nil
+end
+
 -- @var metatable for the library
 local mt = { types = {} }
 
@@ -267,7 +305,6 @@ function pickle.implicitDescribe( ... )
 
 	-- only require libs
 	local Frame = require 'picklelib/engine/Frame'
-	local counter = require 'picklelib/Counter'
 
 	-- Get the environment for installation of our access points
 	-- This is necessary for testing.
@@ -317,36 +354,6 @@ function pickle.implicitDescribe( ... )
 		:setTranslators( translators )
 		:dispatch( ... )
 
-	--- Helper to get the named style
-	-- @tparam Frame frame
-	-- @treturn string
-	local function findStyle( frame )
-		if frame.args['style'] then
-			return frame.args['style']
-		end
-		for _,v in ipairs( frame.args ) do
-			if pickle._styles[v] then
-				return v
-			end
-		end
-		return nil
-	end
-
-	--- Helper to get the identified language
-	-- @tparam Frame frame
-	-- @treturn string
-	local function findLang( frame )
-		if frame.args['lang'] then
-			return frame.args['lang']
-		end
-		for _,v in ipairs( frame.args ) do
-			if mw.language.isValidCode( v ) then
-				return v
-			end
-		end
-		return nil
-	end
-
 	--- Eval the fixtures over previous dispatched strings.
 	-- This has two different call forms. The first is the usual form with a single
 	-- frame object. This is used if the function is called by "invoke". The other
@@ -387,7 +394,7 @@ function pickle.implicitDescribe( ... )
 		langCode = langCode or mw.language.getContentLanguage():getCode()
 
 		local style = self:renders().style( styleName )
-		return self:reports():top():realize( style, langCode, counter:create() )
+		return self:reports():top():realize( style, langCode, Counter:create() )
 	end
 
 	return obj
@@ -422,14 +429,10 @@ function pickle.setupInterface( opts )
 	pickle._renderPostfix = opts.renderPostfix;
 
 	-- keep render styles for later, newer mind requiring them now
-	for k,v in pairs( opts.renderStyles ) do
-		pickle._styles[k] = v
-	end
+	renderStyleNames = mw.clone( opts.renderStyles )
 
 	-- keep render types for later, newer mind requiring them now
-	for k,v in pairs( opts.renderTypes ) do
-		pickle._types[k] = v
-	end
+	renderTypeNames = mw.clone( opts.renderTypes )
 
 	-- keep extractors for later, newer mind requiring them now
 	for i,v in ipairs( opts.extractors ) do

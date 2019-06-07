@@ -11,8 +11,13 @@ local libUtil = require 'libraryUtil'
 local Bag = {}
 
 --- Lookup of missing class members.
--- @field class index
-Bag.__index = Bag
+-- @raise on wrong arguments
+-- @tparam string key lookup of member
+-- @return any
+function Bag:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'Bag:__index', 1, key, 'string', false )
+	return Bag[key]
+end
 
 --- Create a new instance.
 -- @tparam vararg ... forwarded to `_init()`
