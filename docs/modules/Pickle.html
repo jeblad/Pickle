@@ -40,7 +40,6 @@
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><strong>Pickle</strong></li>
-  <li><a href="../modules/Stub.html">Stub</a></li>
   <li><a href="../modules/util.html">util</a></li>
 </ul>
 <h2>Classes</h2>
@@ -48,9 +47,9 @@
   <li><a href="../classes/Bag.html">Bag</a></li>
   <li><a href="../classes/Counter.html">Counter</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Double.html">Double</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
-  <li><a href="../classes/Stub.html">Stub</a></li>
   <li><a href="../classes/Extractor.html">Extractor</a></li>
   <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
   <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
@@ -109,6 +108,10 @@
 
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#stub">stub (...)</a></td>
+	<td class="summary">Test double for mimickin general behavior.</td>
+	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#carp">carp (str)</a></td>
 	<td class="summary">Carp, warn called due to a possible error condition.</td>
@@ -177,6 +180,34 @@
     <h2 class="section-header "><a name="Functions"></a>Functions</h2>
 
     <dl class="function">
+    <dt>
+    <a name = "stub"></a>
+    <strong>stub (...)</strong>
+    </dt>
+    <dd>
+    Test double for mimickin general behavior.
+ Returns precomputed values or compute them on the fly.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a>, <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">boolean</span>, <span class="type">number</span> or <span class="type">function</span></span>
+         arguments to be parsed
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">function</span></span>
+
+
+
+
+
+
+
+</dd>
     <dt>
     <a name = "carp"></a>
     <strong>carp (str)</strong>

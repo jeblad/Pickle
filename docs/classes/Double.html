@@ -32,8 +32,8 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Fields">Fields</a></li>
 <li><a href="#Methods">Methods</a></li>
+<li><a href="#Metamethods">Metamethods</a></li>
 </ul>
 
 
@@ -42,9 +42,9 @@
   <li><a href="../classes/Bag.html">Bag</a></li>
   <li><a href="../classes/Counter.html">Counter</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><strong>Double</strong></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
-  <li><strong>Stub</strong></li>
   <li><a href="../classes/Extractor.html">Extractor</a></li>
   <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
   <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
@@ -99,90 +99,97 @@
 
 <div id="content">
 
-<h1>Class <code>Stub</code></h1>
-<p>Class with closure for creating stub functions.</p>
-<p> The full description of how to use the stub function can be found in
- <a href="../topics/test-fakes.md.html">test fakes</a>.
+<h1>Class <code>Double</code></h1>
+<p>Class for creating test doubles.</p>
+<p> For full description see <a href="../topics/test-doubles.md.html">test doubles</a>.
  This class follows the pattern from
  <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
-<h2><a href="#Fields">Fields</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name nowrap"><a href="#Stub.__index">Stub.__index</a></td>
-	<td class="summary">Lookup of missing class members.</td>
-	</tr>
-</table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#Stub:create">Stub:create (...)</a></td>
+	<td class="name nowrap"><a href="#Double:create">Double:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:_init">Stub:_init (...)</a></td>
+	<td class="name nowrap"><a href="#Double:_init">Double:_init (...)</a></td>
 	<td class="summary">Initialize a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:parse">Stub:parse (...)</a></td>
-	<td class="summary">Parse arguments</td>
+	<td class="name nowrap"><a href="#Double:dispatch">Double:dispatch (...)</a></td>
+	<td class="summary">Dispatch arguments</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:setName">Stub:setName (name)</a></td>
+	<td class="name nowrap"><a href="#Double:setName">Double:setName (name)</a></td>
 	<td class="summary">Set identifying name</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:hasName">Stub:hasName ()</a></td>
+	<td class="name nowrap"><a href="#Double:hasName">Double:hasName ()</a></td>
 	<td class="summary">Has set name.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:setLevel">Stub:setLevel (level)</a></td>
+	<td class="name nowrap"><a href="#Double:setLevel">Double:setLevel (level)</a></td>
 	<td class="summary">Set stack level.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:hasLevel">Stub:hasLevel ()</a></td>
+	<td class="name nowrap"><a href="#Double:hasLevel">Double:hasLevel ()</a></td>
 	<td class="summary">Has set level.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:setOnEmpty">Stub:setOnEmpty (func)</a></td>
-	<td class="summary">Set on empty callback.</td>
+	<td class="name nowrap"><a href="#Double:setOnEmpty">Double:setOnEmpty (func)</a></td>
+	<td class="summary">Set on empty fallback.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:hasOnEmpty">Stub:hasOnEmpty ()</a></td>
-	<td class="summary">Has set empty callback.</td>
+	<td class="name nowrap"><a href="#Double:hasOnEmpty">Double:hasOnEmpty ()</a></td>
+	<td class="summary">Has set empty fallback.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:isEmpty">Stub:isEmpty ()</a></td>
+	<td class="name nowrap"><a href="#Double:isEmpty">Double:isEmpty ()</a></td>
 	<td class="summary">Is the list of values empty.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:depth">Stub:depth ()</a></td>
+	<td class="name nowrap"><a href="#Double:depth">Double:depth ()</a></td>
 	<td class="summary">What is the depth of the internal values list.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:layout">Stub:layout ()</a></td>
+	<td class="name nowrap"><a href="#Double:layout">Double:layout ()</a></td>
 	<td class="summary">Get the layout of the values list.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:add">Stub:add (...)</a></td>
+	<td class="name nowrap"><a href="#Double:add">Double:add (...)</a></td>
 	<td class="summary">Add value(s) to the list of values.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:remove">Stub:remove (num)</a></td>
+	<td class="name nowrap"><a href="#Double:remove">Double:remove (num)</a></td>
 	<td class="summary">Remove value from the list of values.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:closure">Stub:closure ()</a></td>
-	<td class="summary">Return a closure for the object.</td>
+	<td class="name nowrap"><a href="#Double:stub">Double:stub ()</a></td>
+	<td class="summary">Return a stub function for the object.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:export">Stub:export ()</a></td>
+	<td class="name nowrap"><a href="#Double:hasStub">Double:hasStub ()</a></td>
+	<td class="summary">Has set stub function.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Double:export">Double:export ()</a></td>
 	<td class="summary">Export a list of all the contents.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Stub:flush">Stub:flush ()</a></td>
+	<td class="name nowrap"><a href="#Double:flush">Double:flush ()</a></td>
 	<td class="summary">Flush all the contents.</td>
+	</tr>
+</table>
+<h2><a href="#Metamethods">Metamethods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#Double:__index">Double:__index (key)</a></td>
+	<td class="summary">Lookup of missing class members.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Double:__call">Double:__call (...)</a></td>
+	<td class="summary">Get arguments for a functionlike call.</td>
 	</tr>
 </table>
 
@@ -190,35 +197,12 @@
 <br/>
 
 
-    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "Stub.__index"></a>
-    <strong>Stub.__index</strong>
-    </dt>
-    <dd>
-    Lookup of missing class members.
-
-
-    <ul>
-        <li><span class="parameter">class</span>
-         index
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-</dl>
     <h2 class="section-header "><a name="Methods"></a>Methods</h2>
 
     <dl class="function">
     <dt>
-    <a name = "Stub:create"></a>
-    <strong>Stub:create (...)</strong>
+    <a name = "Double:create"></a>
+    <strong>Double:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
@@ -244,8 +228,8 @@
 
 </dd>
     <dt>
-    <a name = "Stub:_init"></a>
-    <strong>Stub:_init (...)</strong>
+    <a name = "Double:_init"></a>
+    <strong>Double:_init (...)</strong>
     </dt>
     <dd>
     Initialize a new instance.
@@ -271,11 +255,11 @@
 
 </dd>
     <dt>
-    <a name = "Stub:parse"></a>
-    <strong>Stub:parse (...)</strong>
+    <a name = "Double:dispatch"></a>
+    <strong>Double:dispatch (...)</strong>
     </dt>
     <dd>
-    Parse arguments
+    Dispatch arguments
 
 
     <h3>Parameters:</h3>
@@ -300,8 +284,8 @@
 
 </dd>
     <dt>
-    <a name = "Stub:setName"></a>
-    <strong>Stub:setName (name)</strong>
+    <a name = "Double:setName"></a>
+    <strong>Double:setName (name)</strong>
     </dt>
     <dd>
     Set identifying name
@@ -324,8 +308,8 @@
 
 </dd>
     <dt>
-    <a name = "Stub:hasName"></a>
-    <strong>Stub:hasName ()</strong>
+    <a name = "Double:hasName"></a>
+    <strong>Double:hasName ()</strong>
     </dt>
     <dd>
     Has set name.
@@ -339,8 +323,8 @@
 
 </dd>
     <dt>
-    <a name = "Stub:setLevel"></a>
-    <strong>Stub:setLevel (level)</strong>
+    <a name = "Double:setLevel"></a>
+    <strong>Double:setLevel (level)</strong>
     </dt>
     <dd>
     Set stack level.
@@ -363,8 +347,8 @@
 
 </dd>
     <dt>
-    <a name = "Stub:hasLevel"></a>
-    <strong>Stub:hasLevel ()</strong>
+    <a name = "Double:hasLevel"></a>
+    <strong>Double:hasLevel ()</strong>
     </dt>
     <dd>
     Has set level.
@@ -378,18 +362,18 @@
 
 </dd>
     <dt>
-    <a name = "Stub:setOnEmpty"></a>
-    <strong>Stub:setOnEmpty (func)</strong>
+    <a name = "Double:setOnEmpty"></a>
+    <strong>Double:setOnEmpty (func)</strong>
     </dt>
     <dd>
-    Set on empty callback.
+    Set on empty fallback.
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">func</span>
             <span class="types"><span class="type">nil</span> or <span class="type">function</span></span>
-         callback to be used in place of precomputed values
+         fallback to be used in place of precomputed values
  treturn self
         </li>
     </ul>
@@ -402,11 +386,11 @@
 
 </dd>
     <dt>
-    <a name = "Stub:hasOnEmpty"></a>
-    <strong>Stub:hasOnEmpty ()</strong>
+    <a name = "Double:hasOnEmpty"></a>
+    <strong>Double:hasOnEmpty ()</strong>
     </dt>
     <dd>
-    Has set empty callback.
+    Has set empty fallback.
  treturn boolean
 
 
@@ -417,8 +401,8 @@
 
 </dd>
     <dt>
-    <a name = "Stub:isEmpty"></a>
-    <strong>Stub:isEmpty ()</strong>
+    <a name = "Double:isEmpty"></a>
+    <strong>Double:isEmpty ()</strong>
     </dt>
     <dd>
     Is the list of values empty.
@@ -437,8 +421,8 @@
 
 </dd>
     <dt>
-    <a name = "Stub:depth"></a>
-    <strong>Stub:depth ()</strong>
+    <a name = "Double:depth"></a>
+    <strong>Double:depth ()</strong>
     </dt>
     <dd>
     What is the depth of the internal values list.
@@ -457,8 +441,8 @@
 
 </dd>
     <dt>
-    <a name = "Stub:layout"></a>
-    <strong>Stub:layout ()</strong>
+    <a name = "Double:layout"></a>
+    <strong>Double:layout ()</strong>
     </dt>
     <dd>
     Get the layout of the values list.
@@ -476,8 +460,8 @@
 
 </dd>
     <dt>
-    <a name = "Stub:add"></a>
-    <strong>Stub:add (...)</strong>
+    <a name = "Double:add"></a>
+    <strong>Double:add (...)</strong>
     </dt>
     <dd>
     Add value(s) to the list of values.
@@ -502,8 +486,8 @@
 
 </dd>
     <dt>
-    <a name = "Stub:remove"></a>
-    <strong>Stub:remove (num)</strong>
+    <a name = "Double:remove"></a>
+    <strong>Double:remove (num)</strong>
     </dt>
     <dd>
     Remove value from the list of values.
@@ -528,18 +512,18 @@
 
 </dd>
     <dt>
-    <a name = "Stub:closure"></a>
-    <strong>Stub:closure ()</strong>
+    <a name = "Double:stub"></a>
+    <strong>Double:stub ()</strong>
     </dt>
     <dd>
-    Return a closure for the object.
+    Return a stub function for the object.
  Each call to the returned closure will remove one frame of values from the internal structure.
 
 
 
     <h3>Returns:</h3>
 
-           <span class="types"><a class="type" href="../classes/Stub.html#Stub:closure">closure</a></span>
+           <span class="types"><span class="type">closure</span></span>
 
 
 
@@ -549,8 +533,23 @@
 
 </dd>
     <dt>
-    <a name = "Stub:export"></a>
-    <strong>Stub:export ()</strong>
+    <a name = "Double:hasStub"></a>
+    <strong>Double:hasStub ()</strong>
+    </dt>
+    <dd>
+    Has set stub function.
+ treturn boolean
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Double:export"></a>
+    <strong>Double:export ()</strong>
     </dt>
     <dd>
     Export a list of all the contents.
@@ -567,8 +566,8 @@
 
 </dd>
     <dt>
-    <a name = "Stub:flush"></a>
-    <strong>Stub:flush ()</strong>
+    <a name = "Double:flush"></a>
+    <strong>Double:flush ()</strong>
     </dt>
     <dd>
     Flush all the contents.
@@ -580,6 +579,63 @@
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         list of values
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Double:__index"></a>
+    <strong>Double:__index (key)</strong>
+    </dt>
+    <dd>
+    Lookup of missing class members.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         lookup of member
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        any
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Double:__call"></a>
+    <strong>Double:__call (...)</strong>
+    </dt>
+    <dd>
+    Get arguments for a functionlike call.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         pass on to dispatch
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 

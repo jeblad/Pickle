@@ -53,7 +53,6 @@
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/Pickle.html">Pickle</a></li>
-  <li><a href="../modules/Stub.html">Stub</a></li>
   <li><a href="../modules/util.html">util</a></li>
 </ul>
 <h2>Classes</h2>
@@ -61,9 +60,9 @@
   <li><a href="../classes/Bag.html">Bag</a></li>
   <li><a href="../classes/Counter.html">Counter</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Double.html">Double</a></li>
   <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
-  <li><a href="../classes/Stub.html">Stub</a></li>
   <li><a href="../classes/Extractor.html">Extractor</a></li>
   <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
   <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
@@ -102,26 +101,14 @@
 
 <h1>Test doubles</h1>
 
-<p>There are two types of <a href="https://en.wikipedia.org/wiki/Test_double">test doubles</a> provided; a <a href="https://en.wikipedia.org/wiki/Test_stub">stub function</a> and a <a href="https://en.wikipedia.org/wiki/Mock_object">mock object</a>. The stub function is a function that play back a sequence of provided values, and the mock object does the same with addition of verifying the calling method.</p>
+<p>There are two variants of <a href="https://en.wikipedia.org/wiki/Test_double">test doubles</a> that can be made; a <a href="https://en.wikipedia.org/wiki/Test_stub">stub function</a> and a <a href="https://en.wikipedia.org/wiki/Mock_object">mock object</a>. The stub function is a function that play back a sequence of provided values, and the mock object does the same with addition of verifying the calling method.</p>
+
+<p>A third type is a <a href="https://en.wikipedia.org/wiki/Fake_object">fake object</a>. This is an existing object that is changed so it can be mocked. It is questionable at best whether this really is a valid version of the preexisting object, and the state of the preexisting object surely is questionable after bein abused like this.</p>
 
 <p><a name="Usage"></a></p>
 <h2>Usage</h2>
 
-<p>Both types of test doubles are created using the same basic principle. A number of tables are collected as arguments, and when the test double are called the content is unpacked and returned as the current value.</p>
-
-<h3>Stub function</h3>
-
-<p>The <a href="../classes/Stub.html#">stub function</a> is a closure holding references to the provided predefined vararg list of table wrapped values. For each call the next set of values will be returned. The function can thus return a list of values, even if the most common use case is a single value. The values are wrapped up when the stub is made</p>
-
-
-<pre>
-<span class="keyword">local</span> func = mw.pickle.stub( { <span class="number">1</span>, <span class="string">'foo'</span> }, { <span class="number">2</span>, <span class="string">'bar'</span> }, { <span class="number">3</span>, <span class="string">'baz'</span> } )
-func() <span class="comment">-- returns 1, 'foo'
-</span>func() <span class="comment">-- returns 2, 'bar'
-</span>func() <span class="comment">-- returns 3, 'baz'
-</span>func() <span class="comment">-- the sequence is exhaused, and a call will rise an error</span>
-</pre>
-
+<p>All types of test doubles are created using the same basic principle. A number of tables are collected as arguments, and when the test double are called the content is unpacked and returned as the current value.</p>
 
 <p>It is not an error within the <em>tested code</em> when the sequence is exhausted, it is an error within the <em>fixture code</em>.</p>
 
@@ -140,9 +127,100 @@ describe( …
 
 <p>Usually the construct work quite well, as the code in debug console is completely rerun on each invocation.</p>
 
+<h3>Stub function</h3>
+
+<p>The <a href="../modules/Pickle.html#stub">stub function</a> is a convenience function for creating a closure holding references to the provided predefined vararg list of table wrapped values. For each call the next set of values will be returned. The function can thus return a list of values, even if the most common use case is a single value. The values are wrapped up when the stub is made</p>
+
+
+<pre>
+<span class="keyword">local</span> test = stub( { <span class="string">'foo'</span> }, { <span class="string">'bar'</span> }, { <span class="string">'baz'</span> }, <span class="global">string</span>.upper )
+test( <span class="string">'ping'</span> ) <span class="comment">-- precomputed value, returns 'foo'
+</span>test( <span class="string">'ping'</span> ) <span class="comment">-- precomputed value, returns 'bar'
+</span>test( <span class="string">'ping'</span> ) <span class="comment">-- precomputed value, returns 'baz'
+</span>test( <span class="string">'ping'</span> ) <span class="comment">-- exhaused, but uses the onempty fallback, returns 'PING'</span>
+</pre>
+
+
+<p><strong>Code 1</strong>: Simple use of the convenience function.</p>
+
+<p>When the convenience function is created some default housekeeping is done, like setting the error report level and setting a default name. No fallback is set for the convenience function.</p>
+
+<p>Note that the convenience function is only available after the library is initialized.</p>
+
+<p>Other forms are possible by using the <a href="../classes/Double.html#">double class</a>, building an instance, and then turning it into a stub</p>
+
+
+<pre>
+<span class="keyword">local</span> test = mw.pickle.double:create( <span class="string">'first-test'</span>,
+  { <span class="string">'foo'</span> }, { <span class="string">'bar'</span> }, { <span class="string">'baz'</span> } )
+  :stub()      <span class="comment">-- build and return closure
+</span>test( <span class="string">'ping'</span> ) <span class="comment">-- precomputed value, returns 'foo'
+</span>test( <span class="string">'ping'</span> ) <span class="comment">-- precomputed value, returns 'bar'
+</span>test( <span class="string">'ping'</span> ) <span class="comment">-- precomputed value, returns 'baz'
+</span>test( <span class="string">'ping'</span> ) <span class="comment">-- exhaused, and a call will rise an error</span>
+</pre>
+
+
+<p><strong>Code 2</strong>: Instance creation with only precomputed values, without fallback function. The code use vararg style.</p>
+
+
+<pre>
+<span class="keyword">local</span> test = mw.pickle.double:create <span class="string">'second-test'</span>
+  { <span class="string">'foo'</span> } { <span class="string">'bar'</span> } { <span class="string">'baz'</span> }
+  :setOnEmpty( <span class="global">string</span>.upper ) <span class="comment">-- adds a fallback
+</span>  :stub()      <span class="comment">-- build and return closure
+</span>test( <span class="string">'ping'</span> ) <span class="comment">-- precomputed value, returns 'foo'
+</span>test( <span class="string">'ping'</span> ) <span class="comment">-- precomputed value, returns 'bar'
+</span>test( <span class="string">'ping'</span> ) <span class="comment">-- precomputed value, returns 'baz'
+</span>test( <span class="string">'ping'</span> ) <span class="comment">-- exhaused, but uses the fallback, returns 'PING'</span>
+</pre>
+
+
+<p><strong>Code 3</strong>: Instance creation with precomputed values, with fallback function. The code use call chain style.</p>
+
+
+<pre>
+<span class="keyword">local</span> test = mw.pickle.double:create()
+  :setName( <span class="string">'third-test'</span> )
+  :add ( <span class="keyword">true</span> )         <span class="comment">-- must wrap true literal
+</span>  :add { <span class="string">'bar'</span> }        <span class="comment">-- value list
+</span>  :add { <span class="string">'baz'</span> }        <span class="comment">-- value list
+</span>  :setOnEmpty( <span class="global">string</span>.upper ) <span class="comment">-- adds a fallback
+</span>  :stub()      <span class="comment">-- build and return closure
+</span>test( <span class="string">'ping'</span> ) <span class="comment">-- uses the fallback, returns 'PING'
+</span>test( <span class="string">'ping'</span> ) <span class="comment">-- precomputed value, returns 'bar'
+</span>test( <span class="string">'ping'</span> ) <span class="comment">-- precomputed value, returns 'baz'
+</span>test( <span class="string">'ping'</span> ) <span class="comment">--exhaused, but uses the fallback, returns 'PING'</span>
+</pre>
+
+
+<p><strong>Code 4</strong>: Instance creation with precomputed values, with fallback function and in-list fallback. The code use method chain style.</p>
+
+<p>It is possible to create similar functions as the provided stub convenience function. The function is noting more than</p>
+
+
+<pre>
+<span class="keyword">function</span> stub( ... )
+  <span class="keyword">return</span> mw.pickle.double:create()
+    :setLevel(<span class="number">2</span>)
+    :setName(<span class="string">'stub'</span>)
+    :dispatch( ... )
+    :stub()
+<span class="keyword">end</span>
+</pre>
+
+
+<p><strong>Code 5</strong>: Creation of a convenience function like <code>stub</code>.</p>
+
+<p>In a real stub function it could be necessary to change the reporting level. This is the actual stack level to report. It could also be convenient to make a name that reflects the actual function name.</p>
+
 <h3>Mock object</h3>
 
 <p>The mock object…</p>
+
+<h3>Fake object</h3>
+
+<p>The fake object…</p>
 
 
 </div> <!-- id="content" -->
