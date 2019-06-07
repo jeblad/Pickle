@@ -135,5 +135,7 @@
 	"pickle-spies-confess-skip": "{{pickle-gloss}} {{pickle-spies-called|confess}}",
 	"pickle-spies-croak-skip": "{{pickle-gloss}} {{pickle-spies-called|croak}}",
 	"pickle-spies-confess-exits": "{{pickle-gloss}} {{pickle-spies-exits|confess}}",
-	"pickle-spies-croak-exits": "{{pickle-gloss}} {{pickle-spies-exits|croak}}"
+	"pickle-spies-croak-exits": "{{pickle-gloss}} {{pickle-spies-exits|croak}}",
+	"pickle-stub-no-fallback": "{{pickle-gloss}} Tried to conditionally execute a on-empty fallback, and could not find any such function.",
+	"pickle-stub-no-more-frames": "{{pickle-gloss}} A value was requested, but previous executions has reached end of precomputed values."
 }

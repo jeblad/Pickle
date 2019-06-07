@@ -132,5 +132,7 @@
 	"pickle-spies-confess-skip": "Function “confess” called",
 	"pickle-spies-croak-skip": "Function “croak” called",
 	"pickle-spies-confess-exits": "Function “confess” exits",
-	"pickle-spies-croak-exits": "Function “croak” exits"
+	"pickle-spies-croak-exits": "Function “croak” exits",
+	"pickle-stub-no-fallback": "$1: no fallback",
+	"pickle-stub-no-more-frames": "$1: no more frames"
 }
