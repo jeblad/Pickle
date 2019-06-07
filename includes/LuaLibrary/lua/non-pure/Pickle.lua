@@ -11,9 +11,7 @@ local Counter = require 'picklelib/Counter'
 local Bag = require 'picklelib/Bag'
 
 -- @var structure for storage of the lib
-local pickle = {
-	_extractors = {},	-- holds extractor methods
-}
+local pickle = {}
 
 -- @var structure for delayed render styles
 local renderStyleNames = nil
@@ -21,8 +19,12 @@ local renderStyleNames = nil
 -- @var structure for delayed render libs
 local renderLibs = {}
 
+-- @var structure for delayed extractor libs
+local extractorLibs = {}
+
 pickle.double = require 'picklelib/engine/Double'
 pickle.renders = require 'picklelib/render/Renders'
+pickle.extractors = require 'picklelib/extractor/Extractors'
 
 -- Register doubles.
 -- This needs a valid environment, for example from getfenv()
@@ -154,7 +156,7 @@ local function registerRenders( env )	-- require libs
 	local renders = require 'picklelib/render/Renders'
 
 	-- register render styles
-	for _,v in pairs( renderLibs ) do
+	for _,v in ipairs( renderLibs ) do
 		local style = renders.registerStyle( v[1] )
 		assert( style )
 		style:registerType( v[2], require( v[3] ) )
@@ -173,14 +175,14 @@ local function registerRenders( env )	-- require libs
 end
 
 --- Register extractors.
--- @return ExtractorStrategies
+-- @return Extractors
 local function registerExtractors()
 
 	-- require libs
-	local extractors = require( 'picklelib/extractor/Extractors' ):create()
+	local extractors = mw.pickle.extractors:create()
 
 	-- register extractor types
-	for _,v in ipairs( mw.pickle._extractors ) do
+	for _,v in ipairs( extractorLibs ) do
 		extractors:register( require( v ):create() )
 	end
 
@@ -437,9 +439,9 @@ function pickle.setupInterface( opts )
 		end
 	end
 
-	-- keep extractors for later, newer mind requiring them now
+	-- keep extractors for later
 	for i,v in ipairs( opts.extractors ) do
-		pickle._extractors[i] = v
+		table.insert( extractorLibs, v )
 	end
 
 end
