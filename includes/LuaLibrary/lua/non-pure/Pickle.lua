@@ -7,7 +7,6 @@ local options	-- luacheck: ignore
 
 -- pure libs
 local libUtil = require 'libraryUtil'
-local Bag = require 'picklelib/Bag'
 
 -- @var structure for storage of the lib
 local pickle = {}
@@ -21,6 +20,7 @@ local renderLibs = {}
 -- @var structure for delayed extractor libs
 local extractorLibs = {}
 
+pickle.bag = require 'picklelib/Bag'
 pickle.counter = require 'picklelib/Counter'
 pickle.double = require 'picklelib/engine/Double'
 pickle.renders = require 'picklelib/render/Renders'
@@ -143,7 +143,7 @@ local function registerReports( env )
 	libUtil.checkType( 'Pickle:registerComments', 1, env, 'table', false )
 
 	-- require libs
-	local reports = Bag:create()
+	local reports = pickle.bag:create()
 	env._reports = reports
 
 	return reports
@@ -227,8 +227,8 @@ local function registerAdaptations( env, reports )
 
 	-- require libs
 	local Adapt = require 'picklelib/engine/Adapt'
-	local expects = Bag:create()
-	local subjects = Bag:create()
+	local expects = pickle.bag:create()
+	local subjects = pickle.bag:create()
 
 	--- Expect whatever to be compared to the subject.
 	-- The expected value is the assumed outcome,
