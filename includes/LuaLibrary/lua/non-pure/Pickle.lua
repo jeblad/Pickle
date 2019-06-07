@@ -180,7 +180,7 @@ end
 local function registerExtractors()
 
 	-- require libs
-	local extractors = mw.pickle.extractors:create()
+	local extractors = pickle.extractors:create()
 
 	-- register extractor types
 	for _,v in ipairs( extractorLibs ) do
@@ -325,7 +325,7 @@ function pickle.implicitDescribe( ... )
 	local reports = registerReports( env )
 	local renders = registerRenders( env )
 	local extractors = registerExtractors()
-	local translators = registerTranslators( mw.pickle._translationSubpage )	-- luacheck: ignore
+	local translators = registerTranslators( pickle._translationSubpage )	-- luacheck: ignore
 	local expects, subjects = registerAdaptations( env, reports )	-- luacheck: ignore
 
 	--- Context for the test.
@@ -403,7 +403,7 @@ function pickle.implicitDescribe( ... )
 		langCode = langCode or mw.language.getContentLanguage():getCode()
 
 		local style = self:renders().style( styleName )
-		return self:reports():top():realize( style, langCode, mw.pickle.counter:create() )
+		return self:reports():top():realize( style, langCode, pickle.counter:create() )
 	end
 
 	return obj
