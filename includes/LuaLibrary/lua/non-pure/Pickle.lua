@@ -7,7 +7,6 @@ local options	-- luacheck: ignore
 
 -- pure libs
 local libUtil = require 'libraryUtil'
-local Counter = require 'picklelib/Counter'
 local Bag = require 'picklelib/Bag'
 
 -- @var structure for storage of the lib
@@ -22,6 +21,7 @@ local renderLibs = {}
 -- @var structure for delayed extractor libs
 local extractorLibs = {}
 
+pickle.counter = require 'picklelib/Counter'
 pickle.double = require 'picklelib/engine/Double'
 pickle.renders = require 'picklelib/render/Renders'
 pickle.extractors = require 'picklelib/extractor/Extractors'
@@ -403,7 +403,7 @@ function pickle.implicitDescribe( ... )
 		langCode = langCode or mw.language.getContentLanguage():getCode()
 
 		local style = self:renders().style( styleName )
-		return self:reports():top():realize( style, langCode, Counter:create() )
+		return self:reports():top():realize( style, langCode, mw.pickle.counter:create() )
 	end
 
 	return obj
