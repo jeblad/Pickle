@@ -174,18 +174,18 @@ function Double:stub()
 			if itemType == 'boolean' then
 				if item == true then
 					if not self._onEmpty then
-						error( mw.message.new( 'pickle-stub-no-fallback', self._name or 'double' ):plain() )
+						error( mw.message.new( 'pickle-stub-no-fallback', self._name or 'double' ):plain(), 0 )
 					end
 					return self._onEmpty( ... )
 				end
-				error( mw.message.new( 'pickle-stub-no-more-frames', self._name or 'double' ):plain() )
+				error( mw.message.new( 'pickle-stub-no-more-frames', self._name or 'double' ):plain(), 0 )
 			end
 			-- unconditional redirect
 			if self._onEmpty then
 				return self._onEmpty( ... )
 			end
 			-- failed
-			error( mw.message.new( 'pickle-stub-no-more-frames', self._name or 'double' ):plain() )
+			error( mw.message.new( 'pickle-stub-no-more-frames', self._name or 'double' ):plain(), 0 )
 
 		end
 	end
