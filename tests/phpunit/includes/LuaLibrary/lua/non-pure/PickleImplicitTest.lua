@@ -5,19 +5,22 @@
 
 local testframework = require 'Module:TestFramework'
 
-if not _G.describe then
-	return testframework.getTestProvider( {} )
-end
+--if not _G.describe then
+--	return testframework.getTestProvider( {} )
+--end
 
-_G.describe()
+mw.pickle()
 
 local function testExists()
 	return type( mw.pickle )
 end
 
 local function testType( name )
-	local _type = type( _G[ name ] )
-	return _type
+	return type( _G[ name ] )
+end
+
+local function testMW( name )
+	return type( _G.mw.pickle[ name ] )
 end
 
 local function testComment( name, ... )
@@ -48,68 +51,180 @@ local tests = {
 	},
 	-- PickleTest[2]
 	{
-		name = 'table mw.describe',
+		name = 'table mw.pickle.bag',
+		func = testMW,
+		args = { 'bag' },
+		expect = { 'table' }
+	},
+	{
+		name = 'table mw.pickle.counter',
+		func = testMW,
+		args = { 'counter' },
+		expect = { 'table' }
+	},
+	-- PickleTest[3]
+	{
+		name = 'table mw.pickle.spy',
+		func = testMW,
+		args = { 'spy' },
+		expect = { 'table' }
+	},
+	-- PickleTest[4]
+	{
+		name = 'table mw.pickle.frame',
+		func = testMW,
+		args = { 'frame' },
+		expect = { 'table' }
+	},
+	-- PickleTest[5]
+	{
+		name = 'table mw.pickle.adapt',
+		func = testMW,
+		args = { 'adapt' },
+		expect = { 'table' }
+	},
+	-- PickleTest[6]
+	{
+		name = 'table mw.pickle.double',
+		func = testMW,
+		args = { 'double' },
+		expect = { 'table' }
+	},
+	-- PickleTest[7]
+	{
+		name = 'table mw.pickle.renders',
+		func = testMW,
+		args = { 'renders' },
+		expect = { 'table' }
+	},
+	-- PickleTest[8]
+	{
+		name = 'table mw.pickle.extractors',
+		func = testMW,
+		args = { 'extractors' },
+		expect = { 'table' }
+	},
+	-- PickleTest[9]
+	{
+		name = 'table mw.pickle.translators',
+		func = testMW,
+		args = { 'translators' },
+		expect = { 'table' }
+	},
+
+	-- PickleTest[10]
+	{
+		name = 'table _reports',
+		func = testType,
+		args = { '_reports' },
+		expect = { 'table' }
+	},
+	-- PickleTest[11]
+	{
+		name = 'table _renders',
+		func = testType,
+		args = { '_renders' },
+		expect = { 'table' }
+	},
+	-- PickleTest[12]
+	{
+		name = 'table _extractors',
+		func = testType,
+		args = { '_extractors' },
+		expect = { 'table' }
+	},
+	-- PickleTest[13]
+	{
+		name = 'table _translators',
+		func = testType,
+		args = { '_translators' },
+		expect = { 'table' }
+	},
+	-- PickleTest[14]
+	{
+		name = 'boolean _PICKLE',
+		func = testType,
+		args = { '_PICKLE' },
+		expect = { 'boolean' }
+	},
+	-- PickleTest[15]
+	{
+		name = 'function todo',
+		func = testType,
+		args = { 'todo' },
+		expect = { 'function' }
+	},
+	-- PickleTest[16]
+	{
+		name = 'function skip',
+		func = testType,
+		args = { 'skip' },
+		expect = { 'function' }
+	},
+	-- PickleTest[17]
+	{
+		name = 'function describe',
 		func = testType,
 		args = { 'describe' },
 		expect = { 'function' }
 	},
-	-- PickleTest[3]
+	-- PickleTest[18]
 	{
-		name = 'table mw.context',
+		name = 'function context',
 		func = testType,
 		args = { 'context' },
 		expect = { 'function' }
 	},
-	-- PickleTest[4]
+	-- PickleTest[19]
 	{
-		name = 'table mw.it',
+		name = 'function it',
 		func = testType,
 		args = { 'it' },
 		expect = { 'function' }
 	},
-	-- PickleTest[5]
+	-- PickleTest[20]
 	{
-		name = 'table mw.subject',
+		name = 'function subject',
 		func = testType,
 		args = { 'subject' },
 		expect = { 'function' }
 	},
-	-- PickleTest[6]
+	-- PickleTest[21]
 	{
-		name = 'table mw.expect',
+		name = 'function expect',
 		func = testType,
 		args = { 'expect' },
 		expect = { 'function' }
 	},
-	-- PickleTest[7]
+	-- PickleTest[22]
 	{
-		name = 'table mw.carp',
+		name = 'function carp',
 		func = testType,
 		args = { 'carp' },
 		expect = { 'function' }
 	},
-	-- PickleTest[8]
+	-- PickleTest[23]
 	{
-		name = 'table mw.cluck',
+		name = 'function cluck',
 		func = testType,
 		args = { 'cluck' },
 		expect = { 'function' }
 	},
-	-- PickleTest[9]
+	-- PickleTest[24]
 	{
-		name = 'table mw.croak',
+		name = 'function croak',
 		func = testType,
 		args = { 'croak' },
 		expect = { 'function' }
 	},
-	-- PickleTest[10]
+	-- PickleTest[25]
 	{
-		name = 'table mw.confess',
+		name = 'function confess',
 		func = testType,
 		args = { 'confess' },
 		expect = { 'function' }
 	},
-	-- PickleTest[11]
+	-- PickleTest[26]
 	{
 		name = 'comment todo ()',
 		func = testComment,
@@ -120,7 +235,7 @@ local tests = {
 			false
 		}
 	},
-	-- PickleTest[12]
+	-- PickleTest[27]
 	{
 		name = 'comment skip ()',
 		func = testComment,
@@ -131,7 +246,7 @@ local tests = {
 			'foo bar baz'
 		}
 	},
-	-- PickleTest[13]
+	-- PickleTest[28]
 	{
 		name = 'carp ( nil )',
 		func = testSpy,
@@ -142,7 +257,7 @@ local tests = {
 			'Function “carp” called' -- @todo should this be 'pickle-spies-carp-todo'?
 		}
 	},
-	-- PickleTest[14]
+	-- PickleTest[29]
 	{
 		name = 'carp ( string )',
 		func = testSpy,
@@ -153,7 +268,7 @@ local tests = {
 			'foo bar baz'
 		}
 	},
-	-- PickleTest[15]
+	-- PickleTest[30]
 	{
 		name = 'cluck ( nil )',
 		func = testSpy,
@@ -164,7 +279,7 @@ local tests = {
 			'Function “cluck” called' -- @todo should this be 'pickle-spies-cluck-todo'?
 		}
 	},
-	-- PickleTest[16]
+	-- PickleTest[31]
 	{
 		name = 'cluck ( string )',
 		func = testSpy,
@@ -175,7 +290,7 @@ local tests = {
 			'foo bar baz'
 		}
 	},
-	-- PickleTest[17]
+	-- PickleTest[32]
 	{
 		name = 'croak ( nil )',
 		func = testSpy,
@@ -186,7 +301,7 @@ local tests = {
 			'Function “croak” called'
 		}
 	},
-	-- PickleTest[18]
+	-- PickleTest[33]
 	{
 		name = 'croak ( string )',
 		func = testSpy,
@@ -197,7 +312,7 @@ local tests = {
 			'foo bar baz'
 		}
 	},
-	-- PickleTest[19]
+	-- PickleTest[34]
 	{
 		name = 'confess ( nil )',
 		func = testSpy,
@@ -208,7 +323,7 @@ local tests = {
 			'Function “confess” called'
 		}
 	},
-	-- PickleTest[20]
+	-- PickleTest[35]
 	{
 		name = 'confess ( string )',
 		func = testSpy,

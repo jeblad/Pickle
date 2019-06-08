@@ -33,48 +33,16 @@ pickle.renders = require 'picklelib/render/Renders'
 pickle.extractors = require 'picklelib/extractor/Extractors'
 pickle.translators = require 'picklelib/translator/Translators'
 
---- Helper to get the named style
--- @param frame
--- @treturn string
-local function findStyle( frame )
-	if frame.args['style'] then
-		return frame.args['style']
-	end
-	for _,v in ipairs( frame.args ) do
-		if renderStyleNames[v] then
-			return v
-		end
-	end
-	return nil
-end
-
---- Helper to get the identified language
--- @param frame
--- @treturn string
-local function findLang( frame )
-	if frame.args['lang'] then
-		return frame.args['lang']
-	end
-	for _,v in ipairs( frame.args ) do
-		if mw.language.isValidCode( v ) then
-			return v
-		end
-	end
-	return nil
-end
-
 -- Setup framework.
 -- This needs a valid environment, for example from getfenv()
--- @raise on wrong arguments
--- @tparam table env for the environment
+-- @tparam table env
+-- @treturn table environment
 local function setup( env )
-	libUtil.checkType( 'Pickle:register', 1, env, 'table', false )
+	libUtil.checkType( 'setup', 1, env, 'table', false )
 
 	-- create the reports
 	local reports = pickle.bag:create()
-
-	-- @todo remove this
-	env._reports = reports
+	--env._reports = reports
 
 	-- register render styles
 	for _,v in ipairs( renderLibs ) do
@@ -112,7 +80,8 @@ local function setup( env )
 	local expects = pickle.bag:create()
 	local subjects = pickle.bag:create()
 
-	--- Test double for mimickin general behavior.
+	--- Make a test double
+	-- This is for mimickin general behavior, and acts like it is a function.
 	-- Returns precomputed values or compute them on the fly.
 	-- @function stub
 	-- @tparam table|string|boolean|number|function ... arguments to be parsed
@@ -121,8 +90,9 @@ local function setup( env )
 		return pickle.double:create():setLevel(2):setName('stub'):dispatch( ... ):stub()
 	end
 
-	--- Carp, warn called due to a possible error condition.
-	-- Print a message without exiting, with caller's name and arguments.
+	--- Make a carp on the current report.
+	-- This is usualy called due to debugging a possible error condition.
+	-- Prints a “todo” comment, caller's name and arguments.
 	-- @function carp
 	-- @tparam nil|string str message to use for todo part of report
 	-- @return Spy
@@ -132,8 +102,9 @@ local function setup( env )
 		return pickle.spy:create():setReports( reports ):doCarp( str )
 	end
 
-	--- Cluck, warn called due to a possible error condition, with a stack backtrace.
-	-- Print a message without exiting, with caller's name and arguments, and a stack trace.
+	--- Make a cluck on the current report.
+	-- This is usually called due to debugging a possible error condition.
+	-- Prints a “todo” comment, caller's name and arguments, and a stack backtrace.
 	-- @function cluck
 	-- @tparam nil|string str message to use for todo part of report
 	-- @return Spy
@@ -143,8 +114,9 @@ local function setup( env )
 		return pickle.spy:create():setReports( reports ):doCluck( str )
 	end
 
-	--- Croak, die called due to a possible error condition.
-	-- Print a message then exits, with caller's name and arguments.
+	--- Make a croak on the current report.
+	-- This is usually called due to debugging a possible error condition.
+	-- Prints a “skip” comment, caller's name and arguments, and exits.
 	-- @function croak
 	-- @raise unconditionally
 	-- @tparam nil|string str message to use for todo part of report
@@ -157,8 +129,9 @@ local function setup( env )
 		error( mw.message.new( 'pickle-spies-croak-exits' ):plain(), level or 0 )
 	end
 
-	--- Confess, die called due to a possible error condition, with a stack backtrace.
-	-- Print a message without exiting, with caller's name and arguments, and a stack trace.
+	--- Make a confess(ion) on the current report.
+	-- This is usually called due to debugging a possible error condition.
+	-- Prints a “skip” comment, caller's name and arguments, a stack backtrace, and exits.
 	-- @function confess
 	-- @raise unconditionally
 	-- @tparam nil|string str message to use for todo part of report
@@ -171,20 +144,24 @@ local function setup( env )
 		error( mw.message.new( 'pickle-spies-confess-exits' ):plain(), level or 0 )
 	end
 
-	--- Make a skip comment on the current reports.
-	-- This will not terminate current run.
+	--- Make a skip comment on the current report.
+	-- This function will not terminate the current run.
+	-- Consider @{Pickle.croak|croak} or @{Pickle.confess|confess}.
 	-- @function skip
-	-- @param str message to be passed on
+	-- @tparam nil|string str message to be passed on
 	env.skip = function( str )
+		libUtil.checkType( 'skip', 1, str, 'string', true )
 		reports:top():setSkip( str
 			or mw.message.new( 'pickle-report-frame-skip-no-description' ):plain() )
 	end
 
-	--- Make a todo comment on the current reports.
-	-- This will not terminate current run.
+	--- Make a todo comment on the current report.
+	-- This function will not terminate the current run.
+	-- Consider @{Pickle.carp|carp} or @{Pickle.cluck|cluck}.
 	-- @function todo
-	-- @param str message to be passed on
+	-- @tparam nil|string str message to be passed on
 	env.todo = function( str )
+		libUtil.checkType( 'todo', 1, str, 'string', true )
 		reports:top():setTodo( str
 			or mw.message.new( 'pickle-report-frame-todo-no-description' ):plain() )
 	end
@@ -197,7 +174,7 @@ local function setup( env )
 	-- @param ... varargs passed on to Adapt:create
 	-- @return Adapt
 	env.expect = function( ... )
-		local obj = Adapt:create( ... )
+		local obj = pickle.adapt:create( ... )
 			:setReports( reports )
 			:setAdaptations( expects )
 		return obj
@@ -210,54 +187,94 @@ local function setup( env )
 	-- @param ... varargs passed on to Adapt:create
 	-- @return Adapt
 	env.subject = function( ... )
-		local obj = Adapt:create( ... )
+		local obj = pickle.adapt:create( ... )
 			:setReports( reports )
 			:setSubjects( subjects )
 		return obj
 	end
 
-	--- Put up a nice banner telling everyone pickle is initialized
-	env._PICKLE = true
-
-	return reports, pickle.renders, extractors, translators, expects, subjects
-end
-
--- @var metatable for the library
-local mt = { types = {} }
-
---- Install the library.
--- This install all dependencies and changes the environment
--- @function mw.pickle.__call
--- @param env table for the environment
--- @treturn self
-function mt:__call() -- luacheck: no self
-	-- Get the environment for installation of our access points
-	-- This is necessary for testing.
-	local ret,env = pcall( function() return getfenv( 4 ) end )
-	if not ret then
-		env = _G
-	end
-	setup( env )
-end
-
-setmetatable( pickle, mt )
-
---- Describe the test.
--- This act as an alias for the normal describe,
--- which is not available.
--- This does implicitt setup.
--- @param ... varargs passed on to Frame:dispatch
--- @treturn self newly created object
-function pickle.implicitDescribe( ... )
-
-	-- Get the environment for installation of our access points
-	-- This is necessary for testing.
-	local ret,env = pcall( function() return getfenv( 4 ) end )
-	if not ret then
-		env = _G
+	--- Helper to get the named style
+	-- @param frame
+	-- @treturn string
+	local function findStyle( frame )
+		if frame.args['style'] then
+			return frame.args['style']
+		end
+		local names ={}
+		for _,v in ipairs( renderLibs ) do
+			names[v[1]] = true
+		end
+		for _,v in ipairs( frame.args ) do
+			if names[v] then
+				return v
+			end
+		end
+		return nil
 	end
 
-	local reports, renders, extractors, translators, expects, subjects = setup( env )
+	--- Helper to get the identified language
+	-- @param frame
+	-- @treturn string
+	local function findLang( frame )
+		if frame.args['lang'] then
+			return frame.args['lang']
+		end
+		for _,v in ipairs( frame.args ) do
+			if mw.language.isValidCode( v ) then
+				return v
+			end
+		end
+		return nil
+	end
+
+	--- Describe the test.
+	-- This is the outermost of the three levels.
+	-- @function describe
+	-- @param ... varargs passed on to Frame:dispatch
+	-- @return Frame
+	env.describe = function( ... )
+		local obj = pickle.frame:create()
+		obj:setRenders( pickle.renders )
+			:setReports( reports )
+			:setSubjects( subjects )
+			:setExtractors( extractors )
+			:setTranslators( translators )
+			:dispatch( ... )
+
+		--- Eval the fixtures over previous dispatched strings.
+		-- This is extending the `describe` call by injecting `tap` as an method.
+		-- The method has two different call forms. First form is the usual one with a single
+		-- frame object. This is used if the function is called by "invoke". The second
+		-- form use the same "style" and "language" form, but as arguments. This makes
+		-- it possible to easilly test it in the console.
+		-- @return string
+		function obj:tap( ... )
+			self:eval()
+			assert( reports:top(), 'Pickle: Can not find top')
+
+			local styleName = nil
+			local langCode = nil
+
+			if select( '#', ... ) == 1 and type( select( 1, ... ) ) == 'table'  then
+				local frame = select( 1, ... )
+				styleName = findStyle( frame )
+				langCode = findLang( frame )
+
+			elseif select( '#', ... ) > 1 then
+				local frame = { args = { style = select( 1, ... ), lang = select( 2, ... ) } }
+				styleName = findStyle( frame )
+				langCode = findLang( frame )
+			end
+
+			styleName = styleName or 'full'
+			langCode = langCode or mw.language.getContentLanguage():getCode()
+
+			local style = pickle.renders.style( styleName )
+			return reports:top():realize( style, langCode, pickle.counter:create() )
+		end
+
+		return obj
+	end
 
 	--- Context for the test.
 	-- This is usually used for creating some additional context
@@ -281,60 +298,35 @@ function pickle.implicitDescribe( ... )
 	-- @treturn self newly created object
 	env.it = env.context
 
-	-- then do what we should do
-	local obj = pickle.frame:create()
-		:setRenders( renders )
-		:setReports( reports )
-		:setSubjects( subjects )
-		:setExtractors( extractors )
-		:setTranslators( translators )
-		:dispatch( ... )
+	--- Put up a nice banner telling everyone pickle is initialized, and add the instances
+	env._reports = reports
+	env._renders = pickle.renders
+	env._extractors = extractors
+	env._translators = translators
+	env._PICKLE = true
 
-	--- Eval the fixtures over previous dispatched strings.
-	-- This has two different call forms. The first is the usual form with a single
-	-- frame object. This is used if the function is called by "invoke". The other
-	-- form use the same "style" and "language" form, but as arguments. This makes
-	-- it possible to easilly test it in the console.
-	-- @return string
-	--function obj.tap( name )
-	function obj:tap( ... )
-		self:eval()
-
-		if self:reports() then
-			return nil, 'Pickle: Can not find reports'
-		end
-
-		if self:reports():top() then
-			return nil, 'Pickle: Can not find top'
-		end
-
-		if self:renders() then
-			return nil, 'Pickle: Can not find renders'
-		end
-
-		local styleName = nil
-		local langCode = nil
-
-		if select( '#', ... ) == 1 and type( select( 1, ... ) ) == 'table'  then
-			local frame = select( 1, ... )
-			styleName = findStyle( frame )
-			langCode = findLang( frame )
-
-		elseif select( '#', ... ) > 1 then
-			local frame = { args = { style = select( 1, ... ), lang = select( 2, ... ) } }
-			styleName = findStyle( frame )
-			langCode = findLang( frame )
-		end
-
-		styleName = styleName or 'full'
-		langCode = langCode or mw.language.getContentLanguage():getCode()
-
-		local style = self:renders().style( styleName )
-		return self:reports():top():realize( style, langCode, pickle.counter:create() )
-	end
-
-	return obj
+	return env
 end
+
+-- @var metatable for the library
+local mt = { types = {} }
+
+--- Install the library.
+-- This install all dependencies and changes the environment
+-- @function mw.pickle.__call
+-- @param env table for the environment
+-- @treturn self
+function mt:__call() -- luacheck: no self
+	-- Get the environment for installation of our access points
+	-- This is necessary for testing.
+	local ret,env = pcall( function() return getfenv( 4 ) end )
+	if not ret then
+		env = _G
+	end
+	setup( env )
+end
+
+setmetatable( pickle, mt )
 
 --- install the module in the global space.
 function pickle.setupInterface( opts )
@@ -350,11 +342,6 @@ function pickle.setupInterface( opts )
 	mw.pickle = pickle
 	package.loaded['mw.Pickle'] = pickle
 	pickle._implicit = opts.setup == 'implicit'
-
-	if pickle._implicit then
-		-- use 'describe' as access point
-		describe = pickle.implicitDescribe -- luacheck: globals describe
-	end
 
 	-- keep subpage name for later
 	translationSubpage = opts.translationSubpage
