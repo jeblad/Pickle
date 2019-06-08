@@ -129,14 +129,15 @@
 			"report-adapt": "Adapt",
 			"report-frame": "Frame"
 		},
-		"Extractor": [
-			"picklelib/extractor/ExtractorNil",
-			"picklelib/extractor/ExtractorFalse",
-			"picklelib/extractor/ExtractorTrue",
-			"picklelib/extractor/ExtractorString",
-			"picklelib/extractor/ExtractorNumber",
-			"picklelib/extractor/ExtractorJson"
-		],
+		"ExtractorPath": "picklelib/extractor/Extractor$1",
+		"Extractor": {
+			"nil": "Nil",
+			"false": "False",
+			"true": "True",
+			"string": "String",
+			"number": "Number",
+			"json": "Json"
+		},
 		"NeglectSubpages": [
 			"/^(?:.*?\\.)?doc$/",
 			"/^(?:.*?\\.)?conf$/",

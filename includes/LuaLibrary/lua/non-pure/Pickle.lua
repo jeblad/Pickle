@@ -355,8 +355,9 @@ function pickle.setupInterface( opts )
 	end
 
 	-- keep extractors for later
-	for i,v in ipairs( opts.extractors ) do
-		table.insert( extractorLibs, v )
+	for _,v in pairs( opts.extractors ) do
+		local lib = string.gsub( opts.extractorPath, '%$1', v )
+		table.insert( extractorLibs, lib )
 	end
 
 end
