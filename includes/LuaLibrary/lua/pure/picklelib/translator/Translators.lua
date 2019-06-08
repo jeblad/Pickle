@@ -3,12 +3,20 @@
 -- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Translators
 
+-- pure libs
+local libUtil = require 'libraryUtil'
+
 -- @var class var for lib
 local Translators = {}
 
 --- Lookup of missing class members.
--- @field class index
-Translators.__index = Translators
+-- @raise on wrong arguments
+-- @tparam string key lookup of member
+-- @return any
+function Translators:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'Translators:__index', 1, key, 'string', false )
+	return Translators[key]
+end
 
 --- Create a new instance.
 -- @tparam vararg ... list of strategies

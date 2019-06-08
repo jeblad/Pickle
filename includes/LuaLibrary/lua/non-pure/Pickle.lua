@@ -20,19 +20,97 @@ local renderLibs = {}
 -- @var structure for delayed extractor libs
 local extractorLibs = {}
 
+-- @var subpage name
+local translationSubpage = nil
+
 pickle.bag = require 'picklelib/Bag'
 pickle.counter = require 'picklelib/Counter'
 pickle.spy = require 'picklelib/engine/Spy'
+pickle.frame = require 'picklelib/engine/Frame'
+pickle.adapt = require 'picklelib/engine/Adapt'
 pickle.double = require 'picklelib/engine/Double'
 pickle.renders = require 'picklelib/render/Renders'
 pickle.extractors = require 'picklelib/extractor/Extractors'
+pickle.translators = require 'picklelib/translator/Translators'
 
--- Register doubles.
+--- Helper to get the named style
+-- @param frame
+-- @treturn string
+local function findStyle( frame )
+	if frame.args['style'] then
+		return frame.args['style']
+	end
+	for _,v in ipairs( frame.args ) do
+		if renderStyleNames[v] then
+			return v
+		end
+	end
+	return nil
+end
+
+--- Helper to get the identified language
+-- @param frame
+-- @treturn string
+local function findLang( frame )
+	if frame.args['lang'] then
+		return frame.args['lang']
+	end
+	for _,v in ipairs( frame.args ) do
+		if mw.language.isValidCode( v ) then
+			return v
+		end
+	end
+	return nil
+end
+
+-- Setup framework.
 -- This needs a valid environment, for example from getfenv()
 -- @raise on wrong arguments
 -- @tparam table env for the environment
-local function registerDoubles( env )
-	libUtil.checkType( 'Pickle:registerDoubles', 1, env, 'table', false )
+local function setup( env )
+	libUtil.checkType( 'Pickle:register', 1, env, 'table', false )
+
+	-- create the reports
+	local reports = pickle.bag:create()
+
+	-- @todo remove this
+	env._reports = reports
+
+	-- register render styles
+	for _,v in ipairs( renderLibs ) do
+		local style = pickle.renders.registerStyle( v[1] )
+		assert( style )
+		style:registerType( v[2], require( v[3] ) )
+	end
+
+	-- create the extractors
+	local extractors = pickle.extractors:create()
+
+	-- register extractor types
+	for _,v in ipairs( extractorLibs ) do
+		extractors:register( require( v ):create() )
+	end
+
+	-- create translators
+	local translators = require( 'picklelib/translator/Translators' ):create()
+
+	-- register translation data
+	local translationData = nil
+	local prefixedText = mw.getCurrentFrame():getTitle()
+	if prefixedText then
+		pcall( function()
+			translationData = mw.loadData( prefixedText .. translationSubpage )
+		end )
+	end
+	for k,v in pairs( translationData or {} ) do
+		if not string.match( k, '^@' ) then
+			translators:register( k, v )
+		end
+	end
+
+	-- create adaptations
+	local expects = pickle.bag:create()
+	local subjects = pickle.bag:create()
 
 	--- Test double for mimickin general behavior.
 	-- Returns precomputed values or compute them on the fly.
@@ -42,16 +120,6 @@ local function registerDoubles( env )
 	env.stub = function( ... )
 		return pickle.double:create():setLevel(2):setName('stub'):dispatch( ... ):stub()
 	end
-end
-
---- Register spies.
--- This needs a valid environment, for example from getfenv()
--- @raise on wrong arguments
--- @tparam table env for the environment
--- @tparam Reports reports ref to objects holding set of reports
-local function registerSpies( env, reports )
-	libUtil.checkType( 'Pickle:registerSpies', 1, env, 'table', false )
-	libUtil.checkType( 'Pickle:registerSpies', 2, reports, 'table', false )
 
 	--- Carp, warn called due to a possible error condition.
 	-- Print a message without exiting, with caller's name and arguments.
@@ -102,16 +170,6 @@ local function registerSpies( env, reports )
 		pickle.spy:create():setReports( reports ):doConfess( str )
 		error( mw.message.new( 'pickle-spies-confess-exits' ):plain(), level or 0 )
 	end
-end
-
---- Register comments.
--- This needs a valid environment, for example from getfenv()
--- @raise on wrong arguments
--- @tparam table env for the environment
--- @tparam Reports reports ref to objects holding set of reports
-local function registerComments( env, reports )
-	libUtil.checkType( 'Pickle:registerComments', 1, env, 'table', false )
-	libUtil.checkType( 'Pickle:registerComments', 2, reports, 'table', false )
 
 	--- Make a skip comment on the current reports.
 	-- This will not terminate current run.
@@ -130,103 +188,6 @@ local function registerComments( env, reports )
 		reports:top():setTodo( str
 			or mw.message.new( 'pickle-report-frame-todo-no-description' ):plain() )
 	end
-end
-
---- Register reports.
--- This needs a valid environment, for example from getfenv()
--- @raise on wrong arguments
--- @tparam table env for the environment
--- @return Bag of reports
-local function registerReports( env )
-	libUtil.checkType( 'Pickle:registerComments', 1, env, 'table', false )
-
-	-- require libs
-	local reports = pickle.bag:create()
-	env._reports = reports
-
-	return reports
-end
-
---- Register renders.
--- @return Renders
-local function registerRenders( env )	-- require libs
-	libUtil.checkType( 'Pickle:registerRenders', 1, env, 'table', false )
-
-	local renders = require 'picklelib/render/Renders'
-
-	-- register render styles
-	for _,v in ipairs( renderLibs ) do
-		local style = renders.registerStyle( v[1] )
-		assert( style )
-		style:registerType( v[2], require( v[3] ) )
-	end
-
-	--- Renders, the access .
-	-- Print a message without exiting, with caller's name and arguments.
-	-- @function carp
-	-- @tparam nil|string str message to use for todo part of report
-	-- @return Spy
-	env.renders = function( ... )
-		return renders( ... )
-	end
-
-	return renders
-end
-
---- Register extractors.
--- @return Extractors
-local function registerExtractors()
-
-	-- require libs
-	local extractors = pickle.extractors:create()
-
-	-- register extractor types
-	for _,v in ipairs( extractorLibs ) do
-		extractors:register( require( v ):create() )
-	end
-
-	return extractors
-end
-
---- Register translators.
--- @raise on wrong arguments
--- @tparam string subpage name of page
--- @return TranslatorStrategies
-local function registerTranslators( subpage )
-	libUtil.checkType( 'Pickle:registerTranslators', 1, subpage, 'string', false )
-
-	-- require libs
-	local translators = require( 'picklelib/translator/Translators' ):create()
-
-	-- register translation data
-	local translationData = nil
-	local prefixedText = mw.getCurrentFrame():getTitle()
-	if prefixedText then
-		pcall( function()
-			translationData = mw.loadData( prefixedText .. subpage )
-		end )
-	end
-
-	for k,v in pairs( translationData or {} ) do
-		if not string.match( k, '^@' ) then
-			translators:register( k, v )
-		end
-	end
-
-	return translators
-end
-
---- Register adaptations.
--- @tparam table env for the environment
--- @tparam Reports reports ref to objects holding set of reports
-local function registerAdaptations( env, reports )
-	libUtil.checkType( 'Pickle:registerAdaptations', 1, env, 'table', false )
-	libUtil.checkType( 'Pickle:registerAdaptations', 2, reports, 'table', false )
-
-	-- require libs
-	local Adapt = require 'picklelib/engine/Adapt'
-	local expects = pickle.bag:create()
-	local subjects = pickle.bag:create()
 
 	--- Expect whatever to be compared to the subject.
 	-- The expected value is the assumed outcome,
@@ -255,37 +216,10 @@ local function registerAdaptations( env, reports )
 		return obj
 	end
 
-	return expects, subjects
-end
+	--- Put up a nice banner telling everyone pickle is initialized
+	env._PICKLE = true
 
---- Helper to get the named style
--- @param frame
--- @treturn string
-local function findStyle( frame )
-	if frame.args['style'] then
-		return frame.args['style']
-	end
-	for _,v in ipairs( frame.args ) do
-		if renderStyleNames[v] then
-			return v
-		end
-	end
-	return nil
-end
-
---- Helper to get the identified language
--- @param frame
--- @treturn string
-local function findLang( frame )
-	if frame.args['lang'] then
-		return frame.args['lang']
-	end
-	for _,v in ipairs( frame.args ) do
-		if mw.language.isValidCode( v ) then
-			return v
-		end
-	end
-	return nil
+	return reports, pickle.renders, extractors, translators, expects, subjects
 end
 
 -- @var metatable for the library
@@ -297,7 +231,13 @@ local mt = { types = {} }
 -- @param env table for the environment
 -- @treturn self
 function mt:__call() -- luacheck: no self
-	-- @todo
+	-- Get the environment for installation of our access points
+	-- This is necessary for testing.
+	local ret,env = pcall( function() return getfenv( 4 ) end )
+	if not ret then
+		env = _G
+	end
+	setup( env )
 end
 
 setmetatable( pickle, mt )
@@ -310,9 +250,6 @@ setmetatable( pickle, mt )
 -- @treturn self newly created object
 function pickle.implicitDescribe( ... )
 
-	-- only require libs
-	local Frame = require 'picklelib/engine/Frame'
-
 	-- Get the environment for installation of our access points
 	-- This is necessary for testing.
 	local ret,env = pcall( function() return getfenv( 4 ) end )
@@ -320,11 +257,7 @@ function pickle.implicitDescribe( ... )
 		env = _G
 	end
 
-	local reports = registerReports( env )
-	local renders = registerRenders( env )
-	local extractors = registerExtractors()
-	local translators = registerTranslators( pickle._translationSubpage )	-- luacheck: ignore
-	local expects, subjects = registerAdaptations( env, reports )	-- luacheck: ignore
+	local reports, renders, extractors, translators, expects, subjects = setup( env )
 
 	--- Context for the test.
 	-- This is usually used for creating some additional context
@@ -334,7 +267,7 @@ function pickle.implicitDescribe( ... )
 	-- @param ... varargs passed on to Frame:dispatch
 	-- @return Frame
 	env.context = function( ... )
-		local obj = Frame:create()
+		local obj = pickle.frame:create()
 			:setReports( reports )
 			:setSubjects( subjects )
 			:setExtractors( extractors )
@@ -348,12 +281,8 @@ function pickle.implicitDescribe( ... )
 	-- @treturn self newly created object
 	env.it = env.context
 
-	registerDoubles( env )
-	registerSpies( env, reports )
-	registerComments( env, reports )
-
 	-- then do what we should do
-	local obj = Frame:create()
+	local obj = pickle.frame:create()
 		:setRenders( renders )
 		:setReports( reports )
 		:setSubjects( subjects )
@@ -427,8 +356,8 @@ function pickle.setupInterface( opts )
 		describe = pickle.implicitDescribe -- luacheck: globals describe
 	end
 
-	-- keep subpage name for later, newer mind requiring anything now
-	pickle._translationSubpage = opts.translationSubpage
+	-- keep subpage name for later
+	translationSubpage = opts.translationSubpage
 
 	-- keep render libs for later
 	for k,v in pairs( opts.renderStyles ) do

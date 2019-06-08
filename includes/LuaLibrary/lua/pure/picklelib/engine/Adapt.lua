@@ -13,8 +13,13 @@ local ReportAdapt = require 'picklelib/report/ReportAdapt' -- @todo might be ski
 local Adapt = {}
 
 --- Lookup of missing class members.
--- @field class index
-Adapt.__index = Adapt
+-- @raise on wrong arguments
+-- @tparam string key lookup of member
+-- @return any
+function Adapt:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'Adapt:__index', 1, key, 'string', false )
+	return Adapt[key]
+end
 
 -- @var metatable for the class
 local mt = {}

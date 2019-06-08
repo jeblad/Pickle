@@ -19,7 +19,6 @@ function Extractors:__index( key ) -- luacheck: no self
 	return Extractors[key]
 end
 
-
 -- @field class var for strategies, holding reference to defined extractor strategies
 Extractors.strategies = Bag:create()
 
