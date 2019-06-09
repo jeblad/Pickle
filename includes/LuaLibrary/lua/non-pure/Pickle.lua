@@ -349,7 +349,7 @@ function pickle.setupInterface( opts )
 	-- keep render libs for later
 	for k,v in pairs( opts.renderStyles ) do
 		for l,w in pairs( opts.renderTypes ) do
-			local lib = opts.renderPrefix .. k .. opts.renderInfix .. w .. v .. opts.renderPostfix
+			local lib = string.format( opts.renderPath, k, w, v )
 			table.insert( renderLibs, { k, l, lib } )
 		end
 	end

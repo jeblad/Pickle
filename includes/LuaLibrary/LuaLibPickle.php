@@ -22,6 +22,7 @@ class LuaLibPickle extends Scribunto_LuaLibraryBase {
 		global $wgPickleRenderPrefix;
 		global $wgPickleRenderInfix;
 		global $wgPickleRenderPostfix;
+		global $wgPickleRenderPath;
 		global $wgPickleRenderStyles;
 		global $wgPickleRenderTypes;
 		global $wgPickleExtractorPath;
@@ -36,9 +37,7 @@ class LuaLibPickle extends Scribunto_LuaLibraryBase {
 			[
 				'setup' => $wgPickleSetup,
 				'translationSubpage' => $wgPickleTranslationSubpage,
-				'renderPrefix' => $wgPickleRenderPrefix,
-				'renderInfix' => $wgPickleRenderInfix,
-				'renderPostfix' => $wgPickleRenderPostfix,
+				'renderPath' => $wgPickleRenderPath,
 				'renderStyles' => $wgPickleRenderStyles,
 				'renderTypes' => $wgPickleRenderTypes,
 				'extractorPath' => $wgPickleExtractorPath,

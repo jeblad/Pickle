@@ -117,9 +117,7 @@
 		"ObserverID": 3,
 		"TranslationSubpage": "/i18n",
 		"DefaultNamespace": 828,
-		"RenderPrefix": "picklelib/render/",
-		"RenderInfix": "/Render",
-		"RenderPostfix": "",
+		"RenderPath": "picklelib/render/%s/Render%s%s",
 		"RenderStyles": {
 			"compact": "Compact",
 			"full": "Full",
