@@ -19,9 +19,6 @@ class LuaLibPickle extends Scribunto_LuaLibraryBase {
 	 */
 	public function register() {
 		global $wgPickleSetup;
-		global $wgPickleRenderPrefix;
-		global $wgPickleRenderInfix;
-		global $wgPickleRenderPostfix;
 		global $wgPickleRenderPath;
 		global $wgPickleRenderStyles;
 		global $wgPickleRenderTypes;
