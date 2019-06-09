@@ -11,9 +11,6 @@ local libUtil = require 'libraryUtil'
 -- @var structure for storage of the lib
 local pickle = {}
 
--- @var structure for delayed render styles
-local renderStyleNames = nil
-
 -- @var structure for delayed render libs
 local renderLibs = {}
 
