@@ -129,7 +129,7 @@
 			"report-adapt": "Adapt",
 			"report-frame": "Frame"
 		},
-		"ExtractorPath": "picklelib/extractor/Extractor$1",
+		"ExtractorPath": "picklelib/extractor/Extractor%s",
 		"Extractor": {
 			"nil": "Nil",
 			"false": "False",

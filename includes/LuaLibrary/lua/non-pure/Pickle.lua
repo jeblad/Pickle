@@ -56,7 +56,7 @@ local function setup( env )
 
 	-- register extractor types
 	for _,v in ipairs( extractorLibs ) do
-		extractors:register( require( v ):create() )
+		extractors:register( require( v[2] ):create() )
 	end
 
 	-- create translators
@@ -355,9 +355,9 @@ function pickle.setupInterface( opts )
 	end
 
 	-- keep extractors for later
-	for _,v in pairs( opts.extractors ) do
-		local lib = string.gsub( opts.extractorPath, '%$1', v )
-		table.insert( extractorLibs, lib )
+	for k,v in pairs( opts.extractors ) do
+		local lib = string.format( opts.extractorPath, v )
+		table.insert( extractorLibs, { k, lib } )
 	end
 
 end
