@@ -124,5 +124,7 @@
 	"pickle-spies-confess-skip": "Повикана функцијата „confess“",
 	"pickle-spies-croak-skip": "Повикана функцијата „croak“",
 	"pickle-spies-confess-exits": "Постои функцијата „confess“",
-	"pickle-spies-croak-exits": "Постои функцијата „croak“"
+	"pickle-spies-croak-exits": "Постои функцијата „croak“",
+	"pickle-stub-no-fallback": "$1: нема резерва",
+	"pickle-stub-no-more-frames": "$1: нема повеќе рамки"
 }

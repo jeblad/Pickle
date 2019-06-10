@@ -124,5 +124,7 @@
 	"pickle-spies-confess-skip": "Fonction « confession » appelée",
 	"pickle-spies-croak-skip": "Fonction « croassement » appelée",
 	"pickle-spies-confess-exits": "Sortie de la fonction « confession »",
-	"pickle-spies-croak-exits": "Sortie de la fonction « croassement »"
+	"pickle-spies-croak-exits": "Sortie de la fonction « croassement »",
+	"pickle-stub-no-fallback": "$1 : aucun repli",
+	"pickle-stub-no-more-frames": "$1 : pas de cadres"
 }

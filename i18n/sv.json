@@ -124,5 +124,6 @@
 	"pickle-spies-confess-skip": "Funktionen »confess« blev kallat",
 	"pickle-spies-croak-skip": "Funktionen »croak« blev kallat",
 	"pickle-spies-confess-exits": "Funktionen »confess« avslutar",
-	"pickle-spies-croak-exits": "Funktionen »croak« avslutar"
+	"pickle-spies-croak-exits": "Funktionen »croak« avslutar",
+	"pickle-stub-no-more-frames": "$1: inga fler bildrutor"
 }

@@ -81,5 +81,7 @@
 	"pickle-spies-confess-skip": "\"confess\" 함수 호출됨",
 	"pickle-spies-croak-skip": "\"croak\" 함수 호출됨",
 	"pickle-spies-confess-exits": "\"confess\" 함수 종료됨",
-	"pickle-spies-croak-exits": "\"croak\" 함수 종료됨"
+	"pickle-spies-croak-exits": "\"croak\" 함수 종료됨",
+	"pickle-stub-no-fallback": "$1: 폴백 없음",
+	"pickle-stub-no-more-frames": "$1: 추가 프레임 없음"
 }
