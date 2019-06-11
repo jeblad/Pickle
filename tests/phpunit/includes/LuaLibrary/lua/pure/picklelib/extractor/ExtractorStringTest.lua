@@ -111,7 +111,7 @@ local tests = {
 		name = name .. ':placeholder ()',
 		func = testPlaceholder,
 		args = {},
-		expect = { 'string' }
+		expect = { '[string]' }
 	},
 }
 

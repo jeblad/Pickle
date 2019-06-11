@@ -72,7 +72,7 @@ end
 --- Get the placeholder for this strategy.
 -- @treturn string
 function Subclass:placeholder() -- luacheck: no self
-	return 'nil'
+	return '[nil]'
 end
 
 -- Return the final class.

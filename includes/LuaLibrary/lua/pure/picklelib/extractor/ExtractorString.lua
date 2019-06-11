@@ -55,7 +55,7 @@ end
 --- Get the placeholder for this strategy.
 -- @treturn string
 function Subclass:placeholder() -- luacheck: no self
-	return 'string'
+	return '[string]'
 end
 
 -- Return the final class.

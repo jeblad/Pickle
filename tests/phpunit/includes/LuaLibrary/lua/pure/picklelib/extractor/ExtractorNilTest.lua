@@ -117,7 +117,7 @@ local tests = {
 		name = name .. ':placeholder ()',
 		func = testPlaceholder,
 		args = {},
-		expect = { 'nil' }
+		expect = { '[nil]' }
 	},
 }
 
