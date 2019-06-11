@@ -38,97 +38,97 @@ local function testFind( str, ... )
 end
 
 local tests = {
-	{
+	{ -- 1
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	{
+	{ -- 2
 		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{
+	{ -- 3
 		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { require 'picklelib/extractor/ExtractorNil' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 4
 		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { require 'picklelib/extractor/ExtractorFalse' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 5
 		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { require 'picklelib/extractor/ExtractorTrue' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 6
 		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { require 'picklelib/extractor/ExtractorString' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 7
 		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { require 'picklelib/extractor/ExtractorNumber' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 8
 		name = name .. ':num-flush (no value)',
 		func = testNumFlush,
 		args = {},
 		expect = { 0, 0 }
 	},
-	{
+	{ -- 9
 		name = name .. ':num-flush (single value)',
 		func = testNumFlush,
 		args = { { 'foo' } },
 		expect = { 1, 0 }
 	},
-	{
+	{ -- 10
 		name = name .. ':num-flush (multiple value)',
 		func = testNumFlush,
 		args = { { 'foo' }, { 'bar' }, { 'baz' } },
 		expect = { 3, 0 }
 	},
-	{
+	{ -- 11
 		name = name .. ':find (nil extract)',
 		func = testFind,
 		args = { 'foo nil bar', require('picklelib/extractor/ExtractorNil'):create() },
 		expect = { 5, 7, 'nil' }
 	},
-	{
+	{ -- 12
 		name = name .. ':find (false extract)',
 		func = testFind,
 		args = { 'foo false bar', require('picklelib/extractor/ExtractorFalse'):create() },
 		expect = { 5, 9, 'false' }
 	},
-	{
+	{ -- 13
 		name = name .. ':find (true extract)',
 		func = testFind,
 		args = { 'foo true bar', require('picklelib/extractor/ExtractorTrue'):create() },
 		expect = { 5, 8, 'true' }
 	},
-	{
+	{ -- 14
 		name = name .. ':find (string extract)',
 		func = testFind,
 		args = { 'foo "test" bar', require('picklelib/extractor/ExtractorString'):create() },
-		expect = { 6, 9, 'string' }
+		expect = { 5, 10, 'string' }
 	},
-	{
+	{ -- 15
 		name = name .. ':find (number extract)',
 		func = testFind,
 		args = { 'foo 42 bar', require('picklelib/extractor/ExtractorNumber'):create() },

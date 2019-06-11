@@ -35,7 +35,7 @@ end
 -- @treturn self
 function Subclass:_init()
 	Super._init( self,
-		{ '%b""', 1, -1 } )
+		{ '%b""', 0, 0 } )
 	self._type = 'string'
 	return self
 end
@@ -45,19 +45,11 @@ end
 -- @see Extractor:cast
 -- @raise on wrong arguments
 -- @tparam string str used as the extraction source
--- @tparam number start for an inclusive index where extraction starts
--- @tparam number finish for an inclusive index where extraction finishes
 -- @treturn string
-function Subclass:cast( str, start, finish )
+function Subclass:cast( str )
 	libUtil.checkType( 'ExtractorString:cast', 1, str, 'string', false )
-	libUtil.checkType( 'ExtractorString:cast', 2, start, 'number', false )
-	libUtil.checkType( 'ExtractorString:cast', 3, finish, 'number', false )
 
-	if not finish then
-		start, finish = self:find( str, (start or 2) -1 )
-	end
-
-	return mw.ustring.sub( str, start, finish )
+	return mw.ustring.sub( str, 2, -2 )
 end
 
 --- Get the placeholder for this strategy.

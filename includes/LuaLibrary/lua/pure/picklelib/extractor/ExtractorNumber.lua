@@ -52,18 +52,12 @@ end
 -- @see Extractor:cast
 -- @raise on wrong arguments
 -- @tparam string str used as the extraction source
--- @tparam number start for an inclusive index where extraction starts
--- @tparam number finish for an inclusive index where extraction finishes
 -- @treturn number
-function Subclass:cast( str, start, finish )
+function Subclass:cast( str )
 	libUtil.checkType( 'ExtractorNumber:cast', 1, str, 'string', false )
-	libUtil.checkType( 'ExtractorNumber:cast', 2, start, 'number', false )
-	libUtil.checkType( 'ExtractorNumber:cast', 3, finish, 'number', false )
-
-	if not finish then
-		start, finish = self:find( str, (start or 1) )
-	end
-	return tonumber( mw.ustring.sub( str, start, finish ) )
+	local num = tonumber( str )
+	assert( num, 'Failed to cast assumed “number”' )
+	return num
 end
 
 --- Get the placeholder for this strategy.

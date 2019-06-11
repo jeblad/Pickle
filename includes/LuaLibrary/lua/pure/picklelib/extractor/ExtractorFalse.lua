@@ -35,10 +35,14 @@ end
 -- @treturn self
 function Subclass:_init()
 	Super._init( self,
-		{ '^false$', 0, 0 },
-		{ '^false[%s%p]', 0, -1 },
-		{ '[%s%p]false$', 1, 0 },
-		{ '[%s%p]false[%s%p]', 1, -1 } )
+		{ '^[fF]alse$', 0, 0 },
+		{ '^[fF]alse[%s%p]', 0, -1 },
+		{ '[%s%p][fF]alse$', 1, 0 },
+		{ '[%s%p][fF]alse[%s%p]', 1, -1 },
+		{ '^FALSE$', 0, 0 },
+		{ '^FALSE[%s%p]', 0, -1 },
+		{ '[%s%p]FALSE$', 1, 0 },
+		{ '[%s%p]FALSE[%s%p]', 1, -1 } )
 	self._type = 'false'
 	return self
 end
@@ -46,8 +50,11 @@ end
 --- Cast the string into the correct type for this strategy.
 -- There are no safeguards for erroneous casts.
 -- @see Extractor:cast
+-- @raise on wrong arguments
+-- @tparam string str used as the extraction source
 -- @treturn boolean false
-function Subclass:cast() -- luacheck: no self
+function Subclass:cast( str ) -- luacheck: no self
+	assert( str == "false" or str == "False" or str == "FALSE", 'Failed to cast assumed “false”' )
 	return false
 end
 

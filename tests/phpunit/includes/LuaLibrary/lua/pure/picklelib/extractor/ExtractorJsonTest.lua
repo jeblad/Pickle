@@ -39,93 +39,93 @@ local function testPlaceholder()
 end
 
 local tests = {
-	{
+	{ -- 1
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	{
+	{ -- 2
 		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{
+	{ -- 3
 		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 4
 		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 5
 		name = name .. ':type ()',
 		func = testType,
 		expect = { 'json' }
 	},
-	{
+	{ -- 6
 		name = name .. ':find (not matched)',
 		func = testFind,
 		args = { 'foo bar baz' },
 		expect = {}
 	},
-	{
+	{ -- 7
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { '{}' },
 		expect = { 1, 2 }
 	},
-	{
+	{ -- 8
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { '[]' },
 		expect = { 1, 2 }
 	},
-	{
+	{ -- 9
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { '["test"] bar baz' },
 		expect = { 1, 8 }
 	},
-	{
+	{ -- 10
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo ["test"] baz' },
 		expect = { 5, 12 }
 	},
-	{
+	{ -- 11
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo bar ["test"]' },
 		expect = { 9, 16 }
 	},
-	{
+	{ -- 12
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo {"test":["ping","pong"],"test2":42} baz' },
 		expect = { 5, 39 }
 	},
-	{
-		name = name .. ':cast (empty)',
+	{ -- 13
+		name = name .. ':cast (json)',
 		func = testCast,
-		args = { 'foo bar ["test"]', 9, 16 },
+		args = { '["test"]', 9, 16 },
 		expect = { {"test"} }
 	},
-	{
-		name = name .. ':cast (empty)',
+	{ -- 14
+		name = name .. ':cast (json)',
 		func = testCast,
-		args = { 'foo {"test":["ping","pong"],"test2":42} baz', 5, 39 },
+		args = { '{"test":["ping","pong"],"test2":42}', 5, 39 },
 		expect = { { ["test"] = { "ping", "pong" }, ["test2"] = 42 } }
 	},
-	{
+	{ -- 15
 		name = name .. ':placeholder ()',
 		func = testPlaceholder,
 		args = {},

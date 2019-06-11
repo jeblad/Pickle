@@ -46,23 +46,15 @@ end
 -- @see Extractor:cast
 -- @raise on wrong arguments
 -- @tparam string str used as the extraction source
--- @tparam number start for an inclusive index where extraction starts
--- @tparam number finish for an inclusive index where extraction finishes
 -- @treturn JSON
-function Subclass:cast( str, start, finish )
+function Subclass:cast( str )
 	libUtil.checkType( 'ExtractorJson:cast', 1, str, 'string', false )
-	libUtil.checkType( 'ExtractorJson:cast', 2, start, 'number', false )
-	libUtil.checkType( 'ExtractorJson:cast', 3, finish, 'number', false )
 
-	if not finish then
-		start, finish = self:find( str, (start or 2) -1 )
-	end
-
-	local jsonStr = mw.ustring.sub( str, start, finish )
-	assert( jsonStr, 'Failed to identify a substring' )
-
-	local json = mw.text.jsonDecode( jsonStr )
-	assert( str, 'Failed to decode assumed json' )
+	local json = nil
+	pcall( function()
+		json = mw.text.jsonDecode( str )
+	end )
+	assert( json, 'Failed to cast assumed “json” – «'..str..'»' )
 
 	return json
 end

@@ -72,8 +72,6 @@ end
 --- Cast the string into the correct type for this strategy.
 -- @raise Unconditional error unless overridden
 -- @tparam string str used as the extraction source (unused)
--- @tparam number start for an inclusive index where extraction starts (unused)
--- @tparam number finish for an inclusive index where extraction finishes (unused)
 -- @treturn nil
 function Baseclass:cast() -- luacheck: no self
 	error('Method should be overridden')

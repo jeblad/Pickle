@@ -97,92 +97,92 @@ local function testRef( ref, ... )
 end
 
 local tests = {
-	{
+	{ -- 1
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	{
+	{ -- 2
 		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{
+	{ -- 3
 		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 4
 		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 5
 		name = class .. ':call (single value type)',
 		func = testClassCall,
 		args = { 'a' },
 		expect = { 'a' }
 	},
-	{
+	{ -- 6
 		name = class .. ':call (multiple value type)',
 		func = testClassCall,
 		args = { 'a', 'b', 'c' },
 		expect = { 'a', 'b', 'c' }
 	},
-	{
+	{ -- 7
 		name = class .. ':call (multiple strings)',
 		func = testClassCallStrings,
 		expect = { 'foo', 'bar', 'baz' }
 	},
-	{
+	{ -- 8
 		name = name .. ':call (single value type)',
 		func = testInstanceCall,
 		args = { 'a' },
 		expect = { 'a' }
 	},
-	{
+	{ -- 9
 		name = name .. ':call (multiple value type)',
 		func = testInstanceCall,
 		args = { 'a', 'b', 'c' },
 		expect = { 'a', 'b', 'c' }
 	},
-	{
+	{ -- 10
 		name = name .. ':call (multiple strings)',
 		func = testInstanceCallStrings,
 		expect = { 'foo', 'bar', 'baz' }
 	},
-	{
+	{ -- 11
 		name = name .. ':dispatch (no value)',
 		func = testDispatch,
 		args = { },
 		expect = { 0, 0, 0 }
 	},
-	{
+	{ -- 12
 		name = name .. ':dispatch (single string)',
 		func = testDispatch,
 		args = { 'foo' },
 		expect = { 1, 0, 0 }
 	},
-	{
+	{ -- 13
 		name = name .. ':dispatch (multiple string)',
 		func = testDispatch,
 		args = { 'foo', 'bar', 'baz' },
 		expect = { 3, 0, 0 }
 	},
-	{
+	{ -- 14
 		name = name .. ':dispatch (single function)',
 		func = testDispatch,
 		args = { function() return 'foo' end },
 		expect = { 0, 1, 0 }
 	},
-	{
+	{ -- 15
 		name = name .. ':dispatch (multiple functions)',
 		func = testDispatch,
 		args = {
@@ -192,13 +192,13 @@ local tests = {
 		},
 		expect = { 0, 3, 0 }
 	},
-	{
+	{ -- 16
 		name = name .. ':dispatch (single table)',
 		func = testDispatch,
 		args = { { 'foo' } },
 		expect = { 0, 0, 1 }
 	},
-	{
+	{ -- 17
 		name = name .. ':dispatch (multiple tables)',
 		func = testDispatch,
 		args = {
@@ -208,7 +208,7 @@ local tests = {
 		},
 		expect = { 0, 0, 3 }
 	},
-	{
+	{ -- 18
 		name = name .. ':dispatch (string, function, table)',
 		func = testDispatch,
 		args = {
@@ -218,7 +218,7 @@ local tests = {
 		},
 		expect = { 1, 1, 1 }
 	},
-	{
+	{ -- 19
 		name = name .. ':eval (no string, no fixtures)',
 		func = testEval,
 		args = {
@@ -231,7 +231,7 @@ local tests = {
 			'pickle-frame-no-fixtures'
 		}
 	},
-	{
+	{ -- 20
 		name = name .. ':eval (single string, no fixtures)',
 		func = testEval,
 		args = {
@@ -245,7 +245,7 @@ local tests = {
 			'pickle-frame-no-fixtures'
 		}
 	},
-	{
+	{ -- 21
 		name = name .. ':eval (multiple string, no fixtures)',
 		func = testEval,
 		args = {
@@ -260,7 +260,7 @@ local tests = {
 			'pickle-frame-no-fixtures'
 		}
 	},
-	{
+	{ -- 22
 		name = name .. ':eval (no string, fixture with assertion)',
 		func = testEval,
 		args = {
@@ -276,7 +276,7 @@ local tests = {
 			{}
 		}
 	},
-	{
+	{ -- 23
 		name = name .. ':eval (single string, fixture with assertion)',
 		func = testEval,
 		args = {
@@ -293,7 +293,7 @@ local tests = {
 			{}
 		}
 	},
-	{
+	{ -- 24
 		name = name .. ':eval (multiple string, fixture with assertion)',
 		func = testEval,
 		args = {
@@ -314,7 +314,7 @@ local tests = {
 			{}
 		}
 	},
-	{
+	{ -- 25
 		name = name .. ':eval (no string, empty fixture)',
 		func = testEval,
 		args = {
@@ -329,7 +329,7 @@ local tests = {
 			'pickle-frame-no-tests'
 		}
 	},
-	{
+	{ -- 26
 		name = name .. ':eval (single string, empty fixture)',
 		func = testEval,
 		args = {
@@ -345,7 +345,7 @@ local tests = {
 			'pickle-frame-no-tests'
 		}
 	},
-	{
+	{ -- 27
 		name = name .. ':eval (multiple string, empty fixture)',
 		func = testEval,
 		args = {
@@ -364,7 +364,7 @@ local tests = {
 			'pickle-frame-no-tests'
 		}
 	},
-	{
+	{ -- 28
 		name = name .. ':eval (no string, fixture with error)',
 		func = testEval,
 		args = {
@@ -380,7 +380,7 @@ local tests = {
 			{}
 		}
 	},
-	{
+	{ -- 29
 		name = name .. ':eval (single string, fixture with error)',
 		func = testEval,
 		args = {
@@ -397,7 +397,7 @@ local tests = {
 			{}
 		}
 	},
-	{
+	{ -- 30
 		name = name .. ':eval (multiple string, fixture with error)',
 		func = testEval,
 		args = {
@@ -418,7 +418,7 @@ local tests = {
 			{}
 		}
 	},
-	{
+	{ -- 31
 		name = name .. ':evalSubject (no string, fixture push subject)',
 		func = testEval,
 		args = {
@@ -436,7 +436,7 @@ local tests = {
 			{}
 		}
 	},
-	{
+	{ -- 32
 		name = name .. ':evalSubject (single string, fixture push subject)',
 		func = testEval,
 		args = {
@@ -455,7 +455,7 @@ local tests = {
 			{ { '"bar"' } }
 		}
 	},
-	{
+	{ -- 33
 		name = name .. ':evalSubject (multiple string, fixture push subject)',
 		func = testEval,
 		args = {

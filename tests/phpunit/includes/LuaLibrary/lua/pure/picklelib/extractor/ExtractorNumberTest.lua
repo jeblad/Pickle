@@ -39,99 +39,105 @@ local function testPlaceholder()
 end
 
 local tests = {
-	{
+	{ -- 1
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	{
+	{ -- 2
 		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{
+	{ -- 3
 		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 4
 		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 5
 		name = name .. ':type ()',
 		func = testType,
 		expect = { 'number' }
 	},
-	{
+	{ -- 6
 		name = name .. ':find (not matched)',
 		func = testFind,
 		args = { 'foo bar baz' },
 		expect = {}
 	},
-	{
+	{ -- 7
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { '42' },
 		expect = { 1, 2 }
 	},
-	{
+	{ -- 8
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { '-42.5' },
 		expect = { 1, 5 }
 	},
-	{
+	{ -- 9
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { '42 bar baz' },
 		expect = { 1, 2 }
 	},
-	{
+	{ -- 10
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { '-42.5 bar baz' },
 		expect = { 1, 5 }
 	},
-	{
+	{ -- 11
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo 42 baz' },
 		expect = { 5, 6 }
 	},
-	{
+	{ -- 12
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo -42.5 baz' },
 		expect = { 5, 9 }
 	},
-	{
+	{ -- 13
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo bar 42' },
 		expect = { 9, 10 }
 	},
-	{
+	{ -- 14
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo bar -42.5' },
 		expect = { 9, 13 }
 	},
-	{
-		name = name .. ':cast (empty)',
+	{ -- 15
+		name = name .. ':cast (singlevalue)',
 		func = testCast,
-		args = { 'foo bar 42', 9, 10 },
+		args = { '42' },
 		expect = { 42 }
 	},
-	{
+	{ -- 16
+		name = name .. ':cast (singlevalue)',
+		func = testCast,
+		args = { '3.14' },
+		expect = { 3.14 }
+	},
+	{ -- 17
 		name = name .. ':placeholder ()',
 		func = testPlaceholder,
 		args = {},

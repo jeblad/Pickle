@@ -36,10 +36,22 @@ end
 -- @treturn self
 function Subclass:_init()
 	Super._init( self,
-		{ '^nil$', 0, 0 },
-		{ '^nil[%s%p]', 0, -1 },
-		{ '[%s%p]nil$', 1, 0 },
-		{ '[%s%p]nil[%s%p]', 1, -1 } )
+		{ '^[nN]il$', 0, 0 },
+		{ '^[nN]il[%s%p]', 0, -1 },
+		{ '[%s%p][nN]il$', 1, 0 },
+		{ '[%s%p][nN]il[%s%p]', 1, -1 },
+		{ '^NIL$', 0, 0 },
+		{ '^NIL[%s%p]', 0, -1 },
+		{ '[%s%p]NIL$', 1, 0 },
+		{ '[%s%p]NIL[%s%p]', 1, -1 },
+		{ '^[nN]ull$', 0, 0 },
+		{ '^[nN]ull[%s%p]', 0, -1 },
+		{ '[%s%p][nN]ull$', 1, 0 },
+		{ '[%s%p][nN]ull[%s%p]', 1, -1 },
+		{ '^NULL$', 0, 0 },
+		{ '^NULL[%s%p]', 0, -1 },
+		{ '[%s%p]NULL$', 1, 0 },
+		{ '[%s%p]NULL[%s%p]', 1, -1 } )
 	self._type = 'nil'
 	return self
 end
@@ -47,8 +59,13 @@ end
 --- Cast the string into the correct type for this strategy.
 -- There are no safeguards for erroneous casts.
 -- @see Extractor:cast
+-- @raise on wrong arguments
+-- @tparam string str used as the extraction source
 -- @treturn nil
-function Subclass:cast() -- luacheck: no self
+function Subclass:cast( str ) -- luacheck: no self
+	assert( str == "nil" or str == "Nil" or str == "NIL"
+		or str == "null" or str == "Null" or str == "NULL",
+		'Failed to cast assumed “nil”' )
 	return nil
 end
 

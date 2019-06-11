@@ -41,69 +41,69 @@ local function testPlaceholder()
 end
 
 local tests = {
-	{
+	{ -- 1
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	{
+	{ -- 2
 		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{
+	{ -- 3
 		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 4
 		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 5
 		name = name .. ':type ()',
 		func = testType,
 		expect = { 'base' }
 	},
-	{
+	{ -- 6
 		name = name .. ':find (not matched)',
 		func = testFind,
 		args = { 'foo bar baz', { 'test', 0, 0 } },
 		expect = {}
 	},
-	{
+	{ -- 7
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo bar baz', { '^foo', 0, 0 } },
 		expect = { 1, 3 }
 	},
-	{
+	{ -- 8
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo bar baz', { 'bar', 0, 0 } },
 		expect = { 5, 7 }
 	},
-	{
+	{ -- 9
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo bar baz', { 'baz$', 0, 0 } },
 		expect = { 9, 11 }
 	},
-	{
+	{ -- 10
 		name = name .. ':cast ()',
 		func = testCast,
 		args = {},
 		expect = { false, "Method should be overridden" }
 	},
-	{
+	{ -- 11
 		name = name .. ':placeholder ()',
 		func = testPlaceholder,
 		args = {},

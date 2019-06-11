@@ -298,9 +298,10 @@ function Frame:eval()
 		repeat
 			local strategy, first, last = self:extractors():find( v, pos )
 			if strategy then
+				local str = mw.ustring.sub( v, first, last )
 				-- table.insert( keyFrags, v:sub( first, last ) )
 				-- table.insert( descFrags, v:sub( first, last ) )
-				table.insert( args, strategy:cast( v, first, last ) )
+				table.insert( args, strategy:cast( str ) )
 				-- table.insert( keyFrags, strategy:placeholder() )
 				pos = 1 + last
 			else

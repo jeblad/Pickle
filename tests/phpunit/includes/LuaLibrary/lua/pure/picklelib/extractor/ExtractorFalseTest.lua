@@ -39,74 +39,81 @@ local function testPlaceholder()
 end
 
 local tests = {
-	{
+	{ -- 1
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	{
+	{ -- 2
 		name = name .. ':create (nil value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { nil },
 		expect = { 'table' }
 	},
-	{
+	{ -- 3
 		name = name .. ':create (single value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 4
 		name = name .. ':create (multiple value type)',
 		func = testCreate,
 		type = 'ToString',
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	{
+	{ -- 5
 		name = name .. ':type ()',
 		func = testType,
 		expect = { 'false' }
 	},
-	{
+	{ -- 6
 		name = name .. ':find (not matched)',
 		func = testFind,
 		args = { 'foo bar baz' },
 		expect = {}
 	},
-	{
+	{ -- 7
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'false' },
 		expect = { 1, 5 }
 	},
-	{
+	{ -- 8
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'false bar baz' },
 		expect = { 1, 5 }
 	},
-	{
+	{ -- 9
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo false baz' },
 		expect = { 5, 9 }
 	},
-	{
+	{ -- 10
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo bar false' },
 		expect = { 9, 13 }
 	},
-	{
-		name = name .. ':cast (empty)',
+	{ -- 11
+		name = name .. ':cast (singlevalue)',
 		func = testCast,
+		args = { 'false' },
 		expect = { false }
 	},
-	{
+	{ -- 12
+		name = name .. ':cast (singlevalue)',
+		func = testCast,
+		args = { 'False' },
+		expect = { false }
+	},
+	{ -- 13
 		name = name .. ':placeholder ()',
 		func = testPlaceholder,
 		args = {},
