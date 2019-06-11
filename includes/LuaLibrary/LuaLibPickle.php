@@ -18,13 +18,16 @@ class LuaLibPickle extends Scribunto_LuaLibraryBase {
 	 * @return array
 	 */
 	public function register() {
+		global $wgLang;
+		global $wgContLang;
 		global $wgPickleSetup;
 		global $wgPickleRenderPath;
 		global $wgPickleRenderStyles;
 		global $wgPickleRenderTypes;
 		global $wgPickleExtractorPath;
 		global $wgPickleExtractor;
-		global $wgPickleTranslationSubpage;
+		global $wgPickleTranslationFollows;
+		global $wgPickleTranslationPage;
 
 		assert( in_array( $wgPickleSetup, [ 'implicit', 'explicit' ] ) );
 
@@ -33,7 +36,10 @@ class LuaLibPickle extends Scribunto_LuaLibraryBase {
 			[ 'addResourceLoaderModules' => [ $this, 'addResourceLoaderModules' ] ],
 			[
 				'setup' => $wgPickleSetup,
-				'translationSubpage' => $wgPickleTranslationSubpage,
+				'contLang' => $wgContLang->getCode(),
+				'userLang' => $wgLang->getCode(),
+				'translationFollows' => $wgPickleTranslationFollows,
+				'translationPage' => $wgPickleTranslationPage,
 				'renderPath' => $wgPickleRenderPath,
 				'renderStyles' => $wgPickleRenderStyles,
 				'renderTypes' => $wgPickleRenderTypes,

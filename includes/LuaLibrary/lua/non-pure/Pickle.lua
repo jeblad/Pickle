@@ -7,6 +7,7 @@ local options	-- luacheck: ignore
 
 -- pure libs
 local libUtil = require 'libraryUtil'
+local Translator = require 'picklelib/translator/Translator'
 
 -- @var structure for storage of the lib
 local pickle = {}
@@ -18,7 +19,7 @@ local renderLibs = {}
 local extractorLibs = {}
 
 -- @var subpage name
-local translationSubpage = nil
+local translationPage = nil
 
 pickle.bag = require 'picklelib/Bag'
 pickle.counter = require 'picklelib/Counter'
@@ -57,19 +58,19 @@ local function setup( env )
 	end
 
 	-- create translators
-	local translators = require( 'picklelib/translator/Translators' ):create()
+	local translators = pickle.translators:create()
 
 	-- register translation data
 	local translationData = nil
-	local prefixedText = mw.getCurrentFrame():getTitle()
-	if prefixedText then
+	if translationPage then
 		pcall( function()
-			translationData = mw.loadData( prefixedText .. translationSubpage )
+			translationData = mw.loadData( translationPage )
 		end )
 	end
 	for k,v in pairs( translationData or {} ) do
+		-- skips metadata
 		if not string.match( k, '^@' ) then
-			translators:register( k, v )
+			translators:register( k, Translator:create( v ) )
 		end
 	end
 
@@ -340,8 +341,14 @@ function pickle.setupInterface( opts )
 	package.loaded['mw.Pickle'] = pickle
 	pickle._implicit = opts.setup == 'implicit'
 
-	-- keep subpage name for later
-	translationSubpage = opts.translationSubpage
+	-- keep subpage name and path for later
+	if opts.translationFollows == 'user' then
+		translationPage = string.format( opts.translationPage['user'],
+			mw.title.getCurrentTitle().text, opts.userLang )
+	elseif opts.translationFollows == 'content' then
+		translationPage = string.format( opts.translationPage['content'],
+			mw.title.getCurrentTitle().text, opts.contLang )
+	end
 
 	-- keep render libs for later
 	for k,v in pairs( opts.renderStyles ) do

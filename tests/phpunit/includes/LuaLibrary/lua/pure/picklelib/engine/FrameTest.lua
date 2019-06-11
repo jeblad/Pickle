@@ -8,6 +8,8 @@ local testframework = require 'Module:TestFramework'
 
 local extractors = require 'picklelib/extractor/Extractors'
 assert( extractors )
+local translators = require 'picklelib/translator/Translators'
+assert( extractors )
 local subjects = require 'picklelib/Bag'
 assert( subjects )
 local reports = require 'picklelib/Bag'
@@ -24,6 +26,7 @@ local function makeFrame( ... )
 		:setSubjects( subjects:create() )
 		:setReports( reports:create() )
 		:setExtractors( extractors:create() )
+		:setTranslators( translators:create() )
 end
 
 local function testExists()

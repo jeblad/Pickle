@@ -8,6 +8,7 @@ local libUtil = require 'libraryUtil'
 local Bag = require 'picklelib/Bag'
 local ReportAdapt = require 'picklelib/report/ReportAdapt'
 local ReportFrame = require 'picklelib/report/ReportFrame'
+local Translator = require 'picklelib/translator/Translator'
 
 -- @var class var for lib
 local Frame = {}
@@ -292,24 +293,24 @@ function Frame:eval()
 			or { '' } ) do
 		local pos = 1
 		local args = {}
-		local keyFrags = {}
-		local descFrags = {}
+		local translator = Translator:create()
 
 		repeat
-			local strategy, first, last = self:extractors():find( v, pos )
+			local strategy, first, last = self._extractors:find( v, pos )
 			if strategy then
-				local str = mw.ustring.sub( v, first, last )
-				-- table.insert( keyFrags, v:sub( first, last ) )
-				-- table.insert( descFrags, v:sub( first, last ) )
-				table.insert( args, strategy:cast( str ) )
-				-- table.insert( keyFrags, strategy:placeholder() )
+				table.insert( args, strategy:cast( mw.ustring.sub( v, first, last ) ) )
+				translator:addPart( mw.ustring.sub( v, pos, first ) )
+				translator:addPlaceholder( strategy:placeholder() )
 				pos = 1 + last
 			else
-				-- table.insert( keyFrags, v:sub( pos ) )
-				-- table.insert( descFrags, v:sub( pos ) )
+				translator:addPart( mw.ustring.sub( v, pos ) )
 			end
 		until( not strategy )
 
+		local key = translator:getKey()
+		if not self._translators:find( key ) then
+			self._translators:register( key, translator )
+		end
 
 		for _,w in ipairs( { self._fixtures:export() } ) do
 			self:evalFixture( v, w, env, unpack{ args } )

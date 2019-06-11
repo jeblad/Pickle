@@ -5,6 +5,7 @@
 
 -- pure libs
 local Bag = require 'picklelib/Bag'
+local Counter = require 'picklelib/Counter'
 
 -- @var class var for lib
 local Translator = {}
@@ -17,24 +18,53 @@ function Translator:__index( key ) -- luacheck: no self
 end
 
 --- Create a new instance.
--- @tparam vararg ... list of patterns
+-- @tparam vararg ... list of patterns(?)
 -- @treturn self
-function Translator:create( ... )
+function Translator:create()
 	local meta = rawget( self, 'create' ) and self or getmetatable( self )
 	local new = setmetatable( {}, meta )
-	return new:_init( ... )
+	return new:_init()
 end
 
 --- Initialize a new instance.
--- @tparam vararg ... list of patterns
+-- @tparam vararg ... list of patterns(?)
 -- @treturn self
-function Translator:_init( ... )
-	self._fragments = Bag:create()
-	for _,v in ipairs( { ... } ) do
-		self._fragments:push( v )
-	end
+function Translator:_init()
+	self._keyFrags = Bag:create()
+	self._descFrags = Bag:create()
 	self._type = 'translator'
+	self._counter = Counter:create()
 	return self
+end
+
+function Translator:addPart( part )
+	self._keyFrags:unshift( part )
+	self._descFrags:unshift( part )
+	return self
+end
+
+function Translator:getKey()
+	if not self._key then
+		self._key = table.concat( { self._keyFrags:export() }, '' )
+	end
+	return self._key
+end
+
+function Translator:addPlaceholder( part )
+	self._keyFrags:unshift( part )
+	self._descFrags:unshift( '$' .. tostring( self._counter() ) )
+	return self
+end
+
+function Translator:getDesc()
+	if not self._desc then
+		self._desc = table.concat( { self._descFrags:export() }, '' )
+	end
+	return self._desc
+end
+
+function Translator:isStale()
+	return not not (self._desc and self._key)
 end
 
 --- Get the type of the strategy.

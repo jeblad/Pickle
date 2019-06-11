@@ -115,7 +115,11 @@
 		"_prefix": "wgPickle",
 		"Setup": "implicit",
 		"ObserverID": 3,
-		"TranslationSubpage": "/i18n",
+		"TranslationFollows": "content",
+		"TranslationPage": {
+			"content": "Module:%s/i18n",
+			"user": "Module:%s/%s"
+		},
 		"DefaultNamespace": 828,
 		"RenderPath": "picklelib/render/%s/Render%s%s",
 		"RenderStyles": {
