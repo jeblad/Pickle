@@ -7,19 +7,9 @@ local options	-- luacheck: ignore
 
 -- pure libs
 local libUtil = require 'libraryUtil'
-local Translator = require 'picklelib/translator/Translator'
 
 -- @var structure for storage of the lib
 local pickle = {}
-
--- @var structure for delayed render libs
-local renderLibs = {}
-
--- @var structure for delayed extractor libs
-local extractorLibs = {}
-
--- @var subpage name
-local translationPage = nil
 
 pickle.bag = require 'picklelib/Bag'
 pickle.counter = require 'picklelib/Counter'
@@ -29,52 +19,144 @@ pickle.adapt = require 'picklelib/engine/Adapt'
 pickle.double = require 'picklelib/engine/Double'
 pickle.renders = require 'picklelib/render/Renders'
 pickle.extractors = require 'picklelib/extractor/Extractors'
+pickle.translator = require 'picklelib/translator/Translator'
 pickle.translators = require 'picklelib/translator/Translators'
 
--- Setup framework.
--- This needs a valid environment, for example from getfenv()
--- @tparam table env
--- @treturn table environment
-local function setup( env )
-	libUtil.checkType( 'setup', 1, env, 'table', false )
+--- Add further options for translators
+-- @tparam table opts
+local function addTranslatorOptions( opts )
+	if opts.translationPage then
+		opts.langCode = opts.langCode
+			or (options.translationFollows == 'content' and options.contLang)
+			or (options.translationFollows == 'user' and options.userLang)
+	else
+		if opts.langCode then
+			opts.translationPage = string.format( options.translationPath.user,
+				mw.title.getCurrentTitle().text,
+				opts.langCode )
+		elseif options.translationFollows == 'content' then
+			opts.translationPage = string.format( options.translationPath.content,
+				mw.title.getCurrentTitle().text,
+				options.contLang )
+			opts.langCode = options.contLang
+		-- this variant only works properly if caching is turned off
+		elseif options.translationFollows == 'user' then
+			opts.translationPage = string.format( options.translationPath.user,
+				mw.title.getCurrentTitle().text,
+				options.userLang )
+			opts.langCode = options.userLang
+		else
+			opts.translationPage = false
+		end
+	end
+end
 
-	-- create the reports
-	local reports = pickle.bag:create()
-	--env._reports = reports
+--- Create translators
+-- @tparam table opts
+-- @treturn Translators
+local function createTranslators( opts )
+	local translators = pickle.translators:create()
 
-	-- register render styles
-	for _,v in ipairs( renderLibs ) do
-		local style = pickle.renders.registerStyle( v[1] )
+	if not opts.translationPage then
+		return nil
+	end
+
+	local translationData = nil
+	if opts.translationPage then
+		pcall( function()
+			translationData = mw.loadData( opts.translationPage )
+		end )
+	end
+
+	for k,v in pairs( translationData or {} ) do
+		-- skips metadata
+		if not string.match( k, '^@' ) then
+			translators:register( k, pickle.translator:create( v ) )
+		end
+	end
+
+	return translators
+end
+
+--- Add further options for extractors
+-- @tparam table opts
+local function addExtractorOptions( opts )
+	if opts.extractorLibs then
+		return
+	end
+
+	opts.extractorLibs = {}
+	for k,v in pairs( options.extractors or {} ) do
+		local lib = string.format( options.extractorPath, v )
+		table.insert( opts.extractorLibs, { k, lib } )
+	end
+end
+
+--- Create extractors
+-- @tparam table opts
+-- @treturn Extractors
+local function createExtractors( opts )
+	local extractors = pickle.extractors:create()
+
+	for _,v in ipairs( opts.extractorLibs or {} ) do
+		extractors:register( require( v[2] ):create() )
+	end
+
+	return extractors
+end
+
+--- Add further options for renders
+-- @tparam table opts
+local function addRenderOptions( opts )
+	if opts.renderLibs then
+		return
+	end
+
+	opts.renderLibs = {}
+	for k,v in pairs( options.renderStyles ) do
+		for l,w in pairs( options.renderTypes ) do
+			local lib = string.format( options.renderPath, k, w, v )
+			table.insert( opts.renderLibs, { k, l, lib } )
+		end
+	end
+end
+
+--- Create Renders
+-- @tparam table opts
+-- @treturn Renders
+local function createRenders( opts )
+	local renders = pickle.renders
+	for _,v in ipairs( opts.renderLibs ) do
+		local style = renders.registerStyle( v[1] )
 		assert( style )
 		style:registerType( v[2], require( v[3] ) )
 	end
 
-	-- create the extractors
-	local extractors = pickle.extractors:create()
+	return renders
+end
 
-	-- register extractor types
-	for _,v in ipairs( extractorLibs ) do
-		extractors:register( require( v[2] ):create() )
-	end
+-- Setup framework.
+-- This needs a valid environment, for example from getfenv()
+-- @tparam table env
+-- @tparam table opts
+-- @treturn table environment
+local function setup( env, opts )
+	libUtil.checkType( 'setup', 1, env, 'table', false )
+	libUtil.checkType( 'setup', 2, opts, 'table', true )
 
-	-- create translators
-	local translators = pickle.translators:create()
+	opts = opts or {}
 
-	-- register translation data
-	local translationData = nil
-	if translationPage then
-		pcall( function()
-			translationData = mw.loadData( translationPage )
-		end )
-	end
-	for k,v in pairs( translationData or {} ) do
-		-- skips metadata
-		if not string.match( k, '^@' ) then
-			translators:register( k, Translator:create( v ) )
-		end
-	end
+	addTranslatorOptions( opts )
+	local translators = createTranslators( opts )
 
-	-- create adaptations
+	addExtractorOptions( opts )
+	local extractors = createExtractors( opts )
+
+	addRenderOptions( opts )
+	local renders = createRenders( opts )
+
+	local reports = pickle.bag:create()
+
 	local expects = pickle.bag:create()
 	local subjects = pickle.bag:create()
 
@@ -195,11 +277,11 @@ local function setup( env )
 	-- @param frame
 	-- @treturn string
 	local function findStyle( frame )
-		if frame.args['style'] then
-			return frame.args['style']
+		if frame.args.style then
+			return frame.args.style
 		end
 		local names ={}
-		for _,v in ipairs( renderLibs ) do
+		for _,v in ipairs( opts.renderLibs ) do
 			names[v[1]] = true
 		end
 		for _,v in ipairs( frame.args ) do
@@ -214,8 +296,8 @@ local function setup( env )
 	-- @param frame
 	-- @treturn string
 	local function findLang( frame )
-		if frame.args['lang'] then
-			return frame.args['lang']
+		if frame.args.lang then
+			return frame.args.lang
 		end
 		for _,v in ipairs( frame.args ) do
 			if mw.language.isValidCode( v ) then
@@ -232,7 +314,7 @@ local function setup( env )
 	-- @return Frame
 	env.describe = function( ... )
 		local obj = pickle.frame:create()
-		obj:setRenders( pickle.renders )
+		obj:setRenders( renders )
 			:setReports( reports )
 			:setSubjects( subjects )
 			:setExtractors( extractors )
@@ -267,7 +349,7 @@ local function setup( env )
 			styleName = styleName or 'full'
 			langCode = langCode or mw.language.getContentLanguage():getCode()
 
-			local style = pickle.renders.style( styleName )
+			local style = renders.style( styleName )
 			return reports:top():realize( style, langCode, pickle.counter:create() )
 		end
 
@@ -298,7 +380,7 @@ local function setup( env )
 
 	--- Put up a nice banner telling everyone pickle is initialized, and add the instances
 	env._reports = reports
-	env._renders = pickle.renders
+	env._renders = renders
 	env._extractors = extractors
 	env._translators = translators
 	env._PICKLE = true
@@ -312,16 +394,20 @@ local mt = { types = {} }
 --- Install the library.
 -- This install all dependencies and changes the environment
 -- @function mw.pickle.__call
--- @param env table for the environment
+-- @tparam table opts for the options
 -- @treturn self
-function mt:__call() -- luacheck: no self
+function mt:__call( opts ) -- luacheck: no self
+	libUtil.checkType( '__call', 1, opts, 'table', true )
+	opts = opts or {}
+
 	-- Get the environment for installation of our access points
 	-- This is necessary for testing.
 	local ret,env = pcall( function() return getfenv( 4 ) end )
 	if not ret then
 		env = _G
 	end
-	setup( env )
+
+	setup( env, opts )
 end
 
 setmetatable( pickle, mt )
@@ -339,30 +425,7 @@ function pickle.setupInterface( opts )
 	mw = mw or {}
 	mw.pickle = pickle
 	package.loaded['mw.Pickle'] = pickle
-	pickle._implicit = opts.setup == 'implicit'
-
-	-- keep subpage name and path for later
-	if opts.translationFollows == 'user' then
-		translationPage = string.format( opts.translationPage['user'],
-			mw.title.getCurrentTitle().text, opts.userLang )
-	elseif opts.translationFollows == 'content' then
-		translationPage = string.format( opts.translationPage['content'],
-			mw.title.getCurrentTitle().text, opts.contLang )
-	end
-
-	-- keep render libs for later
-	for k,v in pairs( opts.renderStyles ) do
-		for l,w in pairs( opts.renderTypes ) do
-			local lib = string.format( opts.renderPath, k, w, v )
-			table.insert( renderLibs, { k, l, lib } )
-		end
-	end
-
-	-- keep extractors for later
-	for k,v in pairs( opts.extractors ) do
-		local lib = string.format( opts.extractorPath, v )
-		table.insert( extractorLibs, { k, lib } )
-	end
+	pickle._IMPLICIT = opts.setup == 'implicit'
 
 end
 

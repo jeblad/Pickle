@@ -116,7 +116,7 @@
 		"Setup": "implicit",
 		"ObserverID": 3,
 		"TranslationFollows": "content",
-		"TranslationPage": {
+		"TranslationPath": {
 			"content": "Module:%s/i18n",
 			"user": "Module:%s/%s"
 		},

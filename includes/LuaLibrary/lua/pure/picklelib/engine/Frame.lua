@@ -256,7 +256,7 @@ function Frame:evalFixture( description, fixture, environment, ... )
 	libUtil.checkType( 'Frame:evalFixture', 3, environment, 'table', false )
 
 	local depth = self:reports():depth()
-	local t= { pcall( mw.pickle._implicit and setfenv( fixture, environment ) or fixture, ... ) }
+	local t= { pcall( mw.pickle._IMPLICIT and setfenv( fixture, environment ) or fixture, ... ) }
 	if ( not t[1] ) and (not not t[2]) then
 		self:reports()
 			:push( ReportAdapt:create():setSkip( 'pickle-adapt-catched-exception' ) )
@@ -286,7 +286,7 @@ function Frame:eval()
 			:push( ReportFrame:create():setTodo( 'pickle-frame-no-fixtures' ) )
 		return self
 	end
-	local env = mw.pickle._implicit and getfenv(1) or _G
+	local env = mw.pickle._IMPLICIT and getfenv(1) or _G
 
 	for _,v in ipairs( self:hasDescriptions()
 			and { self:descriptions() }
