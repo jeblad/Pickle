@@ -116,10 +116,12 @@
 	"pickle-adapt-condition-to-be-u-match": "Skal gjenfinnes i Unicode-målet",
 	"pickle-adapt-catched-exception": "Fanget avbrudd",
 	"pickle-adapt-catched-return": "Fanget retur",
-	"pickle-spies-carp-todo": "Funksjonen «plukk» ble kalt",
-	"pickle-spies-cluck-todo": "Funksjonen «klukk» ble kalt",
-	"pickle-spies-confess-skip": "Funksjonen «tilstå» ble kalt",
-	"pickle-spies-croak-skip": "Funksjonen «kvakk» ble kalt",
-	"pickle-spies-confess-exits": "Funksjonen «tilstå» avslutter",
-	"pickle-spies-croak-exits": "Funksjonen «kvakk» avslutter"
+	"pickle-spies-carp-todo": "Funksjonen «carp» ble kalt",
+	"pickle-spies-cluck-todo": "Funksjonen «cluck» ble kalt",
+	"pickle-spies-confess-skip": "Funksjonen «confess» ble kalt",
+	"pickle-spies-croak-skip": "Funksjonen «croak» ble kalt",
+	"pickle-spies-confess-exits": "Funksjonen «confess» avslutter",
+	"pickle-spies-croak-exits": "Funksjonen «croak» avslutter",
+	"pickle-stub-no-fallback": "$1: ingen tilbakefall",
+	"pickle-stub-no-more-frames": "$1: ingen flere forberedte verdier"
 }

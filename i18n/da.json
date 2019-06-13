@@ -123,5 +123,7 @@
 	"pickle-spies-confess-skip": "Funktionen »confess« blev kaldt",
 	"pickle-spies-croak-skip": "Funktionen »croak« blev kaldt",
 	"pickle-spies-confess-exits": "Funktionen »confess« afslutter",
-	"pickle-spies-croak-exits": "Funktionen »croak« afslutter"
+	"pickle-spies-croak-exits": "Funktionen »croak« afslutter",
+	"pickle-stub-no-fallback": "$1: intet tilbagefaldsfunktion",
+	"pickle-stub-no-more-frames": "$1: ingen flere forberedte værdier"
 }
