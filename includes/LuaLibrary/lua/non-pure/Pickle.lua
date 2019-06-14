@@ -156,7 +156,7 @@ local function setup( env, opts )
 	local renders = createRenders( opts )
 
 	local reports = pickle.bag:create()
-
+	local frames = pickle.bag:create()
 	local expects = pickle.bag:create()
 	local subjects = pickle.bag:create()
 
@@ -314,7 +314,8 @@ local function setup( env, opts )
 	-- @return Frame
 	env.describe = function( ... )
 		local obj = pickle.frame:create()
-		obj:setRenders( renders )
+		frames:unshift( obj )
+		obj:setRenders( pickle.renders )
 			:setReports( reports )
 			:setSubjects( subjects )
 			:setExtractors( extractors )
@@ -377,6 +378,16 @@ local function setup( env, opts )
 	-- @tparam vararg ... passed on to Frame:create
 	-- @treturn self newly created object
 	env.it = env.context
+
+	env.execute = function()
+		for _,v in ipairs( { frames:export() } ) do
+			v:eval()
+		end
+		local renders = pickle.renders.style( 'vivid' )
+		local code = mw.language.getContentLanguage():getCode()
+		local counter = pickle.counter:create()
+		return reports:realize( renders, code, counter )
+	end
 
 	--- Put up a nice banner telling everyone pickle is initialized, and add the instances
 	env._reports = reports
