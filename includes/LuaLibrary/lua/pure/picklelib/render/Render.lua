@@ -96,7 +96,7 @@ function Baseclass:realizeClarification( keyPart, lang, counter )
 
 	local msg = keyword .. ( counter and ( ' ' .. counter() ) or '' )
 
-	if lang ~= 'en' then
+	if lang and lang ~= 'en' then
 		local translated = mw.message.new( self:key( keyPart .. '-keyword' ) )
 			:inLanguage( lang )
 		if not translated:isDisabled() then

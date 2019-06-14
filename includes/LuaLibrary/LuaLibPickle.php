@@ -27,7 +27,7 @@ class LuaLibPickle extends Scribunto_LuaLibraryBase {
 		global $wgPickleExtractorPath;
 		global $wgPickleExtractor;
 		global $wgPickleTranslationFollows;
-		global $wgPickleTranslationPage;
+		global $wgPickleTranslationPath;
 
 		assert( in_array( $wgPickleSetup, [ 'implicit', 'explicit' ] ) );
 
@@ -39,7 +39,7 @@ class LuaLibPickle extends Scribunto_LuaLibraryBase {
 				'contLang' => $wgContLang->getCode(),
 				'userLang' => $wgLang->getCode(),
 				'translationFollows' => $wgPickleTranslationFollows,
-				'translationPage' => $wgPickleTranslationPage,
+				'translationPath' => $wgPickleTranslationPath,
 				'renderPath' => $wgPickleRenderPath,
 				'renderStyles' => $wgPickleRenderStyles,
 				'renderTypes' => $wgPickleRenderTypes,
