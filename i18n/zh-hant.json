@@ -122,5 +122,7 @@
 	"pickle-spies-confess-skip": "已呼叫函式「confess」",
 	"pickle-spies-croak-skip": "已呼叫函式「croak」",
 	"pickle-spies-confess-exits": "已存在函式「confess」",
-	"pickle-spies-croak-exits": "已呼叫函式「croak」"
+	"pickle-spies-croak-exits": "已呼叫函式「croak」",
+	"pickle-stub-no-fallback": "$1：沒有回退",
+	"pickle-stub-no-more-frames": "$1：沒有更多框架"
 }

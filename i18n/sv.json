@@ -125,5 +125,6 @@
 	"pickle-spies-croak-skip": "Funktionen »croak« blev kallat",
 	"pickle-spies-confess-exits": "Funktionen »confess« avslutar",
 	"pickle-spies-croak-exits": "Funktionen »croak« avslutar",
-	"pickle-stub-no-more-frames": "$1: inga fler bildrutor"
+	"pickle-stub-no-fallback": "$1: inget eftersläng funktion",
+	"pickle-stub-no-more-frames": "$1: inga fler tillreda värden"
 }
