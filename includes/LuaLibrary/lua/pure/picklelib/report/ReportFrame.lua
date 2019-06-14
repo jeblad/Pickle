@@ -191,10 +191,10 @@ function Subclass:realize( renders, lang, counter )
 		end
 	end
 
-	if true or init then
+	if init then
 		out = renders:realizeVersion( self, lang, counter ) .. "\n"
-			.. '1..' .. counter:num() .. "\n"
-			.. out
+			.. '1..' .. tostring( counter:num() ) .. "\n"
+			.. tostring( out )
 	end
 
 	return out
