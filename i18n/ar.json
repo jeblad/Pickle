@@ -121,6 +121,6 @@
 	"pickle-spies-croak-skip": "تم استدعاء وظيفة \"croak\"",
 	"pickle-spies-confess-exits": "تم استدعاء وظيفة \"confess\"",
 	"pickle-spies-croak-exits": "وظيفة \"croak\" موجودة",
-	"pickle-stub-no-fallback": "$1: لا تراجع",
-	"pickle-stub-no-more-frames": "$1: لا يوجد المزيد من الإطارات"
+	"pickle-stub-no-fallback": "$1: لا توجد وظيفة احتياطية",
+	"pickle-stub-no-more-frames": "$1: لا يوجد المزيد من القيم المحسوبة مسبقا"
 }

@@ -4,7 +4,8 @@
 			"Gomoko",
 			"Wladek92",
 			"Jeblad",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Derugon"
 		]
 	},
 	"pickle-desc": "Ajoute les tests basiques Pickle aux modules Lua",
@@ -126,5 +127,5 @@
 	"pickle-spies-confess-exits": "Sortie de la fonction « confession »",
 	"pickle-spies-croak-exits": "Sortie de la fonction « croassement »",
 	"pickle-stub-no-fallback": "$1 : aucun repli",
-	"pickle-stub-no-more-frames": "$1 : pas de cadres"
+	"pickle-stub-no-more-frames": "$1 : pas plus de valeurs pré-calculées"
 }
