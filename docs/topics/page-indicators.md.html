@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Pickle documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Pickle</h1>
+
+<ul>
+  <li><a href="../mw.pickle.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Symbols">Symbols </a></li>
+<li><a href="#Strings">Strings </a></li>
+</ul>
+
+
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/activities.md.html">Activities</a></li>
+  <li><a href="../topics/adapt.md.html">Adapt</a></li>
+  <li><a href="../topics/call-style.md.html">Call style</a></li>
+  <li><a href="../topics/change-log.md.html">Log</a></li>
+  <li><a href="../topics/databases.md.html">Databases</a></li>
+  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
+  <li><a href="../topics/hello-world.md.html">Hello World</a></li>
+  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
+  <li><a href="../topics/musings.md.html">Musings</a></li>
+  <li><strong>Page indicators</strong></li>
+  <li><a href="../topics/sources.md.html">Sources</a></li>
+  <li><a href="../topics/spies.md.html">Spies</a></li>
+  <li><a href="../topics/statistics.md.html">Statistics</a></li>
+  <li><a href="../topics/test-anything-protocol.md.html">Test anything protocol</a></li>
+  <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
+  <li><a href="../topics/testing.md.html">Testing</a></li>
+  <li><a href="../topics/tracking-categories.md.html">Tracking categories</a></li>
+  <li><a href="../topics/translatewiki.md.html">Translatewiki</a></li>
+  <li><a href="../topics/vagrant.md.html">Vagrant</a></li>
+  <li><a href="../topics/vscode-extensions.md.html">VScode extension</a></li>
+  <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/util.html">util</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Bag.html">Bag</a></li>
+  <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Double.html">Double</a></li>
+  <li><a href="../classes/Frame.html">Frame</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/Extractor.html">Extractor</a></li>
+  <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
+  <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
+  <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
+  <li><a href="../classes/ExtractorNumber.html">ExtractorNumber</a></li>
+  <li><a href="../classes/ExtractorString.html">ExtractorString</a></li>
+  <li><a href="../classes/ExtractorTrue.html">ExtractorTrue</a></li>
+  <li><a href="../classes/Extractors.html">Extractors</a></li>
+  <li><a href="../classes/Render.html">Render</a></li>
+  <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
+  <li><a href="../classes/RenderFrame.html">RenderFrame</a></li>
+  <li><a href="../classes/Renders.html">Renders</a></li>
+  <li><a href="../classes/RenderAdaptCompact.html">RenderAdaptCompact</a></li>
+  <li><a href="../classes/RenderFrameCompact.html">RenderFrameCompact</a></li>
+  <li><a href="../classes/RenderAdaptFull.html">RenderAdaptFull</a></li>
+  <li><a href="../classes/RenderFrameFull.html">RenderFrameFull</a></li>
+  <li><a href="../classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
+  <li><a href="../classes/RenderFrameVivid.html">RenderFrameVivid</a></li>
+  <li><a href="../classes/Report.html">Report</a></li>
+  <li><a href="../classes/ReportAdapt.html">ReportAdapt</a></li>
+  <li><a href="../classes/ReportFrame.html">ReportFrame</a></li>
+  <li><a href="../classes/Translator.html">Translator</a></li>
+  <li><a href="../classes/Translators.html">Translators</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/HelloWorld.pickle.nb.lua.html">HelloWorld.pickle.nb.lua</a></li>
+  <li><a href="../examples/HelloWorld.lua.html">HelloWorld.lua</a></li>
+  <li><a href="../examples/HelloWorld.pickle.lua.html">HelloWorld.pickle.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>Page indicators</h1>
+
+<p>There are <a href="https://mediawiki.org/wiki/Help:Page_status_indicators">page status indicators</a> to show the overall results for modules that have tests, but also status indicators for modules that should have tests. Page indicators have an initial icon, which is colored after the result, and a string. The coloring should follow the usual <em>red</em> – <em>yellow</em> – <em>green</em> color scheme for tests, and preferably by styling. The string should also say what the page indicator is about, that is “Pickle”, and the final state it is in, that is <em>failed</em> – <em>pending</em> – <em>pass</em>. There can also be other states.</p>
+
+<p>Page indicators are done in <a href="https://github.com/jeblad/Pickle/tree/master/includes/Indicator">Github: jeblad/Pickle/includes/Indicator</a>.</p>
+
+<p>It is important that the state is conveyed both as a symbol with a color cue and as a string with a description. (<a href="https://www.w3.org/TR/WCAG20-TECHS/G14.html">W3C – Techniques for WCAG 2.0: G14: Ensuring that information conveyed by color differences is also available in text</a>) The coloring of the symbol should only be used as a speed cue, not as the only source of information about the state. This is not merely because of usability concerns, it is also to give very clear and very strong signals to those using the module.</p>
+
+<p>The mechanism for filtering out modules with public methods, and only marking those, is delayed for now.</p>
+
+<p><a name="Symbols"></a></p>
+<h2>Symbols</h2>
+
+<p>The actual symbol and styling has only been through a very rudimentary design process. They should probably employ the colors used by other such testing frameworks, thereby the red, yellow, and green. They should also use a variation over the help-link already in use, thereby the encircled symbol. Note that they are not a predicate (help link), they are interjection (pickle link), and as such we shift from a question mark and to an exclamation mark or something similar.</p>
+
+<p>The coloring for some symbols are somewhat heavy, and could be adjusted. All are available on Commons in <a href="https://commons.wikimedia.org/wiki/Category:Spec">c:Category: Spec</a>, and it would be interesting if someone would create alternate designs. The whole link can be styled, so other schemes can be discussed too. Coloring behind the whole link was tested, but found to create too much visual distraction.</p>
+
+<p>;<img src="https://github.com/jeblad/Pickle/blob/master/modules/images/ext.pickle.indicator.icon/minified/fail-ltr.svg" height="64" width="64" /> Failed
+: The icon for failed state is a cross mark within a circle. A cross mark is typically used for something negative and dismissed. The rim of the circle can be styled, and will typically be colored red with a tint matching the skin.</p>
+
+<p>;<img src="https://github.com/jeblad/Pickle/blob/master/modules/images/ext.pickle.indicator.icon/minified/unknown-ltr.svg" height="64" width="64" /> Unknown
+: The icon for unknown state is a triple dot mark within a circle. A triple dot mark (or hellip) is typically used for something non-conclusive and unknown. The rim of the circle can be styled, and will typically be colored yellow with a tint matching the skin.</p>
+
+<p>;<img src="https://github.com/jeblad/Pickle/blob/master/modules/images/ext.pickle.indicator.icon/minified/good-ltr.svg" height="64" width="64" /> Passed
+: The icon for passed state is a check mark within a circle. A check mark is typically used for something positive and accepted. The rim of the circle can be styled, and will typically be colored yellow with a tint matching the skin.</p>
+
+<p><a name="Strings"></a></p>
+<h2>Strings</h2>
+
+<p>To make it possible for even color blind people to use the interface, and also for those that has no clear understanding of what the coloring means, a string is used both for stating the link in fact goes to the Pickle page and the final state of the pickles. This dual-purpose might create a problem for translators.</p>
+
+<p>The string will express the overall state for the pickles, not the individual ones. Even if there are 100 “passed” results, if there are one “pending” the overall result will be forced to “pending”. A “failed” result will also be forced to “pending”. That means there will be no plural variable, as it is the overall state that is conveyed in the string.</p>
+
+<p>At present the form is very terse, and sounds a bit awkward. It should be decided how we want to express this before they are translated.</p>
+
+
+<pre>
+{
+    <span class="string">"pickle-test-text-good"</span>: <span class="string">"Good"</span>,
+    <span class="string">"pickle-test-text-pending"</span>: <span class="string">"Pending"</span>,
+    <span class="string">"pickle-test-text-failed"</span>: <span class="string">"Failing"</span>,
+    <span class="string">"pickle-test-text-missing"</span>: <span class="string">"Missing"</span>,
+    <span class="string">"pickle-test-text-unknown"</span>: <span class="string">"Unknown"</span>
+}
+</pre>
+
+
+<p>There are three variants that seems obvious, either one has their merits. We could add the state in a parenthesis <code>&quot;Pickle (good)&quot;</code>, or spell it out <code>&quot;Pickle is good&quot;</code>, or reformulate as <code>&quot;Good pickle&quot;</code>. First one focuses on what it is, and then the result. This should probably link just the first part, and append the state as non-linked information. The second sounds better if it is added in templates. Last one focuses more on the actual state than how it is inferred.</p>
+
+<p>It should also be discussed if we want the same messages in a parser function. That would make it possible to add a test status to templates like <a href="https://nn.wikipedia.org/wiki/Template:Lua">w:nn:Template:Lua</a>. Other projects use a Lua-module for the same purpose, like <a href="https://en.wikipedia.org/wiki/Template:Lua">w:en:Template:Lua</a> which use <a href="https://en.wikipedia.org/wiki/Module:Lua_banner">w:en:Module:Lua banner</a>. Those templates would probably be better off with a module-based interface.</p>
+
+<p>The messages can be set to disabled.</p>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
+

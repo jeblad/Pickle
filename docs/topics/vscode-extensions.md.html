@@ -30,13 +30,17 @@
   <li><a href="../mw.pickle.html">Index</a></li>
 </ul>
 
+<h2>Contents</h2>
+<ul>
+<li><a href="#Extensions">Extensions </a></li>
+</ul>
 
 
 <h2>Topics</h2>
 <ul class="">
   <li><a href="../topics/activities.md.html">Activities</a></li>
   <li><a href="../topics/adapt.md.html">Adapt</a></li>
-  <li><strong>Call style</strong></li>
+  <li><a href="../topics/call-style.md.html">Call style</a></li>
   <li><a href="../topics/change-log.md.html">Log</a></li>
   <li><a href="../topics/databases.md.html">Databases</a></li>
   <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
@@ -53,7 +57,7 @@
   <li><a href="../topics/tracking-categories.md.html">Tracking categories</a></li>
   <li><a href="../topics/translatewiki.md.html">Translatewiki</a></li>
   <li><a href="../topics/vagrant.md.html">Vagrant</a></li>
-  <li><a href="../topics/vscode-extensions.md.html">VScode extension</a></li>
+  <li><strong>VScode extension</strong></li>
   <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
 </ul>
 <h2>Modules</h2>
@@ -105,46 +109,32 @@
 <div id="content">
 
 
-<h1>Call style</h1>
+<h1>VScode extension</h1>
 
-<p>Lua allows the following form of calling</p>
+<p>To ease the development several extensions were in use.</p>
 
+<p><a name="Extensions"></a></p>
+<h2>Extensions</h2>
 
-<pre>
-<span class="keyword">local</span> lib = <span class="global">require</span> <span class="string">'Module:Foo'</span>
-<span class="keyword">return</span> describe lib <span class="keyword">function</span>()
-  expect <span class="comment">-- something
-</span><span class="keyword">end</span>
-</pre>
+<p>The extensions used during development</p>
 
-
-<p>The funny part is <code>return describe lib function…</code> which seems almost magical. Each call eats one value argument, and it progresses until a statement is found. At that point it stops, but it might restart from that statement. To make this work the call to the left must generate a new call, typically by defining a <code>__call()</code> meta function. Only one value is eaten at a time, and each time a new call must be made. Because only value arguments are eaten, all arguments that somehow is a statement must be wrapped in parentheses.</p>
-
-<p>Hidden in the previous is the fact that <code>return</code> is an operator, and thus defines a statement by itself, so the chaining starts at <code>describe</code>.</p>
-
-<p>Unfortunately the <a href="https://en.wikipedia.org/wiki/Lint_(software">linter</a> does not like this form, and that is why the function arguments must be wrapped in parentheses. The previous must thus be written as</p>
-
-
-<pre>
-<span class="keyword">local</span> lib = <span class="global">require</span> <span class="string">'Module:Foo'</span>
-<span class="keyword">return</span> describe (lib) (<span class="keyword">function</span>()
-  expect <span class="comment">-- something
-</span><span class="keyword">end</span>)
-</pre>
-
-
-<p>or as a list of arguments to a common call</p>
-
-
-<pre>
-<span class="keyword">local</span> lib = <span class="global">require</span> <span class="string">'Module:Foo'</span>
-<span class="keyword">return</span> describe(lib, <span class="keyword">function</span>()
-  expect :bar() :toBe(<span class="string">"Baz"</span>)
-<span class="keyword">end</span>)
-</pre>
-
-
-<p>In some cases the parenthesized form can be more readable and more easily interpreted as a repeated call.</p>
+<ul>
+    <li>banana (?)</li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=paulhoughton.vscode-jscpd">Copy/paste detector</a> <code>ext install paulhoughton.vscode-jscpd</code></li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=raymondcamden.CSSLint">CSSLint</a> <code>ext install raymondcamden.CSSLint</code></li>
+    <li>[https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint] ESLint <code>ext install dbaeumer.vscode-eslint</code></li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.jscs">JSCS Linting</a> <code>ext install ms-vscode.jscs</code></li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=keyring.Lua">Lua</a> <code>ext install keyring.Lua</code></li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">markdownlint</a> <code>ext install DavidAnson.vscode-markdownlint</code></li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=kasik96.format-indent">PHP Code Format</a> <code>ext install kasik96.format-indent</code> (discontinued?)</li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug">PHP Debug</a> <code>ext install felixfbecker.php-debug</code></li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=HvyIndustries.crane">PHP Intellisense - Crane</a> <code>ext install HvyIndustries.crane</code></li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=linyang95.php-symbols">PHP Symbols</a> <code>ext install linyang95.php-symbols</code></li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs">phpcs</a> <code>ext install ikappas.phpcs</code></li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a> <code>ext install ms-python.python</code>(can be skipped)</li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=shinnn.stylelint">stylelint</a> <code>ext install shinnn.stylelint</code></li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=dwenegar.vscode-luacheck">vscode-luacheck</a> <code>ext install dwenegar.vscode-luacheck</code></li>
+</ul>
 
 
 </div> <!-- id="content" -->

@@ -30,13 +30,18 @@
   <li><a href="../mw.pickle.html">Index</a></li>
 </ul>
 
+<h2>Contents</h2>
+<ul>
+<li><a href="#Categories">Categories </a></li>
+<li><a href="#Statistics">Statistics </a></li>
+</ul>
 
 
 <h2>Topics</h2>
 <ul class="">
   <li><a href="../topics/activities.md.html">Activities</a></li>
   <li><a href="../topics/adapt.md.html">Adapt</a></li>
-  <li><strong>Call style</strong></li>
+  <li><a href="../topics/call-style.md.html">Call style</a></li>
   <li><a href="../topics/change-log.md.html">Log</a></li>
   <li><a href="../topics/databases.md.html">Databases</a></li>
   <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
@@ -50,7 +55,7 @@
   <li><a href="../topics/test-anything-protocol.md.html">Test anything protocol</a></li>
   <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
   <li><a href="../topics/testing.md.html">Testing</a></li>
-  <li><a href="../topics/tracking-categories.md.html">Tracking categories</a></li>
+  <li><strong>Tracking categories</strong></li>
   <li><a href="../topics/translatewiki.md.html">Translatewiki</a></li>
   <li><a href="../topics/vagrant.md.html">Vagrant</a></li>
   <li><a href="../topics/vscode-extensions.md.html">VScode extension</a></li>
@@ -105,46 +110,35 @@
 <div id="content">
 
 
-<h1>Call style</h1>
+<h1>Tracking categories</h1>
 
-<p>Lua allows the following form of calling</p>
+<p>There are <a href="https://mediawiki.org/wiki/Help:Tracking_categories">tracking categories</a> to show the overall results for modules that has tests, but also categories for modules that should have tests. The tracking categories are listed on “Special:TrackingCategories” at each of the projects using the extension.</p>
 
+<p>Tracking categories are done in <a href="https://github.com/jeblad/Pickle/tree/master/includes/Category">Github: jeblad/Pickle/includes/Category</a>.</p>
 
-<pre>
-<span class="keyword">local</span> lib = <span class="global">require</span> <span class="string">'Module:Foo'</span>
-<span class="keyword">return</span> describe lib <span class="keyword">function</span>()
-  expect <span class="comment">-- something
-</span><span class="keyword">end</span>
-</pre>
+<p><a name="Categories"></a></p>
+<h2>Categories</h2>
 
-
-<p>The funny part is <code>return describe lib function…</code> which seems almost magical. Each call eats one value argument, and it progresses until a statement is found. At that point it stops, but it might restart from that statement. To make this work the call to the left must generate a new call, typically by defining a <code>__call()</code> meta function. Only one value is eaten at a time, and each time a new call must be made. Because only value arguments are eaten, all arguments that somehow is a statement must be wrapped in parentheses.</p>
-
-<p>Hidden in the previous is the fact that <code>return</code> is an operator, and thus defines a statement by itself, so the chaining starts at <code>describe</code>.</p>
-
-<p>Unfortunately the <a href="https://en.wikipedia.org/wiki/Lint_(software">linter</a> does not like this form, and that is why the function arguments must be wrapped in parentheses. The previous must thus be written as</p>
+<p>The actual categories used initially are (keys are message keys, values are category names)</p>
 
 
 <pre>
-<span class="keyword">local</span> lib = <span class="global">require</span> <span class="string">'Module:Foo'</span>
-<span class="keyword">return</span> describe (lib) (<span class="keyword">function</span>()
-  expect <span class="comment">-- something
-</span><span class="keyword">end</span>)
+{
+    <span class="string">"pickle-tracking-category-good"</span>: <span class="string">"Modules with good tests"</span>,
+    <span class="string">"pickle-tracking-category-pending"</span>: <span class="string">"Modules with pending tests"</span>,
+    <span class="string">"pickle-tracking-category-failing"</span>: <span class="string">"Modules with failing tests"</span>,
+    <span class="string">"pickle-tracking-category-missing"</span>: <span class="string">"Modules with missing tests"</span>,
+    <span class="string">"pickle-tracking-category-unknown"</span>: <span class="string">"Modules with unknown tests"</span>
+}
 </pre>
 
 
-<p>or as a list of arguments to a common call</p>
+<p>Those are not final and will be changed according to added rules.</p>
 
+<p><a name="Statistics"></a></p>
+<h2>Statistics</h2>
 
-<pre>
-<span class="keyword">local</span> lib = <span class="global">require</span> <span class="string">'Module:Foo'</span>
-<span class="keyword">return</span> describe(lib, <span class="keyword">function</span>()
-  expect :bar() :toBe(<span class="string">"Baz"</span>)
-<span class="keyword">end</span>)
-</pre>
-
-
-<p>In some cases the parenthesized form can be more readable and more easily interpreted as a repeated call.</p>
+<p>Because the categories counts their members they can be used for gross figures for how many good and/or failing tests there are at a specific project, and also for gross figures for how many modules that has tests.</p>
 
 
 </div> <!-- id="content" -->

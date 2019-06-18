@@ -1,0 +1,608 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Pickle documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Pickle</h1>
+
+<ul>
+  <li><a href="../mw.pickle.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Notes">Notes </a></li>
+<li><a href="#Initial_setup">Initial setup </a></li>
+<li><a href="#Additional_tweaks_for_the_guest">Additional tweaks for the guest </a></li>
+<li><a href="#Git_update">Git update </a></li>
+<li><a href="#Resource_allocations">Resource allocations </a></li>
+<li><a href="#Linting">Linting </a></li>
+<li><a href="#Mess_detection">Mess detection </a></li>
+<li><a href="#Manual_testing">Manual testing </a></li>
+<li><a href="#Automated_testing">Automated testing </a></li>
+<li><a href="#Bugs___problems">Bugs & problems </a></li>
+</ul>
+
+
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/activities.md.html">Activities</a></li>
+  <li><a href="../topics/adapt.md.html">Adapt</a></li>
+  <li><a href="../topics/call-style.md.html">Call style</a></li>
+  <li><a href="../topics/change-log.md.html">Log</a></li>
+  <li><a href="../topics/databases.md.html">Databases</a></li>
+  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
+  <li><a href="../topics/hello-world.md.html">Hello World</a></li>
+  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
+  <li><a href="../topics/musings.md.html">Musings</a></li>
+  <li><a href="../topics/page-indicators.md.html">Page indicators</a></li>
+  <li><a href="../topics/sources.md.html">Sources</a></li>
+  <li><a href="../topics/spies.md.html">Spies</a></li>
+  <li><a href="../topics/statistics.md.html">Statistics</a></li>
+  <li><a href="../topics/test-anything-protocol.md.html">Test anything protocol</a></li>
+  <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
+  <li><a href="../topics/testing.md.html">Testing</a></li>
+  <li><a href="../topics/tracking-categories.md.html">Tracking categories</a></li>
+  <li><a href="../topics/translatewiki.md.html">Translatewiki</a></li>
+  <li><strong>Vagrant</strong></li>
+  <li><a href="../topics/vscode-extensions.md.html">VScode extension</a></li>
+  <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/util.html">util</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Bag.html">Bag</a></li>
+  <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Double.html">Double</a></li>
+  <li><a href="../classes/Frame.html">Frame</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/Extractor.html">Extractor</a></li>
+  <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
+  <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
+  <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
+  <li><a href="../classes/ExtractorNumber.html">ExtractorNumber</a></li>
+  <li><a href="../classes/ExtractorString.html">ExtractorString</a></li>
+  <li><a href="../classes/ExtractorTrue.html">ExtractorTrue</a></li>
+  <li><a href="../classes/Extractors.html">Extractors</a></li>
+  <li><a href="../classes/Render.html">Render</a></li>
+  <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
+  <li><a href="../classes/RenderFrame.html">RenderFrame</a></li>
+  <li><a href="../classes/Renders.html">Renders</a></li>
+  <li><a href="../classes/RenderAdaptCompact.html">RenderAdaptCompact</a></li>
+  <li><a href="../classes/RenderFrameCompact.html">RenderFrameCompact</a></li>
+  <li><a href="../classes/RenderAdaptFull.html">RenderAdaptFull</a></li>
+  <li><a href="../classes/RenderFrameFull.html">RenderFrameFull</a></li>
+  <li><a href="../classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
+  <li><a href="../classes/RenderFrameVivid.html">RenderFrameVivid</a></li>
+  <li><a href="../classes/Report.html">Report</a></li>
+  <li><a href="../classes/ReportAdapt.html">ReportAdapt</a></li>
+  <li><a href="../classes/ReportFrame.html">ReportFrame</a></li>
+  <li><a href="../classes/Translator.html">Translator</a></li>
+  <li><a href="../classes/Translators.html">Translators</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/HelloWorld.pickle.nb.lua.html">HelloWorld.pickle.nb.lua</a></li>
+  <li><a href="../examples/HelloWorld.lua.html">HelloWorld.lua</a></li>
+  <li><a href="../examples/HelloWorld.pickle.lua.html">HelloWorld.pickle.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>Vagrant</h1>
+
+<p>This is the setup for a <a href="https://en.wikipedia.org/wiki/Vagrant_(software">Vagrant</a> instance that can be used for testing and development of the extension.</p>
+
+<p><a name="Initial_setup"></a></p>
+<h2>Initial setup</h2>
+
+<p>The usual setup is as described on <a href="https://mediawiki.org/wiki/MediaWiki-Vagrant">mw:MediaWiki-Vagrant</a>, and yes you need <a href="https://en.wikipedia.org/wiki/Git_(software">Git</a></p>
+
+
+<pre>
+mkdir ~/picklespace
+cd ~/picklespace
+git clone <span class="comment">--recursive https://gerrit.wikimedia.org/r/mediawiki/vagrant .
+</span>./setup.sh
+vagrant roles enable pickle
+vagrant up # first “up” will <span class="keyword">do</span> a provision
+</pre>
+
+
+<p>The first <code>vagrant up</code> will provision and start the instance.</p>
+
+<p><a name="Additional_tweaks_for_the_guest"></a></p>
+<h2>Additional tweaks for the guest</h2>
+
+<h3>Locales</h3>
+
+<p>If you get complaints about missing <a href="https://en.wikipedia.org/wiki/Locale_(computer_software">locales</a>, usually from <a href="https://en.wikipedia.org/wiki/perl_(programming_language">perl</a>, then the problem is most likely missing locales in the vagrant box. Tunnel into the box with <code>vagrant ssh</code> and first check if <code>/etc/ssh/sshd_config</code> has a line <code>AcceptEnv LANG LC_*</code>, if it is commented then uncomment the line. Then do</p>
+
+
+<pre>
+sudo locale-gen nb_NO
+sudo locale-gen nb_NO.UTF-<span class="number">8</span>
+</pre>
+
+
+<p>Replace <code>nb_NO</code> with whatever locale that works for you. Then do</p>
+
+
+<pre>
+sudo dpkg-reconfigure locales
+sudo update-locale LANG=nb_NO.UTF-<span class="number">8</span>
+</pre>
+
+
+<h3>Update &amp; Upgrade</h3>
+
+<p>Make sure everything is updated</p>
+
+
+<pre>
+vagrant ssh
+sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</pre>
+
+
+<p>Now reload the vagrant instance</p>
+
+
+<pre>
+exit
+vagrant reload
+</pre>
+
+
+<p><a name="Git_update"></a></p>
+<h2>Git update</h2>
+
+<p>At this point you should do a <code>vagrant git-update</code> in the host directory, otherwise you will probably run into problems later. Then do a <code>vagrant reload</code> to make sure everything works.</p>
+
+<p>At this point you should clean up the client for outdated apt packages. Do a</p>
+
+
+<pre>
+vagrant ssh
+sudo apt-get autoremove
+exit
+</pre>
+
+
+<p>Note that this still leaves the box running old software, and you should do a <code>sudo apt-get update &amp;&amp; sudo apt-get upgrade</code> from time to time.</p>
+
+<p><a name="Resource_allocations"></a></p>
+<h2>Resource allocations</h2>
+
+<h3>Vagrant resources</h3>
+
+<p>It could be interesting to adjust the amount of memory and number of CPU cores used during testing. Such resource allocations are described on <a href="https://www.mediawiki.org/wiki/MediaWiki-Vagrant#Adjust_CPU">mw:MediaWiki-Vagrant#Adjust the resources allocated to the VM?</a> Especially note the code snippet for <code>~/picklespace/Vagrantfile-extra.rb</code>.</p>
+
+
+<pre>
+Vagrant.configure(<span class="string">'2'</span>) <span class="keyword">do</span> |config|
+  config.vm.provider :virtualbox <span class="keyword">do</span> |vb|
+    # See http://www.virtualbox.org/manual/ch08.html <span class="keyword">for</span> additional options.
+    vb.customize [<span class="string">'modifyvm'</span>, :id, <span class="string">'--memory'</span>, <span class="string">'1536'</span>]
+    vb.customize [<span class="string">'modifyvm'</span>, :id, <span class="string">'--cpus'</span>, <span class="string">'2'</span>]
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+
+
+<p>To restart the instance do <code>vagrant reload</code>.</p>
+
+<p>If the memory is too low, then the test run in guest will end in a <em>fork failed</em>. When that happen, increase the memory until the test runs ok. With <em>fastest</em> it should be sufficient to set this around “1024”, and “1536” is enough. If it is set to high, then it seems like the test runs take more time. This could be due to garbage collection.</p>
+
+<p>If the number of CPUs are increased beyond the actual number of cores, an increase in run time might be observed. When that happen, decrease the number of CPUs available to the vagrant instance.</p>
+
+<h3>Composer resources</h3>
+
+<p>There can be timeouts in the Vagrant guest instance during composer runs. To adjust for the increased time do something like</p>
+
+
+<pre>
+vagrant ssh
+composer config <span class="comment">--global process-timeout 900</span>
+</pre>
+
+
+<p><a name="Linting"></a></p>
+<h2>Linting</h2>
+
+<h3>Guest linting</h3>
+
+<p>Install additional Lua stuff</p>
+
+
+<pre>
+vagrant ssh
+sudo apt-get install lua5.<span class="number">1</span>
+sudo apt-get install luarocks
+sudo apt-get install unzip
+sudo luarocks install luacheck
+</pre>
+
+
+<p><strong>TODO</strong>: Probably be fixed in a few days. (<a href="https://phabricator.wikimedia.org/T224791">T224791</a>)</p>
+
+<p>Seems like these two must be global to work properly</p>
+
+<!--
+
+<pre>
+composer global <span class="global">require</span> pdepend/pdepend
+composer global <span class="global">require</span> phpmd/phpmd
+</pre>
+
+-->
+
+
+
+<pre>
+sudo apt install pdepend phpmd
+</pre>
+
+
+<p>The previous gives old versions, but they sort of work.</p>
+
+<p>Most of the linting can be installed by the following (or <code>vagrant git-update</code>)</p>
+
+
+<pre>
+cd /vagrant/mediawiki/extensions/Pickle
+composer install
+</pre>
+
+
+<p>Append a line <code>PATH=&quot;$PATH:/vagrant/mediawiki&quot;</code> to the file <code>~/.profile</code>, do an <code>exit</code> and <code>vagrant ssh</code> to get back into the box.</p>
+
+<p>Given that a standard Mediawiki-Vagrant is used then sudo must be used while calling npm. First update npm itself</p>
+
+
+<pre>
+cd /vagrant/mediawiki/extensions/Pickle
+sudo npm update -g npm
+</pre>
+
+
+<p>then install all dependencies</p>
+
+
+<pre>
+sudo npm install
+</pre>
+
+
+<p>Make sure we have a few additions</p>
+
+
+<pre>
+sudo npm install -g grunt-cli <span class="comment">--save-dev
+</span>npm install grunt <span class="comment">--save-dev</span>
+</pre>
+
+
+<p>(Those are only used for linting in the guest!)</p>
+
+<p>Update <code>nano ./node_modules/grunt-contrib-lualint/tasks/lualint.js</code>, change <code>./libs/lualint</code> to <code>luacheck</code>. The check done by <code>lualint</code> is rather rudimentary compared to <code>luacheck</code>, but the later has no grunt-module.</p>
+
+<p>If you run <code>grunt --force</code> at this point you should get failures involving <em>lualint</em>, and <em>luac</em>.</p>
+
+<p>Linting with PHP_CodeSniffer require (skip?)</p>
+
+
+<pre>
+sudo apt-get install php-pear
+sudo pear channel-update pear.php.net
+sudo pear install PHP_CodeSniffer
+</pre>
+
+
+<p><strong>TODO</strong>: Got a lot of undefined here. Outdated repo? (<a href="https://pear.php.net/bugs/bug.php?id=21218">Bug #21218</a>)</p>
+
+<h3>Host linting</h3>
+
+<p>Some needs to be set up in the host. Usually the editing software needs additional tweaking, such as if you are using <a href="https://en.wikipedia.org/wiki/Visual_Studio_Code">w:Visual Studio Code</a>. The following assumes you are on a host running Ubuntu 16.10</p>
+
+<p>Part of this is from <a href="https://phpraxis.wordpress.com/2016/05/16/install-php-5-6-or-5-5-in-ubuntu-16-04-lts-xenial-xerus/">PHPraxis – PHP and more: Install PHP 5.6 (or 5.5) in Ubuntu 16.04 LTS (Xenial Xerus)</a> (Apache-packages might be skipped, possibly also databases.)</p>
+
+
+<pre>
+LC_ALL=C.UTF-<span class="number">8</span> sudo add-apt-repository ppa:ondrej/php
+sudo apt-get remove php-pear
+sudo apt-get -y install composer npm curl git
+sudo apt-get -y install php5.<span class="number">6</span> php5.<span class="number">6</span>-xml php5.<span class="number">6</span>-curl php5.<span class="number">6</span>-json php5.<span class="number">6</span>-mbstring php5.<span class="number">6</span>-mysql php5.<span class="number">6</span>-cli php5.<span class="number">6</span>-sqlite3 php5.<span class="number">6</span>-mcrypt
+sudo apt-get -y install php7.<span class="number">0</span> php7.<span class="number">0</span>-xml
+sudo apt-get -y install libapache2-mod-php5.<span class="number">6</span> libapache2-mod-php7.<span class="number">0</span> mysql-server-<span class="number">5.7</span> apache2
+sudo apt-get install php-codesniffer php-gettext php-pear php-php-gettext php-xdebug php-pear
+npm install
+composer install
+sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</pre>
+
+
+<p>To shift from php 5.6 to php 7.0</p>
+
+
+<pre>
+sudo a2dismod php5.<span class="number">6</span> ; sudo a2enmod php7.<span class="number">0</span> ; sudo service apache2 restart
+</pre>
+
+
+<p>To shift from php 7.0 to php 5.6</p>
+
+
+<pre>
+sudo a2dismod php7.<span class="number">0</span> ; sudo a2enmod php5.<span class="number">6</span> ; sudo service apache2 restart
+</pre>
+
+
+<p>Assuming you are on a Ubuntu machine, set up <code>luarocks</code></p>
+
+
+<pre>
+sudo apt-get install luarocks
+</pre>
+
+
+<p>then set up <code>luacheck</code></p>
+
+
+<pre>
+sudo luarocks install luacheck
+</pre>
+
+
+<p><a name="Mess_detection"></a></p>
+<h2>Mess detection</h2>
+
+<p>A lot of problems. Seems like the host works as advertised for <code>pdepend</code> and <code>phpmd</code>, while the guest has problems with newer versions. For now the only versions that works are the pretty old</p>
+
+
+<pre>
+composer global <span class="global">require</span> pdepend/pdepend:<span class="number">1.</span>* phpmd/phpmd:<span class="number">1.</span>*
+</pre>
+
+
+<p><a name="Manual_testing"></a></p>
+<h2>Manual testing</h2>
+
+<p>There are a number of code pages in a file <code>pages.xml</code>. This file can be imported by <code>composer import</code>, and if necessary a new file built by <code>composer export</code>. The core pages should be available from <a href="http://127.0.0.1:8080/wiki/Main_Page">Main Page</a>, but note especially the page <a href="http://127.0.0.1:8080/wiki/VagrantRole/Pickle/testcases">VagrantRole/Pickle/testcases</a>.</p>
+
+<h3>Verification of the setup</h3>
+
+<p>To do some very simple manual testing, add the following on a page <em>Module:Test</em> in the Vagrant-instance. It should be available at <code>http://127.0.0.1:8080/wiki/Module:Test</code> (HHVM) or at <code>http://php5.local.wmftest.net:8080/wiki/Module:Test</code> (PHP5)</p>
+
+
+<pre>
+<span class="keyword">local</span> h = {}
+  h.foo = <span class="keyword">function</span>() <span class="keyword">return</span> <span class="string">'bar'</span> <span class="keyword">end</span>
+<span class="keyword">return</span> h
+</pre>
+
+
+<p>At this point the module should have a category “Modules with unknown tests”, which is clearly wrong as there are no tests! This is a bug that needs fixing, it is a default handler that doesn't check if the page exists.</p>
+
+<p>Then add the following on a page <em>Module:Test/pickle</em></p>
+
+
+<pre>
+<span class="keyword">local</span> h = {}
+<span class="keyword">function</span> h.tap()
+  <span class="keyword">return</span> <span class="string">"1..1\nok 1"</span>
+<span class="keyword">end</span>
+<span class="keyword">return</span> h
+</pre>
+
+
+<p>The <code>h.tap()</code> fakes a test report, as the code for reporting test states isn't finalized yet.</p>
+
+<p>Page indicators and tracking categories should now be set, and logging events generated on state changes. The page <em>Module:Test/pickle</em> should have a page indicator saying “Good” in some language, and after reloading <em>Module:Test</em> that page should be “Good” too.</p>
+
+<h3>Verification of development</h3>
+
+<p>The development starts to come together, and it is possible to verify the code through the development console. In the present version the library is bootstrapped through a side effect of accessing <code>describe()</code>, which also double as the outer frame (or example) in a <em>spec</em>. The “loading” is requiring a number of libs, registering some functions to access those libraries, and then doing the usual function associated with <em>describe</em>. The resulting model can be observed in the lua console.</p>
+
+
+<pre>
+= mw.dumpObject( p )         <span class="comment">-- this is a table</span>
+</pre>
+
+
+<p>Note that the console does not handle comments, and those must be left out when you do copy-pasting.</p>
+
+<p>The initial result, the value set to <code>p</code>, is the unevaluated model. To get to the (TODO)</p>
+
+<p>A very small “shim” is available as part of the loading of non-pure lua libs. This is located at <code>mw.pickle</code>, and contains configuration data used during bootstrapping. Before bootstrap only configuration data and the function to do bootstrapping is available.</p>
+
+
+<pre>
+= mw.dumpObject( mw.pickle ) <span class="comment">-- this is a table
+</span>= mw.dumpObject( describe )  <span class="comment">-- this is a function</span>
+</pre>
+
+
+<p>Actual content of the structure may change.</p>
+
+<p>After bootstrapping the global environment will contain numerous other functions, and possibly some private tables. One private table is <code>_reports</code> and will expand and contract as tests are run. To some degree this can be safely manipulated through use of spies. The bootstrapping happens in the normal running code, and not in the console. What you inspect in the console is the observable model without the additional functions that will be installed through the bootstrap process. That means you will see the <code>describe</code> function, but you will not see the <code>context</code> or <code>it</code> functions unless you run <code>describe</code> inside the console.</p>
+
+
+<pre>
+= mw.dumpObject( _reports )  <span class="comment">-- should return 'nil'
+</span>describe():eval()            <span class="comment">-- this fill '_reports' with a few lines
+</span>= mw.dumpObject( _reports )  <span class="comment">-- should now return a table</span>
+</pre>
+
+
+<p><a name="Automated_testing"></a></p>
+<h2>Automated testing</h2>
+
+<p>Testing of PHP files are mainly done from <a href="https://en.wikipedia.org/wiki/Composer_(software">composer</a>, which also include access points to test entries for Lua files. Testing of Javascript files and other files are done from <a href="https://en.wikipedia.org/wiki/Grunt_(software">grunt</a>. Check out <code>composer.json</code> and <code>Gruntfile.js</code>.</p>
+
+<h3>Unit tests</h3>
+
+<p>To run the unit tests on the code base start the vagrant instance</p>
+
+
+<pre>
+vagrant up
+vagrant ssh
+</pre>
+
+
+<p>and then run the test for <code>phpunit</code></p>
+
+
+<pre>
+cd /vagrant/mediawiki
+sudo -u www-data php5 tests/phpunit/phpunit.php <span class="comment">--wiki wiki --group Pickle</span>
+</pre>
+
+
+<p>or run the style tests and unit tests for <code>composer</code></p>
+
+
+<pre>
+cd /vagrant/mediawiki/extensions/Pickle
+composer test
+composer unit
+</pre>
+
+
+<p>Running the unit tests through composer makes the tests run at twice the speed.</p>
+
+<p><a name="Bugs___problems"></a></p>
+<h2>Bugs &amp; problems</h2>
+
+<h3>Role “scribunto”</h3>
+
+<p>Until the <code>scribunto</code> role is fixed, there are random critical errors during testing, the role must be manually set to use <code>standalone</code> instead of <code>sandbox</code></p>
+
+
+<pre>
+# Class: role::scribunto
+# Configures Scribunto, an extension <span class="keyword">for</span> embedding scripting languages
+# <span class="keyword">in</span> MediaWiki.
+
+class role::scribunto {
+    include ::role::codeeditor
+    include ::role::syntaxhighlight
+    mediawiki::extension { <span class="string">'Scribunto'</span>:
+      settings =&gt; [
+            <span class="string">'$wgScribuntoEngineConf["luastandalone"]["luaPath"] =
+                "/vagrant/mediawiki/extensions/Scribunto/includes/engines/LuaStandalone/binaries/lua5_1_5_linux_64_generic/lua"'</span>,
+            <span class="string">'$wgScribuntoDefaultEngine = "luastandalone"'</span>,
+            <span class="string">'$wgScribuntoUseGeSHi      = true'</span>,
+            <span class="string">'$wgScribuntoUseCodeEditor = true'</span>,
+        ],
+        notify   =&gt; Service[<span class="string">'apache2'</span>],
+        <span class="global">require</span>  =&gt; [
+            Mediawiki::Extension[<span class="string">'CodeEditor'</span>],
+            Mediawiki::Extension[<span class="string">'SyntaxHighlight_GeSHi'</span>],
+        ],
+    }
+}
+</pre>
+
+
+<h3>Failed dependencies</h3>
+
+<p>During first <code>vagrant up</code> I often gets missing or failed dependencies. Usually a <code>vagrant reload --provision</code> solve the problem.</p>
+
+<h3>Missing /var/log</h3>
+
+<p>Sometimes I'm stuck on missing <code>/var/log</code> on guest. Usually I just do a <code>vagrant destroy</code> and start over, but sometime I'm stuck. Only thing that worked for me in those cases was a <code>vagrant box remove trusty-cloud</code>. This is a very hard reset because something has gone really wrong in the guest.</p>
+
+<h3>RPC failed</h3>
+
+<p>Sometime I get <code>error: RPC failed; curl 56 GnuTLS recv error (-9): A TLS packet with unexpected length was received.</code> In those cases start from scratch and hope the best. It seems like the error is triggered by packet collisions, then gnuTLS fails, and then curl can't restart. See also <a href="https://phabricator.wikimedia.org/T152801">Phabricator T152801</a> and <a href="https://bugs.launchpad.net/ubuntu/+source/gnutls26/+bug/1111882">Launchpad: bug#1111882</a>.</p>
+
+<h3>Timeout after updating the key</h3>
+
+<p>Usually something like “Timed out while waiting for the machine to boot.” Try a new <code>vagrant reload</code>, usually it will work after the restart, or slap the box with <code>vagrant reload --provision</code>.</p>
+
+<p>Sometimes it helps to do a ACPI shutdown, or restart, and then an ACPI shutdown on the instance. Also, consider a restart on the host to release stuck bound sockets.</p>
+
+<h3>Timeout on waiting for NFS</h3>
+
+<p>Usually this is a failed restart of NFS on host. Do a <code>vagrant halt</code>, and restart NFS (hard), or reboot the host (easy). If NFS fails, it could be an indication that other things is stuck too.</p>
+
+<p>NFS is tricky to restart, read the manual. And yes, it is not unlikely NFS has failed on the guest too.</p>
+
+<p>Not sure about this: It seems like updates of VirtualBox often leaves an old version of the Guest Additions. That makes the next <code>vagrant up</code> fail. It seems like a <code>vagrant destroy</code> is necessary to make the guest work again, so all local additions must be reapplied. Because other guests might work as usual this can be very confusing.</p>
+
+<h3>Ports in use</h3>
+
+<p>Sometimes I'm stuck with ports in use on host or guest. Usually it is the host, and usually it is use of port 8080. Seems like only thing that surely solves that is a <code>vagrant halt</code>, which should say that the instance is not running, reboot and then <code>vagrant up --provision</code>.</p>
+
+<p>It could be other processes that use the ports, and if those starts again after reboot you're stuck. Try to track them down with <code>netstat -na | grep 8080</code> (or whatever offending port) and kill them, or reassign the ports. If it is port 8080 on the host then the port is set in the file <code>settings.d/wikis/wgConf.php</code> and the config <code>settings.d/wikis/wiki/wgConf.php</code>.</p>
+
+<h3>Symfony</h3>
+
+<p>Unless the provisioning is fixed (<a href="https://phabricator.wikimedia.org/T125504">symfony/process dependency in SyntaxHighlight not loaded</a>) there will be a lot of red error messages at this point if you skipped <code>vagrant git-update</code>, or there will be complaints about missing classes when you open the main page for you mediawiki instance. The following should preferably be done before setting up any roles.</p>
+
+<p>Use a <code>vagrant git-update</code> and possibly a <code>vagrant reload --provision</code> to make the complaint go away. If they still don't go away try to use <code>vagrant ssh</code> to tunnel into the vagrant box and then <code>cd /vagrant/mediawiki/extensions</code> and for each extension cd into the directory and do a <code>composer update</code>. Afterward, do a <code>vagrant reload --provision</code>.</p>
+
+<h3>Test does not use all cores</h3>
+
+<p>Composer tries to get <a href="https://github.com/liuggio/fastest">fastest</a>, but unless <code>composer update</code> is run, that is <code>vagrant git-update</code>, it isn't available. It isn't that much that can be run in parallel on Mediawiki, so the tests are slow anyhow. With <em>fastest</em> I get a 20% drop in overall run time for the tests. The ordinary Lua tests run from PHP are awfully slow.</p>
+
+<p><a name="Notes"></a></p>
+<h2>Notes</h2>
+
+<p>Running boxes can be listed with</p>
+
+
+<pre>
+vagrant global-status
+</pre>
+
+
+<p>Abandoned boxes can be pruned with</p>
+
+
+<pre>
+vagrant global-status <span class="comment">--prune</span>
+</pre>
+
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
+

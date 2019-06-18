@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Pickle documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Pickle</h1>
+
+<ul>
+  <li><a href="../mw.pickle.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Items">Items </a></li>
+<li><a href="#Categories">Categories </a></li>
+<li><a href="#Numbers">Numbers </a></li>
+</ul>
+
+
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/activities.md.html">Activities</a></li>
+  <li><a href="../topics/adapt.md.html">Adapt</a></li>
+  <li><a href="../topics/call-style.md.html">Call style</a></li>
+  <li><a href="../topics/change-log.md.html">Log</a></li>
+  <li><a href="../topics/databases.md.html">Databases</a></li>
+  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
+  <li><a href="../topics/hello-world.md.html">Hello World</a></li>
+  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
+  <li><a href="../topics/musings.md.html">Musings</a></li>
+  <li><a href="../topics/page-indicators.md.html">Page indicators</a></li>
+  <li><a href="../topics/sources.md.html">Sources</a></li>
+  <li><a href="../topics/spies.md.html">Spies</a></li>
+  <li><strong>Statistics</strong></li>
+  <li><a href="../topics/test-anything-protocol.md.html">Test anything protocol</a></li>
+  <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
+  <li><a href="../topics/testing.md.html">Testing</a></li>
+  <li><a href="../topics/tracking-categories.md.html">Tracking categories</a></li>
+  <li><a href="../topics/translatewiki.md.html">Translatewiki</a></li>
+  <li><a href="../topics/vagrant.md.html">Vagrant</a></li>
+  <li><a href="../topics/vscode-extensions.md.html">VScode extension</a></li>
+  <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/util.html">util</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Bag.html">Bag</a></li>
+  <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Double.html">Double</a></li>
+  <li><a href="../classes/Frame.html">Frame</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/Extractor.html">Extractor</a></li>
+  <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
+  <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
+  <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
+  <li><a href="../classes/ExtractorNumber.html">ExtractorNumber</a></li>
+  <li><a href="../classes/ExtractorString.html">ExtractorString</a></li>
+  <li><a href="../classes/ExtractorTrue.html">ExtractorTrue</a></li>
+  <li><a href="../classes/Extractors.html">Extractors</a></li>
+  <li><a href="../classes/Render.html">Render</a></li>
+  <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
+  <li><a href="../classes/RenderFrame.html">RenderFrame</a></li>
+  <li><a href="../classes/Renders.html">Renders</a></li>
+  <li><a href="../classes/RenderAdaptCompact.html">RenderAdaptCompact</a></li>
+  <li><a href="../classes/RenderFrameCompact.html">RenderFrameCompact</a></li>
+  <li><a href="../classes/RenderAdaptFull.html">RenderAdaptFull</a></li>
+  <li><a href="../classes/RenderFrameFull.html">RenderFrameFull</a></li>
+  <li><a href="../classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
+  <li><a href="../classes/RenderFrameVivid.html">RenderFrameVivid</a></li>
+  <li><a href="../classes/Report.html">Report</a></li>
+  <li><a href="../classes/ReportAdapt.html">ReportAdapt</a></li>
+  <li><a href="../classes/ReportFrame.html">ReportFrame</a></li>
+  <li><a href="../classes/Translator.html">Translator</a></li>
+  <li><a href="../classes/Translators.html">Translators</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/HelloWorld.pickle.nb.lua.html">HelloWorld.pickle.nb.lua</a></li>
+  <li><a href="../examples/HelloWorld.lua.html">HelloWorld.lua</a></li>
+  <li><a href="../examples/HelloWorld.pickle.lua.html">HelloWorld.pickle.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>Statistics</h1>
+
+<p>This is a page to track some categories and log their size. This is used to create indicators for impact on the different projects.</p>
+
+<p>To get numbers for base modules and the documentation and test cases, templates are added to the system messages <code>scribunto-doc-page-show</code> and <code>scribunto-doc-page-does-not-exist</code>. The templates will add the module to the actual categories, and then intersections can be made on those categories to get the actual numbers.</p>
+
+<p>At nowiki those templates are <a href="https://no.wikipedia.org/wiki/Template:Grunnmoduler">w:no:grunnmoduler</a> (base modules), <a href="https://no.wikipedia.org/wiki/Template:Grunnmoduler_med_dokumentasjon">w:no:grunnmoduler med dokumentasjon</a> (base modules with documentation), and <a href="https://no.wikipedia.org/wiki/Template:Grunnmoduler_med_testtilfeller">w:no:grunnmoduler med testtilfeller</a> (base modules with test cases).</p>
+
+<p>Use <em>Category tree intersection</em> to do further drill-down, for example «<a href="http://tools.wmflabs.org/catscan3/quick_intersection.php?lang=no&amp;project=wikipedia&amp;cats=Grunnmoduler+med+testtilfeller%0D%0AGrunnmoduler+med+dokumentasjon&amp;ns=828&amp;depth=4&amp;max=1000&amp;start=0&amp;format=html&amp;callback=&amp;norun&amp;norun">wmflabs:catscan3:grunnmoduler med testtilfeller <em>and</em> grunnmoduler med dokumentasjon</a>».</p>
+
+<p><a name="Items"></a></p>
+<h2>Items</h2>
+
+<p>; Templates
+* <a href="https://wikidata.org/wiki/Q24265477">Template:Categorize base module</a>
+* <a href="https://wikidata.org/wiki/Q24265631">Template:Categorize base module with test cases</a>
+* <a href="https://wikidata.org/wiki/Q24265627">Template:Categorize base module with documentation</a>
+; Categories
+* <a href="https://wikidata.org/wiki/Q24265479">Category:Base modules</a>
+* <a href="https://wikidata.org/wiki/Q24265191">Category:Base modules with test cases</a>
+* <a href="https://wikidata.org/wiki/Q24265767">Category:Base modules with documentation</a></p>
+
+<p><a name="Categories"></a></p>
+<h2>Categories</h2>
+
+<p>{| class="wikitable"
+!Project
+!Modules
+!Documentation
+!Testcases
+|-
+| <a href="https://da.wikipedia.org">dawiki</a>
+| <a href="https://da.wikipedia.org/wiki/Category:Grundmoduler">Grundmoduler</a>
+| <a href="https://da.wikipedia.org/wiki/Category:Grundmoduler_med_dokumentation">Grundmoduler med dokumentation</a>
+| <a href="https://da.wikipedia.org/wiki/Category:Grundmoduler">med testtilfælder Grundmoduler med testtilfælder</a>
+|-
+| <a href="https://de.wikipedia.org">dewiki</a>
+| ?
+| <a href="https://de.wikipedia.org/wiki/Kategorie:Wikipedia:Lua/Modul/Dokumentation">Wikipedia:Lua/Modul/Dokumentation</a>
+| <a href="https://de.wikipedia.org/wiki/Kategorie:Wikipedia:Lua/Modul/Testseite">Wikipedia:Lua/Modul/Testseite</a>
+|-
+| <a href="https://en.wikipedia.org">enwiki</a>
+| <a href="https://en.wikipedia.org/wiki/Category:Base_modules">Base modules</a>
+| <a href="https://en.wikipedia.org/wiki/Category:Base_modules_with_documentation">Base modules with documentation</a>
+| <a href="https://en.wikipedia.org/wiki/Category:Base_modules_with_test_cases">Base modules with test cases</a>
+|-
+| <a href="https://no.wikipedia.org">nowiki</a>
+| <a href="https://no.wikipedia.org/wiki/Category:Grunnmoduler">Grunnmoduler</a>
+| <a href="https://no.wikipedia.org/wiki/Category:Grunnmoduler_med_dokumentasjon">Grunnmoduler med dokumentasjon</a>
+| <a href="https://no.wikipedia.org/wiki/Category:Grunnmoduler_med_testtilfeller">Grunnmoduler med testtilfeller</a>
+|-
+| <a href="https://nn.wikipedia.org">nnwiki</a>
+| <a href="https://nn.wikipedia.org/wiki/Category:Grunnmodular">Grunnmodular</a>
+| <a href="https://nn.wikipedia.org/wiki/Category:Grunnmodular_med_dokumentasjon">Grunnmodular med dokumentasjon</a>
+| <a href="https://nn.wikipedia.org/wiki/Category:Grunnmodular_med_testtilfeller">Grunnmodular med testtilfeller</a>
+|-
+| <a href="https://sv.wikipedia.org">svwiki</a>
+| <a href="https://sv.wikipedia.org/wiki/Category:Basmoduler">Basmoduler</a>
+| <a href="https://sv.wikipedia.org/wiki/Category:Basmoduler_med_dokumentation">Basmoduler med dokumentation</a>
+| <a href="https://sv.wikipedia.org/wiki/Category:Basmoduler_med_testfall">Basmoduler med testfall</a>
+|}</p>
+
+<p><a name="Numbers"></a></p>
+<h2>Numbers</h2>
+
+<p>Unfortunately numbers for only a single site was available.</p>
+
+<h3>Norwegian (bokmål) Wikipedia</h3>
+
+<p>{|class="wikitable"
+! colspan="6" | nowiki
+|-
+!Date
+! Modules
+! colspan="2" |Documentation
+! colspan="2" |Testcases
+|-
+| 2016-06-01 || 138 || 98 || 71.0 % || 16 || 11.6 %
+|}</p>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
+
