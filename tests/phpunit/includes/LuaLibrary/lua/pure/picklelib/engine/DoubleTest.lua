@@ -270,7 +270,7 @@ local tests = {
 			{ true, { 1 } },
 			{ true, { 2 } },
 			{ true, { 3 } },
-			{ false, 'double: no more frames' }
+			{ false, 'double: no more precomputed values' }
 		}
 	},
 	{ -- 34
@@ -280,7 +280,7 @@ local tests = {
 		expect = {
 			{ true, { 1 } },
 			{ true, { 2 } },
-			{ false, 'double: no more frames' }
+			{ false, 'double: no more precomputed values' }
 		}
 	},
 	{ -- 35
@@ -289,9 +289,9 @@ local tests = {
 		args = { nil, { 1 }, nil, { 3 } },
 		expect = {
 			{ true, { 1 } },
-			{ false, 'double: no more frames' },
-			{ false, 'double: no more frames' }, -- counting error
-			{ false, 'double: no more frames' }  -- counting error
+			{ false, 'double: no more precomputed values' },
+			{ false, 'double: no more precomputed values' }, -- counting error
+			{ false, 'double: no more precomputed values' }  -- counting error
 		}
 	},
 }
