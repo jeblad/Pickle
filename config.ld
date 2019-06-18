@@ -33,7 +33,17 @@ readme = {
 	'topics/hello-world.md',
 	'topics/lua-classes.md',
 	'topics/musings.md',
+	'topics/page-indicators.md',
+	'topics/sources.md',
+	'topics/spies.md',
+	'topics/statistics.md',
+	'topics/test-anything-protocol.md',
 	'topics/test-doubles.md',
+	'topics/testing.md',
+	'topics/tracking-categories.md',
+	'topics/translatewiki.md',
+	'topics/vagrant.md',
+	'topics/vscode-extensions.md',
 	'topics/vscode-snippets.md'
 }
 
