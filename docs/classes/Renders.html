@@ -32,9 +32,8 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Fields">Fields</a></li>
-<li><a href="#Methods">Methods</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
+<li><a href="#Methods">Methods</a></li>
 </ul>
 
 
@@ -106,11 +105,15 @@
  <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
-<h2><a href="#Fields">Fields</a></h2>
+<h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#Renders.__index">Renders.__index</a></td>
+	<td class="name nowrap"><a href="#Renders:__index">Renders:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Renders:__call">Renders:__call (name)</a></td>
+	<td class="summary">Convenience function to access a specific named style.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
@@ -144,36 +147,65 @@
 	<td class="summary">Find render of the correct named type.</td>
 	</tr>
 </table>
-<h2><a href="#Metamethods">Metamethods</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name nowrap"><a href="#Renders:__call">Renders:__call (name)</a></td>
-	<td class="summary">Convenience function to access a specific named style.</td>
-	</tr>
-</table>
 
 <br/>
 <br/>
 
 
-    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
 
     <dl class="function">
     <dt>
-    <a name = "Renders.__index"></a>
-    <strong>Renders.__index</strong>
+    <a name = "Renders:__index"></a>
+    <strong>Renders:__index (key)</strong>
     </dt>
     <dd>
     Lookup of missing class members.
 
 
+    <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">class</span>
-         index
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         lookup of member
         </li>
     </ul>
 
+    <h3>Returns:</h3>
 
+        any
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Renders:__call"></a>
+    <strong>Renders:__call (name)</strong>
+    </dt>
+    <dd>
+    Convenience function to access a specific named style.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+          style of rendering
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong arguments
 
 
 
@@ -382,40 +414,6 @@
 
 
 
-
-
-
-</dd>
-</dl>
-    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "Renders:__call"></a>
-    <strong>Renders:__call (name)</strong>
-    </dt>
-    <dd>
-    Convenience function to access a specific named style.
- This will try to create the style if it isn't created yet.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-          style of rendering
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">self</span></span>
-
-
-
-
-    <h3>Raises:</h3>
-    on wrong arguments
 
 
 

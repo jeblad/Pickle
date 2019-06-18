@@ -32,8 +32,8 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Methods">Methods</a></li>
 <li><a href="#Metamethods">Metamethods</a></li>
+<li><a href="#Methods">Methods</a></li>
 </ul>
 
 
@@ -105,6 +105,13 @@
  <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
 
+<h2><a href="#Metamethods">Metamethods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#Report:__index">Report:__index (key)</a></td>
+	<td class="summary">Lookup of missing class members.</td>
+	</tr>
+</table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
@@ -160,18 +167,41 @@
 	<td class="summary">Get the type of report.</td>
 	</tr>
 </table>
-<h2><a href="#Metamethods">Metamethods</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name nowrap"><a href="#Report:__index">Report:__index (key)</a></td>
-	<td class="summary">Lookup of missing class members.</td>
-	</tr>
-</table>
 
 <br/>
 <br/>
 
 
+    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Report:__index"></a>
+    <strong>Report:__index (key)</strong>
+    </dt>
+    <dd>
+    Lookup of missing class members.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         lookup of member
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        any
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+</dl>
     <h2 class="section-header "><a name="Methods"></a>Methods</h2>
 
     <dl class="function">
@@ -481,36 +511,6 @@
 
 
 
-
-
-
-</dd>
-</dl>
-    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "Report:__index"></a>
-    <strong>Report:__index (key)</strong>
-    </dt>
-    <dd>
-    Lookup of missing class members.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">key</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         lookup of member
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-        any
-
-    <h3>Raises:</h3>
-    on wrong arguments
 
 
 

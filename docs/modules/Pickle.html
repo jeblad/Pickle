@@ -110,31 +110,32 @@
 <table class="function_list">
 	<tr>
 	<td class="name nowrap"><a href="#stub">stub (...)</a></td>
-	<td class="summary">Test double for mimickin general behavior.</td>
+	<td class="summary">Make a test double
+ This is for mimickin general behavior, and acts like it is a function.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#carp">carp (str)</a></td>
-	<td class="summary">Carp, warn called due to a possible error condition.</td>
+	<td class="summary">Make a carp on the current report.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#cluck">cluck (str)</a></td>
-	<td class="summary">Cluck, warn called due to a possible error condition, with a stack backtrace.</td>
+	<td class="summary">Make a cluck on the current report.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#croak">croak (str[, level=0])</a></td>
-	<td class="summary">Croak, die called due to a possible error condition.</td>
+	<td class="summary">Make a croak on the current report.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#confess">confess (str[, level=0])</a></td>
-	<td class="summary">Confess, die called due to a possible error condition, with a stack backtrace.</td>
+	<td class="summary">Make a confess(ion) on the current report.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#skip">skip (str)</a></td>
-	<td class="summary">skip, comment on the current reports.</td>
+	<td class="summary">Make a skip comment on the current report.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#todo">todo (str)</a></td>
-	<td class="summary">todo, comment on the current reports.</td>
+	<td class="summary">Make a todo comment on the current report.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#expect">expect (...)</a></td>
@@ -145,20 +146,20 @@
 	<td class="summary">Subject of whatever to be compared to the expected.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#mw.pickle.__call">mw.pickle.__call (env)</a></td>
-	<td class="summary">Install the library.</td>
+	<td class="name nowrap"><a href="#describe">describe (...)</a></td>
+	<td class="summary">Describe the test.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#pickle.implicitDescribe">pickle.implicitDescribe (...)</a></td>
-	<td class="summary">Describe the test.</td>
+	<td class="name nowrap"><a href="#obj:tap">obj:tap (...)</a></td>
+	<td class="summary">Eval the fixtures over previous dispatched strings.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#context">context (...)</a></td>
 	<td class="summary">Context for the test.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#obj:tap">obj:tap (...)</a></td>
-	<td class="summary">Eval the fixtures over previous dispatched strings.</td>
+	<td class="name nowrap"><a href="#mw.pickle.__call">mw.pickle.__call (opts)</a></td>
+	<td class="summary">Install the library.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#pickle.setupInterface">pickle.setupInterface (opts)</a></td>
@@ -170,6 +171,10 @@
 	<tr>
 	<td class="name nowrap"><a href="#env.it">env.it</a></td>
 	<td class="summary">It is the actual test for each metod.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#env._reports">env._reports</a></td>
+	<td class="summary">Put up a nice banner telling everyone pickle is initialized, and add the instances</td>
 	</tr>
 </table>
 
@@ -185,7 +190,8 @@
     <strong>stub (...)</strong>
     </dt>
     <dd>
-    Test double for mimickin general behavior.
+    Make a test double
+ This is for mimickin general behavior, and acts like it is a function.
  Returns precomputed values or compute them on the fly.
 
 
@@ -213,8 +219,9 @@
     <strong>carp (str)</strong>
     </dt>
     <dd>
-    Carp, warn called due to a possible error condition.
- Print a message without exiting, with caller's name and arguments.
+    Make a carp on the current report.
+ This is usualy called due to debugging a possible error condition.
+ Prints a “todo” comment, caller's name and arguments.
 
 
     <h3>Parameters:</h3>
@@ -238,8 +245,9 @@
     <strong>cluck (str)</strong>
     </dt>
     <dd>
-    Cluck, warn called due to a possible error condition, with a stack backtrace.
- Print a message without exiting, with caller's name and arguments, and a stack trace.
+    Make a cluck on the current report.
+ This is usually called due to debugging a possible error condition.
+ Prints a “todo” comment, caller's name and arguments, and a stack backtrace.
 
 
     <h3>Parameters:</h3>
@@ -263,8 +271,9 @@
     <strong>croak (str[, level=0])</strong>
     </dt>
     <dd>
-    Croak, die called due to a possible error condition.
- Print a message then exits, with caller's name and arguments.
+    Make a croak on the current report.
+ This is usually called due to debugging a possible error condition.
+ Prints a “skip” comment, caller's name and arguments, and exits.
 
 
     <h3>Parameters:</h3>
@@ -292,8 +301,9 @@
     <strong>confess (str[, level=0])</strong>
     </dt>
     <dd>
-    Confess, die called due to a possible error condition, with a stack backtrace.
- Print a message without exiting, with caller's name and arguments, and a stack trace.
+    Make a confess(ion) on the current report.
+ This is usually called due to debugging a possible error condition.
+ Prints a “skip” comment, caller's name and arguments, a stack backtrace, and exits.
 
 
     <h3>Parameters:</h3>
@@ -321,13 +331,15 @@
     <strong>skip (str)</strong>
     </dt>
     <dd>
-    skip, comment on the current reports.
- This will not terminate current run.
+    Make a skip comment on the current report.
+ This function will not terminate the current run.
+ Consider <a href="../modules/Pickle.html#croak">croak</a> or <a href="../modules/Pickle.html#confess">confess</a>.
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">str</span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          message to be passed on
         </li>
     </ul>
@@ -342,12 +354,15 @@
     <strong>todo (str)</strong>
     </dt>
     <dd>
-    todo, comment on the current reports.
+    Make a todo comment on the current report.
+ This function will not terminate the current run.
+ Consider <a href="../modules/Pickle.html#carp">carp</a> or <a href="../modules/Pickle.html#cluck">cluck</a>.
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">str</span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          message to be passed on
         </li>
     </ul>
@@ -409,41 +424,12 @@
 
 </dd>
     <dt>
-    <a name = "mw.pickle.__call"></a>
-    <strong>mw.pickle.__call (env)</strong>
-    </dt>
-    <dd>
-    Install the library.
- This install all dependencies and changes the environment
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">env</span>
-         table for the environment
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">self</span></span>
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "pickle.implicitDescribe"></a>
-    <strong>pickle.implicitDescribe (...)</strong>
+    <a name = "describe"></a>
+    <strong>describe (...)</strong>
     </dt>
     <dd>
     Describe the test.
- This act as an alias for the normal describe,
- which is not available.
- This does implicitt setup.
+ This is the outermost of the three levels.
 
 
     <h3>Parameters:</h3>
@@ -455,8 +441,37 @@
 
     <h3>Returns:</h3>
 
-           <span class="types"><span class="type">self</span></span>
-        newly created object
+        Frame
+
+
+
+
+</dd>
+    <dt>
+    <a name = "obj:tap"></a>
+    <strong>obj:tap (...)</strong>
+    </dt>
+    <dd>
+    Eval the fixtures over previous dispatched strings.
+ This is extending the <a href="../modules/Pickle.html#describe">describe</a> call by injecting <a href="../modules/Pickle.html#obj:tap">tap</a> as an method.
+ The method has two different call forms. First form is the usual one with a single
+ frame object. This is used if the function is called by "invoke". The second
+ form use the same "style" and "language" form, but as arguments. This makes
+ it possible to easilly test it in the console.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        string
 
 
 
@@ -489,30 +504,28 @@
 
 </dd>
     <dt>
-    <a name = "obj:tap"></a>
-    <strong>obj:tap (...)</strong>
+    <a name = "mw.pickle.__call"></a>
+    <strong>mw.pickle.__call (opts)</strong>
     </dt>
     <dd>
-    Eval the fixtures over previous dispatched strings.
- This has two different call forms. The first is the usual form with a single
- frame object. This is used if the function is called by "invoke". The other
- form use the same "style" and "language" form, but as arguments. This makes
- it possible to easilly test it in the console.
+    Install the library.
+ This install all dependencies and changes the environment
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">...</span>
-
-
-
+        <li><span class="parameter">opts</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         for the options
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-        string
-function obj.tap( name )
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -556,6 +569,20 @@ function obj.tap( name )
          passed on to Frame:create
         </li>
     </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "env._reports"></a>
+    <strong>env._reports</strong>
+    </dt>
+    <dd>
+    Put up a nice banner telling everyone pickle is initialized, and add the instances
+
+
 
 
 
