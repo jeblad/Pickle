@@ -263,7 +263,7 @@ function Frame:evalFixture( description, fixture, environment, ... )
 	end
 	local report = ReportFrame:create():setDescription( description )
 	local added = self:reports():depth() - depth
-	assert( added >= 0, 'Frame:avalFixture; depth less than zero ')
+	assert( added >= 0, 'Frame:evalFixture; depth less than zero ')
 	if added == 0 then
 		report:setTodo( 'pickle-frame-no-tests' )
 	end
