@@ -383,10 +383,10 @@ local function setup( env, opts )
 		for _,v in ipairs( { frames:export() } ) do
 			v:eval()
 		end
-		local renders = pickle.renders.style( 'vivid' )
+		local style = pickle.renders.style( 'vivid' )
 		local code = mw.language.getContentLanguage():getCode()
 		local counter = pickle.counter:create()
-		return reports:realize( renders, code, counter )
+		return reports:realize( style, code, counter )
 	end
 
 	--- Put up a nice banner telling everyone pickle is initialized, and add the instances
