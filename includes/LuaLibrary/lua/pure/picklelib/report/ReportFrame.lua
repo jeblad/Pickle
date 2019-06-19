@@ -57,6 +57,26 @@ function Subclass:_init( ... )
 	return self
 end
 
+--- Set name of frame.
+-- @tparam string|message name
+-- @treturn self
+function Subclass:setName( name )
+	self._name = name
+	return self
+end
+
+--- Check if the report has name.
+-- @treturn boolean
+function Subclass:hasName()
+	return not not self._name
+end
+
+--- Get the name of report.
+-- @treturn string|message
+function Subclass:name()
+	return self._name
+end
+
 --- Export the constituents as an multivalue return.
 -- Note that each constituent is not unwrapped.
 -- @return list of constituents

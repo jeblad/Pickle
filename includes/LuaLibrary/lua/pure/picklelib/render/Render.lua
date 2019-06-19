@@ -130,18 +130,20 @@ function Baseclass:realizeComment( src, keyPart, lang )
 
 	local str = src['get'..ucfKeyPart]( src )
 
-	local desc = (not str)
-		and mw.message.new( 'pickle-report-frame-' .. keyPart .. '-no-description' )
-		or ( string.find( str, '^pickle-[-a-z]+$' )
-			and mw.message.new( str )
-			or mw.message.newRawMessage( str ) )
+	local comment = false
+
+	if type( str ) == 'nil' then
+		comment = mw.message.new( 'pickle-report-frame-' .. keyPart .. '-no-description' )
+	elseif type( str ) == 'string' then
+		comment = mw.message.newRawMessage( str )
+	end
 
 	if lang then
-		desc:inLanguage( lang )
+		comment:inLanguage( lang )
 	end
 
 	local clar = self:realizeClarification( 'is-' .. keyPart, lang )
-	local msg = clar .. ( desc:isDisabled() and '' or ( ' ' .. desc:plain() ) )
+	local msg = clar .. ( comment:isDisabled() and '' or ( ' ' .. comment:plain() ) )
 
 	return msg
 end

@@ -79,12 +79,14 @@ local function testEval( libs, ... )
 		if v:hasDescription() then
 			table.insert( result, v:getDescription() )
 		end
-		if v:isSkip() or v:isTodo() then
-			table.insert( result, v:getSkip() or v:getTodo() )
-		end
+		local msg1 = v:getSkip() or v:getTodo()
+		msg1 = ( type( msg1 ) == 'table' ) and msg1 or mw.message.newRawMessage( msg1 or '<empty>' )
+		table.insert( result, msg1:inLanguage('qqx'):plain() )
 		if not not v['constituents'] then
 			for _,w in ipairs( { v:constituents():export() } ) do
-				table.insert( result, w:getSkip() or w:getTodo() or 'empty' )
+				local msg2 = w:getSkip() or w:getTodo()
+				msg2 = ( type( msg2 ) == 'table' ) and msg2 or mw.message.newRawMessage( msg2 or '<empty>' )
+				table.insert( result, msg2:inLanguage('qqx'):plain() )
 				table.insert( result, { w:lines():export() } )
 			end
 		end
@@ -231,7 +233,7 @@ local tests = {
 			}
 		},
 		expect = {
-			'pickle-frame-no-fixtures'
+			'(pickle-frame-no-fixtures)'
 		}
 	},
 	{ -- 20
@@ -245,7 +247,7 @@ local tests = {
 			'foo "bar" baz'
 		},
 		expect = {
-			'pickle-frame-no-fixtures'
+			'(pickle-frame-no-fixtures)'
 		}
 	},
 	{ -- 21
@@ -260,7 +262,7 @@ local tests = {
 			'ping 42 pong'
 		},
 		expect = {
-			'pickle-frame-no-fixtures'
+			'(pickle-frame-no-fixtures)'
 		}
 	},
 	{ -- 22
@@ -274,8 +276,9 @@ local tests = {
 			function() assert( false, 'go zip' ) end
 		},
 		expect = {
-			'',
-			'pickle-adapt-catched-exception',
+			"",
+			'<empty>',
+			'(pickle-adapt-catched-exception)',
 			{}
 		}
 	},
@@ -291,8 +294,9 @@ local tests = {
 		},
 		'foo "bar" baz',
 		expect = {
-			'',
-			'pickle-adapt-catched-exception',
+			"",
+			'<empty>',
+			'(pickle-adapt-catched-exception)',
 			{}
 		}
 	},
@@ -310,10 +314,12 @@ local tests = {
 		},
 		expect = {
 			'foo "bar" baz',
-			'pickle-adapt-catched-exception',
+			'<empty>',
+			'(pickle-adapt-catched-exception)',
 			{},
 			'ping 42 pong',
-			'pickle-adapt-catched-exception',
+			'<empty>',
+			'(pickle-adapt-catched-exception)',
 			{}
 		}
 	},
@@ -329,7 +335,7 @@ local tests = {
 		},
 		expect = {
 			'',
-			'pickle-frame-no-tests'
+			'(pickle-frame-no-tests)'
 		}
 	},
 	{ -- 26
@@ -345,7 +351,7 @@ local tests = {
 		},
 		expect = {
 			'foo "bar" baz',
-			'pickle-frame-no-tests'
+			'(pickle-frame-no-tests)'
 		}
 	},
 	{ -- 27
@@ -362,9 +368,9 @@ local tests = {
 		},
 		expect = {
 			'foo "bar" baz',
-			'pickle-frame-no-tests',
+			'(pickle-frame-no-tests)',
 			'ping 42 pong',
-			'pickle-frame-no-tests'
+			'(pickle-frame-no-tests)'
 		}
 	},
 	{ -- 28
@@ -379,7 +385,8 @@ local tests = {
 		},
 		expect = {
 			'',
-			'pickle-adapt-catched-exception',
+			'<empty>',
+			'(pickle-adapt-catched-exception)',
 			{}
 		}
 	},
@@ -396,7 +403,8 @@ local tests = {
 		},
 		expect = {
 			'foo "bar" baz',
-			'pickle-adapt-catched-exception',
+			'<empty>',
+			'(pickle-adapt-catched-exception)',
 			{}
 		}
 	},
@@ -414,10 +422,12 @@ local tests = {
 		},
 		expect = {
 			'foo "bar" baz',
-			'pickle-adapt-catched-exception',
+			'<empty>',
+			'(pickle-adapt-catched-exception)',
 			{},
 			'ping 42 pong',
-			'pickle-adapt-catched-exception',
+			'<empty>',
+			'(pickle-adapt-catched-exception)',
 			{}
 		}
 	},
@@ -434,8 +444,8 @@ local tests = {
 		},
 		expect = {
 			'',
-			'pickle-frame-no-tests',
-			'pickle-adapt-catched-return',
+			'(pickle-frame-no-tests)',
+			'(pickle-adapt-catched-return)',
 			{}
 		}
 	},
@@ -453,8 +463,8 @@ local tests = {
 		},
 		expect = {
 			'foo "bar" baz',
-			'pickle-frame-no-tests',
-			'pickle-adapt-catched-return',
+			'(pickle-frame-no-tests)',
+			'(pickle-adapt-catched-return)',
 			{ { '"bar"' } }
 		}
 	},
@@ -473,12 +483,12 @@ local tests = {
 		},
 		expect = {
 			'foo "bar" baz',
-			'pickle-frame-no-tests',
-			'pickle-adapt-catched-return',
+			'(pickle-frame-no-tests)',
+			'(pickle-adapt-catched-return)',
 			{ { '"bar"' } },
 			'ping 42 pong',
-			'pickle-frame-no-tests',
-			'pickle-adapt-catched-return',
+			'(pickle-frame-no-tests)',
+			'(pickle-adapt-catched-return)',
 			{ { '42' } },
 		}
 	},

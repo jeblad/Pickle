@@ -143,6 +143,28 @@ function Subclass:realizeDescription( src, lang )
 	return html
 end
 
+--- Override realization of reported data for name.
+-- @raise on wrong arguments
+-- @tparam Report src that shall be realized
+-- @tparam nil|string lang code used for realization
+-- @treturn html
+function Subclass:realizeName( src, lang )
+	-- src tested in later call
+	-- lang tested in later call
+	-- counter tested in later call
+
+	local html = mw.html.create( 'span' )
+		:addClass( 'mw-pickle-name' )
+
+	if lang then
+		html:attr( 'lang', lang )
+	end
+
+	html:wikitext( Super.realizeName( self, src, lang ) )
+
+	return html
+end
+
 --- Realize reported data for header.
 -- The "header" is a composite.
 -- @raise on wrong arguments
@@ -159,6 +181,10 @@ function Subclass:realizeHeader( src, lang, counter )
 		:addClass( 'mw-pickle-header' )
 
 	html:node( self:realizeState( src, lang, counter ) )
+
+	if src:hasName() then
+		html:node( self:realizeName( src, lang ) )
+	end
 
 	if src:hasDescription() then
 		html:node( self:realizeDescription( src, lang ) )

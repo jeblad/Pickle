@@ -17,6 +17,9 @@ pickle.spy = require 'picklelib/engine/Spy'
 pickle.frame = require 'picklelib/engine/Frame'
 pickle.adapt = require 'picklelib/engine/Adapt'
 pickle.double = require 'picklelib/engine/Double'
+pickle.report = {}
+pickle.report.adapt = require 'picklelib/report/ReportAdapt'
+pickle.report.frame = require 'picklelib/report/ReportFrame'
 pickle.renders = require 'picklelib/render/Renders'
 pickle.extractors = require 'picklelib/extractor/Extractors'
 pickle.translator = require 'picklelib/translator/Translator'
@@ -307,7 +310,75 @@ local function setup( env, opts )
 		return nil
 	end
 
-	--- Describe the test.
+	--- Silent “describe” for the test.
+	-- This is the outermost of the three levels.
+	-- The function will silently avoid running the fixture.
+	-- @function xdescribe
+	-- @param ... varargs passed on to Frame:dispatch
+	-- @return Frame
+	env.xdescribe = function( ... )
+		local obj = pickle.frame:create()
+		frames:unshift( obj )
+		obj.evalFixture = function( this )
+			local ReportFrame = require 'picklelib/report/ReportFrame'
+			local msg = mw.message.new( 'pickle-adapt-silent' )
+			this:reports():push( ReportFrame:create():setSkip( msg ) )
+		end
+		obj:setRenders( pickle.renders )
+			:setName( 'xdescription' )
+			:setReports( reports )
+			:setSubjects( subjects )
+			:setExtractors( extractors )
+			:setTranslators( translators )
+			:dispatch( ... )
+		return obj
+	end
+
+	--- Silent “context” for the test.
+	-- This is usually used for creating some additional context
+	-- before the actual testing.
+	-- The function will silently avoid running the fixture.
+	-- @function context
+	-- @param ... varargs passed on to Frame:dispatch
+	-- @return Frame
+	env.xcontext = function( ... )
+		local obj = pickle.frame:create()
+		obj.evalFixture = function( this )
+			local ReportFrame = require 'picklelib/report/ReportFrame'
+			local msg = mw.message.new( 'pickle-adapt-silent' )
+			this:reports():push( ReportFrame:create():setSkip( msg ) )
+		end
+		obj:setRenders( pickle.renders )
+			:setName( 'xcontext' )
+			:setReports( reports )
+			:setSubjects( subjects )
+			:setExtractors( extractors )
+			:setTranslators( translators )
+			:dispatch( ... )
+		return obj
+	end
+
+	--- Silent “it” for the test.
+	-- @tparam vararg ... passed on to Frame:create
+	-- @treturn self newly created object
+	env.xit =function( ... )
+		local obj = pickle.frame:create()
+		obj.evalFixture = function( this )
+			local ReportFrame = require 'picklelib/report/ReportFrame'
+			local msg = mw.message.new( 'pickle-adapt-silent' )
+			this:reports():push( ReportFrame:create():setSkip( msg ) )
+		end
+		obj:setRenders( pickle.renders )
+			:setName( 'xit' )
+			:setReports( reports )
+			:setSubjects( subjects )
+			:setExtractors( extractors )
+			:setTranslators( translators )
+			:dispatch( ... )
+		return obj
+	end
+
+	--- “Describe” for the test.
 	-- This is the outermost of the three levels.
 	-- @function describe
 	-- @param ... varargs passed on to Frame:dispatch
@@ -316,6 +387,7 @@ local function setup( env, opts )
 		local obj = pickle.frame:create()
 		frames:unshift( obj )
 		obj:setRenders( pickle.renders )
+			:setName( 'describe' )
 			:setReports( reports )
 			:setSubjects( subjects )
 			:setExtractors( extractors )
@@ -357,7 +429,7 @@ local function setup( env, opts )
 		return obj
 	end
 
-	--- Context for the test.
+	--- “Context” for the test.
 	-- This is usually used for creating some additional context
 	-- before the actual testing. An alternate would be to use
 	-- 'before' and 'after' functions.
@@ -366,6 +438,7 @@ local function setup( env, opts )
 	-- @return Frame
 	env.context = function( ... )
 		local obj = pickle.frame:create()
+			:setName( 'context' )
 			:setReports( reports )
 			:setSubjects( subjects )
 			:setExtractors( extractors )
@@ -374,10 +447,19 @@ local function setup( env, opts )
 		return obj
 	end
 
-	--- It is the actual test for each metod.
+	--- “It” for the test.
 	-- @tparam vararg ... passed on to Frame:create
 	-- @treturn self newly created object
-	env.it = env.context
+	env.it = function( ... )
+		local obj = pickle.frame:create()
+			:setName( 'it' )
+			:setReports( reports )
+			:setSubjects( subjects )
+			:setExtractors( extractors )
+			:setTranslators( translators )
+			:dispatch( ... )
+		return obj
+	end
 
 	env.execute = function()
 		for _,v in ipairs( { frames:export() } ) do

@@ -102,6 +102,33 @@ function Subclass:realizeDescription( src, lang ) -- luacheck: no unused args
 	return mw.text.encode( src:getDescription() )
 end
 
+--- Realize reported data for name.
+-- The "name" is a text string.
+-- @raise on wrong arguments
+-- @tparam Report src that shall be realized
+-- @tparam nil|string lang code used for realization (unused)
+-- @treturn string
+function Subclass:realizeName( src, lang ) -- luacheck: no unused args
+	libUtil.checkType( 'RenderFrame:realizeName', 1, src, 'table', false )
+
+	if not src:hasName() then
+		return ''
+	end
+
+	local name = src:getName()
+
+	if type( name ) == 'table' then
+		if lang then
+			name:inLanguage( lang )
+		end
+		name = name:plain()
+	else
+		name = mw.text.encode( name )
+	end
+
+	return name
+end
+
 --- Realize reported data for header.
 -- The "header" is a composite.
 -- @raise on wrong arguments
@@ -115,6 +142,10 @@ function Subclass:realizeHeader( src, lang, counter )
 	-- counter tested in later call
 
 	local t = { self:realizeState( src, lang, counter ) }
+
+	if src:hasName() then
+		table.insert( t, self:realizeName( src, lang ) )
+	end
 
 	if src:hasDescription() then
 		table.insert( t, self:realizeDescription( src, lang ) )

@@ -67,11 +67,11 @@ end
 --- Set the skip.
 -- This is an accessor to set the member.
 -- @raise on wrong arguments
--- @tparam[opt=''] nil|string str that will be used as the skip note
+-- @tparam[opt=''] nil|string|table arg that will be used as the skip note
 -- @treturn self
-function Baseclass:setSkip( str )
-	libUtil.checkType( 'Report:setSkip', 1, str, 'string', true )
-	self._skip = str or ''
+function Baseclass:setSkip( arg )
+	libUtil.checkTypeMulti( 'Report:setSkip', 1, arg, {'nil', 'string', 'table'} )
+	self._skip = arg
 	return self
 end
 
@@ -92,11 +92,11 @@ end
 --- Set the todo.
 -- This is an accessor to set the member.
 -- @raise on wrong arguments
--- @tparam[opt=''] nil|string str that will be used as the todo note
+-- @tparam[opt=''] nil|string|table arg that will be used as the todo note
 -- @treturn self
-function Baseclass:setTodo( str )
-	libUtil.checkType( 'Report:setTodo', 1, str, 'string', true )
-	self._todo = str or ''
+function Baseclass:setTodo( arg )
+	libUtil.checkTypeMulti( 'Report:setSkip', 1, arg, {'nil', 'string', 'table'} )
+	self._todo = arg
 	return self
 end
 

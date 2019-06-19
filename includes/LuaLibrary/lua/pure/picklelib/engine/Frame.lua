@@ -75,6 +75,8 @@ function Frame:_init()
 	self._descriptions = Bag:create()
 	self._fixtures = Bag:create()
 	self._done = false
+	self._type = 'frame'
+	self._name = '<unknown>'
 	return self
 end
 
@@ -122,6 +124,34 @@ mt.types = {
 	end,
 
 }
+
+--- Get the type of frame
+-- All frames has an explicit type name.
+-- @treturn string
+function Frame:type()
+	return self._type
+end
+
+--- Set key for name of frame.
+-- @tparam string key part of a message
+-- @treturn self
+function Frame:setName( key )
+	self._name = key
+	return self
+end
+
+--- Check if the frame has name.
+-- @treturn boolean
+function Frame:hasName()
+	return not not self._name
+end
+
+--- Get the name as key for frame.
+-- All frames may have an explicit name.
+-- @treturn string
+function Frame:name()
+	return self._name or '<unset>'
+end
 
 --- Check if the frame has descriptions.
 -- @treturn boolean
@@ -258,18 +288,25 @@ function Frame:evalFixture( description, fixture, environment, ... )
 	local depth = self:reports():depth()
 	local t= { pcall( mw.pickle._IMPLICIT and setfenv( fixture, environment ) or fixture, ... ) }
 	if ( not t[1] ) and (not not t[2]) then
-		self:reports()
-			:push( ReportAdapt:create():setSkip( 'pickle-adapt-catched-exception' ) )
+		local msg = mw.message.new( 'pickle-adapt-catched-exception' )
+		self:reports():push( ReportAdapt:create():setSkip( msg ) )
 	end
 	local report = ReportFrame:create():setDescription( description )
+	if self:hasName() then
+		local key = string.format( "pickle-%s-%s-name", self:type(), self:name() )
+		local msg = mw.message.new( key )
+		report:setName( msg )
+	end
 	local added = self:reports():depth() - depth
 	assert( added >= 0, 'Frame:evalFixture; depth less than zero ')
 	if added == 0 then
-		report:setTodo( 'pickle-frame-no-tests' )
+		local msg = mw.message.new( 'pickle-frame-no-tests' )
+		report:setTodo( msg )
 	end
 	report:addConstituents( self:reports():pop( added ) )
 	if t[1] and type( t[2] ) == 'table' then
-		local tmp = ReportAdapt:create():setTodo( 'pickle-adapt-catched-return' )
+		local msg = mw.message.new( 'pickle-adapt-catched-return' )
+		local tmp = ReportAdapt:create():setTodo( msg )
 		for _,u in ipairs( t[2] or {} ) do
 			tmp:addLine( mw.dumpObject( u ) )
 		end
@@ -282,8 +319,8 @@ end
 -- @treturn self
 function Frame:eval()
 	if not self:hasFixtures() then
-		self:reports()
-			:push( ReportFrame:create():setTodo( 'pickle-frame-no-fixtures' ) )
+		local msg = mw.message.new( 'pickle-frame-no-fixtures' )
+		self:reports():push( ReportFrame:create():setTodo( msg ) )
 		return self
 	end
 	local env = mw.pickle._IMPLICIT and getfenv(1) or _G
