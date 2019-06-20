@@ -124,7 +124,8 @@ function Baseclass:realizeComment( src, keyPart, lang )
 	libUtil.checkType( 'Render:realizeComment', 3, lang, 'string', true )
 
 	local ucfKeyPart = string.upper( string.sub( keyPart, 1, 1 ) )..string.sub( keyPart, 2 )
-	if not ( src['is'..ucfKeyPart]( src ) or src['has'..ucfKeyPart]( src ) ) then
+	if not ( ( src['is'..ucfKeyPart] and src['is'..ucfKeyPart]( src ) )
+		or ( src['has'..ucfKeyPart] and src['has'..ucfKeyPart]( src ) ) ) then
 		return ''
 	end
 
@@ -138,14 +139,17 @@ function Baseclass:realizeComment( src, keyPart, lang )
 		comment = mw.message.newRawMessage( str )
 	end
 
+	local clar = self:realizeClarification( 'is-' .. keyPart, lang )
+
+	if not comment then
+		return clar
+	end
+
 	if lang then
 		comment:inLanguage( lang )
 	end
 
-	local clar = self:realizeClarification( 'is-' .. keyPart, lang )
-	local msg = clar .. ( comment:isDisabled() and '' or ( ' ' .. comment:plain() ) )
-
-	return msg
+	return clar .. ( comment:isDisabled() and '' or ( ' ' .. comment:plain() ) )
 end
 
 -- Return the final class.

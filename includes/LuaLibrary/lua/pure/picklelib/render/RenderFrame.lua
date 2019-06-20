@@ -115,18 +115,7 @@ function Subclass:realizeName( src, lang ) -- luacheck: no unused args
 		return ''
 	end
 
-	local name = src:getName()
-
-	if type( name ) == 'table' then
-		if lang then
-			name:inLanguage( lang )
-		end
-		name = name:plain()
-	else
-		name = mw.text.encode( name )
-	end
-
-	return name
+	return self:realizeClarification( src:getName(), lang )
 end
 
 --- Realize reported data for header.

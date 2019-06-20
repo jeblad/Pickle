@@ -73,7 +73,7 @@ end
 
 --- Get the name of report.
 -- @treturn string|message
-function Subclass:name()
+function Subclass:getName()
 	return self._name
 end
 

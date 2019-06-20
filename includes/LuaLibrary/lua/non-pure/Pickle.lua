@@ -321,8 +321,7 @@ local function setup( env, opts )
 		frames:unshift( obj )
 		obj.evalFixture = function( this )
 			local ReportFrame = require 'picklelib/report/ReportFrame'
-			local msg = mw.message.new( 'pickle-adapt-silent' )
-			this:reports():push( ReportFrame:create():setSkip( msg ) )
+			this:reports():push( ReportFrame:create():setSkip( 'xdescribe' ) )
 		end
 		obj:setRenders( pickle.renders )
 			:setName( 'xdescription' )
@@ -345,8 +344,7 @@ local function setup( env, opts )
 		local obj = pickle.frame:create()
 		obj.evalFixture = function( this )
 			local ReportFrame = require 'picklelib/report/ReportFrame'
-			local msg = mw.message.new( 'pickle-adapt-silent' )
-			this:reports():push( ReportFrame:create():setSkip( msg ) )
+			this:reports():push( ReportFrame:create():setSkip( 'xcontext' ) )
 		end
 		obj:setRenders( pickle.renders )
 			:setName( 'xcontext' )
@@ -365,8 +363,7 @@ local function setup( env, opts )
 		local obj = pickle.frame:create()
 		obj.evalFixture = function( this )
 			local ReportFrame = require 'picklelib/report/ReportFrame'
-			local msg = mw.message.new( 'pickle-adapt-silent' )
-			this:reports():push( ReportFrame:create():setSkip( msg ) )
+			this:reports():push( ReportFrame:create():setSkip( 'xit' ) )
 		end
 		obj:setRenders( pickle.renders )
 			:setName( 'xit' )
@@ -462,13 +459,16 @@ local function setup( env, opts )
 	end
 
 	env.execute = function()
+		local style = pickle.renders.style( 'vivid' )
+		local langCode = mw.language.getContentLanguage():getCode()
+		local counter = pickle.counter:create()
+		local assessments = {}
 		for _,v in ipairs( { frames:export() } ) do
 			v:eval()
+			table.insert( assessments,
+				tostring( reports:top():realize( style, langCode, counter ) ) )
 		end
-		local style = pickle.renders.style( 'vivid' )
-		local code = mw.language.getContentLanguage():getCode()
-		local counter = pickle.counter:create()
-		return reports:realize( style, code, counter )
+		return table.concat( assessments, '' )
 	end
 
 	--- Put up a nice banner telling everyone pickle is initialized, and add the instances

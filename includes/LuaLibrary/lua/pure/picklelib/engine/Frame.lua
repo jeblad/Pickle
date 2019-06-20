@@ -149,7 +149,7 @@ end
 --- Get the name as key for frame.
 -- All frames may have an explicit name.
 -- @treturn string
-function Frame:name()
+function Frame:getName()
 	return self._name or '<unset>'
 end
 
@@ -293,9 +293,7 @@ function Frame:evalFixture( description, fixture, environment, ... )
 	end
 	local report = ReportFrame:create():setDescription( description )
 	if self:hasName() then
-		local key = string.format( "pickle-%s-%s-name", self:type(), self:name() )
-		local msg = mw.message.new( key )
-		report:setName( msg )
+		report:setName( self:getName() )
 	end
 	local added = self:reports():depth() - depth
 	assert( added >= 0, 'Frame:evalFixture; depth less than zero ')
