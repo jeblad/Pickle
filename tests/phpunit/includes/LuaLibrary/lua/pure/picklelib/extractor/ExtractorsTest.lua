@@ -33,7 +33,7 @@ end
 local function testFind( str, ... )
 	local t = { makeTest( ... ):find( str, 1 ) }
 	local obj = table.remove( t, 1 )
-	table.insert( t, obj:type() )
+	table.insert( t, obj:getType() )
 	return unpack( t )
 end
 

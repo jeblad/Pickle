@@ -23,7 +23,7 @@ local function testCreate( ... )
 end
 
 local function testType( ... )
-	return makeTest( ... ):type()
+	return makeTest( ... ):getType()
 end
 
 local function testFind( str, ... )

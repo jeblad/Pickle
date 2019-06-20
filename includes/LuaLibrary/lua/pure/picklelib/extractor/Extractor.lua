@@ -37,15 +37,76 @@ function Baseclass:_init( ... )
 	for _,v in ipairs( { ... } ) do
 		self._patterns:push( v )
 	end
-	self._type = 'base'
 	return self
+end
+
+---Set type
+-- @tparam string str to be used as type
+-- @treturn self
+function Baseclass:setType( str )
+	libUtil.checkType( 'Extractor:addKeyword', 1, str, 'string', false )
+	assert( not self._type )
+
+	self._type = mw.ustring.lower( str )
+
+	return self
+end
+
+--- Has type
+-- @treturn boolean
+function Baseclass:hasType()
+	return not not self._type
 end
 
 --- Get the type of the strategy.
 -- All extractor strategies have an explicit type name.
 -- @treturn string
-function Baseclass:type()
-	return self._type
+function Baseclass:getType()
+	return self._type or '<unknown>'
+end
+
+--- Set keyword
+-- Transform a single keyword to a registered set of patterns.
+-- @tparam string str to be used for keywords
+-- @tparam[generate=true] boolean generate associated patterns 
+-- @treturn self
+function Baseclass:setKeyword( str, generate )
+	libUtil.checkType( 'Extractor:addKeyword', 1, str, 'string', false )
+	libUtil.checkType( 'Extractor:addKeyword', 2, generate, 'boolean', true )
+	--assert( not self._keyword )
+
+	self._keyword = mw.ustring.lower( str )
+
+	if ( type( generate ) == 'nil' ) or generate then
+		local pattern = mw.ustring.gsub( str, '(%a)', function( s )
+			return mw.ustring.format( '[%s%s]', mw.ustring.lower( s ), mw.ustring.upper( s ) )
+		end )
+
+		self._patterns:push( { mw.ustring.format( '^%s$', pattern), 0, 0 } )
+		self._patterns:push( { mw.ustring.format( '^%s[%%s%%p]', pattern), 0, -1 } )
+		self._patterns:push( { mw.ustring.format( '[%%s%%p]%s$', pattern), 1, 0 } )
+		self._patterns:push( { mw.ustring.format( '[%%s%%p]%s[%%s%%p]', pattern), 1, -1 } )
+	end
+
+	return self
+end
+
+--- Has keyword
+-- @treturn boolean
+function Baseclass:hasKeyword()
+	return not not self._keyword
+end
+
+--- Get keyword
+--@treturn mw.ustring
+function Baseclass:getKeyword()
+	return self._keyword
+end
+
+--- Num patterns
+--@treturn number
+function Baseclass:numPatterns()
+	return self._patterns:depth()
 end
 
 --- Try to find the string for this strategy.
@@ -79,11 +140,9 @@ function Baseclass:cast() -- luacheck: no self
 end
 
 --- Get the placeholder for this strategy.
--- @raise Unconditional error unless overridden
 -- @treturn string
 function Baseclass:placeholder() -- luacheck: no self
-	error('Method should be overridden')
-	return nil
+	return mw.ustring.format( '[%s]', self:getType() )
 end
 
 -- Return the final class.

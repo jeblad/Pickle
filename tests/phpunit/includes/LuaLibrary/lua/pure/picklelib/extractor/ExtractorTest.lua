@@ -23,7 +23,7 @@ local function testCreate( ... )
 end
 
 local function testType( ... )
-	return makeTest( ... ):type()
+	return makeTest( ... ):getType()
 end
 
 local function testFind( str, ... )
@@ -35,9 +35,12 @@ local function testCast()
 	return val, string.match( err, 'Method should be overridden' )
 end
 
-local function testPlaceholder()
-	local val, err = pcall( function() makeTest():placeholder() end )
-	return val, string.match( err, 'Method should be overridden' )
+local function testPlaceholder( str )
+	local obj = makeTest()
+	if str then
+		obj:setType( str )
+	end
+	return obj:placeholder()
 end
 
 local tests = {
@@ -71,7 +74,7 @@ local tests = {
 	{ -- 5
 		name = name .. ':type ()',
 		func = testType,
-		expect = { 'base' }
+		expect = { '<unknown>' }
 	},
 	{ -- 6
 		name = name .. ':find (not matched)',
@@ -107,7 +110,13 @@ local tests = {
 		name = name .. ':placeholder ()',
 		func = testPlaceholder,
 		args = {},
-		expect = { false, "Method should be overridden" }
+		expect = { '[<unknown>]' }
+	},
+	{ -- 12
+		name = name .. ':placeholder ( string )',
+		func = testPlaceholder,
+		args = { 'foobar' },
+		expect = { '[foobar]' }
 	},
 }
 
