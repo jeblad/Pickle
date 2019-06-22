@@ -16,6 +16,7 @@ class RenderAdaptTest extends Scribunto_LuaEngineTestBase {
 	protected static $moduleName = 'RenderAdaptTest';
 
 	/**
+	 * @slowThreshold 1000
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 * @return configuration data
 	 */

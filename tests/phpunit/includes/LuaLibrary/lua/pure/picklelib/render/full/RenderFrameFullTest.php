@@ -16,6 +16,7 @@ class RenderFrameFullTest extends Scribunto_LuaEngineTestBase {
 	protected static $moduleName = 'RenderFrameFullTest';
 
 	/**
+	 * @slowThreshold 1000
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {

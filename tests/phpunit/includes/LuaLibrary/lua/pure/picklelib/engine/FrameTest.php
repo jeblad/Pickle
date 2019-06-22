@@ -16,6 +16,7 @@ class FrameTest extends Scribunto_LuaEngineTestBase {
 	protected static $moduleName = 'FrameTest';
 
 	/**
+	 * @slowThreshold 1000
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {

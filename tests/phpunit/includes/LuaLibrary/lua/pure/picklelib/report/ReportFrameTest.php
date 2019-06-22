@@ -16,6 +16,7 @@ class ReportFrameTest extends Scribunto_LuaEngineTestBase {
 	protected static $moduleName = 'ReportFrameTest';
 
 	/**
+	 * @slowThreshold 1000
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {

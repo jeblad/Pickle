@@ -16,6 +16,7 @@ class TranslatorsTest extends Scribunto_LuaEngineTestBase {
 	protected static $moduleName = 'TranslatorsTest';
 
 	/**
+	 * @slowThreshold 1000
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {

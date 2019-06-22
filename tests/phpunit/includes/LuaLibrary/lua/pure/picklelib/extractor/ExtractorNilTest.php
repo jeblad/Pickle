@@ -16,6 +16,7 @@ class ExtractorNilTest extends Scribunto_LuaEngineTestBase {
 	protected static $moduleName = 'ExtractorNilTest';
 
 	/**
+	 * @slowThreshold 1000
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {
