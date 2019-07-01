@@ -6,7 +6,7 @@ $( function () {
 
 	function setPending() {
 		pending = true;
-		$spinner.appendTo( '#mw-pickle-console-output' );
+		$spinner.appendTo( $output );
 	}
 
 	function clearPending() {
@@ -146,6 +146,7 @@ $( function () {
 	 * Test console
 	 */
 	function initTestConsole() {
+		$output = $( '#mw-pickle-console-output' );
 
 		OO.ui.infuse( $( '#pickle-console-button-run' ) )
 			.on( 'click', onRunClick );

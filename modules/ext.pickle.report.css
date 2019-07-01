@@ -1,1 +1,59 @@
-/* styling for reports */
+.mw-pickle-console-output .mw-pickle-console-neutral {
+	background-color: #f0f0f0;
+	border: 1px solid #c0c0c0;
+}
+
+.mw-pickle-console-output .mw-pickle-console-bad {
+	background-color: #fff0f0;
+	border: 1px solid #ffc0c0;
+}
+
+.mw-pickle-console-output .mw-pickle-console-good {
+	background-color: #f0fff0;
+	border: 1px solid #c0ffc0;
+}
+
+.mw-pickle-console-transient {
+	font-style: italic;
+}
+
+.mw-pickle-header {
+	border-bottom: solid 1px gray
+}
+
+.mw-pickle-state {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.mw-pickle-name:before {
+	content: ' '
+}
+
+.mw-pickle-name:after {
+	content: ':'
+}
+
+.mw-pickle-name {
+	font-weight: bold;
+	margin-right: 1em;
+}
+
+.mw-pickle-description {
+	font-weight: normal;
+	font-style: normal;
+}
+
+.mw-pickle-comment:before {
+	content: '#'
+}
+
+.mw-pickle-comment {
+	float: right;
+	font-style: italic;
+}
+
+.mw-pickle-todo,
+.mw-pickle-skip {
+	text-transform: uppercase;
+}

@@ -70,6 +70,7 @@ class ConsoleView {
 		// and the stuff to actually do it all
 		$output->enableOOUI();
 		$output->addModules( 'ext.pickle.console' );
+		$output->addModules( 'ext.pickle.report' );
 
 		// additional bare bone user interface
 		$ui = new \OOUI\FieldsetLayout( [
