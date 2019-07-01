@@ -16,6 +16,7 @@ class RenderAdaptVividTest extends Scribunto_LuaEngineTestBase {
 	protected static $moduleName = 'RenderAdaptVividTest';
 
 	/**
+	 * @slowThreshold 1000
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {

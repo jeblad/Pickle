@@ -34,16 +34,9 @@ end
 --- Initialize a new instance.
 -- @treturn self
 function Subclass:_init()
-	Super._init( self,
-		{ '^[tT]rue$', 0, 0 },
-		{ '^[tT]rue[%s%p]', 0, -1 },
-		{ '[%s%p][tT]rue$', 1, 0 },
-		{ '[%s%p][tT]rue[%s%p]', 1, -1 },
-		{ '^TRUE$', 0, 0 },
-		{ '^TRUE[%s%p]', 0, -1 },
-		{ '[%s%p]TRUE$', 1, 0 },
-		{ '[%s%p]TRUE[%s%p]', 1, -1 } )
+	Super._init( self )
 	self._type = 'true'
+	self:setKeyword( 'true' )
 	return self
 end
 
@@ -56,12 +49,6 @@ end
 function Subclass:cast( str ) -- luacheck: no self
 	assert( str == "true" or str == "True" or str == "TRUE", 'Failed to cast assumed “true”' )
 	return true
-end
-
---- Get the placeholder for this strategy.
--- @treturn string
-function Subclass:placeholder() -- luacheck: no self
-	return '[boolean]'
 end
 
 -- Return the final class.

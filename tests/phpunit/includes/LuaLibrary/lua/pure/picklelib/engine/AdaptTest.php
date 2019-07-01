@@ -16,6 +16,7 @@ class AdaptTest extends Scribunto_LuaEngineTestBase {
 	protected static $moduleName = 'AdaptTest';
 
 	/**
+	 * @slowThreshold 1000
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {

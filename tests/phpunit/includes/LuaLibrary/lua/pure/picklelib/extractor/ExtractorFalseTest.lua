@@ -23,7 +23,12 @@ local function testCreate( ... )
 end
 
 local function testType( ... )
-	return makeTest( ... ):type()
+	return makeTest( ... ):getType()
+end
+
+local function testKeyword( ... )
+	local obj = makeTest():setKeyword( ... )
+	return obj:getKeyword(), obj:numPatterns()
 end
 
 local function testFind( str, ... )
@@ -72,52 +77,58 @@ local tests = {
 		expect = { 'false' }
 	},
 	{ -- 6
+		name = name .. ':keyword ()',
+		func = testKeyword,
+		args = { 'false' },
+		expect = { 'false', 8 }
+	},
+	{ -- 7
 		name = name .. ':find (not matched)',
 		func = testFind,
 		args = { 'foo bar baz' },
 		expect = {}
 	},
-	{ -- 7
-		name = name .. ':find (matched)',
-		func = testFind,
-		args = { 'false' },
-		expect = { 1, 5 }
-	},
 	{ -- 8
 		name = name .. ':find (matched)',
 		func = testFind,
-		args = { 'false bar baz' },
+		args = { 'false' },
 		expect = { 1, 5 }
 	},
 	{ -- 9
 		name = name .. ':find (matched)',
 		func = testFind,
+		args = { 'false bar baz' },
+		expect = { 1, 5 }
+	},
+	{ -- 10
+		name = name .. ':find (matched)',
+		func = testFind,
 		args = { 'foo false baz' },
 		expect = { 5, 9 }
 	},
-	{ -- 10
+	{ -- 11
 		name = name .. ':find (matched)',
 		func = testFind,
 		args = { 'foo bar false' },
 		expect = { 9, 13 }
 	},
-	{ -- 11
+	{ -- 12
 		name = name .. ':cast (singlevalue)',
 		func = testCast,
 		args = { 'false' },
 		expect = { false }
 	},
-	{ -- 12
+	{ -- 13
 		name = name .. ':cast (singlevalue)',
 		func = testCast,
 		args = { 'False' },
 		expect = { false }
 	},
-	{ -- 13
+	{ -- 14
 		name = name .. ':placeholder ()',
 		func = testPlaceholder,
 		args = {},
-		expect = { '[boolean]' }
+		expect = { '[false]' }
 	},
 }
 

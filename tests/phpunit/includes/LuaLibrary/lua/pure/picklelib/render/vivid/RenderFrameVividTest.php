@@ -16,6 +16,7 @@ class RenderFrameVividTest extends Scribunto_LuaEngineTestBase {
 	protected static $moduleName = 'RenderFrameVividTest';
 
 	/**
+	 * @slowThreshold 1000
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {

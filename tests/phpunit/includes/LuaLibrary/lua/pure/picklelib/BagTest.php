@@ -16,6 +16,7 @@ class BagTest extends Scribunto_LuaEngineTestBase {
 	protected static $moduleName = 'BagTest';
 
 	/**
+	 * @slowThreshold 1000
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
 	protected function getTestModules() {

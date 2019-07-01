@@ -35,24 +35,9 @@ end
 --- Initialize a new instance.
 -- @treturn self
 function Subclass:_init()
-	Super._init( self,
-		{ '^[nN]il$', 0, 0 },
-		{ '^[nN]il[%s%p]', 0, -1 },
-		{ '[%s%p][nN]il$', 1, 0 },
-		{ '[%s%p][nN]il[%s%p]', 1, -1 },
-		{ '^NIL$', 0, 0 },
-		{ '^NIL[%s%p]', 0, -1 },
-		{ '[%s%p]NIL$', 1, 0 },
-		{ '[%s%p]NIL[%s%p]', 1, -1 },
-		{ '^[nN]ull$', 0, 0 },
-		{ '^[nN]ull[%s%p]', 0, -1 },
-		{ '[%s%p][nN]ull$', 1, 0 },
-		{ '[%s%p][nN]ull[%s%p]', 1, -1 },
-		{ '^NULL$', 0, 0 },
-		{ '^NULL[%s%p]', 0, -1 },
-		{ '[%s%p]NULL$', 1, 0 },
-		{ '[%s%p]NULL[%s%p]', 1, -1 } )
+	Super._init( self )
 	self._type = 'nil'
+	self:setKeyword( 'nil' )
 	return self
 end
 
@@ -67,12 +52,6 @@ function Subclass:cast( str ) -- luacheck: no self
 		or str == "null" or str == "Null" or str == "NULL",
 		'Failed to cast assumed “nil”' )
 	return nil
-end
-
---- Get the placeholder for this strategy.
--- @treturn string
-function Subclass:placeholder() -- luacheck: no self
-	return '[nil]'
 end
 
 -- Return the final class.

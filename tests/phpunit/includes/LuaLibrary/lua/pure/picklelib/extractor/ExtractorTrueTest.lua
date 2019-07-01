@@ -23,7 +23,12 @@ local function testCreate( ... )
 end
 
 local function testType( ... )
-	return makeTest( ... ):type()
+	return makeTest( ... ):getType()
+end
+
+local function testKeyword( ... )
+	local obj = makeTest():setKeyword( ... )
+	return obj:getKeyword(), obj:numPatterns()
 end
 
 local function testFind( str, ... )
@@ -72,6 +77,12 @@ local tests = {
 		expect = { 'true' }
 	},
 	{ -- 6
+		name = name .. ':keyword ()',
+		func = testKeyword,
+		args = { 'true' },
+		expect = { 'true', 8 }
+	},
+	{ -- 6
 		name = name .. ':find (not matched)',
 		func = testFind,
 		args = { 'foo bar baz' },
@@ -117,7 +128,7 @@ local tests = {
 		name = name .. ':placeholder ()',
 		func = testPlaceholder,
 		args = {},
-		expect = { '[boolean]' }
+		expect = { '[true]' }
 	},
 }
 
