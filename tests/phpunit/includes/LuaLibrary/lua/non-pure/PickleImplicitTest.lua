@@ -23,6 +23,27 @@ local function testMW( name )
 	return type( _G.mw.pickle[ name ] )
 end
 
+local function testExtract( str )
+	local t = {}
+	local pos = 1
+
+	repeat
+		local strategy, first, last = _G._extractors:find( str, pos )
+		if strategy then
+			local part = mw.ustring.sub( str, first, last )
+			table.insert( t, {
+				strategy:placeholder(),
+				type( strategy:cast( part ) ),
+				strategy:cast( part ),
+				first,
+				last } )
+			pos = last + 1
+		end
+	until( not strategy )
+
+	return unpack( t )
+end
+
 local function testComment( name, ... )
 	_G._reports:push( require( 'picklelib/report/ReportFrame' ):create() )
 	local res,_ = pcall( _G[ name ], ... )
@@ -282,126 +303,126 @@ local tests = {
 		args = { 'describe', 'This is a test', function() end },
 		expect = { true, true, true, false } -- todo, no assertions
 	},
-	-- PickleTest[33]
+	-- PickleTest[34]
 	{
 		name = 'function describe',
 		func = testFrame,
 		args = { 'describe', 'This is a test', function() return true end },
 		expect = { true, true, true, false } -- todo, no assertions
 	},
-	-- PickleTest[34]
+	-- PickleTest[35]
 	{
 		name = 'function context',
 		func = testType,
 		args = { 'context' },
 		expect = { 'function' }
 	},
-	-- PickleTest[35]
+	-- PickleTest[36]
 	{
 		name = 'function context',
 		func = testFrame,
 		args = { 'context' },
 		expect = { true, true, true, false } -- todo, no fixture
 	},
-	-- PickleTest[36]
+	-- PickleTest[37]
 	{
 		name = 'function context',
 		func = testFrame,
 		args = { 'context', 'This is a test' },
 		expect = { true, true, true, false } -- todo, still no fixture
 	},
-	-- PickleTest[37]
+	-- PickleTest[38]
 	{
 		name = 'function context',
 		func = testFrame,
 		args = { 'context', 'This is a test', function() end },
 		expect = { true, true, true, false } -- todo, no assertions
 	},
-	-- PickleTest[38]
+	-- PickleTest[39]
 	{
 		name = 'function context',
 		func = testFrame,
 		args = { 'context', 'This is a test', function() return true end },
 		expect = { true, true, true, false } -- todo, no assertions
 	},
-	-- PickleTest[39]
+	-- PickleTest[40]
 	{
 		name = 'function it',
 		func = testType,
 		args = { 'it' },
 		expect = { 'function' }
 	},
-	-- PickleTest[40]
+	-- PickleTest[41]
 	{
 		name = 'function it',
 		func = testFrame,
 		args = { 'it' },
 		expect = { true, true, true, false } -- todo, no fixture
 	},
-	-- PickleTest[41]
+	-- PickleTest[42]
 	{
 		name = 'function it',
 		func = testFrame,
 		args = { 'it', 'This is a test' },
 		expect = { true, true, true, false } -- todo, still no fixture
 	},
-	-- PickleTest[42]
+	-- PickleTest[43]
 	{
 		name = 'function it',
 		func = testFrame,
 		args = { 'it', 'This is a test', function() end },
 		expect = { true, true, true, false } -- todo, no assertions
 	},
-	-- PickleTest[43]
+	-- PickleTest[44]
 	{
 		name = 'function it',
 		func = testFrame,
 		args = { 'it', 'This is a test', function() return true end },
 		expect = { true, true, true, false } -- todo, no assertions
 	},
-	-- PickleTest[44]
+	-- PickleTest[45]
 	{
 		name = 'function subject',
 		func = testType,
 		args = { 'subject' },
 		expect = { 'function' }
 	},
-	-- PickleTest[45]
+	-- PickleTest[46]
 	{
 		name = 'function expect',
 		func = testType,
 		args = { 'expect' },
 		expect = { 'function' }
 	},
-	-- PickleTest[46]
+	-- PickleTest[47]
 	{
 		name = 'function carp',
 		func = testType,
 		args = { 'carp' },
 		expect = { 'function' }
 	},
-	-- PickleTest[47]
+	-- PickleTest[48]
 	{
 		name = 'function cluck',
 		func = testType,
 		args = { 'cluck' },
 		expect = { 'function' }
 	},
-	-- PickleTest[48]
+	-- PickleTest[49]
 	{
 		name = 'function croak',
 		func = testType,
 		args = { 'croak' },
 		expect = { 'function' }
 	},
-	-- PickleTest[49]
+	-- PickleTest[50]
 	{
 		name = 'function confess',
 		func = testType,
 		args = { 'confess' },
 		expect = { 'function' }
 	},
-	-- PickleTest[50]
+	-- PickleTest[51]
 	{
 		name = 'comment todo ()',
 		func = testComment,
@@ -412,7 +433,7 @@ local tests = {
 			false
 		}
 	},
-	-- PickleTest[51]
+	-- PickleTest[52]
 	{
 		name = 'comment skip ()',
 		func = testComment,
@@ -423,7 +444,7 @@ local tests = {
 			'foo bar baz'
 		}
 	},
-	-- PickleTest[52]
+	-- PickleTest[53]
 	{
 		name = 'carp ( nil )',
 		func = testSpy,
@@ -434,7 +455,7 @@ local tests = {
 			'Function “carp” called' -- @todo should this be 'pickle-spies-carp-todo'?
 		}
 	},
-	-- PickleTest[53]
+	-- PickleTest[54]
 	{
 		name = 'carp ( string )',
 		func = testSpy,
@@ -445,7 +466,7 @@ local tests = {
 			'foo bar baz'
 		}
 	},
-	-- PickleTest[54]
+	-- PickleTest[55]
 	{
 		name = 'cluck ( nil )',
 		func = testSpy,
@@ -456,7 +477,7 @@ local tests = {
 			'Function “cluck” called' -- @todo should this be 'pickle-spies-cluck-todo'?
 		}
 	},
-	-- PickleTest[55]
+	-- PickleTest[56]
 	{
 		name = 'cluck ( string )',
 		func = testSpy,
@@ -467,7 +488,7 @@ local tests = {
 			'foo bar baz'
 		}
 	},
-	-- PickleTest[56]
+	-- PickleTest[57]
 	{
 		name = 'croak ( nil )',
 		func = testSpy,
@@ -478,7 +499,7 @@ local tests = {
 			'Function “croak” called'
 		}
 	},
-	-- PickleTest[57]
+	-- PickleTest[58]
 	{
 		name = 'croak ( string )',
 		func = testSpy,
@@ -489,7 +510,7 @@ local tests = {
 			'foo bar baz'
 		}
 	},
-	-- PickleTest[58]
+	-- PickleTest[59]
 	{
 		name = 'confess ( nil )',
 		func = testSpy,
@@ -500,7 +521,7 @@ local tests = {
 			'Function “confess” called'
 		}
 	},
-	-- PickleTest[59]
+	-- PickleTest[60]
 	{
 		name = 'confess ( string )',
 		func = testSpy,
@@ -509,6 +530,87 @@ local tests = {
 			false,
 			'Function “confess” exits',
 			'foo bar baz'
+		}
+	},
+	-- PickleTest[61]
+	{
+		name = 'extractor ( nil )',
+		func = testExtract,
+		args = { 'nil foo Nil bar NIL' },
+		expect = {
+			{ '[nil]', 'nil', nil, 1, 3 },
+			{ '[nil]', 'nil', nil, 9, 11 },
+			{ '[nil]', 'nil', nil, 17, 19 },
+		}
+	},
+	-- PickleTest[62]
+	{
+		name = 'extractor ( false )',
+		func = testExtract,
+		args = { 'false foo False bar FALSE' },
+		expect = {
+			{ '[false]', 'boolean', false, 1, 5 },
+			{ '[false]', 'boolean', false, 11, 15 },
+			{ '[false]', 'boolean', false, 21, 25 },
+		}
+	},
+	-- PickleTest[63]
+	{
+		name = 'extractor ( true )',
+		func = testExtract,
+		args = { 'true foo True bar TRUE' },
+		expect = {
+			{ '[true]', 'boolean', true, 1, 4 },
+			{ '[true]', 'boolean', true, 10, 13 },
+			{ '[true]', 'boolean', true, 19, 22 },
+		}
+	},
+	-- PickleTest[64]
+	{
+		name = 'extractor ( number )',
+		func = testExtract,
+		args = { '3.14 foo 42 bar -42 baz -3.14' },
+		expect = {
+			{ '[number]', 'number', 3.14, 1, 4 },
+			{ '[number]', 'number', 42, 10, 11 },
+			{ '[number]', 'number', -42, 17, 19 },
+			{ '[number]', 'number', -3.14, 25, 29 },
+		}
+	},
+	-- PickleTest[65]
+	{
+		name = 'extractor ( string )',
+		func = testExtract,
+		args = { '"ping" foo "pong" bar "zong"' },
+		expect = {
+			{ '[string]', 'string', "ping", 1, 6 },
+			{ '[string]', 'string', "pong", 12, 17 },
+			{ '[string]', 'string', "zong", 23, 28 },
+		}
+	},
+	-- PickleTest[66]
+	{
+		name = 'extractor ( json )',
+		func = testExtract,
+		args = { '{"ping":1} foo ["pong"] bar {"zong":2}' },
+		expect = {
+			{ '[json]', 'table', {["ping"]=1}, 1, 10 },
+			{ '[json]', 'table', {"pong"}, 16, 23 },
+			{ '[json]', 'table', {["zong"]=2}, 29, 38 },
+		}
+	},
+	-- PickleTest[67]
+	{
+		name = 'extractor ( composite )',
+		func = testExtract,
+		args = { 'true foo -42 bar false baz nil fup "ping" fap ["pong"]' },
+		expect = {
+			{ '[true]', 'boolean', true, 1, 4 },
+			{ '[number]', 'number', -42, 10, 12 },
+			{ '[false]', 'boolean', false, 18, 22 },
+			{ '[nil]', 'nil', nil, 28, 30 },
+			{ '[string]', 'string', "ping", 36, 41 },
+			{ '[json]', 'table', {"pong"}, 47, 54 },
 		}
 	},
 }

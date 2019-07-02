@@ -69,12 +69,12 @@ end
 -- @todo fix pos
 -- @raise on wrong arguments
 -- @tparam string str used as the extraction source
--- @tparam number pos for an inclusive index where extraction starts
+-- @tparam[opt=1] nil|number pos for an inclusive index where extraction starts
 -- @treturn strategy,first,last
 function Extractors:find( str, pos )
 	-- @todo figure out if it should be valid to not provide a string
 	libUtil.checkType( 'Extractors:find', 1, str, 'string', false )
-	libUtil.checkType( 'Extractors:find', 2, pos, 'number', false )
+	libUtil.checkType( 'Extractors:find', 2, pos, 'number', true )
 
 	local first = mw.ustring.len( str ) + 1
 	local last

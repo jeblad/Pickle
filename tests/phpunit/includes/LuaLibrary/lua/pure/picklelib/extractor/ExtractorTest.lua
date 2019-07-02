@@ -104,7 +104,7 @@ local tests = {
 		name = name .. ':cast ()',
 		func = testCast,
 		args = {},
-		expect = { false, "Method should be overridden" }
+		expect = { false }
 	},
 	{ -- 11
 		name = name .. ':placeholder ()',

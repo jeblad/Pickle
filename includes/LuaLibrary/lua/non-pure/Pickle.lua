@@ -21,6 +21,7 @@ pickle.report = {}
 pickle.report.adapt = require 'picklelib/report/ReportAdapt'
 pickle.report.frame = require 'picklelib/report/ReportFrame'
 pickle.renders = require 'picklelib/render/Renders'
+pickle.extractor = require 'picklelib/extractor/Extractor'
 pickle.extractors = require 'picklelib/extractor/Extractors'
 pickle.translator = require 'picklelib/translator/Translator'
 pickle.translators = require 'picklelib/translator/Translators'
@@ -101,9 +102,61 @@ end
 local function createExtractors( opts )
 	local extractors = pickle.extractors:create()
 
-	for _,v in ipairs( opts.extractorLibs or {} ) do
-		extractors:register( require( v[2] ):create() )
-	end
+	extractors:register(
+		pickle.extractor:create()
+			:setType( 'nil' )
+			:addKeyword( 'nil' )
+			:onCast( function()
+				return nil
+			end ) )
+
+	extractors:register(
+		pickle.extractor:create()
+			:setType( 'false' )
+			:addKeyword( 'false' )
+			:onCast( function()
+				return false
+			end ) )
+
+	extractors:register(
+		pickle.extractor:create()
+			:setType( 'true' )
+			:addKeyword( 'true' )
+			:onCast( function()
+				return true
+			end ) )
+
+	extractors:register(
+		pickle.extractor:create()
+			:setType( 'number' )
+			:addPattern( '^[-+]?%d+%.%d+$', 0, 0 )
+			:addPattern( '^[-+]?%d+%.%d+[%s%p]', 0, -1 )
+			:addPattern( '[%s%p][-+]?%d+%.%d+$', 1, 0 )
+			:addPattern( '[%s%p][-+]?%d+%.%d+[%s%p]', 1, -1 )
+			:addPattern( '^[-+]?%d+$', 0, 0 )
+			:addPattern( '^[-+]?%d+[%s%p]', 0, -1 )
+			:addPattern( '[%s%p][-+]?%d+$', 1, 0 )
+			:addPattern( '[%s%p][-+]?%d+[%s%p]', 1, -1 )
+			:onCast( function( str )
+				return tonumber( str )
+			end ) )
+
+	extractors:register(
+		pickle.extractor:create()
+			:setType( 'string' )
+			:addDelimiters( '"', '"' )
+			:onCast( function( str )
+				return mw.ustring.sub( str, 2, -2 )
+			end ) )
+
+	extractors:register(
+		pickle.extractor:create()
+			:setType( 'json' )
+			:addDelimiters( '{', '}' )
+			:addDelimiters( '[', ']' )
+			:onCast( function( str )
+				return mw.text.jsonDecode( str )
+			end ) )
 
 	return extractors
 end
@@ -318,7 +371,7 @@ local function setup( env, opts )
 	-- @return Frame
 	env.xdescribe = function( ... )
 		local obj = pickle.frame:create()
-		frames:unshift( obj )
+		frames:push( obj )
 		obj.evalFixture = function( this )
 			local ReportFrame = require 'picklelib/report/ReportFrame'
 			this:reports():push( ReportFrame:create():setSkip( 'xdescribe' ) )
@@ -382,7 +435,7 @@ local function setup( env, opts )
 	-- @return Frame
 	env.describe = function( ... )
 		local obj = pickle.frame:create()
-		frames:unshift( obj )
+		frames:push( obj )
 		obj:setRenders( pickle.renders )
 			:setName( 'describe' )
 			:setReports( reports )
