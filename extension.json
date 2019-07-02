@@ -192,7 +192,6 @@
 				"nil": "Nil",
 				"false": "False",
 				"true": "True",
-				"string": "String",
 				"number": "Number",
 				"json": "Json"
 			}
