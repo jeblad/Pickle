@@ -72,13 +72,6 @@ local tests = {
 		args = { require 'picklelib/extractor/ExtractorTrue' },
 		expect = { 'table' }
 	},
-	{ -- 6
-		name = name .. ':create (single value type)',
-		func = testCreate,
-		type = 'ToString',
-		args = { require 'picklelib/extractor/ExtractorString' },
-		expect = { 'table' }
-	},
 	{ -- 7
 		name = name .. ':create (single value type)',
 		func = testCreate,
@@ -121,12 +114,6 @@ local tests = {
 		func = testFind,
 		args = { 'foo true bar', require('picklelib/extractor/ExtractorTrue'):create() },
 		expect = { 5, 8, 'true' }
-	},
-	{ -- 14
-		name = name .. ':find (string extract)',
-		func = testFind,
-		args = { 'foo "test" bar', require('picklelib/extractor/ExtractorString'):create() },
-		expect = { 5, 10, 'string' }
 	},
 	{ -- 15
 		name = name .. ':find (number extract)',
