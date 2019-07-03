@@ -189,7 +189,6 @@
 		"Extractor": {
 			"description": "Key-value pairs for extractors, used by require during setup of Lua-modules.",
 			"value": {
-				"json": "Json"
 			}
 		},
 		"NeglectSubpages": {
