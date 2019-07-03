@@ -212,7 +212,6 @@ local function setup( env, opts )
 	local renders = createRenders( opts )
 
 	local reports = pickle.bag:create()
-	local frames = pickle.bag:create()
 	local expects = pickle.bag:create()
 	local subjects = pickle.bag:create()
 
@@ -329,7 +328,7 @@ local function setup( env, opts )
 		return obj
 	end
 
-	--- Helper to get the named style
+	--- Helper to find the named style
 	-- @param frame
 	-- @treturn string
 	local function findStyle( frame )
@@ -337,8 +336,8 @@ local function setup( env, opts )
 			return frame.args.style
 		end
 		local names ={}
-		for _,v in ipairs( opts.renderLibs ) do
-			names[v[1]] = true
+		for k,_ in pairs( options.renderStyles ) do
+			names[k] = true
 		end
 		for _,v in ipairs( frame.args ) do
 			if names[v] then
@@ -348,7 +347,7 @@ local function setup( env, opts )
 		return nil
 	end
 
-	--- Helper to get the identified language
+	--- Helper to find the identified language
 	-- @param frame
 	-- @treturn string
 	local function findLang( frame )
@@ -363,28 +362,94 @@ local function setup( env, opts )
 		return nil
 	end
 
+	--- Eval the fixtures over previous dispatched strings.
+	-- This is used as an extension of the worlds, by injecting `tap` as an method.
+	-- The method has two different call forms. First form is the usual one with a single
+	-- frame object. This is used if the function is called by "invoke". The second
+	-- form use the same "style" and "language" form, but as arguments. This makes
+	-- it possible to easilly test it in the console.
+	-- @return string
+	local function tap( ... )
+		assert( reports:top(), 'Pickle: Can not find any report, is eval executed?')
+
+		local styleName = nil
+		local langCode = nil
+
+		if select( '#', ... ) == 1 and type( select( 1, ... ) ) == 'table'  then
+			local frame = select( 1, ... )
+			mw.log('Perhaps frame')
+			if frame.args then
+				styleName = findStyle( frame )
+				langCode = findLang( frame )
+			end
+		end
+
+		if not( styleName ) then
+			mw.log('No style name')
+			local str = select( 1, ... )
+			if str and options.renderStyles[str] then
+				styleName = str
+			end
+		end
+
+		if not( langCode ) then
+			mw.log('No lang code')
+			local str = select( 2, ... )
+			if str and mw.language.isValidCode( str ) then
+				langCode = str
+			end
+		end
+
+		mw.log(styleName or 'Still no style name')
+
+		mw.log(langCode or 'Still no lang code')
+
+		return reports:top():realize( renders.style( styleName or 'full' ),
+			langCode or mw.language.getContentLanguage():getCode(),
+			pickle.counter:create() )
+	end
+
+	--- Compose silent frame instances.
+	-- @tname string name
+	-- @treturn function
+	local function composeXFrame( name )
+		return function( ... )
+			local obj = pickle.frame:create()
+			obj.tap = function( ... )
+				obj:eval()
+				return tap( ... )
+			end
+			obj.evalFixture = function( this )
+				local ReportFrame = require 'picklelib/report/ReportFrame'
+				this:reports():push( ReportFrame:create():setSkip( name ) )
+			end
+			obj:setRenders( pickle.renders )
+				:setName( name )
+				:setReports( reports )
+				:setSubjects( subjects )
+				:setExtractors( extractors )
+				:setTranslators( translators )
+				:dispatch( ... )
+			return obj
+		end
+	end
+
+	--- Silent “top” for the test.
+	-- This is a level above the usual the three levels, and only
+	-- used when several modules are tested simultaneously.
+	-- The function will silently avoid running the fixture.
+	-- @function xtop
+	-- @param ... varargs passed on to Frame:dispatch
+	-- @return Frame
+	env.xtop = composeXFrame( 'xtop' )
+
 	--- Silent “describe” for the test.
 	-- This is the outermost of the three levels.
 	-- The function will silently avoid running the fixture.
 	-- @function xdescribe
 	-- @param ... varargs passed on to Frame:dispatch
 	-- @return Frame
-	env.xdescribe = function( ... )
-		local obj = pickle.frame:create()
-		frames:push( obj )
-		obj.evalFixture = function( this )
-			local ReportFrame = require 'picklelib/report/ReportFrame'
-			this:reports():push( ReportFrame:create():setSkip( 'xdescribe' ) )
-		end
-		obj:setRenders( pickle.renders )
-			:setName( 'xdescription' )
-			:setReports( reports )
-			:setSubjects( subjects )
-			:setExtractors( extractors )
-			:setTranslators( translators )
-			:dispatch( ... )
-		return obj
-	end
+	env.xdescribe = composeXFrame( 'xdescribe' )
 
 	--- Silent “context” for the test.
 	-- This is usually used for creating some additional context
@@ -393,91 +458,47 @@ local function setup( env, opts )
 	-- @function context
 	-- @param ... varargs passed on to Frame:dispatch
 	-- @return Frame
-	env.xcontext = function( ... )
-		local obj = pickle.frame:create()
-		obj.evalFixture = function( this )
-			local ReportFrame = require 'picklelib/report/ReportFrame'
-			this:reports():push( ReportFrame:create():setSkip( 'xcontext' ) )
-		end
-		obj:setRenders( pickle.renders )
-			:setName( 'xcontext' )
-			:setReports( reports )
-			:setSubjects( subjects )
-			:setExtractors( extractors )
-			:setTranslators( translators )
-			:dispatch( ... )
-		return obj
-	end
+	env.xcontext = composeXFrame( 'xcontext' )
 
 	--- Silent “it” for the test.
 	-- @tparam vararg ... passed on to Frame:create
 	-- @treturn self newly created object
-	env.xit =function( ... )
-		local obj = pickle.frame:create()
-		obj.evalFixture = function( this )
-			local ReportFrame = require 'picklelib/report/ReportFrame'
-			this:reports():push( ReportFrame:create():setSkip( 'xit' ) )
+	env.xit = composeXFrame( 'xit' )
+
+	--- Compose frame instances.
+	-- @tname string name
+	-- @treturn function
+	local function composeFrame( name )
+		return function( ... )
+			local obj = pickle.frame:create()
+			obj.tap = function( ... )
+				obj:eval()
+				return tap( ... )
+			end
+			obj:setName( name )
+				:setReports( reports )
+				:setSubjects( subjects )
+				:setExtractors( extractors )
+				:setTranslators( translators )
+				:dispatch( ... )
+			return obj
 		end
-		obj:setRenders( pickle.renders )
-			:setName( 'xit' )
-			:setReports( reports )
-			:setSubjects( subjects )
-			:setExtractors( extractors )
-			:setTranslators( translators )
-			:dispatch( ... )
-		return obj
 	end
+
+	--- “Top” for the test.
+	-- This is a level above the usual the three levels, and only
+	-- used when several modules are tested simultaneously.
+	-- @function top
+	-- @param ... varargs passed on to Frame:dispatch
+	-- @return Frame
+	env.top = composeFrame( 'top' )
 
 	--- “Describe” for the test.
 	-- This is the outermost of the three levels.
 	-- @function describe
 	-- @param ... varargs passed on to Frame:dispatch
 	-- @return Frame
-	env.describe = function( ... )
-		local obj = pickle.frame:create()
-		frames:push( obj )
-		obj:setRenders( pickle.renders )
-			:setName( 'describe' )
-			:setReports( reports )
-			:setSubjects( subjects )
-			:setExtractors( extractors )
-			:setTranslators( translators )
-			:dispatch( ... )
-
-		--- Eval the fixtures over previous dispatched strings.
-		-- This is extending the `describe` call by injecting `tap` as an method.
-		-- The method has two different call forms. First form is the usual one with a single
-		-- frame object. This is used if the function is called by "invoke". The second
-		-- form use the same "style" and "language" form, but as arguments. This makes
-		-- it possible to easilly test it in the console.
-		-- @return string
-		function obj:tap( ... )
-			self:eval()
-			assert( reports:top(), 'Pickle: Can not find top')
-
-			local styleName = nil
-			local langCode = nil
-
-			if select( '#', ... ) == 1 and type( select( 1, ... ) ) == 'table'  then
-				local frame = select( 1, ... )
-				styleName = findStyle( frame )
-				langCode = findLang( frame )
-
-			elseif select( '#', ... ) > 1 then
-				local frame = { args = { style = select( 1, ... ), lang = select( 2, ... ) } }
-				styleName = findStyle( frame )
-				langCode = findLang( frame )
-			end
-
-			styleName = styleName or 'full'
-			langCode = langCode or mw.language.getContentLanguage():getCode()
-
-			local style = renders.style( styleName )
-			return reports:top():realize( style, langCode, pickle.counter:create() )
-		end
-
-		return obj
-	end
+	env.describe = composeFrame( 'describe' )
 
 	--- “Context” for the test.
 	-- This is usually used for creating some additional context
@@ -486,43 +507,12 @@ local function setup( env, opts )
 	-- @function context
 	-- @param ... varargs passed on to Frame:dispatch
 	-- @return Frame
-	env.context = function( ... )
-		local obj = pickle.frame:create()
-			:setName( 'context' )
-			:setReports( reports )
-			:setSubjects( subjects )
-			:setExtractors( extractors )
-			:setTranslators( translators )
-			:dispatch( ... )
-		return obj
-	end
+	env.context = composeFrame( 'context' )
 
 	--- “It” for the test.
 	-- @tparam vararg ... passed on to Frame:create
 	-- @treturn self newly created object
-	env.it = function( ... )
-		local obj = pickle.frame:create()
-			:setName( 'it' )
-			:setReports( reports )
-			:setSubjects( subjects )
-			:setExtractors( extractors )
-			:setTranslators( translators )
-			:dispatch( ... )
-		return obj
-	end
-
-	env.execute = function()
-		local style = pickle.renders.style( 'vivid' )
-		local langCode = mw.language.getContentLanguage():getCode()
-		local counter = pickle.counter:create()
-		local assessments = {}
-		for _,v in ipairs( { frames:export() } ) do
-			v:eval()
-			table.insert( assessments,
-				tostring( reports:top():realize( style, langCode, counter ) ) )
-		end
-		return table.concat( assessments, '' )
-	end
+	env.it = composeFrame( 'it' )
 
 	--- Put up a nice banner telling everyone pickle is initialized, and add the instances
 	env._reports = reports
