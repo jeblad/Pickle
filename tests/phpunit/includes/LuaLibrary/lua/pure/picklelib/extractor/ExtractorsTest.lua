@@ -51,13 +51,6 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
-	{ -- 3
-		name = name .. ':create (single value type)',
-		func = testCreate,
-		type = 'ToString',
-		args = { require 'picklelib/extractor/ExtractorNil' },
-		expect = { 'table' }
-	},
 	{ -- 8
 		name = name .. ':num-flush (no value)',
 		func = testNumFlush,
@@ -75,12 +68,6 @@ local tests = {
 		func = testNumFlush,
 		args = { { 'foo' }, { 'bar' }, { 'baz' } },
 		expect = { 3, 0 }
-	},
-	{ -- 11
-		name = name .. ':find (nil extract)',
-		func = testFind,
-		args = { 'foo nil bar', require('picklelib/extractor/ExtractorNil'):create() },
-		expect = { 5, 7, 'nil' }
 	},
 }
 
