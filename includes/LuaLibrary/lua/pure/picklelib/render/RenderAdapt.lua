@@ -110,7 +110,7 @@ function Subclass:realizeLine( param, lang ) -- luacheck: no self
 		return ''
 	end
 
-	return mw.text.encode( line:plain() )
+	return line:plain()
 end
 
 --- Realize reported data for body.

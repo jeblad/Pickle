@@ -99,7 +99,7 @@ function Subclass:realizeDescription( src, lang ) -- luacheck: no unused args
 		return ''
 	end
 
-	return mw.text.encode( src:getDescription() )
+	return src:getDescription()
 end
 
 --- Realize reported data for name.
