@@ -191,7 +191,7 @@ function Subclass:realizeHeader( src, lang, counter )
 	end
 
 	if src:isSkip() or src:hasSkip() or src:isTodo() or src:hasTodo() then
-		local comment = mw.html.create( 'span' )
+		local comment = mw.html.create( 'div' )
 			:addClass( 'mw-pickle-comment' )
 			:wikitext( ' ' )
 		if src:isSkip() or src:hasSkip() then

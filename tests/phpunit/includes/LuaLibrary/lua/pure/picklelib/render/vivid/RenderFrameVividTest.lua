@@ -174,12 +174,12 @@ local tests = {
 			.. '<span class="mw-pickle-description" lang="qqx">'
 			.. 'testing'
 			.. '</span>'
-			.. '<span class="mw-pickle-comment">'
+			.. '<div class="mw-pickle-comment">'
 			.. ' '
 			.. '<span class="mw-pickle-skip" lang="qqx">'
 			.. 'skip (parentheses: (pickle-report-frame-is-skip-keyword)) baz'
 			.. '</span>'
-			.. '</span>'
+			.. '</div>'
 			.. '</div>' }
 	},
 	-- RenderFrameVividTest[10]
@@ -194,12 +194,12 @@ local tests = {
 			.. '<span class="mw-pickle-description" lang="qqx">'
 			.. 'testing'
 			.. '</span>'
-			.. '<span class="mw-pickle-comment">'
+			.. '<div class="mw-pickle-comment">'
 			.. ' '
 			.. '<span class="mw-pickle-todo" lang="qqx">'
 			.. 'todo (parentheses: (pickle-report-frame-is-todo-keyword)) baz'
 			.. '</span>'
-			.. '</span>'
+			.. '</div>'
 			.. '</div>' }
 	},
 	-- RenderFrameVividTest[11]
