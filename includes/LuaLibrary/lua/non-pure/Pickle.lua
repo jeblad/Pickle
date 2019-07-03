@@ -89,11 +89,12 @@ local function addExtractorOptions( opts )
 		return
 	end
 
-	opts.extractorLibs = {}
+	local t = {}
 	for k,v in pairs( options.extractors or {} ) do
 		local lib = string.format( options.extractorPath, v )
-		table.insert( opts.extractorLibs, { k, lib } )
+		table.insert( t, { k, lib } )
 	end
+	opts.extractorLibs = t
 end
 
 --- Create extractors
@@ -168,13 +169,14 @@ local function addRenderOptions( opts )
 		return
 	end
 
-	opts.renderLibs = {}
+	local t = {}
 	for k,v in pairs( options.renderStyles ) do
 		for l,w in pairs( options.renderTypes ) do
 			local lib = string.format( options.renderPath, k, w, v )
-			table.insert( opts.renderLibs, { k, l, lib } )
+			table.insert( t, { k, l, lib } )
 		end
 	end
+	opts.renderLibs = t
 end
 
 --- Create Renders
@@ -201,16 +203,14 @@ local function setup( env, opts )
 	libUtil.checkType( 'setup', 2, opts, 'table', true )
 
 	opts = opts or {}
-
 	addTranslatorOptions( opts )
-	local translators = createTranslators( opts )
-
 	addExtractorOptions( opts )
-	local extractors = createExtractors( opts )
-
 	addRenderOptions( opts )
-	local renders = createRenders( opts )
 
+
+	local translators = createTranslators( opts )
+	local extractors = createExtractors( opts )
+	local renders = createRenders( opts )
 	local reports = pickle.bag:create()
 	local expects = pickle.bag:create()
 	local subjects = pickle.bag:create()
@@ -551,13 +551,11 @@ setmetatable( pickle, mt )
 --- install the module in the global space.
 function pickle.setupInterface( opts )
 
-	-- boilerplate
 	pickle.setupInterface = nil
 	php = mw_interface
 	mw_interface = nil
-	options = opts -- @todo move data from this more methodically
+	options = opts
 
-	-- register main lib
 	mw = mw or {}
 	mw.pickle = pickle
 	package.loaded['mw.Pickle'] = pickle
