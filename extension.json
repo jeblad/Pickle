@@ -190,7 +190,6 @@
 			"description": "Key-value pairs for extractors, used by require during setup of Lua-modules.",
 			"value": {
 				"nil": "Nil",
-				"true": "True",
 				"json": "Json"
 			}
 		},
