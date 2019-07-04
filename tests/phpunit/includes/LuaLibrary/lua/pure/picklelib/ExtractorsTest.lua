@@ -9,7 +9,7 @@ local testframework = require 'Module:TestFramework'
 local name = 'extractor'
 
 local function makeTest( ... )
-	local lib = require 'picklelib/extractor/Extractors'
+	local lib = require 'picklelib/Extractors'
 	assert( lib )
 	return lib:create( ... )
 end

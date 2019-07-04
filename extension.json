@@ -184,7 +184,7 @@
 		},
 		"ExtractorPath": {
 			"description": "Formats to use while requiring extractors.",
-			"value": "picklelib/extractor/Extractor%s"
+			"value": "picklelib/Extractor%s"
 		},
 		"Extractor": {
 			"description": "Key-value pairs for extractors, used by require during setup of Lua-modules.",

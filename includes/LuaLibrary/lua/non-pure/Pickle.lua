@@ -21,8 +21,8 @@ pickle.report = {}
 pickle.report.adapt = require 'picklelib/report/ReportAdapt'
 pickle.report.case = require 'picklelib/report/ReportCase'
 pickle.renders = require 'picklelib/render/Renders'
-pickle.extractor = require 'picklelib/extractor/Extractor'
-pickle.extractors = require 'picklelib/extractor/Extractors'
+pickle.extractor = require 'picklelib/Extractor'
+pickle.extractors = require 'picklelib/Extractors'
 pickle.translator = require 'picklelib/translator/Translator'
 pickle.translators = require 'picklelib/translator/Translators'
 
