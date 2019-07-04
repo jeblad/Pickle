@@ -1,4 +1,4 @@
---- Intermediate class for frame report renderer.
+--- Intermediate class for case report renderer.
 -- This class follows the pattern with inheritance from
 -- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod RenderFrame
@@ -38,7 +38,7 @@ end
 -- @return self
 function Subclass:_init( ... )
 	Super._init( self, ... )
-	self._type = self._type .. '-frame'
+	self._type = self._type .. '-case'
 	return self
 end
 
@@ -46,7 +46,7 @@ end
 -- @tparam string str to be appended to a base string
 -- @treturn string
 function Subclass:key( str )
-	return 'pickle-report-frame-' .. self:cleanKey( str )
+	return 'pickle-report-case-' .. self:cleanKey( str )
 end
 
 --- Realize reported data for state.

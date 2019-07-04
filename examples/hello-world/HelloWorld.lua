@@ -19,12 +19,12 @@ function HelloWorld.merge( ... )
 end
 
 --- Outer hello function.
--- This will interact with the frame stack. Without additional tools
--- to create a mock for the frame instance it is better left alone.
--- @param frame instance
+-- This will interact with the case stack. Without additional tools
+-- to create a mock for the case instance it is better left alone.
+-- @param case instance
 -- @return string
-function HelloWorld.hello( frame )
-	local text, err = HelloWorld._hello( unpack( frame.args ) )
+function HelloWorld.hello( case )
+	local text, err = HelloWorld._hello( unpack( case.args ) )
 	return text or err
 end
 

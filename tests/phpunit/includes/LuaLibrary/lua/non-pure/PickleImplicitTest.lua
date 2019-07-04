@@ -101,9 +101,9 @@ local tests = {
 	},
 	-- PickleTest[5]
 	{
-		name = 'table mw.pickle.frame',
+		name = 'table mw.pickle.case',
 		func = testMW,
-		args = { 'frame' },
+		args = { 'case' },
 		expect = { 'table' }
 	},
 	-- PickleTest[6]

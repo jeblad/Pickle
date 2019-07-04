@@ -113,7 +113,7 @@ local tests = {
 		name = name .. ':key ()',
 		func = testKey,
 		args = { 'foo' },
-		expect = { 'pickle-report-frame-foo' }
+		expect = { 'pickle-report-case-foo' }
 	},
 	--[[
 	-- RenderFrameVividTest[]
@@ -122,7 +122,7 @@ local tests = {
 		func = testState,
 		args = { false },
 		expect = { '<span class="mw-pickle-state" lang="qqx">'
-			.. 'not ok (parentheses: (pickle-report-frame-is-not-ok-keyword))'
+			.. 'not ok (parentheses: (pickle-report-case-is-not-ok-keyword))'
 			.. '</span>' }
 	},
 	-- RenderFrameVividTest[]
@@ -131,7 +131,7 @@ local tests = {
 		func = testState,
 		args = { true },
 		expect = { '<span class="mw-pickle-state" lang="qqx">'
-			.. 'ok (parentheses: (pickle-report-frame-is-ok-translated))'
+			.. 'ok (parentheses: (pickle-report-case-is-ok-translated))'
 			.. '</span>' }
 	},
 	]]
@@ -141,7 +141,7 @@ local tests = {
 		func = testSkip,
 		args = { 'foo' },
 		expect = { '<span class="mw-pickle-skip" lang="qqx">'
-			.. 'skip (parentheses: (pickle-report-frame-is-skip-keyword)) foo'
+			.. 'skip (parentheses: (pickle-report-case-is-skip-keyword)) foo'
 			.. '</span>' }
 	},
 	-- RenderFrameVividTest[7]
@@ -150,7 +150,7 @@ local tests = {
 		func = testTodo,
 		args = { 'bar' },
 		expect = { '<span class="mw-pickle-todo" lang="qqx">'
-			.. 'todo (parentheses: (pickle-report-frame-is-todo-keyword)) bar'
+			.. 'todo (parentheses: (pickle-report-case-is-todo-keyword)) bar'
 			.. '</span>' }
 	},
 	-- RenderFrameVividTest[8]
@@ -169,7 +169,7 @@ local tests = {
 		args = { 'baz' },
 		expect = { '<div class="mw-pickle-header">'
 			.. '<span class="mw-pickle-state" lang="qqx">'
-			.. 'ok (parentheses: (pickle-report-frame-is-ok-keyword))'
+			.. 'ok (parentheses: (pickle-report-case-is-ok-keyword))'
 			.. '</span>'
 			.. '<span class="mw-pickle-description" lang="qqx">'
 			.. 'testing'
@@ -177,7 +177,7 @@ local tests = {
 			.. '<div class="mw-pickle-comment">'
 			.. ' '
 			.. '<span class="mw-pickle-skip" lang="qqx">'
-			.. 'skip (parentheses: (pickle-report-frame-is-skip-keyword)) baz'
+			.. 'skip (parentheses: (pickle-report-case-is-skip-keyword)) baz'
 			.. '</span>'
 			.. '</div>'
 			.. '</div>' }
@@ -189,7 +189,7 @@ local tests = {
 		args = { 'baz' },
 		expect = { '<div class="mw-pickle-header">'
 			.. '<span class="mw-pickle-state" lang="qqx">'
-			.. 'ok (parentheses: (pickle-report-frame-is-ok-keyword))'
+			.. 'ok (parentheses: (pickle-report-case-is-ok-keyword))'
 			.. '</span>'
 			.. '<span class="mw-pickle-description" lang="qqx">'
 			.. 'testing'
@@ -197,7 +197,7 @@ local tests = {
 			.. '<div class="mw-pickle-comment">'
 			.. ' '
 			.. '<span class="mw-pickle-todo" lang="qqx">'
-			.. 'todo (parentheses: (pickle-report-frame-is-todo-keyword)) baz'
+			.. 'todo (parentheses: (pickle-report-case-is-todo-keyword)) baz'
 			.. '</span>'
 			.. '</div>'
 			.. '</div>' }
@@ -208,7 +208,7 @@ local tests = {
 		func = testHeaderOk,
 		expect = { '<div class=\"mw-pickle-header\">'
 			.. '<span class=\"mw-pickle-state\" lang=\"qqx\">'
-			.. 'ok (parentheses: (pickle-report-frame-is-ok-keyword))'
+			.. 'ok (parentheses: (pickle-report-case-is-ok-keyword))'
 			.. '</span>'
 			.. '</div>' }
 	},
@@ -218,7 +218,7 @@ local tests = {
 		func = testHeaderNotOk,
 		expect = { '<div class=\"mw-pickle-header\">'
 			.. '<span class=\"mw-pickle-state\" lang=\"qqx\">'
-			.. 'not ok (parentheses: (pickle-report-frame-is-not-ok-keyword))'
+			.. 'not ok (parentheses: (pickle-report-case-is-not-ok-keyword))'
 			.. '</span>'
 			.. '</div>' }
 	},

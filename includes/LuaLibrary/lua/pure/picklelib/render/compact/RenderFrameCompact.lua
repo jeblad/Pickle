@@ -1,4 +1,4 @@
---- Final class for frame report renderer.
+--- Final class for case report renderer.
 -- This class follows the pattern with inheritance from
 -- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod RenderFrameCompact

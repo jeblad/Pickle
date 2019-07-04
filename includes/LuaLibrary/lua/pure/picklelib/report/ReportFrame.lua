@@ -50,14 +50,14 @@ end
 -- @treturn self
 function Subclass:_init( ... )
 	Super._init( self )
-	self._type = self._type .. '-frame'
+	self._type = self._type .. '-case'
 	if select('#',...) then
 		self:constituents():push( ... )
 	end
 	return self
 end
 
---- Set name of frame.
+--- Set name of case.
 -- @tparam string|message name
 -- @treturn self
 function Subclass:setName( name )
@@ -132,7 +132,7 @@ function Subclass:isOk()
 end
 
 --- Check if the instance has any member in skip state.
--- This will reject all frame constituents from the analysis.
+-- This will reject all case constituents from the analysis.
 -- @treturn boolean that is set if any constituent has a skip note
 function Subclass:hasSkip()
 	local tmp = false
@@ -149,7 +149,7 @@ function Subclass:hasSkip()
 end
 
 --- Check if the instance has any member in todo state.
--- This will reject all frame constituents from the analysis.
+-- This will reject all case constituents from the analysis.
 -- @treturn boolean that is set if any constituent has a skip note
 function Subclass:hasTodo()
 	local tmp = false

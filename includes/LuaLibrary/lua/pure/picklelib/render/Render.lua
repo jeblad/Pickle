@@ -134,7 +134,7 @@ function Baseclass:realizeComment( src, keyPart, lang )
 	local comment = false
 
 	if type( str ) == 'nil' then
-		comment = mw.message.new( 'pickle-report-frame-' .. keyPart .. '-no-description' )
+		comment = mw.message.new( 'pickle-report-case-' .. keyPart .. '-no-description' )
 	elseif type( str ) == 'string' then
 		comment = mw.message.newRawMessage( str )
 	end

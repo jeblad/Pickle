@@ -1,7 +1,7 @@
 --- Baseclass for Describe, Context, and It.
 -- This class follows the pattern from
 -- [Lua classes](../topics/lua-classes.md.html).
--- @classmod Frame
+-- @classmod Case
 
 -- pure libs
 local libUtil = require 'libraryUtil'
@@ -11,15 +11,15 @@ local ReportFrame = require 'picklelib/report/ReportFrame'
 local Translator = require 'picklelib/translator/Translator'
 
 -- @var class var for lib
-local Frame = {}
+local Case = {}
 
 --- Lookup of missing class members.
 -- @raise on wrong arguments
 -- @tparam string key lookup of member
 -- @return any
-function Frame:__index( key ) -- luacheck: no self
-	libUtil.checkType( 'Frame:__index', 1, key, 'string', false )
-	return Frame[key]
+function Case:__index( key ) -- luacheck: no self
+	libUtil.checkType( 'Case:__index', 1, key, 'string', false )
+	return Case[key]
 end
 
 -- @var metatable for the class
@@ -27,12 +27,12 @@ local mt = { types = {} }
 
 --- Get arguments for a class call.
 -- @todo Verify if this ever get called
--- @todo Verify whether Frame.__index creates problems with this metamethod
+-- @todo Verify whether Case.__index creates problems with this metamethod
 -- @local
 -- @tparam vararg ... pass on to dispatch
 -- @treturn self -ish
 function mt:__call( ... ) -- luacheck: no self
-	local obj = Frame:create()
+	local obj = Case:create()
 	obj:dispatch( ... )
 	if obj:isDone() then
 		return nil, 'Failed, got a done instance'
@@ -46,7 +46,7 @@ end
 --- Get arguments for a instance call.
 -- @tparam vararg ... pass on to dispatch
 -- @treturn self
-function Frame:__call( ... )
+function Case:__call( ... )
 	self:dispatch( ... )
 	if self:isDone() then
 		return nil, 'Failed, got a done instance. Is it run repeatedly in the debug console?'
@@ -57,12 +57,12 @@ function Frame:__call( ... )
 	return self
 end
 
-setmetatable( Frame, mt )
+setmetatable( Case, mt )
 
 --- Create a new instance.
 -- @tparam vararg ... list to be dispatched
--- @return Frame
-function Frame:create( ... )
+-- @return Case
+function Case:create( ... )
 	local meta = rawget( self, 'create' ) and self or getmetatable( self )
 	local new = setmetatable( {}, meta )
 	return new:_init( ... )
@@ -70,12 +70,12 @@ end
 
 --- Initialize a new instance.
 -- @tparam vararg ... list to be dispatched (unused)
--- @return Frame
-function Frame:_init()
+-- @return Case
+function Case:_init()
 	self._descriptions = Bag:create()
 	self._fixtures = Bag:create()
 	self._done = false
-	self._type = 'frame'
+	self._type = 'case'
 	self._name = '<unknown>'
 	return self
 end
@@ -83,7 +83,7 @@ end
 --- Dispach on type.
 -- @tparam vararg ... list to dispatch
 -- @treturn self
-function Frame:dispatch( ... )
+function Case:dispatch( ... )
 	for _,v in ipairs( { ... } ) do
 		local tname = type( v )
 		if not mt.types[tname] then
@@ -98,7 +98,7 @@ mt.types = {
 
 	--- Push a string.
 	-- @local
-	-- @function Frame.types:string
+	-- @function Case.types:string
 	-- @tparam table self place to store value
 	-- @tparam string val that should be stored
 	['string'] = function( self, val )
@@ -107,7 +107,7 @@ mt.types = {
 
 	--- Push a function.
 	-- @local
-	-- @function Frame.types:function
+	-- @function Case.types:function
 	-- @tparam table self place to store value
 	-- @tparam function func that should be stored
 	['function'] = function( self, func )
@@ -116,7 +116,7 @@ mt.types = {
 
 	--- Push a table.
 	-- @local
-	-- @function Frame.types:table
+	-- @function Case.types:table
 	-- @tparam table self place to store value
 	-- @tparam table tbl that should be stored
 	['table'] = function( self, tbl )
@@ -125,67 +125,67 @@ mt.types = {
 
 }
 
---- Get the type of frame
+--- Get the type of case
 -- All frames has an explicit type name.
 -- @treturn string
-function Frame:type()
+function Case:type()
 	return self._type
 end
 
---- Set key for name of frame.
+--- Set key for name of case.
 -- @tparam string key part of a message
 -- @treturn self
-function Frame:setName( key )
+function Case:setName( key )
 	self._name = key
 	return self
 end
 
---- Check if the frame has name.
+--- Check if the case has name.
 -- @treturn boolean
-function Frame:hasName()
+function Case:hasName()
 	return not not self._name
 end
 
---- Get the name as key for frame.
+--- Get the name as key for case.
 -- All frames may have an explicit name.
 -- @treturn string
-function Frame:getName()
+function Case:getName()
 	return self._name or '<unset>'
 end
 
---- Check if the frame has descriptions.
+--- Check if the case has descriptions.
 -- @treturn boolean
-function Frame:hasDescriptions()
+function Case:hasDescriptions()
 	return not self._descriptions:isEmpty()
 end
 
 --- Check number of descriptions.
 -- @treturn number
-function Frame:numDescriptions()
+function Case:numDescriptions()
 	return self._descriptions:depth()
 end
 
---- Check if the frame has fixtures.
+--- Check if the case has fixtures.
 -- @treturn boolean
-function Frame:hasFixtures()
+function Case:hasFixtures()
 	return not self._fixtures:isEmpty()
 end
 
 --- Check number of fixtures.
 -- @treturn number
-function Frame:numFixtures()
+function Case:numFixtures()
 	return self._fixtures:depth()
 end
 
 --- Check if the instance is evaluated.
 -- @treturn boolean
-function Frame:isDone()
+function Case:isDone()
 	return self._done
 end
 
 --- Get descriptions.
 -- @return list of descriptions
-function Frame:descriptions()
+function Case:descriptions()
 	return self._descriptions:export()
 end
 
@@ -194,15 +194,15 @@ end
 -- @raise on wrong arguments
 -- @tparam table obj somehow maintain a collection
 -- @treturn self
-function Frame:setSubjects( obj )
-	libUtil.checkType( 'Frame:setSubjects', 1, obj, 'table', false )
+function Case:setSubjects( obj )
+	libUtil.checkType( 'Case:setSubjects', 1, obj, 'table', false )
 	self._subjects = obj
 	return self
 end
 
 --- Expose reference to subjects.
 -- @return list of subjects
-function Frame:subjects()
+function Case:subjects()
 	return self._subjects
 end
 
@@ -211,15 +211,15 @@ end
 -- @raise on wrong arguments
 -- @tparam table obj somehow maintain a collection
 -- @treturn self
-function Frame:setReports( obj )
-	libUtil.checkType( 'Frame:setReports', 1, obj, 'table', false )
+function Case:setReports( obj )
+	libUtil.checkType( 'Case:setReports', 1, obj, 'table', false )
 	self._reports = obj
 	return self
 end
 
 --- Expose reference to reports.
 -- @return list of reports
-function Frame:reports()
+function Case:reports()
 	return self._reports
 end
 
@@ -228,15 +228,15 @@ end
 -- @raise on wrong arguments
 -- @tparam table obj somehow maintain a collection
 -- @treturn self
-function Frame:setExtractors( obj )
-	libUtil.checkType( 'Frame:setExtractors', 1, obj, 'table', false )
+function Case:setExtractors( obj )
+	libUtil.checkType( 'Case:setExtractors', 1, obj, 'table', false )
 	self._extractors = obj
 	return self
 end
 
 --- Expose reference to extractors.
 -- @return list of extractors
-function Frame:extractors()
+function Case:extractors()
 	return self._extractors
 end
 
@@ -245,15 +245,15 @@ end
 -- @raise on wrong arguments
 -- @tparam table obj somehow maintain a collection
 -- @treturn self
-function Frame:setTranslators( obj )
-	libUtil.checkType( 'Frame:setTranslators', 1, obj, 'table', false )
+function Case:setTranslators( obj )
+	libUtil.checkType( 'Case:setTranslators', 1, obj, 'table', false )
 	self._translators = obj
 	return self
 end
 
 --- Expose reference to translators.
 -- @return list of translators
-function Frame:translators()
+function Case:translators()
 	return self._translators
 end
 
@@ -262,15 +262,15 @@ end
 -- @raise on wrong arguments
 -- @tparam table obj somehow maintain a collection
 -- @treturn self
-function Frame:setRenders( obj )
-	libUtil.checkType( 'Frame:setRenders', 1, obj, 'table', false )
+function Case:setRenders( obj )
+	libUtil.checkType( 'Case:setRenders', 1, obj, 'table', false )
 	self._renders = obj
 	return self
 end
 
 --- Expose reference to renders.
 -- @return list of renders
-function Frame:renders()
+function Case:renders()
 	return self._renders
 end
 
@@ -280,10 +280,10 @@ end
 -- @tparam function fixture
 -- @tparam table environment
 -- @param ...
-function Frame:evalFixture( description, fixture, environment, ... )
-	libUtil.checkType( 'Frame:evalFixture', 1, description, 'string', false )
-	libUtil.checkType( 'Frame:evalFixture', 2, fixture, 'function', false )
-	libUtil.checkType( 'Frame:evalFixture', 3, environment, 'table', false )
+function Case:evalFixture( description, fixture, environment, ... )
+	libUtil.checkType( 'Case:evalFixture', 1, description, 'string', false )
+	libUtil.checkType( 'Case:evalFixture', 2, fixture, 'function', false )
+	libUtil.checkType( 'Case:evalFixture', 3, environment, 'table', false )
 
 	local depth = self:reports():depth()
 	local t= { pcall( mw.pickle._IMPLICIT and setfenv( fixture, environment ) or fixture, ... ) }
@@ -296,9 +296,9 @@ function Frame:evalFixture( description, fixture, environment, ... )
 		report:setName( self:getName() )
 	end
 	local added = self:reports():depth() - depth
-	assert( added >= 0, 'Frame:evalFixture; depth less than zero ')
+	assert( added >= 0, 'Case:evalFixture; depth less than zero ')
 	if added == 0 then
-		local msg = mw.message.new( 'pickle-frame-no-tests' )
+		local msg = mw.message.new( 'pickle-case-no-tests' )
 		report:setTodo( msg )
 	end
 	report:addConstituents( self:reports():pop( added ) )
@@ -315,9 +315,9 @@ end
 
 --- Eval the fixtures over previous dispatched strings.
 -- @treturn self
-function Frame:eval()
+function Case:eval()
 	if not self:hasFixtures() then
-		local msg = mw.message.new( 'pickle-frame-no-fixtures' )
+		local msg = mw.message.new( 'pickle-case-no-fixtures' )
 		self:reports():push( ReportFrame:create():setTodo( msg ) )
 		return self
 	end
@@ -356,4 +356,4 @@ function Frame:eval()
 end
 
 -- Return the final class.
-return Frame
+return Case

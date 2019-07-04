@@ -158,7 +158,7 @@ function Double:remove( num )
 end
 
 --- Return a stub function for the object.
--- Each call to the returned closure will remove one frame of values from the internal structure.
+-- Each call to the returned closure will remove one case of values from the internal structure.
 -- @treturn closure
 function Double:stub()
 	if not self._stub then

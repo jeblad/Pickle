@@ -8,8 +8,8 @@ local testframework = require 'Module:TestFramework'
 local lib = require 'picklelib/report/ReportFrame'
 assert( lib )
 
-local name = 'frame'
-local class = 'report-frame'
+local name = 'case'
+local class = 'report-case'
 
 local function makeTest( ... )
 	return lib:create( ... )

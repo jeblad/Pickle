@@ -11,9 +11,9 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class FrameTest extends Scribunto_LuaEngineTestBase {
+class CaseTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'FrameTest';
+	protected static $moduleName = 'CaseTest';
 
 	/**
 	 * @slowThreshold 1000
@@ -21,7 +21,7 @@ class FrameTest extends Scribunto_LuaEngineTestBase {
 	 */
 	protected function getTestModules() {
 		return parent::getTestModules() + [
-			'FrameTest' => __DIR__ . '/FrameTest.lua'
+			'CaseTest' => __DIR__ . '/CaseTest.lua'
 		];
 	}
 }

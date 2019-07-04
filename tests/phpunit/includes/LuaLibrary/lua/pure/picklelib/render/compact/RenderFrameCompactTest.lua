@@ -79,19 +79,19 @@ local tests = {
 		name = name .. ':key ()',
 		func = testKey,
 		args = { 'foo' },
-		expect = { 'pickle-report-frame-foo' }
+		expect = { 'pickle-report-case-foo' }
 	},
 	-- RenderFrameCompactTest[6]
 	{
 		name = name .. ':header ok ()',
 		func = testHeaderOk,
-		expect = { 'ok (parentheses: (pickle-report-frame-is-ok-keyword))' }
+		expect = { 'ok (parentheses: (pickle-report-case-is-ok-keyword))' }
 	},
 	-- RenderFrameCompactTest[7]
 	{
 		name = name .. ':header not ok ()',
 		func = testHeaderNotOk,
-		expect = { 'not ok (parentheses: (pickle-report-frame-is-not-ok-keyword))' }
+		expect = { 'not ok (parentheses: (pickle-report-case-is-not-ok-keyword))' }
 	},
 }
 

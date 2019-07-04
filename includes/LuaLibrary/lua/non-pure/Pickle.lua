@@ -14,12 +14,12 @@ local pickle = {}
 pickle.bag = require 'picklelib/Bag'
 pickle.counter = require 'picklelib/Counter'
 pickle.spy = require 'picklelib/engine/Spy'
-pickle.frame = require 'picklelib/engine/Frame'
+pickle.case = require 'picklelib/engine/Case'
 pickle.adapt = require 'picklelib/engine/Adapt'
 pickle.double = require 'picklelib/engine/Double'
 pickle.report = {}
 pickle.report.adapt = require 'picklelib/report/ReportAdapt'
-pickle.report.frame = require 'picklelib/report/ReportFrame'
+pickle.report.case = require 'picklelib/report/ReportFrame'
 pickle.renders = require 'picklelib/render/Renders'
 pickle.extractor = require 'picklelib/extractor/Extractor'
 pickle.extractors = require 'picklelib/extractor/Extractors'
@@ -287,7 +287,7 @@ local function setup( env, opts )
 	env.skip = function( str )
 		libUtil.checkType( 'skip', 1, str, 'string', true )
 		reports:top():setSkip( str
-			or mw.message.new( 'pickle-report-frame-skip-no-description' ):plain() )
+			or mw.message.new( 'pickle-report-case-skip-no-description' ):plain() )
 	end
 
 	--- Make a todo comment on the current report.
@@ -298,7 +298,7 @@ local function setup( env, opts )
 	env.todo = function( str )
 		libUtil.checkType( 'todo', 1, str, 'string', true )
 		reports:top():setTodo( str
-			or mw.message.new( 'pickle-report-frame-todo-no-description' ):plain() )
+			or mw.message.new( 'pickle-report-case-todo-no-description' ):plain() )
 	end
 
 	--- Expect whatever to be compared to the subject.
@@ -329,17 +329,17 @@ local function setup( env, opts )
 	end
 
 	--- Helper to find the named style
-	-- @param frame
+	-- @param case
 	-- @treturn string
-	local function findStyle( frame )
-		if frame.args.style then
-			return frame.args.style
+	local function findStyle( case )
+		if case.args.style then
+			return case.args.style
 		end
 		local names ={}
 		for k,_ in pairs( options.renderStyles ) do
 			names[k] = true
 		end
-		for _,v in ipairs( frame.args ) do
+		for _,v in ipairs( case.args ) do
 			if names[v] then
 				return v
 			end
@@ -348,13 +348,13 @@ local function setup( env, opts )
 	end
 
 	--- Helper to find the identified language
-	-- @param frame
+	-- @param case
 	-- @treturn string
-	local function findLang( frame )
-		if frame.args.lang then
-			return frame.args.lang
+	local function findLang( case )
+		if case.args.lang then
+			return case.args.lang
 		end
-		for _,v in ipairs( frame.args ) do
+		for _,v in ipairs( case.args ) do
 			if mw.language.isValidCode( v ) then
 				return v
 			end
@@ -365,7 +365,7 @@ local function setup( env, opts )
 	--- Eval the fixtures over previous dispatched strings.
 	-- This is used as an extension of the worlds, by injecting `tap` as an method.
 	-- The method has two different call forms. First form is the usual one with a single
-	-- frame object. This is used if the function is called by "invoke". The second
+	-- case object. This is used if the function is called by "invoke". The second
 	-- form use the same "style" and "language" form, but as arguments. This makes
 	-- it possible to easilly test it in the console.
 	-- @return string
@@ -376,11 +376,11 @@ local function setup( env, opts )
 		local langCode = nil
 
 		if select( '#', ... ) == 1 and type( select( 1, ... ) ) == 'table'  then
-			local frame = select( 1, ... )
-			mw.log('Perhaps frame')
-			if frame.args then
-				styleName = findStyle( frame )
-				langCode = findLang( frame )
+			local case = select( 1, ... )
+			mw.log('Perhaps case')
+			if case.args then
+				styleName = findStyle( case )
+				langCode = findLang( case )
 			end
 		end
 
@@ -409,12 +409,12 @@ local function setup( env, opts )
 			pickle.counter:create() )
 	end
 
-	--- Compose silent frame instances.
+	--- Compose silent case instances.
 	-- @tname string name
 	-- @treturn function
 	local function composeXFrame( name )
 		return function( ... )
-			local obj = pickle.frame:create()
+			local obj = pickle.case:create()
 			obj.tap = function( ... )
 				obj:eval()
 				return tap( ... )
@@ -439,16 +439,16 @@ local function setup( env, opts )
 	-- used when several modules are tested simultaneously.
 	-- The function will silently avoid running the fixture.
 	-- @function xtop
-	-- @param ... varargs passed on to Frame:dispatch
-	-- @return Frame
+	-- @param ... varargs passed on to Case:dispatch
+	-- @return Case
 	env.xtop = composeXFrame( 'xtop' )
 
 	--- Silent “describe” for the test.
 	-- This is the outermost of the three levels.
 	-- The function will silently avoid running the fixture.
 	-- @function xdescribe
-	-- @param ... varargs passed on to Frame:dispatch
-	-- @return Frame
+	-- @param ... varargs passed on to Case:dispatch
+	-- @return Case
 	env.xdescribe = composeXFrame( 'xdescribe' )
 
 	--- Silent “context” for the test.
@@ -456,21 +456,21 @@ local function setup( env, opts )
 	-- before the actual testing.
 	-- The function will silently avoid running the fixture.
 	-- @function context
-	-- @param ... varargs passed on to Frame:dispatch
-	-- @return Frame
+	-- @param ... varargs passed on to Case:dispatch
+	-- @return Case
 	env.xcontext = composeXFrame( 'xcontext' )
 
 	--- Silent “it” for the test.
-	-- @tparam vararg ... passed on to Frame:create
+	-- @tparam vararg ... passed on to Case:create
 	-- @treturn self newly created object
 	env.xit = composeXFrame( 'xit' )
 
-	--- Compose frame instances.
+	--- Compose case instances.
 	-- @tname string name
 	-- @treturn function
 	local function composeFrame( name )
 		return function( ... )
-			local obj = pickle.frame:create()
+			local obj = pickle.case:create()
 			obj.tap = function( ... )
 				obj:eval()
 				return tap( ... )
@@ -489,15 +489,15 @@ local function setup( env, opts )
 	-- This is a level above the usual the three levels, and only
 	-- used when several modules are tested simultaneously.
 	-- @function top
-	-- @param ... varargs passed on to Frame:dispatch
-	-- @return Frame
+	-- @param ... varargs passed on to Case:dispatch
+	-- @return Case
 	env.top = composeFrame( 'top' )
 
 	--- “Describe” for the test.
 	-- This is the outermost of the three levels.
 	-- @function describe
-	-- @param ... varargs passed on to Frame:dispatch
-	-- @return Frame
+	-- @param ... varargs passed on to Case:dispatch
+	-- @return Case
 	env.describe = composeFrame( 'describe' )
 
 	--- “Context” for the test.
@@ -505,12 +505,12 @@ local function setup( env, opts )
 	-- before the actual testing. An alternate would be to use
 	-- 'before' and 'after' functions.
 	-- @function context
-	-- @param ... varargs passed on to Frame:dispatch
-	-- @return Frame
+	-- @param ... varargs passed on to Case:dispatch
+	-- @return Case
 	env.context = composeFrame( 'context' )
 
 	--- “It” for the test.
-	-- @tparam vararg ... passed on to Frame:create
+	-- @tparam vararg ... passed on to Case:create
 	-- @treturn self newly created object
 	env.it = composeFrame( 'it' )
 

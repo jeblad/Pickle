@@ -1,4 +1,4 @@
---- Tests for the frame module.
+--- Tests for the case module.
 -- This is a preliminary solution.
 -- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
@@ -15,14 +15,14 @@ assert( subjects )
 local reports = require 'picklelib/Bag'
 assert( reports )
 
-local name = 'frame'
-local class = 'Frame'
+local name = 'case'
+local class = 'Case'
 
 local function makeFrame( ... )
-	local Frame = require 'picklelib/engine/Frame'
-	assert( Frame )
+	local Case = require 'picklelib/engine/Case'
+	assert( Case )
 
-	return Frame:create( ... )
+	return Case:create( ... )
 		:setSubjects( subjects:create() )
 		:setReports( reports:create() )
 		:setExtractors( extractors:create() )

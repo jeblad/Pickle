@@ -175,11 +175,11 @@
 			"description": [
 				"The type part of the name",
 				"* report-adapt – the name for the renders handling adapt reports",
-				"* report-frame – the name for the renders handling frame reports"
+				"* report-case – the name for the renders handling case reports"
 			],
 			"value": {
 				"report-adapt": "Adapt",
-				"report-frame": "Frame"
+				"report-case": "Case"
 			}
 		},
 		"ExtractorPath": {

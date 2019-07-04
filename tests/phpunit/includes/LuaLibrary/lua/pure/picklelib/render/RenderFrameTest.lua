@@ -114,7 +114,7 @@ local tests = {
 		name = name .. ':clarification ("skip", "qqx")',
 		func = testClarification,
 		args = { "is-skip", 'qqx' },
-		expect = { 'skip (parentheses: (pickle-report-frame-is-skip-keyword))' }
+		expect = { 'skip (parentheses: (pickle-report-case-is-skip-keyword))' }
 	},
 	-- RenderFrameTest[6]
 	{
@@ -129,7 +129,7 @@ local tests = {
 		name = name .. ':clarification ("todo", "qqx")',
 		func = testClarification,
 		args = { "is-todo", 'qqx' },
-		expect = { 'todo (parentheses: (pickle-report-frame-is-todo-keyword))' }
+		expect = { 'todo (parentheses: (pickle-report-case-is-todo-keyword))' }
 	},
 	-- RenderFrameTest[8]
 	{
@@ -144,28 +144,28 @@ local tests = {
 		name = name .. ':state ()',
 		func = testState,
 		args = { false },
-		expect = { 'not ok 0 (parentheses: (pickle-report-frame-is-not-ok-keyword))' }
+		expect = { 'not ok 0 (parentheses: (pickle-report-case-is-not-ok-keyword))' }
 	},
 	-- RenderFrameTest[10]
 	{
 		name = name .. ':state ()',
 		func = testState,
 		args = { true },
-		expect = { 'ok 0 (parentheses: (pickle-report-frame-is-ok-keyword))' }
+		expect = { 'ok 0 (parentheses: (pickle-report-case-is-ok-keyword))' }
 	},
 	-- RenderFrameTest[11]
 	{
 		name = name .. ':skip ()',
 		func = testSkip,
 		args = { 'foo' },
-		expect = { 'skip (parentheses: (pickle-report-frame-is-skip-keyword)) foo' }
+		expect = { 'skip (parentheses: (pickle-report-case-is-skip-keyword)) foo' }
 	},
 	-- RenderFrameTest[12]
 	{
 		name = name .. ':todo ()',
 		func = testTodo,
 		args = { 'bar' },
-		expect = { 'todo (parentheses: (pickle-report-frame-is-todo-keyword)) bar' }
+		expect = { 'todo (parentheses: (pickle-report-case-is-todo-keyword)) bar' }
 	},
 	-- RenderFrameTest[13]
 	{
@@ -179,16 +179,16 @@ local tests = {
 		name = name .. ':header ()',
 		func = testHeaderSkip,
 		args = { 'baz' },
-		expect = { 'not ok 0 (parentheses: (pickle-report-frame-is-not-ok-keyword))'
-		.. ' testing # skip (parentheses: (pickle-report-frame-is-skip-keyword)) baz' }
+		expect = { 'not ok 0 (parentheses: (pickle-report-case-is-not-ok-keyword))'
+		.. ' testing # skip (parentheses: (pickle-report-case-is-skip-keyword)) baz' }
 	},
 	-- RenderFrameTest[15]
 	{
 		name = name .. ':header ()',
 		func = testHeaderTodo,
 		args = { 'baz' },
-		expect = { 'ok 0 (parentheses: (pickle-report-frame-is-ok-keyword))'
-		.. ' testing # todo (parentheses: (pickle-report-frame-is-todo-keyword)) baz' }
+		expect = { 'ok 0 (parentheses: (pickle-report-case-is-ok-keyword))'
+		.. ' testing # todo (parentheses: (pickle-report-case-is-todo-keyword)) baz' }
 	},
 	--[[
 	-- RenderFrameTest[16]
