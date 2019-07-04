@@ -65,6 +65,7 @@
   <li><a href="../topics/spies.md.html">Spies</a></li>
   <li><a href="../topics/statistics.md.html">Statistics</a></li>
   <li><a href="../topics/test-anything-protocol.md.html">Test anything protocol</a></li>
+  <li><a href="../topics/test-case.md.html">Frame</a></li>
   <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
   <li><a href="../topics/testing.md.html">Testing</a></li>
   <li><a href="../topics/tracking-categories.md.html">Tracking categories</a></li>
@@ -83,16 +84,10 @@
   <li><a href="../classes/Bag.html">Bag</a></li>
   <li><a href="../classes/Counter.html">Counter</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Case.html">Case</a></li>
   <li><a href="../classes/Double.html">Double</a></li>
-  <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
   <li><a href="../classes/Extractor.html">Extractor</a></li>
-  <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
-  <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
-  <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
-  <li><a href="../classes/ExtractorNumber.html">ExtractorNumber</a></li>
-  <li><a href="../classes/ExtractorString.html">ExtractorString</a></li>
-  <li><a href="../classes/ExtractorTrue.html">ExtractorTrue</a></li>
   <li><a href="../classes/Extractors.html">Extractors</a></li>
   <li><a href="../classes/Render.html">Render</a></li>
   <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
@@ -131,7 +126,7 @@
 <p><a name="Import_of_module_under_test"></a></p>
 <h2>Import of module under test</h2>
 
-<p>At present the module under test is imported by a <a href="https://www.lua.org/manual/5.1/manual.html#pdf-require">require</a>. This is not a good solution, it is like using a global var for the module. Instead, the modules should be injected into the tests. This imply that the test callbacks are held in an unevaluated state until the tested module is injected.</p>
+<p>At present the module under test is imported by <code>require()</code>. This is not a good solution, it is like using a global var for the module. Instead, the modules should be injected into the tests. This imply that the test callbacks are held in an unevaluated state until the tested module is injected.</p>
 
 <p>Present call is like this at the top of the pickle page <code>Module:Foo</code> (This is according to <a href="https://no.wikipedia.org/wiki/User:Jeblad/Module:BDD/dok">w:no:User:Jeblad/Module:BDD/dok</a>)</p>
 
@@ -188,7 +183,7 @@
 <p><a name="Regression_testing"></a></p>
 <h2>Regression testing</h2>
 
-<p>In the code for proof of concept <a href="https://www.lua.org/manual/5.1/manual.html#pdf-require">require</a> was used to load the module under test. Because of that there was <a href="https://en.wikipedia.org/wiki/Regression_testing">regression testing</a> in place. If the code is changed to use dependency injection the reevaluation after changes must be done in some other way, possibly by the <code>{{#pickle}}</code> parser function.</p>
+<p>In the code for proof of concept <code>require()</code> was used to load the module under test, and because of that there was <a href="https://en.wikipedia.org/wiki/Regression_testing">regression testing</a> in place. If the code is changed to use dependency injection the reevaluation after changes must be done in some other way, possibly by the <code>{{#pickle}}</code> parser function.</p>
 
 <p><a name="Interactive_runs"></a></p>
 <h2>Interactive runs</h2>
@@ -285,7 +280,7 @@ describe({en=<span class="string">"this is a summary"</span>, no=<span class="st
 </pre>
 
 
-<p>An indexed string in the array  that isn't a valid tag is assumed to be a summary in the wikis own content language.</p>
+<p>An indexed string in the array that isn't a valid tag is assumed to be a summary in the wikis own content language.</p>
 
 <p><a name="Tags"></a></p>
 <h2>Tags</h2>
@@ -304,7 +299,7 @@ describe(<span class="string">"a nested block #foo"</span>, <span class="keyword
       <span class="comment">-- more tests go here
 </span>    <span class="keyword">end</span>)
   <span class="keyword">end</span>)
-  <span class="comment">-- more tests pertaining to the top level
+  <span class="comment">-- more tests pertaining to the top-level
 </span><span class="keyword">end</span>)
 </pre>
 

@@ -42,16 +42,10 @@
   <li><a href="../classes/Bag.html">Bag</a></li>
   <li><a href="../classes/Counter.html">Counter</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Case.html">Case</a></li>
   <li><a href="../classes/Double.html">Double</a></li>
-  <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
   <li><a href="../classes/Extractor.html">Extractor</a></li>
-  <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
-  <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
-  <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
-  <li><a href="../classes/ExtractorNumber.html">ExtractorNumber</a></li>
-  <li><a href="../classes/ExtractorString.html">ExtractorString</a></li>
-  <li><a href="../classes/ExtractorTrue.html">ExtractorTrue</a></li>
   <li><strong>Extractors</strong></li>
   <li><a href="../classes/Render.html">Render</a></li>
   <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
@@ -90,6 +84,7 @@
   <li><a href="../topics/spies.md.html">Spies</a></li>
   <li><a href="../topics/statistics.md.html">Statistics</a></li>
   <li><a href="../topics/test-anything-protocol.md.html">Test anything protocol</a></li>
+  <li><a href="../topics/test-case.md.html">Frame</a></li>
   <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
   <li><a href="../topics/testing.md.html">Testing</a></li>
   <li><a href="../topics/tracking-categories.md.html">Tracking categories</a></li>
@@ -145,7 +140,7 @@
 	<td class="summary">The number of registered extractors.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Extractors:find">Extractors:find (str, pos)</a></td>
+	<td class="name nowrap"><a href="#Extractors:find">Extractors:find (str[, pos=1])</a></td>
 	<td class="summary">Find a matching extractor.</td>
 	</tr>
 </table>
@@ -311,7 +306,7 @@
 </dd>
     <dt>
     <a name = "Extractors:find"></a>
-    <strong>Extractors:find (str, pos)</strong>
+    <strong>Extractors:find (str[, pos=1])</strong>
     </dt>
     <dd>
     Find a matching extractor.
@@ -324,8 +319,9 @@
          used as the extraction source
         </li>
         <li><span class="parameter">pos</span>
-            <span class="types"><span class="type">number</span></span>
+            <span class="types"><span class="type">nil</span> or <span class="type">number</span></span>
          for an inclusive index where extraction starts
+         (<em>default</em> 1)
         </li>
     </ul>
 

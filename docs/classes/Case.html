@@ -1,0 +1,882 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Pickle documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Pickle</h1>
+
+<ul>
+  <li><a href="../mw.pickle.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Metamethods">Metamethods</a></li>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Bag.html">Bag</a></li>
+  <li><a href="../classes/Counter.html">Counter</a></li>
+  <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><strong>Case</strong></li>
+  <li><a href="../classes/Double.html">Double</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/Extractor.html">Extractor</a></li>
+  <li><a href="../classes/Extractors.html">Extractors</a></li>
+  <li><a href="../classes/Render.html">Render</a></li>
+  <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
+  <li><a href="../classes/RenderFrame.html">RenderFrame</a></li>
+  <li><a href="../classes/Renders.html">Renders</a></li>
+  <li><a href="../classes/RenderAdaptCompact.html">RenderAdaptCompact</a></li>
+  <li><a href="../classes/RenderFrameCompact.html">RenderFrameCompact</a></li>
+  <li><a href="../classes/RenderAdaptFull.html">RenderAdaptFull</a></li>
+  <li><a href="../classes/RenderFrameFull.html">RenderFrameFull</a></li>
+  <li><a href="../classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
+  <li><a href="../classes/RenderFrameVivid.html">RenderFrameVivid</a></li>
+  <li><a href="../classes/Report.html">Report</a></li>
+  <li><a href="../classes/ReportAdapt.html">ReportAdapt</a></li>
+  <li><a href="../classes/ReportFrame.html">ReportFrame</a></li>
+  <li><a href="../classes/Translator.html">Translator</a></li>
+  <li><a href="../classes/Translators.html">Translators</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Pickle.html">Pickle</a></li>
+  <li><a href="../modules/util.html">util</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/activities.md.html">Activities</a></li>
+  <li><a href="../topics/adapt.md.html">Adapt</a></li>
+  <li><a href="../topics/call-style.md.html">Call style</a></li>
+  <li><a href="../topics/change-log.md.html">Log</a></li>
+  <li><a href="../topics/databases.md.html">Databases</a></li>
+  <li><a href="../topics/dataflow.md.html">Dataflow</a></li>
+  <li><a href="../topics/hello-world.md.html">Hello World</a></li>
+  <li><a href="../topics/lua-classes.md.html">Lua classes</a></li>
+  <li><a href="../topics/musings.md.html">Musings</a></li>
+  <li><a href="../topics/page-indicators.md.html">Page indicators</a></li>
+  <li><a href="../topics/sources.md.html">Sources</a></li>
+  <li><a href="../topics/spies.md.html">Spies</a></li>
+  <li><a href="../topics/statistics.md.html">Statistics</a></li>
+  <li><a href="../topics/test-anything-protocol.md.html">Test anything protocol</a></li>
+  <li><a href="../topics/test-case.md.html">Frame</a></li>
+  <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
+  <li><a href="../topics/testing.md.html">Testing</a></li>
+  <li><a href="../topics/tracking-categories.md.html">Tracking categories</a></li>
+  <li><a href="../topics/translatewiki.md.html">Translatewiki</a></li>
+  <li><a href="../topics/vagrant.md.html">Vagrant</a></li>
+  <li><a href="../topics/vscode-extensions.md.html">VScode extension</a></li>
+  <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/HelloWorld.pickle.nb.lua.html">HelloWorld.pickle.nb.lua</a></li>
+  <li><a href="../examples/HelloWorld.lua.html">HelloWorld.lua</a></li>
+  <li><a href="../examples/HelloWorld.pickle.lua.html">HelloWorld.pickle.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>Case</code></h1>
+<p>Baseclass for Describe, Context, and It.</p>
+<p> This class follows the pattern from
+ <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
+
+
+<h2><a href="#Metamethods">Metamethods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#Case:__index">Case:__index (key)</a></td>
+	<td class="summary">Lookup of missing class members.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:__call">Case:__call (...)</a></td>
+	<td class="summary">Get arguments for a instance call.</td>
+	</tr>
+</table>
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#Case:create">Case:create (...)</a></td>
+	<td class="summary">Create a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:_init">Case:_init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:dispatch">Case:dispatch (...)</a></td>
+	<td class="summary">Dispach on type.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:type">Case:type ()</a></td>
+	<td class="summary">Get the type of case
+ All frames has an explicit type name.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:setName">Case:setName (key)</a></td>
+	<td class="summary">Set key for name of case.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:hasName">Case:hasName ()</a></td>
+	<td class="summary">Check if the case has name.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:getName">Case:getName ()</a></td>
+	<td class="summary">Get the name as key for case.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:hasDescriptions">Case:hasDescriptions ()</a></td>
+	<td class="summary">Check if the case has descriptions.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:numDescriptions">Case:numDescriptions ()</a></td>
+	<td class="summary">Check number of descriptions.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:hasFixtures">Case:hasFixtures ()</a></td>
+	<td class="summary">Check if the case has fixtures.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:numFixtures">Case:numFixtures ()</a></td>
+	<td class="summary">Check number of fixtures.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:isDone">Case:isDone ()</a></td>
+	<td class="summary">Check if the instance is evaluated.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:descriptions">Case:descriptions ()</a></td>
+	<td class="summary">Get descriptions.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:setSubjects">Case:setSubjects (obj)</a></td>
+	<td class="summary">Set the reference to the subjects collection.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:subjects">Case:subjects ()</a></td>
+	<td class="summary">Expose reference to subjects.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:setReports">Case:setReports (obj)</a></td>
+	<td class="summary">Set the reference to the reports collection.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:reports">Case:reports ()</a></td>
+	<td class="summary">Expose reference to reports.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:setExtractors">Case:setExtractors (obj)</a></td>
+	<td class="summary">Set the reference to the extractors.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:extractors">Case:extractors ()</a></td>
+	<td class="summary">Expose reference to extractors.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:setTranslators">Case:setTranslators (obj)</a></td>
+	<td class="summary">Set the reference to the translators.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:translators">Case:translators ()</a></td>
+	<td class="summary">Expose reference to translators.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:setRenders">Case:setRenders (obj)</a></td>
+	<td class="summary">Set the reference to the renders.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:renders">Case:renders ()</a></td>
+	<td class="summary">Expose reference to renders.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:evalFixture">Case:evalFixture (description, fixture, environment, ...)</a></td>
+	<td class="summary">Eval a single fixture.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Case:eval">Case:eval ()</a></td>
+	<td class="summary">Eval the fixtures over previous dispatched strings.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Case:__index"></a>
+    <strong>Case:__index (key)</strong>
+    </dt>
+    <dd>
+    Lookup of missing class members.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         lookup of member
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        any
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:__call"></a>
+    <strong>Case:__call (...)</strong>
+    </dt>
+    <dd>
+    Get arguments for a instance call.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         pass on to dispatch
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Case:create"></a>
+    <strong>Case:create (...)</strong>
+    </dt>
+    <dd>
+    Create a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         list to be dispatched
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        Case
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:_init"></a>
+    <strong>Case:_init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         list to be dispatched (unused)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        Case
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:dispatch"></a>
+    <strong>Case:dispatch (...)</strong>
+    </dt>
+    <dd>
+    Dispach on type.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         list to dispatch
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:type"></a>
+    <strong>Case:type ()</strong>
+    </dt>
+    <dd>
+    Get the type of case
+ All frames has an explicit type name.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:setName"></a>
+    <strong>Case:setName (key)</strong>
+    </dt>
+    <dd>
+    Set key for name of case.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         part of a message
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:hasName"></a>
+    <strong>Case:hasName ()</strong>
+    </dt>
+    <dd>
+    Check if the case has name.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:getName"></a>
+    <strong>Case:getName ()</strong>
+    </dt>
+    <dd>
+    Get the name as key for case.
+ All frames may have an explicit name.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:hasDescriptions"></a>
+    <strong>Case:hasDescriptions ()</strong>
+    </dt>
+    <dd>
+    Check if the case has descriptions.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:numDescriptions"></a>
+    <strong>Case:numDescriptions ()</strong>
+    </dt>
+    <dd>
+    Check number of descriptions.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">number</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:hasFixtures"></a>
+    <strong>Case:hasFixtures ()</strong>
+    </dt>
+    <dd>
+    Check if the case has fixtures.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:numFixtures"></a>
+    <strong>Case:numFixtures ()</strong>
+    </dt>
+    <dd>
+    Check number of fixtures.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">number</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:isDone"></a>
+    <strong>Case:isDone ()</strong>
+    </dt>
+    <dd>
+    Check if the instance is evaluated.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:descriptions"></a>
+    <strong>Case:descriptions ()</strong>
+    </dt>
+    <dd>
+    Get descriptions.
+
+
+
+    <h3>Returns:</h3>
+
+        list of descriptions
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:setSubjects"></a>
+    <strong>Case:setSubjects (obj)</strong>
+    </dt>
+    <dd>
+    Set the reference to the subjects collection.
+ This keeps a reference, the object is not cloned.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         somehow maintain a collection
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:subjects"></a>
+    <strong>Case:subjects ()</strong>
+    </dt>
+    <dd>
+    Expose reference to subjects.
+
+
+
+    <h3>Returns:</h3>
+
+        list of subjects
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:setReports"></a>
+    <strong>Case:setReports (obj)</strong>
+    </dt>
+    <dd>
+    Set the reference to the reports collection.
+ This keeps a reference, the object is not cloned.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         somehow maintain a collection
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:reports"></a>
+    <strong>Case:reports ()</strong>
+    </dt>
+    <dd>
+    Expose reference to reports.
+
+
+
+    <h3>Returns:</h3>
+
+        list of reports
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:setExtractors"></a>
+    <strong>Case:setExtractors (obj)</strong>
+    </dt>
+    <dd>
+    Set the reference to the extractors.
+ This keeps a reference, the object is not cloned.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         somehow maintain a collection
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:extractors"></a>
+    <strong>Case:extractors ()</strong>
+    </dt>
+    <dd>
+    Expose reference to extractors.
+
+
+
+    <h3>Returns:</h3>
+
+        list of extractors
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:setTranslators"></a>
+    <strong>Case:setTranslators (obj)</strong>
+    </dt>
+    <dd>
+    Set the reference to the translators.
+ This keeps a reference, the object is not cloned.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         somehow maintain a collection
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:translators"></a>
+    <strong>Case:translators ()</strong>
+    </dt>
+    <dd>
+    Expose reference to translators.
+
+
+
+    <h3>Returns:</h3>
+
+        list of translators
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:setRenders"></a>
+    <strong>Case:setRenders (obj)</strong>
+    </dt>
+    <dd>
+    Set the reference to the renders.
+ This keeps a reference, the object is not cloned.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         somehow maintain a collection
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:renders"></a>
+    <strong>Case:renders ()</strong>
+    </dt>
+    <dd>
+    Expose reference to renders.
+
+
+
+    <h3>Returns:</h3>
+
+        list of renders
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:evalFixture"></a>
+    <strong>Case:evalFixture (description, fixture, environment, ...)</strong>
+    </dt>
+    <dd>
+    Eval a single fixture.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">description</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">fixture</span>
+            <span class="types"><span class="type">function</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">environment</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">...</span>
+
+
+
+        </li>
+    </ul>
+
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Case:eval"></a>
+    <strong>Case:eval ()</strong>
+    </dt>
+    <dd>
+    Eval the fixtures over previous dispatched strings.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
+

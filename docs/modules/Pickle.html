@@ -47,16 +47,10 @@
   <li><a href="../classes/Bag.html">Bag</a></li>
   <li><a href="../classes/Counter.html">Counter</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Case.html">Case</a></li>
   <li><a href="../classes/Double.html">Double</a></li>
-  <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
   <li><a href="../classes/Extractor.html">Extractor</a></li>
-  <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
-  <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
-  <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
-  <li><a href="../classes/ExtractorNumber.html">ExtractorNumber</a></li>
-  <li><a href="../classes/ExtractorString.html">ExtractorString</a></li>
-  <li><a href="../classes/ExtractorTrue.html">ExtractorTrue</a></li>
   <li><a href="../classes/Extractors.html">Extractors</a></li>
   <li><a href="../classes/Render.html">Render</a></li>
   <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
@@ -90,6 +84,7 @@
   <li><a href="../topics/spies.md.html">Spies</a></li>
   <li><a href="../topics/statistics.md.html">Statistics</a></li>
   <li><a href="../topics/test-anything-protocol.md.html">Test anything protocol</a></li>
+  <li><a href="../topics/test-case.md.html">Frame</a></li>
   <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
   <li><a href="../topics/testing.md.html">Testing</a></li>
   <li><a href="../topics/tracking-categories.md.html">Tracking categories</a></li>
@@ -156,16 +151,28 @@
 	<td class="summary">Subject of whatever to be compared to the expected.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#describe">describe (...)</a></td>
-	<td class="summary">Describe the test.</td>
+	<td class="name nowrap"><a href="#xtop">xtop (...)</a></td>
+	<td class="summary">Silent “top” for the test.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#obj:tap">obj:tap (...)</a></td>
-	<td class="summary">Eval the fixtures over previous dispatched strings.</td>
+	<td class="name nowrap"><a href="#xdescribe">xdescribe (...)</a></td>
+	<td class="summary">Silent “describe” for the test.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#context">context (...)</a></td>
-	<td class="summary">Context for the test.</td>
+	<td class="summary">Silent “context” for the test.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#top">top (...)</a></td>
+	<td class="summary">“Top” for the test.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#describe">describe (...)</a></td>
+	<td class="summary">“Describe” for the test.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#context">context (...)</a></td>
+	<td class="summary">“Context” for the test.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#mw.pickle.__call">mw.pickle.__call (opts)</a></td>
@@ -179,8 +186,12 @@
 <h2><a href="#Fields">Fields</a></h2>
 <table class="function_list">
 	<tr>
+	<td class="name nowrap"><a href="#env.xit">env.xit</a></td>
+	<td class="summary">Silent “it” for the test.</td>
+	</tr>
+	<tr>
 	<td class="name nowrap"><a href="#env.it">env.it</a></td>
-	<td class="summary">It is the actual test for each metod.</td>
+	<td class="summary">“It” for the test.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#env._reports">env._reports</a></td>
@@ -434,54 +445,51 @@
 
 </dd>
     <dt>
-    <a name = "describe"></a>
-    <strong>describe (...)</strong>
+    <a name = "xtop"></a>
+    <strong>xtop (...)</strong>
     </dt>
     <dd>
-    Describe the test.
- This is the outermost of the three levels.
+    Silent “top” for the test.
+ This is a level above the usual the three levels, and only
+ used when several modules are tested simultaneously.
+ The function will silently avoid running the fixture.
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">...</span>
-         varargs passed on to Frame:dispatch
+         varargs passed on to Case:dispatch
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-        Frame
+        Case
 
 
 
 
 </dd>
     <dt>
-    <a name = "obj:tap"></a>
-    <strong>obj:tap (...)</strong>
+    <a name = "xdescribe"></a>
+    <strong>xdescribe (...)</strong>
     </dt>
     <dd>
-    Eval the fixtures over previous dispatched strings.
- This is extending the <a href="../modules/Pickle.html#describe">describe</a> call by injecting <a href="../modules/Pickle.html#obj:tap">tap</a> as an method.
- The method has two different call forms. First form is the usual one with a single
- frame object. This is used if the function is called by "invoke". The second
- form use the same "style" and "language" form, but as arguments. This makes
- it possible to easilly test it in the console.
+    Silent “describe” for the test.
+ This is the outermost of the three levels.
+ The function will silently avoid running the fixture.
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">...</span>
-
-
-
+         varargs passed on to Case:dispatch
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-        string
+        Case
 
 
 
@@ -492,7 +500,82 @@
     <strong>context (...)</strong>
     </dt>
     <dd>
-    Context for the test.
+    Silent “context” for the test.
+ This is usually used for creating some additional context
+ before the actual testing.
+ The function will silently avoid running the fixture.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+         varargs passed on to Case:dispatch
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        Case
+
+
+
+
+</dd>
+    <dt>
+    <a name = "top"></a>
+    <strong>top (...)</strong>
+    </dt>
+    <dd>
+    “Top” for the test.
+ This is a level above the usual the three levels, and only
+ used when several modules are tested simultaneously.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+         varargs passed on to Case:dispatch
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        Case
+
+
+
+
+</dd>
+    <dt>
+    <a name = "describe"></a>
+    <strong>describe (...)</strong>
+    </dt>
+    <dd>
+    “Describe” for the test.
+ This is the outermost of the three levels.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+         varargs passed on to Case:dispatch
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        Case
+
+
+
+
+</dd>
+    <dt>
+    <a name = "context"></a>
+    <strong>context (...)</strong>
+    </dt>
+    <dd>
+    “Context” for the test.
  This is usually used for creating some additional context
  before the actual testing. An alternate would be to use
  'before' and 'after' functions.
@@ -501,13 +584,13 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">...</span>
-         varargs passed on to Frame:dispatch
+         varargs passed on to Case:dispatch
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-        Frame
+        Case
 
 
 
@@ -552,7 +635,9 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">opts</span>
-        boilerplate
+
+
+
         </li>
     </ul>
 
@@ -566,17 +651,37 @@
 
     <dl class="function">
     <dt>
-    <a name = "env.it"></a>
-    <strong>env.it</strong>
+    <a name = "env.xit"></a>
+    <strong>env.xit</strong>
     </dt>
     <dd>
-    It is the actual test for each metod.
+    Silent “it” for the test.
 
 
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         passed on to Frame:create
+         passed on to Case:create
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "env.it"></a>
+    <strong>env.it</strong>
+    </dt>
+    <dd>
+    “It” for the test.
+
+
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         passed on to Case:create
         </li>
     </ul>
 

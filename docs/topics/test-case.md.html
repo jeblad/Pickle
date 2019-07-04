@@ -30,12 +30,6 @@
   <li><a href="../mw.pickle.html">Index</a></li>
 </ul>
 
-<h2>Contents</h2>
-<ul>
-<li><a href="#Core_concept">Core concept </a></li>
-<li><a href="#Examples">Examples </a></li>
-<li><a href="#Variation">Variation </a></li>
-</ul>
 
 
 <h2>Topics</h2>
@@ -53,8 +47,8 @@
   <li><a href="../topics/sources.md.html">Sources</a></li>
   <li><a href="../topics/spies.md.html">Spies</a></li>
   <li><a href="../topics/statistics.md.html">Statistics</a></li>
-  <li><strong>Test anything protocol</strong></li>
-  <li><a href="../topics/test-case.md.html">Frame</a></li>
+  <li><a href="../topics/test-anything-protocol.md.html">Test anything protocol</a></li>
+  <li><strong>Frame</strong></li>
   <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
   <li><a href="../topics/testing.md.html">Testing</a></li>
   <li><a href="../topics/tracking-categories.md.html">Tracking categories</a></li>
@@ -106,62 +100,23 @@
 <div id="content">
 
 
-<h1>Test anything protocol</h1>
+<h1>Frame</h1>
 
-<p>Test reports that are detected as <a href="https://en.wikipedia.org/wiki/Test_Anything_Protocol">Test Anything Protocol</a> (TAP) will be analyzed and transformed into the short tokens used by the extension. The initial subsystem will handle TAP version 13 and some previous versions. If the text fails to be interpreted as a valid TAP report the text will not be processed but used <em>as is</em>. A valid report does not imply that the report is actually parsed correctly, but that some specific markers exists.</p>
+<p>All <em>top</em>, <em>describe</em>, <em>context</em>, and <em>it</em>, are test cases that encapsulates sets of tests and other test casess. If the code evaluates without an error, or the error is listed as an expected error, then the report will have a line for the test case that has an initial “ok”. If something fails it will read “not ok” and all reports will possibly be exposed. There will also be a description of the failing test case, which typically will include its type and description.</p>
 
-<p>Pickle will not recreate the test fixture for each run, thus tests will only progress until the first failure. Progressing beyond the first failure imply recreating the test fixture, which puts a much larger load on the system.</p>
+<p>The call <em>world</em> should only be used if several modules are tested at once in a superworld, and likewise the call <em>context</em> should only be used for adding context.</p>
 
-<p>Parsing Test anything protocol are done in <a href="https://github.com/jeblad/Pickle/tree/master/includes/TAP">Github: jeblad/Pickle/includes/TAP</a>.</p>
+<p>The <em>description</em> will if necessary call <a href="https://www.lua.org/manual/5.1/manual.html#pdf-require">require</a> with the testee as argument. This will then become the top of the subject stack. The <em>context</em> and <em>it</em> will not set subject.</p>
 
-<p><a name="Core_concept"></a></p>
-<h2>Core concept</h2>
+<p>Call to <em>description</em> will set a temporal value as the return value from the tester. This value is not used if the tester makes a normal return value. The <em>context</em> and <em>it</em> will not set the temporal value.</p>
 
-<p>Processing of TAP reports attempts to verify whether any entry are <em>failed</em> (<em>not ok</em>), then checks if all are <em>passed</em> (<em>ok</em>), and then if any of <em>skipped</em> and <em>todo</em> are set. The purpose is to detect an overall result that will convey to the user the present state of the module. In that process a lot of information is thrown away, as it is only the final state that is important.</p>
+<p>Because a thrown error is sufficient to create a report from the test case itself it is possible to use <a href="https://www.lua.org/manual/5.1/manual.html#pdf-assert">assert</a> for simple testing.</p>
 
-<p>The output should be sufficient to be parsed by some generic TAP software, and it should also be fairly easy to create new testing frameworks. Those frameworks can be rather different from the pickle framework.</p>
+<p>Spies will set up expected behavior in the test case. The spies <em>carp</em> and <em>croak</em> creates a short message, <em>cluck</em> and <em>confess</em> creates a long message with a backtrace, <em>carp</em> and <em>cluck</em> continues running the tests, while <em>croak</em> and <em>confess</em> terminates the current test case. All of them injects a report.</p>
 
-<p><a name="Examples"></a></p>
-<h2>Examples</h2>
+<p>Test cases can have registered data extractors, which will extract data from the description and injects the extracted data into the attached function.</p>
 
-<p>These are examples on how the reports should look like</p>
-
-<h3>All passed</h3>
-
-<p>Only a single “ok” is necessary to flag each test case as passed, and only a single “ok” is sufficient to flag the whole test set as passed.</p>
-
-
-<pre>
-TAP version <span class="number">13</span>
-# description <span class="number">1</span> - all ok
-# description <span class="number">2</span> - all ok
-# description <span class="number">3</span> - all ok
-ok
-</pre>
-
-<h3>Some failed</h3>
-
-<p>The tests that fail will force a full report at the actual level.</p>
-
-
-<pre>
-TAP version <span class="number">13</span>
-# description <span class="number">1</span> - all ok
-# description <span class="number">2</span>
-# it <span class="number">1</span>
-ok
-ok
-<span class="keyword">not</span> ok
-ok
-# it <span class="number">2</span> - all ok
-# description <span class="number">3</span> - all ok
-</pre>
-
-
-<p><a name="Variation"></a></p>
-<h2>Variation</h2>
-
-<p>To ease interpretation the background color could be changed to convey the overall state. A reddish color would indicate failing tests, and a greenish color would indicate good tests. This can be done by selectors.</p>
+<p>The descriptions can have replacement messages on a subpage named by the language code. That page would be a single table with mapping from one string to another, possibly with embedded patterns. That will make it possible to write a description in English for common testing, and then localize the string into some other language.</p>
 
 
 </div> <!-- id="content" -->

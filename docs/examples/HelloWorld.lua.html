@@ -48,16 +48,10 @@
   <li><a href="../classes/Bag.html">Bag</a></li>
   <li><a href="../classes/Counter.html">Counter</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Case.html">Case</a></li>
   <li><a href="../classes/Double.html">Double</a></li>
-  <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
   <li><a href="../classes/Extractor.html">Extractor</a></li>
-  <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
-  <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
-  <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
-  <li><a href="../classes/ExtractorNumber.html">ExtractorNumber</a></li>
-  <li><a href="../classes/ExtractorString.html">ExtractorString</a></li>
-  <li><a href="../classes/ExtractorTrue.html">ExtractorTrue</a></li>
   <li><a href="../classes/Extractors.html">Extractors</a></li>
   <li><a href="../classes/Render.html">Render</a></li>
   <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
@@ -91,6 +85,7 @@
   <li><a href="../topics/spies.md.html">Spies</a></li>
   <li><a href="../topics/statistics.md.html">Statistics</a></li>
   <li><a href="../topics/test-anything-protocol.md.html">Test anything protocol</a></li>
+  <li><a href="../topics/test-case.md.html">Frame</a></li>
   <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
   <li><a href="../topics/testing.md.html">Testing</a></li>
   <li><a href="../topics/tracking-categories.md.html">Tracking categories</a></li>
@@ -127,12 +122,12 @@
 <span class="keyword">end</span>
 
 <span class="comment">--- Outer hello function.
-</span><span class="comment">-- This will interact with the frame stack. Without additional tools
-</span><span class="comment">-- to create a mock for the frame instance it is better left alone.
-</span><span class="comment">-- @param frame instance
+</span><span class="comment">-- This will interact with the case stack. Without additional tools
+</span><span class="comment">-- to create a mock for the case instance it is better left alone.
+</span><span class="comment">-- @param case instance
 </span><span class="comment">-- @return string
-</span><span class="keyword">function</span> HelloWorld.hello( frame )
-	<span class="keyword">local</span> text, err = HelloWorld._hello( <span class="global">unpack</span>( frame.args ) )
+</span><span class="keyword">function</span> HelloWorld.hello( case )
+	<span class="keyword">local</span> text, err = HelloWorld._hello( <span class="global">unpack</span>( case.args ) )
 	<span class="keyword">return</span> text <span class="keyword">or</span> err
 <span class="keyword">end</span>
 

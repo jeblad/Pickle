@@ -42,16 +42,10 @@
   <li><a href="../classes/Bag.html">Bag</a></li>
   <li><a href="../classes/Counter.html">Counter</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Case.html">Case</a></li>
   <li><a href="../classes/Double.html">Double</a></li>
-  <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
   <li><strong>Extractor</strong></li>
-  <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
-  <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
-  <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
-  <li><a href="../classes/ExtractorNumber.html">ExtractorNumber</a></li>
-  <li><a href="../classes/ExtractorString.html">ExtractorString</a></li>
-  <li><a href="../classes/ExtractorTrue.html">ExtractorTrue</a></li>
   <li><a href="../classes/Extractors.html">Extractors</a></li>
   <li><a href="../classes/Render.html">Render</a></li>
   <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
@@ -90,6 +84,7 @@
   <li><a href="../topics/spies.md.html">Spies</a></li>
   <li><a href="../topics/statistics.md.html">Statistics</a></li>
   <li><a href="../topics/test-anything-protocol.md.html">Test anything protocol</a></li>
+  <li><a href="../topics/test-case.md.html">Frame</a></li>
   <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
   <li><a href="../topics/testing.md.html">Testing</a></li>
   <li><a href="../topics/tracking-categories.md.html">Tracking categories</a></li>
@@ -133,12 +128,43 @@
 	<td class="summary">Initialize a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Extractor:type">Extractor:type ()</a></td>
+	<td class="name nowrap"><a href="#Extractor:setType">Extractor:setType (str)</a></td>
+	<td class="summary">Set type</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Extractor:hasType">Extractor:hasType ()</a></td>
+	<td class="summary">Has type</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Extractor:getType">Extractor:getType ()</a></td>
 	<td class="summary">Get the type of the strategy.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Extractor:addPattern">Extractor:addPattern (str, initial, final)</a></td>
+	<td class="summary">Add pattern
+ Register a single pattern.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Extractor:addKeyword">Extractor:addKeyword (str)</a></td>
+	<td class="summary">Add keyword
+ Transform a single keyword to a registered set of patterns.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Extractor:addDelimiters">Extractor:addDelimiters (first, second[, exclude=false])</a></td>
+	<td class="summary">Add delimiters
+ Transform a pair of delimiters to a registered set of patterns.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Extractor:numPatterns">Extractor:numPatterns ()</a></td>
+	<td class="summary">Num patterns</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Extractor:find">Extractor:find (str, pos)</a></td>
 	<td class="summary">Try to find the string for this strategy.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Extractor:onCast">Extractor:onCast (func)</a></td>
+	<td class="summary">Set the on-cast method.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Extractor:cast">Extractor:cast (str)</a></td>
@@ -242,8 +268,55 @@
 
 </dd>
     <dt>
-    <a name = "Extractor:type"></a>
-    <strong>Extractor:type ()</strong>
+    <a name = "Extractor:setType"></a>
+    <strong>Extractor:setType (str)</strong>
+    </dt>
+    <dd>
+    Set type
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to be used as type
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Extractor:hasType"></a>
+    <strong>Extractor:hasType ()</strong>
+    </dt>
+    <dd>
+    Has type
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Extractor:getType"></a>
+    <strong>Extractor:getType ()</strong>
     </dt>
     <dd>
     Get the type of the strategy.
@@ -254,6 +327,127 @@
     <h3>Returns:</h3>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Extractor:addPattern"></a>
+    <strong>Extractor:addPattern (str, initial, final)</strong>
+    </dt>
+    <dd>
+    Add pattern
+ Register a single pattern.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to be used for pattern
+        </li>
+        <li><span class="parameter">initial</span>
+            <span class="types"><span class="type">number</span></span>
+         offset
+        </li>
+        <li><span class="parameter">final</span>
+            <span class="types"><span class="type">number</span></span>
+         offset
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Extractor:addKeyword"></a>
+    <strong>Extractor:addKeyword (str)</strong>
+    </dt>
+    <dd>
+    Add keyword
+ Transform a single keyword to a registered set of patterns.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to be used for keywords
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Extractor:addDelimiters"></a>
+    <strong>Extractor:addDelimiters (first, second[, exclude=false])</strong>
+    </dt>
+    <dd>
+    Add delimiters
+ Transform a pair of delimiters to a registered set of patterns.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">first</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         delimiter
+        </li>
+        <li><span class="parameter">second</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         delimiter
+        </li>
+        <li><span class="parameter">exclude</span>
+            <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
+         delimiters
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Extractor:numPatterns"></a>
+    <strong>Extractor:numPatterns ()</strong>
+    </dt>
+    <dd>
+    Num patterns
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">number</span></span>
 
 
 
@@ -298,6 +492,35 @@
 
 </dd>
     <dt>
+    <a name = "Extractor:onCast"></a>
+    <strong>Extractor:onCast (func)</strong>
+    </dt>
+    <dd>
+    Set the on-cast method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">func</span>
+            <span class="types"><span class="type">function</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "Extractor:cast"></a>
     <strong>Extractor:cast (str)</strong>
     </dt>
@@ -315,13 +538,13 @@
 
     <h3>Returns:</h3>
 
-           <span class="types"><span class="type">nil</span></span>
+           <span class="types"><span class="type">any</span></span>
 
 
 
 
     <h3>Raises:</h3>
-    Unconditional error unless overridden
+    Unconditional error unless handler exist
 
 
 
@@ -342,8 +565,6 @@
 
 
 
-    <h3>Raises:</h3>
-    Unconditional error unless overridden
 
 
 

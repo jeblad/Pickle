@@ -53,6 +53,7 @@
   <li><a href="../topics/spies.md.html">Spies</a></li>
   <li><a href="../topics/statistics.md.html">Statistics</a></li>
   <li><a href="../topics/test-anything-protocol.md.html">Test anything protocol</a></li>
+  <li><a href="../topics/test-case.md.html">Frame</a></li>
   <li><a href="../topics/test-doubles.md.html">Test doubles</a></li>
   <li><a href="../topics/testing.md.html">Testing</a></li>
   <li><a href="../topics/tracking-categories.md.html">Tracking categories</a></li>
@@ -71,16 +72,10 @@
   <li><a href="../classes/Bag.html">Bag</a></li>
   <li><a href="../classes/Counter.html">Counter</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Case.html">Case</a></li>
   <li><a href="../classes/Double.html">Double</a></li>
-  <li><a href="../classes/Frame.html">Frame</a></li>
   <li><a href="../classes/Spy.html">Spy</a></li>
   <li><a href="../classes/Extractor.html">Extractor</a></li>
-  <li><a href="../classes/ExtractorFalse.html">ExtractorFalse</a></li>
-  <li><a href="../classes/ExtractorJson.html">ExtractorJson</a></li>
-  <li><a href="../classes/ExtractorNil.html">ExtractorNil</a></li>
-  <li><a href="../classes/ExtractorNumber.html">ExtractorNumber</a></li>
-  <li><a href="../classes/ExtractorString.html">ExtractorString</a></li>
-  <li><a href="../classes/ExtractorTrue.html">ExtractorTrue</a></li>
   <li><a href="../classes/Extractors.html">Extractors</a></li>
   <li><a href="../classes/Render.html">Render</a></li>
   <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
@@ -122,7 +117,7 @@
 
 <p><em>NOTE</em>: It is not clear how the <a href="https://en.wikipedia.org/wiki/Logical_connective">logical connectives</a> should be set for a logical disjunction of assertions, and if a full description (statement, declaration) of the graph is necessary.</p>
 
-<p>The <a href="../classes/Frame.html#">Frame</a> class (<code>describe</code>, <code>context</code>, <code>it</code>) will put data in a <a href="../classes/Bag.html#">bag</a> <code>subject</code>, with last frame on top. This will then be available to <code>expect</code> for inspection.</p>
+<p>The <a href="../classes/Case.html#">Case</a> class (<code>describe</code>, <code>context</code>, <code>it</code>) will put data in a <a href="../classes/Bag.html#">bag</a> <code>subject</code>, with last test case on top. This will then be available to <code>expect</code> for inspection.</p>
 
 <p><em>NOTE</em>: This method of cross-referencing Adapt instances could be dropped in favor of simply accessing the <code>subject</code>, leaving <code>expect</code> for other out-of-order tests.</p>
 
@@ -133,7 +128,7 @@
 
 
 <pre>
-subject( <span class="string">'foo'</span> ) <span class="comment">-- call as part of frame setup
+subject( <span class="string">'foo'</span> ) <span class="comment">-- call as part of test case setup
 </span><span class="comment">-- some processing
 </span><span class="comment">-- ⋮
 </span><span class="comment">-- more processing
@@ -147,7 +142,7 @@ subject( <span class="string">'foo'</span> ) <span class="comment">-- call as pa
 
 
 <pre>
-subject( obj ) <span class="comment">-- call as part of frame setup
+subject( obj ) <span class="comment">-- call as part of test case setup
 </span><span class="comment">-- some processing
 </span><span class="comment">-- ⋮
 </span><span class="comment">-- more processing
@@ -170,15 +165,15 @@ subject( obj ) <span class="comment">-- call as part of frame setup
 
 <h3><a id="pick">Pick</a></h3>
 
-<p>This is delayed actions to chose one of several returned values.</p>
+<p>This is delayed actions to chose one of several returned values. The delayed action will only return a single value.</p>
 
 <h3><a id="transform">Transform</a></h3>
 
-<p>This is delayed actions to somehow transform a value.</p>
+<p>This is delayed actions to somehow transform a value. The delayed action will return the same value, but somehow transformed.</p>
 
 <h3><a id="condition">Condition</a></h3>
 
-<p>This is delayed actions to compare the values.</p>
+<p>This is delayed actions to compare the values. The delayed action will return a boolean value.</p>
 
 
 </div> <!-- id="content" -->
