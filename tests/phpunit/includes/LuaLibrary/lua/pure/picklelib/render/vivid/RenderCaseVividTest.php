@@ -11,9 +11,9 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class RenderFrameVividTest extends Scribunto_LuaEngineTestBase {
+class RenderCaseVividTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'RenderFrameVividTest';
+	protected static $moduleName = 'RenderCaseVividTest';
 
 	/**
 	 * @slowThreshold 1000
@@ -21,7 +21,7 @@ class RenderFrameVividTest extends Scribunto_LuaEngineTestBase {
 	 */
 	protected function getTestModules() {
 		return parent::getTestModules() + [
-			'RenderFrameVividTest' => __DIR__ . '/RenderFrameVividTest.lua'
+			'RenderCaseVividTest' => __DIR__ . '/RenderCaseVividTest.lua'
 		];
 	}
 }

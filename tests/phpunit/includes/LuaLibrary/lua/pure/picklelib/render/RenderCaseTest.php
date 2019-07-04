@@ -11,17 +11,18 @@ use Scribunto_LuaEngineTestBase;
  *
  * @author John Erling Blad < jeblad@gmail.com >
  */
-class ReportFrameTest extends Scribunto_LuaEngineTestBase {
+class RenderCaseTest extends Scribunto_LuaEngineTestBase {
 
-	protected static $moduleName = 'ReportFrameTest';
+	protected static $moduleName = 'RenderCaseTest';
 
 	/**
 	 * @slowThreshold 1000
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
+	 * @return configuration data
 	 */
 	protected function getTestModules() {
 		return parent::getTestModules() + [
-			'ReportFrameTest' => __DIR__ . '/ReportFrameTest.lua'
+			'RenderCaseTest' => __DIR__ . '/RenderCaseTest.lua'
 		];
 	}
 }
