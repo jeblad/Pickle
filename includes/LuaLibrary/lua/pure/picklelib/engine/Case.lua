@@ -7,7 +7,7 @@
 local libUtil = require 'libraryUtil'
 local Bag = require 'picklelib/Bag'
 local ReportAdapt = require 'picklelib/report/ReportAdapt'
-local ReportFrame = require 'picklelib/report/ReportFrame'
+local ReportCase = require 'picklelib/report/ReportCase'
 local Translator = require 'picklelib/translator/Translator'
 
 -- @var class var for lib
@@ -291,7 +291,7 @@ function Case:evalFixture( description, fixture, environment, ... )
 		local msg = mw.message.new( 'pickle-adapt-catched-exception' )
 		self:reports():push( ReportAdapt:create():setSkip( msg ) )
 	end
-	local report = ReportFrame:create():setDescription( description )
+	local report = ReportCase:create():setDescription( description )
 	if self:hasName() then
 		report:setName( self:getName() )
 	end
@@ -318,7 +318,7 @@ end
 function Case:eval()
 	if not self:hasFixtures() then
 		local msg = mw.message.new( 'pickle-case-no-fixtures' )
-		self:reports():push( ReportFrame:create():setTodo( msg ) )
+		self:reports():push( ReportCase:create():setTodo( msg ) )
 		return self
 	end
 	local env = mw.pickle._IMPLICIT and getfenv(1) or _G

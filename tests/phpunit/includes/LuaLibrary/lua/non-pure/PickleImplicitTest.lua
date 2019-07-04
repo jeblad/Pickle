@@ -3,7 +3,7 @@
 -- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
 
-local testframework = require 'Module:TestFramework'
+local testframework = require 'Module:TestCasework'
 
 --if not _G.describe then
 --	return testframework.getTestProvider( {} )
@@ -45,7 +45,7 @@ local function testExtract( str )
 end
 
 local function testComment( name, ... )
-	_G._reports:push( require( 'picklelib/report/ReportFrame' ):create() )
+	_G._reports:push( require( 'picklelib/report/ReportCase' ):create() )
 	local res,_ = pcall( _G[ name ], ... )
 	local report = _G._reports:pop()
 	return res, report:getTodo(), report:getSkip()
@@ -56,8 +56,8 @@ local function testSpy( name, ... )
 	return res, not( res ) and err or 'none', _G._reports:top():getTodo() or _G._reports:top():getSkip()
 end
 
-local function testFrame( name, ... )
-	_G._reports:push( require( 'picklelib/report/ReportFrame' ):create() )
+local function testCase( name, ... )
+	_G._reports:push( require( 'picklelib/report/ReportCase' ):create() )
 	local res1, obj1 = pcall( _G[ name ], ... )
 	if not res1 then
 		return res1, obj1, 'first pcall'
@@ -201,21 +201,21 @@ local tests = {
 	-- PickleTest[19]
 	{
 		name = 'function xdescribe',
-		func = testFrame,
+		func = testCase,
 		args = { 'xdescribe' },
 		expect = { true, true, true, false } -- todo, no fixture
 	},
 	-- PickleTest[20]
 	{
 		name = 'function xdescribe',
-		func = testFrame,
+		func = testCase,
 		args = { 'xdescribe', 'This is a test' },
 		expect = { true, true, true, false } -- todo, no fixture
 	},
 	-- PickleTest[21]
 	{
 		name = 'function xdescribe',
-		func = testFrame,
+		func = testCase,
 		args = { 'xdescribe', 'This is a test', function() end },
 		expect = { true, true, false, true } -- skip, override eval
 	},
@@ -229,21 +229,21 @@ local tests = {
 	-- PickleTest[23]
 	{
 		name = 'function xcontext',
-		func = testFrame,
+		func = testCase
 		args = { 'xcontext' },
 		expect = { true, true, true, false } -- todo, no fixture
 	},
 	-- PickleTest[24]
 	{
 		name = 'function xcontext',
-		func = testFrame,
+		func = testCase,
 		args = { 'xcontext', 'This is a test' },
 		expect = { true, true, true, false } -- todo, no fixture
 	},
 	-- PickleTest[25]
 	{
 		name = 'function xcontext',
-		func = testFrame,
+		func = testCase,
 		args = { 'xcontext', 'This is a test', function() end },
 		expect = { true, true, false, true } -- skip, override eval
 	},
@@ -257,21 +257,21 @@ local tests = {
 	-- PickleTest[27]
 	{
 		name = 'function xit',
-		func = testFrame,
+		func = testCase,
 		args = { 'xit' },
 		expect = { true, true, true, false } -- todo, no fixture
 	},
 	-- PickleTest[28]
 	{
 		name = 'function xit',
-		func = testFrame,
+		func = testCase,
 		args = { 'xit', 'This is a test' },
 		expect = { true, true, true, false } -- todo, no fixture
 	},
 	-- PickleTest[29]
 	{
 		name = 'function xit',
-		func = testFrame,
+		func = testCase,
 		args = { 'xit', 'This is a test', function() end },
 		expect = { true, true, false, true } -- skip, override eval
 	},
@@ -285,28 +285,28 @@ local tests = {
 	-- PickleTest[31]
 	{
 		name = 'function describe',
-		func = testFrame,
+		func = testCase,
 		args = { 'describe' },
 		expect = { true, true, true, false } -- todo, no fixture
 	},
 	-- PickleTest[32]
 	{
 		name = 'function describe',
-		func = testFrame,
+		func = testCase,
 		args = { 'describe', 'This is a test' },
 		expect = { true, true, true, false } -- todo, still no fixture
 	},
 	-- PickleTest[33]
 	{
 		name = 'function describe',
-		func = testFrame,
+		func = testCase,
 		args = { 'describe', 'This is a test', function() end },
 		expect = { true, true, true, false } -- todo, no assertions
 	},
 	-- PickleTest[34]
 	{
 		name = 'function describe',
-		func = testFrame,
+		func = testCase,
 		args = { 'describe', 'This is a test', function() return true end },
 		expect = { true, true, true, false } -- todo, no assertions
 	},
@@ -320,28 +320,28 @@ local tests = {
 	-- PickleTest[36]
 	{
 		name = 'function context',
-		func = testFrame,
+		func = testCase,
 		args = { 'context' },
 		expect = { true, true, true, false } -- todo, no fixture
 	},
 	-- PickleTest[37]
 	{
 		name = 'function context',
-		func = testFrame,
+		func = testCase,
 		args = { 'context', 'This is a test' },
 		expect = { true, true, true, false } -- todo, still no fixture
 	},
 	-- PickleTest[38]
 	{
 		name = 'function context',
-		func = testFrame,
+		func = testCase,
 		args = { 'context', 'This is a test', function() end },
 		expect = { true, true, true, false } -- todo, no assertions
 	},
 	-- PickleTest[39]
 	{
 		name = 'function context',
-		func = testFrame,
+		func = testCase,
 		args = { 'context', 'This is a test', function() return true end },
 		expect = { true, true, true, false } -- todo, no assertions
 	},
@@ -355,28 +355,28 @@ local tests = {
 	-- PickleTest[41]
 	{
 		name = 'function it',
-		func = testFrame,
+		func = testCase,
 		args = { 'it' },
 		expect = { true, true, true, false } -- todo, no fixture
 	},
 	-- PickleTest[42]
 	{
 		name = 'function it',
-		func = testFrame,
+		func = testCase,
 		args = { 'it', 'This is a test' },
 		expect = { true, true, true, false } -- todo, still no fixture
 	},
 	-- PickleTest[43]
 	{
 		name = 'function it',
-		func = testFrame,
+		func = testCase,
 		args = { 'it', 'This is a test', function() end },
 		expect = { true, true, true, false } -- todo, no assertions
 	},
 	-- PickleTest[44]
 	{
 		name = 'function it',
-		func = testFrame,
+		func = testCase,
 		args = { 'it', 'This is a test', function() return true end },
 		expect = { true, true, true, false } -- todo, no assertions
 	},

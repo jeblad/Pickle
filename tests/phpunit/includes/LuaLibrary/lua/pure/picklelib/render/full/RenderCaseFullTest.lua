@@ -6,12 +6,12 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/full/RenderFrameFull'
+local lib = require 'picklelib/render/full/RenderCaseFull'
 assert( lib )
 
 local name = 'resultRender'
 
-local fix = require 'picklelib/report/ReportFrame'
+local fix = require 'picklelib/report/ReportCase'
 assert( fix )
 
 local function makeTest( ... )
@@ -43,14 +43,14 @@ local function testHeaderNotOk()
 end
 
 local tests = {
-	-- RenderFrameFullTest[1]
+	-- RenderCaseFullTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	-- RenderFrameFullTest[2]
+	-- RenderCaseFullTest[2]
 	{
 		name = name .. ':create (nil value type)',
 		func = testCreate,
@@ -58,7 +58,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
-	-- RenderFrameFullTest[3]
+	-- RenderCaseFullTest[3]
 	{
 		name = name .. ':create (single value type)',
 		func = testCreate,
@@ -66,7 +66,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	-- RenderFrameFullTest[4]
+	-- RenderCaseFullTest[4]
 	{
 		name = name .. ':create (multiple value type)',
 		func = testCreate,
@@ -74,20 +74,20 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	-- RenderFrameFullTest[5]
+	-- RenderCaseFullTest[5]
 	{
 		name = name .. ':key ()',
 		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-case-foo' }
 	},
-	-- RenderFrameFullTest[6]
+	-- RenderCaseFullTest[6]
 	{
 		name = name .. ':header ok ()',
 		func = testHeaderOk,
 		expect = { 'ok (parentheses: (pickle-report-case-is-ok-keyword))' }
 	},
-	-- RenderFrameFullTest[7]
+	-- RenderCaseFullTest[7]
 	{
 		name = name .. ':header not ok ()',
 		func = testHeaderNotOk,

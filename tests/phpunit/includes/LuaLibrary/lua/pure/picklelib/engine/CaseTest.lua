@@ -18,7 +18,7 @@ assert( reports )
 local name = 'case'
 local class = 'Case'
 
-local function makeFrame( ... )
+local function makeCase( ... )
 	local Case = require 'picklelib/engine/Case'
 	assert( Case )
 
@@ -30,43 +30,43 @@ local function makeFrame( ... )
 end
 
 local function testExists()
-	return type( makeFrame() )
+	return type( makeCase() )
 end
 
 local function testCreate( ... )
-	return type( makeFrame( ... ) )
+	return type( makeCase( ... ) )
 end
 
 local function testClassCall( ... )
-	local t = makeFrame()( ... )
+	local t = makeCase()( ... )
 	return t:descriptions()
 end
 
 local function testClassCallStrings()
-	local t = makeFrame() 'foo' 'bar' 'baz'
+	local t = makeCase() 'foo' 'bar' 'baz'
 	return t:descriptions()
 end
 
 local function testInstanceCall( ... )
-	local obj = makeFrame()
+	local obj = makeCase()
 	local t = obj( ... )
 	return t:descriptions()
 end
 
 local function testInstanceCallStrings()
-	local obj = makeFrame()
+	local obj = makeCase()
 	local t = obj 'foo' 'bar' 'baz'
 	return t:descriptions()
 end
 
 local function testDispatch( ... )
-	local obj = makeFrame()
+	local obj = makeCase()
 	obj:dispatch( ... )
 	return obj:numDescriptions(), obj:numFixtures(), obj:subjects():depth()
 end
 
 local function testEval( libs, ... )
-	local obj = makeFrame( ... )
+	local obj = makeCase( ... )
 	for _,v in ipairs( libs ) do
 --		assert( v )
 		obj:extractors():register( require( v ):create() )
@@ -96,7 +96,7 @@ local function testEval( libs, ... )
 end
 
 local function testRef( ref, ... )
-	local obj = makeFrame()
+	local obj = makeCase()
 	obj[ 'set' .. string.upper( string.sub( ref, 1, 1 ) ) .. string.sub( ref, 2 ) ]( obj, ... )
 	return obj[ref]( obj )
 end

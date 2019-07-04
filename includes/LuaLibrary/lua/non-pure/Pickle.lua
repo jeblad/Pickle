@@ -19,7 +19,7 @@ pickle.adapt = require 'picklelib/engine/Adapt'
 pickle.double = require 'picklelib/engine/Double'
 pickle.report = {}
 pickle.report.adapt = require 'picklelib/report/ReportAdapt'
-pickle.report.case = require 'picklelib/report/ReportFrame'
+pickle.report.case = require 'picklelib/report/ReportCase'
 pickle.renders = require 'picklelib/render/Renders'
 pickle.extractor = require 'picklelib/extractor/Extractor'
 pickle.extractors = require 'picklelib/extractor/Extractors'
@@ -412,7 +412,7 @@ local function setup( env, opts )
 	--- Compose silent case instances.
 	-- @tparam string name
 	-- @treturn function
-	local function composeXFrame( name )
+	local function composeXCase( name )
 		return function( ... )
 			local obj = pickle.case:create()
 			obj.tap = function( ... )
@@ -420,8 +420,8 @@ local function setup( env, opts )
 				return tap( ... )
 			end
 			obj.evalFixture = function( this )
-				local ReportFrame = require 'picklelib/report/ReportFrame'
-				this:reports():push( ReportFrame:create():setSkip( name ) )
+				local ReportCase = require 'picklelib/report/ReportCase'
+				this:reports():push( ReportCase:create():setSkip( name ) )
 			end
 			obj:setRenders( pickle.renders )
 				:setName( name )
@@ -441,7 +441,7 @@ local function setup( env, opts )
 	-- @function xtop
 	-- @param ... varargs passed on to Case:dispatch
 	-- @return Case
-	env.xtop = composeXFrame( 'xtop' )
+	env.xtop = composeXCase( 'xtop' )
 
 	--- Silent “describe” for the test.
 	-- This is the outermost of the three levels.
@@ -449,7 +449,7 @@ local function setup( env, opts )
 	-- @function xdescribe
 	-- @param ... varargs passed on to Case:dispatch
 	-- @return Case
-	env.xdescribe = composeXFrame( 'xdescribe' )
+	env.xdescribe = composeXCase( 'xdescribe' )
 
 	--- Silent “context” for the test.
 	-- This is usually used for creating some additional context
@@ -458,17 +458,17 @@ local function setup( env, opts )
 	-- @function context
 	-- @param ... varargs passed on to Case:dispatch
 	-- @return Case
-	env.xcontext = composeXFrame( 'xcontext' )
+	env.xcontext = composeXCase( 'xcontext' )
 
 	--- Silent “it” for the test.
 	-- @tparam vararg ... passed on to Case:create
 	-- @treturn self newly created object
-	env.xit = composeXFrame( 'xit' )
+	env.xit = composeXCase( 'xit' )
 
 	--- Compose case instances.
 	-- @tparam string name
 	-- @treturn function
-	local function composeFrame( name )
+	local function composeCase( name )
 		return function( ... )
 			local obj = pickle.case:create()
 			obj.tap = function( ... )
@@ -491,14 +491,14 @@ local function setup( env, opts )
 	-- @function top
 	-- @param ... varargs passed on to Case:dispatch
 	-- @return Case
-	env.top = composeFrame( 'top' )
+	env.top = composeCase( 'top' )
 
 	--- “Describe” for the test.
 	-- This is the outermost of the three levels.
 	-- @function describe
 	-- @param ... varargs passed on to Case:dispatch
 	-- @return Case
-	env.describe = composeFrame( 'describe' )
+	env.describe = composeCase( 'describe' )
 
 	--- “Context” for the test.
 	-- This is usually used for creating some additional context
@@ -507,12 +507,12 @@ local function setup( env, opts )
 	-- @function context
 	-- @param ... varargs passed on to Case:dispatch
 	-- @return Case
-	env.context = composeFrame( 'context' )
+	env.context = composeCase( 'context' )
 
 	--- “It” for the test.
 	-- @tparam vararg ... passed on to Case:create
 	-- @treturn self newly created object
-	env.it = composeFrame( 'it' )
+	env.it = composeCase( 'it' )
 
 	--- Put up a nice banner telling everyone pickle is initialized, and add the instances
 	env._reports = reports

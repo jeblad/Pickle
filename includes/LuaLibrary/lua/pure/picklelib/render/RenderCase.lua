@@ -1,7 +1,7 @@
 --- Intermediate class for case report renderer.
 -- This class follows the pattern with inheritance from
 -- [Lua classes](../topics/lua-classes.md.html).
--- @classmod RenderFrame
+-- @classmod RenderCase
 -- @alias Subclass
 
 -- pure libs
@@ -18,7 +18,7 @@ local Subclass = {}
 -- @tparam string key lookup of member
 -- @return any
 function Subclass:__index( key ) -- luacheck: no self
-	libUtil.checkType( 'RenderFrame:__index', 1, key, 'string', false )
+	libUtil.checkType( 'RenderCase:__index', 1, key, 'string', false )
 	return Subclass[key]
 end
 
@@ -93,7 +93,7 @@ end
 -- @tparam nil|string lang code used for realization (unused)
 -- @treturn string
 function Subclass:realizeDescription( src, lang ) -- luacheck: no unused args
-	libUtil.checkType( 'RenderFrame:realizeDescription', 1, src, 'table', false )
+	libUtil.checkType( 'RenderCase:realizeDescription', 1, src, 'table', false )
 
 	if not src:hasDescription() then
 		return ''
@@ -109,7 +109,7 @@ end
 -- @tparam nil|string lang code used for realization (unused)
 -- @treturn string
 function Subclass:realizeName( src, lang ) -- luacheck: no unused args
-	libUtil.checkType( 'RenderFrame:realizeName', 1, src, 'table', false )
+	libUtil.checkType( 'RenderCase:realizeName', 1, src, 'table', false )
 
 	if not src:hasName() then
 		return ''
@@ -126,7 +126,7 @@ end
 -- @tparam nil|Counter counter holding the running count
 -- @treturn string
 function Subclass:realizeHeader( src, lang, counter )
-	libUtil.checkType( 'RenderFrame:realizeHeader', 1, src, 'table', false )
+	libUtil.checkType( 'RenderCase:realizeHeader', 1, src, 'table', false )
 	-- lang tested in later call
 	-- counter tested in later call
 
@@ -162,7 +162,7 @@ end
 -- @tparam nil|string lang code used for realization (unused)
 -- @treturn string
 function Subclass:realizeBody( src, lang ) -- luacheck: ignore self lang
-	libUtil.checkType( 'RenderFrame:realizeBody', 1, src, 'table', false )
+	libUtil.checkType( 'RenderCase:realizeBody', 1, src, 'table', false )
 
 	local t = {}
 

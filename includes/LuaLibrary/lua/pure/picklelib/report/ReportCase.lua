@@ -1,7 +1,7 @@
 --- Subclass for reports.
 -- This class follows the pattern with inheritance from
 -- [Lua classes](../topics/lua-classes.md.html).
--- @classmod ReportFrame
+-- @classmod ReportCase
 -- @alias Subclass
 
 -- pure libs
@@ -19,7 +19,7 @@ local Subclass = {}
 -- @tparam string key lookup of member
 -- @return any
 function Subclass:__index( key ) -- luacheck: no self
-	libUtil.checkType( 'ReportFrame:__index', 1, key, 'string', false )
+	libUtil.checkType( 'ReportCase:__index', 1, key, 'string', false )
 	return Subclass[key]
 end
 
@@ -172,7 +172,7 @@ end
 -- @tparam[opt=''] nil|string str that will be used as the description
 -- @treturn self
 function Subclass:setDescription( str )
-	libUtil.checkType( 'ReportFrame:setDescription', 1, str, 'string', true )
+	libUtil.checkType( 'ReportCase:setDescription', 1, str, 'string', true )
 	self._description = str or ''
 	return self
 end
@@ -197,9 +197,9 @@ end
 -- @tparam nil|Counter counter holding the running count
 -- @treturn string
 function Subclass:realize( renders, lang, counter )
-	libUtil.checkType( 'ReportFrame:realize', 1, renders, 'table', false )
-	libUtil.checkType( 'ReportFrame:realize', 2, lang, 'string', true )
-	libUtil.checkType( 'ReportFrame:realize', 3, counter, 'table', true )
+	libUtil.checkType( 'ReportCase:realize', 1, renders, 'table', false )
+	libUtil.checkType( 'ReportCase:realize', 2, lang, 'string', true )
+	libUtil.checkType( 'ReportCase:realize', 3, counter, 'table', true )
 
 	local styles = renders:find( self:type() )
 	local init = counter and not counter:isInitialized()

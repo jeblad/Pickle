@@ -1,14 +1,14 @@
 --- Final class for case report renderer.
 -- This class follows the pattern with inheritance from
 -- [Lua classes](../topics/lua-classes.md.html).
--- @classmod RenderFrameVivid
+-- @classmod RenderCaseVivid
 -- @alias Subclass
 
 -- pure libs
 local libUtil = require 'libraryUtil'
 
 -- @var super class
-local Super = require 'picklelib/render/RenderFrame'
+local Super = require 'picklelib/render/RenderCase'
 
 -- @var final class
 local Subclass = {}
@@ -18,7 +18,7 @@ local Subclass = {}
 -- @tparam string key lookup of member
 -- @return any
 function Subclass:__index( key ) -- luacheck: no self
-	libUtil.checkType( 'RenderFrameVivid:__index', 1, key, 'string', false )
+	libUtil.checkType( 'RenderCaseVivid:__index', 1, key, 'string', false )
 	return Subclass[key]
 end
 
@@ -26,15 +26,15 @@ end
 setmetatable( Subclass, { __index = Super } )
 
 --- Create a new instance.
--- @see RenderFrame:create
--- @tparam vararg ... forwarded to @{RenderFrame:create|superclass create method}
+-- @see RenderCase:create
+-- @tparam vararg ... forwarded to @{RenderCase:create|superclass create method}
 -- @treturn self
 function Subclass:create( ... )
 	return Super.create( self, ... )
 end
 
 --- Initialize a new instance.
--- @tparam vararg ... forwarded to @{RenderFrame:_init|superclass init method}
+-- @tparam vararg ... forwarded to @{RenderCase:_init|superclass init method}
 -- @return self
 function Subclass:_init( ... )
 	Super._init( self, ... )
@@ -48,8 +48,8 @@ end
 -- @tparam any tail to act as the tail
 -- @treturn self
 function Subclass:append( head, tail ) -- luacheck: no self
-	libUtil.checkType( 'RenderFrameVivid:append', 1, head, 'table', false )
-	libUtil.checkType( 'RenderFrameVivid:append', 2, tail, 'string', false )
+	libUtil.checkType( 'RenderCaseVivid:append', 1, head, 'table', false )
+	libUtil.checkType( 'RenderCaseVivid:append', 2, tail, 'string', false )
 	head:node( tail )
 	return self
 end
@@ -62,7 +62,7 @@ end
 -- @treturn html
 function Subclass:realizeState( src, lang, counter )
 	-- src tested in later call
-	libUtil.checkType( 'RenderFrameVivid:realizeState', 2, lang, 'string', true )
+	libUtil.checkType( 'RenderCaseVivid:realizeState', 2, lang, 'string', true )
 	-- counter tested in later call
 
 	local html = mw.html.create( 'span' )
@@ -173,7 +173,7 @@ end
 -- @tparam nil|Counter counter holding the running count
 -- @treturn html
 function Subclass:realizeHeader( src, lang, counter )
-	libUtil.checkType( 'RenderFrameVivid:realizeHeader', 1, src, 'table', false )
+	libUtil.checkType( 'RenderCaseVivid:realizeHeader', 1, src, 'table', false )
 	-- lang tested in later call
 	-- counter tested in later call
 

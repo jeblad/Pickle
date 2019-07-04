@@ -6,12 +6,12 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/RenderFrame'
+local lib = require 'picklelib/render/RenderCase'
 assert( lib )
 
 local name = 'reportRender'
 
-local fix = require 'picklelib/report/ReportFrame'
+local fix = require 'picklelib/report/ReportCase'
 assert( fix )
 
 local counter = require 'picklelib/Counter'
@@ -78,14 +78,14 @@ local function testBody()
 end
 ]]
 local tests = {
-	-- RenderFrameTest[1]
+	-- RenderCaseTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	-- RenderFrameTest[2]
+	-- RenderCaseTest[2]
 	{
 		name = name .. ':create (nil value type)',
 		func = testCreate,
@@ -93,7 +93,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
-	-- RenderFrameTest[3]
+	-- RenderCaseTest[3]
 	{
 		name = name .. ':create (single value type)',
 		func = testCreate,
@@ -101,7 +101,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	-- RenderFrameTest[4]
+	-- RenderCaseTest[4]
 	{
 		name = name .. ':create (multiple value type)',
 		func = testCreate,
@@ -109,14 +109,14 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	-- RenderFrameTest[5]
+	-- RenderCaseTest[5]
 	{
 		name = name .. ':clarification ("skip", "qqx")',
 		func = testClarification,
 		args = { "is-skip", 'qqx' },
 		expect = { 'skip (parentheses: (pickle-report-case-is-skip-keyword))' }
 	},
-	-- RenderFrameTest[6]
+	-- RenderCaseTest[6]
 	{
 		name = name .. ':clarification ("skip", "nb")',
 		func = testClarification,
@@ -124,14 +124,14 @@ local tests = {
 		args = { "is-skip", 'nb' },
 		expect = { "skip (<replacement>)" }
 	},
-	-- RenderFrameTest[7]
+	-- RenderCaseTest[7]
 	{
 		name = name .. ':clarification ("todo", "qqx")',
 		func = testClarification,
 		args = { "is-todo", 'qqx' },
 		expect = { 'todo (parentheses: (pickle-report-case-is-todo-keyword))' }
 	},
-	-- RenderFrameTest[8]
+	-- RenderCaseTest[8]
 	{
 		name = name .. ':clarification ("todo", "nb")',
 		func = testClarification,
@@ -139,42 +139,42 @@ local tests = {
 		args = { "is-todo", 'nb' },
 		expect = { "todo (<replacement>)" }
 	},
-	-- RenderFrameTest[9]
+	-- RenderCaseTest[9]
 	{
 		name = name .. ':state ()',
 		func = testState,
 		args = { false },
 		expect = { 'not ok 0 (parentheses: (pickle-report-case-is-not-ok-keyword))' }
 	},
-	-- RenderFrameTest[10]
+	-- RenderCaseTest[10]
 	{
 		name = name .. ':state ()',
 		func = testState,
 		args = { true },
 		expect = { 'ok 0 (parentheses: (pickle-report-case-is-ok-keyword))' }
 	},
-	-- RenderFrameTest[11]
+	-- RenderCaseTest[11]
 	{
 		name = name .. ':skip ()',
 		func = testSkip,
 		args = { 'foo' },
 		expect = { 'skip (parentheses: (pickle-report-case-is-skip-keyword)) foo' }
 	},
-	-- RenderFrameTest[12]
+	-- RenderCaseTest[12]
 	{
 		name = name .. ':todo ()',
 		func = testTodo,
 		args = { 'bar' },
 		expect = { 'todo (parentheses: (pickle-report-case-is-todo-keyword)) bar' }
 	},
-	-- RenderFrameTest[13]
+	-- RenderCaseTest[13]
 	{
 		name = name .. ':description ()',
 		func = testDescription,
 		args = { 'baz' },
 		expect = { 'baz' }
 	},
-	-- RenderFrameTest[14]
+	-- RenderCaseTest[14]
 	{
 		name = name .. ':header ()',
 		func = testHeaderSkip,
@@ -182,7 +182,7 @@ local tests = {
 		expect = { 'not ok 0 (parentheses: (pickle-report-case-is-not-ok-keyword))'
 		.. ' testing # skip (parentheses: (pickle-report-case-is-skip-keyword)) baz' }
 	},
-	-- RenderFrameTest[15]
+	-- RenderCaseTest[15]
 	{
 		name = name .. ':header ()',
 		func = testHeaderTodo,
@@ -191,7 +191,7 @@ local tests = {
 		.. ' testing # todo (parentheses: (pickle-report-case-is-todo-keyword)) baz' }
 	},
 	--[[
-	-- RenderFrameTest[16]
+	-- RenderCaseTest[16]
 	{
 		name = name .. ':body ()',
 		func = testBody,
