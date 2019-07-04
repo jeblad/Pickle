@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/vivid/RenderCaseVivid'
+local lib = require 'picklelib/render/RenderCaseVivid'
 assert( lib )
 local name = 'resultRender'
 

@@ -8,7 +8,7 @@ local libUtil = require 'libraryUtil'
 local Bag = require 'picklelib/Bag'
 local ReportAdapt = require 'picklelib/report/ReportAdapt'
 local ReportCase = require 'picklelib/report/ReportCase'
-local Translator = require 'picklelib/translator/Translator'
+local Translator = require 'picklelib/Translator'
 
 -- @var class var for lib
 local Case = {}

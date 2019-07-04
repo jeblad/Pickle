@@ -6,7 +6,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/full/RenderCaseFull'
+local lib = require 'picklelib/render/RenderCaseCompact'
 assert( lib )
 
 local name = 'resultRender'
@@ -31,26 +31,26 @@ local function testKey( ... )
 end
 
 local function testHeaderOk()
-	local adapt = require( 'picklelib/report/ReportAdapt' ):create():ok()
+	local adapt = require('picklelib/report/ReportAdapt'):create():ok()
 	local p = fix:create():addConstituent( adapt )
 	return makeTest():realizeHeader( p, 'qqx' )
 end
 
 local function testHeaderNotOk()
-	local adapt = require( 'picklelib/report/ReportAdapt' ):create():notOk()
+	local adapt = require('picklelib/report/ReportAdapt'):create():notOk()
 	local p = fix:create():addConstituent( adapt )
 	return makeTest():realizeHeader( p, 'qqx' )
 end
 
 local tests = {
-	-- RenderCaseFullTest[1]
+	-- RenderCaseCompactTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	-- RenderCaseFullTest[2]
+	-- RenderCaseCompactTest[2]
 	{
 		name = name .. ':create (nil value type)',
 		func = testCreate,
@@ -58,7 +58,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
-	-- RenderCaseFullTest[3]
+	-- RenderCaseCompactTest[3]
 	{
 		name = name .. ':create (single value type)',
 		func = testCreate,
@@ -66,7 +66,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	-- RenderCaseFullTest[4]
+	-- RenderCaseCompactTest[4]
 	{
 		name = name .. ':create (multiple value type)',
 		func = testCreate,
@@ -74,20 +74,20 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	-- RenderCaseFullTest[5]
+	-- RenderCaseCompactTest[5]
 	{
 		name = name .. ':key ()',
 		func = testKey,
 		args = { 'foo' },
 		expect = { 'pickle-report-case-foo' }
 	},
-	-- RenderCaseFullTest[6]
+	-- RenderCaseCompactTest[6]
 	{
 		name = name .. ':header ok ()',
 		func = testHeaderOk,
 		expect = { 'ok (parentheses: (pickle-report-case-is-ok-keyword))' }
 	},
-	-- RenderCaseFullTest[7]
+	-- RenderCaseCompactTest[7]
 	{
 		name = name .. ':header not ok ()',
 		func = testHeaderNotOk,

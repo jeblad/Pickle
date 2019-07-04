@@ -156,7 +156,7 @@
 		},
 		"RenderPath": {
 			"description": "Formats to use while requiring renders.",
-			"value": "picklelib/render/%s/Render%s%s"
+			"value": "picklelib/render/Render%s%s"
 		},
 		"RenderStyles": {
 			"description": [

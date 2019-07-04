@@ -6,12 +6,12 @@
 
 local testframework = require 'Module:TestFramework'
 
-local lib = require 'picklelib/render/full/RenderAdaptFull'
+local lib = require 'picklelib/render/RenderCaseFull'
 assert( lib )
 
 local name = 'resultRender'
 
-local fix = require 'picklelib/report/ReportAdapt'
+local fix = require 'picklelib/report/ReportCase'
 assert( fix )
 
 local function makeTest( ... )
@@ -30,25 +30,27 @@ local function testKey( ... )
 	return makeTest():key( ... )
 end
 
-local function testBodyOk()
-	local p = fix:create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):ok()
-	return makeTest():realizeBody( p, 'qqx' )
+local function testHeaderOk()
+	local adapt = require( 'picklelib/report/ReportAdapt' ):create():ok()
+	local p = fix:create():addConstituent( adapt )
+	return makeTest():realizeHeader( p, 'qqx' )
 end
 
-local function testBodyNotOk()
-	local p = fix:create():addLine( 'foo' ):addLine( 'bar' ):addLine( 'baz' ):notOk()
-	return makeTest():realizeBody( p, 'qqx' )
+local function testHeaderNotOk()
+	local adapt = require( 'picklelib/report/ReportAdapt' ):create():notOk()
+	local p = fix:create():addConstituent( adapt )
+	return makeTest():realizeHeader( p, 'qqx' )
 end
 
 local tests = {
-	-- RenderAdaptFullTest[1]
+	-- RenderCaseFullTest[1]
 	{
 		name = name .. ' exists',
 		func = testExists,
 		type = 'ToString',
 		expect = { 'table' }
 	},
-	-- RenderAdaptFullTest[2]
+	-- RenderCaseFullTest[2]
 	{
 		name = name .. ':create (nil value type)',
 		func = testCreate,
@@ -56,7 +58,7 @@ local tests = {
 		args = { nil },
 		expect = { 'table' }
 	},
-	-- RenderAdaptFullTest[3]
+	-- RenderCaseFullTest[3]
 	{
 		name = name .. ':create (single value type)',
 		func = testCreate,
@@ -64,7 +66,7 @@ local tests = {
 		args = { 'a' },
 		expect = { 'table' }
 	},
-	-- RenderAdaptFullTest[4]
+	-- RenderCaseFullTest[4]
 	{
 		name = name .. ':create (multiple value type)',
 		func = testCreate,
@@ -72,30 +74,24 @@ local tests = {
 		args = { 'a', 'b', 'c' },
 		expect = { 'table' }
 	},
-	-- RenderAdaptFullTest[5]
+	-- RenderCaseFullTest[5]
 	{
 		name = name .. ':key ()',
 		func = testKey,
 		args = { 'foo' },
-		expect = { 'pickle-report-adapt-foo' }
+		expect = { 'pickle-report-case-foo' }
 	},
-	-- RenderAdaptFullTest[6]
+	-- RenderCaseFullTest[6]
 	{
-		name = name .. ':body ()',
-		func = testBodyOk,
-		expect = { "\n"
-			.. '(foo)' .. "\n"
-			.. '(bar)' .. "\n"
-			.. '(baz)' }
+		name = name .. ':header ok ()',
+		func = testHeaderOk,
+		expect = { 'ok (parentheses: (pickle-report-case-is-ok-keyword))' }
 	},
-	-- RenderAdaptFullTest[7]
+	-- RenderCaseFullTest[7]
 	{
-		name = name .. ':body ()',
-		func = testBodyNotOk,
-		expect = { "\n"
-			.. '(foo)' .. "\n"
-			.. '(bar)' .. "\n"
-			.. '(baz)' }
+		name = name .. ':header not ok ()',
+		func = testHeaderNotOk,
+		expect = { 'not ok (parentheses: (pickle-report-case-is-not-ok-keyword))' }
 	},
 }
 

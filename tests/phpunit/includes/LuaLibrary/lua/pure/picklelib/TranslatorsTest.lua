@@ -9,7 +9,7 @@ local testframework = require 'Module:TestFramework'
 local name = 'translator'
 
 local function makeTest( ... )
-	local lib = require 'picklelib/translator/Translators'
+	local lib = require 'picklelib/Translators'
 	assert( lib )
 	return lib:create( ... )
 end

@@ -23,8 +23,8 @@ pickle.report.case = require 'picklelib/report/ReportCase'
 pickle.renders = require 'picklelib/render/Renders'
 pickle.extractor = require 'picklelib/Extractor'
 pickle.extractors = require 'picklelib/Extractors'
-pickle.translator = require 'picklelib/translator/Translator'
-pickle.translators = require 'picklelib/translator/Translators'
+pickle.translator = require 'picklelib/Translator'
+pickle.translators = require 'picklelib/Translators'
 
 --- Add further options for translators
 -- @tparam table opts
@@ -172,7 +172,7 @@ local function addRenderOptions( opts )
 	local t = {}
 	for k,v in pairs( options.renderStyles ) do
 		for l,w in pairs( options.renderTypes ) do
-			local lib = string.format( options.renderPath, k, w, v )
+			local lib = string.format( options.renderPath, w, v )
 			table.insert( t, { k, l, lib } )
 		end
 	end
