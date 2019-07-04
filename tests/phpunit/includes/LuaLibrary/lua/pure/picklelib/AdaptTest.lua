@@ -5,7 +5,7 @@
 
 local testframework = require 'Module:TestFramework'
 
-local Adapt = require 'picklelib/engine/Adapt'
+local Adapt = require 'picklelib/Adapt'
 assert( Adapt )
 local reports = require 'picklelib/Bag'
 assert( reports )

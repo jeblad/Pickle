@@ -19,7 +19,7 @@ local name = 'case'
 local class = 'Case'
 
 local function makeCase( ... )
-	local Case = require 'picklelib/engine/Case'
+	local Case = require 'picklelib/Case'
 	assert( Case )
 
 	return Case:create( ... )

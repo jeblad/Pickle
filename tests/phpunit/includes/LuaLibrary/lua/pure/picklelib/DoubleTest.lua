@@ -4,7 +4,7 @@
 local testframework = require 'Module:TestFramework'
 
 local function makeDouble( ... )
-	local double = require 'picklelib/engine/Double'
+	local double = require 'picklelib/Double'
 	assert( double )
 	return double:create( ... )
 end

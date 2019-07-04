@@ -5,7 +5,7 @@
 local testframework = require 'Module:TestFramework'
 
 local function makeSpy( ... )
-	local spy = require 'picklelib/engine/Spy'
+	local spy = require 'picklelib/Spy'
 	assert( spy )
 	--local reports = require 'picklelib/Bag'
 	--assert( reports )

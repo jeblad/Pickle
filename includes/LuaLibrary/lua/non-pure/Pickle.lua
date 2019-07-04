@@ -13,10 +13,10 @@ local pickle = {}
 
 pickle.bag = require 'picklelib/Bag'
 pickle.counter = require 'picklelib/Counter'
-pickle.spy = require 'picklelib/engine/Spy'
-pickle.case = require 'picklelib/engine/Case'
-pickle.adapt = require 'picklelib/engine/Adapt'
-pickle.double = require 'picklelib/engine/Double'
+pickle.spy = require 'picklelib/Spy'
+pickle.case = require 'picklelib/Case'
+pickle.adapt = require 'picklelib/Adapt'
+pickle.double = require 'picklelib/Double'
 pickle.report = {}
 pickle.report.adapt = require 'picklelib/report/ReportAdapt'
 pickle.report.case = require 'picklelib/report/ReportCase'
