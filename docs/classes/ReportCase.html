@@ -58,8 +58,8 @@
   <li><a href="../classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
   <li><a href="../classes/RenderCaseVivid.html">RenderCaseVivid</a></li>
   <li><a href="../classes/Report.html">Report</a></li>
-  <li><strong>ReportAdapt</strong></li>
-  <li><a href="../classes/ReportCase.html">ReportCase</a></li>
+  <li><a href="../classes/ReportAdapt.html">ReportAdapt</a></li>
+  <li><strong>ReportCase</strong></li>
   <li><a href="../classes/Translator.html">Translator</a></li>
   <li><a href="../classes/Translators.html">Translators</a></li>
 </ul>
@@ -104,8 +104,8 @@
 
 <div id="content">
 
-<h1>Class <code>ReportAdapt</code></h1>
-<p>Subclass for adapt report.</p>
+<h1>Class <code>ReportCase</code></h1>
+<p>Subclass for reports.</p>
 <p> This class follows the pattern with inheritance from
  <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
@@ -113,42 +113,74 @@
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#ReportAdapt:__index">ReportAdapt:__index (key)</a></td>
+	<td class="name nowrap"><a href="#ReportCase:__index">ReportCase:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#ReportAdapt:create">ReportAdapt:create (...)</a></td>
+	<td class="name nowrap"><a href="#ReportCase:create">ReportCase:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#ReportAdapt:_init">ReportAdapt:_init (...)</a></td>
+	<td class="name nowrap"><a href="#ReportCase:_init">ReportCase:_init (...)</a></td>
 	<td class="summary">Initialize a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#ReportAdapt:lines">ReportAdapt:lines ()</a></td>
-	<td class="summary">Export the lines as an multivalue return.</td>
+	<td class="name nowrap"><a href="#ReportCase:setName">ReportCase:setName (name)</a></td>
+	<td class="summary">Set name of case.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#ReportAdapt:numLines">ReportAdapt:numLines ()</a></td>
-	<td class="summary">Get the number of lines.</td>
+	<td class="name nowrap"><a href="#ReportCase:hasName">ReportCase:hasName ()</a></td>
+	<td class="summary">Check if the report has name.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#ReportAdapt:isEmpty">ReportAdapt:isEmpty ()</a></td>
-	<td class="summary">Is the report empty?</td>
+	<td class="name nowrap"><a href="#ReportCase:getName">ReportCase:getName ()</a></td>
+	<td class="summary">Get the name of report.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#ReportAdapt:addLine">ReportAdapt:addLine (...)</a></td>
-	<td class="summary">Add a line.</td>
+	<td class="name nowrap"><a href="#ReportCase:constituents">ReportCase:constituents ()</a></td>
+	<td class="summary">Export the constituents as an multivalue return.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#ReportAdapt:getLine">ReportAdapt:getLine ([idx=1])</a></td>
-	<td class="summary">Get a line.</td>
+	<td class="name nowrap"><a href="#ReportCase:numConstituents">ReportCase:numConstituents ()</a></td>
+	<td class="summary">Get the number of constituents.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#ReportAdapt:realize">ReportAdapt:realize (renders, lang, counter)</a></td>
+	<td class="name nowrap"><a href="#ReportCase:addConstituent">ReportCase:addConstituent (part)</a></td>
+	<td class="summary">Add a constituent.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#ReportCase:addConstituents">ReportCase:addConstituents (...)</a></td>
+	<td class="summary">Add several constituents.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#ReportCase:isOk">ReportCase:isOk ()</a></td>
+	<td class="summary">Check if the instance state is ok.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#ReportCase:hasSkip">ReportCase:hasSkip ()</a></td>
+	<td class="summary">Check if the instance has any member in skip state.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#ReportCase:hasTodo">ReportCase:hasTodo ()</a></td>
+	<td class="summary">Check if the instance has any member in todo state.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#ReportCase:setDescription">ReportCase:setDescription ([str=''])</a></td>
+	<td class="summary">Set the description.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#ReportCase:getDescription">ReportCase:getDescription ()</a></td>
+	<td class="summary">Get the description.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#ReportCase:hasDescription">ReportCase:hasDescription ()</a></td>
+	<td class="summary">Check if the instance has any description member.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#ReportCase:realize">ReportCase:realize (renders, lang, counter)</a></td>
 	<td class="summary">Realize the data by applying a render.</td>
 	</tr>
 </table>
@@ -161,8 +193,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "ReportAdapt:__index"></a>
-    <strong>ReportAdapt:__index (key)</strong>
+    <a name = "ReportCase:__index"></a>
+    <strong>ReportCase:__index (key)</strong>
     </dt>
     <dd>
     Lookup of missing class members.
@@ -191,8 +223,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "ReportAdapt:create"></a>
-    <strong>ReportAdapt:create (...)</strong>
+    <a name = "ReportCase:create"></a>
+    <strong>ReportCase:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
@@ -222,8 +254,8 @@
 
 </dd>
     <dt>
-    <a name = "ReportAdapt:_init"></a>
-    <strong>ReportAdapt:_init (...)</strong>
+    <a name = "ReportCase:_init"></a>
+    <strong>ReportCase:_init (...)</strong>
     </dt>
     <dd>
     Initialize a new instance.
@@ -233,7 +265,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         pushed to lines
+         pushed to constituents
         </li>
     </ul>
 
@@ -249,73 +281,123 @@
 
 </dd>
     <dt>
-    <a name = "ReportAdapt:lines"></a>
-    <strong>ReportAdapt:lines ()</strong>
+    <a name = "ReportCase:setName"></a>
+    <strong>ReportCase:setName (name)</strong>
     </dt>
     <dd>
-    Export the lines as an multivalue return.
- Note that each line is not unwrapped.
+    Set name of case.
 
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">message</span></span>
+
+
+
+        </li>
+    </ul>
 
     <h3>Returns:</h3>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-        list of lines
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
 
 </dd>
     <dt>
-    <a name = "ReportAdapt:numLines"></a>
-    <strong>ReportAdapt:numLines ()</strong>
+    <a name = "ReportCase:hasName"></a>
+    <strong>ReportCase:hasName ()</strong>
     </dt>
     <dd>
-    Get the number of lines.
-
-
-
-    <h3>Returns:</h3>
-
-           <span class="types"><span class="type">number</span></span>
-        of lines
-
-
-
-
-</dd>
-    <dt>
-    <a name = "ReportAdapt:isEmpty"></a>
-    <strong>ReportAdapt:isEmpty ()</strong>
-    </dt>
-    <dd>
-    Is the report empty?
+    Check if the report has name.
 
 
 
     <h3>Returns:</h3>
 
            <span class="types"><span class="type">boolean</span></span>
-        whether the report is empty
+
+
+
 
 
 
 
 </dd>
     <dt>
-    <a name = "ReportAdapt:addLine"></a>
-    <strong>ReportAdapt:addLine (...)</strong>
+    <a name = "ReportCase:getName"></a>
+    <strong>ReportCase:getName ()</strong>
     </dt>
     <dd>
-    Add a line.
+    Get the name of report.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">message</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ReportCase:constituents"></a>
+    <strong>ReportCase:constituents ()</strong>
+    </dt>
+    <dd>
+    Export the constituents as an multivalue return.
+ Note that each constituent is not unwrapped.
+
+
+
+    <h3>Returns:</h3>
+
+        list of constituents
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ReportCase:numConstituents"></a>
+    <strong>ReportCase:numConstituents ()</strong>
+    </dt>
+    <dd>
+    Get the number of constituents.
+
+
+
+    <h3>Returns:</h3>
+
+        number of constituents
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ReportCase:addConstituent"></a>
+    <strong>ReportCase:addConstituent (part)</strong>
+    </dt>
+    <dd>
+    Add a constituent.
+ Note: there are no checking of arguments!
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">...</span>
-            <span class="types"><span class="type">vararg</span></span>
-         that can be a line
+        <li><span class="parameter">part</span>
+            <span class="types"><span class="type">any</span></span>
+         that can be a constituent
         </li>
     </ul>
 
@@ -331,27 +413,115 @@
 
 </dd>
     <dt>
-    <a name = "ReportAdapt:getLine"></a>
-    <strong>ReportAdapt:getLine ([idx=1])</strong>
+    <a name = "ReportCase:addConstituents"></a>
+    <strong>ReportCase:addConstituents (...)</strong>
     </dt>
     <dd>
-    Get a line.
- Note that all parts will be returned wrapped up in a table.
+    Add several constituents.
+ Note: there are no checking of arguments!
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">idx</span>
-            <span class="types"><span class="type">nil</span> or <span class="type">number</span></span>
-         line number
-         (<em>default</em> 1)
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         list of parts that can be constituents
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-        containing list of parts
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ReportCase:isOk"></a>
+    <strong>ReportCase:isOk ()</strong>
+    </dt>
+    <dd>
+    Check if the instance state is ok.
+ Note that initial state is "not ok".
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean</span></span>
+        state
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ReportCase:hasSkip"></a>
+    <strong>ReportCase:hasSkip ()</strong>
+    </dt>
+    <dd>
+    Check if the instance has any member in skip state.
+ This will reject all case constituents from the analysis.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean</span></span>
+        that is set if any constituent has a skip note
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ReportCase:hasTodo"></a>
+    <strong>ReportCase:hasTodo ()</strong>
+    </dt>
+    <dd>
+    Check if the instance has any member in todo state.
+ This will reject all case constituents from the analysis.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean</span></span>
+        that is set if any constituent has a skip note
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ReportCase:setDescription"></a>
+    <strong>ReportCase:setDescription ([str=''])</strong>
+    </dt>
+    <dd>
+    Set the description.
+ This is an accessor to set the member.
+ Note that all arguments will be wrapped up in a table before saving.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         that will be used as the description
+         (<em>default</em> '')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
     <h3>Raises:</h3>
     on wrong arguments
@@ -360,8 +530,46 @@
 
 </dd>
     <dt>
-    <a name = "ReportAdapt:realize"></a>
-    <strong>ReportAdapt:realize (renders, lang, counter)</strong>
+    <a name = "ReportCase:getDescription"></a>
+    <strong>ReportCase:getDescription ()</strong>
+    </dt>
+    <dd>
+    Get the description.
+ This is an accessor to get the member.
+ Note that the saved structure will be unpacked before being returned.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        used as the description
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ReportCase:hasDescription"></a>
+    <strong>ReportCase:hasDescription ()</strong>
+    </dt>
+    <dd>
+    Check if the instance has any description member.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean</span></span>
+        that is set if a description exist
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ReportCase:realize"></a>
+    <strong>ReportCase:realize (renders, lang, counter)</strong>
     </dt>
     <dd>
     Realize the data by applying a render.

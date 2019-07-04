@@ -49,13 +49,13 @@
   <li><a href="../classes/Extractors.html">Extractors</a></li>
   <li><a href="../classes/Render.html">Render</a></li>
   <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
-  <li><a href="../classes/RenderCase.html">RenderCase</a></li>
+  <li><strong>RenderCase</strong></li>
   <li><a href="../classes/Renders.html">Renders</a></li>
   <li><a href="../classes/RenderAdaptCompact.html">RenderAdaptCompact</a></li>
   <li><a href="../classes/RenderCaseCompact.html">RenderCaseCompact</a></li>
   <li><a href="../classes/RenderAdaptFull.html">RenderAdaptFull</a></li>
   <li><a href="../classes/RenderCaseFull.html">RenderCaseFull</a></li>
-  <li><strong>RenderAdaptVivid</strong></li>
+  <li><a href="../classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
   <li><a href="../classes/RenderCaseVivid.html">RenderCaseVivid</a></li>
   <li><a href="../classes/Report.html">Report</a></li>
   <li><a href="../classes/ReportAdapt.html">ReportAdapt</a></li>
@@ -104,8 +104,8 @@
 
 <div id="content">
 
-<h1>Class <code>RenderAdaptVivid</code></h1>
-<p>Final class for vivid report renderer.</p>
+<h1>Class <code>RenderCase</code></h1>
+<p>Intermediate class for case report renderer.</p>
 <p> This class follows the pattern with inheritance from
  <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
 
@@ -113,35 +113,51 @@
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdaptVivid:__index">RenderAdaptVivid:__index (key)</a></td>
+	<td class="name nowrap"><a href="#RenderCase:__index">RenderCase:__index (key)</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdaptVivid:create">RenderAdaptVivid:create (...)</a></td>
+	<td class="name nowrap"><a href="#RenderCase:create">RenderCase:create (...)</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdaptVivid:_init">RenderAdaptVivid:_init (...)</a></td>
+	<td class="name nowrap"><a href="#RenderCase:_init">RenderCase:_init (...)</a></td>
 	<td class="summary">Initialize a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdaptVivid:realizeState">RenderAdaptVivid:realizeState (src, lang, counter)</a></td>
-	<td class="summary">Override realization of reported data for state.</td>
+	<td class="name nowrap"><a href="#RenderCase:key">RenderCase:key (str)</a></td>
+	<td class="summary">Override key construction.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdaptVivid:realizeHeader">RenderAdaptVivid:realizeHeader (src, lang, counter)</a></td>
-	<td class="summary">Override realization of reported data for header.</td>
+	<td class="name nowrap"><a href="#RenderCase:realizeState">RenderCase:realizeState (src, lang, counter)</a></td>
+	<td class="summary">Realize reported data for state.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdaptVivid:realizeLine">RenderAdaptVivid:realizeLine (param, lang)</a></td>
-	<td class="summary">Override realization of reported data for line.</td>
+	<td class="name nowrap"><a href="#RenderCase:realizeSkip">RenderCase:realizeSkip (src, lang)</a></td>
+	<td class="summary">Realize reported data for skip.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#RenderAdaptVivid:realizeBody">RenderAdaptVivid:realizeBody (src, lang)</a></td>
-	<td class="summary">Override realization of reported data for body.</td>
+	<td class="name nowrap"><a href="#RenderCase:realizeTodo">RenderCase:realizeTodo (src, lang)</a></td>
+	<td class="summary">Realize reported data for todo.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#RenderCase:realizeDescription">RenderCase:realizeDescription (src, lang)</a></td>
+	<td class="summary">Realize reported data for description.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#RenderCase:realizeName">RenderCase:realizeName (src, lang)</a></td>
+	<td class="summary">Realize reported data for name.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#RenderCase:realizeHeader">RenderCase:realizeHeader (src, lang, counter)</a></td>
+	<td class="summary">Realize reported data for header.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#RenderCase:realizeBody">RenderCase:realizeBody (src, lang)</a></td>
+	<td class="summary">Realize reported data for body.</td>
 	</tr>
 </table>
 
@@ -153,8 +169,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "RenderAdaptVivid:__index"></a>
-    <strong>RenderAdaptVivid:__index (key)</strong>
+    <a name = "RenderCase:__index"></a>
+    <strong>RenderCase:__index (key)</strong>
     </dt>
     <dd>
     Lookup of missing class members.
@@ -183,8 +199,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "RenderAdaptVivid:create"></a>
-    <strong>RenderAdaptVivid:create (...)</strong>
+    <a name = "RenderCase:create"></a>
+    <strong>RenderCase:create (...)</strong>
     </dt>
     <dd>
     Create a new instance.
@@ -194,7 +210,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/RenderAdapt.html#RenderAdapt:create">superclass create method</a>
+         forwarded to <a href="../classes/Render.html#Render:create">superclass create method</a>
         </li>
     </ul>
 
@@ -208,14 +224,14 @@
 
     <h3>See also:</h3>
     <ul>
-         <a href="../classes/RenderAdapt.html#RenderAdapt:create">RenderAdapt:create</a>
+         <a href="../classes/Render.html#Render:create">Render:create</a>
     </ul>
 
 
 </dd>
     <dt>
-    <a name = "RenderAdaptVivid:_init"></a>
-    <strong>RenderAdaptVivid:_init (...)</strong>
+    <a name = "RenderCase:_init"></a>
+    <strong>RenderCase:_init (...)</strong>
     </dt>
     <dd>
     Initialize a new instance.
@@ -225,7 +241,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         forwarded to <a href="../classes/RenderAdapt.html#RenderAdapt:_init">superclass init method</a>
+         forwarded to <a href="../classes/Render.html#Render:_init">superclass init method</a>
         </li>
     </ul>
 
@@ -238,11 +254,38 @@
 
 </dd>
     <dt>
-    <a name = "RenderAdaptVivid:realizeState"></a>
-    <strong>RenderAdaptVivid:realizeState (src, lang, counter)</strong>
+    <a name = "RenderCase:key"></a>
+    <strong>RenderCase:key (str)</strong>
     </dt>
     <dd>
-    Override realization of reported data for state.
+    Override key construction.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to be appended to a base string
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "RenderCase:realizeState"></a>
+    <strong>RenderCase:realizeState (src, lang, counter)</strong>
+    </dt>
+    <dd>
+    Realize reported data for state.
 
 
     <h3>Parameters:</h3>
@@ -263,7 +306,39 @@
 
     <h3>Returns:</h3>
 
-           <span class="types"><span class="type">html</span></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "RenderCase:realizeSkip"></a>
+    <strong>RenderCase:realizeSkip (src, lang)</strong>
+    </dt>
+    <dd>
+    Realize reported data for skip.
+ The "skip" is a message identified by a key.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">src</span>
+            <span class="types"><a class="type" href="../classes/Report.html#">Report</a></span>
+         that shall be realized
+        </li>
+        <li><span class="parameter">lang</span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         code used for realization
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -275,11 +350,114 @@
 
 </dd>
     <dt>
-    <a name = "RenderAdaptVivid:realizeHeader"></a>
-    <strong>RenderAdaptVivid:realizeHeader (src, lang, counter)</strong>
+    <a name = "RenderCase:realizeTodo"></a>
+    <strong>RenderCase:realizeTodo (src, lang)</strong>
     </dt>
     <dd>
-    Override realization of reported data for header.
+    Realize reported data for todo.
+ The "todo" is a text string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">src</span>
+            <span class="types"><a class="type" href="../classes/Report.html#">Report</a></span>
+         that shall be realized
+        </li>
+        <li><span class="parameter">lang</span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         code used for realization
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "RenderCase:realizeDescription"></a>
+    <strong>RenderCase:realizeDescription (src, lang)</strong>
+    </dt>
+    <dd>
+    Realize reported data for description.
+ The "description" is a text string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">src</span>
+            <span class="types"><a class="type" href="../classes/Report.html#">Report</a></span>
+         that shall be realized
+        </li>
+        <li><span class="parameter">lang</span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         code used for realization (unused)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "RenderCase:realizeName"></a>
+    <strong>RenderCase:realizeName (src, lang)</strong>
+    </dt>
+    <dd>
+    Realize reported data for name.
+ The "name" is a text string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">src</span>
+            <span class="types"><a class="type" href="../classes/Report.html#">Report</a></span>
+         that shall be realized
+        </li>
+        <li><span class="parameter">lang</span>
+            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         code used for realization (unused)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "RenderCase:realizeHeader"></a>
+    <strong>RenderCase:realizeHeader (src, lang, counter)</strong>
+    </dt>
+    <dd>
+    Realize reported data for header.
+ The "header" is a composite.
 
 
     <h3>Parameters:</h3>
@@ -300,7 +478,7 @@
 
     <h3>Returns:</h3>
 
-           <span class="types"><span class="type">html</span></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -312,41 +490,11 @@
 
 </dd>
     <dt>
-    <a name = "RenderAdaptVivid:realizeLine"></a>
-    <strong>RenderAdaptVivid:realizeLine (param, lang)</strong>
+    <a name = "RenderCase:realizeBody"></a>
+    <strong>RenderCase:realizeBody (src, lang)</strong>
     </dt>
     <dd>
-    Override realization of reported data for line.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">param</span>
-            <span class="types"><span class="type">any</span></span>
-         that shall be realized
-        </li>
-        <li><span class="parameter">lang</span>
-            <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         code used for realization
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-
-        html
-
-    <h3>Raises:</h3>
-    on wrong arguments
-
-
-
-</dd>
-    <dt>
-    <a name = "RenderAdaptVivid:realizeBody"></a>
-    <strong>RenderAdaptVivid:realizeBody (src, lang)</strong>
-    </dt>
-    <dd>
-    Override realization of reported data for body.
+    Realize reported data for body.
  The "body" is a composite.
 
 
@@ -358,13 +506,13 @@
         </li>
         <li><span class="parameter">lang</span>
             <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         code used for realization
+         code used for realization (unused)
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-           <span class="types"><span class="type">html</span></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
