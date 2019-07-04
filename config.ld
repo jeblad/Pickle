@@ -38,6 +38,7 @@ readme = {
 	'topics/spies.md',
 	'topics/statistics.md',
 	'topics/test-anything-protocol.md',
+	'topics/test-case.md',
 	'topics/test-doubles.md',
 	'topics/testing.md',
 	'topics/tracking-categories.md',
