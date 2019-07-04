@@ -70,29 +70,29 @@
 </ul>
 <h2>Classes</h2>
 <ul class="nowrap">
-  <li><a href="../classes/Bag.html">Bag</a></li>
-  <li><a href="../classes/Counter.html">Counter</a></li>
   <li><a href="../classes/Adapt.html">Adapt</a></li>
+  <li><a href="../classes/Bag.html">Bag</a></li>
   <li><a href="../classes/Case.html">Case</a></li>
+  <li><a href="../classes/Counter.html">Counter</a></li>
   <li><a href="../classes/Double.html">Double</a></li>
-  <li><a href="../classes/Spy.html">Spy</a></li>
   <li><a href="../classes/Extractor.html">Extractor</a></li>
   <li><a href="../classes/Extractors.html">Extractors</a></li>
+  <li><a href="../classes/Spy.html">Spy</a></li>
+  <li><a href="../classes/Translator.html">Translator</a></li>
+  <li><a href="../classes/Translators.html">Translators</a></li>
   <li><a href="../classes/Render.html">Render</a></li>
   <li><a href="../classes/RenderAdapt.html">RenderAdapt</a></li>
-  <li><a href="../classes/RenderCase.html">RenderCase</a></li>
-  <li><a href="../classes/Renders.html">Renders</a></li>
   <li><a href="../classes/RenderAdaptCompact.html">RenderAdaptCompact</a></li>
-  <li><a href="../classes/RenderCaseCompact.html">RenderCaseCompact</a></li>
   <li><a href="../classes/RenderAdaptFull.html">RenderAdaptFull</a></li>
-  <li><a href="../classes/RenderCaseFull.html">RenderCaseFull</a></li>
   <li><a href="../classes/RenderAdaptVivid.html">RenderAdaptVivid</a></li>
+  <li><a href="../classes/RenderCase.html">RenderCase</a></li>
+  <li><a href="../classes/RenderCaseCompact.html">RenderCaseCompact</a></li>
+  <li><a href="../classes/RenderCaseFull.html">RenderCaseFull</a></li>
   <li><a href="../classes/RenderCaseVivid.html">RenderCaseVivid</a></li>
+  <li><a href="../classes/Renders.html">Renders</a></li>
   <li><a href="../classes/Report.html">Report</a></li>
   <li><a href="../classes/ReportAdapt.html">ReportAdapt</a></li>
   <li><a href="../classes/ReportCase.html">ReportCase</a></li>
-  <li><a href="../classes/Translator.html">Translator</a></li>
-  <li><a href="../classes/Translators.html">Translators</a></li>
 </ul>
 <h2>Examples</h2>
 <ul class="nowrap">
@@ -173,11 +173,11 @@
 
 <h3>Pickle</h3>
 
-<p>The access point for the library is <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/non-pure/Pickle.lua">Pickle.lua</a>. This bootstraps the full harness through the call <code>describe</code>. After the call the <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine">engine</a> is available, and other parts will be included as necessary. In particular <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine/Adapt.lua">Adapt.lua</a>, <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine/Frame.lua">Frame.lua</a>, and <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine/Spy.lua">Spy.lua</a> will be bootstrapped. Before the initial process is done, no reports will be available.</p>
+<p>The access point for the library is <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/non-pure/Pickle.lua">Pickle.lua</a>. This bootstraps the full harness through the call <code>describe</code>. After the call the <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine">engine</a> is available, and other parts will be included as necessary. In particular <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/Adapt.lua">Adapt.lua</a>, <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/Frame.lua">Frame.lua</a>, and <a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/Spy.lua">Spy.lua</a> will be bootstrapped. Before the initial process is done, no reports will be available.</p>
 
 <h3>Frame</h3>
 
-<p>The functions <code>describe()</code>, <code>context()</code>, and <code>it()</code> are test harness at various levels (<a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine/Frame.lua">Frame.lua</a>), that is functions with closures holding references to frames. The functions can take a table as a subject, strings that contains data for examples, and a function acting as the test fixture.</p>
+<p>The functions <code>describe()</code>, <code>context()</code>, and <code>it()</code> are test harness at various levels (<a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/Frame.lua">Frame.lua</a>), that is functions with closures holding references to frames. The functions can take a table as a subject, strings that contains data for examples, and a function acting as the test fixture.</p>
 
 <p>An alternate interpretation is that the function (the fixture) is a representation of the world, and within this world a table (the subject) should be a valid instance when it is instantiated with the example data. For now, we assume we are using <a href="https://en.wikipedia.org/wiki/universal_quantifier">universal quantifier</a> (∀x) as a paradigm, all tests in a set of test cases must hold, so any interpretation that fails will trigger a return from the world. That is, we assume the test to be an approximation to a <a href="https://en.wikipedia.org/wiki/Tautology_(logic">tautology</a>.</p>
 
@@ -193,7 +193,7 @@
 
 <h3>Adapt</h3>
 
-<p>The functions <code>subject</code> and <code>expect</code> are assertions that tests conditions in different directions (<a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine/Adapt.lua">Adapt.lua</a>), that is functions with closures holding references to adaptations. Each of them adjust the implicit or explicit argument, and then compare it to the other party. They are similar, but <code>describe</code> assume a table to be a subject, and thus push it on a stack of subjects. This makes <code>subject</code> the access point for the test <em>subject</em>, and <code>expect</code> the access point for the test <em>expectation</em>.</p>
+<p>The functions <code>subject</code> and <code>expect</code> are assertions that tests conditions in different directions (<a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/Adapt.lua">Adapt.lua</a>), that is functions with closures holding references to adaptations. Each of them adjust the implicit or explicit argument, and then compare it to the other party. They are similar, but <code>describe</code> assume a table to be a subject, and thus push it on a stack of subjects. This makes <code>subject</code> the access point for the test <em>subject</em>, and <code>expect</code> the access point for the test <em>expectation</em>.</p>
 
 <p>An alternate interpretation is that this forms conditions that should be valid and true for the instance within the world. If it is not valid and true, then we have found a contradicting example and the instance can not be part of the given world.</p>
 
@@ -201,7 +201,7 @@
 
 <h3>Spy</h3>
 
-<p>Usually code will be tested with as little additional code as possible, but sometimes it is necessary to check what is going on inside the code. For this we can use spies like <code>carp</code>, <code>cluck</code>, <code>croak</code>, and <code>confess</code>. A spy will do something unconditionally, and it is also a function closure that carry reference to the replaced function (<a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/engine/Spy.lua">Spy.lua</a>).</p>
+<p>Usually code will be tested with as little additional code as possible, but sometimes it is necessary to check what is going on inside the code. For this we can use spies like <code>carp</code>, <code>cluck</code>, <code>croak</code>, and <code>confess</code>. A spy will do something unconditionally, and it is also a function closure that carry reference to the replaced function (<a href="https://github.com/jeblad/Pickle/blob/master/includes/LuaLibrary/lua/pure/picklelib/Spy.lua">Spy.lua</a>).</p>
 
 <p><em>NOTE</em>: Spies should not be called in the tested code, only as part of the test fixture.</p>
 
