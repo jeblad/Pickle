@@ -410,7 +410,7 @@ local function setup( env, opts )
 	end
 
 	--- Compose silent case instances.
-	-- @tname string name
+	-- @tparam string name
 	-- @treturn function
 	local function composeXFrame( name )
 		return function( ... )
@@ -466,7 +466,7 @@ local function setup( env, opts )
 	env.xit = composeXFrame( 'xit' )
 
 	--- Compose case instances.
-	-- @tname string name
+	-- @tparam string name
 	-- @treturn function
 	local function composeFrame( name )
 		return function( ... )
