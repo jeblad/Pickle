@@ -3,7 +3,7 @@
 -- @license GPL-2.0-or-later
 -- @author John Erling Blad < jeblad@gmail.com >
 
-local testframework = require 'Module:TestCasework'
+local testframework = require 'Module:TestFramework'
 
 --if not _G.describe then
 --	return testframework.getTestProvider( {} )
@@ -229,7 +229,7 @@ local tests = {
 	-- PickleTest[23]
 	{
 		name = 'function xcontext',
-		func = testCase
+		func = testCase,
 		args = { 'xcontext' },
 		expect = { true, true, true, false } -- todo, no fixture
 	},
