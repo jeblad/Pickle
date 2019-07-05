@@ -10,7 +10,8 @@
 			"DevilishSkull",
 			"Patrick Star",
 			"Shaleych",
-			"Nk88"
+			"Nk88",
+			"Abijeet Patro"
 		]
 	},
 	"pickle-function-text-good": "$1 прошло",
@@ -42,11 +43,11 @@
 	"pickle-console-run": "Запустить",
 	"pickle-console-clear": "Очистить",
 	"pickle-report-skip-no-message": "Ключ сообщения $1 не существует",
-	"pickle-frame-full-header": "# $1",
-	"pickle-frame-vivid-header": "$1",
-	"pickle-frame-no-description": "аноним",
-	"pickle-report-frame-is-ok-keyword": "ок",
-	"pickle-report-frame-is-not-ok-keyword": "не в порядке",
+	"pickle-case-full-header": "# $1",
+	"pickle-case-vivid-header": "$1",
+	"pickle-case-no-description": "аноним",
+	"pickle-report-case-is-ok-keyword": "ок",
+	"pickle-report-case-is-not-ok-keyword": "не в порядке",
 	"pickle-report-adapt-is-ok-keyword": "ок",
 	"pickle-report-adapt-is-not-ok-keyword": "Не в порядке",
 	"pickle-adapt-process-first": "Выбрать первый элемент",

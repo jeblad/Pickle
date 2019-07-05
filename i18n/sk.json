@@ -3,7 +3,8 @@
 		"authors": [
 			"Lexected",
 			"Jeblad",
-			"TomášPolonec"
+			"TomášPolonec",
+			"Abijeet Patro"
 		]
 	},
 	"pickle-desc": "Pridá základné testovanie rozšírenia Pickle do modulov jazyka Lua",
@@ -48,10 +49,10 @@
 	"pickle-console-run": "Spustiť",
 	"pickle-console-clear": "Vymazať",
 	"pickle-report-skip-no-message": "Správový kľúč \"$1$ neexistuje",
-	"pickle-frame-compact-header-all-good": "ok &mdash; $1",
-	"pickle-frame-compact-header-some-failed": "nie je ok &mdash; $1",
-	"pickle-report-frame-is-ok-keyword": "je ok",
-	"pickle-report-frame-is-not-ok-keyword": "nie je ok",
+	"pickle-case-compact-header-all-good": "ok &mdash; $1",
+	"pickle-case-compact-header-some-failed": "nie je ok &mdash; $1",
+	"pickle-report-case-is-ok-keyword": "je ok",
+	"pickle-report-case-is-not-ok-keyword": "nie je ok",
 	"pickle-report-adapt-is-ok-keyword": "je ok",
 	"pickle-report-adapt-is-not-ok-keyword": "nie je ok",
 	"pickle-adapt-process-first": "Vybrať prvý prvok",

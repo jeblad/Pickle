@@ -3,7 +3,8 @@
 		"authors": [
 			"Robby",
 			"Jeblad",
-			"Nemo bis"
+			"Nemo bis",
+			"Abijeet Patro"
 		]
 	},
 	"pickle-function-text-good": "Bei $1 ass alles an der Rei",
@@ -24,14 +25,14 @@
 	"pickle-console-run": "Lass",
 	"pickle-console-clear": "Eidel maachen",
 	"pickle-report-skip-no-message": "Den Noriichteschlëssel \"$1\" gëtt et net",
-	"pickle-frame-compact-header-all-good": "ok &mdash; $1",
-	"pickle-frame-compact-header-some-failed": "net ok &mdash; $1",
-	"pickle-frame-no-description": "anonym",
-	"pickle-frame-no-tests": "Keng Tester registréiert",
-	"pickle-report-frame-is-ok-keyword": "ok",
-	"pickle-report-frame-is-not-ok-keyword": "net ok",
-	"pickle-report-frame-is-skip-keyword": "iwwersprangen",
-	"pickle-report-frame-is-todo-keyword": "-",
+	"pickle-case-compact-header-all-good": "ok &mdash; $1",
+	"pickle-case-compact-header-some-failed": "net ok &mdash; $1",
+	"pickle-case-no-description": "anonym",
+	"pickle-case-no-tests": "Keng Tester registréiert",
+	"pickle-report-case-is-ok-keyword": "ok",
+	"pickle-report-case-is-not-ok-keyword": "net ok",
+	"pickle-report-case-is-skip-keyword": "iwwersprangen",
+	"pickle-report-case-is-todo-keyword": "-",
 	"pickle-report-adapt-is-ok-keyword": "ok",
 	"pickle-report-adapt-is-not-ok-keyword": "net ok",
 	"pickle-report-adapt-is-skip-keyword": "-",

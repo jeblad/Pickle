@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jeblad"
+			"Jeblad",
+			"Abijeet Patro"
 		]
 	},
 	"pickle-desc": "Legg til grunnleggjande Pickle testing for Lua modular.",
@@ -56,17 +57,17 @@
 	"pickle-console-run": "Køyr",
 	"pickle-console-clear": "Tøm",
 	"pickle-report-skip-no-message": "Meldingsnøkkelen \"$1\" finst ikkje",
-	"pickle-frame-compact-header-all-good": "ok (alle gode) &mdash; $1",
-	"pickle-frame-compact-header-some-failed": "not ok (noko feila) &mdash; $1",
-	"pickle-frame-full-header": "# $1",
-	"pickle-frame-vivid-header": "$1",
-	"pickle-frame-no-description": "anonym",
-	"pickle-frame-no-fixtures": "Ingen installasjonar registrert",
-	"pickle-frame-no-tests": "Ingen testar registrert",
-	"pickle-report-frame-is-ok-keyword": "god",
-	"pickle-report-frame-is-not-ok-keyword": "feilar",
-	"pickle-report-frame-is-skip-keyword": "utelate",
-	"pickle-report-frame-is-todo-keyword": "uferdig",
+	"pickle-case-compact-header-all-good": "ok (alle gode) &mdash; $1",
+	"pickle-case-compact-header-some-failed": "not ok (noko feila) &mdash; $1",
+	"pickle-case-full-header": "# $1",
+	"pickle-case-vivid-header": "$1",
+	"pickle-case-no-description": "anonym",
+	"pickle-case-no-fixtures": "Ingen installasjonar registrert",
+	"pickle-case-no-tests": "Ingen testar registrert",
+	"pickle-report-case-is-ok-keyword": "god",
+	"pickle-report-case-is-not-ok-keyword": "feilar",
+	"pickle-report-case-is-skip-keyword": "utelate",
+	"pickle-report-case-is-todo-keyword": "uferdig",
 	"pickle-report-adapt-is-ok-keyword": "god",
 	"pickle-report-adapt-is-not-ok-keyword": "feilar",
 	"pickle-report-adapt-is-skip-keyword": "utelate",
@@ -121,5 +122,7 @@
 	"pickle-spies-confess-skip": "Funksjonen «tilstå» blei kalla",
 	"pickle-spies-croak-skip": "Funksjonen «kvakk» blei kalla",
 	"pickle-spies-confess-exits": "Funksjonen «tilstå» avbryt",
-	"pickle-spies-croak-exits": "Funksjonen «kvakk» avbryt"
+	"pickle-spies-croak-exits": "Funksjonen «kvakk» avbryt",
+	"pickle-stub-no-fallback": "$1: ingen tilbakefallsfunksjon",
+	"pickle-stub-no-more-frames": "$1: ingen fleire førebudde verdiar"
 }

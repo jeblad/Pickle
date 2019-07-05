@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Metalhead64",
-			"Jeblad"
+			"Jeblad",
+			"Abijeet Patro"
 		]
 	},
 	"pickle-desc": "Ergänzt Basis-Pickle-Tests für Lua-Module",
@@ -57,17 +58,17 @@
 	"pickle-console-run": "Ausführen",
 	"pickle-console-clear": "Löschen",
 	"pickle-report-skip-no-message": "Der Nachrichtenschlüssel „$1“ ist nicht vorhanden",
-	"pickle-frame-compact-header-all-good": "ok &mdash; $1",
-	"pickle-frame-compact-header-some-failed": "nicht ok &mdash; $1",
-	"pickle-frame-full-header": "# $1",
-	"pickle-frame-vivid-header": "$1",
-	"pickle-frame-no-description": "anonym",
-	"pickle-frame-no-fixtures": "Keine Befestigungen registriert",
-	"pickle-frame-no-tests": "Keine Tests registriert",
-	"pickle-report-frame-is-ok-keyword": "ok",
-	"pickle-report-frame-is-not-ok-keyword": "nicht ok",
-	"pickle-report-frame-is-skip-keyword": "überspringen",
-	"pickle-report-frame-is-todo-keyword": "zu tun",
+	"pickle-case-compact-header-all-good": "ok &mdash; $1",
+	"pickle-case-compact-header-some-failed": "nicht ok &mdash; $1",
+	"pickle-case-full-header": "# $1",
+	"pickle-case-vivid-header": "$1",
+	"pickle-case-no-description": "anonym",
+	"pickle-case-no-fixtures": "Keine Befestigungen registriert",
+	"pickle-case-no-tests": "Keine Tests registriert",
+	"pickle-report-case-is-ok-keyword": "ok",
+	"pickle-report-case-is-not-ok-keyword": "nicht ok",
+	"pickle-report-case-is-skip-keyword": "überspringen",
+	"pickle-report-case-is-todo-keyword": "zu tun",
 	"pickle-report-adapt-is-ok-keyword": "ok",
 	"pickle-report-adapt-is-not-ok-keyword": "nicht ok",
 	"pickle-report-adapt-is-skip-keyword": "überspringen",

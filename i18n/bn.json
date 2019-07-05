@@ -3,7 +3,8 @@
 		"authors": [
 			"Aftabuzzaman",
 			"Jeblad",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"Abijeet Patro"
 		]
 	},
 	"pickle-desc": "লুয়া মডিউলে মৌলিক পিকল পরীক্ষণ যোগ করে",
@@ -34,12 +35,12 @@
 	"pickle-console-run": "চালান",
 	"pickle-console-clear": "পরিষ্কার",
 	"pickle-report-skip-no-message": "বার্তা চাবি  \"$1\"-এর অস্তিত্ব নেই",
-	"pickle-frame-compact-header-all-good": "ঠিক আছে &mdash; $1",
-	"pickle-frame-compact-header-some-failed": "ঠিক নেই &mdash; $1",
-	"pickle-report-frame-is-ok-keyword": "ঠিক আছে",
-	"pickle-report-frame-is-not-ok-keyword": "ঠিক নেই",
-	"pickle-report-frame-is-skip-keyword": "এড়ান",
-	"pickle-report-frame-is-todo-keyword": "করণীয়",
+	"pickle-case-compact-header-all-good": "ঠিক আছে &mdash; $1",
+	"pickle-case-compact-header-some-failed": "ঠিক নেই &mdash; $1",
+	"pickle-report-case-is-ok-keyword": "ঠিক আছে",
+	"pickle-report-case-is-not-ok-keyword": "ঠিক নেই",
+	"pickle-report-case-is-skip-keyword": "এড়ান",
+	"pickle-report-case-is-todo-keyword": "করণীয়",
 	"pickle-report-adapt-is-ok-keyword": "ঠিক আছে",
 	"pickle-report-adapt-is-not-ok-keyword": "ঠিক নেই",
 	"pickle-adapt-process-first": "প্রথম উপাদান চয়ন করুন",

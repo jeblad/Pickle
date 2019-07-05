@@ -3,7 +3,8 @@
 		"authors": [
 			"Ykhwong",
 			"Nemo bis",
-			"CYAN"
+			"CYAN",
+			"Abijeet Patro"
 		]
 	},
 	"pickle-desc": "기본 피클 테스트를 루아 모듈에 추가합니다",
@@ -42,11 +43,11 @@
 	"pickle-console-run": "실행",
 	"pickle-console-clear": "지우기",
 	"pickle-report-skip-no-message": "\"$1\" 메시지 키가 존재하지 않습니다",
-	"pickle-frame-full-header": "# $1",
-	"pickle-frame-vivid-header": "$1",
-	"pickle-frame-no-description": "익명",
-	"pickle-frame-no-tests": "등록된 테스트가 없습니다",
-	"pickle-report-frame-is-todo-keyword": "-",
+	"pickle-case-full-header": "# $1",
+	"pickle-case-vivid-header": "$1",
+	"pickle-case-no-description": "익명",
+	"pickle-case-no-tests": "등록된 테스트가 없습니다",
+	"pickle-report-case-is-todo-keyword": "-",
 	"pickle-report-adapt-is-skip-keyword": "-",
 	"pickle-report-adapt-is-todo-keyword": "-",
 	"pickle-adapt-process-first": "1번째 요소 가져오기",

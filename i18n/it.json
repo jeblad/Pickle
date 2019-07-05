@@ -5,7 +5,8 @@
 			"Beta16",
 			"Statix64",
 			"Jeblad",
-			"Greis"
+			"Greis",
+			"Abijeet Patro"
 		]
 	},
 	"pickle-function-text-invalid": "$1 non è valido",
@@ -16,12 +17,12 @@
 	"pickle-console-empty": "Non sono disponibili report.",
 	"pickle-console-run": "Esegui",
 	"pickle-console-clear": "Pulisci",
-	"pickle-frame-compact-header-all-good": "ok &mdash; $1",
-	"pickle-frame-no-description": "anonimo",
-	"pickle-report-frame-is-ok-keyword": "ok",
-	"pickle-report-frame-is-not-ok-keyword": "non corretto",
-	"pickle-report-frame-is-skip-keyword": "salta",
-	"pickle-report-frame-is-todo-keyword": "da fare",
+	"pickle-case-compact-header-all-good": "ok &mdash; $1",
+	"pickle-case-no-description": "anonimo",
+	"pickle-report-case-is-ok-keyword": "ok",
+	"pickle-report-case-is-not-ok-keyword": "non corretto",
+	"pickle-report-case-is-skip-keyword": "salta",
+	"pickle-report-case-is-todo-keyword": "da fare",
 	"pickle-report-adapt-is-ok-keyword": "ok",
 	"pickle-report-adapt-is-not-ok-keyword": "non corretto",
 	"pickle-report-adapt-is-skip-keyword": "salta",

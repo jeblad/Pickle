@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Piramidion",
-			"Jeblad"
+			"Jeblad",
+			"Abijeet Patro"
 		]
 	},
 	"pickle-desc": "Додає базове Pickle-тестування до модулів Lua",
@@ -57,15 +58,15 @@
 	"pickle-console-run": "Запустити",
 	"pickle-console-clear": "Очистити",
 	"pickle-report-skip-no-message": "Ключ повідомлення «$1» не існує",
-	"pickle-frame-compact-header-all-good": "гаразд &mdash; $1",
-	"pickle-frame-compact-header-some-failed": "не гаразд &mdash; $1",
-	"pickle-frame-full-header": "# $1",
-	"pickle-frame-vivid-header": "$1",
-	"pickle-frame-no-description": "анонім",
-	"pickle-frame-no-fixtures": "Не зареєстровано жодних прикріплень",
-	"pickle-frame-no-tests": "Не зареєстровано жодних тестів",
-	"pickle-report-frame-is-ok-keyword": "гаразд",
-	"pickle-report-frame-is-not-ok-keyword": "не гаразд",
+	"pickle-case-compact-header-all-good": "гаразд &mdash; $1",
+	"pickle-case-compact-header-some-failed": "не гаразд &mdash; $1",
+	"pickle-case-full-header": "# $1",
+	"pickle-case-vivid-header": "$1",
+	"pickle-case-no-description": "анонім",
+	"pickle-case-no-fixtures": "Не зареєстровано жодних прикріплень",
+	"pickle-case-no-tests": "Не зареєстровано жодних тестів",
+	"pickle-report-case-is-ok-keyword": "гаразд",
+	"pickle-report-case-is-not-ok-keyword": "не гаразд",
 	"pickle-report-adapt-is-ok-keyword": "гаразд",
 	"pickle-report-adapt-is-not-ok-keyword": "не гаразд",
 	"pickle-adapt-process-first": "Вибрати перший елемент",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Belkacem77"
+			"Belkacem77",
+			"Abijeet Patro"
 		]
 	},
 	"pickle-function-text-good": "$1 yedda",
@@ -24,11 +25,11 @@
 	"pickle-test-text-todo-fail": "Yeɣli maca ad yettwag",
 	"pickle-console-run": "Selkem",
 	"pickle-console-clear": "Sfeḍ",
-	"pickle-frame-compact-header-all-good": "ih &mdash; $1",
-	"pickle-frame-compact-header-some-failed": "uhu ih &mdash; $1",
-	"pickle-frame-full-header": "# $1",
-	"pickle-frame-vivid-header": "$1",
-	"pickle-frame-no-description": "udrig",
+	"pickle-case-compact-header-all-good": "ih &mdash; $1",
+	"pickle-case-compact-header-some-failed": "uhu ih &mdash; $1",
+	"pickle-case-full-header": "# $1",
+	"pickle-case-vivid-header": "$1",
+	"pickle-case-no-description": "udrig",
 	"pickle-adapt-process-first": "Fren aferdis amezwaru",
 	"pickle-adapt-process-second": "Fren aferdis wis sin",
 	"pickle-adapt-process-third": "Fren aferdis wis kraḍ",

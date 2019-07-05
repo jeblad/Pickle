@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Hamilton Abreu",
-			"Jeblad"
+			"Jeblad",
+			"Abijeet Patro"
 		]
 	},
 	"pickle-desc": "Adiciona aos módulos Lua os testes básicos Pickle",
@@ -57,17 +58,17 @@
 	"pickle-console-run": "Executar",
 	"pickle-console-clear": "Limpar",
 	"pickle-report-skip-no-message": "A chave de mensagem \"$1\" não existe",
-	"pickle-frame-compact-header-all-good": "passado &mdash; $1",
-	"pickle-frame-compact-header-some-failed": "falhado &mdash; $1",
-	"pickle-frame-full-header": "# $1",
-	"pickle-frame-vivid-header": "$1",
-	"pickle-frame-no-description": "anónimo",
-	"pickle-frame-no-fixtures": "Não há funções de teste registadas",
-	"pickle-frame-no-tests": "Não há testes registados",
-	"pickle-report-frame-is-ok-keyword": "correto",
-	"pickle-report-frame-is-not-ok-keyword": "incorreto",
-	"pickle-report-frame-is-skip-keyword": "saltar",
-	"pickle-report-frame-is-todo-keyword": "pendente",
+	"pickle-case-compact-header-all-good": "passado &mdash; $1",
+	"pickle-case-compact-header-some-failed": "falhado &mdash; $1",
+	"pickle-case-full-header": "# $1",
+	"pickle-case-vivid-header": "$1",
+	"pickle-case-no-description": "anónimo",
+	"pickle-case-no-fixtures": "Não há funções de teste registadas",
+	"pickle-case-no-tests": "Não há testes registados",
+	"pickle-report-case-is-ok-keyword": "correto",
+	"pickle-report-case-is-not-ok-keyword": "incorreto",
+	"pickle-report-case-is-skip-keyword": "saltar",
+	"pickle-report-case-is-todo-keyword": "pendente",
 	"pickle-report-adapt-is-ok-keyword": "correto",
 	"pickle-report-adapt-is-not-ok-keyword": "incorreto",
 	"pickle-report-adapt-is-skip-keyword": "saltar",
