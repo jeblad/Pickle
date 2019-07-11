@@ -65,6 +65,7 @@
 	"pickle-case-no-description": "anônimo",
 	"pickle-case-no-fixtures": "Não há funções de teste registadas",
 	"pickle-case-no-tests": "Não há testes registados",
+	"pickle-report-case-context-keyword": "Contexto",
 	"pickle-report-case-is-ok-keyword": "correto",
 	"pickle-report-case-is-not-ok-keyword": "incorreto",
 	"pickle-report-case-is-skip-keyword": "pular",
