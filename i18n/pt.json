@@ -123,5 +123,7 @@
 	"pickle-spies-confess-skip": "Função \"confess\" chamada",
 	"pickle-spies-croak-skip": "Função \"croak\" chamada",
 	"pickle-spies-confess-exits": "Saída da função \"confess\"",
-	"pickle-spies-croak-exits": "Saída da função \"croak\""
+	"pickle-spies-croak-exits": "Saída da função \"croak\"",
+	"pickle-stub-no-fallback": "$1: sem função de recurso",
+	"pickle-stub-no-more-frames": "$1: não há mais valores pré-calculados"
 }
