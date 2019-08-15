@@ -3,7 +3,8 @@
 		"authors": [
 			"Piramidion",
 			"Jeblad",
-			"Abijeet Patro"
+			"Abijeet Patro",
+			"Vlad5250"
 		]
 	},
 	"pickle-desc": "Додає базове Pickle-тестування до модулів Lua",
@@ -119,5 +120,7 @@
 	"pickle-spies-confess-skip": "Викликано функцію «confess»",
 	"pickle-spies-croak-skip": "Викликано функцію «croak»",
 	"pickle-spies-confess-exits": "Функція «confess» завершується",
-	"pickle-spies-croak-exits": "Функція «croak» завершується"
+	"pickle-spies-croak-exits": "Функція «croak» завершується",
+	"pickle-stub-no-fallback": "$1: без функції резерву (''fallback'')",
+	"pickle-stub-no-more-frames": "$1: більше немає передобчислених значень"
 }
