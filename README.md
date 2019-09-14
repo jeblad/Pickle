@@ -1,5 +1,7 @@
 # Pickle
 
+![GitHub issues](https://img.shields.io/github/issues-raw/jeblad/Pickle?style=for-the-badge)
+
 ## Scope
 
 This is an extension that adds Pickle testing to Lua modules, that is specs among other types of testing. Lua is part of the Scribunto extension, which can be used on a wiki running the Mediawiki software.
