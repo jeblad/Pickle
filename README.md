@@ -1,5 +1,6 @@
 # Pickle
 
+![stability-unstable](https://img.shields.io/badge/stability-experimental-orange.svg?style=for-the-badge)
 ![GitHub issues](https://img.shields.io/github/issues-raw/jeblad/Pickle?style=for-the-badge)
 
 ## Scope
