@@ -48,7 +48,7 @@
 			"find modules/images -type d -path minified -prune -o -type d -execdir svgo --pretty --indent=2 -i . -o ./minified \\;"
 		],
 		"unit": [
-			"php ../../tests/phpunit/phpunit.php --wiki wiki --group Pickle"
+			"php ../../tests/phpunit/phpunit.php --wiki wiki --exclude-group LuaStandalone --group Pickle"
 		],
 		"codesize": [
 			"phpmd ./includes/ text codesize",
