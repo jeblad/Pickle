@@ -4,14 +4,15 @@
 			"Lexected",
 			"Jeblad",
 			"TomášPolonec",
-			"Abijeet Patro"
+			"Abijeet Patro",
+			"Luky001"
 		]
 	},
 	"pickle-desc": "Pridá základné testovanie rozšírenia Pickle do modulov jazyka Lua",
 	"pickle-function-text-fail": "$1 zlyhalo",
 	"pickle-test-text-good": "Dobrý",
 	"pickle-test-text-pending": "Čakajúce",
-	"pickle-test-text-fail": "Zlyhávajúci",
+	"pickle-test-text-fail": "Zlyhanie",
 	"pickle-test-text-missing": "Chýbajúce",
 	"pickle-test-text-unknown": "Neznáme",
 	"pickle-test-text-todo-good": "Dobrý (todo)",
