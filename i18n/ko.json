@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong",
-			"Nemo bis",
+			"Abijeet Patro",
 			"CYAN",
-			"Abijeet Patro"
+			"Nemo bis",
+			"Ykhwong"
 		]
 	},
 	"pickle-desc": "기본 피클 테스트를 루아 모듈에 추가합니다",

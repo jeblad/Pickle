@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Bjankuloski06",
 			"Jeblad",
-			"Nemo bis",
-			"Abijeet Patro"
+			"Nemo bis"
 		]
 	},
 	"pickle-desc": "Додава основно испробување со Pickle во Lua-модули",

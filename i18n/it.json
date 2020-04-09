@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Redredsonia",
+			"Abijeet Patro",
 			"Beta16",
-			"Statix64",
-			"Jeblad",
 			"Greis",
-			"Abijeet Patro"
+			"Jeblad",
+			"Redredsonia",
+			"Statix64"
 		]
 	},
 	"pickle-function-text-invalid": "$1 non è valido",

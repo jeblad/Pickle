@@ -1,14 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"烈羽",
-			"和平奮鬥救地球",
-			"Liuxinyu970226",
-			"Jeblad",
+			"Abijeet Patro",
 			"Corainn",
 			"Hello903hello",
+			"Jeblad",
 			"Kly",
-			"Abijeet Patro"
+			"Liuxinyu970226",
+			"和平奮鬥救地球",
+			"烈羽"
 		]
 	},
 	"pickle-desc": "添加基本 Pickle 測試至 Lua 模組",

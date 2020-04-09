@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lexected",
-			"Jeblad",
-			"TomášPolonec",
 			"Abijeet Patro",
-			"Luky001"
+			"Jeblad",
+			"Lexected",
+			"Luky001",
+			"TomášPolonec"
 		]
 	},
 	"pickle-desc": "Pridá základné testovanie rozšírenia Pickle do modulov jazyka Lua",

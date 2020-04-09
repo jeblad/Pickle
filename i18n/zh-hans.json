@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226",
-			"Tonylianlong",
+			"Abijeet Patro",
 			"Jeblad",
-			"Abijeet Patro"
+			"Liuxinyu970226",
+			"Tonylianlong"
 		]
 	},
 	"pickle-desc": "添加基本Pickle测试至Lua模块",

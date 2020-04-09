@@ -1,14 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe",
+			"Abijeet Patro",
+			"Dgstranz",
+			"Ejegg",
 			"Fitoschido",
 			"Jeblad",
 			"Josecurioso",
-			"Dgstranz",
-			"Ejegg",
-			"RisingVoices",
-			"Abijeet Patro"
+			"Macofe",
+			"RisingVoices"
 		]
 	},
 	"pickle-desc": "Proporciona un marco de pruebas Pickle básico para módulos escritos en Lua",

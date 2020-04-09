@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Hamilton Abreu",
-			"Jeblad",
-			"Abijeet Patro"
+			"Jeblad"
 		]
 	},
 	"pickle-desc": "Adiciona aos módulos Lua os testes básicos Pickle",

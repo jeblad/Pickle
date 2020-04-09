@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"StanProg",
-			"Vodnokon4e",
+			"Abijeet Patro",
 			"Jeblad",
-			"Abijeet Patro"
+			"StanProg",
+			"Vodnokon4e"
 		]
 	},
 	"pickle-desc": "Добавя основно тестване чрез Pickle при модули за Lua",

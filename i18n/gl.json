@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Banjo",
 			"Elisardojm",
 			"Jeblad",
-			"Nemo bis",
-			"Abijeet Patro"
+			"Nemo bis"
 		]
 	},
 	"pickle-desc": "Engade os test básicos Pickle ós módulos Lúa",

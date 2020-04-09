@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
+			"Derugon",
 			"Gomoko",
-			"Wladek92",
 			"Jeblad",
 			"Thibaut120094",
-			"Derugon",
-			"Abijeet Patro"
+			"Wladek92"
 		]
 	},
 	"pickle-desc": "Ajoute les tests basiques Pickle aux modules Lua",

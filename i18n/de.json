@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Metalhead64",
+			"Abijeet Patro",
 			"Jeblad",
-			"Abijeet Patro"
+			"Metalhead64"
 		]
 	},
 	"pickle-desc": "Ergänzt Basis-Pickle-Tests für Lua-Module",

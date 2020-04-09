@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Johan",
+			"Abijeet Patro",
 			"Jeblad",
-			"WikiPhoenix",
+			"Johan",
 			"Umeaboy",
-			"Abijeet Patro"
+			"WikiPhoenix"
 		]
 	},
 	"pickle-desc": "Tillfogar grundläggande Pickle-typetestning för Luamoduler.",

@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald",
+			"Abijeet Patro",
 			"Eduardo Addad de Oliveira",
-			"Abijeet Patro"
+			"Felipe L. Ewald"
 		]
 	},
 	"pickle-desc": "Adiciona aos módulos Lua os testes básicos Pickle",

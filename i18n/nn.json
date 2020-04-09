@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jeblad",
-			"Abijeet Patro"
+			"Abijeet Patro",
+			"Jeblad"
 		]
 	},
 	"pickle-desc": "Legg til grunnleggjande Pickle testing for Lua modular.",

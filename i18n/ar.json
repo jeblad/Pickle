@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"محمد أحمد عبد الفتاح",
+			"Abijeet Patro",
 			"Helmoony",
-			"ديفيد",
 			"Meno25",
-			"Abijeet Patro"
+			"ديفيد",
+			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"pickle-desc": "ويضيف اختبار Pickle الأساسي لوحدات لوا",

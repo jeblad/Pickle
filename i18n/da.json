@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Jeblad",
 			"Jhertel",
-			"Steenth",
-			"Abijeet Patro"
+			"Steenth"
 		]
 	},
 	"pickle-desc": "Føjer grundlæggende Pickle-testning til Lua-moduler.",
