@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"Rapsar"
 		]
 	},
 	"pickle-desc": "Lua modüllerine temel Turşu testi ekler",
@@ -87,8 +88,8 @@
 	"pickle-adapt-process-as-u-lower-first": "Unicode dizesinde küçük harf ilk kod noktası",
 	"pickle-adapt-process-as-u-n-f-c": "Unicode dizesini Normalleştirilmiş Form C (NFC) olarak yeniden kodla",
 	"pickle-adapt-process-as-u-n-f-d": "Unicode dizesini Normalize Edilmiş Form D (NFD) olarak yeniden kodla",
-	"pickle-adapt-process-as-number": "Dizeyi sayıya yayınla",
-	"pickle-adapt-process-as-string": "Dizeye yayınla",
+	"pickle-adapt-process-as-number": "Dizeyi sayıya yayımla",
+	"pickle-adapt-process-as-string": "Dizeye yayımla",
 	"pickle-adapt-process-as-floor": "Daha düşük tamsayıyı bulun",
 	"pickle-adapt-process-as-ceil": "Üst tamsayıyı bul",
 	"pickle-adapt-process-as-round": "En yakın tamsayıyı bulun",
