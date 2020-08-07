@@ -4,7 +4,8 @@
 			"Abijeet Patro",
 			"Jeblad",
 			"Liuxinyu970226",
-			"Tonylianlong"
+			"Tonylianlong",
+			"列维劳德"
 		]
 	},
 	"pickle-desc": "添加基本Pickle测试至Lua模块",
@@ -59,7 +60,7 @@
 	"pickle-console-run": "运行",
 	"pickle-console-clear": "清除",
 	"pickle-report-skip-no-message": "消息关键词“$1”不存在",
-	"pickle-case-compact-header-all-good": "完成（ok）&mdash; $1",
+	"pickle-case-compact-header-all-good": "完成&mdash; $1",
 	"pickle-case-compact-header-some-failed": "未完成（not ok）&mdash; $1",
 	"pickle-case-full-header": "# $1",
 	"pickle-case-vivid-header": "$1",
