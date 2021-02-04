@@ -1,12 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
+			"Adam78",
 			"BanKris",
-			"Notramo",
-			"Jeblad"
+			"Jeblad",
+			"Notramo"
 		]
 	},
-	"pickle-frame-no-description": "névtelen",
-	"pickle-report-frame-is-ok-keyword": "ok",
+	"pickle-function-text-fail": "A(z) $1 meghiúsult",
+	"pickle-test-text-pending": "Függőben",
+	"pickle-test-text-fail": "Sikertelen",
+	"pickle-test-text-missing": "Hiányzik",
+	"pickle-test-text-unknown": "Ismeretlen",
+	"pickle-test-text-invalid": "Érvénytelen",
+	"pickle-case-vivid-header": "$1",
+	"pickle-case-no-description": "névtelen",
+	"pickle-report-case-is-ok-keyword": "ok",
 	"pickle-report-adapt-is-ok-keyword": "ok"
 }

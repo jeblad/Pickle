@@ -1,13 +1,32 @@
 {
 	"@metadata": {
 		"authors": [
-			"YaronSh",
-			"Uziel302"
+			"Amire80",
+			"Steeve815",
+			"Uziel302",
+			"YaronSh"
 		]
 	},
-	"pickle-test-text-pending": "ממתין",
+	"pickle-desc": "הוספת בדיקות Pickle בסיסיות ליחידות לואה",
+	"pickle-test-text-good": "עברה",
+	"pickle-test-text-pending": "בהמתנה",
+	"pickle-test-text-fail": "נכשלה",
+	"pickle-test-text-missing": "חסרה",
 	"pickle-test-text-unknown": "לא ידוע",
-	"pickle-tracking-category-good": "מודולים עם תוצאות מבחן טובות",
+	"pickle-test-text-invalid": "בלתי־תקינה",
+	"pickle-test-text-todo-good": "עברה, עם משימות לביצוע",
+	"pickle-test-text-todo-fail": "נכשלה, עם משימות לביצוע",
+	"pickle-test-text-skip-good": "עברה, עם דילוגים",
+	"pickle-test-text-skip-fail": "נכשלה, עם דילוגים",
+	"pickle-tracking-category-good": "יחידות עם בדיקות שעברו",
+	"pickle-tracking-category-good-desc": "התוצאה מציינת מצב \"עבר\" אחרי שערוך הבדיקות.",
+	"pickle-tracking-category-pending": "יחידות עם בדיקות ממתינות",
+	"pickle-tracking-category-pending-desc": "התוצאה מציינת מצב \"ממתין\" אחרי שערוך הבדיקות.",
+	"pickle-tracking-category-todo": "יחידת עם בדיקות לא שלמות",
+	"pickle-tracking-category-todo-desc": "התוצאה מציינת שנמצא סימן \"משימות לבצע\" אחד או יותר אחרי שערוך הבדיקות.",
+	"pickle-tracking-category-skip": "יחידות עם בדיקות מדולגות",
+	"pickle-tracking-category-skip-desc": "התוצאה מציינת שנמצא סימן \"דילוג\" אחד או יותר אחרי שערוך הבדיקות.",
+	"pickle-tracking-category-fail": "יחידות עם בדיקות נכשלות",
 	"pickle-console-empty": "אין דוחות זמינים.",
 	"pickle-console-cleared": "תוכן המסוף נמחק.",
 	"pickle-console-run": "הרצה",

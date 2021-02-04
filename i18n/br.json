@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Fulup",
 			"Jeblad"
 		]
@@ -15,8 +16,8 @@
 	"pickle-test-text-skip-good": "Mat (lammat)",
 	"pickle-console-run": "Seveniñ",
 	"pickle-console-clear": "Riñsañ",
-	"pickle-frame-compact-header-all-good": "mat eo &mdash; $1",
-	"pickle-frame-compact-header-some-failed": "n'eo ket mat &mdash; $1",
+	"pickle-case-compact-header-all-good": "mat eo &mdash; $1",
+	"pickle-case-compact-header-some-failed": "n'eo ket mat &mdash; $1",
 	"pickle-report-adapt-is-ok-keyword": "mat eo",
 	"pickle-report-adapt-is-not-ok-keyword": "N'eo ket mat"
 }

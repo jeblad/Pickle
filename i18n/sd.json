@@ -1,18 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Indus Asia",
-			"Mehtab ahmed",
-			"Jeblad"
+			"Jeblad",
+			"Mehtab ahmed"
 		]
 	},
-	"pickle-test-text-good": "سٺو",
+	"pickle-test-text-good": "پاس",
 	"pickle-test-text-pending": "ويچار هيٺ",
 	"pickle-test-text-missing": "کُٽل",
 	"pickle-test-text-unknown": "اڻڄاتل",
 	"pickle-console-run": "هلايو",
-	"pickle-report-frame-is-ok-keyword": "ٺيڪ",
-	"pickle-report-frame-is-not-ok-keyword": "ٺيڪ ناهي",
+	"pickle-report-case-is-ok-keyword": "ٺيڪ",
+	"pickle-report-case-is-not-ok-keyword": "ٺيڪ ناهي",
 	"pickle-report-adapt-is-ok-keyword": "ٺيڪ",
 	"pickle-report-adapt-is-not-ok-keyword": "ٺيڪ ناهي",
 	"pickle-adapt-process-first": "پهريون عنصر کڻو",

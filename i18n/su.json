@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Uchup19",
-			"Jeblad"
+			"Abijeet Patro",
+			"Jeblad",
+			"Uchup19"
 		]
 	},
 	"pickle-test-text-good": "Alus",
@@ -14,6 +15,6 @@
 	"pickle-test-text-skip-fail": "Gagal (liwat)",
 	"pickle-console-run": "Jalankeun",
 	"pickle-console-clear": "Bersihan",
-	"pickle-report-adapt-is-ok-keyword": "heug",
-	"pickle-report-frame-is-ok-keyword": "heug"
+	"pickle-report-case-is-ok-keyword": "heug",
+	"pickle-report-adapt-is-ok-keyword": "heug"
 }

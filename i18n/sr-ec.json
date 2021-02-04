@@ -1,12 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Obsuser"
+			"Abijeet Patro",
+			"Kizule",
+			"Obsuser",
+			"Милан Јелисавчић"
 		]
 	},
-	"pickle-frame-no-description": "анонимно",
-	"pickle-frame-no-fixtures": "Нема регистрованих фикстура",
-	"pickle-frame-no-tests": "Нема регистрованих тестова",
+	"pickle-function-text-good": "$1 је прошао",
+	"pickle-function-text-pending": "$1 је на чекању",
+	"pickle-function-text-missing": "$1 недостаје",
+	"pickle-function-text-unknown": "$1 је непознат",
+	"pickle-function-text-invalid": "$1 је неисправан",
+	"pickle-case-no-description": "анонимно",
+	"pickle-case-no-fixtures": "Нема регистрованих фикстура",
+	"pickle-case-no-tests": "Нема регистрованих тестова",
 	"pickle-adapt-catched-exception": "Детектовани изузетак",
 	"pickle-adapt-catched-return": "Детектовано враћање"
 }

@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Eitvys200"
 		]
 	},
 	"pickle-console-cleared": "Konsolė išvalyta.",
-	"pickle-frame-no-description": "anonimas"
+	"pickle-case-no-description": "anonimas"
 }

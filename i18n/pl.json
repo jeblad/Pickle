@@ -1,16 +1,46 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Chrumps",
-			"Jeblad"
+			"InternerowyGołąb",
+			"Jeblad",
+			"Nemo bis",
+			"Rail"
 		]
 	},
+	"pickle-function-text-good": "$1 minął",
+	"pickle-function-text-pending": "$1 jest w toku",
+	"pickle-function-text-fail": "$1 zakończono niepowodzeniem",
+	"pickle-function-text-missing": "brakuje $1",
+	"pickle-function-text-unknown": "$1 jest nieznany",
+	"pickle-function-text-invalid": "$1 jest nieprawidłowy",
+	"pickle-test-text-unknown": "Nieznany",
+	"pickle-test-text-invalid": "Nieprawidłowy",
+	"pickle-tracking-category-good": "Moduły z zaliczonymi testami",
+	"pickle-tracking-category-pending": "Moduły z oczekującymi testami",
+	"pickle-tracking-category-todo": "Moduły z niekompletnymi testami",
+	"pickle-tracking-category-skip": "Moduły z pominiętymi testami",
+	"pickle-tracking-category-missing": "Moduły bez strony testowej",
+	"pickle-console-empty": "Brak dostępnych raportów.",
 	"pickle-console-run": "Uruchom",
 	"pickle-console-clear": "Wyczyść",
-	"pickle-frame-compact-header-all-good": "ok &mdash; $1",
-	"pickle-frame-compact-header-some-failed": "nie ok &mdash; $1",
-	"pickle-report-frame-is-ok-keyword": "ok",
-	"pickle-report-frame-is-not-ok-keyword": "nie ok",
+	"pickle-case-compact-header-all-good": "ok &mdash; $1",
+	"pickle-case-compact-header-some-failed": "nie ok &mdash; $1",
+	"pickle-case-full-header": "# $1",
+	"pickle-case-vivid-header": "$1",
+	"pickle-report-case-is-ok-keyword": "ok",
+	"pickle-report-case-is-not-ok-keyword": "nie ok",
+	"pickle-report-case-is-skip-keyword": "Pomiń",
+	"pickle-report-case-is-todo-keyword": "-",
 	"pickle-report-adapt-is-ok-keyword": "ok",
-	"pickle-report-adapt-is-not-ok-keyword": "nie ok"
+	"pickle-report-adapt-is-not-ok-keyword": "nie ok",
+	"pickle-report-adapt-is-skip-keyword": "-",
+	"pickle-report-adapt-is-todo-keyword": "-",
+	"pickle-adapt-process-as-reverse": "Odwróć ciąg znaków",
+	"pickle-adapt-process-as-floor": "Znajdź niższą liczbę całkowitą",
+	"pickle-adapt-process-as-ceil": "Znajdź wyższą liczbę całkowitą",
+	"pickle-adapt-process-as-round": "Znajdź najbliższą liczbę całkowitą",
+	"pickle-adapt-process-as-integer": "Znajdź część całkowitą",
+	"pickle-adapt-process-as-fraction": "Znajdź część ułamkową"
 }

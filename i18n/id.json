@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Hidayatsrf",
 			"Jeblad"
 		]
@@ -8,6 +9,6 @@
 	"pickle-test-text-unknown": "Tidak diketahui",
 	"pickle-console-run": "Jalankan",
 	"pickle-console-clear": "Kosongkan",
-	"pickle-report-frame-is-ok-keyword": "ok",
+	"pickle-report-case-is-ok-keyword": "ok",
 	"pickle-report-adapt-is-ok-keyword": "ok"
 }
