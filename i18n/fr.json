@@ -10,7 +10,9 @@
 		]
 	},
 	"pickle-desc": "Ajoute les tests basiques Pickle aux modules Lua",
+	"pickle-testcase-subpage": "$1/testcase",
 	"pickle-testcase-invoke": "—",
+	"pickle-default-subpage": "$1/pickle",
 	"pickle-default-invoke": "—",
 	"pickle-function-text-good": "$1 a réussi",
 	"pickle-function-text-pending": "$1 est en attente",
