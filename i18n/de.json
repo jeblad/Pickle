@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jeblad",
-			"Metalhead64"
+			"Metalhead64",
+			"Umlaut"
 		]
 	},
 	"pickle-desc": "Ergänzt Basis-Pickle-Tests für Lua-Module",
@@ -124,5 +125,6 @@
 	"pickle-spies-confess-skip": "Funktion „Confess“ aufgerufen",
 	"pickle-spies-croak-skip": "Funktion „Croak“ aufgerufen",
 	"pickle-spies-confess-exits": "Funktion „Confess“ beendet",
-	"pickle-spies-croak-exits": "Funktion „Croak“ beendet"
+	"pickle-spies-croak-exits": "Funktion „Croak“ beendet",
+	"pickle-stub-no-fallback": "$1: keine Fallback-Funktion"
 }
