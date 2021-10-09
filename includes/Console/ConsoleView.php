@@ -62,7 +62,7 @@ class ConsoleView {
 		// wrap it up for use in the browser
 		$output->addScript(
 			\ResourceLoader::makeInlineScript(
-				\ResourceLoader::makeMessageSetScript( [ 'pickle-console-question' => $question ] ),
+				\Xml::encodeJsCall( 'mw.messages.set', [ [ 'pickle-console-question' => $question ] ] ),
 				$output->getCSPNonce()
 			)
 		);
