@@ -30,6 +30,8 @@
 	"pickle-console-empty": "אין דוחות זמינים.",
 	"pickle-console-cleared": "תוכן המסוף נמחק.",
 	"pickle-console-run": "הרצה",
+	"pickle-case-compact-header-all-good": "הצליחה &mdash; $1",
+	"pickle-case-compact-header-some-failed": "נכשלה &mdash; $1",
 	"pickle-adapt-process-as-type": "מצא מאיזה סוג הרכיב",
 	"pickle-adapt-process-as-round": "מצא את המספר השלם הקרוב ביותר"
 }
