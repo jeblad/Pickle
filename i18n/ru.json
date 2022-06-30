@@ -8,6 +8,7 @@
 			"Nitch",
 			"Nk88",
 			"Okras",
+			"Pacha Tchernof",
 			"Patrick Star",
 			"Redredsonia",
 			"Shaleych"
@@ -17,8 +18,8 @@
 	"pickle-function-text-pending": "$1 в ожидании",
 	"pickle-function-text-fail": "$1 не удалось",
 	"pickle-function-text-missing": "$1 отсутствует",
-	"pickle-function-text-unknown": "$1 неизвестен",
-	"pickle-function-text-invalid": "$1 недействителен",
+	"pickle-function-text-unknown": "$1 неизвестно",
+	"pickle-function-text-invalid": "$1 недействительно",
 	"pickle-function-text-skip-good": "$1 прошло с пропуском",
 	"pickle-function-text-skip-fail": "$1 не удалось пропустить",
 	"pickle-test-text-good": "Пройдено",
