@@ -2,16 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Fulup",
+			"Huñvreüs",
 			"Jeblad"
 		]
 	},
 	"pickle-test-text-good": "Mat",
 	"pickle-test-text-pending": "O c'hortoz",
-	"pickle-test-text-fail": "O c'hwitañ",
+	"pickle-test-text-fail": "C'hwitet",
 	"pickle-test-text-missing": "A vank",
 	"pickle-test-text-unknown": "Dianav",
-	"pickle-test-text-todo-good": "Mat (da ober)",
-	"pickle-test-text-todo-fail": "O c'hwitañ (da ober)",
+	"pickle-test-text-todo-good": "Mat gant traoù da ober",
+	"pickle-test-text-todo-fail": "C'hwitet gant traoù da ober",
 	"pickle-test-text-skip-good": "Mat (lammat)",
 	"pickle-console-run": "Seveniñ",
 	"pickle-console-clear": "Riñsañ",
