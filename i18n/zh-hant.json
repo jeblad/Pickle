@@ -7,6 +7,7 @@
 			"Kly",
 			"Liuxinyu970226",
 			"和平奮鬥救地球",
+			"捍粵者",
 			"烈羽"
 		]
 	},
@@ -87,8 +88,8 @@
 	"pickle-adapt-process-as-type": "取得元素類型",
 	"pickle-adapt-process-as-upper": "將字串裡所有字元大寫",
 	"pickle-adapt-process-as-lower": "將字串裡所有字元小寫",
-	"pickle-adapt-process-as-upper-first": "將字串裡第一個字元大寫",
-	"pickle-adapt-process-as-lower-first": "將字串裡第一個字元小寫",
+	"pickle-adapt-process-as-upper-first": "將字串首字元大寫",
+	"pickle-adapt-process-as-lower-first": "將字串首字元小寫",
 	"pickle-adapt-process-as-reverse": "反向字串",
 	"pickle-adapt-process-as-u-upper": "將整個萬國碼字串大寫",
 	"pickle-adapt-process-as-u-lower": "將整個萬國碼字串小寫",
