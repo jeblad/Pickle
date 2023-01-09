@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Obonggi"
 		]
 	},
 	"pickle-test-text-good": "Sain",
-	"pickle-test-text-unknown": "sarkū"
+	"pickle-test-text-unknown": "Sarkū"
 }
