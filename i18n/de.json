@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Jeblad",
+			"Justman10000",
 			"Metalhead64",
 			"Umlaut"
 		]
@@ -126,5 +127,6 @@
 	"pickle-spies-croak-skip": "Funktion „Croak“ aufgerufen",
 	"pickle-spies-confess-exits": "Funktion „Confess“ beendet",
 	"pickle-spies-croak-exits": "Funktion „Croak“ beendet",
-	"pickle-stub-no-fallback": "$1: keine Fallback-Funktion"
+	"pickle-stub-no-fallback": "$1: keine Fallback-Funktion",
+	"pickle-stub-no-more-frames": "$1: keine vorberechneten Werte mehr"
 }
