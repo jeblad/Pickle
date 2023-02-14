@@ -132,7 +132,7 @@
 	"pickle-adapt-condition-to-be-equal": "Shall be equal to target (equality)",
 	"pickle-adapt-condition-to-be-boolean-equal": "Shall be boolean equal to target (evaluates to same boolean value)",
 	"pickle-adapt-condition-to-be-strict-equal": "Shall be strict equal to target (exact equality and type equality)",
-	"pickle-adapt-condition-to-be-same": "Shall be same as target (equal after type coersion)",
+	"pickle-adapt-condition-to-be-same": "Shall be same as target (equal after type coercion)",
 	"pickle-adapt-condition-to-be-deep-equal": "Shall be deep equal to target (dives into tables)",
 	"pickle-adapt-condition-to-be-contained": "Shall be contained within the target",
 	"pickle-adapt-condition-to-be-lesser-than": "Shall be lesser than the target",
