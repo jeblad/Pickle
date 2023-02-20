@@ -65,8 +65,6 @@
 	"pickle-report-skip-no-message": "訊息鍵值「$1」不存在",
 	"pickle-case-compact-header-all-good": "確定 (ok) &mdash; $1",
 	"pickle-case-compact-header-some-failed": "未成功 &mdash; $1",
-	"pickle-case-full-header": "# $1",
-	"pickle-case-vivid-header": "$1",
 	"pickle-case-no-description": "匿名",
 	"pickle-case-no-fixtures": "沒有註冊的夾具",
 	"pickle-case-no-tests": "沒有註冊的測試",

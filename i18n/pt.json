@@ -59,8 +59,6 @@
 	"pickle-report-skip-no-message": "A chave de mensagem \"$1\" não existe",
 	"pickle-case-compact-header-all-good": "passado &mdash; $1",
 	"pickle-case-compact-header-some-failed": "falhado &mdash; $1",
-	"pickle-case-full-header": "# $1",
-	"pickle-case-vivid-header": "$1",
 	"pickle-case-no-description": "anónimo",
 	"pickle-case-no-fixtures": "Não há funções de teste registadas",
 	"pickle-case-no-tests": "Não há testes registados",

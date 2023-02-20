@@ -43,8 +43,6 @@
 	"pickle-console-run": "Запустить",
 	"pickle-console-clear": "Очистить",
 	"pickle-report-skip-no-message": "Ключ сообщения $1 не существует",
-	"pickle-case-full-header": "# $1",
-	"pickle-case-vivid-header": "$1",
 	"pickle-case-no-description": "аноним",
 	"pickle-report-case-is-ok-keyword": "ок",
 	"pickle-report-case-is-not-ok-keyword": "не в порядке",

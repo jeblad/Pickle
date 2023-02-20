@@ -39,8 +39,6 @@
 	"pickle-report-skip-no-message": "De berichtnaam \"$1\" bestaat niet",
 	"pickle-case-compact-header-all-good": "oke &mdash; $1",
 	"pickle-case-compact-header-some-failed": "niet oke &mdash; $1",
-	"pickle-case-full-header": "# $1",
-	"pickle-case-vivid-header": "$1",
 	"pickle-case-no-description": "anoniem",
 	"pickle-case-no-tests": "Geen testen geregistreerd",
 	"pickle-report-case-is-ok-keyword": "In orde",

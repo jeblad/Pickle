@@ -60,8 +60,6 @@
 	"pickle-report-skip-no-message": "Beskednøglen »$1« findes ikke",
 	"pickle-case-compact-header-all-good": "ok (alle gode) &mdash; $1",
 	"pickle-case-compact-header-some-failed": "not ok (nogle fejler) &mdash; $1",
-	"pickle-case-full-header": "# $1",
-	"pickle-case-vivid-header": "$1",
 	"pickle-case-no-description": "anonym",
 	"pickle-case-no-fixtures": "Ingen installationer registreret",
 	"pickle-case-no-tests": "Ingen tester registreret",
