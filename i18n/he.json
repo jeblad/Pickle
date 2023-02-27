@@ -98,6 +98,7 @@
 	"pickle-adapt-condition-to-be-equal": "יהיה שווה ליעד (שוויון)",
 	"pickle-adapt-condition-to-be-boolean-equal": "יהיה שווה בוליאנית ליעד (מוערך לאותו הערך הבוליאני)",
 	"pickle-adapt-condition-to-be-strict-equal": "יהיה שווה באופן קפדני ליעד (שוויון מדויק ושוויון סוג)",
+	"pickle-adapt-condition-to-be-same": "יהיה זהה ליעד (שווה אחרי המרת סוג)",
 	"pickle-adapt-condition-to-be-deep-equal": "יהיה שווה עמוק ליעד (צולל לתוך טבלאות)",
 	"pickle-adapt-condition-to-be-contained": "ייכלל בתוך היעד",
 	"pickle-adapt-condition-to-be-lesser-than": "יהיה נמוך מהיעד",
