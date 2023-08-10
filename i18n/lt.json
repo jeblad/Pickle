@@ -5,6 +5,17 @@
 			"Nokeoo"
 		]
 	},
+	"pickle-function-text-missing": "trūksta $1",
+	"pickle-function-text-unknown": "$1 nežinomas",
+	"pickle-function-text-invalid": "$1 negalimas",
+	"pickle-test-text-missing": "Trūksta",
+	"pickle-test-text-unknown": "Nežinomas",
+	"pickle-test-text-invalid": "Negalimas",
+	"pickle-console-title": "Testavimo konsolė",
+	"pickle-console-empty": "Nėra pasiekiamų ataskaitų.",
 	"pickle-console-cleared": "Konsolė išvalyta.",
-	"pickle-case-no-description": "anonimas"
+	"pickle-console-run": "Vykdyti",
+	"pickle-console-clear": "Valyti",
+	"pickle-case-no-description": "anonimas",
+	"pickle-case-no-tests": "Nėra registruotų testų"
 }
