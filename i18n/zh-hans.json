@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Jeblad",
+			"Lakejason0",
 			"LittlePaw365",
 			"Liuxinyu970226",
 			"Tonylianlong",
@@ -123,5 +124,7 @@
 	"pickle-spies-confess-skip": "函数“confess”已取消",
 	"pickle-spies-croak-skip": "函数“croak”已取消",
 	"pickle-spies-confess-exits": "函数“confess”已存在",
-	"pickle-spies-croak-exits": "函数“croak”已存在"
+	"pickle-spies-croak-exits": "函数“croak”已存在",
+	"pickle-stub-no-fallback": "$1：无备选功能",
+	"pickle-stub-no-more-frames": "$1：没有更多预先计算的值"
 }
