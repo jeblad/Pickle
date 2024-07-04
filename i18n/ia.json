@@ -102,8 +102,8 @@
 	"pickle-adapt-condition-to-be-greater-than": "Debe esser major que le destination",
 	"pickle-adapt-condition-to-be-lesser-or-equal": "Debe esser minor que o equal al destination",
 	"pickle-adapt-condition-to-be-greater-or-equal": "Debe esser major que o equal al destination",
-	"pickle-adapt-condition-to-be-match": "Le valor como texto debe apparer in le destination",
-	"pickle-adapt-condition-to-be-u-match": "Le valor como texto in Unicode debe apparer in le destination",
+	"pickle-adapt-condition-to-be-match": "Debe corresponder al destination",
+	"pickle-adapt-condition-to-be-u-match": "Debe corresponder al destination in Unicode",
 	"pickle-adapt-catched-exception": "Exception detegite",
 	"pickle-adapt-catched-return": "Retorno detegite",
 	"pickle-spies-carp-todo": "Function “carp” appellate",
@@ -113,5 +113,5 @@
 	"pickle-spies-confess-exits": "Function “confess” exi",
 	"pickle-spies-croak-exits": "Function “croak” exi",
 	"pickle-stub-no-fallback": "$1: nulle function de recurso",
-	"pickle-stub-no-more-frames": "$1: non plus valores precalculate"
+	"pickle-stub-no-more-frames": "$1: necun altere valores precalculate"
 }

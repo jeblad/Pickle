@@ -3,6 +3,7 @@
 		"authors": [
 			"Jeblad",
 			"Justman10000",
+			"McDutchie",
 			"Metalhead64",
 			"Umlaut"
 		]
@@ -87,7 +88,7 @@
 	"pickle-adapt-process-as-lower": "Alle Zeichen in der Zeichenfolge klein schreiben",
 	"pickle-adapt-process-as-upper-first": "Erstes Zeichen in der Zeichenfolge groß schreiben",
 	"pickle-adapt-process-as-lower-first": "Erstes Zeichen in der Zeichenfolge klein schreiben",
-	"pickle-adapt-process-as-reverse": "Umgekehrte Zeichenfolge",
+	"pickle-adapt-process-as-reverse": "Zeichenfolge umkehren",
 	"pickle-adapt-process-as-u-upper": "Gesamte Unicode-Zeichenfolge groß schreiben",
 	"pickle-adapt-process-as-u-lower": "Gesamte Unicode-Zeichenfolge klein schreiben",
 	"pickle-adapt-process-as-u-upper-first": "Ersten Codepoint in der Unicode-Zeichenfolge groß schreiben",
