@@ -3,19 +3,20 @@
 		"authors": [
 			"Jeblad",
 			"Nemo bis",
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"pickle-function-text-good": "Bei $1 ass alles an der Rei",
 	"pickle-function-text-missing": "$1 feelt",
 	"pickle-function-text-unknown": "$1 ass onbekannt",
-	"pickle-function-text-invalid": "$1 ass net valabel",
+	"pickle-function-text-invalid": "$1 ass ongülteg",
 	"pickle-test-text-good": "Alles an der Rei",
 	"pickle-test-text-pending": "Am Suspens",
 	"pickle-test-text-fail": "Feeler",
 	"pickle-test-text-missing": "Feelt",
 	"pickle-test-text-unknown": "Onbekannt",
-	"pickle-test-text-invalid": "Net valabel",
+	"pickle-test-text-invalid": "Ongülteg",
 	"pickle-test-text-skip-good": "Mat Skip ass alles an der Rei",
 	"pickle-test-text-skip-fail": "Mat Skip ass et net an der Rei",
 	"pickle-tracking-category-missing": "Moduler ouni Testsäit",
