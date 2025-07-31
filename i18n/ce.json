@@ -18,6 +18,7 @@
 	"pickle-test-text-invalid": "Бакъдоцург",
 	"pickle-tracking-category-good": "Тесташ чекхйаьлла модулаш",
 	"pickle-tracking-category-pending": "Тесташка хьоьжуш йолу модулаш",
+	"pickle-track-log-name": "Модуль тергойаран журнал",
 	"pickle-console-title": "Тестан консоль",
 	"pickle-console-empty": "Цхьа а хаам бац",
 	"pickle-console-cleared": "Консоль дӀайаьккхина",
@@ -39,5 +40,6 @@
 	"pickle-adapt-process-as-type": "Элементийн тайпа схьаэца",
 	"pickle-adapt-process-as-reverse": "ДӀаберзабе могӀа",
 	"pickle-adapt-process-as-integer": "Дуьззина дакъа лаха",
-	"pickle-adapt-process-as-fraction": "Декъна дакъа лахар"
+	"pickle-adapt-process-as-fraction": "Декъна дакъа лахар",
+	"pickle-stub-no-fallback": "$1: йац резерван функци"
 }
