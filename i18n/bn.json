@@ -4,6 +4,7 @@
 			"Aftabuzzaman",
 			"Aishik Rehman",
 			"Jeblad",
+			"আজিজ",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -30,7 +31,7 @@
 	"pickle-track-log-name": "মডিউল অনুসরণ লগ",
 	"pickle-track-log-header": "এই লগ পরীক্ষিত মডিউল থেকে পরিবর্তিত ফলাফলের একটি সারসংক্ষেপ দেখায়।",
 	"pickle-console-title": "পরীক্ষার কনসোল",
-	"pickle-console-empty": "কোনো প্রতিবেদন উপলব্ধ নয়।",
+	"pickle-console-empty": "কোনও প্রতিবেদন উপলভ্য নয়।",
 	"pickle-console-cleared": "কনসোল পরিষ্কার হয়েছে।",
 	"pickle-console-run": "চালান",
 	"pickle-console-clear": "পরিষ্কার",
