@@ -3,6 +3,7 @@
 		"authors": [
 			"CYAN",
 			"Nemo bis",
+			"YeBoy371",
 			"Ykhwong"
 		]
 	},
@@ -80,6 +81,6 @@
 	"pickle-spies-croak-skip": "\"croak\" 함수 호출됨",
 	"pickle-spies-confess-exits": "\"confess\" 함수 종료됨",
 	"pickle-spies-croak-exits": "\"croak\" 함수 종료됨",
-	"pickle-stub-no-fallback": "$1: 폴백 없음",
+	"pickle-stub-no-fallback": "$1: 폴백 함수 없음",
 	"pickle-stub-no-more-frames": "$1: 더 이상 사전 계산된 값이 없음"
 }
