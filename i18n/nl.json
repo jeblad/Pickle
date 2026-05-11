@@ -3,7 +3,8 @@
 		"authors": [
 			"Festina90",
 			"Mainframe98",
-			"McDutchie"
+			"McDutchie",
+			"Siebrand"
 		]
 	},
 	"pickle-desc": "Voegt eenvoudige Pickle-tests toe aan Lua-modules",
@@ -12,7 +13,7 @@
 	"pickle-function-text-fail": "$1 bevat fouten",
 	"pickle-function-text-missing": "$1 ontbreekt",
 	"pickle-function-text-unknown": "$1 is onbekend",
-	"pickle-function-text-invalid": "$1 is ongeldig",
+	"pickle-function-text-invalid": "$1 is onjuist",
 	"pickle-function-text-todo-good": "$1 is geslaagd met nog dingen te doen",
 	"pickle-function-text-todo-fail": "$1 is mislukt met nog dingen te doen",
 	"pickle-function-text-skip-good": "$1 is geslaagd met overslaan",
@@ -22,7 +23,7 @@
 	"pickle-test-text-fail": "Met fouten",
 	"pickle-test-text-missing": "Ontbrekend",
 	"pickle-test-text-unknown": "Onbekend",
-	"pickle-test-text-invalid": "Ongeldig",
+	"pickle-test-text-invalid": "Onjuist",
 	"pickle-test-text-todo-good": "Geslaagd met nog dingen te doen",
 	"pickle-test-text-todo-fail": "Mislukt met nog dingen te doen",
 	"pickle-test-text-skip-good": "Geslaagt met overgeslagen",
