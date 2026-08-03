@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"pickle-desc": "لوا چلنوالونو ته د Pickle بنسټيزه ازمېښت ورگډوي",
+	"pickle-testcase-subpage": "$1/ازمېښت‌چاره",
+	"pickle-testcase-invoke": "-",
+	"pickle-default-subpage": "$1/pickle",
+	"pickle-default-invoke": "-",
+	"pickle-function-text-good": "$1 تېر شو",
+	"pickle-function-text-pending": "$1 په تمه دی",
+	"pickle-function-text-fail": "$1 نابرياله شو",
+	"pickle-function-text-missing": "$1 ورک دی",
+	"pickle-function-text-unknown": "$1 نامالوم دی",
+	"pickle-function-text-invalid": "$1 ناباوره دی",
+	"pickle-function-text-todo-good": "$1 تېر شوی دی؛ خو پلی شوی نه دی",
+	"pickle-function-text-todo-fail": "$1 نابرياله شوی؛ په تمه دی",
+	"pickle-function-text-skip-good": "$1 تېرېدلو سره پاس شو",
+	"pickle-function-text-skip-fail": "$1 تېرېدلو سره پاس نشو",
+	"pickle-test-text-good": "پاس",
+	"pickle-test-text-pending": "په تمه",
+	"pickle-test-text-fail": "ناکامه",
+	"pickle-test-text-missing": "ورک",
+	"pickle-test-text-unknown": "ناجوت",
+	"pickle-test-text-invalid": "ناچله",
+	"pickle-test-text-todo-good": "کولو سره پاسول",
+	"pickle-test-text-todo-fail": "کولو سره ناکامېدل",
+	"pickle-console-run": "چلول",
+	"pickle-console-clear": "سپاکول",
+	"pickle-case-no-description": "ورکنومی",
+	"pickle-report-case-top-keyword": "پورته",
+	"pickle-report-case-top-no-description": "-",
+	"pickle-report-case-describe-keyword": "څرگندول",
+	"pickle-report-case-describe-no-description": "-",
+	"pickle-report-case-it-keyword": "دا",
+	"pickle-report-case-is-ok-keyword": "ښه"
+}
